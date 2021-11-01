@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "assigneesFromCodeOwners": true,
+  "commitBodyTable": true,
+  "gitIgnoredAuthors": [
+    "javiersegoviacordoba@gmail.com",
+    "javier@segoviacordoba.com"
+  ]
+}

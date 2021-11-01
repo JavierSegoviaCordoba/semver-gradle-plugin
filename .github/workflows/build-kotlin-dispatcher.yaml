@@ -1,0 +1,28 @@
+name: build-kotlin-dispatcher
+
+on:
+  workflow_dispatch:
+    inputs:
+      machines:
+        description: 'Virtual environment, default is `ubuntu-latest`. The first one will be used for one global time steps.'
+        #TODO: default: '"{{ machines }}"'
+        required: true
+      gradle-args:
+        description: 'Gradle args for `build` step'
+        default: ''
+        required: false
+
+jobs:
+  build:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
+    with:
+      machines: '${{ github.event.inputs.machines }}'
+      gradle-args: '${{ github.event.inputs.gradle-args }}'
+      allow-github-actor-bots: false
+      publish-snapshot: true
+      publish-docs: true
+    secrets:
+      OSS_USER: '${{ secrets.OSS_USER }}'
+      OSS_TOKEN: '${{ secrets.OSS_TOKEN }}'
+      OSS_STAGING_PROFILE_ID: '${{ secrets.OSS_STAGING_PROFILE_ID }}'

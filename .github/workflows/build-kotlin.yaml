@@ -1,0 +1,29 @@
+name: build-kotlin
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
+    with:
+      #TODO: machines: '"{{ machines }}"'
+      global-machine: 'ubuntu-latest'
+      allow-github-actor-bots: false
+      publish-snapshot: true
+      publish-docs: true
+    secrets:
+      OSS_USER: '${{ secrets.OSS_USER }}'
+      OSS_TOKEN: '${{ secrets.OSS_TOKEN }}'
+      OSS_STAGING_PROFILE_ID: '${{ secrets.OSS_STAGING_PROFILE_ID }}'

@@ -1,0 +1,35 @@
+name: generate-version-tag
+
+on:
+  workflow_dispatch:
+    if: |
+      github.ref == 'refs/heads/main' ||
+      !contains(github.ref, 'SNAPSHOT') &&
+      github.event.inputs.scope = 'mayor' ||
+      github.event.inputs.scope = 'minor' ||
+      github.event.inputs.scope = 'patch' ||
+      github.event.inputs.scope = '' &&
+      github.event.inputs.stage = 'alpha' ||
+      github.event.inputs.stage = 'beta' ||
+      github.event.inputs.stage = 'rc' ||
+      github.event.inputs.stage = 'final'
+
+    inputs:
+      stage:
+        description: 'Stage, one of [alpha, beta, rc, final]'
+        default: 'alpha'
+        required: true
+      scope:
+        description: 'Scope one of [mayor, minor, patch] or empty'
+        default: ''
+        required: false
+
+jobs:
+  generate:
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/generate-version-tag.yaml@main
+    with:
+      #TODO: machines: '"{{ machines }}"'
+      stage: '${{ github.event.inputs.stage }}'
+      scope: '${{ github.event.inputs.scope }}'
+    secrets:
+      TOKEN_GITHUB_ACTION: '${{ secrets.TOKEN_GITHUB_ACTION }}'

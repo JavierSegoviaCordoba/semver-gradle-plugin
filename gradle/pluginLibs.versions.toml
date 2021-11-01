@@ -1,0 +1,11 @@
+[versions]
+android = "7.0.3"
+javierscGradlePlugins = "0.1.0-rc.2"
+kotlin = "1.5.31"
+kotlinBinaryValidator = "0.7.1"
+
+[libraries]
+android-toolsBuild-gradle = { module = "com.android.tools.build:gradle", version.ref = "android" }
+javiersc-gradlePlugins-allPlugins = { module = "com.javiersc.gradle-plugins:all-plugins", version.ref = "javierscGradlePlugins" }
+jetbrains-kotlin-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+jetbrains-kotlinx-binaryCompatibilityValidator = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version.ref = "kotlinBinaryValidator" }

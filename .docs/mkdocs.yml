@@ -1,10 +1,10 @@
-site_name: '"{{ name }}"'
-site_description: '"{{ description }}"'
+site_name: 'SemVer Gradle Plugin'
+site_description: 'Gradle plugin to configure automatically the projects version based on git tags'
 site_author: 'Javier Segovia Córdoba'
 remote_branch: gh-pages
 
-repo_name: '"{{ repo }}"'
-repo_url: 'https://github.com/JavierSegoviaCordoba/"{{ repo }}"'
+repo_name: 'semver-gradle-plugin'
+repo_url: 'https://github.com/JavierSegoviaCordoba/semver-gradle-plugin'
 
 copyright: 'Copyright &copy; 2021 Javier Segovia Córdoba'
 

@@ -28,7 +28,7 @@ jobs:
   generate:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/generate-version-tag.yaml@main
     with:
-      #TODO: machines: '"{{ machines }}"'
+      machines: 'macos-latest, ubuntu-latest, windows-latest'
       stage: '${{ github.event.inputs.stage }}'
       scope: '${{ github.event.inputs.scope }}'
     secrets:

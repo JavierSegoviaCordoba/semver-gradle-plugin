@@ -9,7 +9,7 @@ jobs:
   publish:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/publish-kotlin.yaml@main
     with:
-      #TODO: machines: '"{{ machines }}"'
+      machines: 'macos-latest, ubuntu-latest, windows-latest'
       global-machine: 'ubuntu-latest'
       publish-maven-central: true
       #TODO: publish-gradle-plugin-portal: "{{ publish-gradle_plugin_portal }}"

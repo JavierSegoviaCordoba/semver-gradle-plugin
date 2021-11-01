@@ -5,7 +5,7 @@ on:
     inputs:
       machines:
         description: 'Virtual environment, default is `ubuntu-latest`. The first one will be used for one global time steps.'
-        #TODO: default: '"{{ machines }}"'
+        default: 'macos-latest, ubuntu-latest, windows-latest'
         required: true
       gradle-args:
         description: 'Gradle args for `build` step'

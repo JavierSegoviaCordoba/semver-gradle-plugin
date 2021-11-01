@@ -1,6 +1,6 @@
 plugins {
     `javiersc-versioning`
-    // TODO: Uncomment"{{ `javiersc-all-projects` }}"
+    `javiersc-all-projects`
     `javiersc-changelog`
     `javiersc-code-analysis`
     `javiersc-code-formatter`

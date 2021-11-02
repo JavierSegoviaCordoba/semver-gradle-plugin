@@ -9,11 +9,10 @@ jobs:
   publish:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/publish-kotlin.yaml@main
     with:
-      machines: 'macos-latest, ubuntu-latest, windows-latest'
+      machines: 'ubuntu-latest'
       global-machine: 'ubuntu-latest'
       publish-maven-central: true
-      #TODO: publish-gradle-plugin-portal: "{{ publish-gradle_plugin_portal }}"
-      #TODO: publish-jetbrains-marketplace: "{{ publish-jetbrains-marketplace }}"
+      publish-gradle-plugin-portal: false
       publish-docs: true
       publish-github-release: true
     secrets:

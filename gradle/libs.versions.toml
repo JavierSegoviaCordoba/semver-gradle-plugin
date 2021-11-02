@@ -1,9 +1,11 @@
 [versions]
 coroutines = "1.5.2"
+jgit = "5.13.0.202109080827-r"
 kotest = "4.6.3"
 
 [libraries]
 jetbrains-kotlin-kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
 jetbrains-kotlin-kotlinTestJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit" }
 jetbrains-kotlinx-kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+eclipse-jgit-eclipseJgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
 kotest-kotestAssertionsCore = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }

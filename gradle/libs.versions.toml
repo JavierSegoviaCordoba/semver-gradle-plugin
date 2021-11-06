@@ -2,8 +2,10 @@
 coroutines = "1.5.2"
 jgit = "5.13.0.202109080827-r"
 kotest = "4.6.3"
+semanticVersioning = "0.1.0-beta.5"
 
 [libraries]
+javiersc-semanticVersioning-semanticVersioningCore = { group = "com.javiersc.semantic-versioning", name = "semantic-versioning-core", version.ref = "semanticVersioning" }
 jetbrains-kotlin-kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
 jetbrains-kotlin-kotlinTestJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit" }
 jetbrains-kotlinx-kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }

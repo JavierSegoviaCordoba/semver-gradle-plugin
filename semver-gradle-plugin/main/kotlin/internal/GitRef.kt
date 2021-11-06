@@ -1,6 +1,9 @@
 package com.javiersc.semver.gradle.plugin.internal
 
+import com.javiersc.semver.gradle.plugin.mockDate
+import java.util.Date
 import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.lib.ObjectId
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
@@ -42,9 +45,9 @@ internal val Git.headCommit: GitRef.Head
         headRevCommit.run {
             GitRef.Head(
                 GitRef.Commit(
-                    shortMessage,
-                    fullMessage,
-                    toObjectId().name,
+                    message = shortMessage,
+                    fullMessage = fullMessage,
+                    hash = toObjectId().name,
                 )
             )
         }
@@ -54,9 +57,9 @@ internal val Git.commitsInCurrentBranch: List<GitRef.Commit>
         commitsInCurrentBranchRevCommit.map { revCommit ->
             revCommit.run {
                 GitRef.Commit(
-                    shortMessage,
-                    fullMessage,
-                    toObjectId().name,
+                    message = shortMessage,
+                    fullMessage = fullMessage,
+                    hash = toObjectId().name,
                 )
             }
         }
@@ -71,18 +74,32 @@ internal val Git.tagsInCurrentBranch: List<GitRef.Tag>
     get() =
         tagsInCurrentBranchRef.map { ref ->
             val commit = repository.parseCommit(ref.objectId)
-            ref.run {
-                GitRef.Tag(
-                    name = name.substringAfter("refs/tags/"),
-                    refName = name,
-                    commit =
-                        GitRef.Commit(
-                            commit.shortMessage,
-                            commit.fullMessage,
-                            commit.toObjectId().name,
-                        )
-                )
-            }
+            GitRef.Tag(
+                name = ref.tagName,
+                refName = ref.name,
+                commit =
+                    GitRef.Commit(
+                        message = commit.shortMessage,
+                        fullMessage = commit.fullMessage,
+                        hash = commit.toObjectId().name,
+                    )
+            )
+        }
+
+internal val Git.tagsInRepo: List<GitRef.Tag>
+    get() =
+        tagsInRepoRef.map { ref ->
+            val commit = repository.parseCommit(ref.objectId)
+            GitRef.Tag(
+                name = ref.tagName,
+                refName = ref.name,
+                commit =
+                    GitRef.Commit(
+                        message = commit.shortMessage,
+                        fullMessage = commit.fullMessage,
+                        hash = commit.toObjectId().name,
+                    )
+            )
         }
 
 internal val Git.currentBranch: GitRef.Branch
@@ -90,6 +107,23 @@ internal val Git.currentBranch: GitRef.Branch
         repository.run {
             GitRef.Branch(branch, fullBranch, commitsInCurrentBranch, tagsInCurrentBranch)
         }
+
+internal fun List<GitRef.Commit>.additionalDataIfTagIsNotInHead(git: Git, mockDate: Date?): String =
+    when {
+        git.status().call().isClean.not() -> ".$size+${timestamp(mockDate)}"
+        isEmpty() && git.status().call().isClean -> ""
+        else -> ".$size+${first().hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
+    }
+
+internal fun Git.commitsBetweenTwoCommits(
+    fromCommit: GitRef.Commit?,
+    toCommit: GitRef.Commit?,
+): List<GitRef.Commit> {
+    val to = commitsInCurrentBranch.indexOf(toCommit)
+    val from = commitsInCurrentBranch.indexOf(fromCommit)
+
+    return if (to == -1 || from == -1) emptyList() else commitsInCurrentBranch.subList(from, to)
+}
 
 internal val Git.headRevCommit: RevCommit
     get() = RevWalk(repository).parseCommit(headRef.objectId)
@@ -110,19 +144,43 @@ internal val Git.tagsInRepoRef: List<Ref>
     get() = Git(repository).tagList().call()
 
 internal val Git.tagsInRepoHash: List<String>
-    get() = tagsInRepoRef.map { it.objectId.name }
+    get() = tagsInRepoRef.map(::commitHash)
 
 internal val Git.tagsInRepoName: List<String>
     get() = tagsInRepoRef.map(Ref::getName)
 
 internal val Git.tagsInCurrentBranchRef: List<Ref>
-    get() = tagsInRepoRef.filter { it.objectId.name in commitsInCurrentBranchHash }
+    get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }
 
 internal val Git.tagsInCurrentBranchHash: List<String>
-    get() = tagsInCurrentBranchRef.map { it.objectId.name }
+    get() = tagsInCurrentBranchRef.map(::commitHash)
 
 internal val Git.tagsInCurrentBranchName: List<String>
     get() = tagsInCurrentBranchRef.map(Ref::getName)
 
 internal fun Git.tagsInCurrentCommitRef(revCommit: RevCommit): List<Ref> =
     tagsInCurrentBranchRef.filter { it.objectId.name == revCommit.toObjectId().name }
+
+internal fun Git.commitHash(ref: Ref): String = commitHash(ref.objectId)
+
+internal fun Git.commitHash(objectId: ObjectId): String =
+    repository.parseCommit(objectId).toObjectId().name
+
+internal val Ref.tagName: String
+    get() = name.substringAfter("refs/tags/")
+
+internal const val DEFAULT_SHORT_HASH_LENGTH = 7
+
+internal fun Project.calculateAdditionalVersionData(): String =
+    git.calculateAdditionalVersionData(mockDate)
+
+internal fun Git.calculateAdditionalVersionData(mockDate: Date? = null): String {
+    val lastCommitInCurrentBranch = commitsInCurrentBranch.firstOrNull()
+    val lastTagCommitInCurrentBranch =
+        tagsInCurrentBranch.map(GitRef.Tag::commit).reversed().firstOrNull()
+
+    val commitsBetweenCurrentAndLastTagCommit =
+        commitsBetweenTwoCommits(lastCommitInCurrentBranch, lastTagCommitInCurrentBranch)
+
+    return commitsBetweenCurrentAndLastTagCommit.additionalDataIfTagIsNotInHead(this, mockDate)
+}

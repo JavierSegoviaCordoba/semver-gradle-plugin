@@ -5,8 +5,8 @@ import io.kotest.matchers.shouldBe
 import java.io.File
 import java.time.Instant
 import java.util.Date
+import kotlin.test.Test
 import org.gradle.testkit.runner.BuildResult
-import org.junit.Test
 
 class VersionBuildDirTest {
 

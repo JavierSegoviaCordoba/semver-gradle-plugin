@@ -1,6 +1,6 @@
 package com.javiersc.semver.gradle.plugin
 
-import org.junit.Test
+import kotlin.test.Test
 
 class SemVerScopeTest {
 

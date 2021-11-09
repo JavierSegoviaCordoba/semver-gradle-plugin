@@ -65,11 +65,10 @@ fun testSandbox(
 @Suppress("UNUSED_PARAMETER")
 fun testSemVer(result: BuildResult, testProjectDir: File) {
     val version = File("$testProjectDir/build/semver/version.txt").readText()
-    val expectVersion = File("$testProjectDir/expect-version.txt").readLines().first()
+    val expectVersion = File("$testProjectDir/expect-version.txt").readText()
     val tag = testProjectDir.git.run { tagsInCurrentCommit(headCommit.commit.hash).first().name }
-    val expectVersionTag = File("$testProjectDir/expect-version-tag.txt").readLines().first()
     version shouldBe expectVersion
-    tag shouldBe expectVersionTag
+    tag shouldBe expectVersion.lines()[1]
 }
 
 // `this` is `testProjectDir`
@@ -81,6 +80,7 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
         createNewFile()
         writeText(
             """
+                .idea/
                 build/
                 .gradle/
                 expect-version.txt

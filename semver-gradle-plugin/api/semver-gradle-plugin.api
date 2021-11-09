@@ -1,6 +1,5 @@
 public abstract interface class com/javiersc/semver/gradle/plugin/SemVerExtension {
 	public static final field Companion Lcom/javiersc/semver/gradle/plugin/SemVerExtension$Companion;
-	public abstract fun getApplyToAllProjects ()Lorg/gradle/api/provider/Property;
 	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 }
 

@@ -2,9 +2,13 @@ package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semanticVersioning.Version
 import com.javiersc.semanticVersioning.Version.Increase
+import com.javiersc.semver.gradle.plugin.internal.GitRef
 import com.javiersc.semver.gradle.plugin.internal.calculateAdditionalVersionData
 import com.javiersc.semver.gradle.plugin.internal.git
+import com.javiersc.semver.gradle.plugin.internal.headCommit
+import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.internal.tagsInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.tagsInCurrentCommit
 import java.io.File
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -17,14 +21,9 @@ public class SemVerPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         val extension = target.extensions.create<SemVerExtension>(SemVerExtension.name)
 
-        extension.applyToAllProjects.convention(SemVerExtension.defaultApplyToAllProjects)
         extension.tagPrefix.convention(SemVerExtension.defaultTagPrefix)
 
         target.afterEvaluate { project: Project ->
-            check(project.applyToAllProjects && target == target.rootProject) {
-                "if `applyToAllProjects` is true, semver plugin must be applied in the root project"
-            }
-
             val lastTagSemVer = project.semanticVersion
 
             val stage = project.stageProperty
@@ -34,7 +33,7 @@ public class SemVerPlugin : Plugin<Project> {
                 "`scope` value must be one of ${Scope.values().map(Scope::value)} or empty"
             }
 
-            project.version =
+            val nextRealVersion: String =
                 when {
                     stage.isNullOrBlank() && scope.isNullOrBlank() -> {
                         "$lastTagSemVer${project.calculateAdditionalVersionData()}"
@@ -61,48 +60,73 @@ public class SemVerPlugin : Plugin<Project> {
                     }
                 }
 
-            val nextVersion = Version.safe("${project.version}").getOrNull()
+            val nextVersion = Version.safe(nextRealVersion).getOrNull()
             if (nextVersion != null) {
-                check(nextVersion > lastTagSemVer) {
-                    "Next version should be higher than the current one"
+                check(nextVersion >= lastTagSemVer) {
+                    "Next version should be higher or the same than the current one"
                 }
             }
 
-            project.generateVersionFile()
+            project.version = nextRealVersion
+            project.generateVersionFile(project.tagPrefix)
+
+            project.gradle.projectsEvaluated {
+                if (project.appliedOnlyInRootProject) {
+                    project.semverMessage("semver: ${project.version}")
+                    project.allprojects { it.project.version = project.version }
+                } else {
+                    project.semverMessage("semver for ${project.name}: ${project.version}")
+                }
+            }
         }
 
         val createSemVerTag: Provider<Task> =
-            target.tasks.register("createSemverTag") {
-                val semverWithPrefix =
-                    "${it.project.tagPrefix}${Version(it.project.version.toString())}"
-                it.project.git.tag().setName(semverWithPrefix).call()
+            target.tasks.register("createSemverTag") { task ->
+                task.doLast {
+                    val semverWithPrefix =
+                        "${it.project.tagPrefix}${Version(it.project.version.toString())}"
+                    task.project.git.tag().setName(semverWithPrefix).call()
+                }
             }
 
-        target.tasks.register("pushSemverTag") {
-            it.dependsOn(createSemVerTag)
-            it.project.git.push().setPushTags().call()
+        target.tasks.register("pushSemverTag") { task ->
+            task.dependsOn(createSemVerTag)
+            task.doLast { it.project.git.push().setPushTags().call() }
         }
     }
 }
 
 internal val Project.semanticVersion: Version
     get() =
-        git.tagsInCurrentBranch
-            .asSequence()
-            .filter { tag -> tag.name.startsWith(tagPrefix) }
-            .map { tag -> tag.name.substringAfter(tagPrefix) }
-            .map(Version.Companion::safe)
-            .mapNotNull(Result<Version>::getOrNull)
-            .sortedDescending()
-            .toList()
-            .firstOrNull()
-            ?: initialVersion
+        git.tagsInCurrentCommit(git.headCommit.commit.hash).lastResultVersion(tagPrefix)
+            ?: git.tagsInCurrentBranch.lastResultVersion(tagPrefix) ?: initialVersion
 
-private fun Project.generateVersionFile() =
+internal fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): Version? =
+    asSequence()
+        .filter { tag -> tag.name.startsWith(tagPrefix) }
+        .map { tag -> tag.name.substringAfter(tagPrefix) }
+        .map(Version.Companion::safe)
+        .mapNotNull(Result<Version>::getOrNull)
+        .toList()
+        .lastOrNull()
+
+private fun Project.generateVersionFile(tagPrefix: String) =
     File("$buildDir/semver/version.txt").apply {
         parentFile.mkdirs()
         createNewFile()
-        writeText("$version")
+        writeText(
+            """
+               |$version
+               |$tagPrefix$version
+               |
+            """.trimMargin()
+        )
     }
 
 private val initialVersion: Version = Version("0.1.0")
+
+private val Project.hasSemVerPlugin: Boolean
+    get() = pluginManager.hasPlugin("com.javiersc.semver.gradle.plugin")
+
+private val Project.appliedOnlyInRootProject: Boolean
+    get() = rootProject.hasSemVerPlugin && rootProject.subprojects.none(Project::hasSemVerPlugin)

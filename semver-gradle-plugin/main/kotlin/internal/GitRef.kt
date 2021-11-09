@@ -3,6 +3,7 @@ package com.javiersc.semver.gradle.plugin.internal
 import com.javiersc.semver.gradle.plugin.mockDate
 import java.util.Date
 import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.ObjectId
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.revwalk.RevCommit
@@ -42,15 +43,13 @@ internal val Project.git: Git
 
 internal val Git.headCommit: GitRef.Head
     get() =
-        headRevCommit.run {
-            GitRef.Head(
-                GitRef.Commit(
-                    message = shortMessage,
-                    fullMessage = fullMessage,
-                    hash = toObjectId().name,
-                )
+        GitRef.Head(
+            GitRef.Commit(
+                message = headRevCommit.shortMessage,
+                fullMessage = headRevCommit.fullMessage,
+                hash = headRevCommit.toObjectId().name,
             )
-        }
+        )
 
 internal val Git.commitsInCurrentBranch: List<GitRef.Commit>
     get() =
@@ -126,6 +125,9 @@ internal fun Git.commitsBetweenTwoCommits(
 }
 
 internal val Git.headRevCommit: RevCommit
+    get() = RevWalk(repository).parseCommit(repository.resolve(Constants.HEAD))
+
+internal val Git.headRevCommitInBranch: RevCommit
     get() = RevWalk(repository).parseCommit(headRef.objectId)
 
 internal val Git.headRef: Ref

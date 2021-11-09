@@ -36,6 +36,7 @@ dependencies {
     implementation(gradleKotlinDsl())
 
     implementation(libs.eclipse.jgit.eclipseJgit)
+    implementation(libs.javiersc.kotlin.kotlinStdlib)
     implementation(libs.javiersc.semanticVersioning.semanticVersioningCore)
 
     testImplementation(gradleTestKit())

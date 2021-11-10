@@ -24,50 +24,10 @@ public class SemVerPlugin : Plugin<Project> {
         extension.tagPrefix.convention(SemVerExtension.defaultTagPrefix)
 
         target.afterEvaluate { project: Project ->
-            val lastTagSemVer = project.semanticVersion
+            project.checkScopeIsCorrect()
+            project.checkVersionIsHigherOrSame()
 
-            val stage = project.stageProperty
-            val scope = project.scopeProperty
-
-            check(scope in Scope.values().map(Scope::value) || scope.isNullOrBlank()) {
-                "`scope` value must be one of ${Scope.values().map(Scope::value)} or empty"
-            }
-
-            val nextRealVersion: String =
-                when {
-                    stage.isNullOrBlank() && scope.isNullOrBlank() -> {
-                        "$lastTagSemVer${project.calculateAdditionalVersionData()}"
-                    }
-                    stage.equals("SNAPSHOT", ignoreCase = true) -> {
-                        when (scope) {
-                            Scope.Major.value -> "${lastTagSemVer.nextSnapshotMajor()}"
-                            Scope.Minor.value -> "${lastTagSemVer.nextSnapshotMinor()}"
-                            Scope.Patch.value -> "${lastTagSemVer.nextSnapshotPatch()}"
-                            else -> "${lastTagSemVer.nextSnapshotPatch()}"
-                        }
-                    }
-                    stage.equals("final", ignoreCase = true) -> {
-                        "${lastTagSemVer.inc()}"
-                    }
-                    else -> {
-                        val incStage = stage ?: lastTagSemVer.stage?.name ?: ""
-                        when (scope) {
-                            Scope.Major.value -> "${lastTagSemVer.inc(Increase.Major, incStage)}"
-                            Scope.Minor.value -> "${lastTagSemVer.inc(Increase.Minor, incStage)}"
-                            Scope.Patch.value -> "${lastTagSemVer.inc(Increase.Patch, incStage)}"
-                            else -> "${lastTagSemVer.inc(stageName = incStage)}"
-                        }
-                    }
-                }
-
-            val nextVersion = Version.safe(nextRealVersion).getOrNull()
-            if (nextVersion != null) {
-                check(nextVersion >= lastTagSemVer) {
-                    "Next version should be higher or the same than the current one"
-                }
-            }
-
-            project.version = nextRealVersion
+            project.version = project.calculatedVersion
             project.generateVersionFile(project.tagPrefix)
 
             project.gradle.projectsEvaluated {
@@ -80,19 +40,7 @@ public class SemVerPlugin : Plugin<Project> {
             }
         }
 
-        val createSemVerTag: Provider<Task> =
-            target.tasks.register("createSemverTag") { task ->
-                task.doLast {
-                    val semverWithPrefix =
-                        "${it.project.tagPrefix}${Version(it.project.version.toString())}"
-                    task.project.git.tag().setName(semverWithPrefix).call()
-                }
-            }
-
-        target.tasks.register("pushSemverTag") { task ->
-            task.dependsOn(createSemVerTag)
-            task.doLast { it.project.git.push().setPushTags().call() }
-        }
+        target.configureTasks()
     }
 }
 
@@ -130,3 +78,62 @@ private val Project.hasSemVerPlugin: Boolean
 
 private val Project.appliedOnlyInRootProject: Boolean
     get() = rootProject.hasSemVerPlugin && rootProject.subprojects.none(Project::hasSemVerPlugin)
+
+private fun Project.checkScopeIsCorrect() {
+    check(scopeProperty in Scope.values().map(Scope::value) || scopeProperty.isNullOrBlank()) {
+        "`scope` value must be one of ${Scope.values().map(Scope::value)} or empty"
+    }
+}
+
+private fun Project.checkVersionIsHigherOrSame() {
+    Version.safe(calculatedVersion).getOrNull()?.let { calculatedVersion ->
+        check(calculatedVersion >= semanticVersion) {
+            "Next version should be higher or the same than the current one"
+        }
+    }
+}
+
+private val Project.calculatedVersion: String
+    get() =
+        when {
+            (stageProperty.isNullOrBlank() && scopeProperty.isNullOrBlank()) ||
+                git.status().call().isClean.not() -> {
+                "$semanticVersion${calculateAdditionalVersionData()}"
+            }
+            stageProperty.equals("SNAPSHOT", ignoreCase = true) -> {
+                when (scopeProperty) {
+                    Scope.Major.value -> "${semanticVersion.nextSnapshotMajor()}"
+                    Scope.Minor.value -> "${semanticVersion.nextSnapshotMinor()}"
+                    Scope.Patch.value -> "${semanticVersion.nextSnapshotPatch()}"
+                    else -> "${semanticVersion.nextSnapshotPatch()}"
+                }
+            }
+            stageProperty.equals("final", ignoreCase = true) -> {
+                "${semanticVersion.inc()}"
+            }
+            else -> {
+                val incStage = stageProperty ?: semanticVersion.stage?.name ?: ""
+                when (scopeProperty) {
+                    Scope.Major.value -> "${semanticVersion.inc(Increase.Major, incStage)}"
+                    Scope.Minor.value -> "${semanticVersion.inc(Increase.Minor, incStage)}"
+                    Scope.Patch.value -> "${semanticVersion.inc(Increase.Patch, incStage)}"
+                    else -> "${semanticVersion.inc(stageName = incStage)}"
+                }
+            }
+        }
+
+private fun Project.configureTasks() {
+    val createSemVerTag: Provider<Task> =
+        tasks.register("createSemverTag") { task ->
+            task.doLast {
+                val semverWithPrefix =
+                    "${it.project.tagPrefix}${Version(it.project.version.toString())}"
+                task.project.git.tag().setName(semverWithPrefix).call()
+            }
+        }
+
+    tasks.register("pushSemverTag") { task ->
+        task.dependsOn(createSemVerTag)
+        task.doLast { it.project.git.push().setPushTags().call() }
+    }
+}

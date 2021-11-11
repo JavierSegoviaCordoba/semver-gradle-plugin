@@ -88,18 +88,7 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
     doBefore: Git.() -> Unit = {},
     doAfter: Git.() -> Unit = {},
 ) {
-    File("$this/.gitignore").apply {
-        createNewFile()
-        writeText(
-            """
-                .idea/
-                build/
-                .gradle/
-                expect-version.txt
-
-            """.trimIndent(),
-        )
-    }
+    createGitIgnore()
     val git: Git = Git.init().setDirectory(this).call()
     doBefore(git)
     git.add().addFilepattern(".").call()
@@ -115,4 +104,19 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
     git.add().addFilepattern(".").call()
     git.commit().setMessage("Add new2").call()
     doAfter(git)
+}
+
+internal fun File.createGitIgnore() {
+    File("$this/.gitignore").apply {
+        createNewFile()
+        writeText(
+            """
+                |.idea/
+                |build/
+                |.gradle/
+                |local.properties
+                |
+            """.trimMargin()
+        )
+    }
 }

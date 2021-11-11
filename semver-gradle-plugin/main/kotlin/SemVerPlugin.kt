@@ -1,9 +1,8 @@
 package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semanticVersioning.Version
-import com.javiersc.semanticVersioning.Version.Increase
 import com.javiersc.semver.gradle.plugin.internal.GitRef
-import com.javiersc.semver.gradle.plugin.internal.calculateAdditionalVersionData
+import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.gradle.plugin.internal.git
 import com.javiersc.semver.gradle.plugin.internal.headCommit
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
@@ -27,7 +26,7 @@ public class SemVerPlugin : Plugin<Project> {
             project.checkScopeIsCorrect()
             project.checkVersionIsHigherOrSame()
 
-            project.version = project.calculatedVersion
+            project.version = project.calculatedVersion(false)
             project.generateVersionFile(project.tagPrefix)
 
             project.gradle.projectsEvaluated {
@@ -44,19 +43,22 @@ public class SemVerPlugin : Plugin<Project> {
     }
 }
 
-internal val Project.semanticVersion: Version
+internal val Project.lastSemVer: Version
     get() =
-        git.tagsInCurrentCommit(git.headCommit.commit.hash).lastResultVersion(tagPrefix)
-            ?: git.tagsInCurrentBranch.lastResultVersion(tagPrefix) ?: initialVersion
+        git.tagsInCurrentCommit(git.headCommit.commit.hash).lastResultVersion(tagPrefix, true)
+            ?: git.tagsInCurrentBranch.lastResultVersion(tagPrefix, false) ?: initialVersion
 
-internal fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): Version? =
+internal fun List<GitRef.Tag>.lastResultVersion(
+    tagPrefix: String,
+    inCurrentCommit: Boolean
+): Version? =
     asSequence()
         .filter { tag -> tag.name.startsWith(tagPrefix) }
         .map { tag -> tag.name.substringAfter(tagPrefix) }
         .map(Version.Companion::safe)
         .mapNotNull(Result<Version>::getOrNull)
         .toList()
-        .lastOrNull()
+        .run { if (inCurrentCommit) maxOrNull() else lastOrNull() }
 
 private fun Project.generateVersionFile(tagPrefix: String) =
     File("$buildDir/semver/version.txt").apply {
@@ -86,49 +88,25 @@ private fun Project.checkScopeIsCorrect() {
 }
 
 private fun Project.checkVersionIsHigherOrSame() {
-    Version.safe(calculatedVersion).getOrNull()?.let { calculatedVersion ->
-        check(calculatedVersion >= semanticVersion) {
+    Version.safe(calculatedVersion(false)).getOrNull()?.let { calculatedVersion ->
+        check(calculatedVersion >= lastSemVer) {
             "Next version should be higher or the same than the current one"
         }
     }
 }
 
-private val Project.calculatedVersion: String
-    get() =
-        when {
-            (stageProperty.isNullOrBlank() && scopeProperty.isNullOrBlank()) ||
-                git.status().call().isClean.not() -> {
-                "$semanticVersion${calculateAdditionalVersionData()}"
-            }
-            stageProperty.equals("SNAPSHOT", ignoreCase = true) -> {
-                when (scopeProperty) {
-                    Scope.Major.value -> "${semanticVersion.nextSnapshotMajor()}"
-                    Scope.Minor.value -> "${semanticVersion.nextSnapshotMinor()}"
-                    Scope.Patch.value -> "${semanticVersion.nextSnapshotPatch()}"
-                    else -> "${semanticVersion.nextSnapshotPatch()}"
-                }
-            }
-            stageProperty.equals("final", ignoreCase = true) -> {
-                "${semanticVersion.inc()}"
-            }
-            else -> {
-                val incStage = stageProperty ?: semanticVersion.stage?.name ?: ""
-                when (scopeProperty) {
-                    Scope.Major.value -> "${semanticVersion.inc(Increase.Major, incStage)}"
-                    Scope.Minor.value -> "${semanticVersion.inc(Increase.Minor, incStage)}"
-                    Scope.Patch.value -> "${semanticVersion.inc(Increase.Patch, incStage)}"
-                    else -> "${semanticVersion.inc(stageName = incStage)}"
-                }
-            }
-        }
-
 private fun Project.configureTasks() {
     val createSemVerTag: Provider<Task> =
         tasks.register("createSemverTag") { task ->
+            task.doFirst { doFirsTask ->
+                doFirsTask.project.version = doFirsTask.project.calculatedVersion(true)
+            }
             task.doLast {
-                val semverWithPrefix =
-                    "${it.project.tagPrefix}${Version(it.project.version.toString())}"
+                val semver = "${Version("${it.project.version}")}"
+                val semverWithPrefix = "${it.project.tagPrefix}$semver"
                 task.project.git.tag().setName(semverWithPrefix).call()
+                it.project.generateVersionFile(it.project.tagPrefix)
+                semverMessage("Created new semver tag: $semverWithPrefix")
             }
         }
 

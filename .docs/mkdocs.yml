@@ -11,8 +11,8 @@ copyright: 'Copyright &copy; 2021 Javier Segovia Córdoba'
 theme:
   name: 'material'
   language: 'en'
-  # TODO favicon: 'assets/favicon.png'
-  # TODO logo: 'assets/logo.svg'
+  favicon: 'assets/favicon.png'
+  logo: 'assets/logo.svg'
   palette:
     primary: 'white'
     accent: 'white'
@@ -22,6 +22,7 @@ theme:
 
 nav:
   - Overview: index.md
+  - Examples: EXAMPLES.md
 
 plugins:
   - search

@@ -11,10 +11,13 @@ internal val Project.stageProperty: String?
         } else properties[SemVerProperties.Stage.key]?.toString()
 
 internal val Project.scopeProperty: String?
-    get() =
-        if (project.hasSemVerPlugin && project != rootProject) {
+    get() {
+        return if (project.hasSemVerPlugin && project != rootProject) {
             properties["$path:${SemVerProperties.Scope.key}"]?.toString()
-        } else properties[SemVerProperties.Scope.key]?.toString()
+        } else {
+            properties[SemVerProperties.Scope.key]?.toString()
+        }
+    }
 
 internal val Project.mockDate: Date?
     get() {
@@ -40,4 +43,5 @@ internal enum class Scope(val value: String) {
     Major("major"),
     Minor("minor"),
     Patch("patch"),
+    Auto("auto"),
 }

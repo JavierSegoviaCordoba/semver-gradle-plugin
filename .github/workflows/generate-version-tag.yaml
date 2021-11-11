@@ -5,9 +5,10 @@ on:
     if: |
       github.ref == 'refs/heads/main' ||
       !contains(github.ref, 'SNAPSHOT') &&
-      github.event.inputs.scope = 'mayor' ||
-      github.event.inputs.scope = 'minor' ||
       github.event.inputs.scope = 'patch' ||
+      github.event.inputs.scope = 'minor' ||
+      github.event.inputs.scope = 'major' ||
+      github.event.inputs.scope = 'auto' ||
       github.event.inputs.scope = '' &&
       github.event.inputs.stage = 'alpha' ||
       github.event.inputs.stage = 'beta' ||
@@ -20,7 +21,7 @@ on:
         default: 'alpha'
         required: true
       scope:
-        description: 'Scope one of [mayor, minor, patch] or empty'
+        description: 'Scope one of [major, minor, patch] or empty'
         default: ''
         required: false
 

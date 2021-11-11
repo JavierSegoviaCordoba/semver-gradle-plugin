@@ -9,7 +9,7 @@ public interface SemVerExtension {
     public val tagPrefix: Property<String>
 
     public companion object {
-        internal const val defaultTagPrefix = ""
+        internal const val defaultTagPrefix = "v"
         internal const val name = "semver"
     }
 }

@@ -3,7 +3,7 @@ coroutines = "1.5.2"
 javierscKotlinStdlib = "0.1.0-alpha.1"
 jgit = "5.13.0.202109080827-r"
 kotest = "4.6.3"
-semanticVersioning = "0.1.0-beta.5"
+semanticVersioning = "0.1.0-beta.6"
 
 [libraries]
 javiersc-kotlin-kotlinStdlib = { group = "com.javiersc.kotlin", name = "kotlin-stdlib", version.ref = "javierscKotlinStdlib" }

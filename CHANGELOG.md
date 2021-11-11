@@ -5,6 +5,7 @@
 ### Added
 
 ### Changed
+- `semver` properties per subproject if it applies the plugin
 
 ### Deprecated
 

@@ -1,7 +1,5 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.semver.gradle.plugin.internal.headCommit
-import com.javiersc.semver.gradle.plugin.internal.tagsInCurrentCommit
 import io.kotest.matchers.shouldBe
 import java.io.File
 import java.nio.file.Files
@@ -39,14 +37,13 @@ fun createSandboxFile(prefix: String): File =
 
 val File.arguments: List<String>
     get() =
-        File("$this/ARGUMENTS.txt").readLines().first().split(" ", limit = 3).map { argument ->
+        File("$this/ARGUMENTS.txt").readLines().first().split(" ").map { argument ->
             argument.replace("\"", "")
         }
 
 fun testSandbox(
     sandboxPath: String,
-    prefix: String = sandboxPath.split("/").last(),
-    buildAndFail: Boolean = false,
+    prefix: String = File(sandboxPath).name,
     beforeTest: File.() -> Unit = {},
     test: (result: BuildResult, testProjectDir: File) -> Unit,
 ) {
@@ -56,20 +53,34 @@ fun testSandbox(
     beforeTest(testProjectDir)
 
     GradleRunner.create()
-        .withDebug(false)
+        .withDebug(true)
         .withProjectDir(testProjectDir)
         .withArguments(testProjectDir.arguments)
         .withPluginClasspath()
-        .run { test(if (buildAndFail) buildAndFail() else build(), testProjectDir) }
+        .run {
+            test(if (prefix.contains("buildAndFail")) buildAndFail() else build(), testProjectDir)
+        }
 }
 
 @Suppress("UNUSED_PARAMETER")
 fun testSemVer(result: BuildResult, testProjectDir: File) {
-    val version = File("$testProjectDir/build/semver/version.txt").readText()
-    val expectVersion = File("$testProjectDir/expect-version.txt").readText()
-    val tag = testProjectDir.git.run { tagsInCurrentCommit(headCommit.commit.hash).first().name }
-    version shouldBe expectVersion
-    tag shouldBe expectVersion.lines()[1]
+    val versions: List<Pair<File, File>> =
+        testProjectDir
+            .walkTopDown()
+            .mapNotNull {
+                if (it.name == "expect-version.txt") {
+                    it to File("${it.parentFile}/build/semver/version.txt")
+                } else null
+            }
+            .toList()
+
+    if (!testProjectDir.name.contains("buildAndFail")) {
+        check(versions.isNotEmpty()) { "Test wrong, check if there is `expect-version.txt ` files" }
+    }
+
+    versions.forEach { (expectVersion, version) ->
+        expectVersion.readText() shouldBe version.readText()
+    }
 }
 
 // `this` is `testProjectDir`
@@ -94,11 +105,14 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
     git.add().addFilepattern(".").call()
     val commit = git.commit().setMessage("Initial commit").call()
     File("$this/new.txt").createNewFile()
-    git.tag()
-        .setObjectId(commit)
-        .setName(File("$this/last-tag-name.txt").readLines().first())
-        .call()
+    git.tag().setObjectId(commit).setName(File("$this/last-tag.txt").readLines().first()).call()
     git.add().addFilepattern(".").call()
     git.commit().setMessage("Add new").call()
+    File("$this/library/last-tag.txt").apply {
+        if (exists()) git.tag().setObjectId(commit).setName(readLines().first()).call()
+    }
+    File("$this/new2.txt").createNewFile()
+    git.add().addFilepattern(".").call()
+    git.commit().setMessage("Add new2").call()
     doAfter(git)
 }

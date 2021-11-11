@@ -73,7 +73,7 @@ private fun Project.generateVersionFile(tagPrefix: String) =
 
 private val initialVersion: Version = Version("0.1.0")
 
-private val Project.hasSemVerPlugin: Boolean
+internal val Project.hasSemVerPlugin: Boolean
     get() = pluginManager.hasPlugin("com.javiersc.semver.gradle.plugin")
 
 private val Project.appliedOnlyInRootProject: Boolean

@@ -6,23 +6,29 @@ import org.gradle.api.Project
 
 internal val Project.stageProperty: String?
     get() =
-        properties["$path:${SemVerProperties.Stage.key}"]?.toString()
-            ?: properties[SemVerProperties.Stage.key]?.toString()
+        if (project.hasSemVerPlugin && project != rootProject) {
+            properties["$path:${SemVerProperties.Stage.key}"]?.toString()
+        } else properties[SemVerProperties.Stage.key]?.toString()
 
 internal val Project.scopeProperty: String?
     get() =
-        properties["$path:${SemVerProperties.Scope.key}"]?.toString()
-            ?: properties[SemVerProperties.Scope.key]?.toString()
+        if (project.hasSemVerPlugin && project != rootProject) {
+            properties["$path:${SemVerProperties.Scope.key}"]?.toString()
+        } else properties[SemVerProperties.Scope.key]?.toString()
 
 internal val Project.mockDate: Date?
-    get() =
-        (properties["$path:${SemVerProperties.MockDate.key}"]?.toString()
-                ?: properties[SemVerProperties.MockDate.key])?.let { value ->
-            checkNotNull(value.toString().toLongOrNull()) {
+    get() {
+        val mockDate: String? =
+            if (project.hasSemVerPlugin && project != rootProject) {
+                properties["$path:${SemVerProperties.MockDate.key}"]?.toString()
+            } else properties[SemVerProperties.MockDate.key]?.toString()
+        return mockDate?.let { value ->
+            checkNotNull(value.toLongOrNull()) {
                 "`${SemVerProperties.MockDate.key}` must be a number"
             }
-            Date.from(Instant.ofEpochSecond(value.toString().toLong()))
+            Date.from(Instant.ofEpochSecond(value.toLong()))
         }
+    }
 
 internal enum class SemVerProperties(val key: String) {
     Stage("semver.stage"),

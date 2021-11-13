@@ -12,7 +12,7 @@ jobs:
       machines: 'ubuntu-latest'
       global-machine: 'ubuntu-latest'
       publish-maven-central: true
-      publish-gradle-plugin-portal: false
+      publish-gradle-plugin-portal: true
       publish-docs: true
       publish-github-release: true
     secrets:

@@ -12,3 +12,13 @@ public final class com/javiersc/semver/gradle/plugin/SemVerPlugin : org/gradle/a
 	public fun apply (Lorg/gradle/api/Project;)V
 }
 
+public class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTag : org/gradle/api/DefaultTask {
+	public fun <init> ()V
+	public final fun run ()V
+}
+
+public class com/javiersc/semver/gradle/plugin/tasks/PushSemverTag : org/gradle/api/DefaultTask {
+	public fun <init> ()V
+	public final fun run ()V
+}
+

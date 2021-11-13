@@ -1,6 +1,5 @@
 package com.javiersc.semver.gradle.plugin.internal
 
-import com.javiersc.semver.gradle.plugin.mockDate
 import java.util.Date
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Constants

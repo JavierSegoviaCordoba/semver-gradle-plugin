@@ -2,7 +2,7 @@
 [![MavenCentral](https://img.shields.io/maven-central/v/com.javiersc.semver/semver-gradle-plugin?label=MavenCentral)](https://repo1.maven.org/maven2/com/javiersc/semver/semver-gradle-plugin/)
 [![Snapshot](https://img.shields.io/nexus/s/com.javiersc.semver/semver-gradle-plugin?server=https%3A%2F%2Foss.sonatype.org%2F&label=Snapshot)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/semver/semver-gradle-plugin/)
 
-[![Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/semver-gradle-plugin/build?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/tree/main)
+[![Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/semver-gradle-plugin/build-kotlin?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/tree/main)
 [![Quality](https://img.shields.io/sonar/quality_gate/JavierSegoviaCordoba_semver-gradle-plugin?label=Quality&logo=SonarCloud&logoColor=white&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=JavierSegoviaCordoba_semver-gradle-plugin)
 [![Tech debt](https://img.shields.io/sonar/tech_debt/JavierSegoviaCordoba_semver-gradle-plugin?label=Tech%20debt&logo=SonarCloud&logoColor=white&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=JavierSegoviaCordoba_semver-gradle-plugin)
 
@@ -34,8 +34,7 @@ They can be set via CLI, for example:
 ./gradlew "-Psemver.stage=final" "-Psemver.scope=major"
 ```
 
-Check example [file](.docs/docs/EXAMPLES.md) or [website](EXAMPLES) to understand easily how it
-works.
+Check [examples](examples) to understand easily how it works.
 
 #### All projects share the same version
 
@@ -111,13 +110,13 @@ Just apply the plugin in every project and set different `tagPrefix` for each on
 
 To change between stages, use the Gradle property `-Psemver.stage=<stage>`
 
-The stage can be whatever word, except two reserved words: `final` and `snapshot`.
+The stage can be whatever word, except two reserved words: `auto`, `final` and `snapshot`.
 
 For multi-project + multi-version configuration, it is possible to override the version of a
 specific project which is applying the plugin via CLI, for example if the subproject is `library`:
 
 ```shell
-./gradlew "-P:library:semver.stage=alpha"
+./gradlew "-Plibrary:semver.stage=alpha"
 ````
 
 ```shell

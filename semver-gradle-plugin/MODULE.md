@@ -26,8 +26,7 @@ They can be set via CLI, for example:
 ./gradlew "-Psemver.stage=final" "-Psemver.scope=major"
 ```
 
-Check example [file](.docs/docs/EXAMPLES.md) or [website](EXAMPLES) to understand easily how it
-works.
+Check [examples](examples) to understand easily how it works.
 
 #### All projects share the same version
 
@@ -103,13 +102,13 @@ Just apply the plugin in every project and set different `tagPrefix` for each on
 
 To change between stages, use the Gradle property `-Psemver.stage=<stage>`
 
-The stage can be whatever word, except two reserved words: `final` and `snapshot`.
+The stage can be whatever word, except three reserved words: `auto`, `final` and `snapshot`.
 
 For multi-project + multi-version configuration, it is possible to override the version of a
 specific project which is applying the plugin via CLI, for example if the subproject is `library`:
 
 ```shell
-./gradlew "-P:library:semver.stage=alpha"
+./gradlew "-Plibrary:semver.stage=alpha"
 ````
 
 ```shell

@@ -1,7 +1,11 @@
-package com.javiersc.semver.gradle.plugin
+package com.javiersc.semver.gradle.plugin.examples
 
 import com.javiersc.semanticVersioning.SemanticVersionException
 import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.gradle.plugin.copyResourceTo
+import com.javiersc.semver.gradle.plugin.createGitIgnore
+import com.javiersc.semver.gradle.plugin.createSandboxFile
+import com.javiersc.semver.gradle.plugin.gradlew
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
@@ -9,20 +13,18 @@ import io.kotest.matchers.string.shouldContain
 import java.io.File
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
-import org.gradle.testkit.runner.GradleRunner
 
-/** TODO: add to docs the Example from README and reference it here */
-class ExampleOneTest {
+class AllProjectsExampleTest {
 
-    private val testProjectDir: File = createSandboxFile("example-one")
+    private val testProjectDir: File = createSandboxFile("all-projects")
     private val git: Git by lazy { Git.init().setDirectory(testProjectDir).call() }
 
     init {
-        "examples/example-one" copyResourceTo testProjectDir
+        "examples/all-projects" copyResourceTo testProjectDir
     }
 
     @Test
-    fun `example one test`() {
+    fun `all projects`() {
         `0_ Initial repo state`()
         `1_ Run gradlew`()
         `2_ Create a new file and run gradlew`()
@@ -52,14 +54,14 @@ class ExampleOneTest {
     }
 
     private fun `1_ Run gradlew`() {
-        gradlew()
+        testProjectDir.gradlew()
 
         assertVersion("v", "0.1.0", Insignificant.Timestamp)
     }
     private fun `2_ Create a new file and run gradlew`() {
         File("$testProjectDir/new2.txt").createNewFile()
 
-        gradlew()
+        testProjectDir.gradlew()
 
         assertVersion("v", "0.1.0", Insignificant.Timestamp)
     }
@@ -68,13 +70,13 @@ class ExampleOneTest {
         git.add().addFilepattern(".").call()
         git.commit().setMessage("Add new2").call()
 
-        gradlew("createSemverTag")
+        testProjectDir.gradlew("createSemverTag")
 
         assertVersion("v", "0.1.0")
     }
 
     private fun `4_ Run gradlew`() {
-        gradlew()
+        testProjectDir.gradlew()
 
         assertVersion("v", "0.1.0")
     }
@@ -83,13 +85,13 @@ class ExampleOneTest {
         File("$testProjectDir/new5.txt").createNewFile()
         git.add().addFilepattern(".").call()
         git.commit().setMessage("Add new5").call()
-        gradlew()
+        testProjectDir.gradlew()
 
         assertVersion("v", "0.1.0", Insignificant.Hash)
     }
 
     private fun `6_ Run gradlew createSemverTag`() {
-        gradlew("createSemverTag")
+        testProjectDir.gradlew("createSemverTag")
 
         assertVersion("v", "0.1.1")
     }
@@ -98,44 +100,33 @@ class ExampleOneTest {
         File("$testProjectDir/new7.txt").createNewFile()
         git.add().addFilepattern(".").call()
         git.commit().setMessage("Add new7").call()
-        gradlew("createSemverTag", "-Psemver.stage=alpha")
+        testProjectDir.gradlew("createSemverTag", "-Psemver.stage=alpha")
 
         assertVersion("v", "0.1.2-alpha.1")
     }
 
     private fun `8_ Run gradlew createSemverTag -Psemver_stage=beta`() {
-        gradlew("createSemverTag", "-Psemver.stage=beta")
+        testProjectDir.gradlew("createSemverTag", "-Psemver.stage=beta")
 
         assertVersion("v", "0.1.2-beta.1")
     }
 
     private fun `9_ Run gradlew createSemverTag -Psemver_stage=final`() {
-        gradlew("createSemverTag", "-Psemver.stage=final")
+        testProjectDir.gradlew("createSemverTag", "-Psemver.stage=final")
 
         assertVersion("v", "0.1.2")
     }
 
     private fun `10_ Run gradlew createSemverTag -Psemver_stage=final -Psemver_scope=major`() {
-        gradlew("createSemverTag", "-Psemver.stage=final", "-Psemver.scope=major")
+        testProjectDir.gradlew("createSemverTag", "-Psemver.stage=final", "-Psemver.scope=major")
 
         assertVersion("v", "1.0.0")
     }
 
     private fun `11_ Run gradlew createSemverTag -Psemver_stage=snapshot`() {
-        gradlew("createSemverTag", "-Psemver.stage=snapshot")
+        testProjectDir.gradlew("createSemverTag", "-Psemver.stage=snapshot")
 
         assertVersion("v", "1.0.1-SNAPSHOT")
-    }
-
-    private fun gradlew(vararg arguments: String) {
-        GradleRunner.create()
-            .apply {
-                withDebug(true)
-                withProjectDir(testProjectDir)
-                if (arguments.isNotEmpty()) withArguments(arguments.toList())
-                withPluginClasspath()
-            }
-            .build()
     }
 
     private fun assertVersion(

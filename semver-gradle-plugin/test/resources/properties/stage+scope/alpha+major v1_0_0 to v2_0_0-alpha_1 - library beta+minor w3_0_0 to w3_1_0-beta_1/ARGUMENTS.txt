@@ -1,1 +1,1 @@
-createSemverTag "-Psemver.stage=alpha" "-Psemver.scope=major" "-P:library:semver.stage=beta" "-P:library:semver.scope=minor"
+createSemverTag "-Psemver.stage=alpha" "-Psemver.scope=major" "-Plibrary:semver.stage=beta" "-Plibrary:semver.scope=minor"

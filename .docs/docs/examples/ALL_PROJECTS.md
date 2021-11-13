@@ -1,8 +1,6 @@
-# Examples
+# All projects example
 
-## Example One
-
-### 0. Initial repo state
+## 0. Initial repo state
 
 - Three commits:
     - Initial commit: (hash: `14d9406b`)
@@ -11,7 +9,7 @@
 
 - Repo is clean
 
-### 1. Run `./gradlew`
+## 1. Run `./gradlew`
 
 - Base version when there is no tag is `0.1.0`
 - Numbers of commits are `0` because there is no tag, it can't calculate the numbers of commits
@@ -25,11 +23,11 @@ semver: 0.1.0.0+2021-11-11T14-22-03-207850300Z
         --------> timestamp (2021-11-11T14-22-03-207850300Z)
 ```
 
-### 2. Create a new file and run `./gradlew`
+## 2. Create a new file and run `./gradlew`
 
 Version should be similar to the previous one (only timestamp changes)
 
-### 3. Add the new file to git, commit it, and run `./gradlew createSemverTag`
+## 3. Add the new file to git, commit it, and run `./gradlew createSemverTag`
 
 - Promotes the current state to be a new version. A new tag is created with the value `v0.1.0`
 
@@ -37,7 +35,7 @@ Version should be similar to the previous one (only timestamp changes)
 Created new semver tag: v0.1.0
 ```
 
-### 4. Run `./gradlew`
+## 4. Run `./gradlew`
 
 - Because the latest commit in the branch has the tag v.1.0, the project version is `0.1.0`
 
@@ -45,7 +43,7 @@ Created new semver tag: v0.1.0
 semver: 0.1.0
 ```
 
-### 5. Create and add new file and run `./gradlew`
+## 5. Create and add new file and run `./gradlew`
 
 - Because the git status is clean, instead of using a timestamp, it uses the latest commit hash.
 
@@ -56,7 +54,7 @@ semver: 0.1.0.1+26f0484
         --------> hash (26f0484)
 ```
 
-### 6. Run `./gradlew createSemverTag`
+## 6. Run `./gradlew createSemverTag`
 
 - Promote the current state to a new version.
 - Since there is a previous tag (`v0.1.0`), `createSemverTag` resolves automatically the next
@@ -68,7 +66,7 @@ semver: 0.1.0.1+26f0484
 Created new semver tag: v0.1.1
 ```
 
-### 7. Create and add to git a new file, then run `./gradlew createSemverTag "-Psemver.stage=alpha"`
+## 7. Create and add to git a new file, then run `./gradlew createSemverTag "-Psemver.stage=alpha"`
 
 - Promote the current state to be a new alpha version.
 
@@ -76,7 +74,7 @@ Created new semver tag: v0.1.1
 Created new semver tag: v0.1.2-alpha.1
 ```
 
-### 8. Run `./gradlew createSemverTag "-Psemver.stage=beta"`
+## 8. Run `./gradlew createSemverTag "-Psemver.stage=beta"`
 
 - Without changing the state, promote the current state to be a new beta version.
 
@@ -84,7 +82,7 @@ Created new semver tag: v0.1.2-alpha.1
 Created new semver tag: v0.1.2-beta.1
 ```
 
-### 9. Create and add to git a new file, then run `./gradlew createSemverTag "-Psemver.stage=final"`
+## 9. Create and add to git a new file, then run `./gradlew createSemverTag "-Psemver.stage=final"`
 
 - Without changing the state, promote the current state to be a final version.
 
@@ -92,11 +90,11 @@ Created new semver tag: v0.1.2-beta.1
 Created new semver tag: v0.1.2
 ```
 
-### 10. Run `./gradlew createSemverTag "-Psemver.stage=final" "-Psemver.scope=major`
+## 10. Run `./gradlew createSemverTag "-Psemver.stage=final" "-Psemver.scope=major`
 
 - Without changing the state, promote the current state to be the `1.0.0` version.
 
-### 11. Run `./gradlew createSemverTag "-Psemver.stage=snapshot"
+## 11. Run `./gradlew createSemverTag "-Psemver.stage=snapshot"
 
 - A common approach is publishing the artifacts to the snapshot repository with each commit merged
   to some branch.

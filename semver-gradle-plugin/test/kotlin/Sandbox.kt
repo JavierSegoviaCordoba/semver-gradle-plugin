@@ -10,12 +10,12 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
 
-val sandboxPath: Path = Paths.get("build/sandbox").apply { toFile().mkdirs() }
+internal val sandboxPath: Path = Paths.get("build/sandbox").apply { toFile().mkdirs() }
 
 val File.sandboxFile: File
     get() = File("$this/build/sandbox")
 
-val File.git: Git
+internal val File.git: Git
     get() =
         Git(
             FileRepositoryBuilder()
@@ -25,23 +25,23 @@ val File.git: Git
                 .build()
         )
 
-fun getResource(resource: String): File =
+internal fun getResource(resource: String): File =
     File(Thread.currentThread().contextClassLoader?.getResource(resource)?.toURI()!!)
 
-infix fun String.copyResourceTo(destination: File) {
+internal infix fun String.copyResourceTo(destination: File) {
     getResource(this).copyRecursively(destination)
 }
 
-fun createSandboxFile(prefix: String): File =
+internal fun createSandboxFile(prefix: String): File =
     Files.createTempDirectory(sandboxPath, "$prefix - ").toFile()
 
-val File.arguments: List<String>
+internal val File.arguments: List<String>
     get() =
         File("$this/ARGUMENTS.txt").readLines().first().split(" ").map { argument ->
             argument.replace("\"", "")
         }
 
-fun testSandbox(
+internal fun testSandbox(
     sandboxPath: String,
     prefix: String = File(sandboxPath).name,
     beforeTest: File.() -> Unit = {},
@@ -63,7 +63,7 @@ fun testSandbox(
 }
 
 @Suppress("UNUSED_PARAMETER")
-fun testSemVer(result: BuildResult, testProjectDir: File) {
+internal fun testSemVer(result: BuildResult, testProjectDir: File) {
     val versions: List<Pair<File, File>> =
         testProjectDir
             .walkTopDown()
@@ -119,4 +119,26 @@ internal fun File.createGitIgnore() {
             """.trimMargin()
         )
     }
+}
+
+internal fun File.gradlew(vararg arguments: String) {
+    GradleRunner.create()
+        .apply {
+            withDebug(true)
+            withProjectDir(this@gradlew)
+            if (arguments.isNotEmpty()) withArguments(arguments.toList())
+            withPluginClasspath()
+        }
+        .build()
+}
+
+internal fun File.gradlewFailing(vararg arguments: String) {
+    GradleRunner.create()
+        .apply {
+            withDebug(true)
+            withProjectDir(this@gradlewFailing)
+            if (arguments.isNotEmpty()) withArguments(arguments.toList())
+            withPluginClasspath()
+        }
+        .buildAndFail()
 }

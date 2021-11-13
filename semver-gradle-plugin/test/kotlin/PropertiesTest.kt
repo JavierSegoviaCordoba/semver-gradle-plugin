@@ -13,6 +13,7 @@ class PropertiesTest {
                 .map { it.relativeTo(getResource("properties").parentFile).path }
 
         projects.forEach {
+            println("Property project: $it")
             testSandbox(
                 sandboxPath = it,
                 beforeTest = { generateInitialCommitAddVersionTagAndAddNewCommit() },

@@ -1,1 +1,1 @@
-createSemverTag "-Psemver.scope=major" "-P:library:semver.scope=major"
+createSemverTag "-Psemver.scope=major" "-Plibrary:semver.scope=major"

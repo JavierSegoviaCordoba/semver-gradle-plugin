@@ -1,1 +1,1 @@
-createSemverTag "-Psemver.scope=minor" "-P:library:semver.scope=minor"
+createSemverTag "-Psemver.scope=minor" "-Plibrary:semver.scope=minor"

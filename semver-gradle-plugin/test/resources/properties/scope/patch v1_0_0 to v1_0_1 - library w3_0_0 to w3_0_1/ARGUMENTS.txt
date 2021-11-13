@@ -1,1 +1,1 @@
-createSemverTag "-Psemver.scope=patch" "-P:library:semver.scope=patch"
+createSemverTag "-Psemver.scope=patch" "-Plibrary:semver.scope=patch"

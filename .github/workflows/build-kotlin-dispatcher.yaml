@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       machines:
-        description: 'Virtual environment, default is `ubuntu-latest`. The first one will be used for one global time steps.'
+        description: 'Virtual environments'
         default: 'macos-latest, ubuntu-latest, windows-latest'
         required: true
       gradle-args:
@@ -14,7 +14,6 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
     with:
       machines: '${{ github.event.inputs.machines }}'

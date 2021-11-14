@@ -1,0 +1,1 @@
+createSemverTag "-Psemver.stage=rc" "-Psemver.scope=auto"

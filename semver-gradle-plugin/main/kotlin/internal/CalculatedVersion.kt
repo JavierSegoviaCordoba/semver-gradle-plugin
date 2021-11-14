@@ -13,7 +13,7 @@ internal val Project.calculatedVersion: String
             (stageProperty ?: previousStage ?: "").run {
                 when {
                     equals(Stage.Auto(), true) && !previousStage.isNullOrBlank() -> previousStage
-                    equals(Stage.Final(), true) || equals(Stage.Auto(), true) -> ""
+                    equals(Stage.Auto(), true) -> ""
                     else -> this
                 }
             }
@@ -31,14 +31,28 @@ internal val Project.calculatedVersion: String
                     else -> "${lastSemVer.nextSnapshotPatch()}"
                 }
             }
+            stageProperty.equals(Stage.Final(), ignoreCase = true) -> {
+                when (scopeProperty) {
+                    Scope.Major() -> "${lastSemVer.inc(Increase.Major, "")}"
+                    Scope.Minor() -> "${lastSemVer.inc(Increase.Minor, "")}"
+                    Scope.Patch() -> "${lastSemVer.inc(Increase.Patch, "")}"
+                    else -> "${lastSemVer.inc(stageName = "")}"
+                }
+            }
             scopeProperty == Scope.Major() -> "${lastSemVer.inc(Increase.Major, incStage)}"
             scopeProperty == Scope.Minor() -> "${lastSemVer.inc(Increase.Minor, incStage)}"
             scopeProperty == Scope.Patch() -> "${lastSemVer.inc(Increase.Patch, incStage)}"
             scopeProperty == Scope.Auto() -> {
-                if (incStage.isEmpty()) "${lastSemVer.inc(Increase.Patch, incStage)}"
-                else "${lastSemVer.inc(stageName = incStage)}"
+                when {
+                    incStage.isEmpty() -> "${lastSemVer.inc(Increase.Patch, incStage)}"
+                    else -> "${lastSemVer.inc(stageName = incStage)}"
+                }
             }
             isCreatingSemverTag && git.tagsInCurrentBranch.isEmpty() -> "$lastSemVer"
             else -> "${lastSemVer.inc(stageName = incStage)}"
+        }.also {
+            if (it.contains("final", true) || it.contains("auto", true)) {
+                error("Current `stage` plugs `scope` combination is broken, please report it")
+            }
         }
     }

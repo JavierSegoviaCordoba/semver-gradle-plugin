@@ -19,7 +19,7 @@ versions and combine normal stages with `snapshot` stage.
 // buildSrc/build.gradle.kts
 
 dependencies {
-    implementation("com.javiersc.semver:semver-gradle-plugin:$version")
+  implementation("com.javiersc.semver:semver-gradle-plugin:$version")
 }
 ```
 
@@ -43,11 +43,11 @@ Set the plugin in the root project:
 ```kotlin
 // build.gradle.kts
 plugins {
-    id("com.javiersc.semver.gradle.plugin")
+  id("com.javiersc.semver.gradle.plugin")
 }
 
 semver {
-    tagPrefix.set("v") // default "v"
+  tagPrefix.set("v") // default "v"
 }
 ```
 
@@ -59,22 +59,22 @@ plugin too with a different tag prefix, `w`.
 ```kotlin
 // build.gradle.kts
 plugins {
-    id("com.javiersc.semver.gradle.plugin")
+  id("com.javiersc.semver.gradle.plugin")
 }
 
 semver {
-    tagPrefix.set("v")
+  tagPrefix.set("v")
 }
 ```
 
 ```kotlin
 // library/build.gradle.kts
 plugins {
-    id("com.javiersc.semver.gradle.plugin")
+  id("com.javiersc.semver.gradle.plugin")
 }
 
 semver {
-    tagPrefix.set("w")
+  tagPrefix.set("w")
 }
 ```
 
@@ -98,8 +98,8 @@ Just apply the plugin in every project and set different `tagPrefix` for each on
 
 - Format: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash or timestamp>`
 - Examples:
-    - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
-    - `1.0.0.4+26f0484`
+  - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
+  - `1.0.0.4+26f0484`
 
 #### Snapshot
 
@@ -110,7 +110,11 @@ Just apply the plugin in every project and set different `tagPrefix` for each on
 
 To change between stages, use the Gradle property `-Psemver.stage=<stage>`
 
-The stage can be whatever word, except two reserved words: `auto`, `final` and `snapshot`.
+There are reserved stages that can be used to create certain versions:
+
+- `final`: It creates a version without a suffix stage, for example, `1.0.1`.
+- `auto`: It calculates automatically the next stage based on the previous stage.
+- `snapshot`: It generate the next snapshot version, for example, `1.0.1-SNAPSHOT`.
 
 For multi-project + multi-version configuration, it is possible to override the version of a
 specific project which is applying the plugin via CLI, for example if the subproject is `library`:
@@ -126,6 +130,7 @@ specific project which is applying the plugin via CLI, for example if the subpro
 ./gradlew "-Psemver.stage=rc" # v1.0.0-rc.1
 ./gradlew "-Psemver.stage=snapshot" # v1.0.1-SNAPSHOT (uses the next patch version)
 ./gradlew "-Psemver.stage=final" # v1.0.0
+./gradlew "-Psemver.stage=auto" # v1.0.0-alpha.2
 
 # Last tag = v1.0.0
 ./gradlew "-Psemver.stage=alpha" # v1.0.1-alpha.1
@@ -133,6 +138,7 @@ specific project which is applying the plugin via CLI, for example if the subpro
 ./gradlew "-Psemver.stage=rc" # v1.0.1-rc.1
 ./gradlew "-Psemver.stage=snapshot" # v1.0.1-SNAPSHOT (still uses the same patch version)
 ./gradlew "-Psemver.stage=final" # v1.0.1
+./gradlew "-Psemver.stage=auto" # v1.0.1
 ```
 
 ### Scopes
@@ -164,6 +170,7 @@ The scope has to be one of `major`, `minor`, `patch` or `auto`.
 ./gradlew "-Psemver.stage=rc" "-Psemver.scope=major" # v2.0.0-rc.1
 ./gradlew "-Psemver.stage=final" "-Psemver.scope=major" # v2.0.0
 ./gradlew "-Psemver.stage=snapshot" "-Psemver.scope=major" # v2.0.0-SNAPSHOT
+./gradlew "-Psemver.stage=auto" "-Psemver.scope=auto" # v1.0.0-alpha.2
 
 # Last tag = v1.0.0-alpha.1
 ./gradlew "-Psemver.stage=alpha" "-Psemver.scope=minor" # v1.1.0-alpha.1
@@ -192,6 +199,7 @@ The scope has to be one of `major`, `minor`, `patch` or `auto`.
 ./gradlew "-Psemver.stage=rc" "-Psemver.scope=major" # v2.0.0-rc.1
 ./gradlew "-Psemver.stage=final" "-Psemver.scope=major" # v2.0.0
 ./gradlew "-Psemver.stage=snapshot" "-Psemver.scope=major" # v2.0.0-SNAPSHOT
+./gradlew "-Psemver.stage=auto" "-Psemver.scope=auto" # v1.0.1
 
 # Last tag = v1.0.0
 ./gradlew "-Psemver.stage=alpha" "-Psemver.scope=minor" # v1.1.0-alpha.1

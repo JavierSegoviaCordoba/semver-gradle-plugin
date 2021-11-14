@@ -75,7 +75,7 @@ internal fun testSemVer(result: BuildResult, testProjectDir: File) {
             .toList()
 
     if (!testProjectDir.name.contains("buildAndFail")) {
-        check(versions.isNotEmpty()) { "Test wrong, check if there is `expect-version.txt ` files" }
+        check(versions.isNotEmpty()) { "Test wrong, remove the `expect-version.txt ` file" }
     }
 
     versions.forEach { (expectVersion, version) ->

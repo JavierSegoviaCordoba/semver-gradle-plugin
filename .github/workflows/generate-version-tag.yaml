@@ -2,28 +2,29 @@ name: generate-version-tag
 
 on:
   workflow_dispatch:
-    if: |
-      github.ref == 'refs/heads/main' ||
-      !contains(github.ref, 'SNAPSHOT') &&
-      github.event.inputs.scope = 'patch' ||
-      github.event.inputs.scope = 'minor' ||
-      github.event.inputs.scope = 'major' ||
-      github.event.inputs.scope = 'auto' ||
-      github.event.inputs.scope = '' &&
-      github.event.inputs.stage = 'alpha' ||
-      github.event.inputs.stage = 'beta' ||
-      github.event.inputs.stage = 'rc' ||
-      github.event.inputs.stage = 'final'
-
+    if: github.ref == 'refs/heads/main'
     inputs:
       stage:
-        description: 'Stage, one of [alpha, beta, rc, final]'
-        default: 'alpha'
+        description: 'Stage'
         required: true
+        default: 'auto'
+        type: choice
+        options:
+          - 'alpha'
+          - 'beta'
+          - 'rc'
+          - 'final'
+          - 'auto'
       scope:
-        description: 'Scope one of [major, minor, patch] or empty'
-        default: ''
-        required: false
+        description: 'Scope'
+        required: true
+        default: 'auto'
+        type: choice
+        options:
+          - 'patch'
+          - 'minor'
+          - 'major'
+          - 'auto'
 
 jobs:
   generate:

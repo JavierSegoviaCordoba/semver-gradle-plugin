@@ -12,6 +12,7 @@
 ### Removed
 
 ### Fixed
+- not using the greatest version from tags
 
 ### Updated
 - `org.jetbrains.kotlin:kotlin-gradle-plugin -> 1.6.0`

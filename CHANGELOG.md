@@ -3,11 +3,22 @@
 ## [Unreleased]
 
 ### Added
-- `semver.tagPrefix` Gradle property
 
 ### Changed
 
 ### Deprecated
+
+### Removed
+
+### Fixed
+
+### Updated
+
+
+## [0.1.0-alpha.3] - 2021-11-18
+
+### Added
+- `semver.tagPrefix` Gradle property
 
 ### Removed
 - `SemVerExtension`

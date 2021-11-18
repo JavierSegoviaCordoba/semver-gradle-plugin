@@ -1,7 +1,6 @@
 package com.javiersc.semver.gradle.plugin.internal
 
 import com.javiersc.semanticVersioning.Version
-import com.javiersc.semver.gradle.plugin.tagPrefix
 import org.gradle.api.Project
 
 internal val Project.lastSemVer: Version

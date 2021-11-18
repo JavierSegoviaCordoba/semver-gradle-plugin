@@ -79,7 +79,7 @@ internal fun testSemVer(result: BuildResult, testProjectDir: File) {
     }
     if (!testProjectDir.name.contains("noGeneratedVersion")) {
         versions.forEach { (expectVersion, version) ->
-            expectVersion.readText() shouldBe version.readText()
+            version.readText() shouldBe expectVersion.readText()
         }
     }
 }

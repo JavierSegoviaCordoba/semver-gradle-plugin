@@ -1,1 +1,0 @@
-error(project.version)

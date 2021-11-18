@@ -3,13 +3,14 @@
 ## [Unreleased]
 
 ### Added
-- project crashes if accessing to the version too early
+- `semver.tagPrefix` Gradle property
 
 ### Changed
 
 ### Deprecated
 
 ### Removed
+- `SemVerExtension`
 
 ### Fixed
 - not using the greatest version from tags

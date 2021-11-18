@@ -4,29 +4,26 @@ import java.time.Instant
 import java.util.Date
 import org.gradle.api.Project
 
+internal val Project.tagPrefix: String
+    get() = properties[SemVerProperties.TagPrefix.key]?.toString() ?: defaultTagPrefix
+
+internal const val defaultTagPrefix = ""
+
 internal val Project.stageProperty: String?
     get() =
-        if (project.hasSemVerPlugin && project != rootProject) {
-            properties["$propertyPath:${SemVerProperties.Stage.key}"]?.toString()
-        } else {
-            properties[SemVerProperties.Stage.key]?.toString()
-        }
+        properties["$propertyPath:${SemVerProperties.Stage.key}"]?.toString()
+            ?: properties[SemVerProperties.Stage.key]?.toString()
 
 internal val Project.scopeProperty: String?
-    get() {
-        return if (project.hasSemVerPlugin && project != rootProject) {
-            properties["$propertyPath:${SemVerProperties.Scope.key}"]?.toString()
-        } else {
-            properties[SemVerProperties.Scope.key]?.toString()
-        }
-    }
+    get() =
+        properties["$propertyPath:${SemVerProperties.Scope.key}"]?.toString()
+            ?: properties[SemVerProperties.Scope.key]?.toString()
 
 internal val Project.mockDate: Date?
     get() {
         val mockDate: String? =
-            if (project.hasSemVerPlugin && project != rootProject) {
-                properties["$propertyPath:${SemVerProperties.MockDate.key}"]?.toString()
-            } else properties[SemVerProperties.MockDate.key]?.toString()
+            properties["$propertyPath:${SemVerProperties.MockDate.key}"]?.toString()
+                ?: properties[SemVerProperties.MockDate.key]?.toString()
         return mockDate?.let { value ->
             checkNotNull(value.toLongOrNull()) {
                 "`${SemVerProperties.MockDate.key}` must be a number"
@@ -42,6 +39,7 @@ private val Project.propertyPath: String
             .joinToString("")
 
 internal enum class SemVerProperties(val key: String) {
+    TagPrefix("semver.tagPrefix"),
     Stage("semver.stage"),
     Scope("semver.scope"),
     MockDate("semver.mockDateOfEpochSecond"),

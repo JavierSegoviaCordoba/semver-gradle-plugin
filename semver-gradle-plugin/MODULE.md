@@ -28,6 +28,11 @@ They can be set via CLI, for example:
 
 Check [examples](examples) to understand easily how it works.
 
+Additionally, you can set a tag prefix, for example `v1.0.0` by setting `semver.tagPrefix=v` in the
+root `gradle.properties` or in each project you want to use with a different tag.
+
+The default tag prefix is an empty string, for example: `1.0.0`.
+
 #### All projects share the same version
 
 Set the plugin in the root project:
@@ -37,10 +42,13 @@ Set the plugin in the root project:
 plugins {
     id("com.javiersc.semver.gradle.plugin")
 }
+```
 
-semver {
-    tagPrefix.set("v") // default "v"
-}
+Set a `semver.tagPrefix` if the default one is not enough (default is empty):
+
+```properties
+# gradle.properties
+semver.tagPrefix=v
 ```
 
 #### Different version in a specific project
@@ -53,10 +61,11 @@ plugin too with a different tag prefix, `w`.
 plugins {
     id("com.javiersc.semver.gradle.plugin")
 }
+```
 
-semver {
-    tagPrefix.set("v")
-}
+```properties
+# gradle.properties
+semver.tagPrefix=v
 ```
 
 ```kotlin
@@ -64,10 +73,11 @@ semver {
 plugins {
     id("com.javiersc.semver.gradle.plugin")
 }
+```
 
-semver {
-    tagPrefix.set("w")
-}
+```properties
+# library/gradle.properties
+semver.tagPrefix=w
 ```
 
 #### Different version in all projects
@@ -90,8 +100,8 @@ Just apply the plugin in every project and set different `tagPrefix` for each on
 
 - Format: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash or timestamp>`
 - Examples:
-    - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
-    - `1.0.0.4+26f0484`
+  - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
+  - `1.0.0.4+26f0484`
 
 #### Snapshot
 

@@ -3,7 +3,7 @@ package com.javiersc.semver.gradle.plugin.tasks
 import com.javiersc.semanticVersioning.Version
 import com.javiersc.semver.gradle.plugin.internal.git
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
-import com.javiersc.semver.gradle.plugin.tagPrefix
+import com.javiersc.semver.gradle.plugin.internal.tagPrefix
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction

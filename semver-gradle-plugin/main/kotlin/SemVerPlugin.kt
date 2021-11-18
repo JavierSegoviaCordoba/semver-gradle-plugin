@@ -37,8 +37,6 @@ public class SemVerPlugin : Plugin<Project> {
                 target.semverMessage("semver for ${target.name}: ${target.version}")
             }
         }
-
-        target.afterEvaluate {}
     }
 }
 

@@ -13,6 +13,7 @@
 ### Fixed
 
 ### Updated
+- `com.javiersc.gradle-plugins:all-plugins -> 0.1.0-rc.12`
 
 
 ## [0.1.0-alpha.3] - 2021-11-18

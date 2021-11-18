@@ -3,10 +3,6 @@ name: build-kotlin-dispatcher
 on:
   workflow_dispatch:
     inputs:
-      machines:
-        description: 'Virtual environments'
-        default: 'macos-latest, ubuntu-latest, windows-latest'
-        required: true
       gradle-args:
         description: 'Gradle args for `build` step'
         default: ''
@@ -16,7 +12,6 @@ jobs:
   build:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
     with:
-      machines: '${{ github.event.inputs.machines }}'
       gradle-args: '${{ github.event.inputs.gradle-args }}'
       allow-github-actor-bots: false
       publish-snapshot: true

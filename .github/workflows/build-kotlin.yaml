@@ -17,8 +17,6 @@ jobs:
   build:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
     with:
-      machines: 'ubuntu-latest'
-      global-machine: 'ubuntu-latest'
       allow-github-actor-bots: false
       publish-snapshot: true
       publish-docs: true

@@ -2,6 +2,7 @@ package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semanticVersioning.Version
 import com.javiersc.semver.gradle.plugin.internal.Scope
+import com.javiersc.semver.gradle.plugin.internal.SemVerException
 import com.javiersc.semver.gradle.plugin.internal.appliedOnlyOnRootProject
 import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.gradle.plugin.internal.generateVersionFile
@@ -24,23 +25,37 @@ public class SemVerPlugin : Plugin<Project> {
         CreateSemverTag.register(target)
         PushSemverTag.register(target)
 
-        target.afterEvaluate { project: Project ->
-            project.checkScopeIsCorrect()
-            project.checkVersionIsHigherOrSame()
+        target.version = VersionTooEarly(target)
 
-            project.version = project.calculatedVersion
-            project.generateVersionFile(project.tagPrefix)
+        target.gradle.projectsEvaluated {
+            target.checkScopeIsCorrect()
+            target.checkVersionIsHigherOrSame()
 
-            project.gradle.projectsEvaluated {
-                if (project.appliedOnlyOnRootProject) {
-                    project.semverMessage("semver: ${project.version}")
-                    project.allprojects { it.project.version = project.version }
-                } else {
-                    project.semverMessage("semver for ${project.name}: ${project.version}")
-                }
+            target.version = target.calculatedVersion
+            target.generateVersionFile(target.tagPrefix)
+
+            if (target.appliedOnlyOnRootProject) {
+                target.semverMessage("semver: ${target.version}")
+                target.allprojects { it.project.version = target.version }
+            } else {
+                target.semverMessage("semver for ${target.name}: ${target.version}")
             }
         }
     }
+}
+
+private class VersionTooEarly(private val project: Project) {
+
+    override fun toString(): String =
+        throw SemVerException(
+            """
+               |`semver` version in the project `${project.name}` is not available yet
+               |Workarounds:
+               |  - Use `project.afterEvaluate { project.version }`
+               |  - Access to the version via Gradle tasks
+               |  - Use `gradle.projectsEvaluated { project.version }`
+            """.trimMargin()
+        )
 }
 
 private fun Project.checkScopeIsCorrect() {

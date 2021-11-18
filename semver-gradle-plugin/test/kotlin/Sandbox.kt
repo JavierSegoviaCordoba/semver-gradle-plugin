@@ -77,9 +77,10 @@ internal fun testSemVer(result: BuildResult, testProjectDir: File) {
     if (!testProjectDir.name.contains("buildAndFail")) {
         check(versions.isNotEmpty()) { "Test wrong, remove the `expect-version.txt ` file" }
     }
-
-    versions.forEach { (expectVersion, version) ->
-        expectVersion.readText() shouldBe version.readText()
+    if (!testProjectDir.name.contains("noGeneratedVersion")) {
+        versions.forEach { (expectVersion, version) ->
+            expectVersion.readText() shouldBe version.readText()
+        }
     }
 }
 

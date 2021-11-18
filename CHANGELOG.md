@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- project crashes if accessing to the version too early
 
 ### Changed
 

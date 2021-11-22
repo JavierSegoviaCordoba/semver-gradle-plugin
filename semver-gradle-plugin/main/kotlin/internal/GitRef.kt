@@ -106,17 +106,6 @@ internal val Git.currentBranch: GitRef.Branch
             GitRef.Branch(branch, fullBranch, commitsInCurrentBranch, tagsInCurrentBranch)
         }
 
-internal fun List<GitRef.Commit>?.additionalDataIfTagIsNotInHead(
-    git: Git,
-    mockDate: Date?
-): String =
-    when {
-        this == null -> ".0+${timestamp(mockDate)}"
-        git.status().call().isClean.not() -> ".$size+${timestamp(mockDate)}"
-        isEmpty() && git.status().call().isClean -> ""
-        else -> ".$size+${first().hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
-    }
-
 internal fun Git.commitsBetweenTwoCommits(
     fromCommit: GitRef.Commit?,
     toCommit: GitRef.Commit?,
@@ -185,8 +174,18 @@ internal fun Git.calculateAdditionalVersionData(mockDate: Date? = null): String 
         tagsInCurrentBranch.map(GitRef.Tag::commit).reversed().firstOrNull()
 
     val commitsBetweenCurrentAndLastTagCommit =
-        if (lastTagCommitInCurrentBranch == null) null
-        else commitsBetweenTwoCommits(lastCommitInCurrentBranch, lastTagCommitInCurrentBranch)
+        commitsBetweenTwoCommits(lastCommitInCurrentBranch, lastTagCommitInCurrentBranch)
 
-    return commitsBetweenCurrentAndLastTagCommit.additionalDataIfTagIsNotInHead(this, mockDate)
+    val additionalData: String =
+        commitsBetweenCurrentAndLastTagCommit.run {
+            when {
+                status().call().isClean.not() -> ".$size+${timestamp(mockDate)}"
+                isNotEmpty() && status().call().isClean -> {
+                    ".$size+${first().hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
+                }
+                else -> ""
+            }
+        }
+
+    return additionalData
 }

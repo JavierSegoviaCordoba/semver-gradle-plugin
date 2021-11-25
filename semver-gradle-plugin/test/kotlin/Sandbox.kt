@@ -79,7 +79,7 @@ internal fun testSemVer(result: BuildResult, testProjectDir: File) {
     }
     if (!testProjectDir.name.contains("noGeneratedVersion")) {
         versions.forEach { (expectVersion, version) ->
-            version.readText() shouldBe expectVersion.readText()
+            version.readText().shouldBe(expectVersion.readText())
         }
     }
 }
@@ -143,3 +143,21 @@ internal fun File.gradlewFailing(vararg arguments: String) {
         }
         .buildAndFail()
 }
+
+internal fun initialCommitAnd(and: File.() -> Unit) {
+    val fileName: String =
+        Thread.currentThread()
+            .stackTrace
+            .first { element -> element.methodName.count { char -> char.isWhitespace() } > 0 }
+            .methodName
+
+    createSandboxFile(fileName).apply {
+        val git: Git = Git.init().setDirectory(this).call()
+        File("$this/Initial commit.txt").createNewFile()
+        git.add().addFilepattern(".").call()
+        git.commit().setMessage("Initial commit").call()
+        and(this)
+    }
+}
+
+internal fun File.addNewFile(name: String) = File("$this/$name").createNewFile()

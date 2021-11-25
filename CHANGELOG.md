@@ -11,6 +11,8 @@
 ### Removed
 
 ### Fixed
+- getting all tags instead of only version tags
+- calculated version
 
 ### Updated
 - `io.kotest:kotest-assertions-core -> 5.0.0`

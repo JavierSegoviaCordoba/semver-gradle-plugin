@@ -5,12 +5,17 @@ import com.javiersc.semver.gradle.plugin.internal.Scope
 import com.javiersc.semver.gradle.plugin.internal.appliedOnlyOnRootProject
 import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.gradle.plugin.internal.generateVersionFile
-import com.javiersc.semver.gradle.plugin.internal.lastSemVer
+import com.javiersc.semver.gradle.plugin.internal.git
+import com.javiersc.semver.gradle.plugin.internal.lastVersionInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.mockDate
 import com.javiersc.semver.gradle.plugin.internal.scopeProperty
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
+import com.javiersc.semver.gradle.plugin.internal.stageProperty
 import com.javiersc.semver.gradle.plugin.internal.tagPrefix
+import com.javiersc.semver.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
 import com.javiersc.semver.gradle.plugin.tasks.CreateSemverTag
 import com.javiersc.semver.gradle.plugin.tasks.PushSemverTag
+import com.javiersc.semver.gradle.plugin.tasks.isCreatingSemverTag
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -24,7 +29,7 @@ public class SemVerPlugin : Plugin<Project> {
         target.checkVersionIsHigherOrSame()
 
         target.version = target.calculatedVersion
-        target.generateVersionFile(target.tagPrefix)
+        target.generateVersionFile()
 
         if (target == target.rootProject) {
             target.allprojects { it.project.version = target.version }
@@ -48,8 +53,26 @@ private fun Project.checkScopeIsCorrect() {
 
 private fun Project.checkVersionIsHigherOrSame() {
     Version.safe(calculatedVersion).getOrNull()?.let { calculatedVersion ->
-        check(calculatedVersion >= lastSemVer) {
+        check(calculatedVersion >= lastVersionInCurrentBranch) {
             "Next version should be higher or the same than the current one"
         }
     }
 }
+
+private val Project.calculatedVersion: String
+    get() =
+        git.calculatedVersion(
+            warningLastVersionIsNotHigherVersion = ::warningLastVersionIsNotHigherVersion,
+            tagPrefix = tagPrefix,
+            stageProperty = stageProperty,
+            scopeProperty = scopeProperty,
+            isCreatingSemverTag = isCreatingSemverTag,
+            mockDate = mockDate
+        )
+
+private val Project.lastVersionInCurrentBranch: Version
+    get() =
+        git.lastVersionInCurrentBranch(
+            warningLastVersionIsNotHigherVersion = ::warningLastVersionIsNotHigherVersion,
+            tagPrefix = tagPrefix,
+        )

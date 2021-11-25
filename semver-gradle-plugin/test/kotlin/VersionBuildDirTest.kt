@@ -48,7 +48,11 @@ class VersionBuildDirTest {
                 File("$this/expect-version.txt").apply {
                     createNewFile()
                     val mockDate = Date.from(Instant.ofEpochSecond(0))
-                    val additionalData = parentFile.git.calculateAdditionalVersionData(mockDate)
+                    val additionalData =
+                        parentFile.git.calculateAdditionalVersionData(
+                            tagPrefix = "v",
+                            mockDate = mockDate
+                        )
                     writeText(
                         """
                             |1.0.0$additionalData

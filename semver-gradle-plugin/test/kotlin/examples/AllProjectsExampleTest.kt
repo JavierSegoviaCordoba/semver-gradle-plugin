@@ -56,7 +56,7 @@ class AllProjectsExampleTest {
     private fun `1_ Run gradlew`() {
         testProjectDir.gradlew()
 
-        assertVersion("v", "0.1.0", Insignificant.Timestamp)
+        assertVersion("v", "0.1.0", Insignificant.Hash)
     }
     private fun `2_ Create a new file and run gradlew`() {
         File("$testProjectDir/new2.txt").createNewFile()
@@ -136,7 +136,9 @@ class AllProjectsExampleTest {
     ) {
         val buildVersionFile = File("$testProjectDir/build/semver/version.txt")
         val buildVersion = buildVersionFile.readLines().first()
+        println(buildVersion)
         val buildTagVersion = buildVersionFile.readLines()[1]
+        println(buildTagVersion)
         when (insignificant) {
             Insignificant.Hash -> {
                 buildVersion.startsWith(version).shouldBeTrue()

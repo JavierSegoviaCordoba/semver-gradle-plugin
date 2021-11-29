@@ -14,6 +14,8 @@
 
 ### Updated
 
+- `org.eclipse.jgit:org.eclipse.jgit -> 6.0.0.202111291000-r`
+
 ## [0.1.0-alpha.5] - 2021-11-29
 
 ### Added

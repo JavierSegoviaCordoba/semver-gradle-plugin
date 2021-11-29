@@ -4,6 +4,8 @@
 
 ### Added
 
+- Java 8 support
+
 ### Changed
 
 ### Deprecated

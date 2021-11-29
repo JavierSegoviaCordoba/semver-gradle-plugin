@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     `kotlin-jvm`
     `java-gradle-plugin`
@@ -29,6 +32,14 @@ gradlePlugin {
 
 kotlin {
     explicitApi()
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    targetCompatibility = JavaVersion.VERSION_1_8.toString()
+    sourceCompatibility = JavaVersion.VERSION_1_8.toString()
 }
 
 dependencies {

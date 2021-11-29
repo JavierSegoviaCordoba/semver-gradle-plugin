@@ -4,8 +4,6 @@
 
 ### Added
 
-- Java 8 support
-
 ### Changed
 
 ### Deprecated
@@ -13,6 +11,14 @@
 ### Removed
 
 ### Fixed
+
+### Updated
+
+## [0.1.0-alpha.5] - 2021-11-29
+
+### Added
+
+- Java 8 support
 
 ### Updated
 

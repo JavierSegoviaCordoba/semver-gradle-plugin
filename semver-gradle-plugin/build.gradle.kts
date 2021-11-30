@@ -37,7 +37,7 @@ dependencies {
 
     implementation(libs.eclipse.jgit.eclipseJgit)
     implementation(libs.javiersc.kotlin.kotlinStdlib)
-    implementation(libs.javiersc.semanticVersioning.semanticVersioningCore)
+    implementation(libs.javiersc.semver.semverCore)
 
     testImplementation(gradleTestKit())
     testImplementation(libs.jetbrains.kotlin.kotlinTest)

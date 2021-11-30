@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin.internal
 
-import com.javiersc.semanticVersioning.Version
-import com.javiersc.semanticVersioning.Version.Increase
+import com.javiersc.semver.Version
+import com.javiersc.semver.Version.Increase
 import java.util.Date
 import org.eclipse.jgit.api.Git
 

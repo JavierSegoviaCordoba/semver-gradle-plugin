@@ -1,6 +1,6 @@
 package com.javiersc.semver.gradle.plugin.internal
 
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.Version
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.ObjectId

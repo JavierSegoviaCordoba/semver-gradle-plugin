@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.semanticVersioning.SemanticVersionException
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.SemanticVersionException
+import com.javiersc.semver.Version
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe

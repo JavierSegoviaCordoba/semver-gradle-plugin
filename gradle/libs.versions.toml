@@ -1,13 +1,13 @@
 [versions]
 coroutines = "1.5.2"
-javierscKotlinStdlib = "0.1.0-alpha.1"
+javierscKotlinStdlib = "0.1.0-alpha.3"
 jgit = "6.0.0.202111291000-r"
 kotest = "5.0.0"
-semanticVersioning = "0.1.0-beta.6"
+semverCore = "0.1.0-beta.8"
 
 [libraries]
-javiersc-kotlin-kotlinStdlib = { group = "com.javiersc.kotlin", name = "kotlin-stdlib", version.ref = "javierscKotlinStdlib" }
-javiersc-semanticVersioning-semanticVersioningCore = { group = "com.javiersc.semantic-versioning", name = "semantic-versioning-core", version.ref = "semanticVersioning" }
+javiersc-kotlin-kotlinStdlib = { module = "com.javiersc.kotlin:kotlin-stdlib", version.ref = "javierscKotlinStdlib" }
+javiersc-semver-semverCore = { module = "com.javiersc.semver:semver-core", version.ref = "semverCore" }
 jetbrains-kotlin-kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
 jetbrains-kotlinx-kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 eclipse-jgit-eclipseJgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }

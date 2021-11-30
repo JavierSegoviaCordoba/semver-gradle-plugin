@@ -14,6 +14,9 @@
 
 ### Updated
 
+- `com.javiersc.gradle-plugins:all-plugins -> 0.1.0-rc.19`
+- `com.javiersc.semver:semver-core -> 0.1.0-beta.8`
+- `com.javiersc.kotlin:kotlin-stdlib -> 0.1.0-alpha.3`
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.0.0.202111291000-r`
 
 ## [0.1.0-alpha.5] - 2021-11-29

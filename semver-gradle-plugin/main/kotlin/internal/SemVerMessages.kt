@@ -2,7 +2,7 @@ package com.javiersc.semver.gradle.plugin.internal
 
 import com.javiersc.kotlin.stdlib.AnsiColor
 import com.javiersc.kotlin.stdlib.ansiColor
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.Version
 import org.gradle.api.Project
 
 internal fun Project.semverMessage(message: Any, color: AnsiColor = AnsiColor.Foreground.Purple) =

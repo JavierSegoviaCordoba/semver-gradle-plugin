@@ -1,6 +1,6 @@
 package com.javiersc.semver.gradle.plugin.git
 
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.addNewFile
 import com.javiersc.semver.gradle.plugin.git
 import com.javiersc.semver.gradle.plugin.initialCommitAnd

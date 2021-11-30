@@ -1,6 +1,6 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.internal.git
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.internal.tagPrefix

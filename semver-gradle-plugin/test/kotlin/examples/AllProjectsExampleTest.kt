@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin.examples
 
-import com.javiersc.semanticVersioning.SemanticVersionException
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.SemanticVersionException
+import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.copyResourceTo
 import com.javiersc.semver.gradle.plugin.createGitIgnore
 import com.javiersc.semver.gradle.plugin.createSandboxFile

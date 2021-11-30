@@ -1,6 +1,6 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.semanticVersioning.Version
+import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.internal.Scope
 import com.javiersc.semver.gradle.plugin.internal.appliedOnlyOnRootProject
 import com.javiersc.semver.gradle.plugin.internal.calculatedVersion

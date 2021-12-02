@@ -14,6 +14,7 @@
 
 ### Updated
 
+- `com.javiersc.gradle-plugins:all-plugins -> 0.1.0-rc.22`
 - `gradle -> 7.3.1`
 
 ## [0.1.0-alpha.6] - 2021-11-30

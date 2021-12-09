@@ -4,7 +4,7 @@ import java.time.Instant
 import java.util.Date
 import org.gradle.api.Project
 
-internal val Project.tagPrefix: String
+internal val Project.tagPrefixProperty: String
     get() = properties[SemVerProperties.TagPrefix.key]?.toString() ?: defaultTagPrefix
 
 internal const val defaultTagPrefix = ""
@@ -19,7 +19,7 @@ internal val Project.scopeProperty: String?
         properties["$propertyPath:${SemVerProperties.Scope.key}"]?.toString()
             ?: properties[SemVerProperties.Scope.key]?.toString()
 
-internal val Project.mockDate: Date?
+internal val Project.mockDateProperty: Date?
     get() {
         val mockDate: String? =
             properties["$propertyPath:${SemVerProperties.MockDate.key}"]?.toString()
@@ -32,6 +32,9 @@ internal val Project.mockDate: Date?
         }
     }
 
+internal val Project.remoteProperty: String?
+    get() = properties[SemVerProperties.Remote.key]?.toString()
+
 private val Project.propertyPath: String
     get() =
         path
@@ -43,6 +46,7 @@ internal enum class SemVerProperties(val key: String) {
     Stage("semver.stage"),
     Scope("semver.scope"),
     MockDate("semver.mockDateOfEpochSecond"),
+    Remote("semver.remote"),
 }
 
 internal enum class Stage(private val value: String) {

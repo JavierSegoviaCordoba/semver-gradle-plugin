@@ -7,11 +7,11 @@ import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.gradle.plugin.internal.generateVersionFile
 import com.javiersc.semver.gradle.plugin.internal.git
 import com.javiersc.semver.gradle.plugin.internal.lastVersionInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.mockDate
+import com.javiersc.semver.gradle.plugin.internal.mockDateProperty
 import com.javiersc.semver.gradle.plugin.internal.scopeProperty
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.internal.stageProperty
-import com.javiersc.semver.gradle.plugin.internal.tagPrefix
+import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
 import com.javiersc.semver.gradle.plugin.tasks.CreateSemverTag
 import com.javiersc.semver.gradle.plugin.tasks.PushSemverTag
@@ -63,16 +63,16 @@ private val Project.calculatedVersion: String
     get() =
         git.calculatedVersion(
             warningLastVersionIsNotHigherVersion = ::warningLastVersionIsNotHigherVersion,
-            tagPrefix = tagPrefix,
+            tagPrefix = tagPrefixProperty,
             stageProperty = stageProperty,
             scopeProperty = scopeProperty,
             isCreatingSemverTag = isCreatingSemverTag,
-            mockDate = mockDate
+            mockDate = mockDateProperty
         )
 
 private val Project.lastVersionInCurrentBranch: Version
     get() =
         git.lastVersionInCurrentBranch(
             warningLastVersionIsNotHigherVersion = ::warningLastVersionIsNotHigherVersion,
-            tagPrefix = tagPrefix,
+            tagPrefix = tagPrefixProperty,
         )

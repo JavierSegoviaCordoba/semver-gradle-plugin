@@ -1,7 +1,8 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
 import com.javiersc.semver.gradle.plugin.internal.git
-import com.javiersc.semver.gradle.plugin.internal.tagPrefix
+import com.javiersc.semver.gradle.plugin.internal.remoteProperty
+import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
 import org.eclipse.jgit.transport.RemoteConfig
 import org.gradle.api.Project
 
@@ -23,8 +24,7 @@ public open class PushSemverTag {
 
                     task.doLast {
                         project.exec { exec ->
-                            val remoteProp: String? =
-                                project.properties["semver.remote"]?.toString()
+                            val remoteProp: String? = project.remoteProperty
 
                             val remote: String =
                                 when {
@@ -37,7 +37,7 @@ public open class PushSemverTag {
                                     else -> project.remotes.first()
                                 }
 
-                            val tag = "${project.tagPrefix}${project.version}"
+                            val tag = "${project.tagPrefixProperty}${project.version}"
 
                             exec.commandLine("git", "push", remote, tag)
                         }

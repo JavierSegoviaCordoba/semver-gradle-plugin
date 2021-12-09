@@ -3,7 +3,7 @@ package com.javiersc.semver.gradle.plugin.tasks
 import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.internal.git
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
-import com.javiersc.semver.gradle.plugin.internal.tagPrefix
+import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction
@@ -17,7 +17,7 @@ public open class CreateSemverTag : DefaultTask() {
             "A semver tag can't be created if the repo is not clean"
         }
         val semver = "${Version("${project.version}")}"
-        val semverWithPrefix = "${project.tagPrefix}$semver"
+        val semverWithPrefix = "${project.tagPrefixProperty}$semver"
         project.git.tag().setName(semverWithPrefix).call()
         project.semverMessage("Created new semver tag: $semverWithPrefix")
     }

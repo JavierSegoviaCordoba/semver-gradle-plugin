@@ -10,7 +10,7 @@ internal fun Project.generateVersionFile() =
         writeText(
             """
                |$version
-               |$tagPrefix$version
+               |$tagPrefixProperty$version
                |
             """.trimMargin()
         )

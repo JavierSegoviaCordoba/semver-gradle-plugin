@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- `pushSemverTag` can set a specific remote via `semver.remote` Gradle property
 
 ### Changed
 
@@ -11,6 +12,7 @@
 ### Removed
 
 ### Fixed
+- `pushSemverTag`
 
 ### Updated
 

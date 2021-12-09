@@ -9,8 +9,7 @@ public class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTag : org/gradl
 	public final fun run ()V
 }
 
-public class com/javiersc/semver/gradle/plugin/tasks/PushSemverTag : org/gradle/api/DefaultTask {
+public class com/javiersc/semver/gradle/plugin/tasks/PushSemverTag {
 	public fun <init> ()V
-	public final fun run ()V
 }
 

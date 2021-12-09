@@ -224,3 +224,25 @@ The scope has to be one of `major`, `minor`, `patch` or `auto`.
 ./gradlew "-Psemver.stage=final" "-Psemver.scope=auto" # v1.0.1
 ./gradlew "-Psemver.stage=snapshot" "-Psemver.scope=auto" # v1.0.1-SNAPSHOT
 ```
+
+### Tasks
+
+There are two tasks, `createSemverTag` and `pushSemverTag`. First one just create the tag, meanwhile
+the last one creates and pushes the tag to the remote. You can combine them with `semver` Gradle
+properties to ensure the correct tag version is created and/or pushed.
+
+`pushSemverTag` can use a specific remote if the Gradle property `semver.remote` is set. If it is
+not set, `origin` is used if it exists, if not, the first remote by name is used. If there is no
+remote, the task fails.
+
+Samples:
+
+```shell
+./gradlew createSemverTag
+
+./gradlew createSemverTag "-Psemver.stage=alpha"
+
+./gradlew pushSemverTag
+
+./gradlew pushSemverTag "-Psemver.stage=alpha"
+```

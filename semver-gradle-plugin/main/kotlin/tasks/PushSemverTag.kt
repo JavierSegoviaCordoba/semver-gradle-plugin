@@ -1,26 +1,52 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
 import com.javiersc.semver.gradle.plugin.internal.git
-import org.gradle.api.DefaultTask
+import com.javiersc.semver.gradle.plugin.internal.tagPrefix
+import org.eclipse.jgit.transport.RemoteConfig
 import org.gradle.api.Project
-import org.gradle.api.tasks.TaskAction
-import org.gradle.kotlin.dsl.register
 
-public open class PushSemverTag : DefaultTask() {
-
-    @TaskAction
-    public fun run() {
-        dependsOn(CreateSemverTag.name)
-        project.git.push().setPushTags().call()
-    }
+public open class PushSemverTag {
 
     internal companion object {
         internal const val name = "pushSemverTag"
 
         internal fun register(project: Project) {
             if (project.rootProject.tasks.findByName(name) == null) {
-                project.rootProject.tasks.register<PushSemverTag>(name)
+                project.rootProject.tasks.register(name) { task ->
+                    task.dependsOn(CreateSemverTag.name)
+
+                    task.doFirst {
+                        check(project.remotes.isNotEmpty()) {
+                            "There is no remote where pushing the git tag"
+                        }
+                    }
+
+                    task.doLast {
+                        project.exec { exec ->
+                            val remoteProp: String? =
+                                project.properties["semver.remote"]?.toString()
+
+                            val remote: String =
+                                when {
+                                    remoteProp != null -> {
+                                        checkNotNull(
+                                            project.remotes.firstOrNull { it == remoteProp }
+                                        ) { "There is no remote with the name $remoteProp" }
+                                    }
+                                    project.remotes.contains("origin") -> "origin"
+                                    else -> project.remotes.first()
+                                }
+
+                            val tag = "${project.tagPrefix}${project.version}"
+
+                            exec.commandLine("git", "push", remote, tag)
+                        }
+                    }
+                }
             }
         }
     }
 }
+
+private val Project.remotes: List<String>
+    get() = git.remoteList().call().map(RemoteConfig::getName)

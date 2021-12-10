@@ -7,6 +7,7 @@ import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.gradle.plugin.internal.checkCleanProperty
 import com.javiersc.semver.gradle.plugin.internal.generateVersionFile
 import com.javiersc.semver.gradle.plugin.internal.git
+import com.javiersc.semver.gradle.plugin.internal.hasGit
 import com.javiersc.semver.gradle.plugin.internal.lastVersionInCurrentBranch
 import com.javiersc.semver.gradle.plugin.internal.mockDateProperty
 import com.javiersc.semver.gradle.plugin.internal.scopeProperty
@@ -23,25 +24,29 @@ import org.gradle.api.Project
 public class SemVerPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
-        CreateSemverTag.register(target)
-        PushSemverTag.register(target)
+        if (target.hasGit) {
+            CreateSemverTag.register(target)
+            PushSemverTag.register(target)
 
-        target.checkScopeIsCorrect()
-        target.checkVersionIsHigherOrSame()
+            target.checkScopeIsCorrect()
+            target.checkVersionIsHigherOrSame()
 
-        target.version = target.calculatedVersion
-        target.generateVersionFile()
+            target.version = target.calculatedVersion
+            target.generateVersionFile()
 
-        if (target == target.rootProject) {
-            target.allprojects { it.project.version = target.version }
-        }
-
-        target.gradle.projectsEvaluated {
-            if (target.appliedOnlyOnRootProject) {
-                target.semverMessage("semver: ${target.version}")
-            } else {
-                target.semverMessage("semver for ${target.name}: ${target.version}")
+            if (target == target.rootProject) {
+                target.allprojects { it.project.version = target.version }
             }
+
+            target.gradle.projectsEvaluated {
+                if (target.appliedOnlyOnRootProject) {
+                    target.semverMessage("semver: ${target.version}")
+                } else {
+                    target.semverMessage("semver for ${target.name}: ${target.version}")
+                }
+            }
+        } else {
+            target.semverMessage("semver plugin can't work if the project is not a git repository")
         }
     }
 }

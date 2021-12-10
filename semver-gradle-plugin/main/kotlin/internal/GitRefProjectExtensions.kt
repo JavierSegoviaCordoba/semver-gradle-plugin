@@ -4,6 +4,9 @@ import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.gradle.api.Project
 
+internal val Project.hasGit: Boolean
+    get() = runCatching { git.lastCommitInCurrentBranch }.isSuccess
+
 internal val Project.git: Git
     get() =
         Git(

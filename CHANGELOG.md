@@ -14,6 +14,7 @@
 
 ### Fixed
 - `pushSemverTag`
+- project can't sync if it is not a git repository
 
 ### Updated
 

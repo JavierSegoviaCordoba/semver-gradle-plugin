@@ -2,7 +2,7 @@
 coroutines = "1.5.2"
 javierscKotlinStdlib = "0.1.0-alpha.3"
 jgit = "6.0.0.202111291000-r"
-kotest = "5.0.1"
+kotest = "5.0.2"
 semverCore = "0.1.0-beta.8"
 
 [libraries]

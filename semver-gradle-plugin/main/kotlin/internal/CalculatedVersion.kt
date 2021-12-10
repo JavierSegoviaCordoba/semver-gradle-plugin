@@ -35,7 +35,7 @@ internal fun Git.calculatedVersion(
         when {
             (stageProperty.isNullOrBlank() &&
                 scopeProperty.isNullOrBlank() &&
-                !isCreatingSemverTag) || status().call().isClean.not() -> {
+                !isCreatingSemverTag) || status().call().isClean.not() && checkClean -> {
                 "$lastSemVer${calculateAdditionalVersionData(tagPrefix, mockDate, checkClean)}"
             }
             stageProperty.equals(Stage.Snapshot(), ignoreCase = true) -> {

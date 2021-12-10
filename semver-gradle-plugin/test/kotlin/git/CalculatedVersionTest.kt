@@ -93,17 +93,25 @@ internal class CalculatedVersionTest {
             calculatedVersion(mockDate = Date.from(Instant.ofEpochMilli(0)))
                 .shouldBe("v1.0.0.0+1970-01-01T00:00:00Z")
 
+            calculatedVersion(checkClean = false).shouldBe("v1.0.0")
+
             git.add().addFilepattern(".").call()
             git.commit().setMessage("3 commit").call()
 
             calculatedVersion().shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
-            calculatedVersion(checkClean = false)
-                .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
-
             calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
 
             calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
+
+            addNewFile("4 commit.txt")
+            calculatedVersion(checkClean = false)
+                .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+
+            calculatedVersion(stage = "snapshot", checkClean = false).shouldBe("v1.0.1-SNAPSHOT")
+            calculatedVersion(stage = "alpha", checkClean = false).shouldBe("v1.0.1-alpha.1")
+            calculatedVersion(stage = "snapshot", scope = "major", checkClean = false)
+                .shouldBe("v2.0.0-SNAPSHOT")
         }
     }
 }

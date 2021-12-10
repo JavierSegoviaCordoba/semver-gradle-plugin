@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- `semver.checkClean`
+
 ### Updated
 
 - `io.kotest:kotest-assertions-core -> 5.0.2`

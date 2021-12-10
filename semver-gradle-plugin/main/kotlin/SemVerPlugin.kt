@@ -4,6 +4,7 @@ import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.internal.Scope
 import com.javiersc.semver.gradle.plugin.internal.appliedOnlyOnRootProject
 import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
+import com.javiersc.semver.gradle.plugin.internal.checkCleanProperty
 import com.javiersc.semver.gradle.plugin.internal.generateVersionFile
 import com.javiersc.semver.gradle.plugin.internal.git
 import com.javiersc.semver.gradle.plugin.internal.lastVersionInCurrentBranch
@@ -67,7 +68,8 @@ private val Project.calculatedVersion: String
             stageProperty = stageProperty,
             scopeProperty = scopeProperty,
             isCreatingSemverTag = isCreatingSemverTag,
-            mockDate = mockDateProperty
+            mockDate = mockDateProperty,
+            checkClean = checkCleanProperty,
         )
 
 private val Project.lastVersionInCurrentBranch: Version

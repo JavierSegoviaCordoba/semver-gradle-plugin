@@ -98,6 +98,11 @@ internal class CalculatedVersionTest {
 
             calculatedVersion().shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
+            calculatedVersion(checkClean = false)
+                .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+
+            calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
+
             calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
         }
     }
@@ -110,6 +115,7 @@ private fun File.calculatedVersion(
     scope: String? = null,
     isCreatingTag: Boolean = false,
     mockDate: Date? = null,
+    checkClean: Boolean = true,
 ) =
     tagPrefix +
         git.calculatedVersion(
@@ -119,4 +125,5 @@ private fun File.calculatedVersion(
             scopeProperty = scope,
             isCreatingSemverTag = isCreatingTag,
             mockDate = mockDate,
+            checkClean = checkClean,
         )

@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- `semver.checkClean` Gradle property to allow versions without timestamp on dirty repositories
 - `pushSemverTag` can set a specific remote via `semver.remote` Gradle property
 
 ### Changed

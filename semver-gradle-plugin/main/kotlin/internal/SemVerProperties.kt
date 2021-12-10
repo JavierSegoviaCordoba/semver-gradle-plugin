@@ -35,6 +35,9 @@ internal val Project.mockDateProperty: Date?
 internal val Project.remoteProperty: String?
     get() = properties[SemVerProperties.Remote.key]?.toString()
 
+internal val Project.checkCleanProperty: Boolean
+    get() = properties[SemVerProperties.CheckClean.key]?.toString()?.toBoolean() ?: true
+
 private val Project.propertyPath: String
     get() =
         path
@@ -47,6 +50,7 @@ internal enum class SemVerProperties(val key: String) {
     Scope("semver.scope"),
     MockDate("semver.mockDateOfEpochSecond"),
     Remote("semver.remote"),
+    CheckClean("semver.checkClean"),
 }
 
 internal enum class Stage(private val value: String) {

@@ -13,6 +13,7 @@ internal fun Git.calculatedVersion(
     scopeProperty: String?,
     isCreatingSemverTag: Boolean,
     mockDate: Date?,
+    checkClean: Boolean,
 ): String {
     val lastSemVer =
         lastVersionInCurrentBranch(
@@ -35,7 +36,7 @@ internal fun Git.calculatedVersion(
             (stageProperty.isNullOrBlank() &&
                 scopeProperty.isNullOrBlank() &&
                 !isCreatingSemverTag) || status().call().isClean.not() -> {
-                "$lastSemVer${calculateAdditionalVersionData(tagPrefix, mockDate)}"
+                "$lastSemVer${calculateAdditionalVersionData(tagPrefix, mockDate, checkClean)}"
             }
             stageProperty.equals(Stage.Snapshot(), ignoreCase = true) -> {
                 when (scopeProperty) {
@@ -74,7 +75,13 @@ internal fun Git.calculatedVersion(
     return calculatedVersion
 }
 
-internal fun Git.calculateAdditionalVersionData(tagPrefix: String, mockDate: Date?): String {
+internal fun Git.calculateAdditionalVersionData(
+    tagPrefix: String,
+    mockDate: Date?,
+    checkClean: Boolean = true,
+): String {
+    val isClean = status().call().isClean || !checkClean
+
     val commitsBetweenCurrentAndLastTagCommit =
         commitsBetweenTwoCommitsIncludingLastExcludingFirst(
             lastCommitInCurrentBranch,
@@ -86,16 +93,16 @@ internal fun Git.calculateAdditionalVersionData(tagPrefix: String, mockDate: Dat
     val additionalData: String =
         commitsBetweenCurrentAndLastTagCommit.run {
             when {
-                noVersionTags && status().call().isClean -> {
+                noVersionTags && isClean -> {
                     ".$size+${headCommit.commit.hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
                 }
-                noVersionTags && !status().call().isClean -> {
+                noVersionTags && !isClean -> {
                     ".$size+${timestamp(mockDate)}"
                 }
-                status().call().isClean && isEmpty() -> {
+                isClean && isEmpty() -> {
                     ""
                 }
-                isNotEmpty() && status().call().isClean -> {
+                isNotEmpty() && isClean -> {
                     ".$size+${first().hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
                 }
                 else -> ".$size+${timestamp(mockDate)}"

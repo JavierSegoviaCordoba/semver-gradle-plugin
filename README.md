@@ -254,3 +254,27 @@ Samples:
 
 ./gradlew pushSemverTag "-Psemver.stage=alpha"
 ```
+
+### Set versions without timestamp on dirty repositories
+
+By default, if the repository status is not clean, the version shows the timestamp but that can be
+avoided by setting the Gradle property `semver.checkClean`.
+
+For example, if the last tag is `1.0.0`, there are 23 commits between that tag and the last commit
+and the repo is not clean:
+
+```shell
+./gradlew "-Psemver.stage=final" "-Psemver.scope=patch"
+
+semver: 1.0.0.23+2021-12-09T23-46-33-217289300Z
+```
+
+```shell
+./gradlew "-Psemver.stage=final" "-Psemver.scope=patch" "-Psemver.checkClean=false"
+semver: 1.0.1
+```
+
+```shell
+./gradlew "-Psemver.checkClean=false"
+semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
+```

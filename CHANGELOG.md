@@ -12,6 +12,12 @@
 
 ### Fixed
 
+### Updated
+
+## [0.1.0-alpha.9] - 2021-12-13
+
+### Fixed
+
 - pushing two tags at same time crashes
 
 ### Updated

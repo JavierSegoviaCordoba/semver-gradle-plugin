@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- crash when the project has no commits
+
 ### Updated
 
 - `org.jetbrains.kotlin:kotlin-gradle-plugin -> 1.6.10`

@@ -16,6 +16,7 @@
 
 ### Updated
 
+- `gradle -> 7.3.2`
 - `org.jetbrains.kotlin:kotlin-gradle-plugin -> 1.6.10`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.9`
 

@@ -16,9 +16,9 @@
 
 ### Updated
 
+- `com.javiersc.semver:semver-core -> 0.1.0-beta.10`
 - `gradle -> 7.3.2`
 - `org.jetbrains.kotlin:kotlin-gradle-plugin -> 1.6.10`
-- `com.javiersc.semver:semver-core -> 0.1.0-beta.9`
 
 ## [0.1.0-alpha.9] - 2021-12-13
 

@@ -12,6 +12,12 @@
 
 ### Fixed
 
+### Updated
+
+## [0.1.0-alpha.10] - 2021-12-18
+
+### Fixed
+
 - crash when the project has no commits
 
 ### Updated

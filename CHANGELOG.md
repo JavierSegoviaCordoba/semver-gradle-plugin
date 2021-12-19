@@ -14,6 +14,8 @@
 
 ### Updated
 
+- `io.kotest:kotest-assertions-core -> 5.0.3`
+
 ## [0.1.0-alpha.10] - 2021-12-18
 
 ### Fixed

@@ -14,6 +14,7 @@
 
 ### Updated
 
+- `org.jetbrains.kotlinx:kotlinx-coroutines-core -> 1.6.0`
 - `io.kotest:kotest-assertions-core -> 5.0.3`
 
 ## [0.1.0-alpha.10] - 2021-12-18

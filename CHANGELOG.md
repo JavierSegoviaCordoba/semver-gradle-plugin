@@ -14,6 +14,7 @@
 
 ### Updated
 
+- `gradle -> 7.3.3`
 - `org.jetbrains.kotlinx:kotlinx-coroutines-core -> 1.6.0`
 - `io.kotest:kotest-assertions-core -> 5.0.3`
 

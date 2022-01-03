@@ -18,9 +18,9 @@ jobs:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
     with:
       allow-github-actor-bots: false
-      publish-snapshot: true
-      publish-docs: true
+      code-coverage-report: false
     secrets:
       OSS_USER: '${{ secrets.OSS_USER }}'
       OSS_TOKEN: '${{ secrets.OSS_TOKEN }}'
       OSS_STAGING_PROFILE_ID: '${{ secrets.OSS_STAGING_PROFILE_ID }}'
+      SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'

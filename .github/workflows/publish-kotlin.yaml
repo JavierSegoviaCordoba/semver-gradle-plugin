@@ -11,10 +11,7 @@ jobs:
     with:
       publish-maven-central: true
       publish-gradle-plugin-portal: true
-      publish-docs: true
-      publish-github-release: true
     secrets:
-      TOKEN_GITHUB_ACTION: '${{ secrets.GITHUB_TOKEN }}'
       OSS_USER: '${{ secrets.OSS_USER }}'
       OSS_TOKEN: '${{ secrets.OSS_TOKEN }}'
       OSS_STAGING_PROFILE_ID: '${{ secrets.OSS_STAGING_PROFILE_ID }}'
@@ -24,3 +21,4 @@ jobs:
       SIGNING_KEY: '${{ secrets.SIGNING_KEY }}'
       GRADLE_PUBLISH_KEY: '${{ secrets.GRADLE_PUBLISH_KEY }}'
       GRADLE_PUBLISH_SECRET: '${{ secrets.GRADLE_PUBLISH_SECRET }}'
+      SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'

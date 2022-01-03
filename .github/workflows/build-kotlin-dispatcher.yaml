@@ -4,9 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       gradle-args:
-        description: 'Gradle args for `build` step'
+        description: 'Gradle args for every step'
         default: ''
         required: false
+      publish-all-docs:
+        description: 'Publish all docs instead of only API docs and reports'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
@@ -14,9 +19,10 @@ jobs:
     with:
       gradle-args: '${{ github.event.inputs.gradle-args }}'
       allow-github-actor-bots: false
-      publish-snapshot: true
-      publish-docs: true
+      code-coverage-report: false
+      publish-all-docs: '${{ github.event.inputs.publish-all-docs }}'
     secrets:
       OSS_USER: '${{ secrets.OSS_USER }}'
       OSS_TOKEN: '${{ secrets.OSS_TOKEN }}'
       OSS_STAGING_PROFILE_ID: '${{ secrets.OSS_STAGING_PROFILE_ID }}'
+      SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>detekt report</title>
+    <style>
+h2 {
+  background-color: #666666;
+  padding: 0.2em;
+  color: #ffffff;
+}
+h3 {
+  background-color:#f8dfdf;
+  padding:0.5em;
+}
+.rule {
+  background-color: #dddddd;
+  padding: 0.3em;
+  font-weight: bold;
+}
+.description {
+  color:#000000;
+  padding:0.3em;
+}
+.location {
+  color: #690505;
+  font-family: monospace;
+  display: block;
+}
+.message {
+  font-size: 0.8em;
+  color: #444444;
+  display: block;
+  margin-top: 1pt;
+}
+.rule-container {
+  border: 0.1em dashed #dddddd;
+  padding: 0.1em;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+pre {
+  border: 1px solid #e0e0e0;
+  overflow: scroll;
+}
+.lineno {
+  color: #999999;
+  background-color: #f0f0f0;
+}
+.error {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AwCFR4T/3uLMgAAADxJREFUCNdNyLERQEAABMCjL4lQwIzcjErpguAL+C9AvgKJDbeD/PRpLdm35Hm+MU+cB+tCKaJW4L4YBy+CAiLJrFs9mgAAAABJRU5ErkJggg==) bottom repeat-x;
+}
+.exception {
+  color: #b60808;
+  display: inline-block;
+  background-color: #ecdada;
+  border-color: #b60808;
+  border-radius: 10px;
+  border: solid 2px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 16px;
+}
+</style>
+</head>
+<body>
+
+<h1>detekt report</h1>
+
+<h2>Metrics</h2>
+
+<div>
+  <ul>
+    <li>89 number of properties</li>
+    <li>96 number of functions</li>
+    <li>42 number of classes</li>
+    <li>6 number of packages</li>
+    <li>32 number of kt files</li>
+  </ul>
+</div>
+
+
+<h2>Complexity Report</h2>
+
+<div>
+  <ul>
+    <li>2,965 lines of code (loc)</li>
+    <li>2,505 source lines of code (sloc)</li>
+    <li>1,954 logical lines of code (lloc)</li>
+    <li>10 comment lines of code (cloc)</li>
+    <li>231 cyclomatic complexity (mcc)</li>
+    <li>69 cognitive complexity</li>
+    <li>15 number of total code smells</li>
+    <li>0% comment source ratio</li>
+    <li>118 mcc per 1,000 lloc</li>
+    <li>7 code smells per 1,000 lloc</li>
+  </ul>
+</div>
+
+
+<h2>Findings</h2>
+<div>Total: 15
+  <h3>complexity: 11</h3>
+  <details id="LargeClass" open="open">
+    <summary class="rule-container"><span class="rule">LargeClass: 1 </span><span class="description">One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:30:16</span><span class="message">Class GitTagTest is too large. Consider splitting it into smaller pieces.</span>
+        <pre><code><span class="lineno">  27 </span>import kotlin.test.Test
+<span class="lineno">  28 </span>import org.eclipse.jgit.lib.Ref
+<span class="lineno">  29 </span>
+<span class="lineno">  30 </span>internal class <span class="error">GitTagTest</span> {
+<span class="lineno">  31 </span>
+<span class="lineno">  32 </span>    @Test
+<span class="lineno">  33 </span>    fun `tags in repo`() {
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="LongMethod" open="open">
+    <summary class="rule-container"><span class="rule">LongMethod: 7 </span><span class="description">One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt:24:9</span><span class="message">The function massive tags in same commit is too long (77). The maximum length is 60.</span>
+        <pre><code><span class="lineno">  21 </span>
+<span class="lineno">  22 </span>    @Test
+<span class="lineno">  23 </span>    @Suppress(&quot;ComplexMethod&quot;)
+<span class="lineno">  24 </span>    fun <span class="error">`massive tags in same commit`</span>() {
+<span class="lineno">  25 </span>        testProjectDir.createGitIgnore()
+<span class="lineno">  26 </span>
+<span class="lineno">  27 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt:10:9</span><span class="message">The function random is too long (62). The maximum length is 60.</span>
+        <pre><code><span class="lineno">   7 </span>class TagsOrderTest {
+<span class="lineno">   8 </span>
+<span class="lineno">   9 </span>    @Test
+<span class="lineno">  10 </span>    fun <span class="error">random</span>() =
+<span class="lineno">  11 </span>        testSandbox(
+<span class="lineno">  12 </span>            sandboxPath = &quot;tags-order/random&quot;,
+<span class="lineno">  13 </span>            beforeTest = {
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:495:9</span><span class="message">The function version tags in current branch is too long (85). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 492 </span>    }
+<span class="lineno"> 493 </span>
+<span class="lineno"> 494 </span>    @Test
+<span class="lineno"> 495 </span>    fun <span class="error">`version tags in current branch`</span>() {
+<span class="lineno"> 496 </span>        initialCommitAnd {
+<span class="lineno"> 497 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 498 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:590:9</span><span class="message">The function version tags sorted by semver is too long (85). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 587 </span>    }
+<span class="lineno"> 588 </span>
+<span class="lineno"> 589 </span>    @Test
+<span class="lineno"> 590 </span>    fun <span class="error">`version tags sorted by semver`</span>() {
+<span class="lineno"> 591 </span>        initialCommitAnd {
+<span class="lineno"> 592 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 593 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:688:9</span><span class="message">The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 685 </span>    }
+<span class="lineno"> 686 </span>
+<span class="lineno"> 687 </span>    @Test
+<span class="lineno"> 688 </span>    fun <span class="error">`version tags sorted by timeline or semver 1`</span>() {
+<span class="lineno"> 689 </span>        initialCommitAnd {
+<span class="lineno"> 690 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 691 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:790:9</span><span class="message">The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 787 </span>    }
+<span class="lineno"> 788 </span>
+<span class="lineno"> 789 </span>    @Test
+<span class="lineno"> 790 </span>    fun <span class="error">`version tags sorted by timeline or semver 2`</span>() {
+<span class="lineno"> 791 </span>        initialCommitAnd {
+<span class="lineno"> 792 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 793 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:979:9</span><span class="message">The function last version tag in current branch is too long (71). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 976 </span>    }
+<span class="lineno"> 977 </span>
+<span class="lineno"> 978 </span>    @Test
+<span class="lineno"> 979 </span>    fun <span class="error">`last version tag in current branch`</span>() {
+<span class="lineno"> 980 </span>        initialCommitAnd {
+<span class="lineno"> 981 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 982 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="LongParameterList" open="open">
+    <summary class="rule-container"><span class="rule">LongParameterList: 2 </span><span class="description">The more parameters a function has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer functions with short parameter lists.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/CalculatedVersion.kt:9:35</span><span class="message">The function calculatedVersion(warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -&gt; Unit, tagPrefix: String, stageProperty: String?, scopeProperty: String?, isCreatingSemverTag: Boolean, mockDate: Date?, checkClean: Boolean) has too many parameters. The current threshold is set to 6.</span>
+        <pre><code><span class="lineno">   6 </span>import org.eclipse.jgit.api.Git
+<span class="lineno">   7 </span>
+<span class="lineno">   8 </span>@Suppress(&quot;ComplexMethod&quot;)
+<span class="lineno">   9 </span>internal fun Git.calculatedVersion<span class="error">(</span>
+<span class="lineno">  10 </span><span class="error">    warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -&gt; Unit,</span>
+<span class="lineno">  11 </span><span class="error">    tagPrefix: String,</span>
+<span class="lineno">  12 </span><span class="error">    stageProperty: String?,</span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/CalculatedVersionTest.kt:119:35</span><span class="message">The function calculatedVersion(warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -&gt; Unit, tagPrefix: String, stage: String?, scope: String?, isCreatingTag: Boolean, mockDate: Date?, checkClean: Boolean) has too many parameters. The current threshold is set to 6.</span>
+        <pre><code><span class="lineno"> 116 </span>    }
+<span class="lineno"> 117 </span>}
+<span class="lineno"> 118 </span>
+<span class="lineno"> 119 </span>private fun File.calculatedVersion<span class="error">(</span>
+<span class="lineno"> 120 </span><span class="error">    warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -&gt; Unit = { _, _ -&gt; },</span>
+<span class="lineno"> 121 </span><span class="error">    tagPrefix: String = &quot;v&quot;,</span>
+<span class="lineno"> 122 </span><span class="error">    stage: String? = null,</span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="TooManyFunctions" open="open">
+    <summary class="rule-container"><span class="rule">TooManyFunctions: 1 </span><span class="description">Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage too many things at once. Extract functionality which clearly belongs together.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefGitExtensions.kt:1:1</span><span class="message">File '/home/runner/work/semver-gradle-plugin/semver-gradle-plugin/semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefGitExtensions.kt' with '14' functions detected. Defined threshold inside files is set to '11'</span>
+        <pre><code><span class="lineno">   1 </span><span class="error">package com.javiersc.semver.gradle.plugin.internal</span>
+<span class="lineno">   2 </span>
+<span class="lineno">   3 </span>import com.javiersc.semver.Version
+<span class="lineno">   4 </span>import org.eclipse.jgit.api.Git
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>exceptions: 1</h3>
+  <details id="SwallowedException" open="open">
+    <summary class="rule-container"><span class="rule">SwallowedException: 1 </span><span class="description">The caught exception is swallowed. The original exception could be lost.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefProjectExtensions.kt:16:22</span><span class="message">The caught exception is swallowed. The original exception could be lost.</span>
+        <pre><code><span class="lineno">  13 </span>        hasGit &amp;&amp;
+<span class="lineno">  14 </span>            try {
+<span class="lineno">  15 </span>                git.commitsInCurrentBranchRevCommit.isNotEmpty()
+<span class="lineno">  16 </span>            } catch (<span class="error">exception: NoHeadException</span>) {
+<span class="lineno">  17 </span>                false
+<span class="lineno">  18 </span>            }
+<span class="lineno">  19 </span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>naming: 1</h3>
+  <details id="TopLevelPropertyNaming" open="open">
+    <summary class="rule-container"><span class="rule">TopLevelPropertyNaming: 1 </span><span class="description">Top level property names should follow the naming convention set in the projects configuration.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/SemVerProperties.kt:10:20</span><span class="message">Top level constant names should match the pattern: [A-Z][_A-Z0-9]*</span>
+        <pre><code><span class="lineno">   7 </span>internal val Project.tagPrefixProperty: String
+<span class="lineno">   8 </span>    get() = properties[SemVerProperties.TagPrefix.key]?.toString() ?: defaultTagPrefix
+<span class="lineno">   9 </span>
+<span class="lineno">  10 </span>internal const val <span class="error">defaultTagPrefix</span> = &quot;&quot;
+<span class="lineno">  11 </span>
+<span class="lineno">  12 </span>internal val Project.stageProperty: String?
+<span class="lineno">  13 </span>    get() =
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>style: 2</h3>
+  <details id="ForbiddenComment" open="open">
+    <summary class="rule-container"><span class="rule">ForbiddenComment: 1 </span><span class="description">Flags a forbidden comment.</span></summary>
+    <ul>
+      <li><span class="location">buildSrc/build.gradle.kts:12:5</span><span class="message">This comment contains 'TODO:' that has been defined as forbidden in detekt.</span>
+        <pre><code><span class="lineno">   9 </span>}
+<span class="lineno">  10 </span>
+<span class="lineno">  11 </span>dependencies {
+<span class="lineno">  12 </span>    <span class="error">// TODO: remove when the next issue is fixed:</span>
+<span class="lineno">  13 </span>    //  https://github.com/gradle/gradle/issues/15383#issuecomment-779893192
+<span class="lineno">  14 </span>    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+<span class="lineno">  15 </span>    implementation(files(pluginLibs.javaClass.superclass.protectionDomain.codeSource.location))
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="UtilityClassWithPublicConstructor" open="open">
+    <summary class="rule-container"><span class="rule">UtilityClassWithPublicConstructor: 1 </span><span class="description">The class declaration is unnecessary because it only contains utility functions. An object declaration should be used instead.</span></summary>
+    <ul>
+      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTag.kt:9:1</span><span class="message">The class PushSemverTag only contains utility functions. Consider defining it as an object.</span>
+        <pre><code><span class="lineno">   6 </span>import org.eclipse.jgit.transport.RemoteConfig
+<span class="lineno">   7 </span>import org.gradle.api.Project
+<span class="lineno">   8 </span>
+<span class="lineno">   9 </span><span class="error">public open class PushSemverTag {</span>
+<span class="lineno">  10 </span><span class="error"></span>
+<span class="lineno">  11 </span><span class="error">    internal companion object {</span>
+<span class="lineno">  12 </span><span class="error">        internal const val name = &quot;pushSemverTag&quot;</span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+</div>
+
+
+generated with <a href="https://detekt.github.io/">detekt version 1.19.0</a> on 2022-01-03 23:05:09 UTC.
+
+</body>
+</html>

@@ -6,9 +6,9 @@
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/all-plugins/0.1.0-rc.39/771b1a9be39cc26b0875b2b8d3eb794f6c1f9dad/all-plugins-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/all-plugins/0.1.0-rc.40/82c27978639133615b5670745b82da59e14420dc/all-plugins-0.1.0-rc.40.jar!/"
       ]
     },
     {
@@ -36,105 +36,105 @@
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/kotlin-config/0.1.0-rc.39/d33ba2d25b57061a0d2c7f865d730252f408a49e/kotlin-config-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/kotlin-config/0.1.0-rc.40/66ffe460ed46a494b9eaf0428981275823eb55cc/kotlin-config-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/publish/0.1.0-rc.39/4e563a45df9d28a9cae034c356084b84930ee66/publish-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/publish/0.1.0-rc.40/c9eace56f66ed63cf6b37f3c5cff2360443f8dd6/publish-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/core/0.1.0-rc.39/dab1d4730decac035ee3305dbb8443be4dd36ad8/core-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/core/0.1.0-rc.40/f7b9a5d8b4eb6fd40a242be04f6e0eef6daef5d0/core-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/all-projects/0.1.0-rc.39/9b454b158038c440b35b3e41b8fd28d88c10b27f/all-projects-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/all-projects/0.1.0-rc.40/7b9c5cf258d28bf1584e2f4bd6e90366fb33cc6b/all-projects-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/code-analysis/0.1.0-rc.39/89a35332c608b442f590e457a1ae0e20532f4dcd/code-analysis-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/code-analysis/0.1.0-rc.40/10d48f4114639065c7f314b6afbe6e922e0a1ebe/code-analysis-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/code-coverage/0.1.0-rc.39/af5278d477c4682b530fb8e87f0d7a48dbb48e4b/code-coverage-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/code-coverage/0.1.0-rc.40/1c3fa9cf6cc489861ac2503e42780294721596ba/code-coverage-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/code-formatter/0.1.0-rc.39/5833d5546eaad0acd4ad303166b0ce8e2dcc8ad1/code-formatter-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/code-formatter/0.1.0-rc.40/4b255ff8c4482db0a0a8a2d9363e396bd47cfe3e/code-formatter-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/dependency-updates/0.1.0-rc.39/9abc5b662bc2aaef578cbeba228e6e0cd0bd588e/dependency-updates-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/dependency-updates/0.1.0-rc.40/57d3101c1bb167e9444ef0cb5616a54136acffec/dependency-updates-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/versioning/0.1.0-rc.39/8a057df660156128ef633275bbf92f5226ab5817/versioning-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/versioning/0.1.0-rc.40/af7ca713c064cb9c3c2cbdd579b220f517df6249/versioning-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/changelog/0.1.0-rc.39/6bd4638ae837c99a1c9de2624946ef2781b57bad/changelog-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/changelog/0.1.0-rc.40/37c976ac82984208c755dca88759d993bfe93bde/changelog-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/docs/0.1.0-rc.39/e920c211c093917f478c4a3134bd2ac20064a810/docs-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/docs/0.1.0-rc.40/97aa6b4c15376dbb8a613496cc4b0894a697d6f2/docs-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/readme-badges/0.1.0-rc.39/57db6d33752e3ca86b35eeea587bd9e23d342596/readme-badges-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/readme-badges/0.1.0-rc.40/664e3aa70ba2d19529b532db2cb3f545235cf434/readme-badges-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/gradle-wrapper-updater/0.1.0-rc.39/5e8e2ff2d4868bed370381e07da2852223c78526/gradle-wrapper-updater-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/gradle-wrapper-updater/0.1.0-rc.40/4c32893b0bbc44ab2447cdd8abfcb56ed53ee0b0/gradle-wrapper-updater-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/nexus/0.1.0-rc.39/8aefc07fbe9411bc2ca31d497efa731c722da6d7/nexus-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/nexus/0.1.0-rc.40/f50896be25769892e6c2d84c3c49e07dee214b11/nexus-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/massive-catalogs-updater/0.1.0-rc.39/88779c70d08348af4c6b8bc2b79de21b4d26d86d/massive-catalogs-updater-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/massive-catalogs-updater/0.1.0-rc.40/57d5901c45d1ba6eefd6af01e863ac89a8a4999d/massive-catalogs-updater-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/projects-version-catalog/0.1.0-rc.39/695d5d310cf43a34817b19e8c2eb3e38d189a038/projects-version-catalog-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/projects-version-catalog/0.1.0-rc.40/2fd26696bf69a3ae67a9a71a03c6f552f2480307/projects-version-catalog-0.1.0-rc.40.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.39",
+      "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.40",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/plugin-accessors/0.1.0-rc.39/71be5649b3d3cb3e1e0b36814e754cdc1fe2a08b/plugin-accessors-0.1.0-rc.39.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-plugins/plugin-accessors/0.1.0-rc.40/e9697a4428f281c17956b640e011005829e035cf/plugin-accessors-0.1.0-rc.40.jar!/"
       ]
     },
     {
@@ -174,15 +174,15 @@
       ]
     },
     {
-      "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.0-RC",
+      "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.0-RC2",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kover/0.5.0-RC/d3d214c074b43b21b2bc77c02b3e21cd52d40013/kover-0.5.0-RC.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kover/0.5.0-RC2/24adcfadd76993dc039e9aaa37ff847d3ce775c/kover-0.5.0-RC2.jar!/"
       ]
     },
     {
-      "name": "Gradle: com.github.ben-manes:gradle-versions-plugin:0.40.0",
+      "name": "Gradle: com.github.ben-manes:gradle-versions-plugin:0.41.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.40.0/111f8e934f75a342a9c304bb7edbfcdeca5872c/gradle-versions-plugin-0.40.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.41.0/6f3cca7c3dee74f05b873384a575fd580c1b02e1/gradle-versions-plugin-0.41.0.jar!/"
       ]
     },
     {
@@ -367,9 +367,9 @@
       ]
     },
     {
-      "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.1.0",
+      "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.2.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.diffplug.spotless/spotless-plugin-gradle/6.1.0/3e1ac042db2e1edf8be663044bc115a32023e8a3/spotless-plugin-gradle-6.1.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.diffplug.spotless/spotless-plugin-gradle/6.2.0/b1ae58b3ec35b05c984523c2e5173eedd2e41e4e/spotless-plugin-gradle-6.2.0.jar!/"
       ]
     },
     {
@@ -481,9 +481,9 @@
       ]
     },
     {
-      "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.3",
+      "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.4",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.kotlin/kotlin-stdlib-jvm/0.1.0-alpha.3/27597c49d6a6343d305c313491596e7f7b505ad2/kotlin-stdlib-jvm-0.1.0-alpha.3.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.kotlin/kotlin-stdlib-jvm/0.1.0-alpha.4/7ede46b13242391aeabd6cc49ee6ea84efd4cd84/kotlin-stdlib-jvm-0.1.0-alpha.4.jar!/"
       ]
     },
     {
@@ -559,9 +559,9 @@
       ]
     },
     {
-      "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.21.0",
+      "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.22.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.diffplug.spotless/spotless-lib-extra/2.21.0/9665bd36555ddeff59bf868961a2d3e74d0c5b28/spotless-lib-extra-2.21.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.diffplug.spotless/spotless-lib-extra/2.22.0/222903c01472991d9cda1cb809cf1f34ebde7168/spotless-lib-extra-2.22.0.jar!/"
       ]
     },
     {
@@ -583,9 +583,9 @@
       ]
     },
     {
-      "name": "Gradle: com.diffplug.spotless:spotless-lib:2.21.0",
+      "name": "Gradle: com.diffplug.spotless:spotless-lib:2.22.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.diffplug.spotless/spotless-lib/2.21.0/552f7c828366b194b885b35483e9d7b2d274d8d3/spotless-lib-2.21.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.diffplug.spotless/spotless-lib/2.22.0/5d579c4e9c11b57b494c5d71b192a4d0d5dd0105/spotless-lib-2.22.0.jar!/"
       ]
     },
     {
@@ -814,12 +814,6 @@
       "name": "Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.1.0",
       "roots": [
         "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm/1.1.0/6a6d0b8e8a44c48e206e435d279b1773832f4f1b/kotlinx-serialization-core-jvm-1.1.0.jar!/"
-      ]
-    },
-    {
-      "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.4",
-      "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.kotlin/kotlin-stdlib-jvm/0.1.0-alpha.4/7ede46b13242391aeabd6cc49ee6ea84efd4cd84/kotlin-stdlib-jvm-0.1.0-alpha.4.jar!/"
       ]
     },
     {

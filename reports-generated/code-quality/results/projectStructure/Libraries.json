@@ -823,9 +823,9 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.0.3",
+      "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.1.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-core-jvm/5.0.3/748635491849b3ef50c87652451f69ac36080/kotest-assertions-core-jvm-5.0.3.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-core-jvm/5.1.0/6437ec2783a6e1b0f46e9bfa94cda5979ab1d748/kotest-assertions-core-jvm-5.1.0.jar!/"
       ]
     },
     {
@@ -841,9 +841,9 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.0.3",
+      "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.1.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-shared-jvm/5.0.3/d8441eb0c761e40f343cb35075be4eab6da5d109/kotest-assertions-shared-jvm-5.0.3.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-shared-jvm/5.1.0/c1c28ec2acbb5247cfcdbf4fb3accaa9fde32370/kotest-assertions-shared-jvm-5.1.0.jar!/"
       ]
     },
     {
@@ -865,21 +865,15 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.0.3",
+      "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.1.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-api-jvm/5.0.3/8ee9f742386fa7c684d0fb556039a6beed2bd9c0/kotest-assertions-api-jvm-5.0.3.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-api-jvm/5.1.0/c4a99f7c0bc0e68a6f8afaa932103a120af22590/kotest-assertions-api-jvm-5.1.0.jar!/"
       ]
     },
     {
-      "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.5.2",
+      "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-jdk8/1.5.2/9c62137ef8ed62459f7a412bfc9884e2c6ca15d6/kotlinx-coroutines-jdk8-1.5.2.jar!/"
-      ]
-    },
-    {
-      "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.0",
-      "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.0/a215a7f914d5916dc5fd2d45cea16524e0220203/kotlin-reflect-1.6.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-jdk8/1.6.0/49fdbe0570870f025f293c25f5e58fdf5be8dafb/kotlinx-coroutines-jdk8-1.6.0.jar!/"
       ]
     },
     {
@@ -889,15 +883,15 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-common-jvm:5.0.3",
+      "name": "Gradle: io.kotest:kotest-common-jvm:5.1.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-common-jvm/5.0.3/c8a49f863999ef71775eddb421260068429ea2bc/kotest-common-jvm-5.0.3.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-common-jvm/5.1.0/1b3d769940398c49e0ada52a8270a172608a01bb/kotest-common-jvm-5.1.0.jar!/"
       ]
     },
     {
-      "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2",
+      "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.5.2/f4cc07a50437659e0043e7da762809a46932b6a0/kotlinx-coroutines-core-jvm-1.5.2.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.6.0/f3b8fd26c2e76d2f18cbc36aacb6e349fcb9fd5f/kotlinx-coroutines-core-jvm-1.6.0.jar!/"
       ]
     },
     {

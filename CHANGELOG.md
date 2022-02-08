@@ -14,10 +14,10 @@
 
 ### Updated
 
+- `gradle -> 7.4`
 - `io.kotest:kotest-assertions-core -> 5.1.0`
 - `com.javiersc.gradle-plugins:all-plugins -> 0.1.0-rc.40`
 - `com.javiersc.kotlin:kotlin-stdlib -> 0.1.0-alpha.4`
-- `gradle -> 7.3.3`
 - `org.jetbrains.kotlinx:kotlinx-coroutines-core -> 1.6.0`
 
 ## [0.1.0-alpha.10] - 2021-12-18

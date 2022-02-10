@@ -54,32 +54,4 @@
     "inspectionName": "UnstableApiUsage"
   },
   "hash": "2f6a24d195b305756e524c9332131f3201fae4ad9912422e2fe8aaf1c52e86a6"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'from(java.lang.Object)' is declared in unstable interface 'org.gradle.api.initialization.dsl.VersionCatalogBuilder' marked with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "settings.gradle.kts",
-      "language": "kotlin",
-      "line": 16,
-      "offset": 32,
-      "length": 4,
-      "code": {
-        "startLine": 14,
-        "length": 4,
-        "offset": 54,
-        "surroundingCode": "\n    versionCatalogs {\n        create(\"pluginLibs\") { from(files(\"gradle/pluginLibs.versions.toml\")) }\n    }\n}"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-javiersc",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "db22261cb70b4beb10d8330d132b6839effe4df3bc9d06426ec40b2f7de2594e"
 }]}

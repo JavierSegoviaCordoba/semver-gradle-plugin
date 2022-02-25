@@ -25,107 +25,6 @@
       ]
     },
     {
-      "name": "JVM languages",
-      "inspections": [
-        {
-          "shortName": "OverrideOnly",
-          "displayName": "Method can only be overridden",
-          "enabled": true,
-          "description": "Reports calls to API methods marked with `@ApiStatus.OverrideOnly`.\n\n\nThe `@ApiStatus.OverrideOnly` annotation indicates that the method is part of SPI (Service Provider Interface).\nClients of the declaring library should implement or override such methods, not call them directly.\nMarking a class or interface with this annotation is the same as marking every method with it."
-        },
-        {
-          "shortName": "SerializableHasSerialVersionUIDField",
-          "displayName": "Serializable class without 'serialVersionUID'",
-          "enabled": false,
-          "description": "Reports classes that implement `Serializable` and do not declare a `serialVersionUID` field.\n\n\nWithout a `serialVersionUID` field, any change to the class will make previously serialized versions unreadable.\n\n**Example:**\n\n\n      class Main implements Serializable {\n      }\n\nAfter the quick-fix is applied:\n\n\n      class Main implements Serializable {\n        private static final long serialVersionUID = -1446398935944895849L;\n      }\n\nWhen using a language level of JDK 14 or higher, the quickfix will also add the `java.io.Serial` annotation.\n\nUse the following options to configure the inspection:\n\n* List classes whose inheritors should not be reported by this inspection. This is meant for classes that inherit `Serializable` from a superclass but are not intended for serialization.\n* Whether to ignore `Serializable` anonymous classes."
-        },
-        {
-          "shortName": "JUnitRule",
-          "displayName": "Malformed @Rule/@ClassRule field",
-          "enabled": false,
-          "description": "Reports malformed `@Rule` or `@ClassRule` annotation usages. Tests with malformed [rules](https://github.com/junit-team/junit4/wiki/Rules) cannot be run.\n\n* A `@Rule` annotated member must be `public` and a subtype of `org.junit.rules.TestRule` or `org.junit.rules.MethodRule`\n* A `@ClassRule` annotated member must be `public` and `static` and a subtype of `org.junit.rules.TestRule`\n\nFor example:\n\n\n      public class MomentousTest {\n        @Rule\n        private final TemporaryFolder tempFolder =\n          new TemporaryFolder();\n\n        // ... tests go here\n      }\n\nA quick fix is provided to fix the modifiers:\n\n\n      public class MomentousTest {\n        @Rule\n        public final TemporaryFolder tempFolder =\n          new TemporaryFolder();\n\n        // ... tests go here\n      }\n"
-        },
-        {
-          "shortName": "JUnit5Converter",
-          "displayName": "JUnit 4 test can be JUnit 5",
-          "enabled": false,
-          "description": "Reports JUnit 4 tests that can be automatically migrated to JUnit 5. While default runners are automatically convertible, custom runners, method- and field- rules are not and require manual changes.\n\n**Example:**\n\n\n      import org.junit.Assert;\n      import org.junit.Test;\n\n      public class RelevantTest {\n        @Test\n        public void testIt() {\n          Assert.assertEquals(\"expected\", \"actual\");\n        }\n      }\n\nAfter the quick-fix is applied:\n\n\n      import org.junit.jupiter.api.Assertions;\n      import org.junit.jupiter.api.Test;\n\n      public class RelevantTest {\n        @Test\n        public void testIt() {\n          Assertions.assertEquals(\"expected\", \"actual\");\n        }\n      }\n\nThis inspection requires that the JUnit 5 library is available in the classpath, and JDK 1.8 or later is configured for the project."
-        },
-        {
-          "shortName": "BlockingMethodInNonBlockingContext",
-          "displayName": "Possibly blocking call in non-blocking context",
-          "enabled": true,
-          "description": "Reports thread-blocking method calls in code fragments where threads should not be blocked.\n\n**Example (Project Reactor):**\n\n\n    Flux.just(\"1\").flatMap(f -> {\n        Flux<String> just = loadUsersFromDatabase();\n        just.toIterable(); // Error: blocking operator call in non-blocking scope\n        return just;\n      }\n    );\n\nConsider running blocking code [with a proper\nscheduler](https://projectreactor.io/docs/core/release/reference/#faq.wrap-blocking), for example `Schedulers.boundedElastic()`, or try to find an alternative non-blocking API.\n\n**Example (Kotlin Coroutines):**\n\n\n    suspend fun exampleFun() {\n        Thread.sleep(100); // Error: blocking method call inside suspend function\n    }\n\nConsider running blocking code [with a special dispatcher](https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html),\nfor example `Dispatchers.IO`, or try to find an alternative non-blocking API.\n\nConfigure the inspection:\n\n* In the **Blocking Annotations** list, specify annotations that mark thread-blocking methods.\n* In the **Non-Blocking Annotations** list, specify annotations that mark non-blocking methods.\n\nSpecified annotations can be used as [External Annotations](https://www.jetbrains.com/help/idea/external-annotations.html)"
-        },
-        {
-          "shortName": "MissingDeprecatedAnnotationOnScheduledForRemovalApi",
-          "displayName": "Missing '@Deprecated' annotation on scheduled for removal API",
-          "enabled": true,
-          "description": "Reports declarations marked with `@ApiStatus.ScheduledForRemoval` without `@Deprecated`.\n\nExample:\n\n```\n  @ApiStatus.ScheduledForRemoval(inVersion = \"2017.3\")\n  public void myLegacyMethod() { }\n```\n\nAfter the quick-fix is applied the result looks like:\n\n```\n  @Deprecated\n  @ApiStatus.ScheduledForRemoval(inVersion = \"2017.3\")\n  public void myLegacyMethod() { }\n```"
-        },
-        {
-          "shortName": "SourceToSinkFlow",
-          "displayName": "Non-safe string is passed to safe method",
-          "enabled": false,
-          "description": "Reports cases when non-safe string is passed to a method with parameter marked with annotation `org.checkerframework.checker.tainting.qual.Untainted`.\n\n\nSafe string is:\n\n* call of method that is marked as `@Untainted`\n* local variable or method parameter that does not call non-safe methods\n* field, local variable or parameter that is marked as `@Untainted` and does not have non-safe methods calls assigned\n\n\nExample:\n\n\n      void doSmth(boolean b) {\n        String s = safe();\n        String s1 = \"other\";\n        if (b) s1 = s;\n        sink(s);\n      }\n      \n      String sink(@Untainted String s) {}\n\n\nHere we do not have non-safe string assignments to `s` so warning is not produced. On the other hand:\n\n\n      void doSmth(boolean b) {\n        String s = safe();\n        String s1 = \"other\";\n        s1 = foo();\n        if (b) s1 = s;\n        sink(s);        // warning here\n      }\n      \n      String foo();\n\n      String sink(@Untainted String s) {}\n\n\nHere we have a warning since `s1` has an unknown state after `foo` call result assignment.\n\nNew in 2021.2"
-        },
-        {
-          "shortName": "Dependency",
-          "displayName": "Illegal package dependencies",
-          "enabled": true,
-          "description": "Reports illegal dependencies between scopes according to the dependency rules given. Dependency rules can be used to prohibit usage from a scope to another scope.\n\nUse the **Configure dependency rules** button below to customize validation rules."
-        },
-        {
-          "shortName": "ThreadRun",
-          "displayName": "Call to 'Thread.run()'",
-          "enabled": true,
-          "description": "Reports calls to `run()` on `java.lang.Thread` or any of its subclasses.\n\n\nWhile occasionally intended, this is usually a mistake, because `run()` doesn't start a new thread.\nTo execute the code in a separate thread, `start()` should be used."
-        },
-        {
-          "shortName": "UnstableApiUsage",
-          "displayName": "Unstable API Usage",
-          "enabled": true,
-          "description": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries."
-        },
-        {
-          "shortName": "MustAlreadyBeRemovedApi",
-          "displayName": "API must already be removed",
-          "enabled": true,
-          "description": "Reports declarations marked with `@ApiStatus.ScheduledForRemoval` that should have been removed in the current version of the declaring library.\n\nIt compares the specified scheduled removal version with the version that you can set below.\n\n\nSpecify the version as a string separated with dots and optionally postfixed with\n`alpha`, `beta`, `snapshot`, or `eap`.\n\nExamples of valid versions: `1.0`, `2.3.1`, `2018.1`, `7.5-snapshot`, `3.0-eap`.\n\n\nVersion comparison is intuitive: `1.0 < 2.0`, `1.0-eap < 1.0`, `2.3-snapshot < 2.3` and so on.\nFor detailed comparison logic, refer to the implementation of [VersionComparatorUtil](https://github.com/JetBrains/intellij-community/blob/master/platform/util-rt/src/com/intellij/util/text/VersionComparatorUtil.java)."
-        },
-        {
-          "shortName": "TestFailedLine",
-          "displayName": "Failed line in test",
-          "enabled": true,
-          "description": "Reports failed method calls or assertions in tests. It helps detect the failed line in code faster and start debugging it immediately.\n\n**Example:**\n\n\n      @Test\n      fun foo() {\n        assertEquals(1, 0) // highlighted\n      }\n"
-        },
-        {
-          "shortName": "UnstableTypeUsedInSignature",
-          "displayName": "Unstable type is used in signature",
-          "enabled": true,
-          "description": "Reports declarations of classes, methods, and fields that reference an unstable API type in the signature, but are not marked with the same unstable annotation.\n\n\nThis inspection ensures that the signatures of a public API do not expose any *unstable* (internal, experimental) types.\nFor example, if a method returns an *experimental* class, the method itself is considered *experimental*\nbecause incompatible changes of the type (deletion or move to another package) lead to incompatible method signature changes.\n\nUse the list below to specify which annotations mark an unstable API."
-        },
-        {
-          "shortName": "JUnit5AssertionsConverter",
-          "displayName": "Obsolete assertions in JUnit 5 tests",
-          "enabled": false,
-          "description": "Reports any calls to methods from the `junit.framework.Assert`, `org.junit.Assert`, or `org.junit.Assume`\nclasses inside JUnit 5 tests.\n\nAlthough the tests work properly, migration to `org.junit.jupiter.api.Assertions`/`org.junit.jupiter.api.Assumptions`\nwill help you avoid dependencies on old JUnit version.\n\n**Example:**\n\n\n      import org.junit.Assert;\n      import org.junit.jupiter.api.Test;\n\n      public class MyTest {\n        @Test\n        public void simpleTest() {\n          Assert.assertEquals(4, 2 + 2);\n        }\n      }\n\nAfter the quick-fix is applied:\n\n\n      import org.junit.jupiter.api.Assertions;\n      import org.junit.jupiter.api.Test;\n\n      public class MyTest {\n        @Test\n        public void simpleTest() {\n          Assertions.assertEquals(4, 2 + 2);\n        }\n      }\n"
-        },
-        {
-          "shortName": "TestOnlyProblems",
-          "displayName": "Test-only usage in production code",
-          "enabled": false,
-          "description": "Reports `@TestOnly`- and `@VisibleForTesting`-annotated methods and classes that are used in production code. Also reports usage of applying `@TestOnly` `@VisibleForTesting` to the same element.\n\nThe problems are not reported if such method or class is referenced from:\n\n* Code under the **Test Sources** folder\n* A test class (JUnit/TestNG)\n* Another `@TestOnly`-annotated method\n\n**Example (in production code):**\n\n\n      @TestOnly\n      fun foo() { ... }\n\n      fun main () {\n        foo()\n      }\n"
-        },
-        {
-          "shortName": "NonExtendableApiUsage",
-          "displayName": "Class, interface, or method should not be extended",
-          "enabled": true,
-          "description": "Reports classes, interfaces and methods that extend, implement, or override API elements marked with `@ApiStatus.NonExtendable`.\n\n\nThe `@ApiStatus.NonExtendable` annotation indicates that the class, interface, or method **must not be extended,\nimplemented, or overridden** .\nSince casting such interfaces and classes to the internal library implementation is rather common,\nif a client provides a different implementation, you will get `ClassCastException`.\nAdding new abstract methods to such classes and interfaces will break the compatibility with the client's implementations."
-        }
-      ]
-    },
-    {
       "name": "Kotlin",
       "inspections": [
         {
@@ -476,16 +375,16 @@
           "description": "Reports a Java method call that can be replaced with a Kotlin function, for example, `System.out.println()`.\n\nReplacing the code gets rid of the dependency to Java and makes the idiomatic Kotlin code.\n\nThe quick-fix replaces the Java method calls on the same Kotlin call.\n\n**Example:**\n\n\n      import java.util.Arrays\n\n      fun main() {\n          val a = Arrays.asList(1, 3, null)\n      }\n\nAfter the quick-fix is applied:\n\n\n      fun main() {\n          val a = listOf(1, 3, null)\n      }\n"
         },
         {
-          "shortName": "RedundantAsync",
-          "displayName": "Redundant 'async' call",
-          "enabled": false,
-          "description": "Reports `async` calls that are immediately followed by `await`.\nSuch calls can be replaced with blocking calls.\n\n**Example:**\n\n\n      suspend fun test(ctx: CoroutineContext, scope: CoroutineScope) {\n          scope.async(ctx) { doSomeJob() }.await()\n      }\n\nAfter the quick-fix is applied:\n\n\n      suspend fun test(ctx: CoroutineContext, scope: CoroutineScope) {\n          withContext(scope.coroutineContext + ctx) { doSomeJob() }\n      }\n"
-        },
-        {
           "shortName": "JavaCollectionsStaticMethod",
           "displayName": "Java Collections static method call can be replaced with Kotlin stdlib",
           "enabled": false,
           "description": "Reports a Java `Collections` static method call that can be replaced with Kotlin stdlib.\n\n**Example:**\n\n\n      import java.util.Collections\n\n      fun test() {\n          val mutableList = mutableListOf(1, 2)\n          Collections.fill(mutableList, 3)\n      }\n\nThe quick fix replaces Java `Collections` static method call with the corresponding Kotlin stdlib method call:\n\n\n      import java.util.Collections\n\n      fun test() {\n          val mutableList = mutableListOf(1, 2)\n          mutableList.fill(3)\n      }\n"
+        },
+        {
+          "shortName": "RedundantAsync",
+          "displayName": "Redundant 'async' call",
+          "enabled": false,
+          "description": "Reports `async` calls that are immediately followed by `await`.\nSuch calls can be replaced with blocking calls.\n\n**Example:**\n\n\n      suspend fun test(ctx: CoroutineContext, scope: CoroutineScope) {\n          scope.async(ctx) { doSomeJob() }.await()\n      }\n\nAfter the quick-fix is applied:\n\n\n      suspend fun test(ctx: CoroutineContext, scope: CoroutineScope) {\n          withContext(scope.coroutineContext + ctx) { doSomeJob() }\n      }\n"
         },
         {
           "shortName": "MoveVariableDeclarationIntoWhen",
@@ -726,6 +625,107 @@
           "displayName": "'to' call should be replaced with infix form",
           "enabled": false,
           "description": "Reports `to` function calls that can be replaced with the infix form.\n\nUsing the infix form makes your code simpler.\n\nThe quick-fix replaces `to` with the infix form.\n\n**Example:**\n\n\n      fun foo(a: Int, b: Int) {\n          val pair = a.to(b)\n      }\n\nAfter the quick-fix is applied:\n\n\n      fun foo(a: Int, b: Int) {\n          val pair = a to b\n      }\n"
+        }
+      ]
+    },
+    {
+      "name": "JVM languages",
+      "inspections": [
+        {
+          "shortName": "OverrideOnly",
+          "displayName": "Method can only be overridden",
+          "enabled": true,
+          "description": "Reports calls to API methods marked with `@ApiStatus.OverrideOnly`.\n\n\nThe `@ApiStatus.OverrideOnly` annotation indicates that the method is part of SPI (Service Provider Interface).\nClients of the declaring library should implement or override such methods, not call them directly.\nMarking a class or interface with this annotation is the same as marking every method with it."
+        },
+        {
+          "shortName": "SerializableHasSerialVersionUIDField",
+          "displayName": "Serializable class without 'serialVersionUID'",
+          "enabled": false,
+          "description": "Reports classes that implement `Serializable` and do not declare a `serialVersionUID` field.\n\n\nWithout a `serialVersionUID` field, any change to the class will make previously serialized versions unreadable.\n\n**Example:**\n\n\n      class Main implements Serializable {\n      }\n\nAfter the quick-fix is applied:\n\n\n      class Main implements Serializable {\n        private static final long serialVersionUID = -1446398935944895849L;\n      }\n\nWhen using a language level of JDK 14 or higher, the quickfix will also add the `java.io.Serial` annotation.\n\nUse the following options to configure the inspection:\n\n* List classes whose inheritors should not be reported by this inspection. This is meant for classes that inherit `Serializable` from a superclass but are not intended for serialization.\n* Whether to ignore `Serializable` anonymous classes."
+        },
+        {
+          "shortName": "JUnitRule",
+          "displayName": "Malformed @Rule/@ClassRule field",
+          "enabled": false,
+          "description": "Reports malformed `@Rule` or `@ClassRule` annotation usages. Tests with malformed [rules](https://github.com/junit-team/junit4/wiki/Rules) cannot be run.\n\n* A `@Rule` annotated member must be `public` and a subtype of `org.junit.rules.TestRule` or `org.junit.rules.MethodRule`\n* A `@ClassRule` annotated member must be `public` and `static` and a subtype of `org.junit.rules.TestRule`\n\nFor example:\n\n\n      public class MomentousTest {\n        @Rule\n        private final TemporaryFolder tempFolder =\n          new TemporaryFolder();\n\n        // ... tests go here\n      }\n\nA quick fix is provided to fix the modifiers:\n\n\n      public class MomentousTest {\n        @Rule\n        public final TemporaryFolder tempFolder =\n          new TemporaryFolder();\n\n        // ... tests go here\n      }\n"
+        },
+        {
+          "shortName": "JUnit5Converter",
+          "displayName": "JUnit 4 test can be JUnit 5",
+          "enabled": false,
+          "description": "Reports JUnit 4 tests that can be automatically migrated to JUnit 5. While default runners are automatically convertible, custom runners, method- and field- rules are not and require manual changes.\n\n**Example:**\n\n\n      import org.junit.Assert;\n      import org.junit.Test;\n\n      public class RelevantTest {\n        @Test\n        public void testIt() {\n          Assert.assertEquals(\"expected\", \"actual\");\n        }\n      }\n\nAfter the quick-fix is applied:\n\n\n      import org.junit.jupiter.api.Assertions;\n      import org.junit.jupiter.api.Test;\n\n      public class RelevantTest {\n        @Test\n        public void testIt() {\n          Assertions.assertEquals(\"expected\", \"actual\");\n        }\n      }\n\nThis inspection requires that the JUnit 5 library is available in the classpath, and JDK 1.8 or later is configured for the project."
+        },
+        {
+          "shortName": "BlockingMethodInNonBlockingContext",
+          "displayName": "Possibly blocking call in non-blocking context",
+          "enabled": true,
+          "description": "Reports thread-blocking method calls in code fragments where threads should not be blocked.\n\n**Example (Project Reactor):**\n\n\n    Flux.just(\"1\").flatMap(f -> {\n        Flux<String> just = loadUsersFromDatabase();\n        just.toIterable(); // Error: blocking operator call in non-blocking scope\n        return just;\n      }\n    );\n\nConsider running blocking code [with a proper\nscheduler](https://projectreactor.io/docs/core/release/reference/#faq.wrap-blocking), for example `Schedulers.boundedElastic()`, or try to find an alternative non-blocking API.\n\n**Example (Kotlin Coroutines):**\n\n\n    suspend fun exampleFun() {\n        Thread.sleep(100); // Error: blocking method call inside suspend function\n    }\n\nConsider running blocking code [with a special dispatcher](https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html),\nfor example `Dispatchers.IO`, or try to find an alternative non-blocking API.\n\nConfigure the inspection:\n\n* In the **Blocking Annotations** list, specify annotations that mark thread-blocking methods.\n* In the **Non-Blocking Annotations** list, specify annotations that mark non-blocking methods.\n\nSpecified annotations can be used as [External Annotations](https://www.jetbrains.com/help/idea/external-annotations.html)"
+        },
+        {
+          "shortName": "MissingDeprecatedAnnotationOnScheduledForRemovalApi",
+          "displayName": "Missing '@Deprecated' annotation on scheduled for removal API",
+          "enabled": true,
+          "description": "Reports declarations marked with `@ApiStatus.ScheduledForRemoval` without `@Deprecated`.\n\nExample:\n\n```\n  @ApiStatus.ScheduledForRemoval(inVersion = \"2017.3\")\n  public void myLegacyMethod() { }\n```\n\nAfter the quick-fix is applied the result looks like:\n\n```\n  @Deprecated\n  @ApiStatus.ScheduledForRemoval(inVersion = \"2017.3\")\n  public void myLegacyMethod() { }\n```"
+        },
+        {
+          "shortName": "SourceToSinkFlow",
+          "displayName": "Non-safe string is passed to safe method",
+          "enabled": false,
+          "description": "Reports cases when non-safe string is passed to a method with parameter marked with annotation `org.checkerframework.checker.tainting.qual.Untainted`.\n\n\nSafe string is:\n\n* call of method that is marked as `@Untainted`\n* local variable or method parameter that does not call non-safe methods\n* field, local variable or parameter that is marked as `@Untainted` and does not have non-safe methods calls assigned\n\n\nExample:\n\n\n      void doSmth(boolean b) {\n        String s = safe();\n        String s1 = \"other\";\n        if (b) s1 = s;\n        sink(s);\n      }\n      \n      String sink(@Untainted String s) {}\n\n\nHere we do not have non-safe string assignments to `s` so warning is not produced. On the other hand:\n\n\n      void doSmth(boolean b) {\n        String s = safe();\n        String s1 = \"other\";\n        s1 = foo();\n        if (b) s1 = s;\n        sink(s);        // warning here\n      }\n      \n      String foo();\n\n      String sink(@Untainted String s) {}\n\n\nHere we have a warning since `s1` has an unknown state after `foo` call result assignment.\n\nNew in 2021.2"
+        },
+        {
+          "shortName": "Dependency",
+          "displayName": "Illegal package dependencies",
+          "enabled": true,
+          "description": "Reports illegal dependencies between scopes according to the dependency rules given. Dependency rules can be used to prohibit usage from a scope to another scope.\n\nUse the **Configure dependency rules** button below to customize validation rules."
+        },
+        {
+          "shortName": "ThreadRun",
+          "displayName": "Call to 'Thread.run()'",
+          "enabled": true,
+          "description": "Reports calls to `run()` on `java.lang.Thread` or any of its subclasses.\n\n\nWhile occasionally intended, this is usually a mistake, because `run()` doesn't start a new thread.\nTo execute the code in a separate thread, `start()` should be used."
+        },
+        {
+          "shortName": "UnstableApiUsage",
+          "displayName": "Unstable API Usage",
+          "enabled": true,
+          "description": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries."
+        },
+        {
+          "shortName": "MustAlreadyBeRemovedApi",
+          "displayName": "API must already be removed",
+          "enabled": true,
+          "description": "Reports declarations marked with `@ApiStatus.ScheduledForRemoval` that should have been removed in the current version of the declaring library.\n\nIt compares the specified scheduled removal version with the version that you can set below.\n\n\nSpecify the version as a string separated with dots and optionally postfixed with\n`alpha`, `beta`, `snapshot`, or `eap`.\n\nExamples of valid versions: `1.0`, `2.3.1`, `2018.1`, `7.5-snapshot`, `3.0-eap`.\n\n\nVersion comparison is intuitive: `1.0 < 2.0`, `1.0-eap < 1.0`, `2.3-snapshot < 2.3` and so on.\nFor detailed comparison logic, refer to the implementation of [VersionComparatorUtil](https://github.com/JetBrains/intellij-community/blob/master/platform/util-rt/src/com/intellij/util/text/VersionComparatorUtil.java)."
+        },
+        {
+          "shortName": "TestFailedLine",
+          "displayName": "Failed line in test",
+          "enabled": true,
+          "description": "Reports failed method calls or assertions in tests. It helps detect the failed line in code faster and start debugging it immediately.\n\n**Example:**\n\n\n      @Test\n      fun foo() {\n        assertEquals(1, 0) // highlighted\n      }\n"
+        },
+        {
+          "shortName": "UnstableTypeUsedInSignature",
+          "displayName": "Unstable type is used in signature",
+          "enabled": true,
+          "description": "Reports declarations of classes, methods, and fields that reference an unstable API type in the signature, but are not marked with the same unstable annotation.\n\n\nThis inspection ensures that the signatures of a public API do not expose any *unstable* (internal, experimental) types.\nFor example, if a method returns an *experimental* class, the method itself is considered *experimental*\nbecause incompatible changes of the type (deletion or move to another package) lead to incompatible method signature changes.\n\nUse the list below to specify which annotations mark an unstable API."
+        },
+        {
+          "shortName": "JUnit5AssertionsConverter",
+          "displayName": "Obsolete assertions in JUnit 5 tests",
+          "enabled": false,
+          "description": "Reports any calls to methods from the `junit.framework.Assert`, `org.junit.Assert`, or `org.junit.Assume`\nclasses inside JUnit 5 tests.\n\nAlthough the tests work properly, migration to `org.junit.jupiter.api.Assertions`/`org.junit.jupiter.api.Assumptions`\nwill help you avoid dependencies on old JUnit version.\n\n**Example:**\n\n\n      import org.junit.Assert;\n      import org.junit.jupiter.api.Test;\n\n      public class MyTest {\n        @Test\n        public void simpleTest() {\n          Assert.assertEquals(4, 2 + 2);\n        }\n      }\n\nAfter the quick-fix is applied:\n\n\n      import org.junit.jupiter.api.Assertions;\n      import org.junit.jupiter.api.Test;\n\n      public class MyTest {\n        @Test\n        public void simpleTest() {\n          Assertions.assertEquals(4, 2 + 2);\n        }\n      }\n"
+        },
+        {
+          "shortName": "TestOnlyProblems",
+          "displayName": "Test-only usage in production code",
+          "enabled": false,
+          "description": "Reports `@TestOnly`- and `@VisibleForTesting`-annotated methods and classes that are used in production code. Also reports usage of applying `@TestOnly` `@VisibleForTesting` to the same element.\n\nThe problems are not reported if such method or class is referenced from:\n\n* Code under the **Test Sources** folder\n* A test class (JUnit/TestNG)\n* Another `@TestOnly`-annotated method\n\n**Example (in production code):**\n\n\n      @TestOnly\n      fun foo() { ... }\n\n      fun main () {\n        foo()\n      }\n"
+        },
+        {
+          "shortName": "NonExtendableApiUsage",
+          "displayName": "Class, interface, or method should not be extended",
+          "enabled": true,
+          "description": "Reports classes, interfaces and methods that extend, implement, or override API elements marked with `@ApiStatus.NonExtendable`.\n\n\nThe `@ApiStatus.NonExtendable` annotation indicates that the class, interface, or method **must not be extended,\nimplemented, or overridden** .\nSince casting such interfaces and classes to the internal library implementation is rather common,\nif a client provides a different implementation, you will get `ClassCastException`.\nAdding new abstract methods to such classes and interfaces will break the compatibility with the client's implementations."
         }
       ]
     },
@@ -1223,16 +1223,16 @@
           "description": "Manifest Resource References  \n\nElements in the manifest can reference resources, but those resources cannot vary across configurations (except as a special case, by version, and except for a few specific package attributes such as the application title and icon).  \n\nIssue id: ManifestResource"
         },
         {
-          "shortName": "AndroidLintSlices",
-          "displayName": "Slices",
-          "enabled": true,
-          "description": "Slices  \n\nThis check analyzes usages of the Slices API and offers suggestions based  \non best practices.  \n\nIssue id: Slices"
-        },
-        {
           "shortName": "AndroidLintNamespaceTypo",
           "displayName": "Misspelled namespace declaration",
           "enabled": true,
           "description": "Misspelled namespace declaration  \n\nAccidental misspellings in namespace declarations can lead to some very obscure error messages. This check looks for potential misspellings to help track these down.  \n\nIssue id: NamespaceTypo"
+        },
+        {
+          "shortName": "AndroidLintSlices",
+          "displayName": "Slices",
+          "enabled": true,
+          "description": "Slices  \n\nThis check analyzes usages of the Slices API and offers suggestions based  \non best practices.  \n\nIssue id: Slices"
         },
         {
           "shortName": "AndroidLintShowToast",
@@ -1865,16 +1865,16 @@
           "description": "Invalid Wake Lock Tag  \n\nWake Lock tags must follow the naming conventions defined in the\\`PowerManager\\` documentation.  \n\nIssue id: InvalidWakeLockTag  \n\n<https://developer.android.com/reference/android/os/PowerManager.html>"
         },
         {
-          "shortName": "AndroidLintGradlePluginVersion",
-          "displayName": "Incompatible Android Gradle Plugin",
-          "enabled": true,
-          "description": "Incompatible Android Gradle Plugin  \n\nNot all versions of the Android Gradle plugin are compatible with all versions of the SDK. If you update your tools, or if you are trying to open a project that was built with an old version of the tools, you may need to update your plugin version number.  \n\nIssue id: GradlePluginVersion"
-        },
-        {
           "shortName": "AndroidLintExifInterface",
           "displayName": "Using android.media.ExifInterface",
           "enabled": true,
           "description": "Using `android.media.ExifInterface`  \n\nThe `android.media.ExifInterface` implementation has some known security bugs in older versions of Android. There is a new implementation available of this library in the support library, which is preferable.  \n\nIssue id: ExifInterface"
+        },
+        {
+          "shortName": "AndroidLintGradlePluginVersion",
+          "displayName": "Incompatible Android Gradle Plugin",
+          "enabled": true,
+          "description": "Incompatible Android Gradle Plugin  \n\nNot all versions of the Android Gradle plugin are compatible with all versions of the SDK. If you update your tools, or if you are trying to open a project that was built with an old version of the tools, you may need to update your plugin version number.  \n\nIssue id: GradlePluginVersion"
         },
         {
           "shortName": "AndroidLintMissingOnPlayFromSearch",
@@ -2111,12 +2111,6 @@
           "description": "Description is under construction"
         },
         {
-          "shortName": "AndroidLintMissingIntentFilterForMediaSearch",
-          "displayName": "Missing MEDIA_PLAY_FROM_SEARCH intent-filter",
-          "enabled": true,
-          "description": "Missing MEDIA_PLAY_FROM_SEARCH intent-filter  \n\nTo support voice searches on Android Auto, you should also register an `intent-filter` for the action `android.media.action.MEDIA_PLAY_FROM_SEARCH`.  \nTo do this, add\n\n```\n`<intent-filter>`\n    `<action android:name=\"android.media.action.MEDIA_PLAY_FROM_SEARCH\" />`\n`</intent-filter>`\n```\n\nto your `<activity>` or `<service>`.  \n\nIssue id: MissingIntentFilterForMediaSearch  \n\n<https://developer.android.com/training/auto/audio/index.html#support_voice>"
-        },
-        {
           "shortName": "AndroidLintLockedOrientationActivity",
           "displayName": "Incompatible screenOrientation manifest value",
           "enabled": true,
@@ -2127,6 +2121,12 @@
           "displayName": "Resource with Wrong Prefix",
           "enabled": true,
           "description": "Resource with Wrong Prefix  \n\nIn Gradle projects you can specify a resource prefix that all resources in the project must conform to. This makes it easier to ensure that you don't accidentally combine resources from different libraries, since they all end up in the same shared app namespace.  \n\nIssue id: ResourceName"
+        },
+        {
+          "shortName": "AndroidLintMissingIntentFilterForMediaSearch",
+          "displayName": "Missing MEDIA_PLAY_FROM_SEARCH intent-filter",
+          "enabled": true,
+          "description": "Missing MEDIA_PLAY_FROM_SEARCH intent-filter  \n\nTo support voice searches on Android Auto, you should also register an `intent-filter` for the action `android.media.action.MEDIA_PLAY_FROM_SEARCH`.  \nTo do this, add\n\n```\n`<intent-filter>`\n    `<action android:name=\"android.media.action.MEDIA_PLAY_FROM_SEARCH\" />`\n`</intent-filter>`\n```\n\nto your `<activity>` or `<service>`.  \n\nIssue id: MissingIntentFilterForMediaSearch  \n\n<https://developer.android.com/training/auto/audio/index.html#support_voice>"
         },
         {
           "shortName": "AndroidLintImpliedTouchscreenHardware",
@@ -2165,16 +2165,16 @@
           "description": "Cannot use `ACCESS_FINE_LOCATION` without `ACCESS_COARSE_LOCATION`  \n\nIf your app requires access to FINE location, on Android 12 and higher you must now request both FINE and COARSE. Users will have the option to grant only COARSE location. Ensure your app can work with just COARSE location.  \n\nIssue id: CoarseFineLocation"
         },
         {
-          "shortName": "AndroidLintLeanbackUsesWifi",
-          "displayName": "android.hardware.wifi on TV device",
-          "enabled": true,
-          "description": "Using android.hardware.wifi on TV  \n\nWiFi is not required for Android TV and many devices connect to the internet via alternative methods e.g. Ethernet.  \n\nIf your app is not focused specifically on WiFi functionality and only wishes to connect to the internet, please modify your Manifest to contain: `<uses-feature android:name=\"android.hardware.wifi\" android:required=\"false\" />`  \n\nUn-metered or non-roaming connections can be detected in software using  \n`NetworkCapabilities#NET_CAPABILITY_NOT_METERED` and `NetworkCapabilities#NET_CAPABILITY_NOT_ROAMING.`  \n\nIssue id: LeanbackUsesWifi"
-        },
-        {
           "shortName": "AndroidLintPinSetExpiry",
           "displayName": "Validate <pin-set> expiration attribute",
           "enabled": true,
           "description": "Validate `<pin-set>` expiration attribute  \n\nEnsures that the `expiration` attribute of the `<pin-set>` element is valid and has not already expired or is expiring soon  \n\nIssue id: PinSetExpiry  \n\n<https://developer.android.com/preview/features/security-config.html>"
+        },
+        {
+          "shortName": "AndroidLintLeanbackUsesWifi",
+          "displayName": "android.hardware.wifi on TV device",
+          "enabled": true,
+          "description": "Using android.hardware.wifi on TV  \n\nWiFi is not required for Android TV and many devices connect to the internet via alternative methods e.g. Ethernet.  \n\nIf your app is not focused specifically on WiFi functionality and only wishes to connect to the internet, please modify your Manifest to contain: `<uses-feature android:name=\"android.hardware.wifi\" android:required=\"false\" />`  \n\nUn-metered or non-roaming connections can be detected in software using  \n`NetworkCapabilities#NET_CAPABILITY_NOT_METERED` and `NetworkCapabilities#NET_CAPABILITY_NOT_ROAMING.`  \n\nIssue id: LeanbackUsesWifi"
         },
         {
           "shortName": "AndroidLintAppCompatMethod",
@@ -3941,16 +3941,16 @@
           "description": "Reports calls to `StringBuffer` and `StringBuilder` constructors with `char` as the argument. In this case, `char` is silently cast to an integer and interpreted as the initial capacity of the buffer.\n\n**Example:**\n\n\n      new StringBuilder('(').append(\"1\").append(')');\n\nAfter the quick-fix is applied:\n\n\n      new StringBuilder(\"(\").append(\"1\").append(')');\n"
         },
         {
-          "shortName": "ClassGetClass",
-          "displayName": "Suspicious 'Class.getClass()' call",
-          "enabled": true,
-          "description": "Reports `getClass()` methods that are called on a `java.lang.Class` instance.\n\nThis is usually a mistake as the result is always equivalent to `Class.class`.\nIf it's a mistake, then it's better to remove the `getClass()` call and use the qualifier directly.\nIf the behavior is intended, then it's better to write `Class.class` explicitly to avoid confusion.\n\nExample:\n\n\n      void test(Class<?> clazz) {\n        String name = clazz.getClass().getName();\n      }\n\nAfter one of the possible quick-fixes is applied:\n\n\n      void test(Class<?> clazz) {\n        String name = clazz.getName();\n      }\n\nNew in 2018.2"
-        },
-        {
           "shortName": "ResultOfObjectAllocationIgnored",
           "displayName": "Result of object allocation ignored",
           "enabled": false,
           "description": "Reports object allocations where the allocated object is ignored and neither assigned to a variable nor used in another way.\n\n\nSuch allocation expressions are legal in Java, but are usually either unintended, or\nevidence of a very odd object initialization strategy.\n\n\nUse the options to list classes whose allocations should be ignored by this inspection."
+        },
+        {
+          "shortName": "ClassGetClass",
+          "displayName": "Suspicious 'Class.getClass()' call",
+          "enabled": true,
+          "description": "Reports `getClass()` methods that are called on a `java.lang.Class` instance.\n\nThis is usually a mistake as the result is always equivalent to `Class.class`.\nIf it's a mistake, then it's better to remove the `getClass()` call and use the qualifier directly.\nIf the behavior is intended, then it's better to write `Class.class` explicitly to avoid confusion.\n\nExample:\n\n\n      void test(Class<?> clazz) {\n        String name = clazz.getClass().getName();\n      }\n\nAfter one of the possible quick-fixes is applied:\n\n\n      void test(Class<?> clazz) {\n        String name = clazz.getName();\n      }\n\nNew in 2018.2"
         },
         {
           "shortName": "MismatchedStringBuilderQueryUpdate",
@@ -10979,7 +10979,7 @@
         {
           "shortName": "ImplicitTypeConversion",
           "displayName": "Implicit type conversion",
-          "enabled": true,
+          "enabled": false,
           "description": "Reports implicit conversions between the predefined XPath-types `STRING`, `NUMBER`, `BOOLEAN`, and `NODESET`. Helps to write XSLT scripts that are more expressive about types and prevents subtle bugs:\n\n**Example:**\n\n\n      <xsl:if test=\"foo\" />\n\nis not the same as\n\n\n      <xsl:if test=\"string(foo)\" />\n\n\nThe first test checks whether the element \"foo\" exists (`count(foo) > 0)`; the latter one however is only\ntrue if the element actually contains any text (`string-length(foo) > 0`). Suggests making\nthe type conversion more explicit.\n\n\nUse the following options to configure the inspection:\n\n* Enable or disable implicit conversions between certain types\n* Always report explicit conversions that do not result in the actually expected type, for example, `<xsl:if test=\"number(foo)\" />`\n* Ignore conversion from `NODESET` to `BOOLEAN` by using the `string()` function as a shortcut for writing `string-length() > 0`.\n\nPowered by XPathView + XSLT-Support"
         }
       ]

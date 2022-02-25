@@ -20,13 +20,13 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 688
+                  "startLine": 495
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60."
+            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -41,13 +41,13 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 495
+                  "startLine": 790
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
+            "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -83,13 +83,13 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 979
+                  "startLine": 688
                 }
               }
             }
           ],
           "message": {
-            "text": "The function last version tag in current branch is too long (71). The maximum length is 60."
+            "text": "The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -104,13 +104,13 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 790
+                  "startLine": 979
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
+            "text": "The function last version tag in current branch is too long (71). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },

@@ -14,6 +14,7 @@
 
 ### Updated
 
+- `org.eclipse.jgit:org.eclipse.jgit -> 6.1.0.202203080745-r`
 - `com.javiersc.gradle-plugins:all-plugins -> 0.1.0-rc.41`
 - `gradle -> 7.4`
 - `io.kotest:kotest-assertions-core -> 5.1.0`

@@ -10,12 +10,12 @@
       "version": "1.6.10"
     },
     {
-      "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.0.0.202111291000-r",
-      "gradleName": "org.eclipse.jgit:org.eclipse.jgit:6.0.0.202111291000-r",
+      "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
+      "gradleName": "org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
       "unresolved": false,
       "groupId": "org.eclipse.jgit",
       "artifactId": "org.eclipse.jgit",
-      "version": "6.0.0.202111291000-r"
+      "version": "6.1.0.202203080745-r"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test:1.6.10",

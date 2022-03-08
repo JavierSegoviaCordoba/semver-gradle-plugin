@@ -194,7 +194,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.0.0.202111291000-r",
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
           "type": "Library"
         },
         {
@@ -423,7 +423,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.0.0.202111291000-r",
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
           "type": "Library"
         },
         {

@@ -64,13 +64,13 @@
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
           "sourceFolders": [
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
-              "type": "TestSource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
+              "type": "TestResource",
               "packagePrefix": ""
             },
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
-              "type": "TestResource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
+              "type": "TestSource",
               "packagePrefix": ""
             }
           ]
@@ -90,103 +90,103 @@
           "type": "Module"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-api-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-api-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-ant-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-ant-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-astbuilder-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-astbuilder-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-console-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-console-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-datetime-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-datetime-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-dateutil-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-dateutil-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-groovydoc-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-groovydoc-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-json-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-json-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-nio-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-nio-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-sql-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-sql-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-templates-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-templates-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-test-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-test-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-xml-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-xml-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/javaparser-core-3.17.0.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/javaparser-core-3.17.0.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-common-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-common-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk7-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk7-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk8-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk8-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-reflect-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-reflect-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-installation-beacon-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-installation-beacon-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-tooling-models-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-tooling-models-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-test-kit-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-test-kit-7.4.1.jar",
           "type": "Library"
         },
         {
@@ -210,7 +210,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.1.0",
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.0",
           "type": "Library"
         },
         {
@@ -246,7 +246,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.1.0",
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.0",
           "type": "Library"
         },
         {
@@ -262,7 +262,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.1.0",
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.0",
           "type": "Library"
         },
         {
@@ -282,7 +282,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-common-jvm:5.1.0",
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.2.0",
           "type": "Library"
         },
         {
@@ -323,99 +323,99 @@
           "type": "Own sources"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-api-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-api-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-ant-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-ant-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-astbuilder-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-astbuilder-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-console-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-console-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-datetime-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-datetime-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-dateutil-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-dateutil-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-groovydoc-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-groovydoc-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-json-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-json-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-nio-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-nio-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-sql-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-sql-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-templates-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-templates-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-test-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-test-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-xml-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-xml-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/javaparser-core-3.17.0.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/javaparser-core-3.17.0.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-common-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-common-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk7-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk7-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk8-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk8-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-reflect-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-reflect-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-installation-beacon-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-installation-beacon-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-tooling-models-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-tooling-models-7.4.1.jar",
           "type": "Library"
         },
         {
@@ -482,111 +482,111 @@
           "type": "Module"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-api-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-api-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-ant-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-ant-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-astbuilder-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-astbuilder-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-console-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-console-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-datetime-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-datetime-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-dateutil-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-dateutil-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-groovydoc-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-groovydoc-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-json-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-json-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-nio-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-nio-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-sql-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-sql-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-templates-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-templates-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-test-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-test-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-xml-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-xml-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/javaparser-core-3.17.0.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/javaparser-core-3.17.0.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-common-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-common-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk7-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk7-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk8-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk8-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-reflect-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-reflect-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-installation-beacon-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-installation-beacon-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/project/buildSrc/.gradle/7.4/dependencies-accessors/0329021e537a1b71cc80c392de87029071cebbb4/classes",
+          "name": "/data/project/buildSrc/.gradle/7.4.1/dependencies-accessors/0329021e537a1b71cc80c392de87029071cebbb4/classes",
           "type": "Library"
         },
         {
-          "name": "/data/project/buildSrc/.gradle/7.4/dependencies-accessors/674e2a97927ee4d395219d4136ca60e4763c4860/classes",
+          "name": "/data/project/buildSrc/.gradle/7.4.1/dependencies-accessors/674e2a97927ee4d395219d4136ca60e4763c4860/classes",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-tooling-models-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-tooling-models-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-test-kit-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-test-kit-7.4.1.jar",
           "type": "Library"
         },
         {
@@ -1153,107 +1153,107 @@
           "type": "Own sources"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-api-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-api-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-ant-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-ant-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-astbuilder-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-astbuilder-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-console-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-console-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-datetime-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-datetime-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-dateutil-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-dateutil-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-groovydoc-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-groovydoc-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-json-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-json-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-nio-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-nio-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-sql-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-sql-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-templates-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-templates-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-test-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-test-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/groovy-xml-3.0.9.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/groovy-xml-3.0.9.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/javaparser-core-3.17.0.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/javaparser-core-3.17.0.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-common-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-common-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk7-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk7-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-stdlib-jdk8-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-stdlib-jdk8-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/kotlin-reflect-1.5.31.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/kotlin-reflect-1.5.31.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-installation-beacon-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-installation-beacon-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/caches/7.4/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.jar",
+          "name": "/data/cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4-bin/c0gwcg53nkjbqw7r0h0umtfvt/gradle-7.4/lib/gradle-kotlin-dsl-tooling-models-7.4.jar",
+          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.1-bin/58kw26xllvsiedyf3nujyarhn/gradle-7.4.1/lib/gradle-kotlin-dsl-tooling-models-7.4.1.jar",
           "type": "Library"
         },
         {
-          "name": "/data/project/buildSrc/.gradle/7.4/dependencies-accessors/0329021e537a1b71cc80c392de87029071cebbb4/classes",
+          "name": "/data/project/buildSrc/.gradle/7.4.1/dependencies-accessors/0329021e537a1b71cc80c392de87029071cebbb4/classes",
           "type": "Library"
         },
         {
-          "name": "/data/project/buildSrc/.gradle/7.4/dependencies-accessors/674e2a97927ee4d395219d4136ca60e4763c4860/classes",
+          "name": "/data/project/buildSrc/.gradle/7.4.1/dependencies-accessors/674e2a97927ee4d395219d4136ca60e4763c4860/classes",
           "type": "Library"
         },
         {

@@ -2,7 +2,7 @@
   "libraries": [
     {
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/7.4/generated-gradle-jars/gradle-api-7.4.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/7.4.1/generated-gradle-jars/gradle-api-7.4.1.jar!/"
       ]
     },
     {
@@ -829,9 +829,9 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.1.0",
+      "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-core-jvm/5.1.0/6437ec2783a6e1b0f46e9bfa94cda5979ab1d748/kotest-assertions-core-jvm-5.1.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-core-jvm/5.2.0/bfca908355b0eb083353d8fdf0fc6e603e850c7a/kotest-assertions-core-jvm-5.2.0.jar!/"
       ]
     },
     {
@@ -847,9 +847,9 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.1.0",
+      "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-shared-jvm/5.1.0/c1c28ec2acbb5247cfcdbf4fb3accaa9fde32370/kotest-assertions-shared-jvm-5.1.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-shared-jvm/5.2.0/d27531ce8bfd446d78fd989ee27f53a555af58d8/kotest-assertions-shared-jvm-5.2.0.jar!/"
       ]
     },
     {
@@ -871,9 +871,9 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.1.0",
+      "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-api-jvm/5.1.0/c4a99f7c0bc0e68a6f8afaa932103a120af22590/kotest-assertions-api-jvm-5.1.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-assertions-api-jvm/5.2.0/ac87410c12918d82ca1b3a798f552081149169ea/kotest-assertions-api-jvm-5.2.0.jar!/"
       ]
     },
     {
@@ -889,9 +889,9 @@
       ]
     },
     {
-      "name": "Gradle: io.kotest:kotest-common-jvm:5.1.0",
+      "name": "Gradle: io.kotest:kotest-common-jvm:5.2.0",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-common-jvm/5.1.0/1b3d769940398c49e0ada52a8270a172608a01bb/kotest-common-jvm-5.1.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/io.kotest/kotest-common-jvm/5.2.0/986f789ee36dece485122c3e96a957c642cd35b5/kotest-common-jvm-5.2.0.jar!/"
       ]
     },
     {

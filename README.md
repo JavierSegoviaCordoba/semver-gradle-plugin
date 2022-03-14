@@ -3,8 +3,8 @@
 [![Snapshot](https://img.shields.io/nexus/s/com.javiersc.semver/semver-gradle-plugin?server=https%3A%2F%2Foss.sonatype.org%2F&label=Snapshot)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/semver/semver-gradle-plugin/)
 
 [![Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/semver-gradle-plugin/build-kotlin?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/tree/main)
-[![Quality](https://img.shields.io/sonar/quality_gate/JavierSegoviaCordoba_semver-gradle-plugin?label=Quality&logo=SonarCloud&logoColor=white&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=JavierSegoviaCordoba_semver-gradle-plugin)
-[![Tech debt](https://img.shields.io/sonar/tech_debt/JavierSegoviaCordoba_semver-gradle-plugin?label=Tech%20debt&logo=SonarCloud&logoColor=white&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=JavierSegoviaCordoba_semver-gradle-plugin)
+[![Quality](https://img.shields.io/sonar/quality_gate/com.javiersc.semver:semver-gradle-plugin-javiersc?label=Quality&logo=SonarCloud&logoColor=white&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=com.javiersc.semver:semver-gradle-plugin-javiersc)
+[![Tech debt](https://img.shields.io/sonar/tech_debt/com.javiersc.semver:semver-gradle-plugin-javiersc?label=Tech%20debt&logo=SonarCloud&logoColor=white&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=com.javiersc.semver:semver-gradle-plugin-javiersc)
 
 # SemVer Gradle Plugin
 

@@ -15,39 +15,18 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 590
+                  "startLine": 24
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags sorted by semver is too long (85). The maximum length is 60."
-          },
-          "ruleId": "detekt.complexity.LongMethod"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startColumn": 9,
-                  "startLine": 495
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
+            "text": "The function massive tags in same commit is too long (77). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -83,13 +62,34 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 790
+                  "startLine": 495
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
+            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 9,
+                  "startLine": 590
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function version tags sorted by semver is too long (85). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -111,6 +111,27 @@
           ],
           "message": {
             "text": "The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 9,
+                  "startLine": 790
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -183,20 +204,20 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt",
+                  "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefGitExtensions.kt",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startColumn": 9,
-                  "startLine": 24
+                  "startColumn": 1,
+                  "startLine": 1
                 }
               }
             }
           ],
           "message": {
-            "text": "The function massive tags in same commit is too long (77). The maximum length is 60."
+            "text": "File '/home/runner/work/semver-gradle-plugin/semver-gradle-plugin/semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefGitExtensions.kt' with '14' functions detected. Defined threshold inside files is set to '11'"
           },
-          "ruleId": "detekt.complexity.LongMethod"
+          "ruleId": "detekt.complexity.TooManyFunctions"
         },
         {
           "level": "warning",
@@ -218,27 +239,6 @@
             "text": "The function calculatedVersion(warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -> Unit, tagPrefix: String, stageProperty: String?, scopeProperty: String?, isCreatingSemverTag: Boolean, mockDate: Date?, checkClean: Boolean) has too many parameters. The current threshold is set to 6."
           },
           "ruleId": "detekt.complexity.LongParameterList"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefGitExtensions.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startColumn": 1,
-                  "startLine": 1
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "File '/home/runner/work/semver-gradle-plugin/semver-gradle-plugin/semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/GitRefGitExtensions.kt' with '14' functions detected. Defined threshold inside files is set to '11'"
-          },
-          "ruleId": "detekt.complexity.TooManyFunctions"
         },
         {
           "level": "warning",
@@ -288,27 +288,6 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTag.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startColumn": 1,
-                  "startLine": 9
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The class PushSemverTag only contains utility functions. Consider defining it as an object."
-          },
-          "ruleId": "detekt.style.UtilityClassWithPublicConstructor"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
                   "uri": "buildSrc/build.gradle.kts",
                   "uriBaseId": "%SRCROOT%"
                 },
@@ -323,6 +302,27 @@
             "text": "This comment contains 'TODO:' that has been defined as forbidden in detekt."
           },
           "ruleId": "detekt.style.ForbiddenComment"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTag.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The class PushSemverTag only contains utility functions. Consider defining it as an object."
+          },
+          "ruleId": "detekt.style.UtilityClassWithPublicConstructor"
         }
       ],
       "tool": {

@@ -14,6 +14,7 @@
 
 ### Updated
 
+- `org.jetbrains.kotlin:kotlin-gradle-plugin -> 1.6.20`
 - `com.javiersc.gradle-plugins:all-plugins -> 0.1.0-rc.42`
 - `io.kotest:kotest-assertions-core -> 5.2.2`
 - `gradle -> 7.4.1`

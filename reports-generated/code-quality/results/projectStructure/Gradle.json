@@ -42,12 +42,12 @@
       "version": "0.1.0-beta.10"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.2",
-      "gradleName": "io.kotest:kotest-assertions-core-jvm:5.2.2",
+      "ideaName": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.3",
+      "gradleName": "io.kotest:kotest-assertions-core-jvm:5.2.3",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-core-jvm",
-      "version": "5.2.2"
+      "version": "5.2.3"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.20",
@@ -114,12 +114,12 @@
       "version": "5.6.0"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.2",
-      "gradleName": "io.kotest:kotest-assertions-shared-jvm:5.2.2",
+      "ideaName": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.3",
+      "gradleName": "io.kotest:kotest-assertions-shared-jvm:5.2.3",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-shared-jvm",
-      "version": "5.2.2"
+      "version": "5.2.3"
     },
     {
       "ideaName": "Gradle: org.junit.platform:junit-platform-commons:1.6.0",
@@ -146,20 +146,20 @@
       "version": "1.2.0"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.2",
-      "gradleName": "io.kotest:kotest-assertions-api-jvm:5.2.2",
+      "ideaName": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.3",
+      "gradleName": "io.kotest:kotest-assertions-api-jvm:5.2.3",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-api-jvm",
-      "version": "5.2.2"
+      "version": "5.2.3"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0",
-      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0",
+      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
+      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlinx",
       "artifactId": "kotlinx-coroutines-jdk8",
-      "version": "1.6.0"
+      "version": "1.6.1"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.10",
@@ -178,20 +178,20 @@
       "version": "5.6.0"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-common-jvm:5.2.2",
-      "gradleName": "io.kotest:kotest-common-jvm:5.2.2",
+      "ideaName": "Gradle: io.kotest:kotest-common-jvm:5.2.3",
+      "gradleName": "io.kotest:kotest-common-jvm:5.2.3",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-common-jvm",
-      "version": "5.2.2"
+      "version": "5.2.3"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
-      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
+      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.1",
+      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.1",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlinx",
       "artifactId": "kotlinx-coroutines-core-jvm",
-      "version": "1.6.0"
+      "version": "1.6.1"
     },
     {
       "ideaName": "Gradle: org.junit.platform:junit-platform-engine:1.6.0",
@@ -218,12 +218,12 @@
       "version": "0.1.0-rc.42"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.8.0",
-      "gradleName": "org.jetbrains.kotlinx:binary-compatibility-validator:0.8.0",
+      "ideaName": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.9.0",
+      "gradleName": "org.jetbrains.kotlinx:binary-compatibility-validator:0.9.0",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlinx",
       "artifactId": "binary-compatibility-validator",
-      "version": "0.8.0"
+      "version": "0.9.0"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.20",
@@ -522,28 +522,28 @@
       "version": "1.6.10"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0",
-      "gradleName": "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0",
+      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
+      "gradleName": "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlinx",
       "artifactId": "kotlinx-metadata-jvm",
-      "version": "0.3.0"
+      "version": "0.4.2"
     },
     {
-      "ideaName": "Gradle: org.ow2.asm:asm-tree:9.0",
-      "gradleName": "org.ow2.asm:asm-tree:9.0",
+      "ideaName": "Gradle: org.ow2.asm:asm-tree:9.2",
+      "gradleName": "org.ow2.asm:asm-tree:9.2",
       "unresolved": false,
       "groupId": "org.ow2.asm",
       "artifactId": "asm-tree",
-      "version": "9.0"
+      "version": "9.2"
     },
     {
-      "ideaName": "Gradle: org.ow2.asm:asm:9.0",
-      "gradleName": "org.ow2.asm:asm:9.0",
+      "ideaName": "Gradle: org.ow2.asm:asm:9.2",
+      "gradleName": "org.ow2.asm:asm:9.2",
       "unresolved": false,
       "groupId": "org.ow2.asm",
       "artifactId": "asm",
-      "version": "9.0"
+      "version": "9.2"
     },
     {
       "ideaName": "Gradle: com.googlecode.java-diff-utils:diffutils:1.3.0",

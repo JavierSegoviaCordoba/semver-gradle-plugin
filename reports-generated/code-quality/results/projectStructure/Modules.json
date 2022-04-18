@@ -64,13 +64,13 @@
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
           "sourceFolders": [
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
-              "type": "TestResource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
+              "type": "TestSource",
               "packagePrefix": ""
             },
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
-              "type": "TestSource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
+              "type": "TestResource",
               "packagePrefix": ""
             }
           ]
@@ -210,7 +210,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.2",
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.3",
           "type": "Library"
         },
         {
@@ -246,7 +246,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.2",
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.3",
           "type": "Library"
         },
         {
@@ -262,7 +262,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.2",
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.3",
           "type": "Library"
         },
         {
@@ -270,7 +270,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0",
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
           "type": "Library"
         },
         {
@@ -282,11 +282,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-common-jvm:5.2.2",
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.2.3",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.1",
           "type": "Library"
         },
         {
@@ -594,7 +594,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.8.0",
+          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.9.0",
           "type": "Library"
         },
         {
@@ -750,15 +750,15 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0",
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.ow2.asm:asm-tree:9.0",
+          "name": "Gradle: org.ow2.asm:asm-tree:9.2",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.ow2.asm:asm:9.0",
+          "name": "Gradle: org.ow2.asm:asm:9.2",
           "type": "Library"
         },
         {
@@ -1261,7 +1261,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.8.0",
+          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.9.0",
           "type": "Library"
         },
         {
@@ -1461,15 +1461,15 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0",
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.ow2.asm:asm-tree:9.0",
+          "name": "Gradle: org.ow2.asm:asm-tree:9.2",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.ow2.asm:asm:9.0",
+          "name": "Gradle: org.ow2.asm:asm:9.2",
           "type": "Library"
         },
         {

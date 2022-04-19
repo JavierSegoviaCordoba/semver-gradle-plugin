@@ -14,10 +14,10 @@
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt">
 	<error line="790" column="9" severity="warning" message="The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="590" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="979" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="495" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="688" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="590" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="979" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="30" column="16" severity="warning" message="Class GitTagTest is too large. Consider splitting it into smaller pieces." source="detekt.LargeClass" />
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/CalculatedVersionTest.kt">

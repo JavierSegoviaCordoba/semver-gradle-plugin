@@ -10,11 +10,11 @@
       "type": "file",
       "path": "settings.gradle.kts",
       "language": "kotlin",
-      "line": 11,
+      "line": 10,
       "offset": 5,
       "length": 12,
       "code": {
-        "startLine": 9,
+        "startLine": 8,
         "length": 12,
         "offset": 38,
         "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        mavenCentral()\n    }"
@@ -25,7 +25,7 @@
     "module": "semver-gradle-plugin-javiersc",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "8e503907714efdde9295f934c15ecf6e9253b72fe0da0bd740c97d722fe977f3"
+  "hash": "795f98a785df31095cf5f46f85ab3d88d5c6f6be8330285c0e98f5cab480a8e6"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -38,11 +38,11 @@
       "type": "file",
       "path": "settings.gradle.kts",
       "language": "kotlin",
-      "line": 15,
+      "line": 14,
       "offset": 5,
       "length": 15,
       "code": {
-        "startLine": 13,
+        "startLine": 12,
         "length": 15,
         "offset": 11,
         "surroundingCode": "    }\n\n    versionCatalogs {\n        create(\"pluginLibs\") { from(files(\"gradle/pluginLibs.versions.toml\")) }\n    }"
@@ -53,5 +53,5 @@
     "module": "semver-gradle-plugin-javiersc",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "2f6a24d195b305756e524c9332131f3201fae4ad9912422e2fe8aaf1c52e86a6"
+  "hash": "e9bf7eaef2cb4bfa8eb87c10ba10d76d94027a4bbd24a2b9de9bbb49acd80a67"
 }]}

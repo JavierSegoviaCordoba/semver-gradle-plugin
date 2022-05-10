@@ -17,7 +17,7 @@
         "startLine": 8,
         "length": 12,
         "offset": 38,
-        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        mavenCentral()\n    }"
+        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        mavenCentral()\n        google()"
       }
     }
   ],
@@ -25,7 +25,7 @@
     "module": "semver-gradle-plugin-javiersc",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "795f98a785df31095cf5f46f85ab3d88d5c6f6be8330285c0e98f5cab480a8e6"
+  "hash": "be8e5a5d741306523150c8e92b2f3247ea543a8afbc3da67050aa710e3cec660"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -38,11 +38,11 @@
       "type": "file",
       "path": "settings.gradle.kts",
       "language": "kotlin",
-      "line": 14,
+      "line": 15,
       "offset": 5,
       "length": 15,
       "code": {
-        "startLine": 12,
+        "startLine": 13,
         "length": 15,
         "offset": 11,
         "surroundingCode": "    }\n\n    versionCatalogs {\n        create(\"pluginLibs\") { from(files(\"gradle/pluginLibs.versions.toml\")) }\n    }"
@@ -53,5 +53,61 @@
     "module": "semver-gradle-plugin-javiersc",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "e9bf7eaef2cb4bfa8eb87c10ba10d76d94027a4bbd24a2b9de9bbb49acd80a67"
+  "hash": "1f3fd34c9d3e298472c29aff95da602cbbc26a89401e2807335f65b9508a74ea"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'invoke(org.gradle.api.artifacts.Configuration, org.gradle.api.provider.Provider)' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 48,
+      "offset": 5,
+      "length": 19,
+      "code": {
+        "startLine": 46,
+        "length": 19,
+        "offset": 62,
+        "surroundingCode": "    testImplementation(libs.kotest.kotestAssertionsCore)\n\n    testPluginClasspath(pluginLibs.android.application.androidApplicationGradlePlugin)\n    testPluginClasspath(pluginLibs.jetbrains.kotlin.kotlinGradlePlugin)\n}"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "db4469f90afe15fd7d09dfc84812fb31e5ed3ec83fbf7a48188082cce2bbb9fa"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'invoke(org.gradle.api.artifacts.Configuration, org.gradle.api.provider.Provider)' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 49,
+      "offset": 5,
+      "length": 19,
+      "code": {
+        "startLine": 47,
+        "length": 19,
+        "offset": 92,
+        "surroundingCode": "\n    testPluginClasspath(pluginLibs.android.application.androidApplicationGradlePlugin)\n    testPluginClasspath(pluginLibs.jetbrains.kotlin.kotlinGradlePlugin)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "4b1c703f222c2f0ec15327e1b02813078776d92c6d90a7f6bd219acc7892acc3"
 }]}

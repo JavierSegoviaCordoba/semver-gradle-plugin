@@ -42,12 +42,12 @@
       "version": "0.1.0-beta.10"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-assertions-core-jvm:5.2.3",
-      "gradleName": "io.kotest:kotest-assertions-core-jvm:5.2.3",
+      "ideaName": "Gradle: io.kotest:kotest-assertions-core-jvm:5.3.0",
+      "gradleName": "io.kotest:kotest-assertions-core-jvm:5.3.0",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-core-jvm",
-      "version": "5.2.3"
+      "version": "5.3.0"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
@@ -114,12 +114,12 @@
       "version": "5.6.0"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.2.3",
-      "gradleName": "io.kotest:kotest-assertions-shared-jvm:5.2.3",
+      "ideaName": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.3.0",
+      "gradleName": "io.kotest:kotest-assertions-shared-jvm:5.3.0",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-shared-jvm",
-      "version": "5.2.3"
+      "version": "5.3.0"
     },
     {
       "ideaName": "Gradle: org.junit.platform:junit-platform-commons:1.6.0",
@@ -146,12 +146,12 @@
       "version": "1.2.0"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-assertions-api-jvm:5.2.3",
-      "gradleName": "io.kotest:kotest-assertions-api-jvm:5.2.3",
+      "ideaName": "Gradle: io.kotest:kotest-assertions-api-jvm:5.3.0",
+      "gradleName": "io.kotest:kotest-assertions-api-jvm:5.3.0",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-api-jvm",
-      "version": "5.2.3"
+      "version": "5.3.0"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
@@ -162,12 +162,12 @@
       "version": "1.6.1"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.10",
-      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.6.10",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-reflect",
-      "version": "1.6.10"
+      "version": "1.6.21"
     },
     {
       "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.6.0",
@@ -178,12 +178,12 @@
       "version": "5.6.0"
     },
     {
-      "ideaName": "Gradle: io.kotest:kotest-common-jvm:5.2.3",
-      "gradleName": "io.kotest:kotest-common-jvm:5.2.3",
+      "ideaName": "Gradle: io.kotest:kotest-common-jvm:5.3.0",
+      "gradleName": "io.kotest:kotest-common-jvm:5.3.0",
       "unresolved": false,
       "groupId": "io.kotest",
       "artifactId": "kotest-common-jvm",
-      "version": "5.2.3"
+      "version": "5.3.0"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.1",

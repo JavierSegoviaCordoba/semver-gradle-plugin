@@ -31,6 +31,8 @@ kotlin {
     explicitApi()
 }
 
+val testPluginClasspath: Configuration by configurations.creating
+
 dependencies {
     implementation(gradleApi())
     implementation(gradleKotlinDsl())
@@ -42,4 +44,13 @@ dependencies {
     testImplementation(gradleTestKit())
     testImplementation(libs.jetbrains.kotlin.kotlinTest)
     testImplementation(libs.kotest.kotestAssertionsCore)
+
+    testPluginClasspath(pluginLibs.android.application.androidApplicationGradlePlugin)
+    testPluginClasspath(pluginLibs.jetbrains.kotlin.kotlinGradlePlugin)
+}
+
+tasks {
+    pluginUnderTestMetadata {
+        pluginClasspath.from(testPluginClasspath)
+    }
 }

@@ -46,20 +46,25 @@ internal fun testSandbox(
     prefix: String = File(sandboxPath).name,
     beforeTest: File.() -> Unit = {},
     test: (result: BuildResult, testProjectDir: File) -> Unit,
-) {
+): GradleRunner {
     val testProjectDir: File = createSandboxFile(prefix)
     sandboxPath copyResourceTo testProjectDir
 
     beforeTest(testProjectDir)
 
-    GradleRunner.create()
-        .withDebug(true)
-        .withProjectDir(testProjectDir)
-        .withArguments(testProjectDir.arguments)
-        .withPluginClasspath()
-        .run {
-            test(if (prefix.contains("buildAndFail")) buildAndFail() else build(), testProjectDir)
-        }
+    val runner =
+        GradleRunner.create()
+            .withDebug(true)
+            .withProjectDir(testProjectDir)
+            .withArguments(testProjectDir.arguments)
+            .withPluginClasspath()
+
+    test(
+        if (prefix.contains("buildAndFail")) runner.buildAndFail() else runner.build(),
+        testProjectDir
+    )
+
+    return runner
 }
 
 @Suppress("UNUSED_PARAMETER")

@@ -40,8 +40,7 @@ internal class VersionTest {
                         "v"
                     )
                 }
-                .message
-                .shouldBe("1.0.0 > 1.0.0-alpha.2")
+                .message.shouldBe("1.0.0 > 1.0.0-alpha.2")
 
             addNewFile("5 commit.txt")
             git.add().addFilepattern(".").call()

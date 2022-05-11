@@ -136,9 +136,8 @@ internal class GitCommitTest {
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Third commit").call()
 
-            git.lastVersionCommitInCurrentBranch(tagPrefix = "v")!!.message.shouldBe(
-                "Second commit"
-            )
+            git.lastVersionCommitInCurrentBranch(tagPrefix = "v")!!
+                .message.shouldBe("Second commit")
         }
     }
 }

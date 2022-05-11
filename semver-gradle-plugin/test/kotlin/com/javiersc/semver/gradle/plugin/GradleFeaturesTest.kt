@@ -31,8 +31,7 @@ class GradleFeaturesTest {
         result
             .task(":generateDebugBuildConfig")
             .shouldNotBeNull()
-            .outcome
-            .shouldBe(TaskOutcome.FROM_CACHE)
+            .outcome.shouldBe(TaskOutcome.FROM_CACHE)
     }
 
     @Test
@@ -55,8 +54,7 @@ class GradleFeaturesTest {
         result
             .task(":generateDebugBuildConfig")
             .shouldNotBeNull()
-            .outcome
-            .shouldBe(TaskOutcome.UP_TO_DATE)
+            .outcome.shouldBe(TaskOutcome.UP_TO_DATE)
     }
 
     @Test

@@ -1,6 +1,6 @@
 [versions]
 android = "7.2.0"
-javierscGradlePlugins = "0.1.0-rc.42"
+javierscGradlePlugins = "0.1.0-rc.43"
 kotlin = "1.6.21"
 kotlinBinaryValidator = "0.9.0"
 

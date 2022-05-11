@@ -3,19 +3,19 @@
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt">
 	<error line="24" column="9" severity="warning" message="The function massive tags in same commit is too long (77). The maximum length is 60." source="detekt.LongMethod" />
 </file>
-<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt">
-	<error line="10" column="9" severity="warning" message="The function random is too long (62). The maximum length is 60." source="detekt.LongMethod" />
-</file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/CalculatedVersionTest.kt">
 	<error line="119" column="35" severity="warning" message="The function calculatedVersion(warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -&gt; Unit, tagPrefix: String, stage: String?, scope: String?, isCreatingTag: Boolean, mockDate: Date?, checkClean: Boolean) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt">
 	<error line="790" column="9" severity="warning" message="The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="979" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="688" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="495" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="590" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="688" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="30" column="16" severity="warning" message="Class GitTagTest is too large. Consider splitting it into smaller pieces." source="detekt.LargeClass" />
+</file>
+<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt">
+	<error line="10" column="9" severity="warning" message="The function random is too long (62). The maximum length is 60." source="detekt.LongMethod" />
 </file>
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/CalculatedVersion.kt">
 	<error line="9" column="35" severity="warning" message="The function calculatedVersion(warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -&gt; Unit, tagPrefix: String, stageProperty: String?, scopeProperty: String?, isCreatingSemverTag: Boolean, mockDate: Date?, checkClean: Boolean) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
@@ -29,10 +29,10 @@
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/SemVerProperties.kt">
 	<error line="10" column="20" severity="warning" message="Top level constant names should match the pattern: [A-Z][_A-Z0-9]*" source="detekt.TopLevelPropertyNaming" />
 </file>
-<file name="buildSrc/build.gradle.kts">
-	<error line="12" column="5" severity="warning" message="This comment contains &apos;TODO:&apos; that has been defined as forbidden in detekt." source="detekt.ForbiddenComment" />
-</file>
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTag.kt">
 	<error line="9" column="1" severity="warning" message="The class PushSemverTag only contains utility functions. Consider defining it as an object." source="detekt.UtilityClassWithPublicConstructor" />
+</file>
+<file name="buildSrc/build.gradle.kts">
+	<error line="12" column="5" severity="warning" message="This comment contains &apos;TODO:&apos; that has been defined as forbidden in detekt." source="detekt.ForbiddenComment" />
 </file>
 </checkstyle>

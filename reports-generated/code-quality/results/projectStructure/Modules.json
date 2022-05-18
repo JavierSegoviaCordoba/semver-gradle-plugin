@@ -590,15 +590,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.9.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.20",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
           "type": "Library"
         },
         {
@@ -610,79 +606,83 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.42",
+          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.20",
+          "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.20",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
           "type": "Library"
         },
         {
@@ -694,7 +694,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.19.0",
+          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0",
           "type": "Library"
         },
         {
@@ -702,7 +702,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.0",
+          "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.1",
           "type": "Library"
         },
         {
@@ -726,7 +726,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.20",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
           "type": "Library"
         },
         {
@@ -746,23 +746,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.10",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ow2.asm:asm-tree:9.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ow2.asm:asm:9.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.java-diff-utils:diffutils:1.3.0",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
           "type": "Library"
         },
         {
@@ -818,11 +802,27 @@
           "type": "Library"
         },
         {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.ow2.asm:asm-tree:9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.ow2.asm:asm:9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.java-diff-utils:diffutils:1.3.0",
+          "type": "Library"
+        },
+        {
           "name": "Gradle: com.adarshr:gradle-test-logger-plugin:3.2.0",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.dokka:dokka-gradle-plugin:1.6.10",
+          "name": "Gradle: org.jetbrains.dokka:dokka-gradle-plugin:1.6.21",
           "type": "Library"
         },
         {
@@ -838,7 +838,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.4.1",
+          "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.6.0",
           "type": "Library"
         },
         {
@@ -858,7 +858,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.1",
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
           "type": "Library"
         },
         {
@@ -918,7 +918,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.dokka:dokka-core:1.6.10",
+          "name": "Gradle: org.jetbrains.dokka:dokka-core:1.6.21",
           "type": "Library"
         },
         {
@@ -962,11 +962,15 @@
           "type": "Library"
         },
         {
+          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-utils:1.20.0",
+          "type": "Library"
+        },
+        {
           "name": "Gradle: org.sonarsource.scanner.api:sonar-scanner-api:2.16.1.361",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.24.1",
+          "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.25.3",
           "type": "Library"
         },
         {
@@ -982,7 +986,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib:2.24.1",
+          "name": "Gradle: com.diffplug.spotless:spotless-lib:2.25.3",
           "type": "Library"
         },
         {
@@ -1257,15 +1261,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.9.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.20",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
           "type": "Library"
         },
         {
@@ -1277,79 +1277,83 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.42",
+          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.42",
+          "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.20",
+          "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.43",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.20",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
           "type": "Library"
         },
         {
@@ -1361,7 +1365,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.19.0",
+          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0",
           "type": "Library"
         },
         {
@@ -1369,7 +1373,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.0",
+          "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.1",
           "type": "Library"
         },
         {
@@ -1393,7 +1397,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.20",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
           "type": "Library"
         },
         {
@@ -1481,7 +1485,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.dokka:dokka-gradle-plugin:1.6.10",
+          "name": "Gradle: org.jetbrains.dokka:dokka-gradle-plugin:1.6.21",
           "type": "Library"
         },
         {
@@ -1497,7 +1501,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.4.1",
+          "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.6.0",
           "type": "Library"
         },
         {
@@ -1517,7 +1521,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.1",
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
           "type": "Library"
         },
         {
@@ -1577,7 +1581,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.dokka:dokka-core:1.6.10",
+          "name": "Gradle: org.jetbrains.dokka:dokka-core:1.6.21",
           "type": "Library"
         },
         {
@@ -1621,11 +1625,15 @@
           "type": "Library"
         },
         {
+          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-utils:1.20.0",
+          "type": "Library"
+        },
+        {
           "name": "Gradle: org.sonarsource.scanner.api:sonar-scanner-api:2.16.1.361",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.24.1",
+          "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.25.3",
           "type": "Library"
         },
         {
@@ -1641,7 +1649,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib:2.24.1",
+          "name": "Gradle: com.diffplug.spotless:spotless-lib:2.25.3",
           "type": "Library"
         },
         {
@@ -1669,7 +1677,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.10",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
           "type": "Library"
         },
         {

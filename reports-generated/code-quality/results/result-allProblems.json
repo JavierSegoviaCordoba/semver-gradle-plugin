@@ -3,62 +3,6 @@
   "category": "JVM languages",
   "type": "Unstable API Usage",
   "severity": "High",
-  "comment": "'repositories(org.gradle.api.Action)' is declared in unstable interface 'org.gradle.api.initialization.resolve.DependencyResolutionManagement' marked with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "settings.gradle.kts",
-      "language": "kotlin",
-      "line": 10,
-      "offset": 5,
-      "length": 12,
-      "code": {
-        "startLine": 8,
-        "length": 12,
-        "offset": 38,
-        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        mavenCentral()\n        google()"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-javiersc",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "be8e5a5d741306523150c8e92b2f3247ea543a8afbc3da67050aa710e3cec660"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'versionCatalogs(org.gradle.api.Action)' is declared in unstable interface 'org.gradle.api.initialization.resolve.DependencyResolutionManagement' marked with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "settings.gradle.kts",
-      "language": "kotlin",
-      "line": 15,
-      "offset": 5,
-      "length": 15,
-      "code": {
-        "startLine": 13,
-        "length": 15,
-        "offset": 11,
-        "surroundingCode": "    }\n\n    versionCatalogs {\n        create(\"pluginLibs\") { from(files(\"gradle/pluginLibs.versions.toml\")) }\n    }"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-javiersc",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "1f3fd34c9d3e298472c29aff95da602cbbc26a89401e2807335f65b9508a74ea"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
   "comment": "'invoke(org.gradle.api.artifacts.Configuration, org.gradle.api.provider.Provider)' is marked unstable with @Incubating",
   "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
   "sources": [
@@ -110,4 +54,60 @@
     "inspectionName": "UnstableApiUsage"
   },
   "hash": "4b1c703f222c2f0ec15327e1b02813078776d92c6d90a7f6bd219acc7892acc3"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'repositories(org.gradle.api.Action)' is declared in unstable interface 'org.gradle.api.initialization.resolve.DependencyResolutionManagement' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "settings.gradle.kts",
+      "language": "kotlin",
+      "line": 10,
+      "offset": 5,
+      "length": 12,
+      "code": {
+        "startLine": 8,
+        "length": 12,
+        "offset": 38,
+        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        mavenCentral()\n        google()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "be8e5a5d741306523150c8e92b2f3247ea543a8afbc3da67050aa710e3cec660"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'versionCatalogs(org.gradle.api.Action)' is declared in unstable interface 'org.gradle.api.initialization.resolve.DependencyResolutionManagement' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "settings.gradle.kts",
+      "language": "kotlin",
+      "line": 15,
+      "offset": 5,
+      "length": 15,
+      "code": {
+        "startLine": 13,
+        "length": 15,
+        "offset": 11,
+        "surroundingCode": "    }\n\n    versionCatalogs {\n        create(\"pluginLibs\") { from(files(\"gradle/pluginLibs.versions.toml\")) }\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "1f3fd34c9d3e298472c29aff95da602cbbc26a89401e2807335f65b9508a74ea"
 }]}

@@ -1,5 +1,5 @@
 [versions]
-coroutines = "1.6.1"
+coroutines = "1.6.2"
 javierscKotlinStdlib = "0.1.0-alpha.4"
 jgit = "6.1.0.202203080745-r"
 kotest = "5.3.0"

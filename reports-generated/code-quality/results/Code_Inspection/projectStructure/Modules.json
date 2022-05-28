@@ -64,13 +64,13 @@
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
           "sourceFolders": [
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
-              "type": "TestSource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
+              "type": "TestResource",
               "packagePrefix": ""
             },
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
-              "type": "TestResource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
+              "type": "TestSource",
               "packagePrefix": ""
             }
           ]

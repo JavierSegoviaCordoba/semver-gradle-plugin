@@ -1,100 +1,123 @@
 package com.javiersc.semver.gradle.plugin
 
-import io.kotest.matchers.nulls.shouldNotBeNull
-import io.kotest.matchers.shouldBe
-import io.kotest.matchers.string.shouldContain
-import java.io.File
+import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
+import com.javiersc.gradle.testkit.extensions.testBuildCache
+import com.javiersc.gradle.testkit.extensions.testConfigurationCache
+import com.javiersc.gradle.testkit.extensions.withArgumentsFromTXT
+import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
+import com.javiersc.semver.gradle.plugin.setup.Insignificant.Hash
+import com.javiersc.semver.gradle.plugin.setup.assertVersion
+import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
+import com.javiersc.semver.gradle.plugin.setup.git
 import kotlin.test.Test
 import org.gradle.testkit.runner.GradleRunner
-import org.gradle.testkit.runner.TaskOutcome
 
 class GradleFeaturesTest {
 
     @Test
     fun `android build cache clean v1_0_0`() {
-        val sandboxPath = "gradle-features/android build cache clean v1_0_0"
-        val testProjectDir: File = createSandboxFile(File(sandboxPath).name)
-        sandboxPath copyResourceTo testProjectDir
-
-        val runner =
-            GradleRunner.create()
-                .withDebug(true)
-                .withProjectDir(testProjectDir)
-                .withPluginClasspath()
-
-        runner.withArguments("generateDebugBuildConfig").build()
-
-        runner.withArguments("clean").build()
-
-        val result = runner.withArguments("generateDebugBuildConfig").build()
-
-        result
-            .task(":generateDebugBuildConfig")
-            .shouldNotBeNull()
-            .outcome.shouldBe(TaskOutcome.FROM_CACHE)
+        gradleTestKitTest(
+            "gradle-features/android build cache clean v1_0_0",
+            isolated = true,
+        ) {
+            beforeTest()
+            testBuildCache()
+        }
     }
 
     @Test
     fun `android configuration cache clean v1_0_0`() {
-        val sandboxPath = "gradle-features/android configuration cache clean v1_0_0"
-        val testProjectDir: File = createSandboxFile(File(sandboxPath).name)
-        sandboxPath copyResourceTo testProjectDir
-
-        val runner =
-            GradleRunner.create()
-                .withDebug(true)
-                .withProjectDir(testProjectDir)
-                .withPluginClasspath()
-
-        runner.withArguments("generateDebugBuildConfig").build()
-
-        val result = runner.withArguments("generateDebugBuildConfig").build()
-
-        result.output.shouldContain("Reusing configuration cache")
-        result
-            .task(":generateDebugBuildConfig")
-            .shouldNotBeNull()
-            .outcome.shouldBe(TaskOutcome.UP_TO_DATE)
+        gradleTestKitTest(
+            "gradle-features/android configuration cache clean v1_0_0",
+            isolated = true,
+        ) {
+            beforeTest()
+            testConfigurationCache()
+        }
     }
 
     @Test
     fun `build cache clean v1_0_0`() {
-        val sandboxPath = "gradle-features/build cache clean v1_0_0"
-        val testProjectDir: File = createSandboxFile(File(sandboxPath).name)
-        sandboxPath copyResourceTo testProjectDir
-
-        val runner =
-            GradleRunner.create()
-                .withDebug(true)
-                .withProjectDir(testProjectDir)
-                .withPluginClasspath()
-
-        runner.withArguments("compileKotlin").build()
-
-        runner.withArguments("clean").build()
-
-        val result = runner.withArguments("compileKotlin").build()
-
-        result.task(":compileKotlin").shouldNotBeNull().outcome.shouldBe(TaskOutcome.FROM_CACHE)
+        gradleTestKitTest(
+            "gradle-features/build cache clean v1_0_0",
+            isolated = true,
+        ) {
+            beforeTest()
+            testBuildCache()
+        }
     }
 
     @Test
     fun `configuration cache clean v1_0_0`() {
-        val sandboxPath = "gradle-features/configuration cache clean v1_0_0"
-        val testProjectDir: File = createSandboxFile(File(sandboxPath).name)
-        sandboxPath copyResourceTo testProjectDir
+        gradleTestKitTest(
+            "gradle-features/configuration cache clean v1_0_0",
+            isolated = true,
+        ) {
+            beforeTest()
+            testConfigurationCache()
+        }
+    }
 
-        val runner =
-            GradleRunner.create()
-                .withDebug(true)
-                .withProjectDir(testProjectDir)
-                .withPluginClasspath()
+    @Test
+    fun `project isolation clean v1_0_0`() {
+        gradleTestKitTest(
+            "gradle-features/project isolation clean v1_0_0",
+            isolated = true,
+        ) {
+            beforeTest()
+            testConfigurationCache()
+        }
+    }
 
-        runner.withArguments("compileKotlin").build()
+    private fun GradleRunner.beforeTest() {
+        withArgumentsFromTXT()
+        val originalArguments: List<String> = arguments.toList()
 
-        val result = runner.withArguments("compileKotlin").build()
+        projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+        withArgumentsFromTXT()
 
-        result.output.shouldContain("Reusing configuration cache")
-        result.task(":compileKotlin").shouldNotBeNull().outcome.shouldBe(TaskOutcome.UP_TO_DATE)
+        build()
+        projectDir.assertVersion("v", "0.9.0", Hash)
+
+        projectDir.resolve("dirty.txt").createNewFile()
+        git.add().addFilepattern(".").call()
+
+        build()
+        projectDir
+            .resolve("expect-version.txt")
+            .writeText(
+                """
+                    |0.9.0+DIRTY
+                    |v0.9.0+DIRTY
+                    |
+                """.trimMargin(),
+            )
+        projectDir.assertVersion("v", "0.9.0", Dirty)
+
+        build()
+        git.add().addFilepattern(".").call()
+        git.commit().setMessage("Change expect-version").call()
+        projectDir
+            .resolve("expect-version.txt")
+            .writeText(
+                """
+                    |0.9.1
+                    |v0.9.1
+                    |
+                """.trimMargin(),
+            )
+
+        git.add().addFilepattern(".").call()
+        git.commit().setMessage("Change expect-version again").call()
+
+        withArguments("semverCreateTag", "-Psemver.tagPrefix=v")
+
+        build()
+        projectDir.assertVersion("v", "0.9.1")
+
+        withArguments(originalArguments)
+
+        build()
+        projectDir.assertVersion("v", "0.9.1")
     }
 }

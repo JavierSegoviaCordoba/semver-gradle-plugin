@@ -1,21 +1,20 @@
 package com.javiersc.semver.gradle.plugin.git
 
-import com.javiersc.semver.gradle.plugin.addNewFile
-import com.javiersc.semver.gradle.plugin.git
-import com.javiersc.semver.gradle.plugin.initialCommitAnd
-import com.javiersc.semver.gradle.plugin.internal.GitRef
-import com.javiersc.semver.gradle.plugin.internal.commitHash
-import com.javiersc.semver.gradle.plugin.internal.commitsBetweenTwoCommitsIncludingLastExcludingFirst
-import com.javiersc.semver.gradle.plugin.internal.commitsInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.commitsInCurrentBranchFullMessage
-import com.javiersc.semver.gradle.plugin.internal.commitsInCurrentBranchHash
-import com.javiersc.semver.gradle.plugin.internal.commitsInCurrentBranchRevCommit
-import com.javiersc.semver.gradle.plugin.internal.headCommit
-import com.javiersc.semver.gradle.plugin.internal.headRef
-import com.javiersc.semver.gradle.plugin.internal.headRevCommit
-import com.javiersc.semver.gradle.plugin.internal.headRevCommitInBranch
-import com.javiersc.semver.gradle.plugin.internal.lastCommitInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.lastVersionCommitInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.git.GitRef
+import com.javiersc.semver.gradle.plugin.internal.git.commitHash
+import com.javiersc.semver.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
+import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranchFullMessage
+import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranchHash
+import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranchRevCommit
+import com.javiersc.semver.gradle.plugin.internal.git.headCommit
+import com.javiersc.semver.gradle.plugin.internal.git.headRef
+import com.javiersc.semver.gradle.plugin.internal.git.headRevCommit
+import com.javiersc.semver.gradle.plugin.internal.git.headRevCommitInBranch
+import com.javiersc.semver.gradle.plugin.internal.git.lastCommitInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.git.lastVersionCommitInCurrentBranch
+import com.javiersc.semver.gradle.plugin.setup.git
+import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 import org.eclipse.jgit.revwalk.RevCommit
@@ -25,7 +24,7 @@ internal class GitCommitTest {
     @Test
     fun `head commit`() {
         initialCommitAnd {
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit").call()
 
@@ -38,7 +37,7 @@ internal class GitCommitTest {
     @Test
     fun `last commit in current branch`() {
         initialCommitAnd {
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit").call()
 
@@ -49,7 +48,7 @@ internal class GitCommitTest {
     @Test
     fun `commits in current branch`() {
         initialCommitAnd {
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit").call()
 
@@ -66,7 +65,7 @@ internal class GitCommitTest {
     @Test
     fun `commit hash`() {
         initialCommitAnd {
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit").call()
 
@@ -82,7 +81,7 @@ internal class GitCommitTest {
             fun initialCommit() = git.commitsInCurrentBranch.last()
             fun lastCommit() = git.commitsInCurrentBranch.first()
 
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit").call()
 
@@ -95,7 +94,7 @@ internal class GitCommitTest {
                 .map(GitRef.Commit::message)
                 .shouldBe(messages2)
 
-            addNewFile("Third commit.txt")
+            resolve("Third commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Third commit").call()
 
@@ -113,7 +112,7 @@ internal class GitCommitTest {
     @Test
     fun `commits in current branch full message`() {
         initialCommitAnd {
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit\n\nSecond commit full message").call()
 
@@ -127,12 +126,12 @@ internal class GitCommitTest {
     @Test
     fun `last version commit in current branch`() {
         initialCommitAnd {
-            addNewFile("Second commit.txt")
+            resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Second commit").call()
             git.tag().setName("v1.0.0").call()
 
-            addNewFile("Third commit.txt")
+            resolve("Third commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Third commit").call()
 

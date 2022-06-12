@@ -5,84 +5,105 @@ Set projects versions based on git tags and following semantic versioning.
 Inspired on [Reckon](https://github.com/ajoberstar/reckon) but centered on supporting multi-project
 versions and combine normal stages with `snapshot` stage.
 
-### Download from MavenCentral
+### Apply the plugin
+
+The plugin must be applied individually to each project in order to support configuration cache and
+project isolation.
 
 ```kotlin
-// buildSrc/build.gradle.kts
+plugins {
+    id("com.javiersc.semver.gradle.plugin")
+}
 
-dependencies {
-    implementation("com.javiersc.semver:semver-gradle-plugin:$version")
+semver {
+    tagPrefix.set("v") // optional, default is empty
 }
 ```
 
+Default values:
+
+|                   | tagPrefix   |
+|-------------------|-------------|
+| **default value** | ` ` (empty) |
+| **Optional**      | Yes         |
+
+### Examples
+
+Check [documented examples](../.docs/docs/examples) or [test examples](test/resources/examples) to
+understand easily how it works.
+
 ### Usage
 
-There are two Gradle properties which the plugin uses to detect automatically the current version
-based on the last tag in the current branch: `semver.stage` and `semver.scope`.
+There are three project properties which the plugin uses to detect automatically the current version
+based on the last tag in the current branch: `semver.stage`, `semver.scope` and `semver.tagPrefix`.
 
 They can be set via CLI, for example:
 
 ```shell
-./gradlew "-Psemver.stage=final" "-Psemver.scope=major"
+./gradlew "-Psemver.stage=final" "-Psemver.scope=major" "-Psemver.tagPrefix=v"
 ```
 
-Check [examples](examples) to understand easily how it works.
+- `semver.stage` indicates the stage to be changed, for example, `alpha`
+- `semver.scope` indicates the scope to be changed, for example, `patch`
+- `semver.tagPrefix` is used to know which version is going to be changed based on the tag prefix,
+  for example `v`. If the projects have different tag prefix, it is necessary to disambiguate which
+  version is going to be bumped.
 
-Additionally, you can set a tag prefix, for example `v1.0.0` by setting `semver.tagPrefix=v` in the
-root `gradle.properties` or in each project you want to use with a different tag.
+Default values:
 
-The default tag prefix is an empty string, for example: `1.0.0`.
+|                   | stage  | scope  | tagPrefix   |
+|-------------------|--------|--------|-------------|
+| **default value** | `auto` | `auto` | ` ` (empty) |
+| **Optional**      | Yes*   | Yes*   | Yes*        |
 
-#### All projects share the same version
+> Depends on the use case*
 
-Set the plugin in the root project:
+#### Plugin extension
 
 ```kotlin
-// build.gradle.kts
-plugins {
-    id("com.javiersc.semver.gradle.plugin")
+semver {
+    tagPrefix.set("")
 }
 ```
 
-Set a `semver.tagPrefix` if the default one is not enough (default is empty):
+It is used to asociate a project version with a tag prefix, and it allows having different versions
+in multi-project builds.
+
+An example can be setting the extension prefix to `v` in a specific project and the last tags in the
+last commit are: `1.0.0` and `v3.0.1`. The project version is `v3.0.1`.
+
+#### `semver.tagPrefix` project property via CLI or `gradle.properties` file
+
+```shell
+"-Psemver.tagPrefix=v"
+```
 
 ```properties
-# gradle.properties
 semver.tagPrefix=v
 ```
 
-#### Different version in a specific project
+If it is necessary to bump the project version, for example to `v3.0.2` from `v3.0.1`, but at same
+time there are more project with different prefixes, the plugin needs to know which tag prefix is
+going to be bumped, so `semver.tagPrefix` property is the solution to that problem.
 
-All projects use the version based on the tag prefix `v` except library, which is declaring the
-plugin too with a different tag prefix, `w`.
+To get it working:
 
-```kotlin
-// build.gradle.kts
-plugins {
-    id("com.javiersc.semver.gradle.plugin")
-}
+```shell
+./gradlew "-Psemver.scope=patch" "-Psemver.tagPrefix=v"
 ```
 
-```properties
-# gradle.properties
-semver.tagPrefix=v
-```
+##### Additional notes
 
-```kotlin
-// library/build.gradle.kts
-plugins {
-    id("com.javiersc.semver.gradle.plugin")
-}
-```
+###### Empty tag prefix for all projects
 
-```properties
-# library/gradle.properties
-semver.tagPrefix=w
-```
+> If all projects are not using a tag prefix, or in other words, the tag prefix is empty, both the
+> property in the extension and the project property via CLI or `gradle.properties` file are
+> irrelevant.
 
-#### Different version in all projects
+###### Same tag prefix for all projects
 
-Just apply the plugin in every project and set different `tagPrefix` for each one.
+> If all projects share a tag prefix, it is easier to set it in the root project `gradle.properties`
+> file instead of passing it constantly via CLI.
 
 ### Version types
 
@@ -110,7 +131,7 @@ Just apply the plugin in every project and set different `tagPrefix` for each on
 
 ### Stages
 
-To change between stages, use the Gradle property `-Psemver.stage=<stage>`
+To change between stages, use the Gradle project property `-Psemver.stage=<stage>`
 
 There are reserved stages that can be used to create certain versions:
 
@@ -118,12 +139,10 @@ There are reserved stages that can be used to create certain versions:
 - `auto`: It calculates automatically the next stage based on the previous stage.
 - `snapshot`: It generate the next snapshot version, for example, `1.0.1-SNAPSHOT`.
 
-For multi-project + multi-version configuration, it is possible to override the version of a
-specific project which is applying the plugin via CLI, for example if the subproject is `library`:
-
-```shell
-./gradlew "-Plibrary:semver.stage=alpha"
-````
+```properties
+# gradle.properties
+semver.tagPrefix=v
+```
 
 ```shell
 # Last tag = v1.0.0-alpha.1
@@ -149,6 +168,11 @@ To change between scopes, use the Gradle property `-Psemver.scope=<scope>`
 
 The scope has to be one of `major`, `minor`, `patch` or `auto`.
 
+```properties
+# gradle.properties
+semver.tagPrefix=v
+```
+
 ```shell
 # Last tag = v1.0.0-alpha.1
 ./gradlew "-Psemver.scope=major" # v2.0.0
@@ -164,6 +188,11 @@ The scope has to be one of `major`, `minor`, `patch` or `auto`.
 ```
 
 ### Combine stages and scopes
+
+```properties
+# gradle.properties
+semver.tagPrefix=v
+```
 
 ```shell
 # Last tag = v1.0.0-alpha.1
@@ -227,24 +256,30 @@ The scope has to be one of `major`, `minor`, `patch` or `auto`.
 
 ### Tasks
 
-There are two tasks, `createSemverTag` and `pushSemverTag`. First one just create the tag, meanwhile
-the last one creates and pushes the tag to the remote. You can combine them with `semver` Gradle
-properties to ensure the correct tag version is created and/or pushed.
+There are three tasks:
 
-`pushSemverTag` can use a specific remote if the Gradle property `semver.remote` is set. If it is
+- `semverPrint`: Prints the tag in CLI and create a file in `build/semver/version.txt` which has two
+  lines; the version without the tag and the version including the tag.
+- `semverCreateTag`. Creates a git tag.
+- `semverPushTag`. Creates and pushes the tag to the remote.
+
+You can combine them with any `semver` project properties to ensure the correct tag version is
+printed, created or pushed.
+
+`semverPushTag` can use a specific remote if the Gradle property `semver.remote` is set. If it is
 not set, `origin` is used if it exists, if not, the first remote by name is used. If there is no
 remote, the task fails.
 
 Samples:
 
 ```shell
-./gradlew createSemverTag
+./gradlew semverCreateTag
 
-./gradlew createSemverTag "-Psemver.stage=alpha"
+./gradlew semverCreateTag "-Psemver.stage=alpha"
 
-./gradlew pushSemverTag
+./gradlew semverPushTag
 
-./gradlew pushSemverTag "-Psemver.stage=alpha"
+./gradlew semverPushTag "-Psemver.stage=alpha"
 ```
 
 ### Set versions without timestamp on dirty repositories

@@ -1,0 +1,1 @@
+semverCreateTag -Psemver.scope=minor -Psemver.tagPrefix=w

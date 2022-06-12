@@ -1,14 +1,20 @@
 package com.javiersc.semver.gradle.plugin.internal
 
+import com.javiersc.gradle.extensions.lifecycleColored
+import com.javiersc.gradle.extensions.warnColored
 import com.javiersc.kotlin.stdlib.AnsiColor
-import com.javiersc.kotlin.stdlib.ansiColor
 import com.javiersc.semver.Version
-import org.gradle.api.Project
+import com.javiersc.semver.gradle.plugin.SemverPlugin
+import org.gradle.api.logging.Logger
+import org.gradle.api.logging.Logging
 
-internal fun Project.semverMessage(message: Any, color: AnsiColor = AnsiColor.Foreground.Purple) =
-    logger.lifecycle("$message".ansiColor(color))
+internal fun semverWarningMessage(message: Any, color: AnsiColor = AnsiColor.Foreground.Yellow) =
+    defaultLogger.warnColored(color) { "$message" }
 
-internal fun Project.warningLastVersionIsNotHigherVersion(last: Version?, higher: Version?) {
+internal fun semverMessage(message: Any, color: AnsiColor = AnsiColor.Foreground.Purple) =
+    defaultLogger.lifecycleColored(color) { "$message" }
+
+internal fun warningLastVersionIsNotHigherVersion(last: Version?, higher: Version?) {
     val message =
         """|There is an old tag with a higher version than the last tag version:
            |  - Old tag version -> $last
@@ -16,6 +22,8 @@ internal fun Project.warningLastVersionIsNotHigherVersion(last: Version?, higher
         """.trimMargin()
 
     if (last != null && higher != null && last < higher) {
-        logger.lifecycle(message)
+        semverMessage(message = message, color = AnsiColor.Foreground.Yellow)
     }
 }
+
+private val defaultLogger: Logger = Logging.getLogger(SemverPlugin::class.java)

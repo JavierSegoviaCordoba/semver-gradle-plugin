@@ -3,6 +3,10 @@ plugins {
     id("com.android.application")
 }
 
+semver {
+    tagPrefix.set("v")
+}
+
 android {
     compileSdk = 31
 

@@ -1,17 +1,13 @@
 package com.javiersc.semver.gradle.plugin.git
 
-import com.javiersc.semver.Version
-import com.javiersc.semver.gradle.plugin.addNewFile
-import com.javiersc.semver.gradle.plugin.git
-import com.javiersc.semver.gradle.plugin.initialCommitAnd
 import com.javiersc.semver.gradle.plugin.internal.calculateAdditionalVersionData
 import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
-import com.javiersc.semver.gradle.plugin.internal.lastCommitInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.git.lastCommitInCurrentBranch
+import com.javiersc.semver.gradle.plugin.setup.git
+import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldBeEmpty
 import java.io.File
-import java.time.Instant
-import java.util.Date
 import kotlin.test.Test
 
 internal class CalculatedVersionTest {
@@ -19,48 +15,31 @@ internal class CalculatedVersionTest {
     @Test
     fun `calculate additional version data`() {
         initialCommitAnd {
-            git.calculateAdditionalVersionData(
-                    tagPrefix = "v",
-                    mockDate = Date.from(Instant.ofEpochMilli(1)),
-                )
+            git.calculateAdditionalVersionData(tagPrefix = "v")
                 .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
-            addNewFile("2 commit.txt")
+            resolve("2 commit.txt").createNewFile()
 
-            git.calculateAdditionalVersionData(
-                    tagPrefix = "v",
-                    mockDate = Date.from(Instant.ofEpochMilli(0)),
-                )
-                .shouldBe(".0+1970-01-01T00:00:00Z")
+            git.calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}+DIRTY")
 
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
             git.tag().setName("v1.0.0").call()
 
-            git.calculateAdditionalVersionData("v", null).shouldBeEmpty()
+            git.calculateAdditionalVersionData("v").shouldBeEmpty()
 
-            addNewFile("3 commit.txt")
+            resolve("3 commit.txt").createNewFile()
 
-            git.calculateAdditionalVersionData(
-                    tagPrefix = "v",
-                    mockDate = Date.from(Instant.ofEpochMilli(1)),
-                )
-                .shouldBe(".0+1970-01-01T00:00:01Z")
+            git.calculateAdditionalVersionData(tagPrefix = "v").shouldBe(".0+DIRTY")
 
             git.add().addFilepattern(".").call()
 
-            git.calculateAdditionalVersionData(
-                    tagPrefix = "v",
-                    mockDate = Date.from(Instant.ofEpochMilli(2)),
-                )
-                .shouldBe(".0+1970-01-01T00:00:02Z")
+            git.calculateAdditionalVersionData(tagPrefix = "v").shouldBe(".0+DIRTY")
 
             git.commit().setMessage("3 commit").call()
 
-            git.calculateAdditionalVersionData(
-                    tagPrefix = "v",
-                    mockDate = Date.from(Instant.ofEpochMilli(1)),
-                )
+            git.calculateAdditionalVersionData(tagPrefix = "v")
                 .shouldBe(".1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
         }
     }
@@ -78,7 +57,7 @@ internal class CalculatedVersionTest {
             calculatedVersion(stage = "auto", scope = "auto", isCreatingTag = true)
                 .shouldBe("v0.1.0")
 
-            addNewFile("2 commit.txt")
+            resolve("2 commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
             git.tag().setName("v1.0.0").call()
@@ -89,9 +68,8 @@ internal class CalculatedVersionTest {
 
             calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
 
-            addNewFile("3 commit.txt")
-            calculatedVersion(mockDate = Date.from(Instant.ofEpochMilli(0)))
-                .shouldBe("v1.0.0.0+1970-01-01T00:00:00Z")
+            resolve("3 commit.txt").createNewFile()
+            calculatedVersion().shouldBe("v1.0.0.0+DIRTY")
 
             calculatedVersion(checkClean = false).shouldBe("v1.0.0")
 
@@ -104,7 +82,7 @@ internal class CalculatedVersionTest {
 
             calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
 
-            addNewFile("4 commit.txt")
+            resolve("4 commit.txt").createNewFile()
             calculatedVersion(checkClean = false)
                 .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
@@ -117,21 +95,17 @@ internal class CalculatedVersionTest {
 }
 
 private fun File.calculatedVersion(
-    warningLastVersionIsNotHigherVersion: (last: Version?, higher: Version?) -> Unit = { _, _ -> },
     tagPrefix: String = "v",
     stage: String? = null,
     scope: String? = null,
     isCreatingTag: Boolean = false,
-    mockDate: Date? = null,
     checkClean: Boolean = true,
 ) =
     tagPrefix +
         git.calculatedVersion(
-            warningLastVersionIsNotHigherVersion = warningLastVersionIsNotHigherVersion,
             tagPrefix = tagPrefix,
             stageProperty = stage,
             scopeProperty = scope,
             isCreatingSemverTag = isCreatingTag,
-            mockDate = mockDate,
             checkClean = checkClean,
         )

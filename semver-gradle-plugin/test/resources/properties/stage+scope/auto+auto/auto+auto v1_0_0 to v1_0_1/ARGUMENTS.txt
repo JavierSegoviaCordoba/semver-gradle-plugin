@@ -1,1 +1,1 @@
-createSemverTag "-Psemver.stage=auto" "-Psemver.scope=auto"
+semverCreateTag -Psemver.stage=auto -Psemver.scope=auto -Psemver.tagPrefix=v

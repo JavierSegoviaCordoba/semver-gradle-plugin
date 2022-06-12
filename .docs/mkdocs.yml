@@ -1,4 +1,4 @@
-site_name: 'SemVer Gradle Plugin'
+site_name: 'Semver Gradle Plugin'
 site_description: 'Gradle plugin to configure automatically the projects version based on git tags'
 site_author: 'Javier Segovia Córdoba'
 remote_branch: gh-pages
@@ -34,7 +34,7 @@ theme:
 nav:
   - Overview: index.md
   - Examples:
-    - All projects: examples/ALL_PROJECTS.md
+    - All projects: examples/ONE_PROJECT.md
 
 plugins:
   - search

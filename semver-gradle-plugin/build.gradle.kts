@@ -18,11 +18,11 @@ pluginBundle {
 
 gradlePlugin {
     plugins {
-        create("SemVerPlugin") {
+        create("SemverPlugin") {
             id = "com.javiersc.semver.gradle.plugin"
-            displayName = "SemVer"
+            displayName = "Semver"
             description = "Manage project versions automatically with git tags"
-            implementationClass = "com.javiersc.semver.gradle.plugin.SemVerPlugin"
+            implementationClass = "com.javiersc.semver.gradle.plugin.SemverPlugin"
         }
     }
 }
@@ -38,10 +38,12 @@ dependencies {
     implementation(gradleKotlinDsl())
 
     implementation(libs.eclipse.jgit.eclipseJgit)
+    implementation(libs.javiersc.gradleExtensions.gradleExt)
     implementation(libs.javiersc.kotlin.kotlinStdlib)
     implementation(libs.javiersc.semver.semverCore)
 
     testImplementation(gradleTestKit())
+    testImplementation(libs.javiersc.gradleExtensions.gradleTestkitExt)
     testImplementation(libs.jetbrains.kotlin.kotlinTest)
     testImplementation(libs.kotest.kotestAssertionsCore)
 

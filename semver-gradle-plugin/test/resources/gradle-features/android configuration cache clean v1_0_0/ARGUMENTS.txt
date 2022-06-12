@@ -1,1 +1,1 @@
-generateDebugBuildConfig
+semverPrint

@@ -1,0 +1,63 @@
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "tags": [
+    "kotlin"
+  ],
+  "severity": "Info",
+  "comment": "Property 'taskName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "field",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/SemverPushTag.kt",
+      "language": "kotlin",
+      "line": 37,
+      "offset": 8,
+      "length": 6,
+      "code": {
+        "startLine": 35,
+        "length": 6,
+        "offset": 41,
+        "surroundingCode": "\n    internal companion object {\n        public const val taskName = \"semverPushTag\"\n\n        internal fun register(project: Project, gitTagBuildService: Provider<GitTagBuildService>) {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "896711074896903466"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "tags": [
+    "kotlin"
+  ],
+  "severity": "Info",
+  "comment": "Property 'taskName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "field",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/SemverPrintTask.kt",
+      "language": "kotlin",
+      "line": 75,
+      "offset": 18,
+      "length": 8,
+      "code": {
+        "startLine": 73,
+        "length": 8,
+        "offset": 51,
+        "surroundingCode": "\n    internal companion object {\n        const val taskName: String = \"semverPrint\"\n\n        fun register(project: Project) ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "-3353976729906480948"
+}]}

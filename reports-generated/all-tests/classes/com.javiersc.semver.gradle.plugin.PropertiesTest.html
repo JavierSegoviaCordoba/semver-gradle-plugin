@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">7.090s</div>
+<div class="counter">9.003s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,23 @@
 </tr>
 </thead>
 <tr>
-<td class="success">gradle properties()</td>
-<td class="success">7.090s</td>
+<td class="success">empty()</td>
+<td class="success">0.930s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">scope()</td>
+<td class="success">4.103s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">stage and scope()</td>
+<td class="success">3.257s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">stage()</td>
+<td class="success">0.713s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,51 +102,276 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>?[35mTesting: scope/patch v1_0_0 to v1_0_1 - library w3_0_0 to w3_0_1?[0m
-?[35mTesting: scope/auto 1_0_0 to 1_0_1?[0m
-?[35mTesting: scope/auto v1_0_0-beta.5 to v1_0_0-beta.6?[0m
-?[35mTesting: scope/auto v1_0_0 to v1_0_1?[0m
-?[35mTesting: scope/minor v1_0_0 to v1_1_0 - library w3_0_0 to w3_1_0?[0m
-?[35mTesting: scope/patch v1_0_0 to v1_0_1?[0m
-?[35mTesting: scope/malformed buildAndFail (1)?[0m
-?[35mTesting: scope/major v1_0_0 to v2_0_0 - library w3_0_0 to w4_0_0?[0m
-?[35mTesting: scope/auto v1_0_0-alpha.1 to v1_0_0-alpha.2?[0m
-?[35mTesting: scope/minor v1_0_0 to v1_1_0?[0m
-?[35mTesting: scope/major v1_0_0 to v2_0_0?[0m
-?[35mTesting: stage/alpha v1_0_0 to v1_0_1-alpha_1?[0m
-?[35mTesting: stage/beta v1_0_0 to v1_0_1-beta_1?[0m
-?[35mTesting: stage/alpha v1_0_0-alpha-1 to v1_0_1-alpha_2?[0m
-?[35mTesting: stage/final v1_0_0-alpha_1 to v1_0_0?[0m
-?[35mTesting: stage/snapshot v1_0_0-alpha_1 to v1_0_1-SNAPSHOT?[0m
-?[35mTesting: stage+scope/final+auto/final+auto v1_0_0-alpha.1 to v1_0_0?[0m
-?[35mTesting: stage+scope/final+auto/final+auto v1_0_0 to v1_0_1?[0m
-?[35mTesting: stage+scope/final+auto/final+auto v1_0_0-rc.11 to v1_0_0?[0m
-?[35mTesting: stage+scope/final+auto/final+auto v1_2_0 to v1_2_1?[0m
-?[35mTesting: stage+scope/auto+major/auto+major v1_0_0-alpha.1 to v2_0_0-alpha.1?[0m
-?[35mTesting: stage+scope/auto+major/auto+major v1_0_0-rc.11 to v2_0_0-rc.1?[0m
-?[35mTesting: stage+scope/auto+major/auto+major v1_0_0 to v2_0_0?[0m
-?[35mTesting: stage+scope/alpha+auto/alpha+auto v1_0_0 to v1_0_1-alpha.1?[0m
-?[35mTesting: stage+scope/alpha+auto/alpha+auto v1_0_0-rc.11 buildAndFail?[0m
-?[35mTesting: stage+scope/alpha+auto/alpha+auto v1_0_0-alpha.1 to v1_0_0-alpha.2?[0m
-?[35mTesting: stage+scope/auto+auto/auto+auto v1_0_0-rc.11 to v1_0_0-rc.12?[0m
-?[35mTesting: stage+scope/auto+auto/auto+auto v1_0_0-alpha.1 to v1_0_0-alpha.2?[0m
-?[35mTesting: stage+scope/auto+auto/auto+auto v1_0_0 to v1_0_1?[0m
-?[35mTesting: stage+scope/auto+patch/auto+patch v1_0_0-alpha.1 to v1_0_1-alpha.1?[0m
-?[35mTesting: stage+scope/auto+patch/auto+patch v1_0_0-rc.11 to v1_0_1-rc.1?[0m
-?[35mTesting: stage+scope/auto+patch/auto+patch v1_0_0 to v1_0_1?[0m
-?[35mTesting: stage+scope/beta+auto/beta+auto v1_0_0 to v1_0_1-beta.1?[0m
-?[35mTesting: stage+scope/beta+auto/beta+auto v1_0_0-rc.11 buildAndFail?[0m
-?[35mTesting: stage+scope/beta+auto/beta+auto v1_0_0-alpha.1 to v1_0_0-beta.1?[0m
-?[35mTesting: stage+scope/rc+auto/rc+auto v1_0_0-rc.11 to v1_0_0-rc.12?[0m
-?[35mTesting: stage+scope/rc+auto/rc+auto v1_0_0 to v1_0_1-rc.1?[0m
-?[35mTesting: stage+scope/rc+auto/rc+auto v1_0_0-alpha.1 to v1_0_0-rc.1?[0m
-?[35mTesting: stage+scope/alpha+patch/alpha+patch v1_0_0 to v1_0_1-alpha_1?[0m
-?[35mTesting: stage+scope/alpha+major/alpha+major v1_0_0 to v2_0_0-alpha_1?[0m
-?[35mTesting: stage+scope/alpha+major/alpha+major v1_0_0 to v2_0_0-alpha_1 - library beta+minor w3_0_0 to w3_1_0-beta_1?[0m
-?[35mTesting: stage+scope/alpha+minor/alpha+minor v1_0_0 to v1_1_0-alpha_1?[0m
-?[35mTesting: stage+scope/auto+minor/auto+minor v1_0_0-alpha.1 to v1_1_0-alpha.1?[0m
-?[35mTesting: stage+scope/auto+minor/auto+minor v1_0_0-rc.11 to v1_1_0-rc.1?[0m
-?[35mTesting: stage+scope/auto+minor/auto+minor v1_0_0 to v1_0_1?[0m
+<pre>?[35m?[0m
+?[35mTesting: properties/empty/auto v1_0_0+hash?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/empty/auto v1_0_0+timestamp?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0.2+DIRTY?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0.2+DIRTY?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/major v1_0_0 to v2_0_0 - library w3_0_0 to w3_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 3.0.0.2+743a826?[0m ?[0m-?[0m ?[93mEXPECTED: 3.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.0.0.2+743a826?[0m ?[0m-?[0m ?[93mEXPECTED: w3.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/auto 1_0_0 to 1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/auto v1_0_0-beta.5 to v1_0_0-beta.6?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-beta.6?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-beta.6?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-beta.6?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-beta.6?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/auto v1_0_0 to v1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/minor v1_0_0 to v1_0_0 - library w3_0_0 to w3_1_0?[0m
+VERSION -&gt; ?[33mACTUAL: 3.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: 3.1.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: w3.1.0?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0.2+ac7088a?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0.2+ac7088a?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/patch v1_0_0 to v1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/malformed buildAndFail (1)?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/patch v1_0_0 to v1_0_1- library w3_0_0 to w3_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 3.0.0.2+87021e6?[0m ?[0m-?[0m ?[93mEXPECTED: 3.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.0.0.2+87021e6?[0m ?[0m-?[0m ?[93mEXPECTED: w3.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/major v1_0_0 to v1_0_0 - library w3_0_0 to w4_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 4.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 4.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w4.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: w4.0.0?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0.2+39a82dc?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0.2+39a82dc?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/auto v1_0_0-alpha.1 to v1_0_0-alpha.2?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-alpha.2?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-alpha.2?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/patch v1_0_0 to v1_0_0- library w3_0_0 to w3_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 3.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 3.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: w3.0.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0.2+089f87e?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0.2+089f87e?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/minor v1_0_0 to v1_1_0 - library w3_0_0 to w3_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 3.0.0.2+49d3b76?[0m ?[0m-?[0m ?[93mEXPECTED: 3.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.0.0.2+49d3b76?[0m ?[0m-?[0m ?[93mEXPECTED: w3.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 1.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: 1.1.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: v1.1.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/minor v1_0_0 to v1_1_0?[0m
+VERSION -&gt; ?[33mACTUAL: 1.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: 1.1.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: v1.1.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/scope/major v1_0_0 to v2_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage/alpha v1_0_0 to v1_0_1-alpha_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage/beta v1_0_0 to v1_0_1-beta_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-beta.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-beta.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage/alpha v1_0_0-alpha-1 to v1_0_1-alpha_2?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-alpha.2?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-alpha.2?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage/final v1_0_0-alpha_1 to v1_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage/snapshot v1_0_0-alpha_1 to v1_0_1-SNAPSHOT?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-SNAPSHOT?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-SNAPSHOT?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-SNAPSHOT?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-SNAPSHOT?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/final+auto/final+auto v1_0_0-alpha.1 to v1_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/final+auto/final+auto v1_0_0 to v1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/final+auto/final+auto v1_0_0-rc.11 to v1_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/final+auto/final+auto v1_2_0 to v1_2_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.2.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.2.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.2.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.2.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+major/auto+major v1_0_0-alpha.1 to v2_0_0-alpha.1?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+major/auto+major v1_0_0-rc.11 to v2_0_0-rc.1?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0-rc.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0-rc.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+major/auto+major v1_0_0 to v2_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+auto/alpha+auto v1_0_0 to v1_0_1-alpha.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-beta.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-beta.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+auto/alpha+auto v1_0_0-rc.11 buildAndFail?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+auto/alpha+auto v1_0_0-alpha.1 to v1_0_0-alpha.2?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-alpha.2?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-alpha.2?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+auto/auto+auto v1_0_0-rc.11 to v1_0_0-rc.12?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-rc.12?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-rc.12?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-rc.12?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-rc.12?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+auto/auto+auto v1_0_0-alpha.1 to v1_0_0-alpha.2?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-alpha.2?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-alpha.2?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-alpha.2?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+auto/auto+auto v1_0_0 to v1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+patch/auto+patch v1_0_0-alpha.1 to v1_0_1-alpha.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+patch/auto+patch v1_0_0-rc.11 to v1_0_1-rc.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-rc.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-rc.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+patch/auto+patch v1_0_0 to v1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/beta+auto/beta+auto v1_0_0 to v1_0_1-beta.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-beta.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-beta.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/beta+auto/beta+auto v1_0_0-rc.11 buildAndFail?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/beta+auto/beta+auto v1_0_0-alpha.1 to v1_0_0-beta.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-beta.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-beta.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/rc+auto/rc+auto v1_0_0-rc.11 to v1_0_0-rc.12?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-rc.12?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-rc.12?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-rc.12?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-rc.12?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/rc+auto/rc+auto v1_0_0 to v1_0_1-rc.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-rc.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-rc.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/rc+auto/rc+auto v1_0_0-alpha.1 to v1_0_0-rc.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0-rc.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0-rc.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+patch/alpha+patch v1_0_0 to v1_0_1-alpha_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.1-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.1-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.1-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.1-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+major/v1_0_0 to v1_0_0 - library beta+minor w3_0_0 to w3_1_0-beta_1?[0m
+VERSION -&gt; ?[33mACTUAL: 3.1.0-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: 3.1.0-beta.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.1.0-beta.1?[0m ?[0m-?[0m ?[93mEXPECTED: w3.1.0-beta.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 1.0.0.2+7f89c1f?[0m ?[0m-?[0m ?[93mEXPECTED: 1.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.0.0.2+7f89c1f?[0m ?[0m-?[0m ?[93mEXPECTED: v1.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+major/alpha+major v1_0_0 to v2_0_0-alpha_1?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+major/alpha+major v1_0_0 to v2_0_0-alpha_1 - library w3_0_0 to w3_0_0?[0m
+VERSION -&gt; ?[33mACTUAL: 3.0.0.2+6aec034?[0m ?[0m-?[0m ?[93mEXPECTED: 3.0.0.2+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: w3.0.0.2+6aec034?[0m ?[0m-?[0m ?[93mEXPECTED: w3.0.0.2+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 2.0.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 2.0.0-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v2.0.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v2.0.0-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/alpha+minor/alpha+minor v1_0_0 to v1_1_0-alpha_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.1.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.1.0-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.1.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.1.0-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+minor/auto+minor v1_0_0-alpha.1 to v1_1_0-alpha.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.1.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.1.0-alpha.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.1.0-alpha.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.1.0-alpha.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+minor/auto+minor v1_0_0-rc.11 to v1_1_0-rc.1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.1.0-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: 1.1.0-rc.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.1.0-rc.1?[0m ?[0m-?[0m ?[93mEXPECTED: v1.1.0-rc.1?[0m
+?[35m----------------------------------------?[0m
+?[35m?[0m
+?[35mTesting: properties/stage+scope/auto+minor/auto+minor v1_0_0 to v1_0_1?[0m
+VERSION -&gt; ?[33mACTUAL: 1.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: 1.1.0?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v1.1.0?[0m ?[0m-?[0m ?[93mEXPECTED: v1.1.0?[0m
+?[35m----------------------------------------?[0m
 </pre>
 </span>
 </div>
@@ -143,7 +383,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4.2</a> at Jun 14, 2022, 8:58:12 PM</p>
+<a href="http://www.gradle.org">Gradle 7.4.2</a> at Jun 14, 2022, 9:34:33 PM</p>
 </div>
 </div>
 </body>

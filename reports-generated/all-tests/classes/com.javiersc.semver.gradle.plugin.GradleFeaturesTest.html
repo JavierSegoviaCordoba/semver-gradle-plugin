@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">4</div>
+<div class="counter">5</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1m21.36s</div>
+<div class="counter">3m12.10s</div>
 <p>duration</p>
 </div>
 </td>
@@ -63,6 +63,9 @@
 <li>
 <a href="#tab0">Tests</a>
 </li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -76,25 +79,96 @@
 </thead>
 <tr>
 <td class="success">android build cache clean v1_0_0()</td>
-<td class="success">0.991s</td>
+<td class="success">33.976s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">android configuration cache clean v1_0_0()</td>
-<td class="success">11.571s</td>
+<td class="success">33.278s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">build cache clean v1_0_0()</td>
-<td class="success">1.506s</td>
+<td class="success">35.459s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">configuration cache clean v1_0_0()</td>
-<td class="success">1m7.29s</td>
+<td class="success">56.964s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">project isolation clean v1_0_0()</td>
+<td class="success">32.421s</td>
 <td class="success">passed</td>
 </tr>
 </table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>VERSION -&gt; ?[33mACTUAL: 0.9.0.2+8b0d0b3?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+8b0d0b3?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+DIRTY?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+DIRTY?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+09adc4e?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+09adc4e?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+DIRTY?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+DIRTY?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+ce82eb5?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+ce82eb5?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+DIRTY?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+DIRTY?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+f38918a?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+f38918a?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+DIRTY?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+DIRTY?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+89ea1e5?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+HASH?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+89ea1e5?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+HASH?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.0+DIRTY?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.0.2+DIRTY?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.0+DIRTY?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+VERSION -&gt; ?[33mACTUAL: 0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: 0.9.1?[0m
+VERSION WITH TAG -&gt; ?[33mACTUAL: v0.9.1?[0m ?[0m-?[0m ?[93mEXPECTED: v0.9.1?[0m
+?[35m----------------------------------------?[0m
+</pre>
+</span>
 </div>
 </div>
 <div id="footer">
@@ -104,7 +178,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4.2</a> at Jun 14, 2022, 8:58:12 PM</p>
+<a href="http://www.gradle.org">Gradle 7.4.2</a> at Jun 14, 2022, 9:34:33 PM</p>
 </div>
 </div>
 </body>

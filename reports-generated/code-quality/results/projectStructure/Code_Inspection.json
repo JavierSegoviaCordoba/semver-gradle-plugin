@@ -64,13 +64,13 @@
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
           "sourceFolders": [
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
-              "type": "TestSource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
+              "type": "TestResource",
               "packagePrefix": ""
             },
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
-              "type": "TestResource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
+              "type": "TestSource",
               "packagePrefix": ""
             }
           ]
@@ -190,11 +190,19 @@
           "type": "Library"
         },
         {
+          "name": "Gradle: com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle-extensions:gradle-testkit-ext:1.0.0-alpha.13",
+          "type": "Library"
+        },
+        {
           "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
           "type": "Library"
         },
         {
@@ -419,11 +427,15 @@
           "type": "Library"
         },
         {
+          "name": "Gradle: com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+          "type": "Library"
+        },
+        {
           "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
           "type": "Library"
         },
         {
@@ -566,7 +578,7 @@
           "type": "Library"
         },
         {
-          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/0329021e537a1b71cc80c392de87029071cebbb4/classes",
+          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/e73e8c849d0f77d4c9dd4f1a3705ff4926f4e6ce/classes",
           "type": "Library"
         },
         {
@@ -606,7 +618,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
+          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
           "type": "Library"
         },
         {
@@ -1253,7 +1265,7 @@
           "type": "Library"
         },
         {
-          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/0329021e537a1b71cc80c392de87029071cebbb4/classes",
+          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/e73e8c849d0f77d4c9dd4f1a3705ff4926f4e6ce/classes",
           "type": "Library"
         },
         {
@@ -1277,7 +1289,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
+          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
           "type": "Library"
         },
         {

@@ -30,9 +30,9 @@
       ]
     },
     {
-      "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
+      "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
       "roots": [
-        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/binary-compatibility-validator/0.10.0/ccda5bf2aa3141f66b7f78b91afbf2e3678638fa/binary-compatibility-validator-0.10.0.jar!/"
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/binary-compatibility-validator/0.10.1/15e3b53bd0f19685e27b38a97793b94c739032b3/binary-compatibility-validator-0.10.1.jar!/"
       ]
     },
     {
@@ -823,9 +823,27 @@
       ]
     },
     {
+      "name": "Gradle: com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-extensions/gradle-ext/1.0.0-alpha.13/64452c8c0c119cf2a8360d069b8eae6263fb3849/gradle-ext-1.0.0-alpha.13.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.eclipse.jgit/org.eclipse.jgit/6.2.0.202206071550-r/d59e7ae8528fcc3854acbb307de8443b28a5c945/org.eclipse.jgit-6.2.0.202206071550-r.jar!/"
+      ]
+    },
+    {
       "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.5",
       "roots": [
         "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.kotlin/kotlin-stdlib-jvm/0.1.0-alpha.5/307acd52d79821a88592558e451222b729df3ac1/kotlin-stdlib-jvm-0.1.0-alpha.5.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: com.javiersc.gradle-extensions:gradle-testkit-ext:1.0.0-alpha.13",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.gradle-extensions/gradle-testkit-ext/1.0.0-alpha.13/b8345d757f4bf024a296b2e900a8fad9001ba85/gradle-testkit-ext-1.0.0-alpha.13.jar!/"
       ]
     },
     {

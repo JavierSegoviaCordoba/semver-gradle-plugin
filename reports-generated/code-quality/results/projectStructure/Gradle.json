@@ -2,6 +2,22 @@
   "gradleJvm": "#JAVA_HOME",
   "libraries": [
     {
+      "ideaName": "Gradle: com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+      "gradleName": "com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle-extensions",
+      "artifactId": "gradle-ext",
+      "version": "1.0.0-alpha.13"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle-extensions:gradle-testkit-ext:1.0.0-alpha.13",
+      "gradleName": "com.javiersc.gradle-extensions:gradle-testkit-ext:1.0.0-alpha.13",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle-extensions",
+      "artifactId": "gradle-testkit-ext",
+      "version": "1.0.0-alpha.13"
+    },
+    {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
       "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
       "unresolved": false,
@@ -10,12 +26,12 @@
       "version": "1.6.21"
     },
     {
-      "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
-      "gradleName": "org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
+      "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
+      "gradleName": "org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
       "unresolved": false,
       "groupId": "org.eclipse.jgit",
       "artifactId": "org.eclipse.jgit",
-      "version": "6.1.0.202203080745-r"
+      "version": "6.2.0.202206071550-r"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test:1.6.21",
@@ -242,12 +258,12 @@
       "version": "1.6.21"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
-      "gradleName": "org.jetbrains.kotlinx:binary-compatibility-validator:0.10.0",
+      "ideaName": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
+      "gradleName": "org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlinx",
       "artifactId": "binary-compatibility-validator",
-      "version": "0.10.0"
+      "version": "0.10.1"
     },
     {
       "ideaName": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.43",

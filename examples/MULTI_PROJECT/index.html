@@ -17,7 +17,7 @@
     
     
       
-        <title>All tests - Semver Gradle Plugin</title>
+        <title>One project example - Semver Gradle Plugin</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#all-tests" class="md-skip">
+        <a href="#one-project-example" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              All tests
+              One project example
             
           </span>
         </div>
@@ -273,7 +273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/ONE_PROJECT/" class="md-nav__link">
+      <a href="../ONE_PROJECT/" class="md-nav__link">
         All projects
       </a>
     </li>
@@ -418,14 +418,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
       
       
@@ -446,21 +444,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../reports/all-tests/" class="md-nav__link">
         All tests
       </a>
-      
     </li>
   
 
@@ -472,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-analysis/" class="md-nav__link">
+      <a href="../../reports/code-analysis/" class="md-nav__link">
         Code analysis
       </a>
     </li>
@@ -486,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-quality/" class="md-nav__link">
+      <a href="../../reports/code-quality/" class="md-nav__link">
         Code quality
       </a>
     </li>
@@ -520,6 +508,153 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-initial-repo-state" class="md-nav__link">
+    0. Initial repo state
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Initial repo state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commits" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last-tags-for-all-projects" class="md-nav__link">
+    Last tags for all projects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repo-state" class="md-nav__link">
+    Repo state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-run-gradlew-assemble" class="md-nav__link">
+    1. Run ./gradlew assemble
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-a-new-file-in-library-one-a-then-run-gradlew-assemble" class="md-nav__link">
+    2. Create a new file in library-one-a, then run ./gradlew assemble
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-add-the-new-file-to-git-and-commit-it-then-run-gradlew-semvercreatetag-psemvertagprefixa" class="md-nav__link">
+    3. Add the new file to git and commit it, then run ./gradlew semverCreateTag "-Psemver.tagPrefix=a
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-run-gradlew-assemble" class="md-nav__link">
+    4. Run ./gradlew assemble
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-add-and-commit-a-new-file-in-library-one-a-then-run-gradlew-assemble" class="md-nav__link">
+    5. Create, add and commit a new file in library-one-a, then run ./gradlew assemble
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-run-gradlew-semvercreatetag-psemvertagprefixa" class="md-nav__link">
+    6. Run ./gradlew semverCreateTag "-Psemver.tagPrefix=a"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-create-add-to-git-and-commit-a-new-file-in-library-one-a-then-run-gradlew-semvercreatetag-psemverstagealpha-psemvertagprefixa" class="md-nav__link">
+    7. Create, add to git and commit a new file in library-one-a, then run ./gradlew semverCreateTag "-Psemver.stage=alpha" "-Psemver.tagPrefix=a"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-run-gradlew-semvercreatetag-psemverstagebeta-psemvertagprefixa" class="md-nav__link">
+    8. Run ./gradlew semverCreateTag "-Psemver.stage=beta" "-Psemver.tagPrefix=a"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-create-add-to-git-and-commit-a-new-file-in-library-one-a-then-run-gradlew-semvercreatetag-psemverstagefinal-psemvertagprefixa" class="md-nav__link">
+    9. Create, add to git and commit a new file in library-one-a, then run ./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.tagPrefix=a"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-run-gradlew-semvercreatetag-psemverstagefinal-psemverscopemajor-psemvertagprefixa" class="md-nav__link">
+    10. Run ./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.scope=major "-Psemver.tagPrefix=a"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-run-gradlew-publishtomavenlocal-psemverstagesnapshot-psemvertagprefixa" class="md-nav__link">
+    11. Run ./gradlew publishToMavenLocal "-Psemver.stage=snapshot" "-Psemver.tagPrefix=a"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-run-gradlew-semvercreatetag-psemverscopeminor-psemvertagprefixb" class="md-nav__link">
+    12. Run ./gradlew semverCreateTag "-Psemver.scope=minor" "-Psemver.tagPrefix=b"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-run-gradlew-semvercreatetag-psemverstagerc-psemvertagprefixc" class="md-nav__link">
+    12. Run ./gradlew semverCreateTag "-Psemver.stage=rc" "-Psemver.tagPrefix=c"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-run-gradlew-semvercreatetag-psemverstagedev" class="md-nav__link">
+    12. Run ./gradlew semverCreateTag "-Psemver.stage=dev"
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -530,14 +665,258 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/edit/master/docs/reports/all-tests.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/edit/master/docs/examples/MULTI_PROJECT.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="all-tests">All tests<a class="headerlink" href="#all-tests" title="Permanent link">&para;</a></h1>
-<iframe src="/reports-generated/all-tests" style="height: 65vh; width: 100vw; overflow: hidden" frameborder="0"></iframe>
+<h1 id="one-project-example">One project example<a class="headerlink" href="#one-project-example" title="Permanent link">&para;</a></h1>
+<h2 id="0-initial-repo-state">0. Initial repo state<a class="headerlink" href="#0-initial-repo-state" title="Permanent link">&para;</a></h2>
+<h4 id="modules">Modules:<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>library-one-a</code> uses prefix: a</li>
+<li><code>library-two-b</code> uses prefix: b</li>
+<li><code>library-three-b</code> uses prefix: b</li>
+<li><code>library-four-b</code> uses prefix: b</li>
+<li><code>library-five-b</code> uses prefix: b</li>
+<li><code>library-six-c</code> uses prefix: c</li>
+<li><code>library-seven-c</code> uses prefix: c</li>
+<li><code>library-eight-c</code> uses prefix: c</li>
+<li><code>library-nine</code> uses no prefix</li>
+<li><code>library-ten</code> uses no prefix</li>
+</ul>
+<h4 id="commits">Commits<a class="headerlink" href="#commits" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Initial commit: (hash: <code>14d9406b</code>)</li>
+<li>Add semver plugin to all projects (hash: <code>7f68e730</code>)</li>
+</ul>
+<h4 id="last-tags-for-all-projects">Last tags for all projects<a class="headerlink" href="#last-tags-for-all-projects" title="Permanent link">&para;</a></h4>
+<p>All projects have the same version 1.0.0 so there is four tags with that</p>
+<ul>
+<li>a1.0.0</li>
+<li>b1.0.0</li>
+<li>c1.0.0</li>
+<li>1.0.0</li>
+</ul>
+<h4 id="repo-state">Repo state<a class="headerlink" href="#repo-state" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Repo is not clean</li>
+</ul>
+<h2 id="1-run-gradlew-assemble">1. Run <code>./gradlew assemble</code><a class="headerlink" href="#1-run-gradlew-assemble" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Timestamp (UTC)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.0.0+2021-11-11T14-22-03-207850300Z
+                          -&gt; tag prefix (a)
+                          -----&gt; base version (1.0.0)
+                          ------&gt; numbers of commits (0)
+                          --------&gt; timestamp (2021-11-11T14-22-03-207850300Z)
+
+semver for library-two-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-three-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-four-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-five-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-six-c: c1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-seven-c: c1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-eight-c: c1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-nine: 1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-ten: 1.0.0.0+2021-11-11T14-22-03-207850300Z
+</code></pre></div>
+<h2 id="2-create-a-new-file-in-library-one-a-then-run-gradlew-assemble">2. Create a new file in <code>library-one-a</code>, then run <code>./gradlew assemble</code><a class="headerlink" href="#2-create-a-new-file-in-library-one-a-then-run-gradlew-assemble" title="Permanent link">&para;</a></h2>
+<p>Version should be similar to the previous one (only timestamp changes)</p>
+<h2 id="3-add-the-new-file-to-git-and-commit-it-then-run-gradlew-semvercreatetag-psemvertagprefixa">3. Add the new file to git and commit it, then run <code>./gradlew semverCreateTag "-Psemver.tagPrefix=a</code><a class="headerlink" href="#3-add-the-new-file-to-git-and-commit-it-then-run-gradlew-semvercreatetag-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Promotes the current state to be a new version for the projects which are using as tag prefix the
+  value <code>a</code>.</li>
+<li>As we haven&rsquo;t passed as argument the property <code>semver.scope</code> with any valor, we are indeed
+  doing <code>-Psemver.scope=auto</code>, which in this case will increase the <code>patch</code>.</li>
+<li>Since there is a previous tag (<code>a1.0.0</code>), <code>semver.scope=auto</code> resolves automatically the next
+  version. The algorithm is simple:<ul>
+<li>If previous tag is final, the new tag increases the <code>patch</code>.</li>
+<li>If previous tag is non-final, the new tag increases the <code>num</code> and it keeps the previous stage.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Created new semver tag: a1.0.1
+</code></pre></div>
+<h2 id="4-run-gradlew-assemble">4. Run <code>./gradlew assemble</code><a class="headerlink" href="#4-run-gradlew-assemble" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Because the latest commit in the branch has the tag a1.0.1, and the repo is clean, the project
+  version for projects which uses the tag prefix <code>a</code> is <code>1.0.1</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.1
+                          -&gt; tag prefix (a)
+                          -----&gt; version (1.0.1)
+
+semver for library-two-b: b1.0.0.1+26f0484
+                          -&gt; tag prefix (b)
+                          -----&gt; version (1.0.0)
+                          ------&gt; numbers of commits (1)
+                          --------&gt; hash (26f0484)
+
+semver for library-three-b: b1.0.0.1+26f0484
+semver for library-four-b: b1.0.0.1+26f0484
+semver for library-five-b: b1.0.0.1+26f0484
+semver for library-six-c: c1.0.0.1+26f0484
+semver for library-seven-c: c1.0.0.1+26f0484
+semver for library-eight-c: c1.0.0.1+26f0484
+semver for library-nine: 1.0.0.1+26f0484
+semver for library-ten: 1.0.0.1+26f0484
+</code></pre></div>
+<h2 id="5-create-add-and-commit-a-new-file-in-library-one-a-then-run-gradlew-assemble">5. Create, add and commit a new file in <code>library-one-a</code>, then run <code>./gradlew assemble</code><a class="headerlink" href="#5-create-add-and-commit-a-new-file-in-library-one-a-then-run-gradlew-assemble" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Because the git status is clean, instead of using a timestamp, it uses the latest commit hash.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.1+76f0424
+semver for library-two-b: b1.0.0.2+76f0424
+semver for library-three-b: b1.0.0.2+76f0424
+semver for library-four-b: b1.0.0.2+76f0424
+semver for library-five-b: b1.0.0.2+76f0424
+semver for library-six-c: c1.0.0.2+76f0424
+semver for library-seven-c: c1.0.0.2+76f0424
+semver for library-eight-c: c1.0.0.2+76f0424
+semver for library-nine: 1.0.0.2+76f0424
+semver for library-ten: 1.0.0.2+76f0424
+</code></pre></div>
+<h2 id="6-run-gradlew-semvercreatetag-psemvertagprefixa">6. Run <code>./gradlew semverCreateTag "-Psemver.tagPrefix=a"</code><a class="headerlink" href="#6-run-gradlew-semvercreatetag-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Promote the current state to a new version.</li>
+<li>Since there is a previous tag (<code>v1.0.2</code>), <code>semverCreateTag</code> resolves automatically the next
+  version. The algorithm is simple:<ul>
+<li>If previous tag is final, the new tag increases the <code>patch</code>.</li>
+<li>If previous tag is non-final, the new tag increases the <code>num</code> and it keeps the previous stage.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.2
+semver for library-two-b: b1.0.0.2+76f0424
+semver for library-three-b: b1.0.0.2+76f0424
+semver for library-four-b: b1.0.0.2+76f0424
+semver for library-five-b: b1.0.0.2+76f0424
+semver for library-six-c: c1.0.0.2+76f0424
+semver for library-seven-c: c1.0.0.2+76f0424
+semver for library-eight-c: c1.0.0.2+76f0424
+semver for library-nine: 1.0.0.2+76f0424
+semver for library-ten: 1.0.0.2+76f0424
+</code></pre></div>
+<h2 id="7-create-add-to-git-and-commit-a-new-file-in-library-one-a-then-run-gradlew-semvercreatetag-psemverstagealpha-psemvertagprefixa">7. Create, add to git and commit a new file in <code>library-one-a</code>, then run <code>./gradlew semverCreateTag "-Psemver.stage=alpha" "-Psemver.tagPrefix=a"</code><a class="headerlink" href="#7-create-add-to-git-and-commit-a-new-file-in-library-one-a-then-run-gradlew-semvercreatetag-psemverstagealpha-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Promote the current state to be a new alpha version for the projects with tag prefix <code>a</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.3-alpha.1
+semver for library-two-b: b1.0.0.3+58u03s9
+semver for library-three-b: b1.0.0.3+58u03s9
+semver for library-four-b: b1.0.0.3+58u03s9
+semver for library-five-b: b1.0.0.3+58u03s9
+semver for library-six-c: c1.0.0.3+58u03s9
+semver for library-seven-c: c1.0.0.3+58u03s9
+semver for library-eight-c: c1.0.0.3+58u03s9
+semver for library-nine: 1.0.0.3+58u03s9
+semver for library-ten: 1.0.0.3+58u03s9
+</code></pre></div>
+<h2 id="8-run-gradlew-semvercreatetag-psemverstagebeta-psemvertagprefixa">8. Run <code>./gradlew semverCreateTag "-Psemver.stage=beta" "-Psemver.tagPrefix=a"</code><a class="headerlink" href="#8-run-gradlew-semvercreatetag-psemverstagebeta-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Without changing the state, promote the current state to be a new beta version for the projects
+  with tag prefix <code>a</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.3-beta.1
+semver for library-two-b: b1.0.0.3+58u03s9
+semver for library-three-b: b1.0.0.3+58u03s9
+semver for library-four-b: b1.0.0.3+58u03s9
+semver for library-five-b: b1.0.0.3+58u03s9
+semver for library-six-c: c1.0.0.3+58u03s9
+semver for library-seven-c: c1.0.0.3+58u03s9
+semver for library-eight-c: c1.0.0.3+58u03s9
+semver for library-nine: 1.0.0.3+58u03s9
+semver for library-ten: 1.0.0.3+58u03s9
+</code></pre></div>
+<h2 id="9-create-add-to-git-and-commit-a-new-file-in-library-one-a-then-run-gradlew-semvercreatetag-psemverstagefinal-psemvertagprefixa">9. Create, add to git and commit a new file in <code>library-one-a</code>, then run <code>./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.tagPrefix=a"</code><a class="headerlink" href="#9-create-add-to-git-and-commit-a-new-file-in-library-one-a-then-run-gradlew-semvercreatetag-psemverstagefinal-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Without changing the state, promote the current state to be a final version for the projects with
+  tag prefix <code>a</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a1.0.3
+semver for library-two-b: b1.0.0.4+1as03k5
+semver for library-three-b: b1.0.0.4+1as03k5
+semver for library-four-b: b1.0.0.4+1as03k5
+semver for library-five-b: b1.0.0.4+1as03k5
+semver for library-six-c: c1.0.0.4+1as03k5
+semver for library-seven-c: c1.0.0.4+1as03k5
+semver for library-eight-c: c1.0.0.4+1as03k5
+semver for library-nine: 1.0.0.4+1as03k5
+semver for library-ten: 1.0.0.4+1as03k5
+</code></pre></div>
+<h2 id="10-run-gradlew-semvercreatetag-psemverstagefinal-psemverscopemajor-psemvertagprefixa">10. Run <code>./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.scope=major "-Psemver.tagPrefix=a"</code><a class="headerlink" href="#10-run-gradlew-semvercreatetag-psemverstagefinal-psemverscopemajor-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Without changing the state, promote the current state to be the <code>2.0.0</code> version for the projects
+  with tag prefix <code>a</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a2.0.0
+semver for library-two-b: b1.0.0.4+1as03k5
+semver for library-three-b: b1.0.0.4+1as03k5
+semver for library-four-b: b1.0.0.4+1as03k5
+semver for library-five-b: b1.0.0.4+1as03k5
+semver for library-six-c: c1.0.0.4+1as03k5
+semver for library-seven-c: c1.0.0.4+1as03k5
+semver for library-eight-c: c1.0.0.4+1as03k5
+semver for library-nine: 1.0.0.4+1as03k5
+semver for library-ten: 1.0.0.4+1as03k5
+</code></pre></div>
+<h2 id="11-run-gradlew-publishtomavenlocal-psemverstagesnapshot-psemvertagprefixa">11. Run <code>./gradlew publishToMavenLocal "-Psemver.stage=snapshot" "-Psemver.tagPrefix=a"</code><a class="headerlink" href="#11-run-gradlew-publishtomavenlocal-psemverstagesnapshot-psemvertagprefixa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A common approach is publishing the artifacts to the snapshot repository with each commit merged
+  to some branch.</li>
+<li>Without changing the state and without creating a new tag, the project uses the next patched
+  version by just submitting the snapshot scope.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a2.0.1-SNAPSHOT
+semver for library-two-b: b1.0.0.4+1as03k5
+semver for library-three-b: b1.0.0.4+1as03k5
+semver for library-four-b: b1.0.0.4+1as03k5
+semver for library-five-b: b1.0.0.4+1as03k5
+semver for library-six-c: c1.0.0.4+1as03k5
+semver for library-seven-c: c1.0.0.4+1as03k5
+semver for library-eight-c: c1.0.0.4+1as03k5
+semver for library-nine: 1.0.0.4+1as03k5
+semver for library-ten: 1.0.0.4+1as03k5
+</code></pre></div>
+<h2 id="12-run-gradlew-semvercreatetag-psemverscopeminor-psemvertagprefixb">12. Run <code>./gradlew semverCreateTag "-Psemver.scope=minor" "-Psemver.tagPrefix=b"</code><a class="headerlink" href="#12-run-gradlew-semvercreatetag-psemverscopeminor-psemvertagprefixb" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a2.0.0
+semver for library-two-b: b1.1.0
+semver for library-three-b: b1.1.0
+semver for library-four-b: b1.1.0
+semver for library-five-b: b1.1.0
+semver for library-six-c: c1.0.0.4+1as03k5
+semver for library-seven-c: c1.0.0.4+1as03k5
+semver for library-eight-c: c1.0.0.4+1as03k5
+semver for library-nine: 1.0.0.4+1as03k5
+semver for library-ten: 1.0.0.4+1as03k5
+</code></pre></div>
+<h2 id="12-run-gradlew-semvercreatetag-psemverstagerc-psemvertagprefixc">12. Run <code>./gradlew semverCreateTag "-Psemver.stage=rc" "-Psemver.tagPrefix=c"</code><a class="headerlink" href="#12-run-gradlew-semvercreatetag-psemverstagerc-psemvertagprefixc" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a2.0.0
+semver for library-two-b: b1.1.0
+semver for library-three-b: b1.1.0
+semver for library-four-b: b1.1.0
+semver for library-five-b: b1.1.0
+semver for library-six-c: c1.0.1-rc.1
+semver for library-seven-c: c1.0.1-rc.1
+semver for library-eight-c: c1.0.1-rc.1
+semver for library-nine: 1.0.0.4+1as03k5
+semver for library-ten: 1.0.0.4+1as03k5
+</code></pre></div>
+<h2 id="12-run-gradlew-semvercreatetag-psemverstagedev">12. Run <code>./gradlew semverCreateTag "-Psemver.stage=dev"</code><a class="headerlink" href="#12-run-gradlew-semvercreatetag-psemverstagedev" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>semver for library-one-a: a2.0.0
+semver for library-two-b: b1.1.0
+semver for library-three-b: b1.1.0
+semver for library-four-b: b1.1.0
+semver for library-five-b: b1.1.0
+semver for library-six-c: c1.0.1-rc.1
+semver for library-seven-c: c1.0.1-rc.1
+semver for library-eight-c: c1.0.1-rc.1
+semver for library-nine: 1.0.1-dev.1
+semver for library-ten: 1.0.1-dev.1
+</code></pre></div>
 
               
             </article>
@@ -547,41 +926,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../projects/semver-gradle-plugin/semver-gradle-plugin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: semver-gradle-plugin" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              semver-gradle-plugin
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../code-analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Code analysis" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Code analysis
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

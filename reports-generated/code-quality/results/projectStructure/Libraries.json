@@ -823,6 +823,12 @@
       ]
     },
     {
+      "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.5",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.javiersc.kotlin/kotlin-stdlib-jvm/0.1.0-alpha.5/307acd52d79821a88592558e451222b729df3ac1/kotlin-stdlib-jvm-0.1.0-alpha.5.jar!/"
+      ]
+    },
+    {
       "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.6.21",
       "roots": [
         "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test/1.6.21/1e9d81b013e31b22da67464948869fc56c652527/kotlin-test-1.6.21.jar!/"

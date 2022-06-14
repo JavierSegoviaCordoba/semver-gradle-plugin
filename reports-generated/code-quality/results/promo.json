@@ -1,63 +1,32 @@
 {"version":"3","listProblem":[{
   "tool": "Code Inspection",
-  "category": "Style issues",
-  "type": "Class member can have 'private' visibility",
-  "tags": [
-    "kotlin"
-  ],
-  "severity": "Info",
-  "comment": "Property 'extensionName' could be private",
-  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
-  "sources": [
-    {
-      "type": "field",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt",
-      "language": "kotlin",
-      "line": 25,
-      "offset": 8,
-      "length": 6,
-      "code": {
-        "startLine": 23,
-        "length": 6,
-        "offset": 39,
-        "surroundingCode": "    public companion object {\n\n        public const val extensionName: String = \"semver\"\n\n        internal fun register(project: Project): SemverExtension ="
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
-    "inspectionName": "MemberVisibilityCanBePrivate"
-  },
-  "hash": "340056932045538968"
-},{
-  "tool": "Code Inspection",
   "category": "Redundant constructs",
-  "type": "Redundant visibility modifier",
+  "type": "Redundant 'requireNotNull' or 'checkNotNull' call",
   "tags": [
     "kotlin"
   ],
-  "severity": "High",
-  "comment": "Redundant visibility modifier",
-  "detailsInfo": "Reports visibility modifiers that match the default visibility of an element (`public` for most elements, `protected` for members that override a protected member).",
+  "severity": "Moderate",
+  "comment": "Redundant 'checkNotNull' call",
+  "detailsInfo": "Reports redundant `requireNotNull` or `checkNotNull` call on non-nullable expressions.\n\n**Example:**\n\n\n      fun foo(i: Int) {\n          requireNotNull(i) // This 'i' is always not null, so this 'requireNotNull' call is redundant.\n          ...\n      }\n\nAfter the quick-fix is applied:\n\n\n      fun foo(i: Int) {\n          ...\n      }\n",
   "sources": [
     {
-      "type": "field",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/SemverPushTag.kt",
+      "type": "method",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitTagBuildService.kt",
       "language": "kotlin",
-      "line": 37,
-      "offset": 8,
-      "length": 6,
+      "line": 67,
+      "offset": 20,
+      "length": 12,
       "code": {
-        "startLine": 35,
-        "length": 6,
-        "offset": 41,
-        "surroundingCode": "\n    internal companion object {\n        public const val taskName = \"semverPushTag\"\n\n        internal fun register(project: Project, gitTagBuildService: Provider<GitTagBuildService>) {"
+        "startLine": 65,
+        "length": 12,
+        "offset": 124,
+        "surroundingCode": "                val semverWithTagPrefix = \"$projectTagPrefix$version\"\n                val tag: String =\n                    checkNotNull(semverWithTagPrefix) {\n                        \"The tag provided is not semantic, so it must not be pushed\"\n                    }"
       }
     }
   ],
   "attributes": {
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
-    "inspectionName": "RedundantVisibilityModifier"
+    "inspectionName": "RedundantRequireNotNullCall"
   },
-  "hash": "6629297769778771343"
+  "hash": "-8926180347296807965"
 }]}

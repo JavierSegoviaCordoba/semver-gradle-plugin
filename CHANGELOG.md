@@ -4,6 +4,20 @@
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Updated
+
+## [0.2.0-alpha.1] - 2022-06-14
+
+### Added
+
 - `semverPrint` task which prints the version and generates the `build/semver/version.txt`.
 - `semver` plugin extension which has `tagPrefix` to indicate the project tag prefix.
 - configuration cache support
@@ -19,15 +33,11 @@
   projects are going to bump the version based on it and the value in the property `tagPrefix` in
   the semver plugin extension.
 
-### Deprecated
-
 ### Removed
 
 - applying the plugin to the root project only configures the root project and not all projects.
 - `build/semver/version.txt` is no longer generated in configuration phase.
 - the old way to change the version in multi-project builds (`-PprojectName:semver.scope=patch"`).
-
-### Fixed
 
 ### Updated
 

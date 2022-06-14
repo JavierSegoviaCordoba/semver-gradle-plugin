@@ -2,7 +2,7 @@
 android = "7.2.0"
 javierscGradlePlugins = "0.1.0-rc.43"
 kotlin = "1.6.21"
-kotlinBinaryValidator = "0.10.0"
+kotlinBinaryValidator = "0.10.1"
 
 [libraries]
 android-application-androidApplicationGradlePlugin = { module = "com.android.application:com.android.application.gradle.plugin", version.ref = "android" }

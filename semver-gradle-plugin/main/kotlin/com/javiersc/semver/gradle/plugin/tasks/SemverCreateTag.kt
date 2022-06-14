@@ -22,6 +22,10 @@ public abstract class SemverCreateTag : DefaultTask() {
 
     @get:Internal internal abstract val gitTagBuildService: Property<GitTagBuildService>
 
+    init {
+        group = "semver"
+    }
+
     @TaskAction
     public fun run() {
         gitTagBuildService

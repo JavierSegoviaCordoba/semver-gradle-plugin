@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- `semverCreateTag` does not belong to the `semver` group
+
 ### Updated
 
 ## [0.2.0-alpha.1] - 2022-06-14

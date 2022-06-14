@@ -3,4 +3,6 @@ $dokka.linkExtension:html
 
 module:semver-gradle-plugin
 com.javiersc.semver.gradle.plugin
+com.javiersc.semver.gradle.plugin.services
 com.javiersc.semver.gradle.plugin.tasks
+com.javiersc.semver.gradle.plugin.valuesources

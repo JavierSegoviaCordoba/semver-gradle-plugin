@@ -14,6 +14,8 @@
 
 ### Updated
 
+- `gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext -> 1.1.5`
+
 ## [0.2.0-alpha.2] - 2022-06-18
 
 ### Fixed

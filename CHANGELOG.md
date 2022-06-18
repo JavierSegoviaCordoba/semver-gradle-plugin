@@ -12,7 +12,9 @@
 
 ### Fixed
 
+- high configuration time
 - `semverCreateTag` does not belong to the `semver` group
+- `semverPushTag` does not create the tag
 
 ### Updated
 

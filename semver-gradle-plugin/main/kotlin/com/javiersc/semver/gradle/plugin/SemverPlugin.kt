@@ -1,10 +1,7 @@
 package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semver.gradle.plugin.internal.checkScopeCorrectness
-import com.javiersc.semver.gradle.plugin.internal.git.hasCommits
-import com.javiersc.semver.gradle.plugin.internal.git.hasGit
-import com.javiersc.semver.gradle.plugin.internal.semverWarningMessage
-import com.javiersc.semver.gradle.plugin.services.GitTagBuildService
+import com.javiersc.semver.gradle.plugin.services.GitBuildService
 import com.javiersc.semver.gradle.plugin.tasks.SemverCreateTag
 import com.javiersc.semver.gradle.plugin.tasks.SemverPrintTask
 import com.javiersc.semver.gradle.plugin.tasks.SemverPushTag
@@ -22,35 +19,28 @@ public class SemverPlugin : Plugin<Project> {
 
         SemverExtension.register(target)
 
-        when {
-            target.hasGit.not() -> {
-                semverWarningMessage("semver plugin can't work if there is no git repository")
-            }
-            target.hasCommits.not() -> {
-                semverWarningMessage("semver plugin can't work if there are no commits")
-            }
-            else -> {
-                target.configureLazyVersion()
-                target.checkScopeCorrectness()
-                target.configureBuildServicesAndTasks()
-            }
-        }
+        val gitTagBuildService: Provider<GitBuildService> = GitBuildService.register(target)
+        target.checkScopeCorrectness()
+        target.configureLazyVersion(gitTagBuildService)
+        target.configureBuildServicesAndTasks(gitTagBuildService)
     }
 
-    private fun Project.configureBuildServicesAndTasks() {
-        val gitTagBuildService: Provider<GitTagBuildService> = GitTagBuildService.register(this)
-
+    private fun Project.configureBuildServicesAndTasks(
+        gitTagBuildService: Provider<GitBuildService>
+    ) {
         SemverCreateTag.register(this, gitTagBuildService)
         SemverPushTag.register(this, gitTagBuildService)
         SemverPrintTask.register(this)
     }
 
-    private fun Project.configureLazyVersion() {
-        version = LazyVersion(VersionValueSource.register(this))
+    private fun Project.configureLazyVersion(gitTagBuildService: Provider<GitBuildService>) {
+        version = LazyVersion(VersionValueSource.register(this, gitTagBuildService))
 
         // Some third party plugin breaks lazy configuration by calling `project.version`
         // too early based on plugins order, applying the calculated version in
         // `afterEvaluate` fix it
-        afterEvaluate { it.version = LazyVersion(VersionValueSource.register(this)) }
+        afterEvaluate {
+            it.version = LazyVersion(VersionValueSource.register(this, gitTagBuildService))
+        }
     }
 }

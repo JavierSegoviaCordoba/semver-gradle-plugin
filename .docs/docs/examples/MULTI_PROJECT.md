@@ -244,7 +244,7 @@ semver for library-nine: 1.0.0.4+1as03k5
 semver for library-ten: 1.0.0.4+1as03k5
 ```
 
-## 12. Run `./gradlew semverCreateTag "-Psemver.stage=rc" "-Psemver.tagPrefix=c"`
+## 13. Run `./gradlew semverCreateTag "-Psemver.stage=rc" "-Psemver.tagPrefix=c"`
 
 ```text
 semver for library-one-a: a2.0.0
@@ -259,7 +259,7 @@ semver for library-nine: 1.0.0.4+1as03k5
 semver for library-ten: 1.0.0.4+1as03k5
 ```
 
-## 12. Run `./gradlew semverCreateTag "-Psemver.stage=dev"`
+## 14. Run `./gradlew semverCreateTag "-Psemver.stage=dev"`
 
 ```text
 semver for library-one-a: a2.0.0

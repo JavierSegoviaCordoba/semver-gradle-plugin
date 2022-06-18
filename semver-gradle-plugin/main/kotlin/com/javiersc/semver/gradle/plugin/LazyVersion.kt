@@ -4,5 +4,11 @@ import org.gradle.api.provider.Provider
 
 public class LazyVersion(internal val version: Provider<String>) {
 
-    override fun toString(): String = version.get()
+    private var cachedVersion: String? = null
+
+    override fun toString(): String {
+        if (cachedVersion == null) cachedVersion = version.get()
+        cachedVersion ?: version.get()
+        return cachedVersion!!
+    }
 }

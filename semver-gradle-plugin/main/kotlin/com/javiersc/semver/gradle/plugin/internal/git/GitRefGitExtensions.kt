@@ -1,8 +1,6 @@
 package com.javiersc.semver.gradle.plugin.internal.git
 
 import com.javiersc.semver.Version
-import com.javiersc.semver.gradle.plugin.internal.InitialVersion
-import com.javiersc.semver.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.ObjectId
@@ -63,12 +61,13 @@ internal fun Git.commitHash(ref: Ref): String = commitHash(ref.objectId)
 internal fun Git.commitHash(objectId: ObjectId): String =
     repository.parseCommit(objectId).toObjectId().name
 
-internal fun Git.commitsBetweenTwoCommitsIncludingLastExcludingFirst(
-    fromCommit: GitRef.Commit?,
-    toCommit: GitRef.Commit?,
-): List<GitRef.Commit> {
-    val to = commitsInCurrentBranch.indexOf(toCommit)
-    val from = commitsInCurrentBranch.indexOf(fromCommit)
+internal fun commitsBetweenTwoCommitsIncludingLastExcludingFirst(
+    fromCommit: String?,
+    toCommit: String?,
+    commitsInCurrentBranch: List<String>,
+): List<String> {
+    val to: Int = commitsInCurrentBranch.indexOf(toCommit)
+    val from: Int = commitsInCurrentBranch.indexOf(fromCommit)
 
     return when {
         (to == -1 || from == -1) -> emptyList()
@@ -153,11 +152,6 @@ internal fun Git.versionTagsInCurrentBranch(tagPrefix: String): List<GitRef.Tag>
         tag.name.startsWith(tagPrefix) && Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
     }
 
-internal fun Git.versionsInCurrentBranch(tagPrefix: String): List<Version> =
-    versionTagsInCurrentBranch(tagPrefix).mapNotNull { tag ->
-        Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
-    }
-
 internal fun Git.versionTagsSortedBySemver(tagPrefix: String): List<GitRef.Tag> =
     versionTagsInCurrentBranch(tagPrefix).sortedBy { tag ->
         Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
@@ -176,33 +170,3 @@ internal fun Git.versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(
 
 internal fun Git.lastVersionTagInCurrentBranch(tagPrefix: String): GitRef.Tag? =
     versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(tagPrefix).lastOrNull()
-
-// versions
-internal fun Git.lastVersionInCurrentBranch(
-    tagPrefix: String,
-    isWarningLastVersionIsNotHigherVersion: (Boolean) -> Unit = {},
-): Version =
-    versionTagsInCurrentCommit(headCommit.commit.hash, tagPrefix).lastResultVersion(tagPrefix)
-        ?: lastVersionTagInCurrentBranch(tagPrefix)?.name?.removePrefix(tagPrefix).run {
-            if (this != null) {
-                val lastVersion: Version? = Version.safe(this).getOrNull()
-                val higherVersion: Version? = versionsInCurrentBranch(tagPrefix).firstOrNull()
-
-                if (lastVersion != null && higherVersion != null && higherVersion > lastVersion) {
-                    isWarningLastVersionIsNotHigherVersion(true)
-                    warningLastVersionIsNotHigherVersion(lastVersion, higherVersion)
-                }
-
-                lastVersion
-            } else null
-        }
-            ?: InitialVersion
-
-private fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): Version? =
-    asSequence()
-        .filter { tag -> tag.name.startsWith(tagPrefix) }
-        .map { tag -> tag.name.substringAfter(tagPrefix) }
-        .map(Version.Companion::safe)
-        .mapNotNull(Result<Version>::getOrNull)
-        .toList()
-        .run { maxOrNull() }

@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin.git
 
 import com.javiersc.semver.Version
-import com.javiersc.semver.gradle.plugin.internal.git.lastVersionInCurrentBranch
+import com.javiersc.semver.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.gradle.plugin.setup.git
 import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.booleans.shouldBeTrue
@@ -17,30 +17,32 @@ internal class VersionTest {
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
             git.tag().setName("v1.0.0").call()
-            git.lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
+            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
 
             git.tag().setName("v1.0.0-alpha.1").call()
-            git.lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
+            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
 
             resolve("3 commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("3 commit").call()
             git.tag().setName("v1.0.0-alpha.2").call()
-            git.lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0-alpha.2"))
+            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0-alpha.2"))
 
             resolve("4 commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("4 commit").call()
 
             var isWarningLastVersionIsNotHigherVersion = false
-            git.lastVersionInCurrentBranch("v") { isWarningLastVersionIsNotHigherVersion = it }
+            GitCache(git).lastVersionInCurrentBranch("v") {
+                isWarningLastVersionIsNotHigherVersion = it
+            }
             isWarningLastVersionIsNotHigherVersion.shouldBeTrue()
 
             resolve("5 commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("5 commit").call()
             git.tag().setName("v2.0.0-rc.2").call()
-            git.lastVersionInCurrentBranch("v").shouldBe(Version("2.0.0-rc.2"))
+            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("2.0.0-rc.2"))
         }
     }
 }

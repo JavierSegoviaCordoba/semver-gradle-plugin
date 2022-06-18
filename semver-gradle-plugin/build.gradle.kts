@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.javiersc.gradleExtensions.gradleExt)
     implementation(libs.javiersc.kotlin.kotlinStdlib)
     implementation(libs.javiersc.semver.semverCore)
+    implementation(pluginLibs.jetbrains.gradlePluginIdeaExt.gradleIdeaExt)
 
     testImplementation(gradleTestKit())
     testImplementation(libs.javiersc.gradleExtensions.gradleTestkitExt)

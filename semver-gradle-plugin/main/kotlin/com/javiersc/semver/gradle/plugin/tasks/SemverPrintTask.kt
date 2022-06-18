@@ -2,7 +2,6 @@ package com.javiersc.semver.gradle.plugin.tasks
 
 import com.javiersc.gradle.extensions.maybeRegisterLazily
 import com.javiersc.gradle.extensions.namedLazily
-import com.javiersc.semver.gradle.plugin.LazyVersion
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.semverExtension
 import javax.inject.Inject
@@ -74,13 +73,13 @@ constructor(
     internal companion object {
         const val taskName: String = "semverPrint"
 
-        fun register(project: Project) =
+        fun register(project: Project): TaskProvider<SemverPrintTask> =
             with(project) {
                 val semverPrintTask: TaskProvider<SemverPrintTask> = tasks.register(taskName, name)
 
                 semverPrintTask.configure {
                     it.tagPrefix.set(semverExtension.tagPrefix)
-                    it.version.set((version as LazyVersion).version)
+                    it.version.set(version.toString())
                 }
 
                 tasks.namedLazily<SemverCreateTag>(SemverCreateTag.taskName) {
@@ -93,6 +92,8 @@ constructor(
                 tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { it.dependsOn(semverPrintTask) }
                 tasks.withType<Jar>().configureEach { it.dependsOn(semverPrintTask) }
                 tasks.withType<Test>().configureEach { it.dependsOn(semverPrintTask) }
+
+                return semverPrintTask
             }
     }
 }

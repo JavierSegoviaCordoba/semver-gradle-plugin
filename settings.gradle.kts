@@ -8,6 +8,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 dependencyResolutionManagement {
     repositories {
+        gradlePluginPortal()
         mavenCentral()
         google()
     }

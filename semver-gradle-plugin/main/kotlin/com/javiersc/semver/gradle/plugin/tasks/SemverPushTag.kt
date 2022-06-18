@@ -1,9 +1,8 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
-import com.javiersc.semver.gradle.plugin.LazyVersion
 import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.gradle.plugin.semverExtension
-import com.javiersc.semver.gradle.plugin.services.GitTagBuildService
+import com.javiersc.semver.gradle.plugin.services.GitBuildService
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
@@ -24,7 +23,7 @@ public abstract class SemverPushTag : DefaultTask() {
 
     @get:Internal internal abstract val version: Property<String>
 
-    @get:Internal internal abstract val gitTagBuildService: Property<GitTagBuildService>
+    @get:Internal internal abstract val gitTagBuildService: Property<GitBuildService>
 
     @TaskAction
     public fun run() {
@@ -36,11 +35,11 @@ public abstract class SemverPushTag : DefaultTask() {
     internal companion object {
         public const val taskName = "semverPushTag"
 
-        internal fun register(project: Project, gitTagBuildService: Provider<GitTagBuildService>) {
+        internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {
             project.tasks.register<SemverPushTag>(taskName).configure { semverPushTag ->
                 semverPushTag.tagPrefixProperty.set(project.tagPrefixProperty)
                 semverPushTag.projectTagPrefix.set(project.semverExtension.tagPrefix)
-                semverPushTag.version.set((project.version as LazyVersion).version)
+                semverPushTag.version.set(project.version.toString())
                 semverPushTag.gitTagBuildService.set(gitTagBuildService)
                 semverPushTag.usesService(gitTagBuildService)
             }

@@ -15,21 +15,20 @@ import org.gradle.testkit.runner.GradleRunner
 /**
  * Modules:
  *
- * - `library-one` uses prefix: one
+ * - `library-one-a` uses prefix `a`
  *
- * - `library-a-four` uses prefix: four
- * - `library-b-four` uses prefix: four
- * - `library-c-four` uses prefix: four
- * - `library-d-four` uses prefix: four
+ * - `library-two-b` uses prefix `b`
+ * - `library-three-b` uses prefix `b`
+ * - `library-four-b` uses prefix `b`
+ * - `library-five-b` uses prefix `b`
  *
- * - `library-m-three` uses prefix: three
- * - `library-n-three` uses prefix: three
- * - `library-o-three` uses prefix: three
+ * - `library-six-c` uses prefix `c`
+ * - `library-seven-c` uses prefix `c`
+ * - `library-eight-c` uses prefix `c`
  *
- * - `library-y` uses no prefix
- * - `library-z` uses no prefix
+ * - `library-nine` uses no prefix
+ * - `library-ten` uses no prefix
  */
-// TODO: TO BE COMPLETED
 internal class MultiProjectExampleTest {
 
     @Test
@@ -47,6 +46,9 @@ internal class MultiProjectExampleTest {
             `9_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=final tagPrefix=a`()
             `10_ Run gradlew semverCreateTag stage=final scope=major tagPrefix=a`()
             `11_ Run gradlew semverPrint stage=snapshot tagPrefix=a`()
+            `12_ Run gradlew semverCreateTag scope=minor tagPrefix=b`()
+            `13_ Run gradlew semverCreateTag stage=rc tagPrefix=c`()
+            `14_ Run gradlew semverCreateTag stage=dev`()
         }
     }
 
@@ -259,6 +261,51 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-eight-c").assertVersion("c", "1.0.0", Hash)
         projectDirByName("library-nine").assertVersion("", "1.0.0", Hash)
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
+    }
+
+    private fun GradleRunner.`12_ Run gradlew semverCreateTag scope=minor tagPrefix=b`() {
+        gradlew("semverCreateTag", "-Psemver.scope=minor", "-Psemver.tagPrefix=b")
+
+        projectDirByName("library-one-a").assertVersion("a", "2.0.0")
+        projectDirByName("library-two-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-three-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-four-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-five-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-six-c").assertVersion("c", "1.0.0", Hash)
+        projectDirByName("library-seven-c").assertVersion("c", "1.0.0", Hash)
+        projectDirByName("library-eight-c").assertVersion("c", "1.0.0", Hash)
+        projectDirByName("library-nine").assertVersion("", "1.0.0", Hash)
+        projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
+    }
+
+    private fun GradleRunner.`13_ Run gradlew semverCreateTag stage=rc tagPrefix=c`() {
+        gradlew("semverCreateTag", "-Psemver.stage=rc", "-Psemver.tagPrefix=c")
+
+        projectDirByName("library-one-a").assertVersion("a", "2.0.0")
+        projectDirByName("library-two-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-three-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-four-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-five-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-six-c").assertVersion("c", "1.0.1-rc.1")
+        projectDirByName("library-seven-c").assertVersion("c", "1.0.1-rc.1")
+        projectDirByName("library-eight-c").assertVersion("c", "1.0.1-rc.1")
+        projectDirByName("library-nine").assertVersion("", "1.0.0", Hash)
+        projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
+    }
+
+    private fun GradleRunner.`14_ Run gradlew semverCreateTag stage=dev`() {
+        gradlew("semverCreateTag", "-Psemver.stage=dev")
+
+        projectDirByName("library-one-a").assertVersion("a", "2.0.0")
+        projectDirByName("library-two-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-three-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-four-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-five-b").assertVersion("b", "1.1.0")
+        projectDirByName("library-six-c").assertVersion("c", "1.0.1-rc.1")
+        projectDirByName("library-seven-c").assertVersion("c", "1.0.1-rc.1")
+        projectDirByName("library-eight-c").assertVersion("c", "1.0.1-rc.1")
+        projectDirByName("library-nine").assertVersion("", "1.0.1-dev.1")
+        projectDirByName("library-ten").assertVersion("", "1.0.1-dev.1")
     }
 }
 

@@ -2,7 +2,7 @@ package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
 import com.javiersc.gradle.testkit.extensions.withArgumentsFromTXT
-import com.javiersc.semver.gradle.plugin.internal.calculateAdditionalVersionData
+import com.javiersc.semver.gradle.plugin.git.calculateAdditionalVersionData
 import com.javiersc.semver.gradle.plugin.internal.git.headRevCommitInBranch
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
 import com.javiersc.semver.gradle.plugin.setup.assertVersion

@@ -7,7 +7,6 @@ public abstract class com/javiersc/semver/gradle/plugin/SemverExtension {
 	public static final field Companion Lcom/javiersc/semver/gradle/plugin/SemverExtension$Companion;
 	public static final field extensionName Ljava/lang/String;
 	public fun <init> (Lorg/gradle/api/model/ObjectFactory;)V
-	public abstract fun getGitDirs ()Lorg/gradle/api/file/ConfigurableFileCollection;
 	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 }
 
@@ -20,26 +19,14 @@ public final class com/javiersc/semver/gradle/plugin/SemverPlugin : org/gradle/a
 	public fun apply (Lorg/gradle/api/Project;)V
 }
 
-public abstract class com/javiersc/semver/gradle/plugin/services/GitTagBuildService : java/lang/AutoCloseable, org/gradle/api/services/BuildService {
-	public static final field Companion Lcom/javiersc/semver/gradle/plugin/services/GitTagBuildService$Companion;
-	public fun <init> (Lorg/gradle/process/ExecOperations;)V
-	public fun close ()V
-	public final fun createTag (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun pushTag (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-}
-
-public final class com/javiersc/semver/gradle/plugin/services/GitTagBuildService$Companion {
-}
-
-public abstract interface class com/javiersc/semver/gradle/plugin/services/GitTagBuildService$Params : org/gradle/api/services/BuildServiceParameters {
-	public abstract fun getGitDirectory ()Lorg/gradle/api/file/RegularFileProperty;
-	public abstract fun getRemoteProperty ()Lorg/gradle/api/provider/Property;
-}
-
 public abstract class com/javiersc/semver/gradle/plugin/tasks/SemverCreateTag : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/gradle/plugin/tasks/SemverCreateTag$Companion;
 	public static final field taskName Ljava/lang/String;
 	public fun <init> ()V
 	public final fun run ()V
+}
+
+public final class com/javiersc/semver/gradle/plugin/tasks/SemverCreateTag$Companion {
 }
 
 public abstract class com/javiersc/semver/gradle/plugin/tasks/SemverPrintTask : org/gradle/api/DefaultTask {
@@ -65,15 +52,5 @@ public abstract class com/javiersc/semver/gradle/plugin/valuesources/VersionValu
 }
 
 public final class com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource$Companion {
-}
-
-public abstract interface class com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource$Params : org/gradle/api/provider/ValueSourceParameters {
-	public abstract fun getCheckClean ()Lorg/gradle/api/provider/Property;
-	public abstract fun getCreatingSemverTag ()Lorg/gradle/api/provider/Property;
-	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
-	public abstract fun getProjectTagPrefix ()Lorg/gradle/api/provider/Property;
-	public abstract fun getScopeProperty ()Lorg/gradle/api/provider/Property;
-	public abstract fun getStageProperty ()Lorg/gradle/api/provider/Property;
-	public abstract fun getTagPrefixProperty ()Lorg/gradle/api/provider/Property;
 }
 

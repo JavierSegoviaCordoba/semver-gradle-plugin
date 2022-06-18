@@ -2,26 +2,39 @@ package com.javiersc.semver.gradle.plugin.internal
 
 import com.javiersc.semver.Version
 import com.javiersc.semver.Version.Increase
-import com.javiersc.semver.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
-import com.javiersc.semver.gradle.plugin.internal.git.headCommit
-import com.javiersc.semver.gradle.plugin.internal.git.isThereVersionTag
-import com.javiersc.semver.gradle.plugin.internal.git.lastCommitInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.git.lastVersionCommitInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.git.lastVersionInCurrentBranch
-import org.eclipse.jgit.api.Git
 
 @Suppress("ComplexMethod")
-internal fun Git.calculatedVersion(
-    tagPrefix: String,
+internal fun calculatedVersion(
     stageProperty: String?,
     scopeProperty: String?,
     isCreatingSemverTag: Boolean,
+    lastSemverMajorInCurrentBranch: Int,
+    lastSemverMinorInCurrentBranch: Int,
+    lastSemverPatchInCurrentBranch: Int,
+    lastSemverStageInCurrentBranch: String?,
+    lastSemverNumInCurrentBranch: Int?,
+    versionTagsInCurrentBranch: List<String>,
+    clean: Boolean,
     checkClean: Boolean,
+    lastCommitInCurrentBranch: String?,
+    commitsInCurrentBranch: List<String>,
+    headCommit: String,
+    lastVersionCommitInCurrentBranch: String?,
 ): String {
-    val lastSemver: Version = lastVersionInCurrentBranch(tagPrefix = tagPrefix)
+    val isClean: Boolean = clean || !checkClean
+    val isDirty: Boolean = !isClean
 
-    val previousStage: String? = lastSemver.stage?.name
+    val lastSemverInCurrentBranch =
+        Version(
+            major = lastSemverMajorInCurrentBranch,
+            minor = lastSemverMinorInCurrentBranch,
+            patch = lastSemverPatchInCurrentBranch,
+            stageName = lastSemverStageInCurrentBranch,
+            stageNum = lastSemverNumInCurrentBranch,
+        )
+
+    val previousStage: String? = lastSemverInCurrentBranch.stage?.name
 
     val incStage: String =
         (stageProperty ?: previousStage ?: "").run {
@@ -35,41 +48,60 @@ internal fun Git.calculatedVersion(
     val isNoStagedNoScopedNoCreatingSemverTag: Boolean =
         stageProperty.isNullOrBlank() && scopeProperty.isNullOrBlank() && !isCreatingSemverTag
 
-    val isCleanAndShouldBeChecked: Boolean = status().call().isClean.not() && checkClean
-
     val calculatedVersion: String =
         when {
-            isNoStagedNoScopedNoCreatingSemverTag || isCleanAndShouldBeChecked -> {
-                "$lastSemver${calculateAdditionalVersionData(tagPrefix, checkClean)}"
+            isNoStagedNoScopedNoCreatingSemverTag || isDirty -> {
+                val additionalVersionData: String =
+                    calculateAdditionalVersionData(
+                        clean = clean,
+                        checkClean = checkClean,
+                        lastCommitInCurrentBranch = lastCommitInCurrentBranch,
+                        commitsInCurrentBranch = commitsInCurrentBranch,
+                        isThereVersionTags = versionTagsInCurrentBranch.isNotEmpty(),
+                        headCommit = headCommit,
+                        lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
+                    )
+                "$lastSemverInCurrentBranch$additionalVersionData"
             }
             stageProperty.equals(Stage.Snapshot(), ignoreCase = true) -> {
                 when (scopeProperty) {
-                    Scope.Major() -> "${lastSemver.nextSnapshotMajor()}"
-                    Scope.Minor() -> "${lastSemver.nextSnapshotMinor()}"
-                    Scope.Patch() -> "${lastSemver.nextSnapshotPatch()}"
-                    else -> "${lastSemver.nextSnapshotPatch()}"
+                    Scope.Major() -> "${lastSemverInCurrentBranch.nextSnapshotMajor()}"
+                    Scope.Minor() -> "${lastSemverInCurrentBranch.nextSnapshotMinor()}"
+                    Scope.Patch() -> "${lastSemverInCurrentBranch.nextSnapshotPatch()}"
+                    else -> "${lastSemverInCurrentBranch.nextSnapshotPatch()}"
                 }
             }
             stageProperty.equals(Stage.Final(), ignoreCase = true) -> {
                 when (scopeProperty) {
-                    Scope.Major() -> "${lastSemver.inc(Increase.Major, "")}"
-                    Scope.Minor() -> "${lastSemver.inc(Increase.Minor, "")}"
-                    Scope.Patch() -> "${lastSemver.inc(Increase.Patch, "")}"
-                    else -> "${lastSemver.inc(stageName = "")}"
+                    Scope.Major() -> "${lastSemverInCurrentBranch.inc(Increase.Major, "")}"
+                    Scope.Minor() -> "${lastSemverInCurrentBranch.inc(Increase.Minor, "")}"
+                    Scope.Patch() -> "${lastSemverInCurrentBranch.inc(Increase.Patch, "")}"
+                    else -> "${lastSemverInCurrentBranch.inc(stageName = "")}"
                 }
             }
-            scopeProperty == Scope.Major() -> "${lastSemver.inc(Increase.Major, incStage)}"
-            scopeProperty == Scope.Minor() -> "${lastSemver.inc(Increase.Minor, incStage)}"
-            scopeProperty == Scope.Patch() -> "${lastSemver.inc(Increase.Patch, incStage)}"
+            scopeProperty == Scope.Major() -> {
+                "${lastSemverInCurrentBranch.inc(Increase.Major, incStage)}"
+            }
+            scopeProperty == Scope.Minor() -> {
+                "${lastSemverInCurrentBranch.inc(Increase.Minor, incStage)}"
+            }
+            scopeProperty == Scope.Patch() -> {
+                "${lastSemverInCurrentBranch.inc(Increase.Patch, incStage)}"
+            }
             scopeProperty == Scope.Auto() -> {
                 when {
-                    !isThereVersionTag(tagPrefix) -> "$lastSemver"
-                    incStage.isEmpty() -> "${lastSemver.inc(Increase.Patch, incStage)}"
-                    else -> "${lastSemver.inc(stageName = incStage)}"
+                    versionTagsInCurrentBranch.isEmpty() -> "$lastSemverInCurrentBranch"
+                    incStage.isEmpty() ->
+                        "${lastSemverInCurrentBranch.inc(Increase.Patch, incStage)}"
+                    else -> "${lastSemverInCurrentBranch.inc(stageName = incStage)}"
                 }
             }
-            isCreatingSemverTag && !isThereVersionTag(tagPrefix) -> "$lastSemver"
-            else -> "${lastSemver.inc(stageName = incStage)}"
+            isCreatingSemverTag && versionTagsInCurrentBranch.isEmpty() -> {
+                "$lastSemverInCurrentBranch"
+            }
+            else -> {
+                "${lastSemverInCurrentBranch.inc(stageName = incStage)}"
+            }
         }.also {
             if (it.contains("final", true) || it.contains("auto", true)) {
                 error("`stage` plus `scope` combination is broken, please report it")
@@ -79,38 +111,34 @@ internal fun Git.calculatedVersion(
     return calculatedVersion
 }
 
-internal fun Git.calculateAdditionalVersionData(
-    tagPrefix: String,
+internal fun calculateAdditionalVersionData(
+    clean: Boolean = true,
     checkClean: Boolean = true,
+    lastCommitInCurrentBranch: String?,
+    commitsInCurrentBranch: List<String>,
+    isThereVersionTags: Boolean,
+    headCommit: String,
+    lastVersionCommitInCurrentBranch: String?,
 ): String {
-    val isClean = status().call().isClean || !checkClean
+    val isClean: Boolean = clean || !checkClean
+    val isDirty: Boolean = !isClean
 
-    val commitsBetweenCurrentAndLastTagCommit: List<GitRef.Commit> =
+    val commitsBetweenCurrentAndLastTagCommit: List<String> =
         commitsBetweenTwoCommitsIncludingLastExcludingFirst(
             lastCommitInCurrentBranch,
-            lastVersionCommitInCurrentBranch(tagPrefix)
+            lastVersionCommitInCurrentBranch,
+            commitsInCurrentBranch,
         )
-
-    val noVersionTags: Boolean = isThereVersionTag(tagPrefix).not()
 
     val additionalData: String =
         commitsBetweenCurrentAndLastTagCommit.run {
+            val hashLength = DEFAULT_SHORT_HASH_LENGTH
             when {
-                noVersionTags && isClean -> {
-                    ".$size+${headCommit.commit.hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
-                }
-                noVersionTags && !isClean -> {
-                    ".$size+${headCommit.commit.hash.take(DEFAULT_SHORT_HASH_LENGTH)}+DIRTY"
-                }
-                isNotEmpty() && isClean -> {
-                    ".$size+${first().hash.take(DEFAULT_SHORT_HASH_LENGTH)}"
-                }
-                isEmpty() && isClean -> {
-                    ""
-                }
-                else -> {
-                    ".$size+DIRTY"
-                }
+                !isThereVersionTags && isDirty -> ".$size+${headCommit.take(hashLength)}+DIRTY"
+                !isThereVersionTags -> ".$size+${headCommit.take(hashLength)}"
+                isNotEmpty() && isClean -> ".$size+${first().take(hashLength)}"
+                isEmpty() && isClean -> ""
+                else -> ".$size+DIRTY"
             }
         }
 

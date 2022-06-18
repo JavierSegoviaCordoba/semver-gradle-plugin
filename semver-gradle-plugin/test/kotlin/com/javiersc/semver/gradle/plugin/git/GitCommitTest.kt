@@ -17,6 +17,7 @@ import com.javiersc.semver.gradle.plugin.setup.git
 import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
+import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.revwalk.RevCommit
 
 internal class GitCommitTest {
@@ -91,7 +92,9 @@ internal class GitCommitTest {
                     fromCommit = initialCommit(),
                     toCommit = lastCommit(),
                 )
-                .map(GitRef.Commit::message)
+                .map { hash ->
+                    git.commitsInCurrentBranch.first { commit -> commit.hash == hash }.message
+                }
                 .shouldBe(messages2)
 
             resolve("Third commit.txt").createNewFile()
@@ -104,7 +107,9 @@ internal class GitCommitTest {
                     fromCommit = initialCommit(),
                     toCommit = lastCommit(),
                 )
-                .map(GitRef.Commit::message)
+                .map { hash ->
+                    git.commitsInCurrentBranch.first { commit -> commit.hash == hash }.message
+                }
                 .shouldBe(messages3)
         }
     }
@@ -140,3 +145,13 @@ internal class GitCommitTest {
         }
     }
 }
+
+private fun Git.commitsBetweenTwoCommitsIncludingLastExcludingFirst(
+    fromCommit: GitRef.Commit?,
+    toCommit: GitRef.Commit?,
+): List<String> =
+    commitsBetweenTwoCommitsIncludingLastExcludingFirst(
+        fromCommit = fromCommit?.hash,
+        toCommit = toCommit?.hash,
+        commitsInCurrentBranch = commitsInCurrentBranch.map(GitRef.Commit::hash),
+    )

@@ -1,9 +1,8 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
-import com.javiersc.semver.gradle.plugin.LazyVersion
 import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.gradle.plugin.semverExtension
-import com.javiersc.semver.gradle.plugin.services.GitTagBuildService
+import com.javiersc.semver.gradle.plugin.services.GitBuildService
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
@@ -20,7 +19,7 @@ public abstract class SemverCreateTag : DefaultTask() {
 
     @get:Internal internal abstract val version: Property<String>
 
-    @get:Internal internal abstract val gitTagBuildService: Property<GitTagBuildService>
+    @get:Internal internal abstract val gitTagBuildService: Property<GitBuildService>
 
     init {
         group = "semver"
@@ -33,10 +32,10 @@ public abstract class SemverCreateTag : DefaultTask() {
             .createTag(tagPrefixProperty.get(), projectTagPrefix.get(), version.get())
     }
 
-    internal companion object {
+    public companion object {
         public const val taskName: String = "semverCreateTag"
 
-        internal fun register(project: Project, gitTagBuildService: Provider<GitTagBuildService>) {
+        internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {
             project.tasks
                 .register<SemverCreateTag>(
                     taskName,
@@ -44,7 +43,7 @@ public abstract class SemverCreateTag : DefaultTask() {
                 .configure { semverCreateTag ->
                     semverCreateTag.tagPrefixProperty.set(project.tagPrefixProperty)
                     semverCreateTag.projectTagPrefix.set(project.semverExtension.tagPrefix)
-                    semverCreateTag.version.set((project.version as LazyVersion).version)
+                    semverCreateTag.version.set(project.version.toString())
                     semverCreateTag.gitTagBuildService.set(gitTagBuildService)
                     semverCreateTag.usesService(gitTagBuildService)
                 }

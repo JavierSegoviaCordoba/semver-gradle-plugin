@@ -269,7 +269,7 @@ There are three tasks:
 - `semverPrint`: Prints the tag in CLI and create a file in `build/semver/version.txt` which has two
   lines; the version without the tag and the version including the tag.
 - `semverCreateTag`. Creates a git tag.
-- `semverPushTag`. Creates and pushes the tag to the remote.
+- `semverPushTag`. Creates and pushes a git tag to the remote.
 
 You can combine them with any `semver` project properties to ensure the correct tag version is
 printed, created or pushed.

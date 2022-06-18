@@ -10,11 +10,11 @@
       "type": "file",
       "path": "semver-gradle-plugin/build.gradle.kts",
       "language": "kotlin",
-      "line": 50,
+      "line": 51,
       "offset": 5,
       "length": 19,
       "code": {
-        "startLine": 48,
+        "startLine": 49,
         "length": 19,
         "offset": 62,
         "surroundingCode": "    testImplementation(libs.kotest.kotestAssertionsCore)\n\n    testPluginClasspath(pluginLibs.android.application.androidApplicationGradlePlugin)\n    testPluginClasspath(pluginLibs.jetbrains.kotlin.kotlinGradlePlugin)\n}"
@@ -25,7 +25,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "c05495cbfa747f98a8a21fca8407f440c058612d366d60c98906291b519b8b85"
+  "hash": "6edf1b5e2d6685d73017f689ae018b67d07d79c52a719a5640579602af5975a3"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -38,11 +38,11 @@
       "type": "file",
       "path": "semver-gradle-plugin/build.gradle.kts",
       "language": "kotlin",
-      "line": 51,
+      "line": 52,
       "offset": 5,
       "length": 19,
       "code": {
-        "startLine": 49,
+        "startLine": 50,
         "length": 19,
         "offset": 92,
         "surroundingCode": "\n    testPluginClasspath(pluginLibs.android.application.androidApplicationGradlePlugin)\n    testPluginClasspath(pluginLibs.jetbrains.kotlin.kotlinGradlePlugin)\n}\n"
@@ -53,7 +53,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "9c5c2087c040c7b1805904c614ff79c42e418ce8887ebed44912a73a42941470"
+  "hash": "8ebb1cdcc7cce41f19392c01096207c8aced7e36bdeded9cb7a916ca966b3a26"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -73,7 +73,7 @@
         "startLine": 8,
         "length": 12,
         "offset": 38,
-        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        mavenCentral()\n        google()"
+        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        gradlePluginPortal()\n        mavenCentral()"
       }
     }
   ],
@@ -81,7 +81,7 @@
     "module": "semver-gradle-plugin-javiersc",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "be8e5a5d741306523150c8e92b2f3247ea543a8afbc3da67050aa710e3cec660"
+  "hash": "14a56187cc39689f0f54bb5ab10b68b1c27b34caaeebf07df00697ec78547fca"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -94,11 +94,11 @@
       "type": "file",
       "path": "settings.gradle.kts",
       "language": "kotlin",
-      "line": 15,
+      "line": 16,
       "offset": 5,
       "length": 15,
       "code": {
-        "startLine": 13,
+        "startLine": 14,
         "length": 15,
         "offset": 11,
         "surroundingCode": "    }\n\n    versionCatalogs {\n        create(\"pluginLibs\") { from(files(\"gradle/pluginLibs.versions.toml\")) }\n    }"
@@ -109,63 +109,7 @@
     "module": "semver-gradle-plugin-javiersc",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "1f3fd34c9d3e298472c29aff95da602cbbc26a89401e2807335f65b9508a74ea"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'org.gradle.api.provider.ValueSourceParameters' is marked unstable with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
-      "language": "kotlin",
-      "line": 45,
-      "offset": 31,
-      "length": 21,
-      "code": {
-        "startLine": 43,
-        "length": 21,
-        "offset": 41,
-        "surroundingCode": "        }\n\n    public interface Params : ValueSourceParameters {\n        public val gitDir: DirectoryProperty\n        public val projectTagPrefix: Property<String>"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "ee6ce83bf446fb9eb0413f9c363f2487b337a87ba9687765e5b2c79cfbff84c5"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'org.gradle.api.provider.ValueSource' is marked unstable with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
-      "language": "kotlin",
-      "line": 22,
-      "offset": 44,
-      "length": 11,
-      "code": {
-        "startLine": 20,
-        "length": 11,
-        "offset": 76,
-        "surroundingCode": "import org.gradle.kotlin.dsl.of\n\npublic abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {\n\n    override fun obtain(): String ="
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "351cd54e40c71bc182a86da456d50c42b37afb0fcd3e26e578ed7f646f4b329f"
+  "hash": "2c52caa0ae826249f4a1635526389f5843ddc2bc01f6caa32b535aa88ea3d4c2"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -178,14 +122,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 59,
+      "line": 93,
       "offset": 22,
       "length": 2,
       "code": {
-        "startLine": 57,
+        "startLine": 91,
         "length": 2,
         "offset": 75,
-        "surroundingCode": "            with(project) {\n                providers\n                    .of(VersionValueSource::class) {\n                        it.parameters.gitDir.set(layout.dir(provider { gitDir }))\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)"
+        "surroundingCode": "            with(project) {\n                providers\n                    .of(VersionValueSource::class) {\n                        val cache = gitTagBuildService.map(GitBuildService::gitCache).get()\n                        val projectTagPrefix = semverExtension.tagPrefix.get()"
       }
     }
   ],
@@ -193,7 +137,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "2964f35cbb3b353fec32f236301881c3d36555d127f3a34d64a6e095a1477999"
+  "hash": "8a0e094055f15082a2d20e55b0b309648668034aed34a9af2e576edfbacea54f"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -206,14 +150,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 60,
+      "line": 97,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 58,
+        "startLine": 95,
         "length": 10,
-        "offset": 106,
-        "surroundingCode": "                providers\n                    .of(VersionValueSource::class) {\n                        it.parameters.gitDir.set(layout.dir(provider { gitDir }))\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.projectTagPrefix.set(semverExtension.tagPrefix)"
+        "offset": 107,
+        "surroundingCode": "                        val projectTagPrefix = semverExtension.tagPrefix.get()\n\n                        it.parameters.gitDir.set(\n                            objects\n                                .directoryProperty()"
       }
     }
   ],
@@ -221,7 +165,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "922a7a937ba980fe65bc8fbcdfb53b9027f743a7b070fd6d2210756b5b1e82a1"
+  "hash": "503424ab07e9a6b770d529f11ae695d866cbfc2d9d80cf10518601787e1c4184"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -234,14 +178,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 61,
+      "line": 102,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 59,
+        "startLine": 100,
         "length": 10,
-        "offset": 162,
-        "surroundingCode": "                    .of(VersionValueSource::class) {\n                        it.parameters.gitDir.set(layout.dir(provider { gitDir }))\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.projectTagPrefix.set(semverExtension.tagPrefix)\n                        it.parameters.stageProperty.set(stageProperty)"
+        "offset": 152,
+        "surroundingCode": "                                .fileProvider(provider { file(\"${rootProject.projectDir}/.git\") })\n                        )\n                        it.parameters.projectTagPrefix.set(projectTagPrefix)\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.stageProperty.set(stageProperty)"
       }
     }
   ],
@@ -249,7 +193,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "d9af3fe5b38f7cb9916ecac6e6c77a17b6d040259d9dc85ee0f8a3ce7390daf1"
+  "hash": "d8eb5e89dd517c984f60eeb66bf0d22c4a4db2b2e0f849da023ca17ec0a73e18"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -262,14 +206,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 62,
+      "line": 103,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 60,
+        "startLine": 101,
         "length": 10,
-        "offset": 188,
-        "surroundingCode": "                        it.parameters.gitDir.set(layout.dir(provider { gitDir }))\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.projectTagPrefix.set(semverExtension.tagPrefix)\n                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)"
+        "offset": 130,
+        "surroundingCode": "                        )\n                        it.parameters.projectTagPrefix.set(projectTagPrefix)\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)"
       }
     }
   ],
@@ -277,7 +221,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "82ab46dbd5c33a47a3fd45dd1708839dab0335db69b344e85ca5c30839dd1ee0"
+  "hash": "4873f6be736e7c48bb1422353ffa12077bf3bc41b920e205edb87057a0eb00a6"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -290,14 +234,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 63,
+      "line": 104,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 61,
+        "startLine": 102,
         "length": 10,
-        "offset": 192,
-        "surroundingCode": "                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.projectTagPrefix.set(semverExtension.tagPrefix)\n                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)"
+        "offset": 183,
+        "surroundingCode": "                        it.parameters.projectTagPrefix.set(projectTagPrefix)\n                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)"
       }
     }
   ],
@@ -305,7 +249,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "e662381decb5df159711fdbb37f04d23243218516e1b3a36d92fc96db711be58"
+  "hash": "6943a1e23fc27c9c0236dbef0f0730ee50c711908ccae18ad354c85001162dc8"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -318,14 +262,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 64,
+      "line": 105,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 62,
+        "startLine": 103,
         "length": 10,
-        "offset": 184,
-        "surroundingCode": "                        it.parameters.projectTagPrefix.set(semverExtension.tagPrefix)\n                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)"
+        "offset": 177,
+        "surroundingCode": "                        it.parameters.tagPrefixProperty.set(tagPrefixProperty)\n                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)"
       }
     }
   ],
@@ -333,7 +277,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "f5ee2243e9b5d72b8ac9a2b430de612e767c6d8edc9f0365c207e87f9f5c8644"
+  "hash": "b167ebfd35c276219de096dd57d757443f6b602de967428e0c5b4cee429626c9"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -346,14 +290,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 65,
+      "line": 106,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 63,
+        "startLine": 104,
         "length": 10,
         "offset": 169,
-        "surroundingCode": "                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)\n                    }"
+        "surroundingCode": "                        it.parameters.stageProperty.set(stageProperty)\n                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)\n                        it.parameters.commitsInCurrentBranch.set("
       }
     }
   ],
@@ -361,7 +305,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "bcf77b270e7528d208e9f047f26f2f46799f4f3c0fc8cff48a6ef6ecc2c88c0a"
+  "hash": "da6f78c7b9da4cd94b653aca229f3f558e0e06505a3bdc9dc70f550ffc3af6c1"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -374,14 +318,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 66,
+      "line": 107,
       "offset": 28,
       "length": 10,
       "code": {
-        "startLine": 64,
+        "startLine": 105,
         "length": 10,
         "offset": 179,
-        "surroundingCode": "                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)\n                    }\n                    .forUseAtConfigurationTime()"
+        "surroundingCode": "                        it.parameters.scopeProperty.set(scopeProperty)\n                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)\n                        it.parameters.commitsInCurrentBranch.set(\n                            cache.commitsInCurrentBranch.map(GitRef.Commit::hash)"
       }
     }
   ],
@@ -389,7 +333,91 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "4cf1ba49acd62d015b07c4888fd31088c234964df131dec5ac68887478767c20"
+  "hash": "f2ed70936ffaa1e5b741c6228db16523c8d3540f8bff3ffa97479cc9bb9b734a"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 108,
+      "offset": 28,
+      "length": 10,
+      "code": {
+        "startLine": 106,
+        "length": 10,
+        "offset": 181,
+        "surroundingCode": "                        it.parameters.creatingSemverTag.set(isCreatingSemverTag)\n                        it.parameters.checkClean.set(checkCleanProperty)\n                        it.parameters.commitsInCurrentBranch.set(\n                            cache.commitsInCurrentBranch.map(GitRef.Commit::hash)\n                        )"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "d750b375d912bd5e1a1bc1f782068b40d1f406003e42e4907df7590f9feaba3f"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 111,
+      "offset": 28,
+      "length": 10,
+      "code": {
+        "startLine": 109,
+        "length": 10,
+        "offset": 135,
+        "surroundingCode": "                            cache.commitsInCurrentBranch.map(GitRef.Commit::hash)\n                        )\n                        it.parameters.headCommit.set(cache.headCommit.commit.hash)\n                        it.parameters.lastVersionCommitInCurrentBranch.set(\n                            cache.lastVersionCommitInCurrentBranch(projectTagPrefix)?.hash"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "a2f8e88164f7d6d4c98b66bd7ed404112be90d883ab720ed7ae8fe2a77ee7084"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 112,
+      "offset": 28,
+      "length": 10,
+      "code": {
+        "startLine": 110,
+        "length": 10,
+        "offset": 136,
+        "surroundingCode": "                        )\n                        it.parameters.headCommit.set(cache.headCommit.commit.hash)\n                        it.parameters.lastVersionCommitInCurrentBranch.set(\n                            cache.lastVersionCommitInCurrentBranch(projectTagPrefix)?.hash\n                        )"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "6c10b9f1de6442b6efc1ec5ac5c532648d82fbabda78a4890a0d134ca48943c1"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -402,14 +430,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 24,
+      "line": 40,
       "offset": 18,
       "length": 6,
       "code": {
-        "startLine": 22,
+        "startLine": 38,
         "length": 6,
-        "offset": 110,
-        "surroundingCode": "public abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {\n\n    override fun obtain(): String =\n        with(parameters) {\n            val isSamePrefix = tagPrefixProperty.get() == projectTagPrefix.get()"
+        "offset": 28,
+        "surroundingCode": "        )\n\n    override fun obtain(): String =\n        with(parameters) {\n            val isSamePrefix = tagPrefixProperty.get() == projectTagPrefix.get()"
       }
     }
   ],
@@ -417,7 +445,7 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "73791041e1de629211c361ab286b3483fc3611da0963ff44f3e116801c77424f"
+  "hash": "7e005fbbab04fadf02af3983e20e4f9eb3deb5a9d53996959323611bf4ce6d39"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -430,14 +458,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 25,
+      "line": 41,
       "offset": 14,
       "length": 10,
       "code": {
-        "startLine": 23,
+        "startLine": 39,
         "length": 10,
         "offset": 50,
-        "surroundingCode": "\n    override fun obtain(): String =\n        with(parameters) {\n            val isSamePrefix = tagPrefixProperty.get() == projectTagPrefix.get()\n            val git = gitDir.asFile.get().git"
+        "surroundingCode": "\n    override fun obtain(): String =\n        with(parameters) {\n            val isSamePrefix = tagPrefixProperty.get() == projectTagPrefix.get()\n"
       }
     }
   ],
@@ -445,5 +473,89 @@
     "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "b8138f847dc693a0cde203a81540052126ec80c807ad864a957b8d600a46dc50"
+  "hash": "e43f17d93c6a247b65229914ed562b0713a536875bcca381e7d842bff3d9fb4e"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'org.gradle.api.provider.ValueSource' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 27,
+      "offset": 44,
+      "length": 11,
+      "code": {
+        "startLine": 25,
+        "length": 11,
+        "offset": 76,
+        "surroundingCode": "import org.gradle.kotlin.dsl.of\n\npublic abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {\n\n    private val cache ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "ecb4760a6575bf481ba838b23ef31e48c17f1c4ec08f40437fbb3a4ded9f4d2b"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'org.gradle.api.provider.ValueSourceParameters' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 72,
+      "offset": 33,
+      "length": 21,
+      "code": {
+        "startLine": 70,
+        "length": 21,
+        "offset": 43,
+        "surroundingCode": "        }\n\n    internal interface Params : ValueSourceParameters {\n        val gitDir: DirectoryProperty\n        val tagPrefixProperty: Property<String>"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "237e5187d06bd05d7fa255a2b7d425ba6e86c32db2474bf09d060fc03566ef8a"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSource' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 33,
+      "offset": 32,
+      "length": 10,
+      "code": {
+        "startLine": 31,
+        "length": 10,
+        "offset": 88,
+        "surroundingCode": "            Git(\n                FileRepositoryBuilder()\n                    .setGitDir(parameters.gitDir.get().asFile)\n                    .readEnvironment()\n                    .findGitDir()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "76bf24bfc6f3d44e76222df935021ee01491d399d4263137a5d088fc1c7335a8"
 }]}

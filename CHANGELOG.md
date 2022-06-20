@@ -14,6 +14,8 @@
 
 ### Updated
 
+- `org.jetbrains.kotlinx:kotlinx-coroutines-core -> 1.6.3`
+
 ## [0.2.0-alpha.2] - 2022-06-18
 
 ### Fixed

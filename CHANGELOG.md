@@ -14,6 +14,8 @@
 
 ### Updated
 
+- `com.javiersc.gradle-extensions:gradle-testkit-ext -> 1.0.0-alpha.14`
+- `com.javiersc.gradle-extensions:gradle-ext -> 1.0.0-alpha.14`
 - `org.jetbrains.kotlinx:kotlinx-coroutines-core -> 1.6.3`
 
 ## [0.2.0-alpha.2] - 2022-06-18

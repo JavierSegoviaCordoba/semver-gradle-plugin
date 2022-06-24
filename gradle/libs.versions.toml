@@ -1,6 +1,6 @@
 [versions]
 coroutines = "1.6.3"
-javierscGradleExtensions = "1.0.0-alpha.13"
+javierscGradleExtensions = "1.0.0-alpha.14"
 javierscKotlinStdlib = "0.1.0-alpha.5"
 jgit = "6.2.0.202206071550-r"
 kotest = "5.3.0"

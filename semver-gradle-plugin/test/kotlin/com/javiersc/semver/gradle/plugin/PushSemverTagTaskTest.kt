@@ -15,7 +15,7 @@ import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.eclipse.jgit.transport.URIish
 
-class SemverPushTagTest {
+class PushSemverTagTaskTest {
 
     @Test
     fun `push tag`() {
@@ -42,7 +42,7 @@ class SemverPushTagTest {
                 .setRemoteUri(URIish(remoteBuildGitDir.toURI().toString()))
                 .call()
 
-            gradlew("semverPushTag", "-Psemver.tagPrefix=v")
+            gradlew("pushSemverTag", "-Psemver.tagPrefix=v")
 
             remoteGit
                 .tagList()

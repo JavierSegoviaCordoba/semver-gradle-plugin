@@ -1,1 +1,1 @@
-semverCreateTag -Psemver.scope=major -Psemver.tagPrefix=v
+createSemverTag -Psemver.scope=major -Psemver.tagPrefix=v

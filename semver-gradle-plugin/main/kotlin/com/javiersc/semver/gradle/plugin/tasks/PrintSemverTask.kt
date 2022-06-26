@@ -26,7 +26,7 @@ import org.gradle.language.base.plugins.LifecycleBasePlugin.BUILD_TASK_NAME
 import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
 
 @CacheableTask
-public abstract class SemverPrintTask
+public abstract class PrintSemverTask
 @Inject
 constructor(
     private val projectName: String,
@@ -71,29 +71,29 @@ constructor(
     }
 
     internal companion object {
-        const val taskName: String = "semverPrint"
+        const val taskName: String = "printSemver"
 
-        fun register(project: Project): TaskProvider<SemverPrintTask> =
+        fun register(project: Project): TaskProvider<PrintSemverTask> =
             with(project) {
-                val semverPrintTask: TaskProvider<SemverPrintTask> = tasks.register(taskName, name)
+                val printSemverTask: TaskProvider<PrintSemverTask> = tasks.register(taskName, name)
 
-                semverPrintTask.configure {
+                printSemverTask.configure {
                     it.tagPrefix.set(semverExtension.tagPrefix)
                     it.version.set(version.toString())
                 }
 
-                tasks.namedLazily<SemverCreateTag>(SemverCreateTag.taskName) {
-                    it.dependsOn(semverPrintTask)
+                tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) {
+                    it.dependsOn(printSemverTask)
                 }
                 tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) {
-                    it.dependsOn(semverPrintTask)
+                    it.dependsOn(printSemverTask)
                 }
-                tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { it.dependsOn(semverPrintTask) }
-                tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { it.dependsOn(semverPrintTask) }
-                tasks.withType<Jar>().configureEach { it.dependsOn(semverPrintTask) }
-                tasks.withType<Test>().configureEach { it.dependsOn(semverPrintTask) }
+                tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { it.dependsOn(printSemverTask) }
+                tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { it.dependsOn(printSemverTask) }
+                tasks.withType<Jar>().configureEach { it.dependsOn(printSemverTask) }
+                tasks.withType<Test>().configureEach { it.dependsOn(printSemverTask) }
 
-                return semverPrintTask
+                return printSemverTask
             }
     }
 }

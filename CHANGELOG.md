@@ -6,6 +6,10 @@
 
 ### Changed
 
+- `printSemver` name to `printSemver`.
+- `semverCreateTag` name to `createSemverTag`.
+- `semverPushTag` name to `pushSemverTag`.
+
 ### Deprecated
 
 ### Removed

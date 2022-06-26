@@ -266,28 +266,28 @@ semver.tagPrefix=v
 
 There are three tasks:
 
-- `semverPrint`: Prints the tag in CLI and create a file in `build/semver/version.txt` which has two
+- `printSemver`: Prints the tag in CLI and create a file in `build/semver/version.txt` which has two
   lines; the version without the tag and the version including the tag.
-- `semverCreateTag`. Creates a git tag.
-- `semverPushTag`. Creates and pushes a git tag to the remote.
+- `createSemverTag`. Creates a git tag.
+- `pushSemverTag`. Creates and pushes a git tag to the remote.
 
 You can combine them with any `semver` project properties to ensure the correct tag version is
 printed, created or pushed.
 
-`semverPushTag` can use a specific remote if the Gradle property `semver.remote` is set. If it is
+`pushSemverTag` can use a specific remote if the Gradle property `semver.remote` is set. If it is
 not set, `origin` is used if it exists, if not, the first remote by name is used. If there is no
 remote, the task fails.
 
 Samples:
 
 ```shell
-./gradlew semverCreateTag
+./gradlew createSemverTag
 
-./gradlew semverCreateTag "-Psemver.stage=alpha"
+./gradlew createSemverTag "-Psemver.stage=alpha"
 
-./gradlew semverPushTag
+./gradlew pushSemverTag
 
-./gradlew semverPushTag "-Psemver.stage=alpha"
+./gradlew pushSemverTag "-Psemver.stage=alpha"
 ```
 
 ### Set versions without timestamp on dirty repositories

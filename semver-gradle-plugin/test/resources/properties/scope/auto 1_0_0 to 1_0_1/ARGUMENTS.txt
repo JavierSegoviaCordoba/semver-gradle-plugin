@@ -1,1 +1,1 @@
-semverCreateTag -Psemver.scope=auto
+createSemverTag -Psemver.scope=auto

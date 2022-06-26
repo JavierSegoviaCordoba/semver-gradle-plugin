@@ -112,7 +112,7 @@ class GradleFeaturesTest {
 
         LAST_0_9_0_HASH_1.shouldNotBe(LAST_0_9_0_HASH_2)
 
-        gradlew("semverCreateTag", "-Psemver.tagPrefix=v")
+        gradlew("createSemverTag", "-Psemver.tagPrefix=v")
         projectDir.assertVersion("v", "0.9.1")
 
         withArgumentsFromTXT()

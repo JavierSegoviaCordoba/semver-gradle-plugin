@@ -1,1 +1,1 @@
-semverCreateTag -Psemver.scope=fdfadsaa -Psemver.tagPrefix=v
+createSemverTag -Psemver.scope=fdfadsaa -Psemver.tagPrefix=v

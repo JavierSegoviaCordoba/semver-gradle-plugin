@@ -1,1 +1,1 @@
-semverCreateTag -Psemver.stage=beta -Psemver.tagPrefix=v
+createSemverTag -Psemver.stage=beta -Psemver.tagPrefix=v

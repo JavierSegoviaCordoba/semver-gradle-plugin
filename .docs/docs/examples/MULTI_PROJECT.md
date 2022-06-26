@@ -59,7 +59,7 @@ semver for library-ten: 1.0.0.0+2021-11-11T14-22-03-207850300Z
 
 Version should be similar to the previous one (only timestamp changes)
 
-## 3. Add the new file to git and commit it, then run `./gradlew semverCreateTag "-Psemver.tagPrefix=a`
+## 3. Add the new file to git and commit it, then run `./gradlew createSemverTag "-Psemver.tagPrefix=a`
 
 - Promotes the current state to be a new version for the projects which are using as tag prefix the
   value `a`.
@@ -117,10 +117,10 @@ semver for library-nine: 1.0.0.2+76f0424
 semver for library-ten: 1.0.0.2+76f0424
 ```
 
-## 6. Run `./gradlew semverCreateTag "-Psemver.tagPrefix=a"`
+## 6. Run `./gradlew createSemverTag "-Psemver.tagPrefix=a"`
 
 - Promote the current state to a new version.
-- Since there is a previous tag (`v1.0.2`), `semverCreateTag` resolves automatically the next
+- Since there is a previous tag (`v1.0.2`), `createSemverTag` resolves automatically the next
   version. The algorithm is simple:
     - If previous tag is final, the new tag increases the `patch`.
     - If previous tag is non-final, the new tag increases the `num` and it keeps the previous stage.
@@ -138,7 +138,7 @@ semver for library-nine: 1.0.0.2+76f0424
 semver for library-ten: 1.0.0.2+76f0424
 ```
 
-## 7. Create, add to git and commit a new file in `library-one-a`, then run `./gradlew semverCreateTag "-Psemver.stage=alpha" "-Psemver.tagPrefix=a"`
+## 7. Create, add to git and commit a new file in `library-one-a`, then run `./gradlew createSemverTag "-Psemver.stage=alpha" "-Psemver.tagPrefix=a"`
 
 - Promote the current state to be a new alpha version for the projects with tag prefix `a`.
 
@@ -155,7 +155,7 @@ semver for library-nine: 1.0.0.3+58u03s9
 semver for library-ten: 1.0.0.3+58u03s9
 ```
 
-## 8. Run `./gradlew semverCreateTag "-Psemver.stage=beta" "-Psemver.tagPrefix=a"`
+## 8. Run `./gradlew createSemverTag "-Psemver.stage=beta" "-Psemver.tagPrefix=a"`
 
 - Without changing the state, promote the current state to be a new beta version for the projects
   with tag prefix `a`.
@@ -173,7 +173,7 @@ semver for library-nine: 1.0.0.3+58u03s9
 semver for library-ten: 1.0.0.3+58u03s9
 ```
 
-## 9. Create, add to git and commit a new file in `library-one-a`, then run `./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.tagPrefix=a"`
+## 9. Create, add to git and commit a new file in `library-one-a`, then run `./gradlew createSemverTag "-Psemver.stage=final" "-Psemver.tagPrefix=a"`
 
 - Without changing the state, promote the current state to be a final version for the projects with
   tag prefix `a`.
@@ -191,7 +191,7 @@ semver for library-nine: 1.0.0.4+1as03k5
 semver for library-ten: 1.0.0.4+1as03k5
 ```
 
-## 10. Run `./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.scope=major "-Psemver.tagPrefix=a"`
+## 10. Run `./gradlew createSemverTag "-Psemver.stage=final" "-Psemver.scope=major "-Psemver.tagPrefix=a"`
 
 - Without changing the state, promote the current state to be the `2.0.0` version for the projects
   with tag prefix `a`.
@@ -229,7 +229,7 @@ semver for library-nine: 1.0.0.4+1as03k5
 semver for library-ten: 1.0.0.4+1as03k5
 ```
 
-## 12. Run `./gradlew semverCreateTag "-Psemver.scope=minor" "-Psemver.tagPrefix=b"`
+## 12. Run `./gradlew createSemverTag "-Psemver.scope=minor" "-Psemver.tagPrefix=b"`
 
 ```text
 semver for library-one-a: a2.0.0
@@ -244,7 +244,7 @@ semver for library-nine: 1.0.0.4+1as03k5
 semver for library-ten: 1.0.0.4+1as03k5
 ```
 
-## 13. Run `./gradlew semverCreateTag "-Psemver.stage=rc" "-Psemver.tagPrefix=c"`
+## 13. Run `./gradlew createSemverTag "-Psemver.stage=rc" "-Psemver.tagPrefix=c"`
 
 ```text
 semver for library-one-a: a2.0.0
@@ -259,7 +259,7 @@ semver for library-nine: 1.0.0.4+1as03k5
 semver for library-ten: 1.0.0.4+1as03k5
 ```
 
-## 14. Run `./gradlew semverCreateTag "-Psemver.stage=dev"`
+## 14. Run `./gradlew createSemverTag "-Psemver.stage=dev"`
 
 ```text
 semver for library-one-a: a2.0.0

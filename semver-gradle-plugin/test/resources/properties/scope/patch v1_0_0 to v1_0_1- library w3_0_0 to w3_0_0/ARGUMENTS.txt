@@ -1,1 +1,1 @@
-semverCreateTag -Psemver.scope=patch -Psemver.tagPrefix=v
+createSemverTag -Psemver.scope=patch -Psemver.tagPrefix=v

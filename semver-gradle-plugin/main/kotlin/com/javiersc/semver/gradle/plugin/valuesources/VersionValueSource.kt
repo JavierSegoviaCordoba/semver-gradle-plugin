@@ -11,8 +11,8 @@ import com.javiersc.semver.gradle.plugin.internal.stageProperty
 import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.gradle.plugin.semverExtension
 import com.javiersc.semver.gradle.plugin.services.GitBuildService
-import com.javiersc.semver.gradle.plugin.tasks.SemverCreateTag
-import com.javiersc.semver.gradle.plugin.tasks.SemverPushTag
+import com.javiersc.semver.gradle.plugin.tasks.CreateSemverTagTask
+import com.javiersc.semver.gradle.plugin.tasks.PushSemverTagTask
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.gradle.api.Project
@@ -121,5 +121,5 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
 private val Project.isCreatingSemverTag: Boolean
     get() =
         gradle.startParameter.taskNames.any { taskName: String ->
-            taskName == SemverCreateTag.taskName || taskName == SemverPushTag.taskName
+            taskName == CreateSemverTagTask.taskName || taskName == PushSemverTagTask.taskName
         }

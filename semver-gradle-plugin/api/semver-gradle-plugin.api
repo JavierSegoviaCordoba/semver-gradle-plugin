@@ -19,17 +19,17 @@ public final class com/javiersc/semver/gradle/plugin/SemverPlugin : org/gradle/a
 	public fun apply (Lorg/gradle/api/Project;)V
 }
 
-public abstract class com/javiersc/semver/gradle/plugin/tasks/SemverCreateTag : org/gradle/api/DefaultTask {
-	public static final field Companion Lcom/javiersc/semver/gradle/plugin/tasks/SemverCreateTag$Companion;
+public abstract class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask$Companion;
 	public static final field taskName Ljava/lang/String;
 	public fun <init> ()V
 	public final fun run ()V
 }
 
-public final class com/javiersc/semver/gradle/plugin/tasks/SemverCreateTag$Companion {
+public final class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask$Companion {
 }
 
-public abstract class com/javiersc/semver/gradle/plugin/tasks/SemverPrintTask : org/gradle/api/DefaultTask {
+public abstract class com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask : org/gradle/api/DefaultTask {
 	public static final field taskName Ljava/lang/String;
 	public fun <init> (Ljava/lang/String;Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/api/file/ProjectLayout;)V
 	public final fun getSemverFile ()Lorg/gradle/api/file/RegularFileProperty;
@@ -38,10 +38,14 @@ public abstract class com/javiersc/semver/gradle/plugin/tasks/SemverPrintTask : 
 	public final fun run ()V
 }
 
-public abstract class com/javiersc/semver/gradle/plugin/tasks/SemverPushTag : org/gradle/api/DefaultTask {
+public abstract class com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask$Companion;
 	public static final field taskName Ljava/lang/String;
 	public fun <init> ()V
 	public final fun run ()V
+}
+
+public final class com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask$Companion {
 }
 
 public abstract class com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource : org/gradle/api/provider/ValueSource {

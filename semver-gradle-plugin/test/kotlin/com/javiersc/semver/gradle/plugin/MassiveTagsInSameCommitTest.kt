@@ -23,7 +23,7 @@ internal class MassiveTagsInSameCommitTest {
             git.add().addFilepattern(".").call()
             git.commit().setMessage("Add config").call()
 
-            withArguments("semverCreateTag", tagPrefixV)
+            withArguments("createSemverTag", tagPrefixV)
 
             build()
             projectDir.assertVersion("v", "0.1.0")
@@ -34,7 +34,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "0.1.2")
 
-            withArguments("semverCreateTag", tagPrefixV, scope("minor"))
+            withArguments("createSemverTag", tagPrefixV, scope("minor"))
 
             build()
             projectDir.assertVersion("v", "0.2.0")
@@ -45,7 +45,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "0.4.0")
 
-            withArguments("semverCreateTag", tagPrefixV, scope("major"))
+            withArguments("createSemverTag", tagPrefixV, scope("major"))
 
             build()
             projectDir.assertVersion("v", "1.0.0")
@@ -56,7 +56,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "3.0.0")
 
-            withArguments("semverCreateTag", tagPrefixV, stage("alpha"))
+            withArguments("createSemverTag", tagPrefixV, stage("alpha"))
 
             build()
             projectDir.assertVersion("v", "3.0.1-alpha.1")
@@ -67,7 +67,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "3.0.1-alpha.3")
 
-            withArguments("semverCreateTag", tagPrefixV, stage("beta"))
+            withArguments("createSemverTag", tagPrefixV, stage("beta"))
 
             build()
             projectDir.assertVersion("v", "3.0.1-beta.1")
@@ -78,7 +78,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "3.0.1-beta.3")
 
-            withArguments("semverCreateTag", tagPrefixV, stage("final"))
+            withArguments("createSemverTag", tagPrefixV, stage("final"))
 
             build()
             projectDir.assertVersion("v", "3.0.1")
@@ -89,7 +89,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "3.0.3")
 
-            withArguments("semverCreateTag", tagPrefixV, stage("final"), scope("minor"))
+            withArguments("createSemverTag", tagPrefixV, stage("final"), scope("minor"))
 
             build()
             projectDir.assertVersion("v", "3.1.0")
@@ -100,7 +100,7 @@ internal class MassiveTagsInSameCommitTest {
             build()
             projectDir.assertVersion("v", "3.3.0")
 
-            withArguments("semverCreateTag", tagPrefixV, stage("final"), scope("major"))
+            withArguments("createSemverTag", tagPrefixV, stage("final"), scope("major"))
 
             build()
             projectDir.assertVersion("v", "4.0.0")

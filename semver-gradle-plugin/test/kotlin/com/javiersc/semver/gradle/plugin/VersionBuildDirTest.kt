@@ -61,7 +61,7 @@ internal class VersionBuildDirTest {
     }
 
     @Test
-    fun `no clean semverCreateTag should fail`() {
+    fun `no clean createSemverTag should fail`() {
         gradleTestKitTest("version-build-dir/no-clean-with-no-tag-current-commit (dirty)") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
             projectDir.resolve("new-2.txt").createNewFile()
@@ -70,7 +70,7 @@ internal class VersionBuildDirTest {
             build()
             projectDir.assertVersion("v", "1.0.0", Dirty)
 
-            withArguments("semverCreateTag", "-Psemver.tagPrefix=v")
+            withArguments("createSemverTag", "-Psemver.tagPrefix=v")
             val result = buildAndFail()
             projectDir.assertVersionFromExpectVersionFiles()
             result.output.shouldContain("A semver tag can't be created if the repo is not clean")

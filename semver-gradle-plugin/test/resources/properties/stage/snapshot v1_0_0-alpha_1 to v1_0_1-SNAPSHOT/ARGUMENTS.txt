@@ -1,1 +1,1 @@
-semverCreateTag -Psemver.stage=snapshot -Psemver.tagPrefix=v
+createSemverTag -Psemver.stage=snapshot -Psemver.tagPrefix=v

@@ -2,9 +2,9 @@ package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semver.gradle.plugin.internal.checkScopeCorrectness
 import com.javiersc.semver.gradle.plugin.services.GitBuildService
-import com.javiersc.semver.gradle.plugin.tasks.SemverCreateTag
-import com.javiersc.semver.gradle.plugin.tasks.SemverPrintTask
-import com.javiersc.semver.gradle.plugin.tasks.SemverPushTag
+import com.javiersc.semver.gradle.plugin.tasks.CreateSemverTagTask
+import com.javiersc.semver.gradle.plugin.tasks.PrintSemverTask
+import com.javiersc.semver.gradle.plugin.tasks.PushSemverTagTask
 import com.javiersc.semver.gradle.plugin.valuesources.VersionValueSource
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -28,9 +28,9 @@ public class SemverPlugin : Plugin<Project> {
     private fun Project.configureBuildServicesAndTasks(
         gitTagBuildService: Provider<GitBuildService>
     ) {
-        SemverCreateTag.register(this, gitTagBuildService)
-        SemverPushTag.register(this, gitTagBuildService)
-        SemverPrintTask.register(this)
+        CreateSemverTagTask.register(this, gitTagBuildService)
+        PushSemverTagTask.register(this, gitTagBuildService)
+        PrintSemverTask.register(this)
     }
 
     private fun Project.configureLazyVersion(gitTagBuildService: Provider<GitBuildService>) {

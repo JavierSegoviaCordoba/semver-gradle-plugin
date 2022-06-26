@@ -37,18 +37,18 @@ internal class MultiProjectExampleTest {
             `0_ Initial repo state`()
             `1_ Run gradlew assemble`()
             `2_ Create a new file in library-one-a and run gradlew assemble`()
-            `3_ Add the new file to git and commit it, then run gradlew semverCreateTag with tagPrefix=a`()
+            `3_ Add the new file to git and commit it, then run gradlew createSemverTag with tagPrefix=a`()
             `4_ Run gradlew assemble`()
             `5_ Create, add and commit a new file in library-one-a, then run gradlew assemble`()
-            `6_ Run gradlew semverCreateTag tagPrefix=a`()
-            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=alpha tagPrefix=a`()
-            `8_ Run gradlew semverCreateTag stage=beta tagPrefix=a`()
-            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=final tagPrefix=a`()
-            `10_ Run gradlew semverCreateTag stage=final scope=major tagPrefix=a`()
-            `11_ Run gradlew semverPrint stage=snapshot tagPrefix=a`()
-            `12_ Run gradlew semverCreateTag scope=minor tagPrefix=b`()
-            `13_ Run gradlew semverCreateTag stage=rc tagPrefix=c`()
-            `14_ Run gradlew semverCreateTag stage=dev`()
+            `6_ Run gradlew createSemverTag tagPrefix=a`()
+            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()
+            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()
+            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
+            `11_ Run gradlew printSemver stage=snapshot tagPrefix=a`()
+            `12_ Run gradlew createSemverTag scope=minor tagPrefix=b`()
+            `13_ Run gradlew createSemverTag stage=rc tagPrefix=c`()
+            `14_ Run gradlew createSemverTag stage=dev`()
         }
     }
 
@@ -104,11 +104,11 @@ internal class MultiProjectExampleTest {
     }
 
     private fun GradleRunner
-        .`3_ Add the new file to git and commit it, then run gradlew semverCreateTag with tagPrefix=a`() {
+        .`3_ Add the new file to git and commit it, then run gradlew createSemverTag with tagPrefix=a`() {
         git.add().addFilepattern(".").call()
         git.commit().setMessage("Add new2 to library-one-a").call()
 
-        gradlew("semverCreateTag", "-Psemver.tagPrefix=a")
+        gradlew("createSemverTag", "-Psemver.tagPrefix=a")
 
         projectDirByName("library-one-a").assertVersion("a", "1.0.1")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Hash)
@@ -157,8 +157,8 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
     }
 
-    private fun GradleRunner.`6_ Run gradlew semverCreateTag tagPrefix=a`() {
-        gradlew("semverCreateTag", "-Psemver.tagPrefix=a")
+    private fun GradleRunner.`6_ Run gradlew createSemverTag tagPrefix=a`() {
+        gradlew("createSemverTag", "-Psemver.tagPrefix=a")
 
         projectDirByName("library-one-a").assertVersion("a", "1.0.2")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Hash)
@@ -173,12 +173,12 @@ internal class MultiProjectExampleTest {
     }
 
     private fun GradleRunner
-        .`7_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=alpha tagPrefix=a`() {
+        .`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`() {
         projectDirByName("library-one-a").resolve("new7.txt").createNewFile()
         git.add().addFilepattern(".").call()
         git.commit().setMessage("Add new7 to library-one-a").call()
 
-        gradlew("semverCreateTag", "-Psemver.stage=alpha", "-Psemver.tagPrefix=a")
+        gradlew("createSemverTag", "-Psemver.stage=alpha", "-Psemver.tagPrefix=a")
 
         projectDirByName("library-one-a").assertVersion("a", "1.0.3-alpha.1")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Hash)
@@ -192,8 +192,8 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
     }
 
-    private fun GradleRunner.`8_ Run gradlew semverCreateTag stage=beta tagPrefix=a`() {
-        gradlew("semverCreateTag", "-Psemver.stage=beta", "-Psemver.tagPrefix=a")
+    private fun GradleRunner.`8_ Run gradlew createSemverTag stage=beta tagPrefix=a`() {
+        gradlew("createSemverTag", "-Psemver.stage=beta", "-Psemver.tagPrefix=a")
 
         projectDirByName("library-one-a").assertVersion("a", "1.0.3-beta.1")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Hash)
@@ -208,12 +208,12 @@ internal class MultiProjectExampleTest {
     }
 
     private fun GradleRunner
-        .`9_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=final tagPrefix=a`() {
+        .`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`() {
         projectDirByName("library-one-a").resolve("new9.txt").createNewFile()
         git.add().addFilepattern(".").call()
         git.commit().setMessage("Add new9 to library-one-a").call()
 
-        gradlew("semverCreateTag", "-Psemver.stage=final", "-Psemver.tagPrefix=a")
+        gradlew("createSemverTag", "-Psemver.stage=final", "-Psemver.tagPrefix=a")
 
         projectDirByName("library-one-a").assertVersion("a", "1.0.3")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Hash)
@@ -228,9 +228,9 @@ internal class MultiProjectExampleTest {
     }
 
     private fun GradleRunner
-        .`10_ Run gradlew semverCreateTag stage=final scope=major tagPrefix=a`() {
+        .`10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`() {
         gradlew(
-            "semverCreateTag",
+            "createSemverTag",
             "-Psemver.stage=final",
             "-Psemver.scope=major",
             "-Psemver.tagPrefix=a"
@@ -248,8 +248,8 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
     }
 
-    private fun GradleRunner.`11_ Run gradlew semverPrint stage=snapshot tagPrefix=a`() {
-        gradlew("semverPrint", "-Psemver.stage=snapshot", "-Psemver.tagPrefix=a")
+    private fun GradleRunner.`11_ Run gradlew printSemver stage=snapshot tagPrefix=a`() {
+        gradlew("printSemver", "-Psemver.stage=snapshot", "-Psemver.tagPrefix=a")
 
         projectDirByName("library-one-a").assertVersion("a", "2.0.1-SNAPSHOT")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Hash)
@@ -263,8 +263,8 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
     }
 
-    private fun GradleRunner.`12_ Run gradlew semverCreateTag scope=minor tagPrefix=b`() {
-        gradlew("semverCreateTag", "-Psemver.scope=minor", "-Psemver.tagPrefix=b")
+    private fun GradleRunner.`12_ Run gradlew createSemverTag scope=minor tagPrefix=b`() {
+        gradlew("createSemverTag", "-Psemver.scope=minor", "-Psemver.tagPrefix=b")
 
         projectDirByName("library-one-a").assertVersion("a", "2.0.0")
         projectDirByName("library-two-b").assertVersion("b", "1.1.0")
@@ -278,8 +278,8 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
     }
 
-    private fun GradleRunner.`13_ Run gradlew semverCreateTag stage=rc tagPrefix=c`() {
-        gradlew("semverCreateTag", "-Psemver.stage=rc", "-Psemver.tagPrefix=c")
+    private fun GradleRunner.`13_ Run gradlew createSemverTag stage=rc tagPrefix=c`() {
+        gradlew("createSemverTag", "-Psemver.stage=rc", "-Psemver.tagPrefix=c")
 
         projectDirByName("library-one-a").assertVersion("a", "2.0.0")
         projectDirByName("library-two-b").assertVersion("b", "1.1.0")
@@ -293,8 +293,8 @@ internal class MultiProjectExampleTest {
         projectDirByName("library-ten").assertVersion("", "1.0.0", Hash)
     }
 
-    private fun GradleRunner.`14_ Run gradlew semverCreateTag stage=dev`() {
-        gradlew("semverCreateTag", "-Psemver.stage=dev")
+    private fun GradleRunner.`14_ Run gradlew createSemverTag stage=dev`() {
+        gradlew("createSemverTag", "-Psemver.stage=dev")
 
         projectDirByName("library-one-a").assertVersion("a", "2.0.0")
         projectDirByName("library-two-b").assertVersion("b", "1.1.0")

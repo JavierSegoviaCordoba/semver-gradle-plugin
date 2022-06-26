@@ -32,7 +32,7 @@ semver for the root project: 0.1.0.0+2021-11-11T14-22-03-207850300Z
 
 Version should be similar to the previous one (only timestamp changes)
 
-## 3. Add the new file to git, commit it, and run `./gradlew semverCreateTag`
+## 3. Add the new file to git, commit it, and run `./gradlew createSemverTag`
 
 - Promotes the current state to be a new version. A new tag is created with the value `v0.1.0`
 
@@ -59,10 +59,10 @@ semver: 0.1.0.1+26f0484
         --------> hash (26f0484)
 ```
 
-## 6. Run `./gradlew semverCreateTag`
+## 6. Run `./gradlew createSemverTag`
 
 - Promote the current state to a new version.
-- Since there is a previous tag (`v0.1.0`), `semverCreateTag` resolves automatically the next
+- Since there is a previous tag (`v0.1.0`), `createSemverTag` resolves automatically the next
   version. The algorithm is simple:
     - If previous tag is final, the new tag increases the `patch`.
     - If previous tag is non-final, the new tag increases the `num` and it keeps the previous stage.
@@ -71,7 +71,7 @@ semver: 0.1.0.1+26f0484
 Created new semver tag: v0.1.1
 ```
 
-## 7. Create and add to git a new file, then run `./gradlew semverCreateTag "-Psemver.stage=alpha"`
+## 7. Create and add to git a new file, then run `./gradlew createSemverTag "-Psemver.stage=alpha"`
 
 - Promote the current state to be a new alpha version.
 
@@ -79,7 +79,7 @@ Created new semver tag: v0.1.1
 Created new semver tag: v0.1.2-alpha.1
 ```
 
-## 8. Run `./gradlew semverCreateTag "-Psemver.stage=beta"`
+## 8. Run `./gradlew createSemverTag "-Psemver.stage=beta"`
 
 - Without changing the state, promote the current state to be a new beta version.
 
@@ -87,7 +87,7 @@ Created new semver tag: v0.1.2-alpha.1
 Created new semver tag: v0.1.2-beta.1
 ```
 
-## 9. Create and add to git a new file, then run `./gradlew semverCreateTag "-Psemver.stage=final"`
+## 9. Create and add to git a new file, then run `./gradlew createSemverTag "-Psemver.stage=final"`
 
 - Without changing the state, promote the current state to be a final version.
 
@@ -95,7 +95,7 @@ Created new semver tag: v0.1.2-beta.1
 Created new semver tag: v0.1.2
 ```
 
-## 10. Run `./gradlew semverCreateTag "-Psemver.stage=final" "-Psemver.scope=major`
+## 10. Run `./gradlew createSemverTag "-Psemver.stage=final" "-Psemver.scope=major`
 
 - Without changing the state, promote the current state to be the `1.0.0` version.
 

@@ -11,7 +11,7 @@ import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.register
 
-public abstract class SemverCreateTag : DefaultTask() {
+public abstract class CreateSemverTagTask : DefaultTask() {
 
     @get:Internal internal abstract val tagPrefixProperty: Property<String>
 
@@ -33,19 +33,19 @@ public abstract class SemverCreateTag : DefaultTask() {
     }
 
     public companion object {
-        public const val taskName: String = "semverCreateTag"
+        public const val taskName: String = "createSemverTag"
 
         internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {
             project.tasks
-                .register<SemverCreateTag>(
+                .register<CreateSemverTagTask>(
                     taskName,
                 )
-                .configure { semverCreateTag ->
-                    semverCreateTag.tagPrefixProperty.set(project.tagPrefixProperty)
-                    semverCreateTag.projectTagPrefix.set(project.semverExtension.tagPrefix)
-                    semverCreateTag.version.set(project.version.toString())
-                    semverCreateTag.gitTagBuildService.set(gitTagBuildService)
-                    semverCreateTag.usesService(gitTagBuildService)
+                .configure { createSemverTag ->
+                    createSemverTag.tagPrefixProperty.set(project.tagPrefixProperty)
+                    createSemverTag.projectTagPrefix.set(project.semverExtension.tagPrefix)
+                    createSemverTag.version.set(project.version.toString())
+                    createSemverTag.gitTagBuildService.set(gitTagBuildService)
+                    createSemverTag.usesService(gitTagBuildService)
                 }
         }
     }

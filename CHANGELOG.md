@@ -6,15 +6,21 @@
 
 ### Changed
 
-- `printSemver` name to `printSemver`.
-- `semverCreateTag` name to `createSemverTag`.
-- `semverPushTag` name to `pushSemverTag`.
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+### Updated
+
+## [0.3.0-alpha.1] - 2022-07-03
+
+### Changed
+
+- `printSemver` name to `printSemver`.
+- `semverCreateTag` name to `createSemverTag`.
+- `semverPushTag` name to `pushSemverTag`.
 
 ### Updated
 

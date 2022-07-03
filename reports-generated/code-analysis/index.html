@@ -413,28 +413,28 @@
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:44:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
         <pre><code><span class="lineno">  41 </span>            `4_ Run gradlew assemble`()
 <span class="lineno">  42 </span>            `5_ Create, add and commit a new file in library-one-a, then run gradlew assemble`()
-<span class="lineno">  43 </span>            `6_ Run gradlew semverCreateTag tagPrefix=a`()
-<span class="lineno">  44 </span>            <span class="error">`7_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=alpha tagPrefix=a`()</span>
-<span class="lineno">  45 </span>            `8_ Run gradlew semverCreateTag stage=beta tagPrefix=a`()
-<span class="lineno">  46 </span>            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=final tagPrefix=a`()
-<span class="lineno">  47 </span>            `10_ Run gradlew semverCreateTag stage=final scope=major tagPrefix=a`()
+<span class="lineno">  43 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
+<span class="lineno">  44 </span>            <span class="error">`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()</span>
+<span class="lineno">  45 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+<span class="lineno">  46 </span>            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()
+<span class="lineno">  47 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
 </code></pre>
       </li>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:46:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
-        <pre><code><span class="lineno">  43 </span>            `6_ Run gradlew semverCreateTag tagPrefix=a`()
-<span class="lineno">  44 </span>            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=alpha tagPrefix=a`()
-<span class="lineno">  45 </span>            `8_ Run gradlew semverCreateTag stage=beta tagPrefix=a`()
-<span class="lineno">  46 </span>            <span class="error">`9_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=final tagPrefix=a`()</span>
-<span class="lineno">  47 </span>            `10_ Run gradlew semverCreateTag stage=final scope=major tagPrefix=a`()
-<span class="lineno">  48 </span>            `11_ Run gradlew semverPrint stage=snapshot tagPrefix=a`()
-<span class="lineno">  49 </span>            `12_ Run gradlew semverCreateTag scope=minor tagPrefix=b`()
+        <pre><code><span class="lineno">  43 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
+<span class="lineno">  44 </span>            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()
+<span class="lineno">  45 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+<span class="lineno">  46 </span>            <span class="error">`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()</span>
+<span class="lineno">  47 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
+<span class="lineno">  48 </span>            `11_ Run gradlew printSemver stage=snapshot tagPrefix=a`()
+<span class="lineno">  49 </span>            `12_ Run gradlew createSemverTag scope=minor tagPrefix=b`()
 </code></pre>
       </li>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:176:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
         <pre><code><span class="lineno"> 173 </span>    }
 <span class="lineno"> 174 </span>
 <span class="lineno"> 175 </span>    private fun GradleRunner
-<span class="lineno"> 176 </span>        <span class="error">.</span>`7_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=alpha tagPrefix=a`() {
+<span class="lineno"> 176 </span>        <span class="error">.</span>`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`() {
 <span class="lineno"> 177 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new7.txt&quot;).createNewFile()
 <span class="lineno"> 178 </span>        git.add().addFilepattern(&quot;.&quot;).call()
 <span class="lineno"> 179 </span>        git.commit().setMessage(&quot;Add new7 to library-one-a&quot;).call()
@@ -444,7 +444,7 @@
         <pre><code><span class="lineno"> 208 </span>    }
 <span class="lineno"> 209 </span>
 <span class="lineno"> 210 </span>    private fun GradleRunner
-<span class="lineno"> 211 </span>        <span class="error">.</span>`9_ Create, add to git and commit a new file in library-one-a, then run gradlew semverCreateTag stage=final tagPrefix=a`() {
+<span class="lineno"> 211 </span>        <span class="error">.</span>`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`() {
 <span class="lineno"> 212 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new9.txt&quot;).createNewFile()
 <span class="lineno"> 213 </span>        git.add().addFilepattern(&quot;.&quot;).call()
 <span class="lineno"> 214 </span>        git.commit().setMessage(&quot;Add new9 to library-one-a&quot;).call()
@@ -470,7 +470,7 @@
 </div>
 
 
-generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-06-20 17:51:31 UTC.
+generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-06-26 18:53:35 UTC.
 
 </body>
 </html>

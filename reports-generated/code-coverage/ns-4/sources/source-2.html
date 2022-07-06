@@ -1,0 +1,251 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GitBuildServiceKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.javiersc.semver.gradle.plugin.services</a>
+</div>
+
+<h1>Coverage Summary for Class: GitBuildServiceKt (com.javiersc.semver.gradle.plugin.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">GitBuildServiceKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/46)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.javiersc.semver.gradle.plugin.services
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.javiersc.semver.gradle.plugin.internal.git.GitCache
+<i class="no-highlight">4</i>&nbsp;import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranchRevCommit
+<i class="no-highlight">5</i>&nbsp;import com.javiersc.semver.gradle.plugin.internal.remoteProperty
+<i class="no-highlight">6</i>&nbsp;import com.javiersc.semver.gradle.plugin.internal.semverMessage
+<i class="no-highlight">7</i>&nbsp;import com.javiersc.semver.gradle.plugin.internal.semverWarningMessage
+<i class="no-highlight">8</i>&nbsp;import java.io.File
+<i class="no-highlight">9</i>&nbsp;import javax.inject.Inject
+<i class="no-highlight">10</i>&nbsp;import org.eclipse.jgit.api.Git
+<i class="no-highlight">11</i>&nbsp;import org.eclipse.jgit.api.errors.NoHeadException
+<i class="no-highlight">12</i>&nbsp;import org.eclipse.jgit.storage.file.FileRepositoryBuilder
+<i class="no-highlight">13</i>&nbsp;import org.eclipse.jgit.transport.RemoteConfig
+<i class="no-highlight">14</i>&nbsp;import org.gradle.api.Project
+<i class="no-highlight">15</i>&nbsp;import org.gradle.api.file.RegularFileProperty
+<i class="no-highlight">16</i>&nbsp;import org.gradle.api.provider.Property
+<i class="no-highlight">17</i>&nbsp;import org.gradle.api.provider.Provider
+<i class="no-highlight">18</i>&nbsp;import org.gradle.api.services.BuildService
+<i class="no-highlight">19</i>&nbsp;import org.gradle.api.services.BuildServiceParameters
+<i class="no-highlight">20</i>&nbsp;import org.gradle.kotlin.dsl.registerIfAbsent
+<i class="no-highlight">21</i>&nbsp;import org.gradle.process.ExecOperations
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;internal abstract class GitBuildService
+<i class="no-highlight">24</i>&nbsp;@Inject
+<i class="no-highlight">25</i>&nbsp;constructor(
+<i class="no-highlight">26</i>&nbsp;    private val execOperations: ExecOperations,
+<i class="no-highlight">27</i>&nbsp;) : BuildService&lt;GitBuildService.Params&gt;, AutoCloseable {
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    private var isCreatingTag: Boolean = false
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    private val gitDir: File =
+<i class="no-highlight">32</i>&nbsp;        checkNotNull(parameters.gitDirectory.orNull?.asFile) {
+<i class="no-highlight">33</i>&nbsp;            semverWarningMessage(&quot;semver plugin can&#39;t work if there is no git repository&quot;)
+<i class="no-highlight">34</i>&nbsp;        }
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    private val git: Git =
+<i class="no-highlight">37</i>&nbsp;        Git(FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()).also {
+<i class="no-highlight">38</i>&nbsp;            if (!it.hasCommits()) {
+<i class="no-highlight">39</i>&nbsp;                semverWarningMessage(&quot;semver plugin can&#39;t work if there are no commits&quot;)
+<i class="no-highlight">40</i>&nbsp;            }
+<i class="no-highlight">41</i>&nbsp;        }
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    internal val gitCache: GitCache = GitCache(git)
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;    internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+<i class="no-highlight">46</i>&nbsp;        if (!isCreatingTag &amp;&amp; projectTagPrefix == tagPrefixProperty) {
+<i class="no-highlight">47</i>&nbsp;            isCreatingTag = true
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;            check(git.status().call().isClean) {
+<i class="no-highlight">50</i>&nbsp;                &quot;A semver tag can&#39;t be created if the repo is not clean&quot;
+<i class="no-highlight">51</i>&nbsp;            }
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;            val semverWithTagPrefix = &quot;$projectTagPrefix$version&quot;
+<i class="no-highlight">54</i>&nbsp;            git.tag().setName(semverWithTagPrefix).call()
+<i class="no-highlight">55</i>&nbsp;            semverMessage(&quot;Created new semver tag: $semverWithTagPrefix&quot;)
+<i class="no-highlight">56</i>&nbsp;        }
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    public fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+<i class="no-highlight">60</i>&nbsp;        if (!isCreatingTag &amp;&amp; tagPrefixProperty == projectTagPrefix) {
+<i class="no-highlight">61</i>&nbsp;            createTag(tagPrefixProperty, projectTagPrefix, version)
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;            execOperations.exec { exec -&gt;
+<i class="no-highlight">64</i>&nbsp;                val remoteProp: String? = parameters.remoteProperty.orNull
+<i class="no-highlight">65</i>&nbsp;
+<i class="no-highlight">66</i>&nbsp;                val remote: String? =
+<i class="no-highlight">67</i>&nbsp;                    when {
+<i class="no-highlight">68</i>&nbsp;                        remoteProp != null -&gt; {
+<i class="no-highlight">69</i>&nbsp;                            checkNotNull(git.remotes.firstOrNull { it == remoteProp }) {
+<i class="no-highlight">70</i>&nbsp;                                &quot;There is no remote with the name $remoteProp&quot;
+<i class="no-highlight">71</i>&nbsp;                            }
+<i class="no-highlight">72</i>&nbsp;                        }
+<i class="no-highlight">73</i>&nbsp;                        git.remotes.contains(&quot;origin&quot;) -&gt; &quot;origin&quot;
+<i class="no-highlight">74</i>&nbsp;                        else -&gt; git.remotes.firstOrNull()
+<i class="no-highlight">75</i>&nbsp;                    }
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;                checkNotNull(remote) { &quot;There is no remote repositories&quot; }
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;                val semverWithTagPrefix = &quot;$projectTagPrefix$version&quot;
+<i class="no-highlight">80</i>&nbsp;                val tag: String = semverWithTagPrefix
+<i class="no-highlight">81</i>&nbsp;
+<i class="no-highlight">82</i>&nbsp;                exec.commandLine(&quot;git&quot;, &quot;push&quot;, remote, tag)
+<i class="no-highlight">83</i>&nbsp;            }
+<i class="no-highlight">84</i>&nbsp;        }
+<i class="no-highlight">85</i>&nbsp;    }
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;    internal interface Params : BuildServiceParameters {
+<i class="no-highlight">88</i>&nbsp;        val gitDirectory: RegularFileProperty
+<i class="no-highlight">89</i>&nbsp;        val remoteProperty: Property&lt;String&gt;
+<i class="no-highlight">90</i>&nbsp;    }
+<i class="no-highlight">91</i>&nbsp;
+<i class="no-highlight">92</i>&nbsp;    override fun close() {
+<i class="no-highlight">93</i>&nbsp;        isCreatingTag = false
+<i class="no-highlight">94</i>&nbsp;    }
+<i class="no-highlight">95</i>&nbsp;
+<i class="no-highlight">96</i>&nbsp;    internal companion object {
+<i class="no-highlight">97</i>&nbsp;
+<i class="no-highlight">98</i>&nbsp;        internal fun register(project: Project): Provider&lt;GitBuildService&gt; =
+<i class="no-highlight">99</i>&nbsp;            project.gradle.sharedServices.registerIfAbsent(
+<i class="no-highlight">100</i>&nbsp;                &quot;gitTagBuildService&quot;,
+<i class="no-highlight">101</i>&nbsp;                GitBuildService::class
+<i class="no-highlight">102</i>&nbsp;            ) { service -&gt;
+<i class="no-highlight">103</i>&nbsp;                service.parameters.gitDirectory.set(project.gitDir)
+<i class="no-highlight">104</i>&nbsp;                service.parameters.remoteProperty.set(project.remoteProperty)
+<i class="no-highlight">105</i>&nbsp;
+<i class="no-highlight">106</i>&nbsp;                service.maxParallelUsages.set(1)
+<i class="no-highlight">107</i>&nbsp;            }
+<i class="no-highlight">108</i>&nbsp;    }
+<i class="no-highlight">109</i>&nbsp;}
+<i class="no-highlight">110</i>&nbsp;
+<i class="no-highlight">111</i>&nbsp;private val Project.gitDir: File
+<b class="nc"><i class="no-highlight">112</i>&nbsp;    get() = file(&quot;${rootProject.projectDir}/.git&quot;)</b>
+<i class="no-highlight">113</i>&nbsp;
+<i class="no-highlight">114</i>&nbsp;private fun Git.hasCommits(): Boolean =
+<b class="nc"><i class="no-highlight">115</i>&nbsp;    try {</b>
+<b class="nc"><i class="no-highlight">116</i>&nbsp;        commitsInCurrentBranchRevCommit.isNotEmpty()</b>
+<b class="nc"><i class="no-highlight">117</i>&nbsp;    } catch (exception: NoHeadException) {</b>
+<b class="nc"><i class="no-highlight">118</i>&nbsp;        false</b>
+<i class="no-highlight">119</i>&nbsp;    }
+<i class="no-highlight">120</i>&nbsp;
+<i class="no-highlight">121</i>&nbsp;private val Git.remotes: List&lt;String&gt;
+<b class="nc"><i class="no-highlight">122</i>&nbsp;    get() = remoteList().call().map(RemoteConfig::getName)</b>
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-06 12:05</div>
+</div>
+</body>
+</html>

@@ -14,6 +14,7 @@
 
 ### Updated
 
+- `com.android.application:com.android.application.gradle.plugin -> 7.2.1`
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.2.0-alpha.12`
 - `org.jetbrains.kotlin:kotlin-gradle-plugin -> 1.7.0`
 

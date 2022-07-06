@@ -1,1 +1,57 @@
-{"version":"3","listProblem":[]}
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Redundant constructs",
+  "type": "Unused import directive",
+  "severity": "High",
+  "comment": "Unused import directive",
+  "detailsInfo": "Reports redundant `import` statements.\n\nDefault and unused imports can be safely removed.\n\n**Example:**\n\n\n      import kotlin.*\n      import kotlin.collections.*\n      import kotlin.comparisons.*\n      import kotlin.io.*\n      import kotlin.ranges.*\n      import kotlin.sequences.*\n      import kotlin.text.*\n\n      // jvm specific\n      import java.lang.*\n      import kotlin.jvm.*\n\n      // js specific\n      import kotlin.js.*\n\n      import java.io.* // this import is unused and could be removed\n      import java.util.*\n\n      fun foo(list: ArrayList<String>) {\n          list.add(\"\")\n      }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 1,
+      "offset": 1,
+      "length": 55,
+      "code": {
+        "startLine": 1,
+        "length": 55,
+        "offset": 0,
+        "surroundingCode": "import com.javiersc.gradle.tasks.extensions.namedLazily\n\nplugins {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin",
+    "inspectionName": "KotlinUnusedImport"
+  },
+  "hash": "f4b676fd180a87fff895a660284e479d35d51086cd8c823ae73c8826f7b9d71d"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'taskName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
+      "language": "kotlin",
+      "line": 74,
+      "offset": 19,
+      "length": 8,
+      "code": {
+        "startLine": 72,
+        "length": 8,
+        "offset": 51,
+        "surroundingCode": "\n    internal companion object {\n        const val taskName: String = \"printSemver\"\n\n        fun register(project: Project): TaskProvider<PrintSemverTask> ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "b526bfe34f43010b51229b720c0bc44ed81338f9689d8f79953347a447a52169"
+}]}

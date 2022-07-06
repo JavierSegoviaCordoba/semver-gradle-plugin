@@ -1,5 +1,5 @@
 [versions]
-android = "7.2.0"
+android = "7.2.1"
 hubdle = "0.2.0-alpha.12"
 jgit = "6.2.0.202206071550-r"
 kotlin = "1.7.0"

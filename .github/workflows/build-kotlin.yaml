@@ -18,5 +18,5 @@ jobs:
     uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@hubdle
     with:
       allow-github-actor-bots: false
-      code-coverage-report: false
+      code-coverage-report: true
     secrets: inherit

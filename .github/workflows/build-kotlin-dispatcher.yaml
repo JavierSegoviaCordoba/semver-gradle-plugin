@@ -19,6 +19,6 @@ jobs:
     with:
       gradle-args: '${{ github.event.inputs.gradle-args }}'
       allow-github-actor-bots: false
-      code-coverage-report: false
+      code-coverage-report: true
       publish-all-docs: '${{ github.event.inputs.publish-all-docs }}'
     secrets: inherit

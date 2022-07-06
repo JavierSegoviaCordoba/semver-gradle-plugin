@@ -1,0 +1,249 @@
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "'val Project.libs: LibrariesForLibs' can't be called in this context by implicit receiver. Use the explicit one if necessary",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 4,
+      "offset": 11,
+      "length": 4,
+      "code": {
+        "startLine": 2,
+        "length": 4,
+        "offset": 21,
+        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "0bdaf68544e9a099943b40c3579600071393f9cde864b814a9f0ea32b93d1554"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Cannot access class 'org.gradle.accessors.dm.LibrariesForLibs'. Check your module classpath for missing or conflicting dependencies",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 4,
+      "offset": 11,
+      "length": 4,
+      "code": {
+        "startLine": 2,
+        "length": 4,
+        "offset": 21,
+        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "412ca40d1b4b58cf8fcf3c28ca2cc7a42d4a64a438434838ba9e5c1ae9edd3ab"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Function invocation 'plugins(...)' expected",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 4,
+      "offset": 16,
+      "length": 7,
+      "code": {
+        "startLine": 2,
+        "length": 7,
+        "offset": 26,
+        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "4a005c2a05a6da37d6e08c9040477e1cf29cd02dbbd7f1c5b2d07a8e481a113f"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: public fun Project.plugins(block: PluginDependenciesSpec.() -> Unit): Nothing defined in org.gradle.kotlin.dsl",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/build.gradle.kts",
+      "language": "kotlin",
+      "line": 4,
+      "offset": 16,
+      "length": 7,
+      "code": {
+        "startLine": 2,
+        "length": 7,
+        "offset": 26,
+        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "f39a551cf9fd304e9e50b20d18882e6fbf4319e9621885446d817d7021307c1c"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Cannot access class 'org.gradle.accessors.dm.LibrariesForLibs'. Check your module classpath for missing or conflicting dependencies",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "build.gradle.kts",
+      "language": "kotlin",
+      "line": 3,
+      "offset": 19,
+      "length": 4,
+      "code": {
+        "startLine": 1,
+        "length": 4,
+        "offset": 51,
+        "surroundingCode": "buildscript {\n    dependencies {\n        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)\n    }\n}"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "ba347d158dc5d7362adae8b32cf0511c3a2dc483115858a1a2518cf3d569a1ed"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: jetbrains",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "build.gradle.kts",
+      "language": "kotlin",
+      "line": 3,
+      "offset": 24,
+      "length": 9,
+      "code": {
+        "startLine": 1,
+        "length": 9,
+        "offset": 56,
+        "surroundingCode": "buildscript {\n    dependencies {\n        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)\n    }\n}"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "36fedb34abe6a3b8326abd13d0f6dbfabec7b4dd839e887f207f2f6b06def263"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "'val Project.libs: LibrariesForLibs' can't be called in this context by implicit receiver. Use the explicit one if necessary",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "build.gradle.kts",
+      "language": "kotlin",
+      "line": 9,
+      "offset": 11,
+      "length": 4,
+      "code": {
+        "startLine": 7,
+        "length": 4,
+        "offset": 21,
+        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "6b296481d4438b55c0ae01320c681562f007173fb80cf91d1210c6bb92c0aaec"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Cannot access class 'org.gradle.accessors.dm.LibrariesForLibs'. Check your module classpath for missing or conflicting dependencies",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "build.gradle.kts",
+      "language": "kotlin",
+      "line": 9,
+      "offset": 11,
+      "length": 4,
+      "code": {
+        "startLine": 7,
+        "length": 4,
+        "offset": 21,
+        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "d385714f74ced7278aa5e4ede1d261d60f5a91d09bef428b6654dd868f22acab"
+}]}

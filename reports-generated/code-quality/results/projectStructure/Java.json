@@ -1,32 +1,20 @@
 {
   "modules": [
     {
-      "name": "semver-gradle-plugin-javiersc",
+      "name": "semver-gradle-plugin-project",
       "languageLevel": 11
     },
     {
-      "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin",
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin",
       "languageLevel": 11
     },
     {
-      "name": "semver-gradle-plugin-javiersc.buildSrc",
-      "languageLevel": 11
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.test",
+      "languageLevel": 8
     },
     {
-      "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin.test",
-      "languageLevel": 11
-    },
-    {
-      "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
-      "languageLevel": 11
-    },
-    {
-      "name": "semver-gradle-plugin-javiersc.buildSrc.test",
-      "languageLevel": 11
-    },
-    {
-      "name": "semver-gradle-plugin-javiersc.buildSrc.main",
-      "languageLevel": 11
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+      "languageLevel": 8
     }
   ]
 }

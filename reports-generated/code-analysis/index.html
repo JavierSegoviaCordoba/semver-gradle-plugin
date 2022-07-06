@@ -157,11 +157,11 @@
 
 <div>
   <ul>
-    <li>157 number of properties</li>
+    <li>158 number of properties</li>
     <li>144 number of functions</li>
     <li>47 number of classes</li>
     <li>10 number of packages</li>
-    <li>36 number of kt files</li>
+    <li>34 number of kt files</li>
   </ul>
 </div>
 
@@ -170,22 +170,22 @@
 
 <div>
   <ul>
-    <li>3,939 lines of code (loc)</li>
-    <li>3,272 source lines of code (sloc)</li>
-    <li>2,535 logical lines of code (lloc)</li>
-    <li>30 comment lines of code (cloc)</li>
+    <li>3,890 lines of code (loc)</li>
+    <li>3,235 source lines of code (sloc)</li>
+    <li>2,507 logical lines of code (lloc)</li>
+    <li>27 comment lines of code (cloc)</li>
     <li>258 cyclomatic complexity (mcc)</li>
     <li>66 cognitive complexity</li>
-    <li>23 number of total code smells</li>
+    <li>22 number of total code smells</li>
     <li>0% comment source ratio</li>
-    <li>101 mcc per 1,000 lloc</li>
-    <li>9 code smells per 1,000 lloc</li>
+    <li>102 mcc per 1,000 lloc</li>
+    <li>8 code smells per 1,000 lloc</li>
   </ul>
 </div>
 
 
 <h2>Findings</h2>
-<div>Total: 23
+<div>Total: 22
   <h3>complexity: 13</h3>
   <details id="LargeClass" open="open">
     <summary class="rule-container"><span class="rule">LargeClass: 1 </span><span class="description">One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand.</span></summary>
@@ -225,14 +225,14 @@
 <span class="lineno">  17 </span>
 </code></pre>
       </li>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt:15:9</span><span class="message">The function random is too long (63). The maximum length is 60.</span>
-        <pre><code><span class="lineno">  12 </span>internal class TagsOrderTest {
-<span class="lineno">  13 </span>
-<span class="lineno">  14 </span>    @Test
-<span class="lineno">  15 </span>    fun <span class="error">random</span>() {
-<span class="lineno">  16 </span>        gradleTestKitTest(&quot;tags-order/random&quot;) {
-<span class="lineno">  17 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
-<span class="lineno">  18 </span>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt:14:9</span><span class="message">The function random is too long (63). The maximum length is 60.</span>
+        <pre><code><span class="lineno">  11 </span>internal class TagsOrderTest : GradleTest() {
+<span class="lineno">  12 </span>
+<span class="lineno">  13 </span>    @Test
+<span class="lineno">  14 </span>    fun <span class="error">random</span>() {
+<span class="lineno">  15 </span>        gradleTestKitTest(&quot;tags-order/random&quot;) {
+<span class="lineno">  16 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  17 </span>
 </code></pre>
       </li>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:494:9</span><span class="message">The function version tags in current branch is too long (85). The maximum length is 60.</span>
@@ -369,85 +369,70 @@
   <details id="VariableNaming" open="open">
     <summary class="rule-container"><span class="rule">VariableNaming: 2 </span><span class="description">Variable names should follow the naming convention set in the projects configuration.</span></summary>
     <ul>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GradleFeaturesTest.kt:96:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
-        <pre><code><span class="lineno">  93 </span>        build()
-<span class="lineno">  94 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.9.0&quot;, Hash)
-<span class="lineno">  95 </span>
-<span class="lineno">  96 </span>        val <span class="error">LAST_0_9_0_HASH_1</span> = projectDir.resolve(&quot;build/semver/version.txt&quot;).readLines()[1]
-<span class="lineno">  97 </span>        projectDir
-<span class="lineno">  98 </span>            .resolve(&quot;expect-version.txt&quot;)
-<span class="lineno">  99 </span>            .writeText(
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GradleFeaturesTest.kt:87:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
+        <pre><code><span class="lineno">  84 </span>        build()
+<span class="lineno">  85 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.9.0&quot;, Hash)
+<span class="lineno">  86 </span>
+<span class="lineno">  87 </span>        val <span class="error">LAST_0_9_0_HASH_1</span> = projectDir.resolve(&quot;build/semver/version.txt&quot;).readLines()[1]
+<span class="lineno">  88 </span>        projectDir
+<span class="lineno">  89 </span>            .resolve(&quot;expect-version.txt&quot;)
+<span class="lineno">  90 </span>            .writeText(
 </code></pre>
       </li>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GradleFeaturesTest.kt:111:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
-        <pre><code><span class="lineno"> 108 </span>        git.commit().setMessage(&quot;Change expect-version again&quot;).call()
-<span class="lineno"> 109 </span>
-<span class="lineno"> 110 </span>        build()
-<span class="lineno"> 111 </span>        val <span class="error">LAST_0_9_0_HASH_2</span> = projectDir.resolve(&quot;build/semver/version.txt&quot;).readLines()[1]
-<span class="lineno"> 112 </span>
-<span class="lineno"> 113 </span>        LAST_0_9_0_HASH_1.shouldNotBe(LAST_0_9_0_HASH_2)
-<span class="lineno"> 114 </span>
-</code></pre>
-      </li>
-    </ul>
-  </details>
-  <h3>style: 6</h3>
-  <details id="ForbiddenComment" open="open">
-    <summary class="rule-container"><span class="rule">ForbiddenComment: 1 </span><span class="description">Flags a forbidden comment.</span></summary>
-    <ul>
-      <li><span class="location">buildSrc/build.gradle.kts:12:5</span><span class="message">This comment contains 'TODO:' that has been defined as forbidden in detekt.</span>
-        <pre><code><span class="lineno">   9 </span>}
-<span class="lineno">  10 </span>
-<span class="lineno">  11 </span>dependencies {
-<span class="lineno">  12 </span>    <span class="error">// TODO: remove when the next issue is fixed:</span>
-<span class="lineno">  13 </span>    //  https://github.com/gradle/gradle/issues/15383#issuecomment-779893192
-<span class="lineno">  14 </span>    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
-<span class="lineno">  15 </span>    implementation(files(pluginLibs.javaClass.superclass.protectionDomain.codeSource.location))
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GradleFeaturesTest.kt:102:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
+        <pre><code><span class="lineno">  99 </span>        git.commit().setMessage(&quot;Change expect-version again&quot;).call()
+<span class="lineno"> 100 </span>
+<span class="lineno"> 101 </span>        build()
+<span class="lineno"> 102 </span>        val <span class="error">LAST_0_9_0_HASH_2</span> = projectDir.resolve(&quot;build/semver/version.txt&quot;).readLines()[1]
+<span class="lineno"> 103 </span>
+<span class="lineno"> 104 </span>        LAST_0_9_0_HASH_1.shouldNotBe(LAST_0_9_0_HASH_2)
+<span class="lineno"> 105 </span>
 </code></pre>
       </li>
     </ul>
   </details>
+  <h3>style: 5</h3>
   <details id="MaxLineLength" open="open">
     <summary class="rule-container"><span class="rule">MaxLineLength: 4 </span><span class="description">Line detected, which is longer than the defined maximum line length in the code style.</span></summary>
     <ul>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:44:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
-        <pre><code><span class="lineno">  41 </span>            `4_ Run gradlew assemble`()
-<span class="lineno">  42 </span>            `5_ Create, add and commit a new file in library-one-a, then run gradlew assemble`()
-<span class="lineno">  43 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
-<span class="lineno">  44 </span>            <span class="error">`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()</span>
-<span class="lineno">  45 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
-<span class="lineno">  46 </span>            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()
-<span class="lineno">  47 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:43:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno">  40 </span>            `4_ Run gradlew assemble`()
+<span class="lineno">  41 </span>            `5_ Create, add and commit a new file in library-one-a, then run gradlew assemble`()
+<span class="lineno">  42 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
+<span class="lineno">  43 </span>            <span class="error">`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()</span>
+<span class="lineno">  44 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+<span class="lineno">  45 </span>            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()
+<span class="lineno">  46 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
 </code></pre>
       </li>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:46:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
-        <pre><code><span class="lineno">  43 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
-<span class="lineno">  44 </span>            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()
-<span class="lineno">  45 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
-<span class="lineno">  46 </span>            <span class="error">`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()</span>
-<span class="lineno">  47 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
-<span class="lineno">  48 </span>            `11_ Run gradlew printSemver stage=snapshot tagPrefix=a`()
-<span class="lineno">  49 </span>            `12_ Run gradlew createSemverTag scope=minor tagPrefix=b`()
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:45:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno">  42 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
+<span class="lineno">  43 </span>            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()
+<span class="lineno">  44 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+<span class="lineno">  45 </span>            <span class="error">`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()</span>
+<span class="lineno">  46 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
+<span class="lineno">  47 </span>            `11_ Run gradlew printSemver stage=snapshot tagPrefix=a`()
+<span class="lineno">  48 </span>            `12_ Run gradlew createSemverTag scope=minor tagPrefix=b`()
 </code></pre>
       </li>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:176:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
-        <pre><code><span class="lineno"> 173 </span>    }
-<span class="lineno"> 174 </span>
-<span class="lineno"> 175 </span>    private fun GradleRunner
-<span class="lineno"> 176 </span>        <span class="error">.</span>`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`() {
-<span class="lineno"> 177 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new7.txt&quot;).createNewFile()
-<span class="lineno"> 178 </span>        git.add().addFilepattern(&quot;.&quot;).call()
-<span class="lineno"> 179 </span>        git.commit().setMessage(&quot;Add new7 to library-one-a&quot;).call()
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:175:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno"> 172 </span>    }
+<span class="lineno"> 173 </span>
+<span class="lineno"> 174 </span>    private fun GradleRunner
+<span class="lineno"> 175 </span>        <span class="error">.</span>`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`() {
+<span class="lineno"> 176 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new7.txt&quot;).createNewFile()
+<span class="lineno"> 177 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 178 </span>        git.commit().setMessage(&quot;Add new7 to library-one-a&quot;).call()
 </code></pre>
       </li>
-      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:211:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
-        <pre><code><span class="lineno"> 208 </span>    }
-<span class="lineno"> 209 </span>
-<span class="lineno"> 210 </span>    private fun GradleRunner
-<span class="lineno"> 211 </span>        <span class="error">.</span>`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`() {
-<span class="lineno"> 212 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new9.txt&quot;).createNewFile()
-<span class="lineno"> 213 </span>        git.add().addFilepattern(&quot;.&quot;).call()
-<span class="lineno"> 214 </span>        git.commit().setMessage(&quot;Add new9 to library-one-a&quot;).call()
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:210:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno"> 207 </span>    }
+<span class="lineno"> 208 </span>
+<span class="lineno"> 209 </span>    private fun GradleRunner
+<span class="lineno"> 210 </span>        <span class="error">.</span>`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`() {
+<span class="lineno"> 211 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new9.txt&quot;).createNewFile()
+<span class="lineno"> 212 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 213 </span>        git.commit().setMessage(&quot;Add new9 to library-one-a&quot;).call()
 </code></pre>
       </li>
     </ul>
@@ -470,7 +455,7 @@
 </div>
 
 
-generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-06-26 18:53:35 UTC.
+generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-07-06 10:24:25 UTC.
 
 </body>
 </html>

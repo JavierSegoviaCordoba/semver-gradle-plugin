@@ -1,7 +1,7 @@
 {
   "modules": [
     {
-      "name": "semver-gradle-plugin-javiersc",
+      "name": "semver-gradle-plugin-project",
       "contentEntries": [
         {
           "path": "file://$PROJECT_DIR$",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin",
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin",
       "contentEntries": [
         {
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin",
@@ -39,38 +39,19 @@
       ]
     },
     {
-      "name": "semver-gradle-plugin-javiersc.buildSrc",
-      "contentEntries": [
-        {
-          "path": "file://$PROJECT_DIR$/buildSrc",
-          "sourceFolders": []
-        }
-      ],
-      "orderEntries": [
-        {
-          "name": "jbr-11",
-          "type": "SDK"
-        },
-        {
-          "name": "<Module source>",
-          "type": "Own sources"
-        }
-      ]
-    },
-    {
-      "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin.test",
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.test",
       "contentEntries": [
         {
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
           "sourceFolders": [
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
-              "type": "TestResource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
+              "type": "TestSource",
               "packagePrefix": ""
             },
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
-              "type": "TestSource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
+              "type": "TestResource",
               "packagePrefix": ""
             }
           ]
@@ -86,7 +67,7 @@
           "type": "Own sources"
         },
         {
-          "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+          "name": "semver-gradle-plugin-project.semver-gradle-plugin.main",
           "type": "Module"
         },
         {
@@ -190,11 +171,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.26",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-extensions:gradle-testkit-ext:1.0.0-alpha.13",
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.26",
           "type": "Library"
         },
         {
@@ -206,15 +187,35 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:1.1.4",
-          "type": "Library"
-        },
-        {
           "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.6.21",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.5",
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.26",
           "type": "Library"
         },
         {
@@ -222,7 +223,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.3.0",
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.7",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.3.2",
           "type": "Library"
         },
         {
@@ -246,6 +251,14 @@
           "type": "Library"
         },
         {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.0-RC1",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.0-RC1",
+          "type": "Library"
+        },
+        {
           "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
           "type": "Library"
         },
@@ -254,19 +267,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.6.0",
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.junit.platform:junit-platform-commons:1.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.0",
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.0-RC1",
           "type": "Library"
         },
         {
@@ -274,19 +279,15 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.3.0",
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.3.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.3.2",
           "type": "Library"
         },
         {
           "name": "/data/project/semver-gradle-plugin/build/pluginUnderTestMetadata",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.gson:gson:2.8.6",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:guava:28.2-jre",
           "type": "Library"
         },
         {
@@ -298,35 +299,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.google.guava:failureaccess:1.0.1",
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.0-RC1",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.findbugs:jsr305:3.0.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.checkerframework:checker-qual:2.10.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.errorprone:error_prone_annotations:2.3.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.j2objc:j2objc-annotations:1.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.kotest:kotest-common-jvm:5.3.0",
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.3.2",
           "type": "Library"
         },
         {
@@ -334,7 +311,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.junit.platform:junit-platform-engine:1.6.0",
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.0-RC1",
           "type": "Library"
         },
         {
@@ -344,7 +321,7 @@
       ]
     },
     {
-      "name": "semver-gradle-plugin-javiersc.semver-gradle-plugin.main",
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.main",
       "contentEntries": [
         {
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/main",
@@ -463,7 +440,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.gradle-extensions:gradle-ext:1.0.0-alpha.13",
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.26",
           "type": "Library"
         },
         {
@@ -475,15 +452,35 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:1.1.4",
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.26",
           "type": "Library"
         },
         {
-          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.5",
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.26",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.26",
           "type": "Library"
         },
         {
           "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.7",
           "type": "Library"
         },
         {
@@ -508,1384 +505,6 @@
         },
         {
           "name": "Gradle: org.jetbrains:annotations:13.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.gson:gson:2.8.6",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:guava:28.2-jre",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:failureaccess:1.0.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.findbugs:jsr305:3.0.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.checkerframework:checker-qual:2.10.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.errorprone:error_prone_annotations:2.3.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.j2objc:j2objc-annotations:1.3",
-          "type": "Library"
-        }
-      ]
-    },
-    {
-      "name": "semver-gradle-plugin-javiersc.buildSrc.test",
-      "contentEntries": [
-        {
-          "path": "file://$PROJECT_DIR$/buildSrc/src/test",
-          "sourceFolders": []
-        }
-      ],
-      "orderEntries": [
-        {
-          "name": "jbr-11",
-          "type": "SDK"
-        },
-        {
-          "name": "<Module source>",
-          "type": "Own sources"
-        },
-        {
-          "name": "semver-gradle-plugin-javiersc.buildSrc.main",
-          "type": "Module"
-        },
-        {
-          "name": "/data/cache/gradle/caches/7.4.2/generated-gradle-jars/gradle-api-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-ant-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-astbuilder-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-console-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-datetime-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-dateutil-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-groovydoc-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-json-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-nio-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-sql-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-templates-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-test-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-xml-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/javaparser-core-3.17.0.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-common-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-jdk7-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-jdk8-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-reflect-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/gradle-installation-beacon-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/e73e8c849d0f77d4c9dd4f1a3705ff4926f4e6ce/classes",
-          "type": "Library"
-        },
-        {
-          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/2de594e4d8fe77704d595328dd9a5b7dc779b272/classes",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/caches/7.4.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/gradle-kotlin-dsl-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/gradle-kotlin-dsl-tooling-models-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/caches/7.4.2/generated-gradle-jars/gradle-test-kit-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.5.31",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-gradle-plugin-model:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.ben-manes:gradle-versions-plugin:0.42.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.semver:semver-gradle-plugin:0.1.0-alpha.10",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.intellij.plugins:gradle-changelog-plugin:1.3.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.github.gradle-nexus:publish-plugin:1.1.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains:annotations:13.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-native-utils:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-project-model:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-util-io:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "/data/project/buildSrc/build/pluginUnderTestMetadata",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-compiler-runner:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-util-klib:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-klib-commonizer-api:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-tooling-metadata:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.gson:gson:2.9.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:guava:31.0.1-jre",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: de.undercouch:gradle-download-task:4.1.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.gundy:semver4j:nodeps:0.16.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-annotation-processing-gradle:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-android-extensions:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-compiler-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ow2.asm:asm-tree:9.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ow2.asm:asm:9.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.java-diff-utils:diffutils:1.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.adarshr:gradle-test-logger-plugin:3.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.dokka:dokka-gradle-plugin:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: ru.vyarus:gradle-mkdocs-plugin:2.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:play-publisher:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.gradle.publish:plugin-publish-plugin:0.21.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jsoup:jsoup:1.14.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.tomlj:tomlj:1.0.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-daemon-client:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-build-common:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:failureaccess:1.0.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.findbugs:jsr305:3.0.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.checkerframework:checker-qual:3.12.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.errorprone:error_prone_annotations:2.7.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.j2objc:j2objc-annotations:1.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-daemon-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.intellij.deps:trove4j:1.0.20200330",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: net.java.dev.jna:jna:5.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-jvm:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-common:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.fusesource.jansi:jansi:2.4.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.dokka:dokka-core:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ajoberstar.grgit:grgit-core:4.1.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: ru.vyarus:gradle-use-python-plugin:2.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ajoberstar:gradle-git-publish:3.0.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:android-publisher:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.http-client:google-http-client-gson:1.40.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:common-utils:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:common-validation:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apache.maven:maven-model:3.6.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.10",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.github.detekt.sarif4k:sarif4k:0.0.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-utils:1.20.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.sonarsource.scanner.api:sonar-scanner-api:2.16.1.361",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.25.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.durian:durian-io:1.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.durian:durian-collect:1.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.durian:durian-core:1.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib:2.25.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.thoughtworks.xstream:xstream:1.4.17",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.antlr:antlr4-runtime:4.7.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.module:jackson-module-kotlin:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.apis:google-api-services-androidpublisher:v3-rev20211021-1.32.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.api-client:google-api-client:1.32.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.auth:google-auth-library-oauth2-http:1.2.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.http-client:google-http-client-apache-v2:1.40.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.http-client:google-http-client:1.40.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.codehaus.groovy:groovy-xml:3.0.9",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.github.x-stream:mxparser:1.2.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains:markdown-jvm:0.2.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.core:jackson-databind:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.core:jackson-annotations:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.core:jackson-core:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.woodstox:woodstox-core:6.2.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.codehaus.woodstox:stax2-api:4.2.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.oauth-client:google-oauth-client:1.32.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apache.httpcomponents:httpclient:4.5.13",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apache.httpcomponents:httpcore:4.4.14",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.auto.value:auto-value-annotations:1.8.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.auth:google-auth-library-credentials:1.2.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.opencensus:opencensus-contrib-http-util:0.28.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.opencensus:opencensus-api:0.28.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.1.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.codehaus.groovy:groovy:3.0.9",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: xmlpull:xmlpull:1.1.3.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: jakarta.activation:jakarta.activation-api:1.2.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: commons-logging:commons-logging:1.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: commons-codec:commons-codec:1.11",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.grpc:grpc-context:1.27.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.1.0",
-          "type": "Library"
-        }
-      ]
-    },
-    {
-      "name": "semver-gradle-plugin-javiersc.buildSrc.main",
-      "contentEntries": [
-        {
-          "path": "file://$PROJECT_DIR$/buildSrc/src/main",
-          "sourceFolders": []
-        }
-      ],
-      "orderEntries": [
-        {
-          "name": "jbr-11",
-          "type": "SDK"
-        },
-        {
-          "name": "<Module source>",
-          "type": "Own sources"
-        },
-        {
-          "name": "/data/cache/gradle/caches/7.4.2/generated-gradle-jars/gradle-api-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-ant-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-astbuilder-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-console-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-datetime-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-dateutil-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-groovydoc-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-json-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-nio-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-sql-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-templates-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-test-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/groovy-xml-3.0.9.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/javaparser-core-3.17.0.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-common-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-jdk7-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-stdlib-jdk8-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/kotlin-reflect-1.5.31.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/gradle-installation-beacon-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/caches/7.4.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/gradle-kotlin-dsl-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/cache/gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8/gradle-7.4.2/lib/gradle-kotlin-dsl-tooling-models-7.4.2.jar",
-          "type": "Library"
-        },
-        {
-          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/e73e8c849d0f77d4c9dd4f1a3705ff4926f4e6ce/classes",
-          "type": "Library"
-        },
-        {
-          "name": "/data/project/buildSrc/.gradle/7.4.2/dependencies-accessors/2de594e4d8fe77704d595328dd9a5b7dc779b272/classes",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-plugins:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.5.31",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:binary-compatibility-validator:0.10.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:kotlin-config:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:publish:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:core:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:all-projects:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-analysis:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-coverage:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:code-formatter:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:versioning:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:changelog:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:docs:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:readme-badges:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:gradle-wrapper-updater:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:nexus:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:massive-catalogs-updater:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:projects-version-catalog:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.gradle-plugins:plugin-accessors:0.1.0-rc.43",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-gradle-plugin-model:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kover:0.5.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.ben-manes:gradle-versions-plugin:0.42.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.semver:semver-gradle-plugin:0.1.0-alpha.10",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.intellij.plugins:gradle-changelog-plugin:1.3.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.github.gradle-nexus:publish-plugin:1.1.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains:annotations:13.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-native-utils:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-project-model:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-util-io:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-compiler-runner:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-util-klib:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-klib-commonizer-api:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-tooling-metadata:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.gson:gson:2.9.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:guava:31.0.1-jre",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: de.undercouch:gradle-download-task:4.1.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.gundy:semver4j:nodeps:0.16.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-annotation-processing-gradle:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-android-extensions:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-compiler-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ow2.asm:asm-tree:9.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ow2.asm:asm:9.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.java-diff-utils:diffutils:1.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.adarshr:gradle-test-logger-plugin:3.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.dokka:dokka-gradle-plugin:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: ru.vyarus:gradle-mkdocs-plugin:2.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:play-publisher:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.gradle.publish:plugin-publish-plugin:0.21.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.spotless:spotless-plugin-gradle:6.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jsoup:jsoup:1.14.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.tomlj:tomlj:1.0.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-daemon-client:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-build-common:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:failureaccess:1.0.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.code.findbugs:jsr305:3.0.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.checkerframework:checker-qual:3.12.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.errorprone:error_prone_annotations:2.7.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.j2objc:j2objc-annotations:1.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-daemon-embeddable:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.intellij.deps:trove4j:1.0.20200330",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: net.java.dev.jna:jna:5.6.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-jvm:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-scripting-common:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.fusesource.jansi:jansi:2.4.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.dokka:dokka-core:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ajoberstar.grgit:grgit-core:4.1.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: ru.vyarus:gradle-use-python-plugin:2.3.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.ajoberstar:gradle-git-publish:3.0.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:android-publisher:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.http-client:google-http-client-gson:1.40.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:common-utils:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.github.triplet.gradle:common-validation:3.7.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apache.maven:maven-model:3.6.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.10",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.github.detekt.sarif4k:sarif4k:0.0.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.gitlab.arturbosch.detekt:detekt-utils:1.20.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.sonarsource.scanner.api:sonar-scanner-api:2.16.1.361",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib-extra:2.25.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.durian:durian-io:1.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.durian:durian-collect:1.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.durian:durian-core:1.2.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.diffplug.spotless:spotless-lib:2.25.3",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.thoughtworks.xstream:xstream:1.4.17",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.antlr:antlr4-runtime:4.7.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.module:jackson-module-kotlin:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.apis:google-api-services-androidpublisher:v3-rev20211021-1.32.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.api-client:google-api-client:1.32.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.auth:google-auth-library-oauth2-http:1.2.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.http-client:google-http-client-apache-v2:1.40.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.http-client:google-http-client:1.40.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.googlecode.concurrent-trees:concurrent-trees:2.6.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.codehaus.groovy:groovy-xml:3.0.9",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.github.x-stream:mxparser:1.2.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains:markdown-jvm:0.2.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.core:jackson-databind:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.core:jackson-annotations:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.jackson.core:jackson-core:2.12.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.fasterxml.woodstox:woodstox-core:6.2.4",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.codehaus.woodstox:stax2-api:4.2.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.oauth-client:google-oauth-client:1.32.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apache.httpcomponents:httpclient:4.5.13",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.apache.httpcomponents:httpcore:4.4.14",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.auto.value:auto-value-annotations:1.8.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: com.google.auth:google-auth-library-credentials:1.2.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.opencensus:opencensus-contrib-http-util:0.28.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.opencensus:opencensus-api:0.28.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.1.0",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.codehaus.groovy:groovy:3.0.9",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: xmlpull:xmlpull:1.1.3.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: jakarta.activation:jakarta.activation-api:1.2.1",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: commons-logging:commons-logging:1.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: commons-codec:commons-codec:1.11",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: io.grpc:grpc-context:1.27.2",
-          "type": "Library"
-        },
-        {
-          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.1.0",
           "type": "Library"
         }
       ]

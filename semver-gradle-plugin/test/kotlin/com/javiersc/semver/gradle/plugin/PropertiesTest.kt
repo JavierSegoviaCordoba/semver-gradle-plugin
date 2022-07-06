@@ -1,7 +1,6 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
-import com.javiersc.gradle.testkit.extensions.withArgumentsFromTXT
+import com.javiersc.gradle.testkit.test.extensions.GradleTest
 import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.Purple
 import com.javiersc.kotlin.stdlib.ansiColor
 import com.javiersc.semver.gradle.plugin.setup.assertVersionFromExpectVersionFiles
@@ -11,13 +10,13 @@ import com.javiersc.semver.gradle.plugin.setup.git
 import java.io.File
 import kotlin.test.Test
 
-internal class PropertiesTest {
+internal class PropertiesTest : GradleTest() {
 
     @Test
     fun empty() {
         runPropertyTestsBasedOnResourceDirectory("empty") {
             resolve("empty.txt").createNewFile()
-            git.add().addFilepattern(".")
+            git.add().addFilepattern(".").call()
             if (name.endsWith("hash")) git.commit().setMessage("Add empty.txt").call()
         }
     }

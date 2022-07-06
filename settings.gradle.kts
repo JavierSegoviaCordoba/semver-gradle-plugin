@@ -1,10 +1,23 @@
-plugins {
-    `gradle-enterprise`
+pluginManagement {
+    val hubdleVersion: String =
+        file("$rootDir/gradle/libs.versions.toml")
+            .readLines()
+            .first { it.contains("hubdle") }
+            .split("\"")[1]
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+
+    plugins {
+        id("com.javiersc.hubdle.settings") version hubdleVersion
+    }
 }
 
-rootProject.name = providers.gradleProperty("project.name").forUseAtConfigurationTime().get()
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+plugins {
+    id("com.javiersc.hubdle.settings")
+}
 
 dependencyResolutionManagement {
     repositories {
@@ -12,17 +25,4 @@ dependencyResolutionManagement {
         mavenCentral()
         google()
     }
-
-    versionCatalogs {
-        create("pluginLibs") { from(files("gradle/pluginLibs.versions.toml")) }
-    }
 }
-
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
-    }
-}
-
-include(":semver-gradle-plugin")

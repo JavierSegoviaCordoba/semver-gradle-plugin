@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin.internal
 
-import com.javiersc.gradle.extensions.lifecycleColored
-import com.javiersc.gradle.extensions.warnColored
+import com.javiersc.gradle.logging.extensions.lifecycleColored
+import com.javiersc.gradle.logging.extensions.warnColored
 import com.javiersc.kotlin.stdlib.AnsiColor
 import com.javiersc.semver.Version
 import com.javiersc.semver.gradle.plugin.SemverPlugin

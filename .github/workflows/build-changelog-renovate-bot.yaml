@@ -7,6 +7,5 @@ on:
 
 jobs:
   add-updated-dependencies-to-changelog:
-    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-changelog-renovate-bot.yaml@main
-    secrets:
-      TOKEN_GITHUB_ACTION: '${{ secrets.TOKEN_GITHUB_ACTION }}'
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-changelog-renovate-bot.yaml@hubdle
+    secrets: inherit

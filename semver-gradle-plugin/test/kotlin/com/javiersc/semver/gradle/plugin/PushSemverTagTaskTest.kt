@@ -1,7 +1,6 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
-import com.javiersc.gradle.testkit.extensions.gradlew
+import com.javiersc.gradle.testkit.test.extensions.GradleTest
 import com.javiersc.semver.gradle.plugin.internal.git.tagName
 import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
 import com.javiersc.semver.gradle.plugin.setup.git
@@ -15,7 +14,7 @@ import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.eclipse.jgit.transport.URIish
 
-class PushSemverTagTaskTest {
+class PushSemverTagTaskTest : GradleTest() {
 
     @Test
     fun `push tag`() {

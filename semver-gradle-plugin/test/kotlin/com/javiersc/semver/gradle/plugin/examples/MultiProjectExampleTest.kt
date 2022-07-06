@@ -1,7 +1,6 @@
 package com.javiersc.semver.gradle.plugin.examples
 
-import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
-import com.javiersc.gradle.testkit.extensions.gradlew
+import com.javiersc.gradle.testkit.test.extensions.GradleTest
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Hash
 import com.javiersc.semver.gradle.plugin.setup.assertVersion
@@ -29,7 +28,7 @@ import org.gradle.testkit.runner.GradleRunner
  * - `library-nine` uses no prefix
  * - `library-ten` uses no prefix
  */
-internal class MultiProjectExampleTest {
+internal class MultiProjectExampleTest : GradleTest() {
 
     @Test
     fun `multi project`() {

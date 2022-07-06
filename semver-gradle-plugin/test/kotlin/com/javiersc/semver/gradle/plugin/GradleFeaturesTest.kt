@@ -2,11 +2,7 @@
 
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
-import com.javiersc.gradle.testkit.extensions.gradlew
-import com.javiersc.gradle.testkit.extensions.testBuildCache
-import com.javiersc.gradle.testkit.extensions.testConfigurationCache
-import com.javiersc.gradle.testkit.extensions.withArgumentsFromTXT
+import com.javiersc.gradle.testkit.test.extensions.GradleTest
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Hash
 import com.javiersc.semver.gradle.plugin.setup.assertVersion
@@ -16,11 +12,11 @@ import io.kotest.matchers.shouldNotBe
 import kotlin.test.Test
 import org.gradle.testkit.runner.GradleRunner
 
-class GradleFeaturesTest {
+class GradleFeaturesTest : GradleTest() {
 
     @Test
     fun `android build cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/android build cache clean v1_0_0", isolated = true) {
+        gradleTestKitTest("gradle-features/android build cache clean v1_0_0") {
             beforeTest()
             testBuildCache()
         }
@@ -28,10 +24,7 @@ class GradleFeaturesTest {
 
     @Test
     fun `android configuration cache clean v1_0_0`() {
-        gradleTestKitTest(
-            "gradle-features/android configuration cache clean v1_0_0",
-            isolated = true
-        ) {
+        gradleTestKitTest("gradle-features/android configuration cache clean v1_0_0") {
             beforeTest()
             testConfigurationCache()
         }
@@ -39,7 +32,7 @@ class GradleFeaturesTest {
 
     @Test
     fun `build cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/build cache clean v1_0_0", isolated = true) {
+        gradleTestKitTest("gradle-features/build cache clean v1_0_0") {
             beforeTest()
             testBuildCache()
         }
@@ -47,7 +40,7 @@ class GradleFeaturesTest {
 
     @Test
     fun `configuration cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/configuration cache clean v1_0_0", isolated = true) {
+        gradleTestKitTest("gradle-features/configuration cache clean v1_0_0") {
             beforeTest()
             testConfigurationCache()
         }
@@ -55,9 +48,7 @@ class GradleFeaturesTest {
 
     @Test
     fun `project isolation clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/project isolation clean v1_0_0", isolated = true) {
-            beforeTest()
-        }
+        gradleTestKitTest("gradle-features/project isolation clean v1_0_0") { beforeTest() }
     }
 
     private fun GradleRunner.beforeTest() {

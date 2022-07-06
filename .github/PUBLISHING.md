@@ -1,4 +1,4 @@
 # Publishing
 
-Check [publishing](https://github.com/JavierSegoviaCordoba/gradle-plugins/blob/main/.github/PUBLISHING.md)
-from [JavierSC Gradle plugins](https://github.com/JavierSegoviaCordoba/gradle-plugins/)
+Check [publishing](https://github.com/JavierSegoviaCordoba/hubdle/blob/main/.github/PUBLISHING.md)
+from [JavierSC Hubdle](https://github.com/JavierSegoviaCordoba/hubdle/)

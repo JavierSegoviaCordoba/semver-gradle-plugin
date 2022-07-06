@@ -127,7 +127,8 @@ internal class GitCache(private val git: Git) {
                     val lastVersion: Version? = Version.safe(this).getOrNull()
                     val higherVersion: Version? = versionsInCurrentBranch(tagPrefix).firstOrNull()
 
-                    if (lastVersion != null && higherVersion != null && higherVersion > lastVersion
+                    if (
+                        lastVersion != null && higherVersion != null && higherVersion > lastVersion
                     ) {
                         isWarningLastVersionIsNotHigherVersion(true)
                         warningLastVersionIsNotHigherVersion(lastVersion, higherVersion)

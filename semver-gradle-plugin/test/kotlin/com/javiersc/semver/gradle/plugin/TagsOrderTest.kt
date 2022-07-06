@@ -1,7 +1,6 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
-import com.javiersc.gradle.testkit.extensions.withArgumentsFromTXT
+import com.javiersc.gradle.testkit.test.extensions.GradleTest
 import com.javiersc.semver.gradle.plugin.internal.git.headRevCommitInBranch
 import com.javiersc.semver.gradle.plugin.setup.assertVersionFromExpectVersionFiles
 import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
@@ -9,7 +8,7 @@ import com.javiersc.semver.gradle.plugin.setup.git
 import java.io.File
 import kotlin.test.Test
 
-internal class TagsOrderTest {
+internal class TagsOrderTest : GradleTest() {
 
     @Test
     fun random() {

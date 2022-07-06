@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
-import com.javiersc.gradle.extensions.maybeRegisterLazily
-import com.javiersc.gradle.extensions.namedLazily
+import com.javiersc.gradle.tasks.extensions.maybeRegisterLazily
+import com.javiersc.gradle.tasks.extensions.namedLazily
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.semverExtension
 import javax.inject.Inject

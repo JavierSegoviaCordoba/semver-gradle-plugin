@@ -1,7 +1,6 @@
 package com.javiersc.semver.gradle.plugin.examples
 
-import com.javiersc.gradle.testkit.extensions.gradleTestKitTest
-import com.javiersc.gradle.testkit.extensions.gradlew
+import com.javiersc.gradle.testkit.test.extensions.GradleTest
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
 import com.javiersc.semver.gradle.plugin.setup.Insignificant.Hash
 import com.javiersc.semver.gradle.plugin.setup.assertVersion
@@ -11,7 +10,7 @@ import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 import org.gradle.testkit.runner.GradleRunner
 
-internal class OneProjectExampleTest {
+internal class OneProjectExampleTest : GradleTest() {
 
     @Test
     fun `one project`() {

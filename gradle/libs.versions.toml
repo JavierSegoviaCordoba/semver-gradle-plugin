@@ -1,17 +1,15 @@
 [versions]
-coroutines = "1.6.3"
-javierscGradleExtensions = "1.0.0-alpha.13"
-javierscKotlinStdlib = "0.1.0-alpha.5"
+android = "7.2.0"
+hubdle = "0.2.0-alpha.11"
 jgit = "6.2.0.202206071550-r"
-kotest = "5.3.0"
+kotlin = "1.6.21"
 semverCore = "0.1.0-beta.10"
 
 [libraries]
-javiersc-gradleExtensions-gradleExt = { module = "com.javiersc.gradle-extensions:gradle-ext", version.ref = "javierscGradleExtensions" }
-javiersc-gradleExtensions-gradleTestkitExt = { module = "com.javiersc.gradle-extensions:gradle-testkit-ext", version.ref = "javierscGradleExtensions" }
-javiersc-kotlin-kotlinStdlib = { module = "com.javiersc.kotlin:kotlin-stdlib", version.ref = "javierscKotlinStdlib" }
+android-application-androidApplicationGradlePlugin = { module = "com.android.application:com.android.application.gradle.plugin", version.ref = "android" }
 javiersc-semver-semverCore = { module = "com.javiersc.semver:semver-core", version.ref = "semverCore" }
-jetbrains-kotlin-kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
-jetbrains-kotlinx-kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+jetbrains-kotlin-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 eclipse-jgit-eclipseJgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
-kotest-kotestAssertionsCore = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+[plugins]
+javiersc-hubdle = { id = "com.javiersc.hubdle", version.ref = "hubdle" }

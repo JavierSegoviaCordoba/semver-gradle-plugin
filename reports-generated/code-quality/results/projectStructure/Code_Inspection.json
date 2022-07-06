@@ -45,13 +45,13 @@
           "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
           "sourceFolders": [
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
-              "type": "TestSource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
+              "type": "TestResource",
               "packagePrefix": ""
             },
             {
-              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/resources",
-              "type": "TestResource",
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test/kotlin",
+              "type": "TestSource",
               "packagePrefix": ""
             }
           ]
@@ -179,7 +179,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0",
           "type": "Library"
         },
         {
@@ -231,11 +231,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.0",
           "type": "Library"
         },
         {
@@ -259,7 +259,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.0",
           "type": "Library"
         },
         {
@@ -444,7 +444,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0",
           "type": "Library"
         },
         {
@@ -484,11 +484,11 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0",
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.0",
           "type": "Library"
         },
         {
@@ -500,7 +500,7 @@
           "type": "Library"
         },
         {
-          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.0",
           "type": "Library"
         },
         {

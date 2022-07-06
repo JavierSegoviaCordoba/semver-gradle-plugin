@@ -13,14 +13,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/build.gradle.kts",
       "language": "kotlin",
-      "line": 4,
+      "line": 2,
       "offset": 11,
       "length": 4,
       "code": {
-        "startLine": 2,
+        "startLine": 1,
         "length": 4,
-        "offset": 21,
-        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+        "offset": 20,
+        "surroundingCode": "plugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
       }
     }
   ],
@@ -28,7 +28,7 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "0bdaf68544e9a099943b40c3579600071393f9cde864b814a9f0ea32b93d1554"
+  "hash": "3c472221d1b39f12573e69d269df0b44e3636980603485077d124f62931bd1c8"
 },{
   "tool": "Code Inspection",
   "category": "General",
@@ -44,14 +44,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/build.gradle.kts",
       "language": "kotlin",
-      "line": 4,
+      "line": 2,
       "offset": 11,
       "length": 4,
       "code": {
-        "startLine": 2,
+        "startLine": 1,
         "length": 4,
-        "offset": 21,
-        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+        "offset": 20,
+        "surroundingCode": "plugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
       }
     }
   ],
@@ -59,7 +59,7 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "412ca40d1b4b58cf8fcf3c28ca2cc7a42d4a64a438434838ba9e5c1ae9edd3ab"
+  "hash": "e70535e465b1d8ad2485300c0135660bc8af759fe6a7e09436c64cde4573b231"
 },{
   "tool": "Code Inspection",
   "category": "General",
@@ -75,14 +75,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/build.gradle.kts",
       "language": "kotlin",
-      "line": 4,
+      "line": 2,
       "offset": 16,
       "length": 7,
       "code": {
-        "startLine": 2,
+        "startLine": 1,
         "length": 7,
-        "offset": 26,
-        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+        "offset": 25,
+        "surroundingCode": "plugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
       }
     }
   ],
@@ -90,7 +90,7 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "4a005c2a05a6da37d6e08c9040477e1cf29cd02dbbd7f1c5b2d07a8e481a113f"
+  "hash": "c0f9dc8426b7e903dc59bb6af7aacd5e9b52d5b819580e463b7eae0a9c999714"
 },{
   "tool": "Code Inspection",
   "category": "General",
@@ -106,14 +106,14 @@
       "type": "file",
       "path": "semver-gradle-plugin/build.gradle.kts",
       "language": "kotlin",
-      "line": 4,
+      "line": 2,
       "offset": 16,
       "length": 7,
       "code": {
-        "startLine": 2,
+        "startLine": 1,
         "length": 7,
-        "offset": 26,
-        "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
+        "offset": 25,
+        "surroundingCode": "plugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
       }
     }
   ],
@@ -121,7 +121,7 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "f39a551cf9fd304e9e50b20d18882e6fbf4319e9621885446d817d7021307c1c"
+  "hash": "ee31d15ec8d8045e02c00e87f2e7c043b551d7f3b857c863544b520f7e28327a"
 },{
   "tool": "Code Inspection",
   "category": "General",

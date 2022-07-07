@@ -85,7 +85,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/46)
+    (0/51)
   </span>
 </td>
 </tr>
@@ -155,11 +155,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">56</i>&nbsp;        }
 <i class="no-highlight">57</i>&nbsp;    }
 <i class="no-highlight">58</i>&nbsp;
-<i class="no-highlight">59</i>&nbsp;    public fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+<i class="no-highlight">59</i>&nbsp;    internal fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
 <i class="no-highlight">60</i>&nbsp;        if (!isCreatingTag &amp;&amp; tagPrefixProperty == projectTagPrefix) {
 <i class="no-highlight">61</i>&nbsp;            createTag(tagPrefixProperty, projectTagPrefix, version)
 <i class="no-highlight">62</i>&nbsp;
-<i class="no-highlight">63</i>&nbsp;            execOperations.exec { exec -&gt;
+<i class="no-highlight">63</i>&nbsp;            execOperations.exec {
 <i class="no-highlight">64</i>&nbsp;                val remoteProp: String? = parameters.remoteProperty.orNull
 <i class="no-highlight">65</i>&nbsp;
 <i class="no-highlight">66</i>&nbsp;                val remote: String? =
@@ -178,7 +178,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">79</i>&nbsp;                val semverWithTagPrefix = &quot;$projectTagPrefix$version&quot;
 <i class="no-highlight">80</i>&nbsp;                val tag: String = semverWithTagPrefix
 <i class="no-highlight">81</i>&nbsp;
-<i class="no-highlight">82</i>&nbsp;                exec.commandLine(&quot;git&quot;, &quot;push&quot;, remote, tag)
+<i class="no-highlight">82</i>&nbsp;                commandLine(&quot;git&quot;, &quot;push&quot;, remote, tag)
 <i class="no-highlight">83</i>&nbsp;            }
 <i class="no-highlight">84</i>&nbsp;        }
 <i class="no-highlight">85</i>&nbsp;    }
@@ -198,11 +198,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">99</i>&nbsp;            project.gradle.sharedServices.registerIfAbsent(
 <i class="no-highlight">100</i>&nbsp;                &quot;gitTagBuildService&quot;,
 <i class="no-highlight">101</i>&nbsp;                GitBuildService::class
-<i class="no-highlight">102</i>&nbsp;            ) { service -&gt;
-<i class="no-highlight">103</i>&nbsp;                service.parameters.gitDirectory.set(project.gitDir)
-<i class="no-highlight">104</i>&nbsp;                service.parameters.remoteProperty.set(project.remoteProperty)
+<i class="no-highlight">102</i>&nbsp;            ) {
+<i class="no-highlight">103</i>&nbsp;                parameters.gitDirectory.set(project.gitDir)
+<i class="no-highlight">104</i>&nbsp;                parameters.remoteProperty.set(project.remoteProperty)
 <i class="no-highlight">105</i>&nbsp;
-<i class="no-highlight">106</i>&nbsp;                service.maxParallelUsages.set(1)
+<i class="no-highlight">106</i>&nbsp;                maxParallelUsages.set(1)
 <i class="no-highlight">107</i>&nbsp;            }
 <i class="no-highlight">108</i>&nbsp;    }
 <i class="no-highlight">109</i>&nbsp;}
@@ -245,7 +245,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-07-06 22:01</div>
+    <div style="float:right;">generated on 2022-07-07 23:48</div>
 </div>
 </body>
 </html>

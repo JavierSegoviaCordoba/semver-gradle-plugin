@@ -59,7 +59,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/7)
+    (0/6)
   </span>
 </td>
 <td class="coverageStat">
@@ -67,7 +67,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/33)
+    (0/32)
   </span>
 </td>
 </tr>
@@ -78,7 +78,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/2)
+    (0/1)
   </span>
 </td>
     <td class="coverageStat"/>
@@ -87,7 +87,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/6)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
@@ -95,7 +95,35 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/39)
+    (0/17)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PushSemverTagTask$Companion$register$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
   </span>
 </td>
   </tr>
@@ -115,7 +143,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/13)
+    (0/12)
   </span>
 </td>
 <td class="coverageStat">
@@ -123,7 +151,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/72)
+    (0/79)
   </span>
 </td>
 </tr>
@@ -151,7 +179,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">15</i>&nbsp;
 <b class="nc"><i class="no-highlight">16</i>&nbsp;    init {</b>
 <b class="nc"><i class="no-highlight">17</i>&nbsp;        group = &quot;semver&quot;</b>
-<b class="nc"><i class="no-highlight">18</i>&nbsp;    }</b>
+<i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @get:Internal internal abstract val tagPrefixProperty: Property&lt;String&gt;
 <i class="no-highlight">21</i>&nbsp;
@@ -172,12 +200,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">36</i>&nbsp;        public const val taskName: String = &quot;pushSemverTag&quot;
 <i class="no-highlight">37</i>&nbsp;
 <i class="no-highlight">38</i>&nbsp;        internal fun register(project: Project, gitTagBuildService: Provider&lt;GitBuildService&gt;) {
-<b class="nc"><i class="no-highlight">39</i>&nbsp;            project.tasks.register&lt;PushSemverTagTask&gt;(taskName).configure { pushSemverTag -&gt;</b>
-<b class="nc"><i class="no-highlight">40</i>&nbsp;                pushSemverTag.tagPrefixProperty.set(project.tagPrefixProperty)</b>
-<b class="nc"><i class="no-highlight">41</i>&nbsp;                pushSemverTag.projectTagPrefix.set(project.semverExtension.tagPrefix)</b>
-<b class="nc"><i class="no-highlight">42</i>&nbsp;                pushSemverTag.version.set(project.version.toString())</b>
-<b class="nc"><i class="no-highlight">43</i>&nbsp;                pushSemverTag.gitTagBuildService.set(gitTagBuildService)</b>
-<b class="nc"><i class="no-highlight">44</i>&nbsp;                pushSemverTag.usesService(gitTagBuildService)</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;            project.tasks.register&lt;PushSemverTagTask&gt;(taskName).configure {</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;                this.tagPrefixProperty.set(project.tagPrefixProperty)</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;                this.projectTagPrefix.set(project.semverExtension.tagPrefix)</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;                this.version.set(project.version.toString())</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;                this.gitTagBuildService.set(gitTagBuildService)</b>
+<b class="nc"><i class="no-highlight">44</i>&nbsp;                this.usesService(gitTagBuildService)</b>
 <i class="no-highlight">45</i>&nbsp;            }
 <i class="no-highlight">46</i>&nbsp;        }
 <i class="no-highlight">47</i>&nbsp;    }
@@ -208,7 +236,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-07-06 22:01</div>
+    <div style="float:right;">generated on 2022-07-07 23:48</div>
 </div>
 </body>
 </html>

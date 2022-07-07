@@ -58,7 +58,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/26)
+    (0/16)
   </span>
 </td>
 <td class="coverageStat">
@@ -66,7 +66,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/33)
+    (0/20)
   </span>
 </td>
 <td class="coverageStat">
@@ -74,7 +74,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/275)
+    (0/175)
   </span>
 </td>
 </tr>
@@ -85,7 +85,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/2)
+    (0/1)
   </span>
 </td>
     <td class="coverageStat"/>
@@ -94,7 +94,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/5)
+    (0/4)
   </span>
 </td>
 <td class="coverageStat">
@@ -102,13 +102,76 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/35)
+    (0/23)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">GitBuildService$Companion$register$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
   </span>
 </td>
   </tr>
   <tr>
     <td class="name">GitBuildService$Params</td>
     <td class="coverageStat"/>
+  </tr>
+  <tr>
+    <td class="name">GitBuildService$pushTag$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/109)
+  </span>
+</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -117,7 +180,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/7)
+    (0/8)
   </span>
 </td>
 <td class="coverageStat">
@@ -133,7 +196,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/38)
+    (0/39)
   </span>
 </td>
 <td class="coverageStat">
@@ -141,7 +204,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/310)
+    (0/328)
   </span>
 </td>
 </tr>
@@ -174,10 +237,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">20</i>&nbsp;import org.gradle.kotlin.dsl.registerIfAbsent
 <i class="no-highlight">21</i>&nbsp;import org.gradle.process.ExecOperations
 <i class="no-highlight">22</i>&nbsp;
-<b class="nc"><i class="no-highlight">23</i>&nbsp;internal abstract class GitBuildService</b>
+<i class="no-highlight">23</i>&nbsp;internal abstract class GitBuildService
 <i class="no-highlight">24</i>&nbsp;@Inject
-<i class="no-highlight">25</i>&nbsp;constructor(
-<b class="nc"><i class="no-highlight">26</i>&nbsp;    private val execOperations: ExecOperations,</b>
+<b class="nc"><i class="no-highlight">25</i>&nbsp;constructor(</b>
+<i class="no-highlight">26</i>&nbsp;    private val execOperations: ExecOperations,
 <i class="no-highlight">27</i>&nbsp;) : BuildService&lt;GitBuildService.Params&gt;, AutoCloseable {
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    private var isCreatingTag: Boolean = false
@@ -210,11 +273,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">56</i>&nbsp;        }
 <i class="no-highlight">57</i>&nbsp;    }
 <i class="no-highlight">58</i>&nbsp;
-<i class="no-highlight">59</i>&nbsp;    public fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+<i class="no-highlight">59</i>&nbsp;    internal fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
 <b class="nc"><i class="no-highlight">60</i>&nbsp;        if (!isCreatingTag &amp;&amp; tagPrefixProperty == projectTagPrefix) {</b>
 <b class="nc"><i class="no-highlight">61</i>&nbsp;            createTag(tagPrefixProperty, projectTagPrefix, version)</b>
 <i class="no-highlight">62</i>&nbsp;
-<b class="nc"><i class="no-highlight">63</i>&nbsp;            execOperations.exec { exec -&gt;</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;            execOperations.exec {</b>
 <b class="nc"><i class="no-highlight">64</i>&nbsp;                val remoteProp: String? = parameters.remoteProperty.orNull</b>
 <i class="no-highlight">65</i>&nbsp;
 <b class="nc"><i class="no-highlight">66</i>&nbsp;                val remote: String? =</b>
@@ -233,7 +296,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc"><i class="no-highlight">79</i>&nbsp;                val semverWithTagPrefix = &quot;$projectTagPrefix$version&quot;</b>
 <b class="nc"><i class="no-highlight">80</i>&nbsp;                val tag: String = semverWithTagPrefix</b>
 <i class="no-highlight">81</i>&nbsp;
-<b class="nc"><i class="no-highlight">82</i>&nbsp;                exec.commandLine(&quot;git&quot;, &quot;push&quot;, remote, tag)</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;                commandLine(&quot;git&quot;, &quot;push&quot;, remote, tag)</b>
 <i class="no-highlight">83</i>&nbsp;            }
 <i class="no-highlight">84</i>&nbsp;        }
 <i class="no-highlight">85</i>&nbsp;    }
@@ -252,12 +315,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">98</i>&nbsp;        internal fun register(project: Project): Provider&lt;GitBuildService&gt; =
 <b class="nc"><i class="no-highlight">99</i>&nbsp;            project.gradle.sharedServices.registerIfAbsent(</b>
 <b class="nc"><i class="no-highlight">100</i>&nbsp;                &quot;gitTagBuildService&quot;,</b>
-<i class="no-highlight">101</i>&nbsp;                GitBuildService::class
-<i class="no-highlight">102</i>&nbsp;            ) { service -&gt;
-<b class="nc"><i class="no-highlight">103</i>&nbsp;                service.parameters.gitDirectory.set(project.gitDir)</b>
-<b class="nc"><i class="no-highlight">104</i>&nbsp;                service.parameters.remoteProperty.set(project.remoteProperty)</b>
+<b class="nc"><i class="no-highlight">101</i>&nbsp;                GitBuildService::class</b>
+<b class="nc"><i class="no-highlight">102</i>&nbsp;            ) {</b>
+<b class="nc"><i class="no-highlight">103</i>&nbsp;                parameters.gitDirectory.set(project.gitDir)</b>
+<b class="nc"><i class="no-highlight">104</i>&nbsp;                parameters.remoteProperty.set(project.remoteProperty)</b>
 <i class="no-highlight">105</i>&nbsp;
-<b class="nc"><i class="no-highlight">106</i>&nbsp;                service.maxParallelUsages.set(1)</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;                maxParallelUsages.set(1)</b>
 <i class="no-highlight">107</i>&nbsp;            }
 <i class="no-highlight">108</i>&nbsp;    }
 <i class="no-highlight">109</i>&nbsp;}
@@ -300,7 +363,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-07-06 22:01</div>
+    <div style="float:right;">generated on 2022-07-07 23:48</div>
 </div>
 </body>
 </html>

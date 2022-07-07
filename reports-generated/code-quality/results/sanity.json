@@ -6,6 +6,502 @@
     "Sanity"
   ],
   "severity": "Critical",
+  "comment": "Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: internal val Project.tagPrefixProperty: String defined in com.javiersc.semver.gradle.plugin.internal in file SemverProperties.kt",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 44,
+      "offset": 26,
+      "length": 17,
+      "code": {
+        "startLine": 42,
+        "length": 17,
+        "offset": 72,
+        "surroundingCode": "                )\n                .configure {\n                    this.tagPrefixProperty.set(project.tagPrefixProperty)\n                    this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                    this.version.set(project.version.toString())"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "c5e876882dc599ba90af9b4fda9c4aa3d4da4a57fae5ffe501363e2ec30f9c40"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: projectTagPrefix",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 45,
+      "offset": 26,
+      "length": 16,
+      "code": {
+        "startLine": 43,
+        "length": 16,
+        "offset": 128,
+        "surroundingCode": "                .configure {\n                    this.tagPrefixProperty.set(project.tagPrefixProperty)\n                    this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                    this.version.set(project.version.toString())\n                    this.gitTagBuildService.set(gitTagBuildService)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "4095a2bf2fd738fd297480a824ce7741e5631caea9e5968a5af58843fae41839"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: version",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 46,
+      "offset": 26,
+      "length": 7,
+      "code": {
+        "startLine": 44,
+        "length": 7,
+        "offset": 180,
+        "surroundingCode": "                    this.tagPrefixProperty.set(project.tagPrefixProperty)\n                    this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                    this.version.set(project.version.toString())\n                    this.gitTagBuildService.set(gitTagBuildService)\n                    this.usesService(gitTagBuildService)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "fd8dcb2db1a536fd13d75a7eb9589b571e2241bc7f03eaac5dd561283054de33"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: gitTagBuildService",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 47,
+      "offset": 26,
+      "length": 18,
+      "code": {
+        "startLine": 45,
+        "length": 18,
+        "offset": 171,
+        "surroundingCode": "                    this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                    this.version.set(project.version.toString())\n                    this.gitTagBuildService.set(gitTagBuildService)\n                    this.usesService(gitTagBuildService)\n                }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "73b2946fa7c6f72891fb1a621b2965ac1c644766ecdabf74c7de20569f8e7ca4"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: internal val Project.tagPrefixProperty: String defined in com.javiersc.semver.gradle.plugin.internal in file SemverProperties.kt",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 40,
+      "offset": 22,
+      "length": 17,
+      "code": {
+        "startLine": 38,
+        "length": 17,
+        "offset": 194,
+        "surroundingCode": "        internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {\n            project.tasks.register<PushSemverTagTask>(taskName).configure {\n                this.tagPrefixProperty.set(project.tagPrefixProperty)\n                this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                this.version.set(project.version.toString())"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "d1b9db304f8484ebe0be07ff793fae0bb6db0536cab7427ce5f04acd5c057b64"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: projectTagPrefix",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 41,
+      "offset": 22,
+      "length": 16,
+      "code": {
+        "startLine": 39,
+        "length": 16,
+        "offset": 167,
+        "surroundingCode": "            project.tasks.register<PushSemverTagTask>(taskName).configure {\n                this.tagPrefixProperty.set(project.tagPrefixProperty)\n                this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                this.version.set(project.version.toString())\n                this.gitTagBuildService.set(gitTagBuildService)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "d2bb0128305ee44a706e56f58c6c0dfad6d965f2d3f088590fd85365c2cad040"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: version",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 42,
+      "offset": 22,
+      "length": 7,
+      "code": {
+        "startLine": 40,
+        "length": 7,
+        "offset": 168,
+        "surroundingCode": "                this.tagPrefixProperty.set(project.tagPrefixProperty)\n                this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                this.version.set(project.version.toString())\n                this.gitTagBuildService.set(gitTagBuildService)\n                this.usesService(gitTagBuildService)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "a74bf0e1007362e031061fdd3d051ec6fb8edf012e54aa16e4d51318ba23f347"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: gitTagBuildService",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask.kt",
+      "language": "kotlin",
+      "line": 43,
+      "offset": 22,
+      "length": 18,
+      "code": {
+        "startLine": 41,
+        "length": 18,
+        "offset": 159,
+        "surroundingCode": "                this.projectTagPrefix.set(project.semverExtension.tagPrefix)\n                this.version.set(project.version.toString())\n                this.gitTagBuildService.set(gitTagBuildService)\n                this.usesService(gitTagBuildService)\n            }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "716d24ff51340e769e94ed9b6573c5afa7570e159b5f49009f3f1f9c0a071f5b"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: tagPrefix",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
+      "language": "kotlin",
+      "line": 81,
+      "offset": 17,
+      "length": 9,
+      "code": {
+        "startLine": 79,
+        "length": 9,
+        "offset": 57,
+        "surroundingCode": "\n            printSemverTask.configure {\n                tagPrefix.set(project.semverExtension.tagPrefix)\n                version.set(project.version.toString())\n            }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "53216d23c83bc104502df3dda5cda07eb38c9cea0f351569104b979b40b43a48"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: version",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
+      "language": "kotlin",
+      "line": 82,
+      "offset": 17,
+      "length": 7,
+      "code": {
+        "startLine": 80,
+        "length": 7,
+        "offset": 121,
+        "surroundingCode": "            printSemverTask.configure {\n                tagPrefix.set(project.semverExtension.tagPrefix)\n                version.set(project.version.toString())\n            }\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "4fdfae4f222d888555000664374b4af907858d8762c7aa8f3afe15672c290edd"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: dependsOn",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
+      "language": "kotlin",
+      "line": 86,
+      "offset": 17,
+      "length": 9,
+      "code": {
+        "startLine": 84,
+        "length": 9,
+        "offset": 108,
+        "surroundingCode": "\n            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) {\n                dependsOn(printSemverTask)\n            }\n            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "14d259b0c2d1418616448886dd5e622926bf1008c380741932a42aed1b99a8e0"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: dependsOn",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
+      "language": "kotlin",
+      "line": 89,
+      "offset": 17,
+      "length": 9,
+      "code": {
+        "startLine": 87,
+        "length": 9,
+        "offset": 104,
+        "surroundingCode": "            }\n            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) {\n                dependsOn(printSemverTask)\n            }\n            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { dependsOn(printSemverTask) }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "0aef04a473b46a1a88b66955ffecdbff1bd56b7d916ee1cb2df632049f35889b"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: commandLine",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt",
+      "language": "kotlin",
+      "line": 82,
+      "offset": 17,
+      "length": 11,
+      "code": {
+        "startLine": 80,
+        "length": 11,
+        "offset": 71,
+        "surroundingCode": "                val tag: String = semverWithTagPrefix\n\n                commandLine(\"git\", \"push\", remote, tag)\n            }\n        }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "f290afc096cedd5acd65e06f40ea9f95060504ffeab5596302f099f7a7bae858"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: parameters",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt",
+      "language": "kotlin",
+      "line": 103,
+      "offset": 17,
+      "length": 10,
+      "code": {
+        "startLine": 101,
+        "length": 10,
+        "offset": 71,
+        "surroundingCode": "                GitBuildService::class\n            ) {\n                parameters.gitDirectory.set(project.gitDir)\n                parameters.remoteProperty.set(project.remoteProperty)\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "1ed412ebd041cfe12624ee52b060644a68535c8bb32db3121e4a118d3adcc39a"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: parameters",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt",
+      "language": "kotlin",
+      "line": 104,
+      "offset": 17,
+      "length": 10,
+      "code": {
+        "startLine": 102,
+        "length": 10,
+        "offset": 92,
+        "surroundingCode": "            ) {\n                parameters.gitDirectory.set(project.gitDir)\n                parameters.remoteProperty.set(project.remoteProperty)\n\n                maxParallelUsages.set(1)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "7698c1d4eca393d5e5440b685103c574cea33a2ae798bb33fc298777dc0d36bf"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: maxParallelUsages",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt",
+      "language": "kotlin",
+      "line": 106,
+      "offset": 17,
+      "length": 17,
+      "code": {
+        "startLine": 104,
+        "length": 17,
+        "offset": 87,
+        "surroundingCode": "                parameters.remoteProperty.set(project.remoteProperty)\n\n                maxParallelUsages.set(1)\n            }\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "9cccb7f941875d66acdbb8bb63c7df9be7d6f1da3ff1d33f8e04cf27dbc8c5b3"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
   "comment": "'val Project.libs: LibrariesForLibs' can't be called in this context by implicit receiver. Use the explicit one if necessary",
   "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
   "sources": [
@@ -246,4 +742,66 @@
     "inspectionName": "KotlinAnnotator"
   },
   "hash": "d385714f74ced7278aa5e4ede1d261d60f5a91d09bef428b6654dd868f22acab"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: parameters",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 96,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 94,
+        "length": 10,
+        "offset": 104,
+        "surroundingCode": "                    val projectTagPrefix = project.semverExtension.tagPrefix.get()\n\n                    parameters.gitDir.set(\n                        project.objects\n                            .directoryProperty()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "a2617f74c451b2531f8cea450db1457a8df6f5753b99b49c42b504cf7e8dc668"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Kotlin annotator",
+  "tags": [
+    "Sanity"
+  ],
+  "severity": "Critical",
+  "comment": "Unresolved reference: parameters",
+  "detailsInfo": "Allows viewing the problems reported by the Kotlin annotator: compilation problems, references unresolved by the IDE, and so on.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 105,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 103,
+        "length": 10,
+        "offset": 72,
+        "surroundingCode": "                            )\n                    )\n                    parameters.projectTagPrefix.set(projectTagPrefix)\n                    parameters.tagPrefixProperty.set(project.tagPrefixProperty)\n                    parameters.stageProperty.set(project.stageProperty)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "KotlinAnnotator"
+  },
+  "hash": "4cf50601002b676ed3b6962c6b9a808269ba2b67a8f9fa80e50a688ad9e71839"
 }]}

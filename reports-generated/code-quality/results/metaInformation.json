@@ -1,13 +1,13 @@
 {
-  "total": 17,
+  "total": 7,
   "tools inspection": {
-    "Code Inspection": 17
+    "Code Inspection": 7
   },
   "attributes": {
     "vcs": {
       "sarifIdea": {
         "repositoryUri": "https://github.com/JavierSegoviaCordoba/semver-gradle-plugin",
-        "revisionId": "e8d2fdc8ee66aea83250616443958b9bbc137640",
+        "revisionId": "f9426bc9d6257c821bac88ab74c34529975e94dd",
         "branch": "main"
       }
     },

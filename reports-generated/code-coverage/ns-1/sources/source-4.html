@@ -23,12 +23,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 <h1>Coverage Summary for Class: SemverPlugin (com.javiersc.semver.gradle.plugin)</h1>
 
 <table class="coverageStats">
+
 <tr>
   <th class="name">Class</th>
-<th class="coverageStat 
-">
-  Class, %
-</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -53,9 +50,57 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
+    (0/4)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/58)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SemverPlugin$configureLazyVersion$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
     (0/1)
   </span>
 </td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -78,11 +123,10 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/65)
+    (0/68)
   </span>
 </td>
 </tr>
-
 </table>
 
 <br/>
@@ -132,7 +176,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">40</i>&nbsp;        // too early based on plugins order, applying the calculated version in
 <i class="no-highlight">41</i>&nbsp;        // `afterEvaluate` fix it
 <b class="nc"><i class="no-highlight">42</i>&nbsp;        afterEvaluate {</b>
-<b class="nc"><i class="no-highlight">43</i>&nbsp;            it.version = LazyVersion(VersionValueSource.register(this, gitTagBuildService))</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;            version = LazyVersion(VersionValueSource.register(this, gitTagBuildService))</b>
 <i class="no-highlight">44</i>&nbsp;        }
 <i class="no-highlight">45</i>&nbsp;    }
 <i class="no-highlight">46</i>&nbsp;}
@@ -162,7 +206,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-07-06 22:01</div>
+    <div style="float:right;">generated on 2022-07-07 23:48</div>
 </div>
 </body>
 </html>

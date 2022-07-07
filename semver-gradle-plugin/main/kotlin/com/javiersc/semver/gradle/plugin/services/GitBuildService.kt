@@ -56,11 +56,11 @@ constructor(
         }
     }
 
-    public fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+    internal fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
         if (!isCreatingTag && tagPrefixProperty == projectTagPrefix) {
             createTag(tagPrefixProperty, projectTagPrefix, version)
 
-            execOperations.exec { exec ->
+            execOperations.exec {
                 val remoteProp: String? = parameters.remoteProperty.orNull
 
                 val remote: String? =
@@ -79,7 +79,7 @@ constructor(
                 val semverWithTagPrefix = "$projectTagPrefix$version"
                 val tag: String = semverWithTagPrefix
 
-                exec.commandLine("git", "push", remote, tag)
+                commandLine("git", "push", remote, tag)
             }
         }
     }
@@ -99,11 +99,11 @@ constructor(
             project.gradle.sharedServices.registerIfAbsent(
                 "gitTagBuildService",
                 GitBuildService::class
-            ) { service ->
-                service.parameters.gitDirectory.set(project.gitDir)
-                service.parameters.remoteProperty.set(project.remoteProperty)
+            ) {
+                parameters.gitDirectory.set(project.gitDir)
+                parameters.remoteProperty.set(project.remoteProperty)
 
-                service.maxParallelUsages.set(1)
+                maxParallelUsages.set(1)
             }
     }
 }

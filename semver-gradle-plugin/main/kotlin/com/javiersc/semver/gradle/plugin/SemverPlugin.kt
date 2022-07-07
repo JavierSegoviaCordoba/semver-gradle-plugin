@@ -40,7 +40,7 @@ public class SemverPlugin : Plugin<Project> {
         // too early based on plugins order, applying the calculated version in
         // `afterEvaluate` fix it
         afterEvaluate {
-            it.version = LazyVersion(VersionValueSource.register(this, gitTagBuildService))
+            version = LazyVersion(VersionValueSource.register(this, gitTagBuildService))
         }
     }
 }

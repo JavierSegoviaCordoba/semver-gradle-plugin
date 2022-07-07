@@ -40,12 +40,12 @@ public abstract class CreateSemverTagTask : DefaultTask() {
                 .register<CreateSemverTagTask>(
                     taskName,
                 )
-                .configure { createSemverTag ->
-                    createSemverTag.tagPrefixProperty.set(project.tagPrefixProperty)
-                    createSemverTag.projectTagPrefix.set(project.semverExtension.tagPrefix)
-                    createSemverTag.version.set(project.version.toString())
-                    createSemverTag.gitTagBuildService.set(gitTagBuildService)
-                    createSemverTag.usesService(gitTagBuildService)
+                .configure {
+                    this.tagPrefixProperty.set(project.tagPrefixProperty)
+                    this.projectTagPrefix.set(project.semverExtension.tagPrefix)
+                    this.version.set(project.version.toString())
+                    this.gitTagBuildService.set(gitTagBuildService)
+                    this.usesService(gitTagBuildService)
                 }
         }
     }

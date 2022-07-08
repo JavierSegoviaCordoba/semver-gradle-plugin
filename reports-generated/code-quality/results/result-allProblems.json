@@ -31,21 +31,21 @@
   "category": "JVM languages",
   "type": "Unstable API Usage",
   "severity": "High",
-  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSource' marked with @Incubating",
+  "comment": "'org.gradle.api.provider.ValueSourceParameters' is marked unstable with @Incubating",
   "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
   "sources": [
     {
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 33,
-      "offset": 32,
-      "length": 10,
+      "line": 72,
+      "offset": 33,
+      "length": 21,
       "code": {
-        "startLine": 31,
-        "length": 10,
-        "offset": 88,
-        "surroundingCode": "            Git(\n                FileRepositoryBuilder()\n                    .setGitDir(parameters.gitDir.get().asFile)\n                    .readEnvironment()\n                    .findGitDir()"
+        "startLine": 70,
+        "length": 21,
+        "offset": 43,
+        "surroundingCode": "        }\n\n    internal interface Params : ValueSourceParameters {\n        val gitDir: DirectoryProperty\n        val tagPrefixProperty: Property<String>"
       }
     }
   ],
@@ -53,7 +53,35 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "fb6f66c7ad64599a85b0018693748e618ef1ded4ea2437de4999f1f9c47e812a"
+  "hash": "ff15eba8b144ff5f7863fb3d3bcdd58f9488b6bbeee7cb991b6746da56e91cdc"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'of(org.gradle.api.provider.ProviderFactory, kotlin.reflect.KClass>, org.gradle.api.Action>)' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 92,
+      "offset": 18,
+      "length": 2,
+      "code": {
+        "startLine": 90,
+        "length": 2,
+        "offset": 77,
+        "surroundingCode": "        ): Provider<String> =\n            project.providers\n                .of(VersionValueSource::class) {\n                    val cache = gitTagBuildService.map(GitBuildService::gitCache).get()\n                    val projectTagPrefix = project.semverExtension.tagPrefix.get()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "8083e29f9506d43342bc5ef275428988d617b8a1860f150dc32a70eeddcaa1ed"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -143,21 +171,21 @@
   "category": "JVM languages",
   "type": "Unstable API Usage",
   "severity": "High",
-  "comment": "'of(org.gradle.api.provider.ProviderFactory, kotlin.reflect.KClass>, org.gradle.api.Action>)' is marked unstable with @Incubating",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSource' marked with @Incubating",
   "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
   "sources": [
     {
       "type": "file",
       "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
       "language": "kotlin",
-      "line": 92,
-      "offset": 18,
-      "length": 2,
+      "line": 33,
+      "offset": 32,
+      "length": 10,
       "code": {
-        "startLine": 90,
-        "length": 2,
-        "offset": 77,
-        "surroundingCode": "        ): Provider<String> =\n            project.providers\n                .of(VersionValueSource::class) {\n                    val cache = gitTagBuildService.map(GitBuildService::gitCache).get()\n                    val projectTagPrefix = project.semverExtension.tagPrefix.get()"
+        "startLine": 31,
+        "length": 10,
+        "offset": 88,
+        "surroundingCode": "            Git(\n                FileRepositoryBuilder()\n                    .setGitDir(parameters.gitDir.get().asFile)\n                    .readEnvironment()\n                    .findGitDir()"
       }
     }
   ],
@@ -165,33 +193,5 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "8083e29f9506d43342bc5ef275428988d617b8a1860f150dc32a70eeddcaa1ed"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'org.gradle.api.provider.ValueSourceParameters' is marked unstable with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
-      "language": "kotlin",
-      "line": 72,
-      "offset": 33,
-      "length": 21,
-      "code": {
-        "startLine": 70,
-        "length": 21,
-        "offset": 43,
-        "surroundingCode": "        }\n\n    internal interface Params : ValueSourceParameters {\n        val gitDir: DirectoryProperty\n        val tagPrefixProperty: Property<String>"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "ff15eba8b144ff5f7863fb3d3bcdd58f9488b6bbeee7cb991b6746da56e91cdc"
+  "hash": "fb6f66c7ad64599a85b0018693748e618ef1ded4ea2437de4999f1f9c47e812a"
 }]}

@@ -4,18 +4,26 @@
 
 ### Added
 
-- `githubEnv` boolean option to `PrintSemverTask`
-- `githubOutput` boolean option to `PrintSemverTask`
-
 ### Changed
-
-- `printSemver` can't be cacheable
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+### Updated
+
+## [0.3.0-alpha.2] - 2022-07-09
+
+### Added
+
+- `githubEnv` boolean option to `PrintSemverTask`
+- `githubOutput` boolean option to `PrintSemverTask`
+
+### Changed
+
+- `printSemver` can't be cacheable
 
 ### Updated
 

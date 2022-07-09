@@ -31,8 +31,14 @@ public final class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask$C
 
 public abstract class com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask : org/gradle/api/DefaultTask {
 	public static final field taskName Ljava/lang/String;
-	public fun <init> (Ljava/lang/String;Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/api/file/ProjectLayout;)V
-	public final fun getSemverFile ()Lorg/gradle/api/file/RegularFileProperty;
+	public fun <init> (ZLjava/lang/String;Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/process/ExecOperations;)V
+	public final fun getGithubEnv ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubEnvTag ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubEnvVersion ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOnlyRoot ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOutput ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOutputTag ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOutputVersion ()Lorg/gradle/api/provider/Property;
 	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
 	public final fun run ()V
@@ -46,6 +52,15 @@ public abstract class com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask 
 }
 
 public final class com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask$Companion {
+}
+
+public abstract class com/javiersc/semver/gradle/plugin/tasks/WriteSemverTask : org/gradle/api/DefaultTask {
+	public static final field taskName Ljava/lang/String;
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/api/file/ProjectLayout;)V
+	public final fun getSemverFile ()Lorg/gradle/api/file/RegularFileProperty;
+	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
+	public final fun run ()V
 }
 
 public abstract class com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource : org/gradle/api/provider/ValueSource {

@@ -4,7 +4,12 @@
 
 ### Added
 
+- `githubEnv` boolean option to `PrintSemverTask`
+- `githubOutput` boolean option to `PrintSemverTask`
+
 ### Changed
+
+- `printSemver` can't be cacheable
 
 ### Deprecated
 

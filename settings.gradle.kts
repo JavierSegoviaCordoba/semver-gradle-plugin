@@ -18,11 +18,3 @@ pluginManagement {
 plugins {
     id("com.javiersc.hubdle.settings")
 }
-
-dependencyResolutionManagement {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        google()
-    }
-}

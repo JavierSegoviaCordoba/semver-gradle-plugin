@@ -11,22 +11,23 @@ import com.javiersc.semver.gradle.plugin.setup.git
 import io.kotest.matchers.shouldNotBe
 import kotlin.test.Test
 import org.gradle.testkit.runner.GradleRunner
+import org.gradle.testkit.runner.TaskOutcome
 
 class GradleFeaturesTest : GradleTest() {
+
+    @Test
+    fun `android configuration cache clean v1_0_0`() {
+        gradleTestKitTest("gradle-features/android configuration cache clean v1_0_0") {
+            beforeTest()
+            testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
+        }
+    }
 
     @Test
     fun `android build cache clean v1_0_0`() {
         gradleTestKitTest("gradle-features/android build cache clean v1_0_0") {
             beforeTest()
             testBuildCache()
-        }
-    }
-
-    @Test
-    fun `android configuration cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/android configuration cache clean v1_0_0") {
-            beforeTest()
-            testConfigurationCache()
         }
     }
 
@@ -42,7 +43,7 @@ class GradleFeaturesTest : GradleTest() {
     fun `configuration cache clean v1_0_0`() {
         gradleTestKitTest("gradle-features/configuration cache clean v1_0_0") {
             beforeTest()
-            testConfigurationCache()
+            testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
         }
     }
 

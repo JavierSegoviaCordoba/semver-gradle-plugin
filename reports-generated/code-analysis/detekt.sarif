@@ -41,6 +41,27 @@
                 },
                 "region": {
                   "startColumn": 9,
+                  "startLine": 494
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 9,
                   "startLine": 978
                 }
               }
@@ -111,27 +132,6 @@
           ],
           "message": {
             "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
-          },
-          "ruleId": "detekt.complexity.LongMethod"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startColumn": 9,
-                  "startLine": 494
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -314,7 +314,7 @@
                 },
                 "region": {
                   "startColumn": 13,
-                  "startLine": 91
+                  "startLine": 88
                 }
               }
             }
@@ -335,7 +335,7 @@
                 },
                 "region": {
                   "startColumn": 13,
-                  "startLine": 106
+                  "startLine": 103
                 }
               }
             }

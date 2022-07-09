@@ -3,49 +3,21 @@
   "category": "JVM languages",
   "type": "Unstable API Usage",
   "severity": "High",
-  "comment": "'repositories(org.gradle.api.Action)' is declared in unstable interface 'org.gradle.api.initialization.resolve.DependencyResolutionManagement' marked with @Incubating",
+  "comment": "'org.gradle.api.tasks.UntrackedTask' is marked unstable with @Incubating",
   "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
   "sources": [
     {
       "type": "file",
-      "path": "settings.gradle.kts",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
       "language": "kotlin",
-      "line": 23,
-      "offset": 5,
-      "length": 12,
+      "line": 32,
+      "offset": 2,
+      "length": 13,
       "code": {
-        "startLine": 21,
-        "length": 12,
-        "offset": 38,
-        "surroundingCode": "\ndependencyResolutionManagement {\n    repositories {\n        gradlePluginPortal()\n        mavenCentral()"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-project",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "3e42449d9ada06e78f6b8b0899eed323438c9c636f15cece45502de1778e7fee"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'org.gradle.api.provider.ValueSourceParameters' is marked unstable with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
-      "language": "kotlin",
-      "line": 72,
-      "offset": 33,
-      "length": 21,
-      "code": {
-        "startLine": 70,
-        "length": 21,
+        "startLine": 30,
+        "length": 13,
         "offset": 43,
-        "surroundingCode": "        }\n\n    internal interface Params : ValueSourceParameters {\n        val gitDir: DirectoryProperty\n        val tagPrefixProperty: Property<String>"
+        "surroundingCode": "import org.gradle.process.ExecOperations\n\n@UntrackedTask(because = \"It must always print the version\")\npublic abstract class PrintSemverTask\n@Inject"
       }
     }
   ],
@@ -53,27 +25,27 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "ff15eba8b144ff5f7863fb3d3bcdd58f9488b6bbeee7cb991b6746da56e91cdc"
+  "hash": "e08593b38b7ad645c2ca23ff6b74773ff2410b982133e7931084d07526808bff"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
   "type": "Unstable API Usage",
   "severity": "High",
-  "comment": "'of(org.gradle.api.provider.ProviderFactory, kotlin.reflect.KClass>, org.gradle.api.Action>)' is marked unstable with @Incubating",
+  "comment": "'because' is declared in unstable annotation 'org.gradle.api.tasks.UntrackedTask' marked with @Incubating",
   "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
   "sources": [
     {
       "type": "file",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
       "language": "kotlin",
-      "line": 92,
-      "offset": 18,
-      "length": 2,
+      "line": 32,
+      "offset": 16,
+      "length": 7,
       "code": {
-        "startLine": 90,
-        "length": 2,
-        "offset": 77,
-        "surroundingCode": "        ): Provider<String> =\n            project.providers\n                .of(VersionValueSource::class) {\n                    val cache = gitTagBuildService.map(GitBuildService::gitCache).get()\n                    val projectTagPrefix = project.semverExtension.tagPrefix.get()"
+        "startLine": 30,
+        "length": 7,
+        "offset": 57,
+        "surroundingCode": "import org.gradle.process.ExecOperations\n\n@UntrackedTask(because = \"It must always print the version\")\npublic abstract class PrintSemverTask\n@Inject"
       }
     }
   ],
@@ -81,7 +53,7 @@
     "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
     "inspectionName": "UnstableApiUsage"
   },
-  "hash": "8083e29f9506d43342bc5ef275428988d617b8a1860f150dc32a70eeddcaa1ed"
+  "hash": "940bedbe5eaacbd32d5f926018c4cd3e3f30b06ee159cb69ece8faf75653c337"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",
@@ -138,6 +110,342 @@
     "inspectionName": "UnstableApiUsage"
   },
   "hash": "e7d34cb11154284df4b2e486a39615cc531967f701238f9fc07d86bc1e585449"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'of(org.gradle.api.provider.ProviderFactory, kotlin.reflect.KClass>, org.gradle.api.Action>)' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 92,
+      "offset": 18,
+      "length": 2,
+      "code": {
+        "startLine": 90,
+        "length": 2,
+        "offset": 77,
+        "surroundingCode": "        ): Provider<String> =\n            project.providers\n                .of(VersionValueSource::class) {\n                    val cache = gitTagBuildService.map(GitBuildService::gitCache).get()\n                    val projectTagPrefix = project.semverExtension.tagPrefix.get()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "8083e29f9506d43342bc5ef275428988d617b8a1860f150dc32a70eeddcaa1ed"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 96,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 94,
+        "length": 10,
+        "offset": 104,
+        "surroundingCode": "                    val projectTagPrefix = project.semverExtension.tagPrefix.get()\n\n                    parameters.gitDir.set(\n                        project.objects\n                            .directoryProperty()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "523be319de0ad293498a5fec95dbae360b83f69550c82d0282ca378d652bb45b"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 105,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 103,
+        "length": 10,
+        "offset": 72,
+        "surroundingCode": "                            )\n                    )\n                    parameters.projectTagPrefix.set(projectTagPrefix)\n                    parameters.tagPrefixProperty.set(project.tagPrefixProperty)\n                    parameters.stageProperty.set(project.stageProperty)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "4682a4cfadd953f4cef2450f45f68625d38d91d854ed0defd45cb0a5a54a264e"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 106,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 104,
+        "length": 10,
+        "offset": 112,
+        "surroundingCode": "                    )\n                    parameters.projectTagPrefix.set(projectTagPrefix)\n                    parameters.tagPrefixProperty.set(project.tagPrefixProperty)\n                    parameters.stageProperty.set(project.stageProperty)\n                    parameters.scopeProperty.set(project.scopeProperty)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "d59479d0658953426f2b64278294ff2134ea60f3578a54feb3a6811fe02d1d64"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 107,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 105,
+        "length": 10,
+        "offset": 170,
+        "surroundingCode": "                    parameters.projectTagPrefix.set(projectTagPrefix)\n                    parameters.tagPrefixProperty.set(project.tagPrefixProperty)\n                    parameters.stageProperty.set(project.stageProperty)\n                    parameters.scopeProperty.set(project.scopeProperty)\n                    parameters.creatingSemverTag.set(project.isCreatingSemverTag)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "1185883457f603d4aa30ea70157928a8b72da4a738387d7a22777d8a782759ca"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 108,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 106,
+        "length": 10,
+        "offset": 172,
+        "surroundingCode": "                    parameters.tagPrefixProperty.set(project.tagPrefixProperty)\n                    parameters.stageProperty.set(project.stageProperty)\n                    parameters.scopeProperty.set(project.scopeProperty)\n                    parameters.creatingSemverTag.set(project.isCreatingSemverTag)\n                    parameters.checkClean.set(project.checkCleanProperty)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "144ca99112eae273ab2056205e57fce020e331a5e4192404d86cbf9958efde98"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 109,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 107,
+        "length": 10,
+        "offset": 164,
+        "surroundingCode": "                    parameters.stageProperty.set(project.stageProperty)\n                    parameters.scopeProperty.set(project.scopeProperty)\n                    parameters.creatingSemverTag.set(project.isCreatingSemverTag)\n                    parameters.checkClean.set(project.checkCleanProperty)\n                    parameters.commitsInCurrentBranch.set("
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "c16adb9472da6a3b9044053e949f653f39da926795ac41cd3a5dc2fa06d2f780"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 110,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 108,
+        "length": 10,
+        "offset": 174,
+        "surroundingCode": "                    parameters.scopeProperty.set(project.scopeProperty)\n                    parameters.creatingSemverTag.set(project.isCreatingSemverTag)\n                    parameters.checkClean.set(project.checkCleanProperty)\n                    parameters.commitsInCurrentBranch.set(\n                        cache.commitsInCurrentBranch.map(GitRef.Commit::hash)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "06116e958f409f756b0f92198579e0e9c9f01f519bb9f75cc2042fda30e50c4f"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 111,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 109,
+        "length": 10,
+        "offset": 176,
+        "surroundingCode": "                    parameters.creatingSemverTag.set(project.isCreatingSemverTag)\n                    parameters.checkClean.set(project.checkCleanProperty)\n                    parameters.commitsInCurrentBranch.set(\n                        cache.commitsInCurrentBranch.map(GitRef.Commit::hash)\n                    )"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "a1abdd3c3782b20660efef8ab60eeb4fa0df59d360960f2a935780c00427a8d1"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 114,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 112,
+        "length": 10,
+        "offset": 120,
+        "surroundingCode": "                        cache.commitsInCurrentBranch.map(GitRef.Commit::hash)\n                    )\n                    parameters.headCommit.set(cache.headCommit.commit.hash)\n                    parameters.lastVersionCommitInCurrentBranch.set(\n                        cache.lastVersionCommitInCurrentBranch(projectTagPrefix)?.hash"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "760044baa037111341bc7595a00ab71d78f13e7d0bbd19e5e842b3105353d734"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'getParameters()' is declared in unstable interface 'org.gradle.api.provider.ValueSourceSpec' marked with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 115,
+      "offset": 21,
+      "length": 10,
+      "code": {
+        "startLine": 113,
+        "length": 10,
+        "offset": 118,
+        "surroundingCode": "                    )\n                    parameters.headCommit.set(cache.headCommit.commit.hash)\n                    parameters.lastVersionCommitInCurrentBranch.set(\n                        cache.lastVersionCommitInCurrentBranch(projectTagPrefix)?.hash\n                    )"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "04a4998206d02ede8aa7fefde695bca75428faee5ae67a35bf0881702d56b589"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
+  "comment": "'org.gradle.api.provider.ValueSourceParameters' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 72,
+      "offset": 33,
+      "length": 21,
+      "code": {
+        "startLine": 70,
+        "length": 21,
+        "offset": 43,
+        "surroundingCode": "        }\n\n    internal interface Params : ValueSourceParameters {\n        val gitDir: DirectoryProperty\n        val tagPrefixProperty: Property<String>"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "ff15eba8b144ff5f7863fb3d3bcdd58f9488b6bbeee7cb991b6746da56e91cdc"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",

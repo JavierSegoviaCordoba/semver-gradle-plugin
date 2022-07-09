@@ -18,12 +18,20 @@
       "version": "1.0.0-alpha.26"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib-jdk8",
-      "version": "1.7.0"
+      "version": "1.6.21"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.5.31",
+      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.5.31",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-reflect",
+      "version": "1.5.31"
     },
     {
       "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
@@ -122,20 +130,20 @@
       "version": "5.3.2"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib-jdk7",
-      "version": "1.7.0"
+      "version": "1.6.21"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.0",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib:1.7.0",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib",
-      "version": "1.7.0"
+      "version": "1.6.21"
     },
     {
       "ideaName": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
@@ -178,12 +186,12 @@
       "version": "5.9.0-RC1"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.0",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-common:1.7.0",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib-common",
-      "version": "1.7.0"
+      "version": "1.6.21"
     },
     {
       "ideaName": "Gradle: org.jetbrains:annotations:13.0",
@@ -234,20 +242,20 @@
       "version": "5.3.2"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
-      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
-      "unresolved": false,
-      "groupId": "org.jetbrains.kotlinx",
-      "artifactId": "kotlinx-coroutines-jdk8",
-      "version": "1.6.1"
-    },
-    {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
       "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-reflect",
       "version": "1.6.21"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
+      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlinx",
+      "artifactId": "kotlinx-coroutines-jdk8",
+      "version": "1.6.1"
     },
     {
       "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.0-RC1",

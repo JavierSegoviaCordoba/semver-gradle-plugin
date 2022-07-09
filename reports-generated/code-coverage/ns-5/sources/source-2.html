@@ -50,7 +50,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/7)
+    (0/10)
   </span>
 </td>
 <td class="coverageStat">
@@ -58,7 +58,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/20)
+    (0/32)
   </span>
 </td>
 <td class="coverageStat">
@@ -66,7 +66,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/37)
+    (0/45)
   </span>
 </td>
 <td class="coverageStat">
@@ -74,7 +74,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/299)
+    (0/486)
   </span>
 </td>
 </tr>
@@ -206,7 +206,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/2)
+    (0/3)
   </span>
 </td>
 <td class="coverageStat">
@@ -214,7 +214,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/15)
+    (0/24)
   </span>
 </td>
   </tr>
@@ -414,6 +414,62 @@ Current scope:     <a href="../../index.html">all classes</a>
   </span>
 </td>
   </tr>
+  <tr>
+    <td class="name">PrintSemverTask$configureGitHub$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/32)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PrintSemverTask$configureGitHub$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/28)
+  </span>
+</td>
+  </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
 <td class="coverageStat">
@@ -421,7 +477,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/23)
+    (0/28)
   </span>
 </td>
 <td class="coverageStat">
@@ -429,7 +485,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/20)
+    (0/32)
   </span>
 </td>
 <td class="coverageStat">
@@ -437,7 +493,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/56)
+    (0/67)
   </span>
 </td>
 <td class="coverageStat">
@@ -445,7 +501,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/532)
+    (0/788)
   </span>
 </td>
 </tr>
@@ -467,145 +523,185 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">9</i>&nbsp;import org.gradle.api.DefaultTask
 <i class="no-highlight">10</i>&nbsp;import org.gradle.api.Project
 <i class="no-highlight">11</i>&nbsp;import org.gradle.api.Task
-<i class="no-highlight">12</i>&nbsp;import org.gradle.api.file.ProjectLayout
-<i class="no-highlight">13</i>&nbsp;import org.gradle.api.file.RegularFileProperty
-<i class="no-highlight">14</i>&nbsp;import org.gradle.api.model.ObjectFactory
-<i class="no-highlight">15</i>&nbsp;import org.gradle.api.provider.Property
-<i class="no-highlight">16</i>&nbsp;import org.gradle.api.tasks.Input
-<i class="no-highlight">17</i>&nbsp;import org.gradle.api.tasks.OutputFile
-<i class="no-highlight">18</i>&nbsp;import org.gradle.api.tasks.TaskAction
-<i class="no-highlight">19</i>&nbsp;import org.gradle.api.tasks.TaskProvider
-<i class="no-highlight">20</i>&nbsp;import org.gradle.api.tasks.UntrackedTask
-<i class="no-highlight">21</i>&nbsp;import org.gradle.api.tasks.options.Option
-<i class="no-highlight">22</i>&nbsp;import org.gradle.api.tasks.testing.Test
-<i class="no-highlight">23</i>&nbsp;import org.gradle.jvm.tasks.Jar
-<i class="no-highlight">24</i>&nbsp;import org.gradle.kotlin.dsl.property
-<i class="no-highlight">25</i>&nbsp;import org.gradle.kotlin.dsl.register
-<i class="no-highlight">26</i>&nbsp;import org.gradle.kotlin.dsl.withType
-<i class="no-highlight">27</i>&nbsp;import org.gradle.language.base.plugins.LifecycleBasePlugin.ASSEMBLE_TASK_NAME
-<i class="no-highlight">28</i>&nbsp;import org.gradle.language.base.plugins.LifecycleBasePlugin.BUILD_TASK_NAME
-<i class="no-highlight">29</i>&nbsp;import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
-<i class="no-highlight">30</i>&nbsp;import org.gradle.process.ExecOperations
-<i class="no-highlight">31</i>&nbsp;
-<i class="no-highlight">32</i>&nbsp;@UntrackedTask(because = &quot;It must always print the version&quot;)
-<i class="no-highlight">33</i>&nbsp;public abstract class PrintSemverTask
-<i class="no-highlight">34</i>&nbsp;@Inject
-<b class="nc"><i class="no-highlight">35</i>&nbsp;constructor(</b>
-<i class="no-highlight">36</i>&nbsp;    private val isRootProject: Boolean,
-<i class="no-highlight">37</i>&nbsp;    private val projectName: String,
-<i class="no-highlight">38</i>&nbsp;    objects: ObjectFactory,
-<i class="no-highlight">39</i>&nbsp;    layout: ProjectLayout,
-<i class="no-highlight">40</i>&nbsp;    private val execOperations: ExecOperations,
-<b class="nc"><i class="no-highlight">41</i>&nbsp;) : DefaultTask() {</b>
+<i class="no-highlight">12</i>&nbsp;import org.gradle.api.model.ObjectFactory
+<i class="no-highlight">13</i>&nbsp;import org.gradle.api.provider.Property
+<i class="no-highlight">14</i>&nbsp;import org.gradle.api.tasks.Input
+<i class="no-highlight">15</i>&nbsp;import org.gradle.api.tasks.TaskAction
+<i class="no-highlight">16</i>&nbsp;import org.gradle.api.tasks.TaskProvider
+<i class="no-highlight">17</i>&nbsp;import org.gradle.api.tasks.UntrackedTask
+<i class="no-highlight">18</i>&nbsp;import org.gradle.api.tasks.options.Option
+<i class="no-highlight">19</i>&nbsp;import org.gradle.api.tasks.testing.Test
+<i class="no-highlight">20</i>&nbsp;import org.gradle.jvm.tasks.Jar
+<i class="no-highlight">21</i>&nbsp;import org.gradle.kotlin.dsl.property
+<i class="no-highlight">22</i>&nbsp;import org.gradle.kotlin.dsl.register
+<i class="no-highlight">23</i>&nbsp;import org.gradle.kotlin.dsl.withType
+<i class="no-highlight">24</i>&nbsp;import org.gradle.language.base.plugins.LifecycleBasePlugin.ASSEMBLE_TASK_NAME
+<i class="no-highlight">25</i>&nbsp;import org.gradle.language.base.plugins.LifecycleBasePlugin.BUILD_TASK_NAME
+<i class="no-highlight">26</i>&nbsp;import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
+<i class="no-highlight">27</i>&nbsp;import org.gradle.process.ExecOperations
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;@UntrackedTask(because = &quot;It must always print the version&quot;)
+<i class="no-highlight">30</i>&nbsp;public abstract class PrintSemverTask
+<i class="no-highlight">31</i>&nbsp;@Inject
+<b class="nc"><i class="no-highlight">32</i>&nbsp;constructor(</b>
+<i class="no-highlight">33</i>&nbsp;    private val isRootProject: Boolean,
+<i class="no-highlight">34</i>&nbsp;    private val projectName: String,
+<i class="no-highlight">35</i>&nbsp;    objects: ObjectFactory,
+<i class="no-highlight">36</i>&nbsp;    private val execOperations: ExecOperations,
+<b class="nc"><i class="no-highlight">37</i>&nbsp;) : DefaultTask() {</b>
+<i class="no-highlight">38</i>&nbsp;
+<b class="nc"><i class="no-highlight">39</i>&nbsp;    init {</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        group = &quot;semver&quot;</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;    }</b>
 <i class="no-highlight">42</i>&nbsp;
-<b class="nc"><i class="no-highlight">43</i>&nbsp;    init {</b>
-<b class="nc"><i class="no-highlight">44</i>&nbsp;        group = &quot;semver&quot;</b>
-<b class="nc"><i class="no-highlight">45</i>&nbsp;    }</b>
-<i class="no-highlight">46</i>&nbsp;
-<i class="no-highlight">47</i>&nbsp;    @Input
-<i class="no-highlight">48</i>&nbsp;    @Option(
-<i class="no-highlight">49</i>&nbsp;        option = &quot;githubOnlyRoot&quot;,
-<i class="no-highlight">50</i>&nbsp;        description = &quot;Set any GitHub option to work only on the root project `printSemver` task&quot;
-<i class="no-highlight">51</i>&nbsp;    )
-<b class="nc"><i class="no-highlight">52</i>&nbsp;    public val githubOnlyRoot: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
-<i class="no-highlight">53</i>&nbsp;
-<i class="no-highlight">54</i>&nbsp;    @Input
-<i class="no-highlight">55</i>&nbsp;    @Option(
-<i class="no-highlight">56</i>&nbsp;        option = &quot;githubEnv&quot;,
-<i class="no-highlight">57</i>&nbsp;        description =
-<i class="no-highlight">58</i>&nbsp;            &quot;Set the version as `semver-subproject-name` environment variable of the GitHub Actions&quot;
-<i class="no-highlight">59</i>&nbsp;    )
-<b class="nc"><i class="no-highlight">60</i>&nbsp;    public val githubEnv: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
-<i class="no-highlight">61</i>&nbsp;
-<i class="no-highlight">62</i>&nbsp;    @Input
-<i class="no-highlight">63</i>&nbsp;    @Option(
-<i class="no-highlight">64</i>&nbsp;        option = &quot;githubOutput&quot;,
-<i class="no-highlight">65</i>&nbsp;        description =
-<i class="no-highlight">66</i>&nbsp;            &quot;Set the version as `semver-subproject-name` output of the GitHub Actions `semver` step ID&quot;
-<i class="no-highlight">67</i>&nbsp;    )
-<b class="nc"><i class="no-highlight">68</i>&nbsp;    public val githubOutput: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
-<i class="no-highlight">69</i>&nbsp;
-<i class="no-highlight">70</i>&nbsp;    @get:Input public abstract val tagPrefix: Property&lt;String&gt;
-<i class="no-highlight">71</i>&nbsp;
-<i class="no-highlight">72</i>&nbsp;    @get:Input public abstract val version: Property&lt;String&gt;
+<i class="no-highlight">43</i>&nbsp;    @Input
+<i class="no-highlight">44</i>&nbsp;    @Option(
+<i class="no-highlight">45</i>&nbsp;        option = &quot;githubOnlyRoot&quot;,
+<i class="no-highlight">46</i>&nbsp;        description = &quot;Set any GitHub option to work only on the root project `printSemver` task&quot;
+<i class="no-highlight">47</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">48</i>&nbsp;    public val githubOnlyRoot: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    @Input
+<i class="no-highlight">51</i>&nbsp;    @Option(
+<i class="no-highlight">52</i>&nbsp;        option = &quot;githubEnvTag&quot;,
+<i class="no-highlight">53</i>&nbsp;        description =
+<i class="no-highlight">54</i>&nbsp;            &quot;Set the version as `semver-tag-subproject-name` environment variable of the GitHub Actions&quot;
+<i class="no-highlight">55</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">56</i>&nbsp;    public val githubEnvTag: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    @Input
+<i class="no-highlight">59</i>&nbsp;    @Option(
+<i class="no-highlight">60</i>&nbsp;        option = &quot;githubEnvVersion&quot;,
+<i class="no-highlight">61</i>&nbsp;        description =
+<i class="no-highlight">62</i>&nbsp;            &quot;Set the version as `semver-version-subproject-name` environment variable of the GitHub Actions&quot;
+<i class="no-highlight">63</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">64</i>&nbsp;    public val githubEnvVersion: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
+<i class="no-highlight">65</i>&nbsp;
+<i class="no-highlight">66</i>&nbsp;    @Input
+<i class="no-highlight">67</i>&nbsp;    @Option(
+<i class="no-highlight">68</i>&nbsp;        option = &quot;githubEnv&quot;,
+<i class="no-highlight">69</i>&nbsp;        description =
+<i class="no-highlight">70</i>&nbsp;            &quot;Set the version as `semver-subproject-name` environment variable of the GitHub Actions&quot;
+<i class="no-highlight">71</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">72</i>&nbsp;    public val githubEnv: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
 <i class="no-highlight">73</i>&nbsp;
-<i class="no-highlight">74</i>&nbsp;    @OutputFile
-<b class="nc"><i class="no-highlight">75</i>&nbsp;    public val semverFile: RegularFileProperty =</b>
-<b class="nc"><i class="no-highlight">76</i>&nbsp;        objects.fileProperty().convention(layout.buildDirectory.file(&quot;semver/version.txt&quot;))</b>
-<i class="no-highlight">77</i>&nbsp;
-<i class="no-highlight">78</i>&nbsp;    @TaskAction
-<i class="no-highlight">79</i>&nbsp;    public fun run() {
-<b class="nc"><i class="no-highlight">80</i>&nbsp;        val semver: String = version.get()</b>
-<b class="nc"><i class="no-highlight">81</i>&nbsp;        val prefix: String = tagPrefix.get()</b>
-<b class="nc"><i class="no-highlight">82</i>&nbsp;        val semverWithPrefix = &quot;$prefix$semver&quot;</b>
-<i class="no-highlight">83</i>&nbsp;
-<b class="nc"><i class="no-highlight">84</i>&nbsp;        val name: String =</b>
-<b class="nc"><i class="no-highlight">85</i>&nbsp;            if (projectName.isBlank() || projectName == &quot;:&quot;) &quot;the root project&quot; else projectName</b>
-<i class="no-highlight">86</i>&nbsp;
-<b class="nc"><i class="no-highlight">87</i>&nbsp;        semverMessage(&quot;semver for $name: $semverWithPrefix&quot;)</b>
-<i class="no-highlight">88</i>&nbsp;
-<b class="nc"><i class="no-highlight">89</i>&nbsp;        val onlyRoot: Boolean = githubOnlyRoot.orNull ?: false</b>
-<b class="nc"><i class="no-highlight">90</i>&nbsp;        val allProjects: Boolean = !onlyRoot</b>
-<b class="nc"><i class="no-highlight">91</i>&nbsp;        when {</b>
-<b class="nc"><i class="no-highlight">92</i>&nbsp;            onlyRoot &amp;&amp; isRootProject -&gt; configureGitHub(semverWithPrefix)</b>
-<b class="nc"><i class="no-highlight">93</i>&nbsp;            allProjects -&gt; configureGitHub(semverWithPrefix)</b>
-<i class="no-highlight">94</i>&nbsp;        }
-<i class="no-highlight">95</i>&nbsp;
-<b class="nc"><i class="no-highlight">96</i>&nbsp;        semverFile.get().asFile.apply {</b>
-<b class="nc"><i class="no-highlight">97</i>&nbsp;            parentFile.mkdirs()</b>
-<b class="nc"><i class="no-highlight">98</i>&nbsp;            createNewFile()</b>
-<b class="nc"><i class="no-highlight">99</i>&nbsp;            writeText(</b>
-<b class="nc"><i class="no-highlight">100</i>&nbsp;                &quot;&quot;&quot;</b>
-<b class="nc"><i class="no-highlight">101</i>&nbsp;                    |$semver</b>
-<b class="nc"><i class="no-highlight">102</i>&nbsp;                    |$semverWithPrefix</b>
-<i class="no-highlight">103</i>&nbsp;                    |
-<b class="nc"><i class="no-highlight">104</i>&nbsp;                &quot;&quot;&quot;.trimMargin()</b>
-<i class="no-highlight">105</i>&nbsp;            )
-<b class="nc"><i class="no-highlight">106</i>&nbsp;        }</b>
-<i class="no-highlight">107</i>&nbsp;    }
-<i class="no-highlight">108</i>&nbsp;
-<i class="no-highlight">109</i>&nbsp;    private fun configureGitHub(semverWithPrefix: String) {
-<b class="nc"><i class="no-highlight">110</i>&nbsp;        val name = if (isRootProject) &quot;semver&quot; else &quot;semver-$projectName&quot;</b>
-<b class="nc"><i class="no-highlight">111</i>&nbsp;        if (githubOutput.orNull == true) {</b>
-<b class="nc"><i class="no-highlight">112</i>&nbsp;            semverMessage(&quot;\nSetting $semverWithPrefix as `$name` output:&quot;)</b>
-<b class="nc"><i class="no-highlight">113</i>&nbsp;            println(&quot;::set-output name=$name::$semverWithPrefix&quot;)</b>
-<i class="no-highlight">114</i>&nbsp;        }
-<i class="no-highlight">115</i>&nbsp;
-<b class="nc"><i class="no-highlight">116</i>&nbsp;        if (githubEnv.orNull == true) {</b>
-<b class="nc"><i class="no-highlight">117</i>&nbsp;            semverMessage(&quot;\nSetting $semverWithPrefix as `$name` environment variable:&quot;)</b>
-<b class="nc"><i class="no-highlight">118</i>&nbsp;            execOperations.exec {</b>
-<b class="nc"><i class="no-highlight">119</i>&nbsp;                commandLine(&quot;echo&quot;, &quot;$name=$semverWithPrefix&quot;, &quot;&gt;&gt; \$GITHUB_ENV&quot;)</b>
-<i class="no-highlight">120</i>&nbsp;            }
-<i class="no-highlight">121</i>&nbsp;        }
-<i class="no-highlight">122</i>&nbsp;    }
+<i class="no-highlight">74</i>&nbsp;    @Input
+<i class="no-highlight">75</i>&nbsp;    @Option(
+<i class="no-highlight">76</i>&nbsp;        option = &quot;githubOutputTag&quot;,
+<i class="no-highlight">77</i>&nbsp;        description = &quot;Set the version as `semver-tag-subproject-name` output of the GitHub Actions&quot;
+<i class="no-highlight">78</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">79</i>&nbsp;    public val githubOutputTag: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
+<i class="no-highlight">80</i>&nbsp;
+<i class="no-highlight">81</i>&nbsp;    @Input
+<i class="no-highlight">82</i>&nbsp;    @Option(
+<i class="no-highlight">83</i>&nbsp;        option = &quot;githubOutputVersion&quot;,
+<i class="no-highlight">84</i>&nbsp;        description =
+<i class="no-highlight">85</i>&nbsp;            &quot;Set the version as `semver-version-subproject-name` output of the GitHub Actions&quot;
+<i class="no-highlight">86</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">87</i>&nbsp;    public val githubOutputVersion: Property&lt;Boolean&gt; =</b>
+<b class="nc"><i class="no-highlight">88</i>&nbsp;        objects.property&lt;Boolean&gt;().convention(false)</b>
+<i class="no-highlight">89</i>&nbsp;
+<i class="no-highlight">90</i>&nbsp;    @Input
+<i class="no-highlight">91</i>&nbsp;    @Option(
+<i class="no-highlight">92</i>&nbsp;        option = &quot;githubOutput&quot;,
+<i class="no-highlight">93</i>&nbsp;        description =
+<i class="no-highlight">94</i>&nbsp;            &quot;Set the version as `semver-subproject-name` output of the GitHub Actions `semver` step ID&quot;
+<i class="no-highlight">95</i>&nbsp;    )
+<b class="nc"><i class="no-highlight">96</i>&nbsp;    public val githubOutput: Property&lt;Boolean&gt; = objects.property&lt;Boolean&gt;().convention(false)</b>
+<i class="no-highlight">97</i>&nbsp;
+<i class="no-highlight">98</i>&nbsp;    @get:Input public abstract val tagPrefix: Property&lt;String&gt;
+<i class="no-highlight">99</i>&nbsp;
+<i class="no-highlight">100</i>&nbsp;    @get:Input public abstract val version: Property&lt;String&gt;
+<i class="no-highlight">101</i>&nbsp;
+<i class="no-highlight">102</i>&nbsp;    @TaskAction
+<i class="no-highlight">103</i>&nbsp;    public fun run() {
+<b class="nc"><i class="no-highlight">104</i>&nbsp;        val semver: String = version.get()</b>
+<b class="nc"><i class="no-highlight">105</i>&nbsp;        val prefix: String = tagPrefix.get()</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        val semverWithPrefix = &quot;$prefix$semver&quot;</b>
+<i class="no-highlight">107</i>&nbsp;
+<b class="nc"><i class="no-highlight">108</i>&nbsp;        val name: String =</b>
+<b class="nc"><i class="no-highlight">109</i>&nbsp;            if (projectName.isBlank() || projectName == &quot;:&quot;) &quot;the root project&quot; else projectName</b>
+<i class="no-highlight">110</i>&nbsp;
+<b class="nc"><i class="no-highlight">111</i>&nbsp;        semverMessage(&quot;semver for $name: $semverWithPrefix&quot;)</b>
+<i class="no-highlight">112</i>&nbsp;
+<b class="nc"><i class="no-highlight">113</i>&nbsp;        val onlyRoot: Boolean = githubOnlyRoot.orNull ?: false</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;        val allProjects: Boolean = !onlyRoot</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;        when {</b>
+<b class="nc"><i class="no-highlight">116</i>&nbsp;            onlyRoot &amp;&amp; isRootProject -&gt; configureGitHub(prefix, semver, semverWithPrefix)</b>
+<b class="nc"><i class="no-highlight">117</i>&nbsp;            allProjects -&gt; configureGitHub(prefix, semver, semverWithPrefix)</b>
+<i class="no-highlight">118</i>&nbsp;        }
+<i class="no-highlight">119</i>&nbsp;    }
+<i class="no-highlight">120</i>&nbsp;
+<i class="no-highlight">121</i>&nbsp;    private fun configureGitHub(tagPrefix: String, semver: String, semverWithPrefix: String) {
+<b class="nc"><i class="no-highlight">122</i>&nbsp;        val tagName = if (isRootProject) &quot;semver-tag&quot; else &quot;semver-tag-$projectName&quot;</b>
 <i class="no-highlight">123</i>&nbsp;
-<i class="no-highlight">124</i>&nbsp;    internal companion object {
-<i class="no-highlight">125</i>&nbsp;        const val taskName: String = &quot;printSemver&quot;
-<i class="no-highlight">126</i>&nbsp;
-<i class="no-highlight">127</i>&nbsp;        fun register(project: Project): TaskProvider&lt;PrintSemverTask&gt; {
-<b class="nc"><i class="no-highlight">128</i>&nbsp;            val printSemverTask: TaskProvider&lt;PrintSemverTask&gt; =</b>
-<b class="nc"><i class="no-highlight">129</i>&nbsp;                project.tasks.register(taskName, project.isRootProject, project.name)</b>
-<i class="no-highlight">130</i>&nbsp;
-<b class="nc"><i class="no-highlight">131</i>&nbsp;            printSemverTask.configure {</b>
-<b class="nc"><i class="no-highlight">132</i>&nbsp;                tagPrefix.set(project.semverExtension.tagPrefix)</b>
-<b class="nc"><i class="no-highlight">133</i>&nbsp;                version.set(project.version.toString())</b>
-<i class="no-highlight">134</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">124</i>&nbsp;        if (githubOutputTag.orNull == true) {</b>
+<b class="nc"><i class="no-highlight">125</i>&nbsp;            semverMessage(&quot;\nSetting $tagPrefix as `$tagName` output:&quot;)</b>
+<b class="nc"><i class="no-highlight">126</i>&nbsp;            println(&quot;::set-output name=$tagName::$tagPrefix&quot;)</b>
+<i class="no-highlight">127</i>&nbsp;        }
+<i class="no-highlight">128</i>&nbsp;
+<b class="nc"><i class="no-highlight">129</i>&nbsp;        if (githubEnvTag.orNull == true) {</b>
+<b class="nc"><i class="no-highlight">130</i>&nbsp;            semverMessage(&quot;\nSetting $tagPrefix as `$tagName` environment variable:&quot;)</b>
+<b class="nc"><i class="no-highlight">131</i>&nbsp;            execOperations.exec { commandLine(&quot;echo&quot;, &quot;$tagName=$tagPrefix&quot;, &quot;&gt;&gt; \$GITHUB_ENV&quot;) }</b>
+<i class="no-highlight">132</i>&nbsp;        }
+<i class="no-highlight">133</i>&nbsp;
+<b class="nc"><i class="no-highlight">134</i>&nbsp;        val versionName = if (isRootProject) &quot;semver-version&quot; else &quot;semver-version-$projectName&quot;</b>
 <i class="no-highlight">135</i>&nbsp;
-<b class="nc"><i class="no-highlight">136</i>&nbsp;            project.tasks.namedLazily&lt;CreateSemverTagTask&gt;(CreateSemverTagTask.taskName) {</b>
-<b class="nc"><i class="no-highlight">137</i>&nbsp;                dependsOn(printSemverTask)</b>
-<i class="no-highlight">138</i>&nbsp;            }
-<b class="nc"><i class="no-highlight">139</i>&nbsp;            project.tasks.maybeRegisterLazily&lt;Task&gt;(ASSEMBLE_TASK_NAME) {</b>
-<b class="nc"><i class="no-highlight">140</i>&nbsp;                dependsOn(printSemverTask)</b>
-<i class="no-highlight">141</i>&nbsp;            }
-<b class="nc"><i class="no-highlight">142</i>&nbsp;            project.tasks.maybeRegisterLazily&lt;Task&gt;(BUILD_TASK_NAME) { dependsOn(printSemverTask) }</b>
-<b class="nc"><i class="no-highlight">143</i>&nbsp;            project.tasks.maybeRegisterLazily&lt;Task&gt;(CHECK_TASK_NAME) { dependsOn(printSemverTask) }</b>
-<b class="nc"><i class="no-highlight">144</i>&nbsp;            project.tasks.withType&lt;Jar&gt;().configureEach { dependsOn(printSemverTask) }</b>
-<b class="nc"><i class="no-highlight">145</i>&nbsp;            project.tasks.withType&lt;Test&gt;().configureEach { dependsOn(printSemverTask) }</b>
-<i class="no-highlight">146</i>&nbsp;
-<b class="nc"><i class="no-highlight">147</i>&nbsp;            return printSemverTask</b>
-<i class="no-highlight">148</i>&nbsp;        }
-<i class="no-highlight">149</i>&nbsp;    }
-<i class="no-highlight">150</i>&nbsp;}
+<b class="nc"><i class="no-highlight">136</i>&nbsp;        if (githubOutputVersion.orNull == true) {</b>
+<b class="nc"><i class="no-highlight">137</i>&nbsp;            semverMessage(&quot;\nSetting $semver as `$versionName` output:&quot;)</b>
+<b class="nc"><i class="no-highlight">138</i>&nbsp;            println(&quot;::set-output name=$versionName::$semver&quot;)</b>
+<i class="no-highlight">139</i>&nbsp;        }
+<i class="no-highlight">140</i>&nbsp;
+<b class="nc"><i class="no-highlight">141</i>&nbsp;        if (githubEnvVersion.orNull == true) {</b>
+<b class="nc"><i class="no-highlight">142</i>&nbsp;            semverMessage(&quot;\nSetting $semver as `$versionName` environment variable:&quot;)</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;            execOperations.exec {</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;                commandLine(&quot;bash&quot;, &quot;echo&quot;, &quot;$versionName=$semver&quot;, &quot;&gt;&gt; \$GITHUB_ENV&quot;)</b>
+<i class="no-highlight">145</i>&nbsp;            }
+<i class="no-highlight">146</i>&nbsp;        }
+<i class="no-highlight">147</i>&nbsp;
+<b class="nc"><i class="no-highlight">148</i>&nbsp;        val name = if (isRootProject) &quot;semver&quot; else &quot;semver-$projectName&quot;</b>
+<i class="no-highlight">149</i>&nbsp;
+<b class="nc"><i class="no-highlight">150</i>&nbsp;        if (githubOutput.orNull == true) {</b>
+<b class="nc"><i class="no-highlight">151</i>&nbsp;            semverMessage(&quot;\nSetting $semverWithPrefix as `$name` output:&quot;)</b>
+<b class="nc"><i class="no-highlight">152</i>&nbsp;            println(&quot;::set-output name=$name::$semverWithPrefix&quot;)</b>
+<i class="no-highlight">153</i>&nbsp;        }
+<i class="no-highlight">154</i>&nbsp;
+<b class="nc"><i class="no-highlight">155</i>&nbsp;        if (githubEnv.orNull == true) {</b>
+<b class="nc"><i class="no-highlight">156</i>&nbsp;            semverMessage(&quot;\nSetting $semverWithPrefix as `$name` environment variable:&quot;)</b>
+<b class="nc"><i class="no-highlight">157</i>&nbsp;            execOperations.exec {</b>
+<b class="nc"><i class="no-highlight">158</i>&nbsp;                commandLine(&quot;echo&quot;, &quot;$name=$semverWithPrefix&quot;, &quot;&gt;&gt; \$GITHUB_ENV&quot;)</b>
+<i class="no-highlight">159</i>&nbsp;            }
+<i class="no-highlight">160</i>&nbsp;        }
+<i class="no-highlight">161</i>&nbsp;    }
+<i class="no-highlight">162</i>&nbsp;
+<i class="no-highlight">163</i>&nbsp;    internal companion object {
+<i class="no-highlight">164</i>&nbsp;        const val taskName: String = &quot;printSemver&quot;
+<i class="no-highlight">165</i>&nbsp;
+<i class="no-highlight">166</i>&nbsp;        fun register(project: Project): TaskProvider&lt;PrintSemverTask&gt; {
+<b class="nc"><i class="no-highlight">167</i>&nbsp;            val printSemverTask: TaskProvider&lt;PrintSemverTask&gt; =</b>
+<b class="nc"><i class="no-highlight">168</i>&nbsp;                project.tasks.register(taskName, project.isRootProject, project.name)</b>
+<i class="no-highlight">169</i>&nbsp;
+<b class="nc"><i class="no-highlight">170</i>&nbsp;            printSemverTask.configure {</b>
+<b class="nc"><i class="no-highlight">171</i>&nbsp;                dependsOn(WriteSemverTask.taskName)</b>
+<b class="nc"><i class="no-highlight">172</i>&nbsp;                tagPrefix.set(project.semverExtension.tagPrefix)</b>
+<b class="nc"><i class="no-highlight">173</i>&nbsp;                version.set(project.version.toString())</b>
+<i class="no-highlight">174</i>&nbsp;            }
+<i class="no-highlight">175</i>&nbsp;
+<b class="nc"><i class="no-highlight">176</i>&nbsp;            project.tasks.namedLazily&lt;CreateSemverTagTask&gt;(CreateSemverTagTask.taskName) {</b>
+<b class="nc"><i class="no-highlight">177</i>&nbsp;                dependsOn(printSemverTask)</b>
+<i class="no-highlight">178</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">179</i>&nbsp;            project.tasks.maybeRegisterLazily&lt;Task&gt;(ASSEMBLE_TASK_NAME) {</b>
+<b class="nc"><i class="no-highlight">180</i>&nbsp;                dependsOn(printSemverTask)</b>
+<i class="no-highlight">181</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">182</i>&nbsp;            project.tasks.maybeRegisterLazily&lt;Task&gt;(BUILD_TASK_NAME) { dependsOn(printSemverTask) }</b>
+<b class="nc"><i class="no-highlight">183</i>&nbsp;            project.tasks.maybeRegisterLazily&lt;Task&gt;(CHECK_TASK_NAME) { dependsOn(printSemverTask) }</b>
+<b class="nc"><i class="no-highlight">184</i>&nbsp;            project.tasks.withType&lt;Jar&gt;().configureEach { dependsOn(printSemverTask) }</b>
+<b class="nc"><i class="no-highlight">185</i>&nbsp;            project.tasks.withType&lt;Test&gt;().configureEach { dependsOn(printSemverTask) }</b>
+<i class="no-highlight">186</i>&nbsp;
+<b class="nc"><i class="no-highlight">187</i>&nbsp;            return printSemverTask</b>
+<i class="no-highlight">188</i>&nbsp;        }
+<i class="no-highlight">189</i>&nbsp;    }
+<i class="no-highlight">190</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -632,7 +728,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-07-09 15:20</div>
+    <div style="float:right;">generated on 2022-07-09 19:53</div>
 </div>
 </body>
 </html>

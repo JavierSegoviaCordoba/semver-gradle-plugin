@@ -83,13 +83,13 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 789
+                  "startLine": 589
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
+            "text": "The function version tags sorted by semver is too long (85). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -104,13 +104,13 @@
                 },
                 "region": {
                   "startColumn": 9,
-                  "startLine": 589
+                  "startLine": 789
                 }
               }
             }
           ],
           "message": {
-            "text": "The function version tags sorted by semver is too long (85). The maximum length is 60."
+            "text": "The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },

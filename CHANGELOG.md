@@ -12,6 +12,12 @@
 
 ### Fixed
 
+### Updated
+
+## [0.3.0-alpha.3] - 2022-07-10
+
+### Fixed
+
 - each `githubEnv*` property in `PrintSemverTask`
 
 ### Updated

@@ -4,6 +4,13 @@
     "Code Inspection": 18
   },
   "attributes": {
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "https://github.com/JavierSegoviaCordoba/semver-gradle-plugin",
+        "revisionId": "d52b3422f87cd659dfed6f5e473139b941b1714c",
+        "branch": "main"
+      }
+    },
     "deviceId": "200820300000000-3932-f0c5-1d0e-714296d476a3"
   }
 }

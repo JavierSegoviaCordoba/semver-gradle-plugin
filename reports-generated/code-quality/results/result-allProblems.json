@@ -115,6 +115,34 @@
   "category": "JVM languages",
   "type": "Unstable API Usage",
   "severity": "High",
+  "comment": "'org.gradle.api.provider.ValueSource' is marked unstable with @Incubating",
+  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
+      "language": "kotlin",
+      "line": 27,
+      "offset": 44,
+      "length": 11,
+      "code": {
+        "startLine": 25,
+        "length": 11,
+        "offset": 76,
+        "surroundingCode": "import org.gradle.kotlin.dsl.of\n\npublic abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {\n\n    private val cache ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "UnstableApiUsage"
+  },
+  "hash": "0d1bcc32b439f0069c877ab69450a81835960cc65ea4ad7da3c293611b72061d"
+},{
+  "tool": "Code Inspection",
+  "category": "JVM languages",
+  "type": "Unstable API Usage",
+  "severity": "High",
   "comment": "'of(org.gradle.api.provider.ProviderFactory, kotlin.reflect.KClass>, org.gradle.api.Action>)' is marked unstable with @Incubating",
   "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
   "sources": [
@@ -418,34 +446,6 @@
     "inspectionName": "UnstableApiUsage"
   },
   "hash": "04a4998206d02ede8aa7fefde695bca75428faee5ae67a35bf0881702d56b589"
-},{
-  "tool": "Code Inspection",
-  "category": "JVM languages",
-  "type": "Unstable API Usage",
-  "severity": "High",
-  "comment": "'org.gradle.api.provider.ValueSource' is marked unstable with @Incubating",
-  "detailsInfo": "Reports usages of an API marked with one of the annotations as unstable. Such an API may be changed or removed in future versions, breaking the code that uses it.\n\nThe annotations which are used to mark unstable APIs are shown in the list below.\n\nBy default, the inspection ignores usages of unstable APIs\nif their declarations are located in sources of the same project. In such cases it'll be possible to update the usages when you change APIs.\nHowever, it may be inconvenient if the project is big, so one can switch off the **Ignore API declared in this project** option to report\nthe usages of unstable APIs declared in both the project sources and libraries.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource.kt",
-      "language": "kotlin",
-      "line": 27,
-      "offset": 44,
-      "length": 11,
-      "code": {
-        "startLine": 25,
-        "length": 11,
-        "offset": 76,
-        "surroundingCode": "import org.gradle.kotlin.dsl.of\n\npublic abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {\n\n    private val cache ="
-      }
-    }
-  ],
-  "attributes": {
-    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
-    "inspectionName": "UnstableApiUsage"
-  },
-  "hash": "0d1bcc32b439f0069c877ab69450a81835960cc65ea4ad7da3c293611b72061d"
 },{
   "tool": "Code Inspection",
   "category": "JVM languages",

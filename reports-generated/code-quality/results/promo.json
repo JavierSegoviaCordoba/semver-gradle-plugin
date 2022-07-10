@@ -1,1 +1,393 @@
-{"version":"3","listProblem":[]}
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'lastVersionTagInCurrentBranch' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 116,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 114,
+        "length": 8,
+        "offset": 11,
+        "surroundingCode": "    }\n\n    internal fun lastVersionTagInCurrentBranch(tagPrefix: String): GitRef.Tag? =\n        versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(tagPrefix).lastOrNull()\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "57ac19f42e3ac758f26898c2293d6724914a021b63caca833a0ffd0fd28cc34e"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'tagsInCurrentBranch' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 64,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 62,
+        "length": 8,
+        "offset": 99,
+        "surroundingCode": "        get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }\n\n    internal val tagsInCurrentBranch: List<GitRef.Tag>\n        get() =\n            tagsInCurrentBranchRef.map { ref ->"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "e311093c1303184ea9bcfe5d96115ab5f78f73cd0de979d0954a21b55ea3466e"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'commitsInCurrentBranchRevCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 30,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 28,
+        "length": 8,
+        "offset": 15,
+        "surroundingCode": "        )\n\n    internal val commitsInCurrentBranchRevCommit: List<RevCommit> = git.log().call().toList()\n\n    internal val commitsInCurrentBranch: List<GitRef.Commit> ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "e7b3a761b6b9c5c0058fda9541e8414b97fd43b739bb4e2dbe61588ae0056cd0"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'headRevCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 18,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 16,
+        "length": 8,
+        "offset": 49,
+        "surroundingCode": "        get() = git.status().call().isClean\n\n    internal val headRevCommit: RevCommit =\n        RevWalk(git.repository).parseCommit(git.repository.resolve(Constants.HEAD))\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "ca1e2cb1218704bd8ea8eb85fadfd2d72ac6c1020d68958d1bc303eaf76a29b5"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'tagsInCurrentBranchRef' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 61,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 59,
+        "length": 8,
+        "offset": 70,
+        "surroundingCode": "    internal val tagsInRepoRef: List<Ref> = git.tagList().call()\n\n    internal val tagsInCurrentBranchRef: List<Ref>\n        get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "0446b42a833de205553931198c3f39e073fba67cc6a0c251c8fab2afcf8a2fc0"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'tagsInRepoRef' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 59,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 57,
+        "length": 8,
+        "offset": 55,
+        "surroundingCode": "        get() = name.substringAfter(\"refs/tags/\")\n\n    internal val tagsInRepoRef: List<Ref> = git.tagList().call()\n\n    internal val tagsInCurrentBranchRef: List<Ref>"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "9069fbe2bd6b81034e30ab93c9fa506c05dea6f24c09048c989e2118473366c1"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'tagName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 56,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 54,
+        "length": 8,
+        "offset": 62,
+        "surroundingCode": "        lastVersionTagInCurrentBranch(tagPrefix)?.commit\n\n    internal val Ref.tagName: String\n        get() = name.substringAfter(\"refs/tags/\")\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "1ac7a70e92177cd4766b6af96b252f382e79d5b4afe131d91068dddda8da90cd"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'versionTagsInCurrentCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 83,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 81,
+        "length": 8,
+        "offset": 67,
+        "surroundingCode": "        tagsInCurrentBranch.filter { it.commit.hash == hash }\n\n    internal fun versionTagsInCurrentCommit(hash: String, tagPrefix: String): List<GitRef.Tag> =\n        tagsInCurrentCommit(hash).filter { tag ->\n            tag.name.startsWith(tagPrefix) &&"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "3a08d224c1df21680d4586b9ea83205ab3783c726b8db744a4ffc0e378538a0a"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'commitHash' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 50,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 48,
+        "length": 8,
+        "offset": 78,
+        "surroundingCode": "    internal fun commitHash(ref: Ref): String = commitHash(ref.objectId)\n\n    internal fun commitHash(objectId: ObjectId): String =\n        git.repository.parseCommit(objectId).toObjectId().name\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "fd401fdcf8b45a2a649bf439f31839346d1a673a649cae7ab50366d062fa12e8"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'commitsInCurrentBranchHash' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 45,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 43,
+        "length": 8,
+        "offset": 103,
+        "surroundingCode": "    internal val lastCommitInCurrentBranch: GitRef.Commit? = commitsInCurrentBranch.firstOrNull()\n\n    internal val commitsInCurrentBranchHash: List<String> =\n        commitsInCurrentBranchRevCommit.map(RevCommit::getName)\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "f6f79e8c650762120e19f53556de3e0c4b55847c279eab8fd09b1e227e674e47"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'versionTagsInCurrentBranchSortedByTimelineOrSemverOrder' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 105,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 103,
+        "length": 8,
+        "offset": 15,
+        "surroundingCode": "        }\n\n    internal fun versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(\n        tagPrefix: String\n    ): List<GitRef.Tag> {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "98b1d8b3bb9057022dc6d5e68e7a5c33b477467b09cd473fc228be8dcdf28f8a"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'versionTagsSortedBySemver' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 100,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 98,
+        "length": 8,
+        "offset": 15,
+        "surroundingCode": "        }\n\n    internal fun versionTagsSortedBySemver(tagPrefix: String): List<GitRef.Tag> =\n        versionTagsInCurrentBranch(tagPrefix).sortedBy { tag ->\n            Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "5d8cde7eb289abc11e05e0f689012be8b63948b69b9efa868cc9defbc516f281"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'tagsInCurrentCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 80,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 78,
+        "length": 8,
+        "offset": 19,
+        "surroundingCode": "            }\n\n    internal fun tagsInCurrentCommit(hash: String): List<GitRef.Tag> =\n        tagsInCurrentBranch.filter { it.commit.hash == hash }\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "a1f74b28d924d64af5dd4fc124fd36fc7eab46e557486fd9f1ee50efe9115564"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Function 'commitHash' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 48,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 46,
+        "length": 8,
+        "offset": 69,
+        "surroundingCode": "        commitsInCurrentBranchRevCommit.map(RevCommit::getName)\n\n    internal fun commitHash(ref: Ref): String = commitHash(ref.objectId)\n\n    internal fun commitHash(objectId: ObjectId): String ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "5a3e8ea307106246b41ca5fdfe37ac4d05c401f7f311d47a54f881387ffccfdd"
+}]}

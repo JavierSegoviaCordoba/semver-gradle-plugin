@@ -144,7 +144,7 @@
         "startLine": 1,
         "length": 4,
         "offset": 51,
-        "surroundingCode": "buildscript {\n    dependencies {\n        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)\n    }\n}"
+        "surroundingCode": "buildscript {\n    dependencies {\n        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)\n        classpath(\"com.javiersc.semver:semver-gradle-plugin:0.3.0-alpha.4\")\n    }"
       }
     }
   ],
@@ -152,7 +152,7 @@
     "module": "semver-gradle-plugin-project",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "ba347d158dc5d7362adae8b32cf0511c3a2dc483115858a1a2518cf3d569a1ed"
+  "hash": "8f8cae02a4052d4a2c588d48ec665922a868209b90c8eb33a1eb49bc73b10dda"
 },{
   "tool": "Code Inspection",
   "category": "General",
@@ -175,7 +175,7 @@
         "startLine": 1,
         "length": 9,
         "offset": 56,
-        "surroundingCode": "buildscript {\n    dependencies {\n        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)\n    }\n}"
+        "surroundingCode": "buildscript {\n    dependencies {\n        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)\n        classpath(\"com.javiersc.semver:semver-gradle-plugin:0.3.0-alpha.4\")\n    }"
       }
     }
   ],
@@ -183,7 +183,7 @@
     "module": "semver-gradle-plugin-project",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "36fedb34abe6a3b8326abd13d0f6dbfabec7b4dd839e887f207f2f6b06def263"
+  "hash": "ae38f31b1caeeb9b8652938eb0f42e6b39e2d31eabc270e224f51a0491a787cb"
 },{
   "tool": "Code Inspection",
   "category": "General",
@@ -199,11 +199,11 @@
       "type": "file",
       "path": "build.gradle.kts",
       "language": "kotlin",
-      "line": 9,
+      "line": 10,
       "offset": 11,
       "length": 4,
       "code": {
-        "startLine": 7,
+        "startLine": 8,
         "length": 4,
         "offset": 21,
         "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
@@ -214,7 +214,7 @@
     "module": "semver-gradle-plugin-project",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "6b296481d4438b55c0ae01320c681562f007173fb80cf91d1210c6bb92c0aaec"
+  "hash": "43618e0cb193918caab41198fc4b5014eca06ea9538890c7592331bf8667f093"
 },{
   "tool": "Code Inspection",
   "category": "General",
@@ -230,11 +230,11 @@
       "type": "file",
       "path": "build.gradle.kts",
       "language": "kotlin",
-      "line": 9,
+      "line": 10,
       "offset": 11,
       "length": 4,
       "code": {
-        "startLine": 7,
+        "startLine": 8,
         "length": 4,
         "offset": 21,
         "surroundingCode": "\nplugins {\n    alias(libs.plugins.javiersc.hubdle)\n}\n"
@@ -245,5 +245,5 @@
     "module": "semver-gradle-plugin-project",
     "inspectionName": "KotlinAnnotator"
   },
-  "hash": "d385714f74ced7278aa5e4ede1d261d60f5a91d09bef428b6654dd868f22acab"
+  "hash": "247dc43867d1436614241d8ba0f2d5b9d2bf346a5084b3507197e64abd00f1f1"
 }]}

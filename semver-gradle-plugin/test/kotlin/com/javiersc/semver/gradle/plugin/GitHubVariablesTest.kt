@@ -45,8 +45,8 @@ class GitHubVariablesTest : GradleTest() {
 
             githubEnvFile
                 .readText()
-                .shouldContain("SEMVER-TAG=v")
-                .shouldContain("SEMVER-VERSION=0.9.1")
+                .shouldContain("SEMVER_TAG=v")
+                .shouldContain("SEMVER_VERSION=0.9.1")
                 .shouldContain("SEMVER=v0.9.1")
 
             gradlew(
@@ -76,9 +76,9 @@ class GitHubVariablesTest : GradleTest() {
 
             githubEnvFile
                 .readText()
-                .shouldContain("SEMVER-TAG-LIBRARY=w")
-                .shouldContain("SEMVER-VERSION-LIBRARY=0.1.1")
-                .shouldContain("SEMVER-LIBRARY=w0.1.1")
+                .shouldContain("SEMVER_TAG_LIBRARY=w")
+                .shouldContain("SEMVER_VERSION_LIBRARY=0.1.1")
+                .shouldContain("SEMVER_LIBRARY=w0.1.1")
         }
     }
 }

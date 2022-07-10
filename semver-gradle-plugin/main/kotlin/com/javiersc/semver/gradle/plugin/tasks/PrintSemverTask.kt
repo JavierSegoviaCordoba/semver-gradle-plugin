@@ -148,6 +148,7 @@ constructor(
         map { char -> if (char.isUpperCase()) "_$char" else char.uppercaseChar() }
             .joinToString("")
             .replace(".", "_")
+            .replace("-", "_")
 
     internal companion object {
         const val taskName: String = "printSemver"

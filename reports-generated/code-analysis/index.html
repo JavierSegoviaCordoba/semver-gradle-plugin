@@ -157,8 +157,8 @@
 
 <div>
   <ul>
-    <li>176 number of properties</li>
-    <li>150 number of functions</li>
+    <li>181 number of properties</li>
+    <li>151 number of functions</li>
     <li>49 number of classes</li>
     <li>10 number of packages</li>
     <li>36 number of kt files</li>
@@ -170,13 +170,13 @@
 
 <div>
   <ul>
-    <li>4,102 lines of code (loc)</li>
-    <li>3,420 source lines of code (sloc)</li>
-    <li>2,639 logical lines of code (lloc)</li>
+    <li>4,136 lines of code (loc)</li>
+    <li>3,448 source lines of code (sloc)</li>
+    <li>2,666 logical lines of code (lloc)</li>
     <li>27 comment lines of code (cloc)</li>
-    <li>275 cyclomatic complexity (mcc)</li>
-    <li>77 cognitive complexity</li>
-    <li>22 number of total code smells</li>
+    <li>278 cyclomatic complexity (mcc)</li>
+    <li>79 cognitive complexity</li>
+    <li>23 number of total code smells</li>
     <li>0% comment source ratio</li>
     <li>104 mcc per 1,000 lloc</li>
     <li>8 code smells per 1,000 lloc</li>
@@ -185,8 +185,8 @@
 
 
 <h2>Findings</h2>
-<div>Total: 22
-  <h3>complexity: 13</h3>
+<div>Total: 23
+  <h3>complexity: 14</h3>
   <details id="LargeClass" open="open">
     <summary class="rule-container"><span class="rule">LargeClass: 1 </span><span class="description">One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand.</span></summary>
     <ul>
@@ -203,7 +203,7 @@
     </ul>
   </details>
   <details id="LongMethod" open="open">
-    <summary class="rule-container"><span class="rule">LongMethod: 8 </span><span class="description">One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.</span></summary>
+    <summary class="rule-container"><span class="rule">LongMethod: 9 </span><span class="description">One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.</span></summary>
     <ul>
       <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/CalculatedVersion.kt:8:14</span><span class="message">The function calculatedVersion is too long (83). The maximum length is 60.</span>
         <pre><code><span class="lineno">   5 </span>import com.javiersc.semver.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
@@ -213,6 +213,16 @@
 <span class="lineno">   9 </span>    stageProperty: String?,
 <span class="lineno">  10 </span>    scopeProperty: String?,
 <span class="lineno">  11 </span>    isCreatingSemverTag: Boolean,
+</code></pre>
+      </li>
+      <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GitHubVariablesTest.kt:13:9</span><span class="message">The function GitHub variables is too long (65). The maximum length is 60.</span>
+        <pre><code><span class="lineno">  10 </span>class GitHubVariablesTest : GradleTest() {
+<span class="lineno">  11 </span>
+<span class="lineno">  12 </span>    @Test
+<span class="lineno">  13 </span>    fun <span class="error">`GitHub variables`</span>() {
+<span class="lineno">  14 </span>        gradleTestKitTest(&quot;github-variables&quot;) {
+<span class="lineno">  15 </span>            val githubEnvPath = projectDir.resolve(&quot;environment/github.env&quot;).path
+<span class="lineno">  16 </span>            val githubEnvFile =
 </code></pre>
       </li>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt:14:9</span><span class="message">The function massive tags in same commit is too long (67). The maximum length is 60.</span>
@@ -455,7 +465,7 @@
 </div>
 
 
-generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-07-10 11:15:44 UTC.
+generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-07-10 14:10:01 UTC.
 
 </body>
 </html>

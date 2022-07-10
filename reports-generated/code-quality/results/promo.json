@@ -1,1 +1,29 @@
-{"version":"3","listProblem":[]}
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'taskName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask.kt",
+      "language": "kotlin",
+      "line": 154,
+      "offset": 19,
+      "length": 8,
+      "code": {
+        "startLine": 152,
+        "length": 8,
+        "offset": 51,
+        "surroundingCode": "\n    internal companion object {\n        const val taskName: String = \"printSemver\"\n\n        fun register(project: Project): TaskProvider<PrintSemverTask> {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "9529dee11f19aa95b540a1524949bcde208517c67c1739a83db45a9dda194fef"
+}]}

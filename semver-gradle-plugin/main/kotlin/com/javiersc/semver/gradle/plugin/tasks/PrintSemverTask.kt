@@ -5,6 +5,7 @@ import com.javiersc.gradle.tasks.extensions.maybeRegisterLazily
 import com.javiersc.gradle.tasks.extensions.namedLazily
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.semverExtension
+import java.io.File
 import javax.inject.Inject
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
@@ -24,7 +25,6 @@ import org.gradle.kotlin.dsl.withType
 import org.gradle.language.base.plugins.LifecycleBasePlugin.ASSEMBLE_TASK_NAME
 import org.gradle.language.base.plugins.LifecycleBasePlugin.BUILD_TASK_NAME
 import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
-import org.gradle.process.ExecOperations
 
 @UntrackedTask(because = "It must always print the version")
 public abstract class PrintSemverTask
@@ -33,7 +33,6 @@ constructor(
     private val isRootProject: Boolean,
     private val projectName: String,
     objects: ObjectFactory,
-    private val execOperations: ExecOperations,
 ) : DefaultTask() {
 
     init {
@@ -121,15 +120,15 @@ constructor(
     private fun configureGitHub(tagPrefix: String, semver: String, semverWithPrefix: String) {
         val tagName = if (isRootProject) "semver-tag" else "semver-tag-$projectName"
         if (githubOutputTag.orNull == true) executeGitHubOutput(tagName, tagPrefix)
-        if (githubEnvTag.orNull == true) executeGitHubEcho(tagName, tagPrefix)
+        if (githubEnvTag.orNull == true) executeGitHubEnvironmentVariable(tagName, tagPrefix)
 
         val versionName = if (isRootProject) "semver-version" else "semver-version-$projectName"
         if (githubOutputVersion.orNull == true) executeGitHubOutput(versionName, semver)
-        if (githubEnvVersion.orNull == true) executeGitHubEcho(versionName, semver)
+        if (githubEnvVersion.orNull == true) executeGitHubEnvironmentVariable(versionName, semver)
 
         val name = if (isRootProject) "semver" else "semver-$projectName"
         if (githubOutput.orNull == true) executeGitHubOutput(name, semverWithPrefix)
-        if (githubEnv.orNull == true) executeGitHubEcho(name, semverWithPrefix)
+        if (githubEnv.orNull == true) executeGitHubEnvironmentVariable(name, semverWithPrefix)
     }
 
     private fun executeGitHubOutput(key: String, value: String) {
@@ -137,10 +136,18 @@ constructor(
         println("::set-output name=$key::$value")
     }
 
-    private fun executeGitHubEcho(key: String, value: String) {
-        semverMessage("\nSetting $value as `$key` environment variable:")
-        execOperations.exec { commandLine("echo", "$key=$value", ">> \$GITHUB_ENV") }
+    private fun executeGitHubEnvironmentVariable(key: String, value: String) {
+        val snakeCaseKey = key.toSnakeCase()
+        semverMessage("\nSetting $value as `$snakeCaseKey` environment variable:")
+        val githubEnvFile = File(System.getenv("GITHUB_ENV"))
+        val currentText = githubEnvFile.readText()
+        githubEnvFile.writeText("$currentText\n$snakeCaseKey=$value")
     }
+
+    private fun String.toSnakeCase(): String =
+        map { char -> if (char.isUpperCase()) "_$char" else char.uppercaseChar() }
+            .joinToString("")
+            .replace(".", "_")
 
     internal companion object {
         const val taskName: String = "printSemver"

@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- each `githubEnv*` property in `PrintSemverTask`
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.2.0-alpha.19`

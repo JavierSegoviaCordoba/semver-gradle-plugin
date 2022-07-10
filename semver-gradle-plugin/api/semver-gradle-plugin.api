@@ -31,7 +31,7 @@ public final class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask$C
 
 public abstract class com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask : org/gradle/api/DefaultTask {
 	public static final field taskName Ljava/lang/String;
-	public fun <init> (ZLjava/lang/String;Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/process/ExecOperations;)V
+	public fun <init> (ZLjava/lang/String;Lorg/gradle/api/model/ObjectFactory;)V
 	public final fun getGithubEnv ()Lorg/gradle/api/provider/Property;
 	public final fun getGithubEnvTag ()Lorg/gradle/api/provider/Property;
 	public final fun getGithubEnvVersion ()Lorg/gradle/api/provider/Property;

@@ -12,9 +12,13 @@
 
 ### Fixed
 
-- `githubEnv*` properties are not `SNAKE_CASE` in `PrintSemverTask`
-
 ### Updated
+
+## [0.3.0-alpha.4] - 2022-07-10
+
+### Fixed
+
+- `githubEnv*` properties are not `SNAKE_CASE` in `PrintSemverTask`
 
 ## [0.3.0-alpha.3] - 2022-07-10
 

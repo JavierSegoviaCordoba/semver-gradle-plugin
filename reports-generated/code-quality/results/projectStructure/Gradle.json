@@ -26,12 +26,12 @@
       "version": "1.7.10"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.5.31",
-      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.5.31",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.6.21",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-reflect",
-      "version": "1.5.31"
+      "version": "1.6.21"
     },
     {
       "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.2.0.202206071550-r",
@@ -240,14 +240,6 @@
       "groupId": "io.kotest",
       "artifactId": "kotest-assertions-api-jvm",
       "version": "5.3.2"
-    },
-    {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
-      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.6.21",
-      "unresolved": false,
-      "groupId": "org.jetbrains.kotlin",
-      "artifactId": "kotlin-reflect",
-      "version": "1.6.21"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1",

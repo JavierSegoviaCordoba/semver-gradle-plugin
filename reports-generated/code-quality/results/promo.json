@@ -1,1 +1,29 @@
-{"version":"3","listProblem":[]}
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Info",
+  "comment": "Property 'extensionName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt",
+      "language": "kotlin",
+      "line": 18,
+      "offset": 9,
+      "length": 6,
+      "code": {
+        "startLine": 16,
+        "length": 6,
+        "offset": 39,
+        "surroundingCode": "    public companion object {\n\n        public const val extensionName: String = \"semver\"\n\n        internal fun register(project: Project): SemverExtension ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "9eeb41a0649f5c468e4b1dd363e76802509ab856bd5884bb05a12be5dba52886"
+}]}

@@ -18,12 +18,12 @@
       "version": "1.0.0-alpha.26"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib-jdk8",
-      "version": "1.6.21"
+      "version": "1.7.10"
     },
     {
       "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.5.31",
@@ -114,12 +114,12 @@
       "version": "0.1.0-beta.10"
     },
     {
-      "ideaName": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.7",
-      "gradleName": "com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.7",
+      "ideaName": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.11",
+      "gradleName": "com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.11",
       "unresolved": false,
       "groupId": "com.javiersc.kotlin",
       "artifactId": "kotlin-stdlib-jvm",
-      "version": "0.1.0-alpha.7"
+      "version": "0.1.0-alpha.11"
     },
     {
       "ideaName": "Gradle: io.kotest:kotest-assertions-core-jvm:5.3.2",
@@ -130,20 +130,20 @@
       "version": "5.3.2"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib-jdk7",
-      "version": "1.6.21"
+      "version": "1.7.10"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib:1.7.10",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib",
-      "version": "1.6.21"
+      "version": "1.7.10"
     },
     {
       "ideaName": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
@@ -186,12 +186,12 @@
       "version": "5.9.0-RC1"
     },
     {
-      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
-      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21",
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10",
       "unresolved": false,
       "groupId": "org.jetbrains.kotlin",
       "artifactId": "kotlin-stdlib-common",
-      "version": "1.6.21"
+      "version": "1.7.10"
     },
     {
       "ideaName": "Gradle: org.jetbrains:annotations:13.0",

@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="4.3">
-<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt">
-	<error line="14" column="9" severity="warning" message="The function massive tags in same commit is too long (67). The maximum length is 60." source="detekt.LongMethod" />
-</file>
-<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt">
-	<error line="494" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="789" column="9" severity="warning" message="The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="589" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="687" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="978" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="29" column="16" severity="warning" message="Class GitTagTest is too large. Consider splitting it into smaller pieces." source="detekt.LargeClass" />
-</file>
-<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt">
-	<error line="14" column="9" severity="warning" message="The function random is too long (63). The maximum length is 60." source="detekt.LongMethod" />
-</file>
-<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GitHubVariablesTest.kt">
-	<error line="13" column="9" severity="warning" message="The function GitHub variables is too long (65). The maximum length is 60." source="detekt.LongMethod" />
-</file>
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt">
 	<error line="13" column="16" severity="warning" message="Class &apos;GitCache&apos; with &apos;12&apos; functions detected. Defined threshold inside classes is set to &apos;11&apos;" source="detekt.TooManyFunctions" />
 </file>
@@ -28,23 +11,40 @@
 	<error line="114" column="44" severity="warning" message="The function calculateAdditionalVersionData(clean: Boolean, checkClean: Boolean, lastCommitInCurrentBranch: String?, commitsInCurrentBranch: List&lt;String&gt;, isThereVersionTags: Boolean, headCommit: String, lastVersionCommitInCurrentBranch: String?) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
 	<error line="8" column="14" severity="warning" message="The function calculatedVersion is too long (83). The maximum length is 60." source="detekt.LongMethod" />
 </file>
+<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/TagsOrderTest.kt">
+	<error line="14" column="9" severity="warning" message="The function random is too long (63). The maximum length is 60." source="detekt.LongMethod" />
+</file>
+<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/MassiveTagsInSameCommitTest.kt">
+	<error line="14" column="9" severity="warning" message="The function massive tags in same commit is too long (67). The maximum length is 60." source="detekt.LongMethod" />
+</file>
+<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GitHubVariablesTest.kt">
+	<error line="13" column="9" severity="warning" message="The function GitHub variables is too long (65). The maximum length is 60." source="detekt.LongMethod" />
+</file>
+<file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt">
+	<error line="978" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="789" column="9" severity="warning" message="The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="687" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="589" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="494" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="29" column="16" severity="warning" message="Class GitTagTest is too large. Consider splitting it into smaller pieces." source="detekt.LargeClass" />
+</file>
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt">
 	<error line="117" column="14" severity="warning" message="The caught exception is swallowed. The original exception could be lost." source="detekt.SwallowedException" />
+</file>
+<file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/SemverProperties.kt">
+	<error line="8" column="20" severity="warning" message="Top level constant names should match the pattern: [A-Z][_A-Z0-9]*" source="detekt.TopLevelPropertyNaming" />
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GradleFeaturesTest.kt">
 	<error line="88" column="13" severity="warning" message="Variable names should match the pattern: [a-z][A-Za-z0-9]*" source="detekt.VariableNaming" />
 	<error line="103" column="13" severity="warning" message="Variable names should match the pattern: [a-z][A-Za-z0-9]*" source="detekt.VariableNaming" />
 </file>
-<file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/SemverProperties.kt">
-	<error line="8" column="20" severity="warning" message="Top level constant names should match the pattern: [A-Z][_A-Z0-9]*" source="detekt.TopLevelPropertyNaming" />
+<file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt">
+	<error line="12" column="1" severity="warning" message="An abstract class without an abstract member can be refactored to a concrete class." source="detekt.UnnecessaryAbstractClass" />
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt">
 	<error line="43" column="13" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
 	<error line="45" column="13" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
 	<error line="175" column="9" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
 	<error line="210" column="9" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
-</file>
-<file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt">
-	<error line="12" column="1" severity="warning" message="An abstract class without an abstract member can be refactored to a concrete class." source="detekt.UnnecessaryAbstractClass" />
 </file>
 </checkstyle>

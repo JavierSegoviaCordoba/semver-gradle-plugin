@@ -189,6 +189,7 @@
   <h3>complexity: 14</h3>
   <details id="LargeClass" open="open">
     <summary class="rule-container"><span class="rule">LargeClass: 1 </span><span class="description">One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#largeclass">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt:29:16</span><span class="message">Class GitTagTest is too large. Consider splitting it into smaller pieces.</span>
         <pre><code><span class="lineno">  26 </span>import kotlin.test.Test
@@ -204,6 +205,7 @@
   </details>
   <details id="LongMethod" open="open">
     <summary class="rule-container"><span class="rule">LongMethod: 9 </span><span class="description">One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#longmethod">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/CalculatedVersion.kt:8:14</span><span class="message">The function calculatedVersion is too long (83). The maximum length is 60.</span>
         <pre><code><span class="lineno">   5 </span>import com.javiersc.semver.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
@@ -299,6 +301,7 @@
   </details>
   <details id="LongParameterList" open="open">
     <summary class="rule-container"><span class="rule">LongParameterList: 2 </span><span class="description">The more parameters a function has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer functions with short parameter lists.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#longparameterlist">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/CalculatedVersion.kt:8:31</span><span class="message">The function calculatedVersion(stageProperty: String?, scopeProperty: String?, isCreatingSemverTag: Boolean, lastSemverMajorInCurrentBranch: Int, lastSemverMinorInCurrentBranch: Int, lastSemverPatchInCurrentBranch: Int, lastSemverStageInCurrentBranch: String?, lastSemverNumInCurrentBranch: Int?, versionTagsInCurrentBranch: List&lt;String&gt;, clean: Boolean, checkClean: Boolean, lastCommitInCurrentBranch: String?, commitsInCurrentBranch: List&lt;String&gt;, headCommit: String, lastVersionCommitInCurrentBranch: String?) has too many parameters. The current threshold is set to 6.</span>
         <pre><code><span class="lineno">   5 </span>import com.javiersc.semver.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
@@ -324,6 +327,7 @@
   </details>
   <details id="TooManyFunctions" open="open">
     <summary class="rule-container"><span class="rule">TooManyFunctions: 2 </span><span class="description">Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage too many things at once. Extract functionality which clearly belongs together.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#toomanyfunctions">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt:13:16</span><span class="message">Class 'GitCache' with '12' functions detected. Defined threshold inside classes is set to '11'</span>
         <pre><code><span class="lineno">  10 </span>import org.eclipse.jgit.revwalk.RevCommit
@@ -347,6 +351,7 @@
   <h3>exceptions: 1</h3>
   <details id="SwallowedException" open="open">
     <summary class="rule-container"><span class="rule">SwallowedException: 1 </span><span class="description">The caught exception is swallowed. The original exception could be lost.</span></summary>
+<a href="https://detekt.dev/docs/rules/exceptions#swallowedexception">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt:117:14</span><span class="message">The caught exception is swallowed. The original exception could be lost.</span>
         <pre><code><span class="lineno"> 114 </span>private fun Git.hasCommits(): Boolean =
@@ -363,6 +368,7 @@
   <h3>naming: 3</h3>
   <details id="TopLevelPropertyNaming" open="open">
     <summary class="rule-container"><span class="rule">TopLevelPropertyNaming: 1 </span><span class="description">Top level property names should follow the naming convention set in the projects configuration.</span></summary>
+<a href="https://detekt.dev/docs/rules/naming#toplevelpropertynaming">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/SemverProperties.kt:8:20</span><span class="message">Top level constant names should match the pattern: [A-Z][_A-Z0-9]*</span>
         <pre><code><span class="lineno">   5 </span>internal val Project.tagPrefixProperty: String
@@ -378,6 +384,7 @@
   </details>
   <details id="VariableNaming" open="open">
     <summary class="rule-container"><span class="rule">VariableNaming: 2 </span><span class="description">Variable names should follow the naming convention set in the projects configuration.</span></summary>
+<a href="https://detekt.dev/docs/rules/naming#variablenaming">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GradleFeaturesTest.kt:88:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
         <pre><code><span class="lineno">  85 </span>        build()
@@ -404,6 +411,7 @@
   <h3>style: 5</h3>
   <details id="MaxLineLength" open="open">
     <summary class="rule-container"><span class="rule">MaxLineLength: 4 </span><span class="description">Line detected, which is longer than the defined maximum line length in the code style.</span></summary>
+<a href="https://detekt.dev/docs/rules/style#maxlinelength">Documentation</a>
     <ul>
       <li><span class="location">semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt:43:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
         <pre><code><span class="lineno">  40 </span>            `4_ Run gradlew assemble`()
@@ -449,15 +457,16 @@
   </details>
   <details id="UnnecessaryAbstractClass" open="open">
     <summary class="rule-container"><span class="rule">UnnecessaryAbstractClass: 1 </span><span class="description">An abstract class is unnecessary and can be refactored. An abstract class should have both abstract and concrete properties or functions. An abstract class without a concrete member can be refactored to an interface. An abstract class without an abstract member can be refactored to a concrete class.</span></summary>
+<a href="https://detekt.dev/docs/rules/style#unnecessaryabstractclass">Documentation</a>
     <ul>
-      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt:12:1</span><span class="message">An abstract class without an abstract member can be refactored to a concrete class.</span>
+      <li><span class="location">semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt:12:23</span><span class="message">An abstract class without an abstract member can be refactored to a concrete class.</span>
         <pre><code><span class="lineno">   9 </span>import org.gradle.kotlin.dsl.getByType
 <span class="lineno">  10 </span>import org.gradle.kotlin.dsl.property
 <span class="lineno">  11 </span>
-<span class="lineno">  12 </span><span class="error">public abstract class SemverExtension @Inject constructor(objects: ObjectFactory) {</span>
-<span class="lineno">  13 </span><span class="error"></span>
-<span class="lineno">  14 </span><span class="error">    public val tagPrefix: Property&lt;String&gt; = objects.property&lt;String&gt;().convention(DefaultTagPrefix)</span>
-<span class="lineno">  15 </span><span class="error"></span>
+<span class="lineno">  12 </span>public abstract class <span class="error">SemverExtension</span> @Inject constructor(objects: ObjectFactory) {
+<span class="lineno">  13 </span>
+<span class="lineno">  14 </span>    public val tagPrefix: Property&lt;String&gt; = objects.property&lt;String&gt;().convention(DefaultTagPrefix)
+<span class="lineno">  15 </span>
 </code></pre>
       </li>
     </ul>
@@ -465,7 +474,7 @@
 </div>
 
 
-generated with <a href="https://detekt.dev/">detekt version 1.20.0</a> on 2022-07-16 14:30:59 UTC.
+generated with <a href="https://detekt.dev/">detekt version 1.21.0</a> on 2022-07-17 19:37:05 UTC.
 
 </body>
 </html>

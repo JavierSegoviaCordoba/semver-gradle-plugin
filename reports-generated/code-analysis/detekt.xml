@@ -21,11 +21,11 @@
 	<error line="13" column="9" severity="warning" message="The function GitHub variables is too long (65). The maximum length is 60." source="detekt.LongMethod" />
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt">
+	<error line="494" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="589" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="687" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="978" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="789" column="9" severity="warning" message="The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="687" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
-	<error line="494" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
 	<error line="29" column="16" severity="warning" message="Class GitTagTest is too large. Consider splitting it into smaller pieces." source="detekt.LargeClass" />
 </file>
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/services/GitBuildService.kt">
@@ -39,7 +39,7 @@
 	<error line="103" column="13" severity="warning" message="Variable names should match the pattern: [a-z][A-Za-z0-9]*" source="detekt.VariableNaming" />
 </file>
 <file name="semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/SemverExtension.kt">
-	<error line="12" column="1" severity="warning" message="An abstract class without an abstract member can be refactored to a concrete class." source="detekt.UnnecessaryAbstractClass" />
+	<error line="12" column="23" severity="warning" message="An abstract class without an abstract member can be refactored to a concrete class." source="detekt.UnnecessaryAbstractClass" />
 </file>
 <file name="semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/examples/MultiProjectExampleTest.kt">
 	<error line="43" column="13" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />

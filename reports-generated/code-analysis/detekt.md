@@ -455,4 +455,4 @@ An abstract class without an abstract member can be refactored to a concrete cla
 
 ```
 
-generated with [detekt version 1.21.0](https://detekt.dev/) on 2022-07-17 19:37:06 UTC
+generated with [detekt version 1.21.0](https://detekt.dev/) on 2022-07-19 21:33:18 UTC

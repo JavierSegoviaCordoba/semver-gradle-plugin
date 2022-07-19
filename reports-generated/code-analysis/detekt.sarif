@@ -15,29 +15,6 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 24,
-                  "endLine": 13,
-                  "startColumn": 16,
-                  "startLine": 13
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "Class 'GitCache' with '12' functions detected. Defined threshold inside classes is set to '11'"
-          },
-          "ruleId": "detekt.complexity.TooManyFunctions"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
                   "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitRefGitExtensions.kt",
                   "uriBaseId": "%SRCROOT%"
                 },
@@ -52,6 +29,29 @@
           ],
           "message": {
             "text": "File '/home/runner/work/semver-gradle-plugin/semver-gradle-plugin/semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitRefGitExtensions.kt' with '11' functions detected. Defined threshold inside files is set to '11'"
+          },
+          "ruleId": "detekt.complexity.TooManyFunctions"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/main/kotlin/com/javiersc/semver/gradle/plugin/internal/git/GitCache.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 13,
+                  "startColumn": 16,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Class 'GitCache' with '12' functions detected. Defined threshold inside classes is set to '11'"
           },
           "ruleId": "detekt.complexity.TooManyFunctions"
         },
@@ -176,52 +176,6 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GitHubVariablesTest.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 27,
-                  "endLine": 13,
-                  "startColumn": 9,
-                  "startLine": 13
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The function GitHub variables is too long (65). The maximum length is 60."
-          },
-          "ruleId": "detekt.complexity.LongMethod"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 41,
-                  "endLine": 494,
-                  "startColumn": 9,
-                  "startLine": 494
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
-          },
-          "ruleId": "detekt.complexity.LongMethod"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
                   "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
                   "uriBaseId": "%SRCROOT%"
                 },
@@ -236,52 +190,6 @@
           ],
           "message": {
             "text": "The function version tags sorted by semver is too long (85). The maximum length is 60."
-          },
-          "ruleId": "detekt.complexity.LongMethod"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 54,
-                  "endLine": 687,
-                  "startColumn": 9,
-                  "startLine": 687
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60."
-          },
-          "ruleId": "detekt.complexity.LongMethod"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 45,
-                  "endLine": 978,
-                  "startColumn": 9,
-                  "startLine": 978
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "The function last version tag in current branch is too long (71). The maximum length is 60."
           },
           "ruleId": "detekt.complexity.LongMethod"
         },
@@ -318,6 +226,75 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
+                  "endColumn": 54,
+                  "endLine": 687,
+                  "startColumn": 9,
+                  "startLine": 687
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 41,
+                  "endLine": 494,
+                  "startColumn": 9,
+                  "startLine": 494
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function version tags in current branch is too long (85). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 45,
+                  "endLine": 978,
+                  "startColumn": 9,
+                  "startLine": 978
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function last version tag in current branch is too long (71). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/git/GitTagTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
                   "endColumn": 26,
                   "endLine": 29,
                   "startColumn": 16,
@@ -330,6 +307,29 @@
             "text": "Class GitTagTest is too large. Consider splitting it into smaller pieces."
           },
           "ruleId": "detekt.complexity.LargeClass"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "semver-gradle-plugin/test/kotlin/com/javiersc/semver/gradle/plugin/GitHubVariablesTest.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 27,
+                  "endLine": 13,
+                  "startColumn": 9,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The function GitHub variables is too long (65). The maximum length is 60."
+          },
+          "ruleId": "detekt.complexity.LongMethod"
         },
         {
           "level": "warning",

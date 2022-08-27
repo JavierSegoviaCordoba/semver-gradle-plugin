@@ -3,8 +3,8 @@ package com.javiersc.semver.gradle.plugin.tasks
 import com.javiersc.gradle.project.extensions.isRootProject
 import com.javiersc.gradle.tasks.extensions.maybeRegisterLazily
 import com.javiersc.gradle.tasks.extensions.namedLazily
+import com.javiersc.semver.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
-import com.javiersc.semver.gradle.plugin.semverExtension
 import java.io.File
 import javax.inject.Inject
 import org.gradle.api.DefaultTask
@@ -159,7 +159,7 @@ constructor(
 
             printSemverTask.configure {
                 dependsOn(WriteSemverTask.taskName)
-                tagPrefix.set(project.semverExtension.tagPrefix)
+                tagPrefix.set(project.projectTagPrefix)
                 version.set(project.version.toString())
             }
 

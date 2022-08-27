@@ -6,10 +6,10 @@ import com.javiersc.semver.gradle.plugin.internal.checkCleanProperty
 import com.javiersc.semver.gradle.plugin.internal.checkVersionIsHigherOrSame
 import com.javiersc.semver.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.gradle.plugin.internal.git.GitRef
+import com.javiersc.semver.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.gradle.plugin.internal.scopeProperty
 import com.javiersc.semver.gradle.plugin.internal.stageProperty
 import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
-import com.javiersc.semver.gradle.plugin.semverExtension
 import com.javiersc.semver.gradle.plugin.services.GitBuildService
 import com.javiersc.semver.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.gradle.plugin.tasks.PushSemverTagTask
@@ -91,7 +91,6 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
             project.providers
                 .of(VersionValueSource::class) {
                     val cache = gitTagBuildService.map(GitBuildService::gitCache).get()
-                    val projectTagPrefix = project.semverExtension.tagPrefix.get()
 
                     parameters.gitDir.set(
                         project.objects
@@ -102,7 +101,7 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
                                 }
                             )
                     )
-                    parameters.projectTagPrefix.set(projectTagPrefix)
+                    parameters.projectTagPrefix.set(project.projectTagPrefix)
                     parameters.tagPrefixProperty.set(project.tagPrefixProperty)
                     parameters.stageProperty.set(project.stageProperty)
                     parameters.scopeProperty.set(project.scopeProperty)
@@ -113,7 +112,7 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
                     )
                     parameters.headCommit.set(cache.headCommit.commit.hash)
                     parameters.lastVersionCommitInCurrentBranch.set(
-                        cache.lastVersionCommitInCurrentBranch(projectTagPrefix)?.hash
+                        cache.lastVersionCommitInCurrentBranch(project.projectTagPrefix)?.hash
                     )
                 }
                 .forUseAtConfigurationTime()

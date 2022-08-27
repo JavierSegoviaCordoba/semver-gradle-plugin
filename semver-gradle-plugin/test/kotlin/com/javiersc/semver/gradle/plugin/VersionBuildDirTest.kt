@@ -26,6 +26,20 @@ internal class VersionBuildDirTest : GradleTest() {
     }
 
     @Test
+    fun `clean v1_0_0 configuration phase`() {
+        gradleTestKitTest("version-build-dir/clean v1_0_0 configuration phase") {
+            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+            git.tag().setObjectId(git.headRevCommitInBranch).setName("v1.0.0").call()
+
+            gradlew().output.shouldContain("SEMVER: 1.0.0")
+
+            withArgumentsFromTXT()
+            build()
+            projectDir.assertVersionFromExpectVersionFiles()
+        }
+    }
+
+    @Test
     fun `clean without tag in current commit - hash`() {
         gradleTestKitTest("version-build-dir/clean-with-no-tag-current-commit (hash)") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()

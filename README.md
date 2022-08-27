@@ -21,11 +21,11 @@ project isolation.
 
 ```kotlin
 plugins {
-  id("com.javiersc.semver.gradle.plugin")
+    id("com.javiersc.semver.gradle.plugin")
 }
 
 semver {
-  tagPrefix.set("v") // optional, default is empty
+    tagPrefix.set("v") // optional, default is empty
 }
 ```
 
@@ -71,7 +71,7 @@ Default values:
 
 ```kotlin
 semver {
-  tagPrefix.set("")
+    tagPrefix.set("")
 }
 ```
 
@@ -99,6 +99,13 @@ To get it working:
 
 ```shell
 ./gradlew "-Psemver.scope=patch" "-Psemver.tagPrefix=v"
+```
+
+Additionally, it is possible to set the project tag prefix via Gradle property if some third-party
+plugin requires the version in configuration phase. This property is:
+
+```properties
+semver.project.tagPrefix=v
 ```
 
 ##### Additional notes
@@ -130,8 +137,8 @@ To get it working:
 
 - Format: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash or timestamp>`
 - Examples:
-  - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
-  - `1.0.0.4+26f0484`
+    - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
+    - `1.0.0.4+26f0484`
 
 #### Snapshot
 

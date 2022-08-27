@@ -1,7 +1,7 @@
 package com.javiersc.semver.gradle.plugin.tasks
 
+import com.javiersc.semver.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.gradle.plugin.internal.tagPrefixProperty
-import com.javiersc.semver.gradle.plugin.semverExtension
 import com.javiersc.semver.gradle.plugin.services.GitBuildService
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
@@ -42,7 +42,7 @@ public abstract class CreateSemverTagTask : DefaultTask() {
                 )
                 .configure {
                     this.tagPrefixProperty.set(project.tagPrefixProperty)
-                    this.projectTagPrefix.set(project.semverExtension.tagPrefix)
+                    this.projectTagPrefix.set(project.projectTagPrefix)
                     this.version.set(project.version.toString())
                     this.gitTagBuildService.set(gitTagBuildService)
                     this.usesService(gitTagBuildService)

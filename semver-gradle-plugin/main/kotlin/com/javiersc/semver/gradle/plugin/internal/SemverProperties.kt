@@ -2,6 +2,9 @@ package com.javiersc.semver.gradle.plugin.internal
 
 import org.gradle.api.Project
 
+internal val Project.projectTagPrefixProperty: String?
+    get() = properties[SemverProperties.ProjectTagPrefix.key]?.toString()
+
 internal val Project.tagPrefixProperty: String
     get() = properties[SemverProperties.TagPrefix.key]?.toString() ?: DefaultTagPrefix
 
@@ -20,6 +23,7 @@ internal val Project.checkCleanProperty: Boolean
     get() = properties[SemverProperties.CheckClean.key]?.toString()?.toBoolean() ?: true
 
 internal enum class SemverProperties(val key: String) {
+    ProjectTagPrefix("semver.project.tagPrefix"),
     TagPrefix("semver.tagPrefix"),
     Stage("semver.stage"),
     Scope("semver.scope"),

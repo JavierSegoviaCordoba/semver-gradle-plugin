@@ -2,7 +2,7 @@ package com.javiersc.semver.gradle.plugin.tasks
 
 import com.javiersc.gradle.tasks.extensions.maybeRegisterLazily
 import com.javiersc.gradle.tasks.extensions.namedLazily
-import com.javiersc.semver.gradle.plugin.semverExtension
+import com.javiersc.semver.gradle.plugin.internal.projectTagPrefix
 import javax.inject.Inject
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
@@ -71,7 +71,7 @@ constructor(
                 project.tasks.register<WriteSemverTask>(taskName)
 
             writeSemverTask.configure {
-                tagPrefix.set(project.semverExtension.tagPrefix)
+                tagPrefix.set(project.projectTagPrefix)
                 version.set(project.version.toString())
             }
 

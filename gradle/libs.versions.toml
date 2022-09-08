@@ -1,7 +1,7 @@
 [versions]
 android = "7.2.1"
 hubdle = "0.2.0-alpha.29"
-jgit = "6.2.0.202206071550-r"
+jgit = "6.3.0.202209071007-r"
 kotlin = "1.7.10"
 semverCore = "0.1.0-beta.10"
 

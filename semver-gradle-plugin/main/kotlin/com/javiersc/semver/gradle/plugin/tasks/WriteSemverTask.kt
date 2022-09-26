@@ -58,7 +58,8 @@ constructor(
                     |$semver
                     |$semverWithPrefix
                     |
-                """.trimMargin()
+                """
+                    .trimMargin()
             )
         }
     }

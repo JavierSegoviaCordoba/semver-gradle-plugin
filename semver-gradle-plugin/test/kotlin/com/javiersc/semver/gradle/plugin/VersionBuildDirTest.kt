@@ -63,7 +63,8 @@ internal class VersionBuildDirTest : GradleTest() {
                         |1.0.0$additionalData
                         |v1.0.0$additionalData
                         |
-                    """.trimMargin()
+                    """
+                        .trimMargin()
                 )
             }
 

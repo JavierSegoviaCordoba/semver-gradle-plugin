@@ -70,7 +70,8 @@ internal fun File.createGitIgnore() {
                 |local.properties
                 |environment/github.env
                 |
-            """.trimMargin()
+            """
+                .trimMargin()
         )
     }
 }

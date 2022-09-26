@@ -74,7 +74,8 @@ internal fun File.assertVersion(
                        |$version
                        |$prefix$version
                        |
-                    """.trimMargin()
+                    """
+                        .trimMargin()
                 )
         }
     }

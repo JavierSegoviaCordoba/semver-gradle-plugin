@@ -19,7 +19,8 @@ internal fun warningLastVersionIsNotHigherVersion(last: Version?, higher: Versio
         """|There is an old tag with a higher version than the last tag version:
            |  - Old tag version -> $last
            |  - Last tag version -> $higher
-        """.trimMargin()
+        """
+            .trimMargin()
 
     if (last != null && higher != null && last < higher) {
         semverMessage(message = message, color = AnsiColor.Foreground.Yellow)

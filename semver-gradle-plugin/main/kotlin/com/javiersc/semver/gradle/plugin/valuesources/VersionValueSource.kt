@@ -89,10 +89,10 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
             gitTagBuildService: Provider<GitBuildService>,
         ): Provider<String> =
             project.providers
-                .of(VersionValueSource::class) {
+                .of(VersionValueSource::class) { valueSourceSpec ->
                     val cache = gitTagBuildService.map(GitBuildService::gitCache).get()
 
-                    parameters.gitDir.set(
+                    valueSourceSpec.parameters.gitDir.set(
                         project.objects
                             .directoryProperty()
                             .fileProvider(
@@ -101,17 +101,17 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
                                 }
                             )
                     )
-                    parameters.projectTagPrefix.set(project.projectTagPrefix)
-                    parameters.tagPrefixProperty.set(project.tagPrefixProperty)
-                    parameters.stageProperty.set(project.stageProperty)
-                    parameters.scopeProperty.set(project.scopeProperty)
-                    parameters.creatingSemverTag.set(project.isCreatingSemverTag)
-                    parameters.checkClean.set(project.checkCleanProperty)
-                    parameters.commitsInCurrentBranch.set(
+                    valueSourceSpec.parameters.projectTagPrefix.set(project.projectTagPrefix)
+                    valueSourceSpec.parameters.tagPrefixProperty.set(project.tagPrefixProperty)
+                    valueSourceSpec.parameters.stageProperty.set(project.stageProperty)
+                    valueSourceSpec.parameters.scopeProperty.set(project.scopeProperty)
+                    valueSourceSpec.parameters.creatingSemverTag.set(project.isCreatingSemverTag)
+                    valueSourceSpec.parameters.checkClean.set(project.checkCleanProperty)
+                    valueSourceSpec.parameters.commitsInCurrentBranch.set(
                         cache.commitsInCurrentBranch.map(GitRef.Commit::hash)
                     )
-                    parameters.headCommit.set(cache.headCommit.commit.hash)
-                    parameters.lastVersionCommitInCurrentBranch.set(
+                    valueSourceSpec.parameters.headCommit.set(cache.headCommit.commit.hash)
+                    valueSourceSpec.parameters.lastVersionCommitInCurrentBranch.set(
                         cache.lastVersionCommitInCurrentBranch(project.projectTagPrefix)?.hash
                     )
                 }

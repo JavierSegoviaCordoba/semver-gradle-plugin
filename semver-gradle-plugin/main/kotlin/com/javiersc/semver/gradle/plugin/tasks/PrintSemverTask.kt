@@ -157,22 +157,26 @@ constructor(
             val printSemverTask: TaskProvider<PrintSemverTask> =
                 project.tasks.register(taskName, project.isRootProject, project.name)
 
-            printSemverTask.configure {
-                dependsOn(WriteSemverTask.taskName)
-                tagPrefix.set(project.projectTagPrefix)
-                version.set(project.version.toString())
+            printSemverTask.configure { task ->
+                task.dependsOn(WriteSemverTask.taskName)
+                task.tagPrefix.set(project.projectTagPrefix)
+                task.version.set(project.version.toString())
             }
 
-            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) {
-                dependsOn(printSemverTask)
+            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) { task ->
+                task.dependsOn(printSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) {
-                dependsOn(printSemverTask)
+            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) { task ->
+                task.dependsOn(printSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { dependsOn(printSemverTask) }
-            project.tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { dependsOn(printSemverTask) }
-            project.tasks.withType<Jar>().configureEach { dependsOn(printSemverTask) }
-            project.tasks.withType<Test>().configureEach { dependsOn(printSemverTask) }
+            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { task ->
+                task.dependsOn(printSemverTask)
+            }
+            project.tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { task ->
+                task.dependsOn(printSemverTask)
+            }
+            project.tasks.withType<Jar>().configureEach { task -> task.dependsOn(printSemverTask) }
+            project.tasks.withType<Test>().configureEach { task -> task.dependsOn(printSemverTask) }
 
             return printSemverTask
         }

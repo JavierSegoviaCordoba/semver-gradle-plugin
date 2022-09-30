@@ -36,12 +36,12 @@ public abstract class PushSemverTagTask : DefaultTask() {
         public const val taskName: String = "pushSemverTag"
 
         internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {
-            project.tasks.register<PushSemverTagTask>(taskName).configure {
-                this.tagPrefixProperty.set(project.tagPrefixProperty)
-                this.projectTagPrefix.set(project.projectTagPrefix)
-                this.version.set(project.version.toString())
-                this.gitTagBuildService.set(gitTagBuildService)
-                this.usesService(gitTagBuildService)
+            project.tasks.register<PushSemverTagTask>(taskName).configure { task ->
+                task.tagPrefixProperty.set(project.tagPrefixProperty)
+                task.projectTagPrefix.set(project.projectTagPrefix)
+                task.version.set(project.version.toString())
+                task.gitTagBuildService.set(gitTagBuildService)
+                task.usesService(gitTagBuildService)
             }
         }
     }

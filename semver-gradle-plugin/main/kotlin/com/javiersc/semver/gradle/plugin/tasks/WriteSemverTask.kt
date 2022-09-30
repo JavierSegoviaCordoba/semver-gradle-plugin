@@ -71,21 +71,25 @@ constructor(
             val writeSemverTask: TaskProvider<WriteSemverTask> =
                 project.tasks.register<WriteSemverTask>(taskName)
 
-            writeSemverTask.configure {
-                tagPrefix.set(project.projectTagPrefix)
-                version.set(project.version.toString())
+            writeSemverTask.configure { task ->
+                task.tagPrefix.set(project.projectTagPrefix)
+                task.version.set(project.version.toString())
             }
 
-            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) {
-                dependsOn(writeSemverTask)
+            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) { task ->
+                task.dependsOn(writeSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) {
-                dependsOn(writeSemverTask)
+            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) { task ->
+                task.dependsOn(writeSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { dependsOn(writeSemverTask) }
-            project.tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { dependsOn(writeSemverTask) }
-            project.tasks.withType<Jar>().configureEach { dependsOn(writeSemverTask) }
-            project.tasks.withType<Test>().configureEach { dependsOn(writeSemverTask) }
+            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { task ->
+                task.dependsOn(writeSemverTask)
+            }
+            project.tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { task ->
+                task.dependsOn(writeSemverTask)
+            }
+            project.tasks.withType<Jar>().configureEach { task -> task.dependsOn(writeSemverTask) }
+            project.tasks.withType<Test>().configureEach { task -> task.dependsOn(writeSemverTask) }
 
             return writeSemverTask
         }

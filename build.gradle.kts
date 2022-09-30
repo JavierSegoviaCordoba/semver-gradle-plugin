@@ -1,10 +1,3 @@
-buildscript {
-    dependencies {
-        classpath(libs.jetbrains.kotlin.kotlinGradlePlugin)
-    }
-}
-
-
 plugins {
     alias(libs.plugins.javiersc.hubdle)
 }

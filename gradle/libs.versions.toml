@@ -1,14 +1,10 @@
 [versions]
-android = "7.2.1"
-hubdle = "0.2.0-alpha.37"
+hubdle = "0.2.0-alpha.42"
 jgit = "6.3.0.202209071007-r"
-kotlin = "1.7.10"
 semverCore = "0.1.0-beta.10"
 
 [libraries]
-android-application-androidApplicationGradlePlugin = { module = "com.android.application:com.android.application.gradle.plugin", version.ref = "android" }
 javiersc-semver-semverCore = { module = "com.javiersc.semver:semver-core", version.ref = "semverCore" }
-jetbrains-kotlin-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 eclipse-jgit-eclipseJgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
 
 [plugins]

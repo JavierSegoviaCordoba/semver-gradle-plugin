@@ -60,7 +60,7 @@ constructor(
         if (!isCreatingTag && tagPrefixProperty == projectTagPrefix) {
             createTag(tagPrefixProperty, projectTagPrefix, version)
 
-            execOperations.exec {
+            execOperations.exec { exec ->
                 val remoteProp: String? = parameters.remoteProperty.orNull
 
                 val remote: String? =
@@ -79,7 +79,7 @@ constructor(
                 val semverWithTagPrefix = "$projectTagPrefix$version"
                 val tag: String = semverWithTagPrefix
 
-                commandLine("git", "push", remote, tag)
+                exec.commandLine("git", "push", remote, tag)
             }
         }
     }
@@ -99,11 +99,11 @@ constructor(
             project.gradle.sharedServices.registerIfAbsent(
                 "gitTagBuildService",
                 GitBuildService::class
-            ) {
-                parameters.gitDirectory.set(project.gitDir)
-                parameters.remoteProperty.set(project.remoteProperty)
+            ) { buildService ->
+                buildService.parameters.gitDirectory.set(project.gitDir)
+                buildService.parameters.remoteProperty.set(project.remoteProperty)
 
-                maxParallelUsages.set(1)
+                buildService.maxParallelUsages.set(1)
             }
     }
 }

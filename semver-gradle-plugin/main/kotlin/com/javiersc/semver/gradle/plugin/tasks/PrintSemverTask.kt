@@ -132,16 +132,22 @@ constructor(
     }
 
     private fun executeGitHubOutput(key: String, value: String) {
-        semverMessage("\nSetting $value as `$key` output:")
-        println("::set-output name=$key::$value")
+        val snakeCaseKey = key.toSnakeCase()
+        semverMessage("\nSetting $value with the `$snakeCaseKey` as step output...")
+        File(System.getenv("GITHUB_OUTPUT")).putEnvironmentVariable(snakeCaseKey, value)
     }
 
     private fun executeGitHubEnvironmentVariable(key: String, value: String) {
         val snakeCaseKey = key.toSnakeCase()
-        semverMessage("\nSetting $value as `$snakeCaseKey` environment variable:")
-        val githubEnvFile = File(System.getenv("GITHUB_ENV"))
-        val currentText = githubEnvFile.readText()
-        githubEnvFile.writeText("$currentText\n$snakeCaseKey=$value")
+        semverMessage("\nSetting $value with the key `$snakeCaseKey` as environment variable...")
+        File(System.getenv("GITHUB_ENV")).putEnvironmentVariable(snakeCaseKey, value)
+    }
+
+    private fun File.putEnvironmentVariable(key: String, value: String) {
+        val lines = readLines().toMutableList()
+        val keyIndex = lines.indexOfFirst { line -> line.substringBefore('=') == key }
+        if (keyIndex != -1) lines[keyIndex] = value else lines.add("$key=$value")
+        writeText(lines.joinToString("\n"))
     }
 
     private fun String.toSnakeCase(): String =

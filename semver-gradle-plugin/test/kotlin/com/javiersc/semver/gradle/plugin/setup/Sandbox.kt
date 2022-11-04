@@ -68,7 +68,7 @@ internal fun File.createGitIgnore() {
                 |build/
                 |.gradle/
                 |local.properties
-                |environment/github.env
+                |environment/
                 |
             """
                 .trimMargin()

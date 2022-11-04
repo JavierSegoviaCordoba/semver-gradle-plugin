@@ -1,14 +1,5 @@
 {
   "extends": [
-    "config:base"
-  ],
-  "assigneesFromCodeOwners": true,
-  "commitBodyTable": true,
-  "gitIgnoredAuthors": [
-    "javiersegoviacordoba@gmail.com",
-    "javier@segoviacordoba.com",
-    "bot@renovateapp.com",
-    "29139614+renovate[bot]@users.noreply.github.com",
-    "action@github.com"
+    "github>JavierSegoviaCordoba/reusable-workflows//.github/renovate-reusable.json"
   ]
 }

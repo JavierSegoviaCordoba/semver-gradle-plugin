@@ -4,9 +4,6 @@
 
 ### Added
 
-- `semver.project.tagPrefix` Gradle Project property to set tag prefix instead of using the property
-  from the extension (`SemverExtension::tagPrefix`). If both are set, the first one has preference.
-
 ### Changed
 
 ### Deprecated
@@ -14,6 +11,15 @@
 ### Removed
 
 ### Fixed
+
+### Updated
+
+## [0.3.0-alpha.5] - 2022-11-04
+
+### Added
+
+- `semver.project.tagPrefix` Gradle Project property to set tag prefix instead of using the property
+  from the extension (`SemverExtension::tagPrefix`). If both are set, the first one has preference.
 
 ### Updated
 

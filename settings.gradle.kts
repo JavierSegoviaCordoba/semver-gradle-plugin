@@ -9,6 +9,7 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         google()
+        mavenLocal()
     }
 
     plugins {
@@ -18,4 +19,12 @@ pluginManagement {
 
 plugins {
     id("com.javiersc.hubdle.settings")
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        google()
+        mavenLocal()
+    }
 }

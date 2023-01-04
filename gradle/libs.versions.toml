@@ -1,7 +1,7 @@
 [versions]
 hubdle = "0.2.0-alpha.46"
 jgit = "6.4.0.202211300538-r"
-semverCore = "0.1.0-beta.10"
+semverCore = "0.1.0-beta.12"
 
 [libraries]
 javiersc-semver-semverCore = { module = "com.javiersc.semver:semver-core", version.ref = "semverCore" }

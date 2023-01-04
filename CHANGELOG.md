@@ -6,6 +6,8 @@
 
 ### Changed
 
+- `SNAPSHOT` is treated now as non-special stage (higher than `rc`)
+
 ### Deprecated
 
 ### Removed

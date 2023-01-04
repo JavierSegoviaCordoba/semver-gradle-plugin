@@ -25,19 +25,29 @@ internal fun calculatedVersion(
     val isClean: Boolean = clean || !checkClean
     val isDirty: Boolean = !isClean
 
+    val stagePropertySanitized =
+        stageProperty?.let { name ->
+            if (name.equals("SNAPSHOT", ignoreCase = true)) "SNAPSHOT" else name
+        }
+
+    val lastSemverStageInCurrentBranchSanitized =
+        lastSemverStageInCurrentBranch?.let { name ->
+            if (name.equals("SNAPSHOT", ignoreCase = true)) "SNAPSHOT" else name
+        }
+
     val lastSemverInCurrentBranch =
         Version(
             major = lastSemverMajorInCurrentBranch,
             minor = lastSemverMinorInCurrentBranch,
             patch = lastSemverPatchInCurrentBranch,
-            stageName = lastSemverStageInCurrentBranch,
+            stageName = lastSemverStageInCurrentBranchSanitized,
             stageNum = lastSemverNumInCurrentBranch,
         )
 
     val previousStage: String? = lastSemverInCurrentBranch.stage?.name
 
     val incStage: String =
-        (stageProperty ?: previousStage ?: "").run {
+        (stagePropertySanitized ?: previousStage ?: "").run {
             when {
                 equals(Stage.Auto(), true) && !previousStage.isNullOrBlank() -> previousStage
                 equals(Stage.Auto(), true) -> ""
@@ -46,7 +56,9 @@ internal fun calculatedVersion(
         }
 
     val isNoStagedNoScopedNoCreatingSemverTag: Boolean =
-        stageProperty.isNullOrBlank() && scopeProperty.isNullOrBlank() && !isCreatingSemverTag
+        stagePropertySanitized.isNullOrBlank() &&
+            scopeProperty.isNullOrBlank() &&
+            !isCreatingSemverTag
 
     val calculatedVersion: String =
         when {
@@ -63,15 +75,7 @@ internal fun calculatedVersion(
                     )
                 "$lastSemverInCurrentBranch$additionalVersionData"
             }
-            stageProperty.equals(Stage.Snapshot(), ignoreCase = true) -> {
-                when (scopeProperty) {
-                    Scope.Major() -> "${lastSemverInCurrentBranch.nextSnapshotMajor()}"
-                    Scope.Minor() -> "${lastSemverInCurrentBranch.nextSnapshotMinor()}"
-                    Scope.Patch() -> "${lastSemverInCurrentBranch.nextSnapshotPatch()}"
-                    else -> "${lastSemverInCurrentBranch.nextSnapshotPatch()}"
-                }
-            }
-            stageProperty.equals(Stage.Final(), ignoreCase = true) -> {
+            stagePropertySanitized.equals(Stage.Final(), ignoreCase = true) -> {
                 when (scopeProperty) {
                     Scope.Major() -> "${lastSemverInCurrentBranch.inc(Increase.Major, "")}"
                     Scope.Minor() -> "${lastSemverInCurrentBranch.inc(Increase.Minor, "")}"

@@ -19,6 +19,19 @@ public final class com/javiersc/semver/gradle/plugin/SemverPlugin : org/gradle/a
 	public fun apply (Lorg/gradle/api/Project;)V
 }
 
+public final class com/javiersc/semver/gradle/plugin/extensions/IsVersionExtensionsKt {
+	public static final fun isAlpha (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isBeta (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isDev (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotAlpha (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotBeta (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotDev (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotRC (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotSnapshot (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isRC (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isSnapshot (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+}
+
 public abstract class com/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask : org/gradle/api/DefaultTask {
 	public static final field Companion Lcom/javiersc/semver/gradle/plugin/tasks/CreateSemverTagTask$Companion;
 	public static final field taskName Ljava/lang/String;

@@ -4,6 +4,20 @@
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Updated
+
+## [0.4.0-alpha.1] - 2023-01-04
+
+### Added
+
 - `Project.isAlpha: Provider<Boolean>` extension
 - `Project.isNotAlpha: Provider<Boolean>` extension
 - `Project.isBeta: Provider<Boolean>` extension
@@ -18,12 +32,6 @@
 ### Changed
 
 - `SNAPSHOT` is treated now as non-special stage (higher than `rc`)
-
-### Deprecated
-
-### Removed
-
-### Fixed
 
 ### Updated
 
@@ -243,3 +251,43 @@
 ## [0.0.0] - 2021-10-15
 
 - No changes
+
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.4.0-alpha.1...HEAD
+
+[0.4.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.3.0-alpha.5...0.4.0-alpha.1
+
+[0.3.0-alpha.5]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.3.0-alpha.4...0.3.0-alpha.5
+
+[0.3.0-alpha.4]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.3.0-alpha.3...0.3.0-alpha.4
+
+[0.3.0-alpha.3]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.3.0-alpha.2...0.3.0-alpha.3
+
+[0.3.0-alpha.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.3.0-alpha.1...0.3.0-alpha.2
+
+[0.3.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.2.0-alpha.2...0.3.0-alpha.1
+
+[0.2.0-alpha.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.2.0-alpha.1...0.2.0-alpha.2
+
+[0.2.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.10...0.2.0-alpha.1
+
+[0.1.0-alpha.10]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.9...0.1.0-alpha.10
+
+[0.1.0-alpha.9]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.8...0.1.0-alpha.9
+
+[0.1.0-alpha.8]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.7...0.1.0-alpha.8
+
+[0.1.0-alpha.7]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.6...0.1.0-alpha.7
+
+[0.1.0-alpha.6]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.5...0.1.0-alpha.6
+
+[0.1.0-alpha.5]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.4...0.1.0-alpha.5
+
+[0.1.0-alpha.4]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.3...0.1.0-alpha.4
+
+[0.1.0-alpha.3]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.2...0.1.0-alpha.3
+
+[0.1.0-alpha.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.1.0-alpha.1...0.1.0-alpha.2
+
+[0.1.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.0.0...0.1.0-alpha.1
+
+[0.0.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/commits/0.0.0

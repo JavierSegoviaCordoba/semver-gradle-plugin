@@ -26,8 +26,8 @@ hubdle {
 
                 main {
                     dependencies {
+                        api(libs.javiersc.semver.semverCore)
                         implementation(libs.eclipse.jgit.eclipseJgit)
-                        implementation(libs.javiersc.semver.semverCore)
                     }
                 }
 

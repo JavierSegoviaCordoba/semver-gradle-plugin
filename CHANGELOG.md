@@ -6,6 +6,8 @@
 
 ### Changed
 
+- `com.javiersc.semver:semver-core` dependency from `implementation` to `api`
+
 ### Deprecated
 
 ### Removed

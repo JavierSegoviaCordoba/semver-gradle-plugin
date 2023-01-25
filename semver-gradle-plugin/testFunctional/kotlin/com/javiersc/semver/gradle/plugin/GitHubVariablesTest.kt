@@ -1,15 +1,12 @@
-@file:Suppress("LocalVariableName")
-
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.test.extensions.GradleTest
-import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
+import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
 import io.kotest.matchers.string.shouldContain
 import java.io.File
 import kotlin.test.Test
 import org.gradle.testkit.runner.GradleRunner
 
-class GitHubVariablesTest : GradleTest() {
+class GitHubVariablesTest : GradleTestKitTest() {
 
     private val GradleRunner.githubEnvPath: String
         get() = projectDir.resolve("environment/github.env").path

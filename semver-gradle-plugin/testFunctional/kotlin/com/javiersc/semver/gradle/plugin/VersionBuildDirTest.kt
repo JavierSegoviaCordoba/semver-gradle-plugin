@@ -1,17 +1,12 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.test.extensions.GradleTest
-import com.javiersc.semver.gradle.plugin.git.calculateAdditionalVersionData
+import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
+import com.javiersc.semver.gradle.plugin.Insignificant.Dirty
 import com.javiersc.semver.gradle.plugin.internal.git.headRevCommitInBranch
-import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
-import com.javiersc.semver.gradle.plugin.setup.assertVersion
-import com.javiersc.semver.gradle.plugin.setup.assertVersionFromExpectVersionFiles
-import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
-import com.javiersc.semver.gradle.plugin.setup.git
 import io.kotest.matchers.string.shouldContain
 import kotlin.test.Test
 
-internal class VersionBuildDirTest : GradleTest() {
+internal class VersionBuildDirTest : GradleTestKitTest() {
 
     @Test
     fun `clean v1_0_0`() {

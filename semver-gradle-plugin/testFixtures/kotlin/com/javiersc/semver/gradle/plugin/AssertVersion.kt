@@ -1,4 +1,4 @@
-package com.javiersc.semver.gradle.plugin.setup
+package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.BrightYellow
 import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.Purple

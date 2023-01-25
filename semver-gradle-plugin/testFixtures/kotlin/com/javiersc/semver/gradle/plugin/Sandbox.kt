@@ -1,4 +1,4 @@
-package com.javiersc.semver.gradle.plugin.setup
+package com.javiersc.semver.gradle.plugin
 
 import java.io.File
 import java.nio.file.Files
@@ -20,7 +20,7 @@ internal val GradleRunner.git: Git
                 .build()
         )
 
-internal val File.git: Git
+val File.git: Git
     get() =
         Git(
             FileRepositoryBuilder()
@@ -76,7 +76,7 @@ internal fun File.createGitIgnore() {
     }
 }
 
-internal fun initialCommitAnd(and: File.() -> Unit) {
+fun initialCommitAnd(and: File.() -> Unit) {
     val fileName: String =
         Thread.currentThread()
             .stackTrace

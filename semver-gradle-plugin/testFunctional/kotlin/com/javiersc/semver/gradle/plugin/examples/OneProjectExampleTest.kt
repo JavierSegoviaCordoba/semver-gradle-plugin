@@ -1,16 +1,15 @@
 package com.javiersc.semver.gradle.plugin.examples
 
-import com.javiersc.gradle.testkit.test.extensions.GradleTest
-import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
-import com.javiersc.semver.gradle.plugin.setup.Insignificant.Hash
-import com.javiersc.semver.gradle.plugin.setup.assertVersion
-import com.javiersc.semver.gradle.plugin.setup.createGitIgnore
-import com.javiersc.semver.gradle.plugin.setup.git
+import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
+import com.javiersc.semver.gradle.plugin.Insignificant
+import com.javiersc.semver.gradle.plugin.assertVersion
+import com.javiersc.semver.gradle.plugin.createGitIgnore
+import com.javiersc.semver.gradle.plugin.git
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 import org.gradle.testkit.runner.GradleRunner
 
-internal class OneProjectExampleTest : GradleTest() {
+internal class OneProjectExampleTest : GradleTestKitTest() {
 
     @Test
     fun `one project`() {
@@ -49,7 +48,7 @@ internal class OneProjectExampleTest : GradleTest() {
     private fun GradleRunner.`1_ Run gradlew assemble`() {
         gradlew("assemble", "-Psemver.tagPrefix=v")
 
-        projectDir.assertVersion("v", "0.1.0", Hash)
+        projectDir.assertVersion("v", "0.1.0", Insignificant.Hash)
     }
 
     private fun GradleRunner.`2_ Create a new file and run gradlew assemble`() {
@@ -57,7 +56,7 @@ internal class OneProjectExampleTest : GradleTest() {
 
         gradlew("assemble", "-Psemver.tagPrefix=v")
 
-        projectDir.assertVersion("v", "0.1.0", Dirty)
+        projectDir.assertVersion("v", "0.1.0", Insignificant.Dirty)
     }
 
     private fun GradleRunner
@@ -82,7 +81,7 @@ internal class OneProjectExampleTest : GradleTest() {
         git.commit().setMessage("Add new5").call()
         gradlew("assemble", "-Psemver.tagPrefix=v")
 
-        projectDir.assertVersion("v", "0.1.0", Hash)
+        projectDir.assertVersion("v", "0.1.0", Insignificant.Hash)
     }
 
     private fun GradleRunner.`6_ Run gradlew createSemverTag`() {

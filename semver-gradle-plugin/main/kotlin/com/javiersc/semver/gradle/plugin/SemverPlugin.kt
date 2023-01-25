@@ -1,13 +1,14 @@
 package com.javiersc.semver.gradle.plugin
 
+import com.javiersc.gradle.plugin.extensions.Plugin
 import com.javiersc.semver.gradle.plugin.internal.checkScopeCorrectness
+import com.javiersc.semver.gradle.plugin.internal.git.hasGit
 import com.javiersc.semver.gradle.plugin.services.GitBuildService
 import com.javiersc.semver.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.gradle.plugin.tasks.PrintSemverTask
 import com.javiersc.semver.gradle.plugin.tasks.PushSemverTagTask
 import com.javiersc.semver.gradle.plugin.tasks.WriteSemverTask
 import com.javiersc.semver.gradle.plugin.valuesources.VersionValueSource
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.BasePlugin
 import org.gradle.api.provider.Provider
@@ -15,15 +16,17 @@ import org.gradle.kotlin.dsl.apply
 
 public class SemverPlugin : Plugin<Project> {
 
-    override fun apply(target: Project) {
-        target.pluginManager.apply(BasePlugin::class)
+    override fun Project.apply() {
+        pluginManager.apply(BasePlugin::class)
 
-        SemverExtension.register(target)
+        SemverExtension.register(this)
 
-        val gitTagBuildService: Provider<GitBuildService> = GitBuildService.register(target)
-        target.checkScopeCorrectness()
-        target.configureLazyVersion(gitTagBuildService)
-        target.configureBuildServicesAndTasks(gitTagBuildService)
+        if (hasGit) {
+            val gitTagBuildService: Provider<GitBuildService> = GitBuildService.register(this)
+            checkScopeCorrectness()
+            configureLazyVersion(gitTagBuildService)
+            configureBuildServicesAndTasks(gitTagBuildService)
+        }
     }
 
     private fun Project.configureBuildServicesAndTasks(

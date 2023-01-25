@@ -1,16 +1,12 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.test.extensions.GradleTest
-import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.Purple
+import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
+import com.javiersc.kotlin.stdlib.AnsiColor
 import com.javiersc.kotlin.stdlib.ansiColor
-import com.javiersc.semver.gradle.plugin.setup.assertVersionFromExpectVersionFiles
-import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
-import com.javiersc.semver.gradle.plugin.setup.getResource
-import com.javiersc.semver.gradle.plugin.setup.git
 import java.io.File
 import kotlin.test.Test
 
-internal class PropertiesTest : GradleTest() {
+internal class PropertiesTest : GradleTestKitTest() {
 
     @Test
     fun empty() {
@@ -47,7 +43,7 @@ internal class PropertiesTest : GradleTest() {
                 .map { it.relativeTo(getResource("properties").parentFile).path }
 
         projects.forEach {
-            println("\nTesting: $it".ansiColor(Purple))
+            println("\nTesting: $it".ansiColor(AnsiColor.Foreground.Purple))
             gradleTestKitTest(it) {
                 projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
                 beforeTest(projectDir)

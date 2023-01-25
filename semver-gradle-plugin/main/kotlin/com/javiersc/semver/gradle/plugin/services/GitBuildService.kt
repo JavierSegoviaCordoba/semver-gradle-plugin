@@ -2,6 +2,7 @@ package com.javiersc.semver.gradle.plugin.services
 
 import com.javiersc.semver.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranchRevCommit
+import com.javiersc.semver.gradle.plugin.internal.git.gitDir
 import com.javiersc.semver.gradle.plugin.internal.remoteProperty
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
 import com.javiersc.semver.gradle.plugin.internal.semverWarningMessage
@@ -107,9 +108,6 @@ constructor(
             }
     }
 }
-
-private val Project.gitDir: File
-    get() = file("${rootProject.projectDir}/.git")
 
 private fun Git.hasCommits(): Boolean =
     try {

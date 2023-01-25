@@ -1,13 +1,10 @@
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.test.extensions.GradleTest
-import com.javiersc.semver.gradle.plugin.setup.assertVersion
-import com.javiersc.semver.gradle.plugin.setup.createGitIgnore
-import com.javiersc.semver.gradle.plugin.setup.git
+import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 
-internal class MassiveTagsInSameCommitTest : GradleTest() {
+internal class MassiveTagsInSameCommitTest : GradleTestKitTest() {
 
     @Test
     @Suppress("ComplexMethod")

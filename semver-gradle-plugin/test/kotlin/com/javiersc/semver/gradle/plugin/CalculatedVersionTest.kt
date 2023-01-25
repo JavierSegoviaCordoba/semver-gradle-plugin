@@ -1,20 +1,12 @@
-package com.javiersc.semver.gradle.plugin.git
+package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.semver.gradle.plugin.internal.calculateAdditionalVersionData
 import com.javiersc.semver.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.gradle.plugin.internal.git.GitRef
-import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.git.headCommit
 import com.javiersc.semver.gradle.plugin.internal.git.lastCommitInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.git.lastVersionCommitInCurrentBranch
-import com.javiersc.semver.gradle.plugin.internal.git.versionTagsInCurrentBranch
-import com.javiersc.semver.gradle.plugin.setup.git
-import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldBeEmpty
 import kotlin.test.Test
-import org.eclipse.jgit.api.Git
 
 internal class CalculatedVersionTest {
 
@@ -140,17 +132,3 @@ internal fun GitCache.calculatedVersion(
             lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch(tagPrefix)?.hash,
         )
 }
-
-internal fun Git.calculateAdditionalVersionData(
-    tagPrefix: String,
-    checkIsClean: Boolean = true,
-): String =
-    calculateAdditionalVersionData(
-        clean = status().call().isClean,
-        checkClean = checkIsClean,
-        lastCommitInCurrentBranch = lastCommitInCurrentBranch?.hash,
-        commitsInCurrentBranch = commitsInCurrentBranch.map(GitRef.Commit::hash),
-        isThereVersionTags = versionTagsInCurrentBranch(tagPrefix).isNotEmpty(),
-        headCommit = headCommit.commit.hash,
-        lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch(tagPrefix)?.hash,
-    )

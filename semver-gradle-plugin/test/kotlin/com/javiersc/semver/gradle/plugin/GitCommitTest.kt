@@ -1,4 +1,4 @@
-package com.javiersc.semver.gradle.plugin.git
+package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semver.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.gradle.plugin.internal.git.commitHash
@@ -13,8 +13,6 @@ import com.javiersc.semver.gradle.plugin.internal.git.headRevCommit
 import com.javiersc.semver.gradle.plugin.internal.git.headRevCommitInBranch
 import com.javiersc.semver.gradle.plugin.internal.git.lastCommitInCurrentBranch
 import com.javiersc.semver.gradle.plugin.internal.git.lastVersionCommitInCurrentBranch
-import com.javiersc.semver.gradle.plugin.setup.git
-import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git

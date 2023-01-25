@@ -1,19 +1,14 @@
-@file:Suppress("LocalVariableName")
-
 package com.javiersc.semver.gradle.plugin
 
-import com.javiersc.gradle.testkit.test.extensions.GradleTest
-import com.javiersc.semver.gradle.plugin.setup.Insignificant.Dirty
-import com.javiersc.semver.gradle.plugin.setup.Insignificant.Hash
-import com.javiersc.semver.gradle.plugin.setup.assertVersion
-import com.javiersc.semver.gradle.plugin.setup.generateInitialCommitAddVersionTagAndAddNewCommit
-import com.javiersc.semver.gradle.plugin.setup.git
+import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
+import com.javiersc.semver.gradle.plugin.Insignificant.Dirty
+import com.javiersc.semver.gradle.plugin.Insignificant.Hash
 import io.kotest.matchers.shouldNotBe
 import kotlin.test.Test
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
 
-class GradleFeaturesTest : GradleTest() {
+class GradleFeaturesTest : GradleTestKitTest() {
 
     @Test
     fun `android configuration cache clean v1_0_0`() {

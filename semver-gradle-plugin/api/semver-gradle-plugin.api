@@ -13,10 +13,13 @@ public abstract class com/javiersc/semver/gradle/plugin/SemverExtension {
 public final class com/javiersc/semver/gradle/plugin/SemverExtension$Companion {
 }
 
-public final class com/javiersc/semver/gradle/plugin/SemverPlugin : org/gradle/api/Plugin {
+public final class com/javiersc/semver/gradle/plugin/SemverPlugin : com/javiersc/gradle/plugin/extensions/Plugin {
 	public fun <init> ()V
 	public synthetic fun apply (Ljava/lang/Object;)V
 	public fun apply (Lorg/gradle/api/Project;)V
+	public synthetic fun javaApply (Ljava/lang/Object;)V
+	public fun javaApply (Lorg/gradle/api/Project;)V
+	public synthetic fun kotlinApply (Ljava/lang/Object;)V
 }
 
 public final class com/javiersc/semver/gradle/plugin/extensions/IsVersionExtensionsKt {
@@ -57,6 +60,11 @@ public abstract class com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask : 
 	public final fun run ()V
 }
 
+public final class com/javiersc/semver/gradle/plugin/tasks/PrintSemverTask$Companion$inlined$sam$i$org_gradle_api_specs_Spec$0 : org/gradle/api/specs/Spec {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final synthetic fun isSatisfiedBy (Ljava/lang/Object;)Z
+}
+
 public abstract class com/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask : org/gradle/api/DefaultTask {
 	public static final field Companion Lcom/javiersc/semver/gradle/plugin/tasks/PushSemverTagTask$Companion;
 	public static final field taskName Ljava/lang/String;
@@ -74,6 +82,11 @@ public abstract class com/javiersc/semver/gradle/plugin/tasks/WriteSemverTask : 
 	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
 	public final fun run ()V
+}
+
+public final class com/javiersc/semver/gradle/plugin/tasks/WriteSemverTask$Companion$inlined$sam$i$org_gradle_api_specs_Spec$0 : org/gradle/api/specs/Spec {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final synthetic fun isSatisfiedBy (Ljava/lang/Object;)Z
 }
 
 public abstract class com/javiersc/semver/gradle/plugin/valuesources/VersionValueSource : org/gradle/api/provider/ValueSource {

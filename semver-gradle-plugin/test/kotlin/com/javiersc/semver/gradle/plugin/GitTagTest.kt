@@ -1,4 +1,4 @@
-package com.javiersc.semver.gradle.plugin.git
+package com.javiersc.semver.gradle.plugin
 
 import com.javiersc.semver.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.gradle.plugin.internal.git.headCommit
@@ -18,8 +18,6 @@ import com.javiersc.semver.gradle.plugin.internal.git.versionTagsInCurrentBranch
 import com.javiersc.semver.gradle.plugin.internal.git.versionTagsInCurrentBranchSortedByTimelineOrSemverOrder
 import com.javiersc.semver.gradle.plugin.internal.git.versionTagsInCurrentCommit
 import com.javiersc.semver.gradle.plugin.internal.git.versionTagsSortedBySemver
-import com.javiersc.semver.gradle.plugin.setup.git
-import com.javiersc.semver.gradle.plugin.setup.initialCommitAnd
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.shouldBe
@@ -30,7 +28,7 @@ internal class GitTagTest {
 
     @Test
     fun `tags in repo`() {
-        initialCommitAnd() {
+        initialCommitAnd {
             git.tag().setName("hello").call()
             git.tag().setName("vhello").call()
             git.tag().setName("v100").call()

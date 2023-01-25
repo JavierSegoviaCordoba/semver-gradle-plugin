@@ -13,18 +13,14 @@ import org.gradle.testkit.runner.GradleRunner
 
 /**
  * Modules:
- *
  * - `library-one-a` uses prefix `a`
- *
  * - `library-two-b` uses prefix `b`
  * - `library-three-b` uses prefix `b`
  * - `library-four-b` uses prefix `b`
  * - `library-five-b` uses prefix `b`
- *
  * - `library-six-c` uses prefix `c`
  * - `library-seven-c` uses prefix `c`
  * - `library-eight-c` uses prefix `c`
- *
  * - `library-nine` uses no prefix
  * - `library-ten` uses no prefix
  */

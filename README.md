@@ -25,7 +25,7 @@ plugins {
 }
 
 semver {
-    tagPrefix.set("v") // optional, default is empty
+    tagPrefix.set("v") // optional, default is an empty string
 }
 ```
 
@@ -135,10 +135,16 @@ semver.project.tagPrefix=v
 
 #### Insignificant
 
-- Format: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash or timestamp>`
+- Format:
+    - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
+    - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
+
 - Examples:
-    - `1.0.0.4+2021-11-11T14-22-03-207850300Z`
     - `1.0.0.4+26f0484`
+    - `1.0.0.4+DIRTY`
+
+> It is used the `DIRTY` suffix instead of a timestamp in order to avoid issues with any Gradle
+> cache.
 
 #### Snapshot
 
@@ -298,10 +304,10 @@ Samples:
 ./gradlew pushSemverTag "-Psemver.stage=alpha"
 ```
 
-### Set versions without timestamp on dirty repositories
+### Set versions without `DIRTY` suffix on dirty repositories
 
-By default, if the repository status is not clean, the version shows the timestamp but that can be
-avoided by setting the Gradle property `semver.checkClean`.
+By default, if the repository status is not clean, the version shows the suffix `DIRTY` but that can
+be avoided by setting the Gradle property `semver.checkClean`.
 
 For example, if the last tag is `1.0.0`, there are 23 commits between that tag and the last commit
 and the repo is not clean:
@@ -309,7 +315,7 @@ and the repo is not clean:
 ```shell
 ./gradlew "-Psemver.stage=final" "-Psemver.scope=patch"
 
-semver: 1.0.0.23+2021-12-09T23-46-33-217289300Z
+semver: 1.0.0.23+DIRTY
 ```
 
 ```shell

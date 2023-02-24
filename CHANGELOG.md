@@ -16,6 +16,7 @@
 
 ### Updated
 
+- `gradle -> 7.6.1`
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.4.0-alpha.11`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 

@@ -12,10 +12,10 @@ pluginManagement {
     }
 
     plugins {
-        id("com.javiersc.hubdle.settings") version hubdleVersion
+        id("com.javiersc.hubdle") version hubdleVersion
     }
 }
 
 plugins {
-    id("com.javiersc.hubdle.settings")
+    id("com.javiersc.hubdle")
 }

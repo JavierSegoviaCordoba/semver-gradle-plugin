@@ -8,6 +8,7 @@ hubdle {
         binaryCompatibilityValidator()
         coverage()
         documentation {
+            api()
             changelog()
             readme {
                 badges()

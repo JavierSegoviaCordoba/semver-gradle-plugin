@@ -15,8 +15,6 @@ hubdle {
             features {
                 gradle {
                     plugin {
-                        tags("semver", "semantic versioning", "semantic version", "git tags", "git version")
-
                         gradlePlugin {
                             plugins {
                                 create("SemverPlugin") {
@@ -25,6 +23,15 @@ hubdle {
                                     description = "Manage project versions automatically with git tags"
                                     implementationClass =
                                         "com.javiersc.semver.gradle.plugin.SemverPlugin"
+                                    tags.set(
+                                        listOf(
+                                            "semver",
+                                            "semantic versioning",
+                                            "semantic version",
+                                            "git tags",
+                                            "git version",
+                                        )
+                                    )
                                 }
                             }
                         }

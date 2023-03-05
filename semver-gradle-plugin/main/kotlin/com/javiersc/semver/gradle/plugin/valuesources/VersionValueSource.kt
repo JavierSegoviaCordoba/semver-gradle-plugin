@@ -33,8 +33,8 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
                     .setGitDir(parameters.gitDir.get().asFile)
                     .readEnvironment()
                     .findGitDir()
-                    .build()
-            )
+                    .build(),
+            ),
         )
 
     override fun obtain(): String =
@@ -88,34 +88,32 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
             project: Project,
             gitTagBuildService: Provider<GitBuildService>,
         ): Provider<String> =
-            project.providers
-                .of(VersionValueSource::class) { valueSourceSpec ->
-                    val cache = gitTagBuildService.map(GitBuildService::gitCache).get()
+            project.providers.of(VersionValueSource::class) { valueSourceSpec ->
+                val cache = gitTagBuildService.map(GitBuildService::gitCache).get()
 
-                    valueSourceSpec.parameters.gitDir.set(
-                        project.objects
-                            .directoryProperty()
-                            .fileProvider(
-                                project.provider {
-                                    project.file("${project.rootProject.projectDir}/.git")
-                                }
-                            )
-                    )
-                    valueSourceSpec.parameters.projectTagPrefix.set(project.projectTagPrefix)
-                    valueSourceSpec.parameters.tagPrefixProperty.set(project.tagPrefixProperty)
-                    valueSourceSpec.parameters.stageProperty.set(project.stageProperty)
-                    valueSourceSpec.parameters.scopeProperty.set(project.scopeProperty)
-                    valueSourceSpec.parameters.creatingSemverTag.set(project.isCreatingSemverTag)
-                    valueSourceSpec.parameters.checkClean.set(project.checkCleanProperty)
-                    valueSourceSpec.parameters.commitsInCurrentBranch.set(
-                        cache.commitsInCurrentBranch.map(GitRef.Commit::hash)
-                    )
-                    valueSourceSpec.parameters.headCommit.set(cache.headCommit.commit.hash)
-                    valueSourceSpec.parameters.lastVersionCommitInCurrentBranch.set(
-                        cache.lastVersionCommitInCurrentBranch(project.projectTagPrefix)?.hash
-                    )
-                }
-                .forUseAtConfigurationTime()
+                valueSourceSpec.parameters.gitDir.set(
+                    project.objects
+                        .directoryProperty()
+                        .fileProvider(
+                            project.provider {
+                                project.file("${project.rootProject.projectDir}/.git")
+                            },
+                        ),
+                )
+                valueSourceSpec.parameters.projectTagPrefix.set(project.projectTagPrefix.get())
+                valueSourceSpec.parameters.tagPrefixProperty.set(project.tagPrefixProperty.get())
+                valueSourceSpec.parameters.stageProperty.set(project.stageProperty.orNull)
+                valueSourceSpec.parameters.scopeProperty.set(project.scopeProperty.orNull)
+                valueSourceSpec.parameters.creatingSemverTag.set(project.isCreatingSemverTag)
+                valueSourceSpec.parameters.checkClean.set(project.checkCleanProperty.get())
+                valueSourceSpec.parameters.commitsInCurrentBranch.set(
+                    cache.commitsInCurrentBranch.map(GitRef.Commit::hash),
+                )
+                valueSourceSpec.parameters.headCommit.set(cache.headCommit.commit.hash)
+                valueSourceSpec.parameters.lastVersionCommitInCurrentBranch.set(
+                    cache.lastVersionCommitInCurrentBranch(project.projectTagPrefix.get())?.hash,
+                )
+            }
     }
 }
 

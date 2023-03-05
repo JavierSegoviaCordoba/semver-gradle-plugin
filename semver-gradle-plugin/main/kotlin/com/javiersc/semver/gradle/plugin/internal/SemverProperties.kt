@@ -1,26 +1,32 @@
 package com.javiersc.semver.gradle.plugin.internal
 
 import org.gradle.api.Project
-
-internal val Project.projectTagPrefixProperty: String?
-    get() = properties[SemverProperties.ProjectTagPrefix.key]?.toString()
-
-internal val Project.tagPrefixProperty: String
-    get() = properties[SemverProperties.TagPrefix.key]?.toString() ?: DefaultTagPrefix
+import org.gradle.api.provider.Provider
 
 internal const val DefaultTagPrefix = ""
 
-internal val Project.stageProperty: String?
-    get() = properties[SemverProperties.Stage.key]?.toString()
+internal val Project.projectTagPrefixProperty: Provider<String>
+    get() = providers.gradleProperty(SemverProperties.ProjectTagPrefix.key)
 
-internal val Project.scopeProperty: String?
-    get() = properties[SemverProperties.Scope.key]?.toString()
+internal val Project.tagPrefixProperty: Provider<String>
+    get() = provider {
+        providers.gradleProperty(SemverProperties.TagPrefix.key).orNull?.toString()
+            ?: DefaultTagPrefix
+    }
 
-internal val Project.remoteProperty: String?
-    get() = properties[SemverProperties.Remote.key]?.toString()
+internal val Project.stageProperty: Provider<String>
+    get() = providers.gradleProperty(SemverProperties.Stage.key)
 
-internal val Project.checkCleanProperty: Boolean
-    get() = properties[SemverProperties.CheckClean.key]?.toString()?.toBoolean() ?: true
+internal val Project.scopeProperty: Provider<String>
+    get() = providers.gradleProperty(SemverProperties.Scope.key)
+
+internal val Project.remoteProperty: Provider<String>
+    get() = providers.gradleProperty(SemverProperties.Remote.key)
+
+internal val Project.checkCleanProperty: Provider<Boolean>
+    get() = provider {
+        providers.gradleProperty(SemverProperties.CheckClean.key).orNull?.toBoolean() ?: true
+    }
 
 internal enum class SemverProperties(val key: String) {
     ProjectTagPrefix("semver.project.tagPrefix"),

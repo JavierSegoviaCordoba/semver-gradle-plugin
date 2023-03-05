@@ -4,7 +4,8 @@ import com.javiersc.semver.Version
 import org.gradle.api.Project
 
 internal fun Project.checkScopeCorrectness() {
-    check(scopeProperty in Scope.values().map(Scope::invoke) || scopeProperty.isNullOrBlank()) {
+    val scope = scopeProperty.orNull
+    check(scope in Scope.values().map(Scope::invoke) || scope.isNullOrBlank()) {
         "`scope` value must be one of ${Scope.values().map(Scope::invoke)} or empty"
     }
 }

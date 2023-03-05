@@ -6,4 +6,5 @@
 build
 **/build/**/*
 
+coverage-error.log
 local.properties

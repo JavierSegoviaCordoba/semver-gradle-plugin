@@ -14,6 +14,8 @@
 
 ### Fixed
 
+- default logger uses `LIFECYCLE` instead of `QUIET`
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.4.0-alpha.17`

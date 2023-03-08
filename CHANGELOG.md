@@ -18,6 +18,7 @@
 
 ### Updated
 
+- `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.4.0-alpha.17`
 - `gradle -> 8.0.2`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`

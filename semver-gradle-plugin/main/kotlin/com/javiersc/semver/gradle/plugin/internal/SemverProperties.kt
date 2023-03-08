@@ -28,6 +28,9 @@ internal val Project.checkCleanProperty: Provider<Boolean>
         providers.gradleProperty(SemverProperties.CheckClean.key).orNull?.toBoolean() ?: true
     }
 
+internal val Project.commitsMaxCount: Provider<Int>
+    get() = providers.gradleProperty(SemverProperties.CommitsMaxCount.key).map(String::toInt)
+
 internal enum class SemverProperties(val key: String) {
     ProjectTagPrefix("semver.project.tagPrefix"),
     TagPrefix("semver.tagPrefix"),
@@ -35,6 +38,7 @@ internal enum class SemverProperties(val key: String) {
     Scope("semver.scope"),
     Remote("semver.remote"),
     CheckClean("semver.checkClean"),
+    CommitsMaxCount("semver.commitsMaxCount"),
 }
 
 internal enum class Stage(private val value: String) {

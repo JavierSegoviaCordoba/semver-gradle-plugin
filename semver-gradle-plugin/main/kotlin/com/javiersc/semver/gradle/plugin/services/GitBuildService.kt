@@ -1,16 +1,14 @@
 package com.javiersc.semver.gradle.plugin.services
 
+import com.javiersc.semver.gradle.plugin.internal.commitsMaxCount
 import com.javiersc.semver.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.gradle.plugin.internal.git.commitsInCurrentBranchRevCommit
-import com.javiersc.semver.gradle.plugin.internal.git.gitDir
 import com.javiersc.semver.gradle.plugin.internal.remoteProperty
 import com.javiersc.semver.gradle.plugin.internal.semverMessage
-import com.javiersc.semver.gradle.plugin.internal.semverWarningMessage
-import java.io.File
+import com.javiersc.semver.gradle.plugin.semverExtension
 import javax.inject.Inject
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.errors.NoHeadException
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.eclipse.jgit.transport.RemoteConfig
 import org.gradle.api.Project
 import org.gradle.api.file.RegularFileProperty
@@ -21,7 +19,7 @@ import org.gradle.api.services.BuildServiceParameters
 import org.gradle.kotlin.dsl.registerIfAbsent
 import org.gradle.process.ExecOperations
 
-internal abstract class GitBuildService
+public abstract class GitBuildService
 @Inject
 constructor(
     private val execOperations: ExecOperations,
@@ -29,19 +27,8 @@ constructor(
 
     private var isCreatingTag: Boolean = false
 
-    private val gitDir: File =
-        checkNotNull(parameters.gitDirectory.orNull?.asFile) {
-            semverWarningMessage("semver plugin can't work if there is no git repository")
-        }
-
-    private val git: Git =
-        Git(FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()).also {
-            if (!it.hasCommits()) {
-                semverWarningMessage("semver plugin can't work if there are no commits")
-            }
-        }
-
-    internal val gitCache: GitCache = GitCache(git)
+    private val git: Git
+        get() = parameters.run { GitCache(rootDir.get().asFile, commitsMaxCount).git }
 
     internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
         if (!isCreatingTag && projectTagPrefix == tagPrefixProperty) {
@@ -86,7 +73,8 @@ constructor(
     }
 
     internal interface Params : BuildServiceParameters {
-        val gitDirectory: RegularFileProperty
+        val rootDir: RegularFileProperty
+        val commitsMaxCount: Property<Int>
         val remoteProperty: Property<String>
     }
 
@@ -101,7 +89,10 @@ constructor(
                 "gitTagBuildService",
                 GitBuildService::class
             ) { buildService ->
-                buildService.parameters.gitDirectory.set(project.gitDir)
+                val commitsMaxCount: Int =
+                    project.commitsMaxCount.orNull ?: project.semverExtension.commitsMaxCount.get()
+                buildService.parameters.rootDir.set(project.semverExtension.rootDir)
+                buildService.parameters.commitsMaxCount.set(commitsMaxCount)
                 buildService.parameters.remoteProperty.set(project.remoteProperty)
 
                 buildService.maxParallelUsages.set(1)
@@ -109,12 +100,14 @@ constructor(
     }
 }
 
-private fun Git.hasCommits(): Boolean =
+internal fun Git.hasCommits(): Boolean =
     try {
         commitsInCurrentBranchRevCommit.isNotEmpty()
     } catch (exception: NoHeadException) {
         false
     }
+
+internal fun Git.hasNotCommits(): Boolean = !hasCommits()
 
 private val Git.remotes: List<String>
     get() = remoteList().call().map(RemoteConfig::getName)

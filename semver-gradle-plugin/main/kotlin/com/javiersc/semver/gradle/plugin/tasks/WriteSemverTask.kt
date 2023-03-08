@@ -64,19 +64,19 @@ constructor(
         }
     }
 
-    internal companion object {
-        const val taskName: String = "writeSemver"
+    public companion object {
+        public const val TaskName: String = "writeSemver"
 
-        fun register(project: Project): TaskProvider<WriteSemverTask> {
+        internal fun register(project: Project): TaskProvider<WriteSemverTask> {
             val writeSemverTask: TaskProvider<WriteSemverTask> =
-                project.tasks.register<WriteSemverTask>(taskName)
+                project.tasks.register<WriteSemverTask>(TaskName)
 
             writeSemverTask.configure { task ->
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
             }
 
-            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) { task ->
+            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.TaskName) { task ->
                 task.dependsOn(writeSemverTask)
             }
             project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) { task ->

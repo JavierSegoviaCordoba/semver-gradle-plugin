@@ -1,4 +1,4 @@
-![Kotlin version](https://img.shields.io/badge/kotlin-1.8.0-blueviolet?logo=kotlin&logoColor=white)
+![Kotlin version](https://img.shields.io/badge/kotlin-1.8.10-blueviolet?logo=kotlin&logoColor=white)
 [![MavenCentral](https://img.shields.io/maven-central/v/com.javiersc.semver/semver-gradle-plugin?label=MavenCentral)](https://repo1.maven.org/maven2/com/javiersc/semver/semver-gradle-plugin/)
 [![Snapshot](https://img.shields.io/nexus/s/com.javiersc.semver/semver-gradle-plugin?server=https%3A%2F%2Foss.sonatype.org%2F&label=Snapshot)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/semver/semver-gradle-plugin/)
 
@@ -21,20 +21,21 @@ project isolation.
 
 ```kotlin
 plugins {
-    id("com.javiersc.semver.gradle.plugin")
+  id("com.javiersc.semver.gradle.plugin")
 }
 
 semver {
-    tagPrefix.set("v") // optional, default is an empty string
+  tagPrefix.set("v") // default is an empty string
+  commitsMaxCount.set(100) // default is -1
 }
 ```
 
 Default values:
 
-|                   | tagPrefix   |
-|-------------------|-------------|
-| **default value** | ` ` (empty) |
-| **Optional**      | Yes         |
+|                   | tagPrefix   | commitsMaxCount |
+|-------------------|-------------|-----------------|
+| **default value** | ` ` (empty) | -1              |
+| **Optional**      | No          | No              |
 
 ### Examples
 
@@ -72,6 +73,13 @@ Default values:
 ```kotlin
 semver {
     tagPrefix.set("")
+    commitsMaxCount.set(-1)
+}
+
+tasks.register("printLastCommitHash") {
+    doLast {
+        println(semver.commits.get().last().hash)
+    }
 }
 ```
 
@@ -80,6 +88,13 @@ in multi-project builds.
 
 An example can be setting the extension prefix to `v` in a specific project and the last tags in the
 last commit are: `1.0.0` and `v3.0.1`. The project version is `v3.0.1`.
+
+In order to improve the performance on large repositories with a lot of commits, it is possible to
+limit the number of commits to be checked via `commitsMaxCount`. By default, it is `-1` which means
+that all commits are checked.
+
+`semver` contains `commits: Provider<List<Commit>>` to get the commits in the current branch and the
+associated tags to each one which can be useful in some use cases.
 
 #### `semver.tagPrefix` project property via CLI or `gradle.properties` file
 
@@ -101,11 +116,24 @@ To get it working:
 ./gradlew "-Psemver.scope=patch" "-Psemver.tagPrefix=v"
 ```
 
-Additionally, it is possible to set the project tag prefix via Gradle property if some third-party
-plugin requires the version in configuration phase. This property is:
+It is possible to set the project tag prefix via Gradle property if some third-party plugin requires
+the version in configuration phase. This property is:
 
 ```properties
 semver.project.tagPrefix=v
+```
+
+As it can be useful to change the number of commits to be checked, it is possible to set it via
+properties too:
+
+```properties
+semver.commitsMaxCount=100
+```
+
+Or in the CLI:
+
+```shell
+./gradlew "-Psemver.commitsMaxCount=100"
 ```
 
 ##### Additional notes
@@ -136,12 +164,12 @@ semver.project.tagPrefix=v
 #### Insignificant
 
 - Format:
-    - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
-    - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
+  - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
+  - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
 
 - Examples:
-    - `1.0.0.4+26f0484`
-    - `1.0.0.4+DIRTY`
+  - `1.0.0.4+26f0484`
+  - `1.0.0.4+DIRTY`
 
 > It is used the `DIRTY` suffix instead of a timestamp in order to avoid issues with any Gradle
 > cache.

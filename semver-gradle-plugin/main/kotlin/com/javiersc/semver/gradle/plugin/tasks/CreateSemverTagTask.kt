@@ -33,10 +33,10 @@ public abstract class CreateSemverTagTask : DefaultTask() {
     }
 
     public companion object {
-        public const val taskName: String = "createSemverTag"
+        public const val TaskName: String = "createSemverTag"
 
         internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {
-            project.tasks.register<CreateSemverTagTask>(taskName).configure { task ->
+            project.tasks.register<CreateSemverTagTask>(TaskName).configure { task ->
                 task.tagPrefixProperty.set(project.tagPrefixProperty)
                 task.projectTagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())

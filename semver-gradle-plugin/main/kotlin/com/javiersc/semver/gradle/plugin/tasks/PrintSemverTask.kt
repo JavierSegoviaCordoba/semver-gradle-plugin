@@ -156,20 +156,20 @@ constructor(
             .replace(".", "_")
             .replace("-", "_")
 
-    internal companion object {
-        const val taskName: String = "printSemver"
+    public companion object {
+        public const val TaskName: String = "printSemver"
 
-        fun register(project: Project): TaskProvider<PrintSemverTask> {
+        internal fun register(project: Project): TaskProvider<PrintSemverTask> {
             val printSemverTask: TaskProvider<PrintSemverTask> =
-                project.tasks.register(taskName, project.isRootProject, project.name)
+                project.tasks.register(TaskName, project.isRootProject, project.name)
 
             printSemverTask.configure { task ->
-                task.dependsOn(WriteSemverTask.taskName)
+                task.dependsOn(WriteSemverTask.TaskName)
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
             }
 
-            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.taskName) { task ->
+            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.TaskName) { task ->
                 task.dependsOn(printSemverTask)
             }
             project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) { task ->

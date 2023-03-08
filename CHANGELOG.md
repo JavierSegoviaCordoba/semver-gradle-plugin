@@ -4,6 +4,10 @@
 
 ### Added
 
+- Add `commits: Provider<Commit>` to `SemverExtension`
+- Add `commitsMaxCount: Provider<Int>` to `SemverExtension`
+- Add `semver.commitsMaxCount` property
+
 ### Changed
 
 - `com.javiersc.semver:semver-core` dependency from `implementation` to `api`

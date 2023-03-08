@@ -15,23 +15,23 @@ internal class VersionTest {
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
             git.tag().setName("v1.0.0").call()
-            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
+            GitCache(this).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
 
             git.tag().setName("v1.0.0-alpha.1").call()
-            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
+            GitCache(this).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0"))
 
             resolve("3 commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("3 commit").call()
             git.tag().setName("v1.0.0-alpha.2").call()
-            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0-alpha.2"))
+            GitCache(this).lastVersionInCurrentBranch("v").shouldBe(Version("1.0.0-alpha.2"))
 
             resolve("4 commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
             git.commit().setMessage("4 commit").call()
 
             var isWarningLastVersionIsNotHigherVersion = false
-            GitCache(git).lastVersionInCurrentBranch("v") {
+            GitCache(this).lastVersionInCurrentBranch("v") {
                 isWarningLastVersionIsNotHigherVersion = it
             }
             isWarningLastVersionIsNotHigherVersion.shouldBeTrue()
@@ -40,7 +40,7 @@ internal class VersionTest {
             git.add().addFilepattern(".").call()
             git.commit().setMessage("5 commit").call()
             git.tag().setName("v2.0.0-rc.2").call()
-            GitCache(git).lastVersionInCurrentBranch("v").shouldBe(Version("2.0.0-rc.2"))
+            GitCache(this).lastVersionInCurrentBranch("v").shouldBe(Version("2.0.0-rc.2"))
         }
     }
 }

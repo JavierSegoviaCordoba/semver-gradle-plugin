@@ -7,6 +7,7 @@ import com.javiersc.semver.gradle.plugin.internal.git.lastCommitInCurrentBranch
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldBeEmpty
 import kotlin.test.Test
+import org.eclipse.jgit.api.Git
 
 internal class CalculatedVersionTest {
 
@@ -45,17 +46,18 @@ internal class CalculatedVersionTest {
     @Test
     fun `calculated version`() {
         initialCommitAnd {
-            GitCache(git)
+            val git: Git = git
+            GitCache(this)
                 .calculatedVersion()
                 .shouldBe("v0.1.0.0+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
-            GitCache(git).calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
+            GitCache(this).calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
 
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion(stage = "auto", scope = "auto", isCreatingTag = false)
                 .shouldBe("v0.1.0")
 
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion(stage = "auto", scope = "auto", isCreatingTag = true)
                 .shouldBe("v0.1.0")
 
@@ -64,40 +66,40 @@ internal class CalculatedVersionTest {
             git.commit().setMessage("2 commit").call()
             git.tag().setName("v1.0.0").call()
 
-            GitCache(git).calculatedVersion().shouldBe("v1.0.0")
+            GitCache(this).calculatedVersion().shouldBe("v1.0.0")
 
-            GitCache(git).calculatedVersion(isCreatingTag = true).shouldBe("v1.0.1")
+            GitCache(this).calculatedVersion(isCreatingTag = true).shouldBe("v1.0.1")
 
-            GitCache(git).calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
+            GitCache(this).calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
 
             resolve("3 commit.txt").createNewFile()
-            GitCache(git).calculatedVersion().shouldBe("v1.0.0.0+DIRTY")
+            GitCache(this).calculatedVersion().shouldBe("v1.0.0.0+DIRTY")
 
-            GitCache(git).calculatedVersion(checkClean = false).shouldBe("v1.0.0")
+            GitCache(this).calculatedVersion(checkClean = false).shouldBe("v1.0.0")
 
             git.add().addFilepattern(".").call()
             git.commit().setMessage("3 commit").call()
 
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion()
                 .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
-            GitCache(git).calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
+            GitCache(this).calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
 
-            GitCache(git).calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
+            GitCache(this).calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
 
             resolve("4 commit.txt").createNewFile()
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion(checkClean = false)
                 .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion(stage = "snapshot", checkClean = false)
                 .shouldBe("v1.0.1-SNAPSHOT")
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion(stage = "alpha", checkClean = false)
                 .shouldBe("v1.0.1-alpha.1")
-            GitCache(git)
+            GitCache(this)
                 .calculatedVersion(stage = "snapshot", scope = "major", checkClean = false)
                 .shouldBe("v2.0.0-SNAPSHOT")
         }

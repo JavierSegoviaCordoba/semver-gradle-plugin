@@ -9,7 +9,7 @@ import kotlin.test.Test
 internal class GitBranchTest {
 
     @Test
-    fun `current branch`() {
+    internal fun `current branch`() {
         initialCommitAnd {
             resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()

@@ -4,6 +4,7 @@
 
 ### Added
 
+- `printSemver` task depends on `prepareKotlinIdeaImport` task
 - Add `commits: Provider<Commit>` to `SemverExtension`
 - Add `commitsMaxCount: Provider<Int>` to `SemverExtension`
 - Add `semver.commitsMaxCount` property

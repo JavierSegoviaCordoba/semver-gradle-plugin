@@ -160,8 +160,13 @@ constructor(
         public const val TaskName: String = "printSemver"
 
         internal fun register(project: Project): TaskProvider<PrintSemverTask> {
+            val prepareKotlinIdeaImportTask: Task =
+                project.tasks.maybeCreate("prepareKotlinIdeaImport")
+
             val printSemverTask: TaskProvider<PrintSemverTask> =
                 project.tasks.register(TaskName, project.isRootProject, project.name)
+
+            prepareKotlinIdeaImportTask.dependsOn(printSemverTask)
 
             printSemverTask.configure { task ->
                 task.dependsOn(WriteSemverTask.TaskName)

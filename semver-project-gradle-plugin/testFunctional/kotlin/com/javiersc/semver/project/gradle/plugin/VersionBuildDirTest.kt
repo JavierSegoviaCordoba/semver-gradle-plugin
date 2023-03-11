@@ -1,8 +1,8 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
-import com.javiersc.semver.project.gradle.plugin.internal.git.headRevCommitInBranch
 import com.javiersc.semver.project.gradle.plugin.Insignificant.Dirty
+import com.javiersc.semver.project.gradle.plugin.internal.git.headRevCommitInBranch
 import io.kotest.matchers.string.shouldContain
 import kotlin.test.Test
 

@@ -25,7 +25,7 @@ public class SemverProjectPlugin : Plugin<Project> {
 
         SemverExtension.register(this)
 
-        if (hasGit) {
+        if (semverExtension.isEnabled.get() && hasGit) {
             val gitTagBuildService = GitBuildService.register(this)
             checkScopeCorrectness()
             configureLazyVersion()
@@ -45,9 +45,8 @@ public class SemverProjectPlugin : Plugin<Project> {
     private fun Project.configureLazyVersion() {
         version = LazyVersion(VersionValueSource.register(this))
 
-        // Some third party plugin breaks lazy configuration by calling `project.version`
-        // too early based on plugins order, applying the calculated version in
-        // `afterEvaluate` fix it
+        // It is possible third party plugin breaks lazy configuration by calling `project.version`
+        // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
         afterEvaluate { version = LazyVersion(VersionValueSource.register(this)) }
     }
 }

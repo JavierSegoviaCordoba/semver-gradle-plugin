@@ -16,7 +16,6 @@ import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
 import java.io.File
 import org.gradle.api.Project
-import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.provider.ValueSource

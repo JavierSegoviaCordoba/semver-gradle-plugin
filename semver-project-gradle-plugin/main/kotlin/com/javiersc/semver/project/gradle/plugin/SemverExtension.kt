@@ -20,6 +20,8 @@ constructor(
     providers: ProviderFactory,
 ) {
 
+    public val isEnabled: Property<Boolean> = objects.property<Boolean>().convention(true)
+
     public abstract val gitDir: RegularFileProperty
 
     public val commits: Provider<List<Commit>> =

@@ -171,7 +171,7 @@ constructor(
             printSemverTask.configure { task ->
                 task.dependsOn(WriteSemverTask.TaskName)
                 task.tagPrefix.set(project.projectTagPrefix)
-                task.version.set(project.provider { project.version.toString() })
+                task.version.set(project.version.toString())
             }
 
             project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.TaskName) { task ->

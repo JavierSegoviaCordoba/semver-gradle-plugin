@@ -4,6 +4,7 @@
 
 ### Added
 
+- settings plugin to apply semver plugin to all projects
 - `gitDir` property to `SemverExtension`
 - `printSemver` task depends on `prepareKotlinIdeaImport` task
 - `commits: Provider<Commit>` to `SemverExtension`

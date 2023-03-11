@@ -7,4 +7,4 @@ internal val Project.hasGit: Boolean
     get() = gitDir.exists()
 
 internal val Project.gitDir: File
-    get() = file("${rootProject.projectDir}/.git")
+    get() = file("$rootDir/.git")

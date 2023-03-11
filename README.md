@@ -16,19 +16,30 @@ versions and combine normal stages with `snapshot` stage.
 
 ### Apply the plugin
 
-The plugin must be applied individually to each project in order to support configuration cache and
-project isolation.
+In order to support configuration cache or project isolation the plugin must be applied to each
+project or using the settings plugin. Avoid using `allprojects` or `subprojects`.
 
 ```kotlin
+// build.gradle.kts
 plugins {
-    id("com.javiersc.semver")
+    id("com.javiersc.semver") version "$version"
+}
+```
+
+It is possible to apply the plugin to all projects if the plugin is applied in the `settings.gradle`
+or `settings.gradle.kts` file:
+
+```kotlin
+// settings.gradle.kts
+plugins {
+    id("com.javiersc.semver") version "$version"
 }
 ```
 
 ### Examples
 
-Check [documented examples](../.docs/docs/examples)
-or [test examples](testFunctional/resources/examples) to understand easily how it works.
+Check [documented examples](.docs/docs/examples)
+or [test examples](semver-project-gradle-plugin/testFunctional/resources/examples) to understand easily how it works.
 
 ### Usage
 
@@ -60,6 +71,7 @@ Default values:
 
 ```kotlin
 semver {
+    isEnabled.set(true)
     tagPrefix.set("")
     commitsMaxCount.set(-1)
     gitDir.set(rootDir.resolve(".git"))
@@ -74,11 +86,12 @@ tasks.register("printLastCommitHash") {
 
 - Default values:
 
-|                     | **default value**         | **Optional** |
-|---------------------|---------------------------|--------------|
-| **tagPrefix**       | ` `, empty string         | No           |
-| **commitsMaxCount** | `-1`                      | No           |
-| **gitDir**          | `rootDir.resolve(".git")` | No           |
+|                     | **default value**         |
+|---------------------|---------------------------|
+| **isEnabled**       | `true`                    |
+| **tagPrefix**       | ` `, empty string         |
+| **commitsMaxCount** | `-1`                      |
+| **gitDir**          | `rootDir.resolve(".git")` |
 
 `tagPrefix` is used to asociate a project version with a tag prefix, and it allows having different
 versions in multi-project builds.
@@ -162,12 +175,12 @@ Or in the CLI:
 #### Insignificant
 
 - Format:
-    - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
-    - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
+  - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
+  - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
 
 - Examples:
-    - `1.0.0.4+26f0484`
-    - `1.0.0.4+DIRTY`
+  - `1.0.0.4+26f0484`
+  - `1.0.0.4+DIRTY`
 
 > It is used the `DIRTY` suffix instead of a timestamp in order to avoid issues with any Gradle
 > cache.

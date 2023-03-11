@@ -1,4 +1,4 @@
-rootProject.name = "sandbox-project"
+rootProject.name = "multi-project"
 
 plugins {
     id("com.javiersc.semver.settings")

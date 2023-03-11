@@ -39,7 +39,7 @@ public abstract class CreateSemverTagTask : DefaultTask() {
             project.tasks.register<CreateSemverTagTask>(TaskName).configure { task ->
                 task.tagPrefixProperty.set(project.tagPrefixProperty)
                 task.projectTagPrefix.set(project.projectTagPrefix)
-                task.version.set(project.provider { project.version.toString() })
+                task.version.set(project.version.toString())
                 task.gitTagBuildService.set(gitTagBuildService)
                 task.usesService(gitTagBuildService)
             }

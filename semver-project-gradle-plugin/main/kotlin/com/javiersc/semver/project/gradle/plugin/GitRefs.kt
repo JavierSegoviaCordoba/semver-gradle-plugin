@@ -12,7 +12,7 @@ public data class Commit(
     val fullMessage: String,
     val hash: String,
     val timestampEpochSecond: Long,
-    val tags: List<com.javiersc.semver.project.gradle.plugin.Tag>,
+    val tags: List<Tag>,
 ) {
     override fun toString(): String =
         """

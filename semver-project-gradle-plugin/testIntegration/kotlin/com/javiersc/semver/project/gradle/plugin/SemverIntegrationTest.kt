@@ -34,14 +34,14 @@ class SemverIntegrationTest : GradleProjectTest() {
                 createNewFile()
                 writeText("1.0.0\n")
             }
-            val expectedCommits: List<com.javiersc.semver.project.gradle.plugin.Commit> =
+            val expectedCommits: List<Commit> =
                 projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
 
             pluginManager.apply(SemverProjectPlugin::class)
             extensions.findByName("semver").shouldNotBeNull()
             val semver = extensions.findByType<SemverExtension>().shouldNotBeNull()
 
-            val semverCommits: List<com.javiersc.semver.project.gradle.plugin.Commit> = semver.commits.get()
+            val semverCommits: List<Commit> = semver.commits.get()
             semverCommits.shouldHaveSize(expectedCommits.size)
             val afterCommitTimestamp: Instant = Instant.now()
             for ((commit, expectedCommit) in semverCommits.zip(expectedCommits)) {

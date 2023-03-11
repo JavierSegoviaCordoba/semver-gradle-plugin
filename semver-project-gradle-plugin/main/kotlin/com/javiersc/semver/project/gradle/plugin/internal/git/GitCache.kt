@@ -65,7 +65,8 @@ private constructor(
         commitsInCurrentBranchRevCommit.map(RevCommit::getName)
     }
 
-    internal val commitsInTheCurrentBranchPublicApi: List<com.javiersc.semver.project.gradle.plugin.Commit> by lazy {
+    internal val commitsInTheCurrentBranchPublicApi:
+        List<com.javiersc.semver.project.gradle.plugin.Commit> by lazy {
         commitsInCurrentBranchRevCommit.map { revCommit ->
             val hash: String = revCommit.toObjectId().name
             val tags: List<com.javiersc.semver.project.gradle.plugin.Tag> =
@@ -210,7 +211,7 @@ private constructor(
     companion object {
 
         internal operator fun invoke(gitDir: File, maxCount: Provider<Int>? = null): GitCache {
-            val cache: GitCache? = gitCache
+            // val cache: GitCache? = gitCache
             // TODO: improve in-memory cache as `cache.shouldRefresh()` is flaky
             // if (cache == null || cache.shouldRefresh() || true) {
             gitCache = GitCache(gitDir, maxCount)

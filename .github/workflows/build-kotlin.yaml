@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@hubdle
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@hubdle-5
     with:
       allow-github-actor-bots: false
       code-coverage-report: true

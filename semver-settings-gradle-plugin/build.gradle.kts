@@ -4,6 +4,7 @@ plugins {
 
 hubdle {
     config {
+        analysis()
         documentation {
             api()
         }

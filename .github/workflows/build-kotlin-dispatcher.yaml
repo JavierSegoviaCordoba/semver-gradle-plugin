@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@hubdle
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@hubdle-5
     with:
       gradle-args: '${{ github.event.inputs.gradle-args }}'
       allow-github-actor-bots: false

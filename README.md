@@ -39,7 +39,8 @@ plugins {
 ### Examples
 
 Check [documented examples](.docs/docs/examples)
-or [test examples](semver-project-gradle-plugin/testFunctional/resources/examples) to understand easily how it works.
+or [test examples](semver-project-gradle-plugin/testFunctional/resources/examples) to understand
+easily how it works.
 
 ### Usage
 
@@ -175,12 +176,12 @@ Or in the CLI:
 #### Insignificant
 
 - Format:
-  - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
-  - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
+    - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
+    - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
 
 - Examples:
-  - `1.0.0.4+26f0484`
-  - `1.0.0.4+DIRTY`
+    - `1.0.0.4+26f0484`
+    - `1.0.0.4+DIRTY`
 
 > It is used the `DIRTY` suffix instead of a timestamp in order to avoid issues with any Gradle
 > cache.

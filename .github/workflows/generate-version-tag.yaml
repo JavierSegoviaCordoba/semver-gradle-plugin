@@ -28,7 +28,7 @@ on:
 
 jobs:
   generate:
-    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/generate-version-tag.yaml@hubdle
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/generate-version-tag.yaml@hubdle-5
     with:
       stage: '${{ github.event.inputs.stage }}'
       scope: '${{ github.event.inputs.scope }}'

@@ -1,8 +1,12 @@
-plugins { alias(libs.plugins.javiersc.hubdle) }
+plugins {
+    alias(libs.plugins.javiersc.hubdle)
+}
 
 hubdle {
     config {
-        documentation { api() }
+        documentation {
+            api()
+        }
         explicitApi()
         publishing()
     }
@@ -13,13 +17,13 @@ hubdle {
                     plugin {
                         gradlePlugin {
                             plugins {
-                                create("SemverPlugin") {
-                                    id = "com.javiersc.semver"
-                                    displayName = "Semver"
+                                create("SemverProjectPlugin") {
+                                    id = "com.javiersc.semver.project"
+                                    displayName = "Semver Project plugin"
                                     description =
                                         "Manage project versions automatically with git tags"
                                     implementationClass =
-                                        "com.javiersc.semver.gradle.plugin.SemverPlugin"
+                                        "com.javiersc.semver.project.gradle.plugin.SemverProjectPlugin"
                                     tags.set(
                                         listOf(
                                             "semver",
@@ -43,8 +47,26 @@ hubdle {
 
             main {
                 dependencies {
-                    api(projects.semverProjectGradlePlugin)
-                    api(projects.semverSettingsGradlePlugin)
+                    api(libs.javiersc.semver.semverCore)
+                    implementation(libs.eclipse.jgit.eclipseJgit)
+                }
+            }
+
+            testIntegration {
+                dependencies {
+                    implementation(libs.eclipse.jgit.eclipseJgit)
+                }
+            }
+
+            testFunctional {
+                dependencies {
+                    implementation(libs.eclipse.jgit.eclipseJgit)
+                }
+            }
+
+            testFixtures {
+                dependencies {
+                    implementation(libs.eclipse.jgit.eclipseJgit)
                 }
             }
         }

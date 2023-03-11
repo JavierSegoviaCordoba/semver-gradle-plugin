@@ -1,4 +1,4 @@
-# One project example
+# Multi project
 
 ## 0. Initial repo state
 
@@ -35,29 +35,27 @@ All projects have the same version 1.0.0 so there is four tags with that
 
 ## 1. Run `./gradlew assemble`
 
-- Timestamp (UTC)
-
 ```text
-semver for library-one-a: a1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-one-a: a1.0.0.0+7f68e730-DIRTY
                           -> tag prefix (a)
                           -----> base version (1.0.0)
-                          ------> numbers of commits (0)
-                          --------> timestamp (2021-11-11T14-22-03-207850300Z)
+                          -------> numbers of commits (0)
+                          -----------------> DIRTY
 
-semver for library-two-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-three-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-four-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-five-b: b1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-six-c: c1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-seven-c: c1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-eight-c: c1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-nine: 1.0.0.0+2021-11-11T14-22-03-207850300Z
-semver for library-ten: 1.0.0.0+2021-11-11T14-22-03-207850300Z
+semver for library-two-b: b1.0.0.0+7f68e730-DIRTY
+semver for library-three-b: b1.0.0.0+7f68e730-DIRTY
+semver for library-four-b: b1.0.0.0+7f68e730-DIRTY
+semver for library-five-b: b1.0.0.0+7f68e730-DIRTY
+semver for library-six-c: c1.0.0.0+7f68e730-DIRTY
+semver for library-seven-c: c1.0.0.0+7f68e730-DIRTY
+semver for library-eight-c: c1.0.0.0+7f68e730-DIRTY
+semver for library-nine: 1.0.0.0+7f68e730-DIRTY
+semver for library-ten: 1.0.0.0+7f68e730-DIRTY
 ```
 
 ## 2. Create a new file in `library-one-a`, then run `./gradlew assemble`
 
-Version should be similar to the previous one (only timestamp changes)
+Version should be the same to the previous one
 
 ## 3. Add the new file to git and commit it, then run `./gradlew createSemverTag "-Psemver.tagPrefix=a`
 
@@ -102,7 +100,8 @@ semver for library-ten: 1.0.0.1+26f0484
 
 ## 5. Create, add and commit a new file in `library-one-a`, then run `./gradlew assemble`
 
-- Because the git status is clean, instead of using a timestamp, it uses the latest commit hash.
+- Because the git status is clean, instead of using a `-DIRTY` suffix, it uses the latest commit
+  hash.
 
 ```text
 semver for library-one-a: a1.0.1+76f0424

@@ -1,4 +1,4 @@
-# One project example
+# Single project
 
 ## 0. Initial repo state
 
@@ -19,18 +19,17 @@
 ## 1. Run `./gradlew assemble`
 
 - Base version when there is no tag is `0.1.0`
-- Timestamp (UTC)
 
 ```text
-semver for the root project: 0.1.0.0+2021-11-11T14-22-03-207850300Z
+semver for the root project: 0.1.0.0+7f68e730-DIRTY
                              -----> base version (0.1.0)
                              ------> numbers of commits (0)
-                             --------> timestamp (2021-11-11T14-22-03-207850300Z)
+                             ----------------> DIRTY
 ```
 
 ## 2. Create a new file and run `./gradlew assemble`
 
-Version should be similar to the previous one (only timestamp changes)
+Version should be the same than the previous one
 
 ## 3. Add the new file to git, commit it, and run `./gradlew createSemverTag`
 
@@ -50,7 +49,8 @@ semver: 0.1.0
 
 ## 5. Create, add, commit a new file and run `./gradlew assemble`
 
-- Because the git status is clean, instead of using a timestamp, it uses the latest commit hash.
+- Because the git status is clean, instead of using a `DIRTY` suffix, it uses the latest commit
+  hash.
 
 ```text
 semver: 0.1.0.1+26f0484

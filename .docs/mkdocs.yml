@@ -34,7 +34,8 @@ theme:
 nav:
   - Overview: index.md
   - Examples:
-    - All projects: examples/ONE_PROJECT.md
+    - Single project: examples/SINGLE_PROJECT/
+    - Multi project: examples/MULTI_PROJECT/
 
 plugins:
   - search

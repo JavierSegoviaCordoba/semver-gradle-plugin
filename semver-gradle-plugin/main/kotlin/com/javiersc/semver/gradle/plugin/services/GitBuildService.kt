@@ -28,7 +28,14 @@ constructor(
     private var isCreatingTag: Boolean = false
 
     private val git: Git
-        get() = parameters.run { GitCache(rootDir.get().asFile, commitsMaxCount).git }
+        get() =
+            parameters.run {
+                GitCache(
+                        gitDir = gitDir.get().asFile,
+                        maxCount = commitsMaxCount,
+                    )
+                    .git
+            }
 
     internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
         if (!isCreatingTag && projectTagPrefix == tagPrefixProperty) {
@@ -73,7 +80,7 @@ constructor(
     }
 
     internal interface Params : BuildServiceParameters {
-        val rootDir: RegularFileProperty
+        val gitDir: RegularFileProperty
         val commitsMaxCount: Property<Int>
         val remoteProperty: Property<String>
     }
@@ -91,7 +98,7 @@ constructor(
             ) { buildService ->
                 val commitsMaxCount: Int =
                     project.commitsMaxCount.orNull ?: project.semverExtension.commitsMaxCount.get()
-                buildService.parameters.rootDir.set(project.semverExtension.rootDir)
+                buildService.parameters.gitDir.set(project.semverExtension.gitDir)
                 buildService.parameters.commitsMaxCount.set(commitsMaxCount)
                 buildService.parameters.remoteProperty.set(project.remoteProperty)
 

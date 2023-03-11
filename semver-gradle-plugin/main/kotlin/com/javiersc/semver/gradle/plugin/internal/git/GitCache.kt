@@ -25,20 +25,11 @@ private val checkedNotNullCache: GitCache
 
 private var gitCache: GitCache? = null
 
-internal fun GitCache(
-    rootDir: File,
+internal class GitCache
+private constructor(
+    private val gitDir: File,
     maxCount: Provider<Int>? = null,
-    refreshCache: Boolean
-): GitCache {
-    if (gitCache == null || refreshCache) {
-        gitCache = GitCache(rootDir, maxCount)
-    }
-    return checkedNotNullCache
-}
-
-internal class GitCache internal constructor(rootDir: File, maxCount: Provider<Int>? = null) {
-
-    private val gitDir: File by lazy { rootDir.resolve(".git") }
+) {
 
     internal val git: Git by lazy {
         Git(FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()).also {
@@ -47,6 +38,8 @@ internal class GitCache internal constructor(rootDir: File, maxCount: Provider<I
             }
         }
     }
+
+    internal val gitFiles: List<File> = git.repository.directory.walkTopDown().toList()
 
     internal val isClean: Boolean
         get() = git.status().call().isClean
@@ -204,6 +197,9 @@ internal class GitCache internal constructor(rootDir: File, maxCount: Provider<I
             }
                 ?: InitialVersion
 
+    internal fun shouldRefresh(): Boolean =
+        git.repository.directory.walkTopDown().toList() != gitFiles
+
     private fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): Version? =
         asSequence()
             .filter { tag -> tag.name.startsWith(tagPrefix) }
@@ -212,4 +208,16 @@ internal class GitCache internal constructor(rootDir: File, maxCount: Provider<I
             .mapNotNull(Result<Version>::getOrNull)
             .toList()
             .run { maxOrNull() }
+
+    companion object {
+
+        internal operator fun invoke(gitDir: File, maxCount: Provider<Int>? = null): GitCache {
+            val cache: GitCache? = gitCache
+            // TODO: improve in-memory cache as `cache.shouldRefresh()` is flaky
+            // if (cache == null || cache.shouldRefresh() || true) {
+            gitCache = GitCache(gitDir, maxCount)
+            // }
+            return checkedNotNullCache
+        }
+    }
 }

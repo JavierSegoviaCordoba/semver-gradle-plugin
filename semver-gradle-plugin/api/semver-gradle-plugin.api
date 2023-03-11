@@ -28,6 +28,7 @@ public abstract class com/javiersc/semver/gradle/plugin/SemverExtension {
 	public fun <init> (Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/api/provider/ProviderFactory;Ljava/io/File;)V
 	public final fun getCommits ()Lorg/gradle/api/provider/Provider;
 	public final fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
+	public final fun getGitDir ()Lorg/gradle/api/file/RegularFileProperty;
 	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 }
 

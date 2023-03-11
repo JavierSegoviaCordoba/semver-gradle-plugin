@@ -5,6 +5,7 @@ import com.javiersc.semver.gradle.plugin.internal.git.GitCache
 import java.io.File
 import javax.inject.Inject
 import org.gradle.api.Project
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
@@ -18,15 +19,24 @@ public abstract class SemverExtension
 constructor(
     objects: ObjectFactory,
     providers: ProviderFactory,
-    internal val rootDir: File,
+    rootDir: File,
 ) {
 
-    public val tagPrefix: Property<String> = objects.property<String>().convention(DefaultTagPrefix)
+    public val gitDir: RegularFileProperty =
+        objects.fileProperty().convention { rootDir.resolve(".git") }
+
+    public val commits: Provider<List<Commit>> =
+        providers.provider {
+            GitCache(
+                    gitDir = gitDir.get().asFile,
+                    maxCount = commitsMaxCount,
+                )
+                .commitsInTheCurrentBranchPublicApi
+        }
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 
-    public val commits: Provider<List<Commit>> =
-        providers.provider { GitCache(rootDir, commitsMaxCount).commitsInTheCurrentBranchPublicApi }
+    public val tagPrefix: Property<String> = objects.property<String>().convention(DefaultTagPrefix)
 
     public companion object {
 

@@ -28,14 +28,18 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         with(parameters) {
             val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
 
-            val cache = GitCache(parameters.rootDir.get().asFile, parameters.commitsMaxCount)
+            fun cache() =
+                GitCache(
+                    gitDir = parameters.gitDir.get().asFile,
+                    maxCount = parameters.commitsMaxCount,
+                )
 
-            val lastSemver: Version = cache.lastVersionInCurrentBranch(projectTagPrefix.get())
+            val lastSemver: Version = cache().lastVersionInCurrentBranch(projectTagPrefix.get())
             val lastVersionInCurrentBranch =
-                cache.versionsInCurrentBranch(projectTagPrefix.get()).map(Version::toString)
+                cache().versionsInCurrentBranch(projectTagPrefix.get()).map(Version::toString)
 
             val lastVersionCommitInCurrentBranch =
-                cache.lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
+                cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
 
             val version: String =
                 calculatedVersion(
@@ -48,11 +52,12 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
                     lastSemverStageInCurrentBranch = lastSemver.stage?.name,
                     lastSemverNumInCurrentBranch = lastSemver.stage?.num,
                     versionTagsInCurrentBranch = lastVersionInCurrentBranch,
-                    clean = cache.isClean,
+                    clean = cache().isClean,
                     checkClean = checkClean.get(),
-                    lastCommitInCurrentBranch = cache.lastCommitInCurrentBranch?.hash,
-                    commitsInCurrentBranch = cache.commitsInCurrentBranch.map(GitRef.Commit::hash),
-                    headCommit = cache.headCommit.commit.hash,
+                    lastCommitInCurrentBranch = cache().lastCommitInCurrentBranch?.hash,
+                    commitsInCurrentBranch =
+                        cache().commitsInCurrentBranch.map(GitRef.Commit::hash),
+                    headCommit = cache().headCommit.commit.hash,
                     lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
                 )
 
@@ -62,7 +67,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         }
 
     internal interface Params : ValueSourceParameters {
-        val rootDir: RegularFileProperty
+        val gitDir: RegularFileProperty
         val commitsMaxCount: Property<Int>
         val tagPrefixProperty: Property<String>
         val projectTagPrefix: Property<String>
@@ -76,7 +81,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
 
         fun register(project: Project): Provider<String> =
             project.providers.of(VersionValueSource::class) { valueSourceSpec ->
-                valueSourceSpec.parameters.rootDir.set(project.semverExtension.rootDir)
+                valueSourceSpec.parameters.gitDir.set(project.semverExtension.gitDir.get())
                 val commitsMaxCount: Int =
                     project.commitsMaxCount.orNull ?: project.semverExtension.commitsMaxCount.get()
                 valueSourceSpec.parameters.commitsMaxCount.set(commitsMaxCount)

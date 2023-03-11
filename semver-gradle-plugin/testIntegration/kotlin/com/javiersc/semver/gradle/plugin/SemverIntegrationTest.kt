@@ -36,10 +36,12 @@ class SemverIntegrationTest : GradleProjectTest() {
             }
             val expectedCommits: List<Commit> =
                 projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+
             pluginManager.apply(SemverPlugin::class)
             extensions.findByName("semver").shouldNotBeNull()
-            val semverCommits: List<Commit> =
-                extensions.findByType<SemverExtension>().shouldNotBeNull().commits.get()
+            val semver = extensions.findByType<SemverExtension>().shouldNotBeNull()
+
+            val semverCommits: List<Commit> = semver.commits.get()
             semverCommits.shouldHaveSize(expectedCommits.size)
             val afterCommitTimestamp: Instant = Instant.now()
             for ((commit, expectedCommit) in semverCommits.zip(expectedCommits)) {

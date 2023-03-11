@@ -14,24 +14,12 @@ project isolation.
 plugins {
     id("com.javiersc.semver.gradle.plugin")
 }
-
-semver {
-    tagPrefix.set("v") // default is an empty string
-    commitsMaxCount.set(100) // default is -1
-}
 ```
-
-Default values:
-
-|                   | tagPrefix   | commitsMaxCount |
-|-------------------|-------------|-----------------|
-| **default value** | ` ` (empty) | -1              |
-| **Optional**      | No          | No              |
 
 ### Examples
 
-Check [documented examples](../.docs/docs/examples) or [test examples](test/resources/examples) to
-understand easily how it works.
+Check [documented examples](../.docs/docs/examples)
+or [test examples](testFunctional/resources/examples) to understand easily how it works.
 
 ### Usage
 
@@ -65,6 +53,7 @@ Default values:
 semver {
     tagPrefix.set("")
     commitsMaxCount.set(-1)
+    gitDir.set(rootDir.resolve(".git"))
 }
 
 tasks.register("printLastCommitHash") {
@@ -74,11 +63,20 @@ tasks.register("printLastCommitHash") {
 }
 ```
 
-It is used to asociate a project version with a tag prefix, and it allows having different versions
-in multi-project builds.
+- Default values:
 
-An example can be setting the extension prefix to `v` in a specific project and the last tags in the
-last commit are: `1.0.0` and `v3.0.1`. The project version is `v3.0.1`.
+|                     | **default value**         | **Optional** |
+|---------------------|---------------------------|--------------|
+| **tagPrefix**       | ` `, empty string         | No           |
+| **commitsMaxCount** | `-1`                      | No           |
+| **gitDir**          | `rootDir.resolve(".git")` | No           |
+
+`tagPrefix` is used to asociate a project version with a tag prefix, and it allows having different
+versions in multi-project builds.
+
+An example can be setting the extension prefix to `v` in a specific project A and the last tags in
+the last commit are: `v1.0.0` and `w3.0.1`. The project A version is `v1.0.0`. If a project B sets
+the prefix to `w`, the project B version is `w3.0.1`.
 
 In order to improve the performance on large repositories with a lot of commits, it is possible to
 limit the number of commits to be checked via `commitsMaxCount`. By default, it is `-1` which means

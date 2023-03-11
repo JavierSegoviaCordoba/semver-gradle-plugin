@@ -18,7 +18,7 @@ hubdle {
                         gradlePlugin {
                             plugins {
                                 create("SemverPlugin") {
-                                    id = "com.javiersc.semver.gradle.plugin"
+                                    id = "com.javiersc.semver"
                                     displayName = "Semver"
                                     description = "Manage project versions automatically with git tags"
                                     implementationClass =

@@ -12,6 +12,7 @@
 
 ### Changed
 
+- plugin id from `com.javiersc.semver.gradle.plugin` to `com.javiersc.semver`
 - `com.javiersc.semver:semver-core` dependency from `implementation` to `api`
 
 ### Deprecated

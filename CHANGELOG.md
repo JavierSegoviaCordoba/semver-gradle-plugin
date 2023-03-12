@@ -4,6 +4,20 @@
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Updated
+
+## [0.5.0-alpha.1] - 2023-03-12
+
+### Added
+
 - settings plugin to apply semver plugin to all projects
 - `gitDir` property to `SemverExtension`
 - `printSemver` task depends on `prepareKotlinIdeaImport` task
@@ -15,10 +29,6 @@
 
 - plugin id from `com.javiersc.semver.gradle.plugin` to `com.javiersc.semver`
 - `com.javiersc.semver:semver-core` dependency from `implementation` to `api`
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 
@@ -269,7 +279,9 @@
 
 - No changes
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.4.0-alpha.1...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.1...HEAD
+
+[0.5.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.4.0-alpha.1...0.5.0-alpha.1
 
 [0.4.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.3.0-alpha.5...0.4.0-alpha.1
 

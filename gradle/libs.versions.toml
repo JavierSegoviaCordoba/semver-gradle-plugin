@@ -1,5 +1,5 @@
 [versions]
-hubdle = "0.5.0-alpha.2"
+hubdle = "0.5.0-alpha.6"
 jgit = "6.5.0.202303070854-r"
 semverCore = "0.1.0-beta.13"
 

@@ -15,10 +15,9 @@ on:
 
 jobs:
   build:
-    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@hubdle-5
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/build-kotlin.yaml@main
     with:
       gradle-args: '${{ github.event.inputs.gradle-args }}'
       allow-github-actor-bots: false
-      code-coverage-report: true
       publish-all-docs: '${{ github.event.inputs.publish-all-docs }}'
     secrets: inherit

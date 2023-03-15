@@ -1,10 +1,8 @@
 [versions]
 hubdle = "0.5.0-alpha.6"
 jgit = "6.5.0.202303070854-r"
-semverCore = "0.1.0-beta.13"
 
 [libraries]
-javiersc-semver-semverCore = { module = "com.javiersc.semver:semver-core", version.ref = "semverCore" }
 eclipse-jgit-eclipseJgit = { module = "org.eclipse.jgit:org.eclipse.jgit", version.ref = "jgit" }
 
 [plugins]

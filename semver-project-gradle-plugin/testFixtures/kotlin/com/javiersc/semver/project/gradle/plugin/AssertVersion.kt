@@ -1,12 +1,12 @@
 package com.javiersc.semver.project.gradle.plugin
 
+import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.gradle.version.GradleVersionException
 import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.BrightYellow
 import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.Purple
 import com.javiersc.kotlin.stdlib.AnsiColor.Foreground.Yellow
 import com.javiersc.kotlin.stdlib.AnsiColor.Reset
 import com.javiersc.kotlin.stdlib.ansiColor
-import com.javiersc.semver.SemanticVersionException
-import com.javiersc.semver.Version
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
@@ -58,13 +58,13 @@ internal fun File.assertVersion(
             buildVersion.startsWith(version).shouldBeTrue()
             buildTagVersion.startsWith("$prefix$version").shouldBeTrue()
             buildVersion.shouldContain("+")
-            shouldThrow<SemanticVersionException> { Version(buildVersion) }
+            shouldThrow<GradleVersionException> { GradleVersion(buildVersion) }
         }
         Insignificant.Dirty -> {
             buildVersion.startsWith(version).shouldBeTrue()
             buildTagVersion.startsWith("$prefix$version").shouldBeTrue()
             buildVersion.shouldContain("+").shouldContain("DIRTY")
-            shouldThrow<SemanticVersionException> { Version(buildVersion) }
+            shouldThrow<GradleVersionException> { GradleVersion(buildVersion) }
         }
         else -> {
             buildVersionFile

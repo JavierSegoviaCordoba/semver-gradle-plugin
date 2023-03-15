@@ -1,15 +1,15 @@
 package com.javiersc.semver.project.gradle.plugin.extensions
 
-import com.javiersc.semver.isAlpha
-import com.javiersc.semver.isBeta
-import com.javiersc.semver.isDev
-import com.javiersc.semver.isNotAlpha
-import com.javiersc.semver.isNotBeta
-import com.javiersc.semver.isNotDev
-import com.javiersc.semver.isNotRC
-import com.javiersc.semver.isNotSnapshot
-import com.javiersc.semver.isRC
-import com.javiersc.semver.isSnapshot
+import com.javiersc.gradle.version.isAlpha
+import com.javiersc.gradle.version.isBeta
+import com.javiersc.gradle.version.isDev
+import com.javiersc.gradle.version.isNotAlpha
+import com.javiersc.gradle.version.isNotBeta
+import com.javiersc.gradle.version.isNotDev
+import com.javiersc.gradle.version.isNotRC
+import com.javiersc.gradle.version.isNotSnapshot
+import com.javiersc.gradle.version.isRC
+import com.javiersc.gradle.version.isSnapshot
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider
 

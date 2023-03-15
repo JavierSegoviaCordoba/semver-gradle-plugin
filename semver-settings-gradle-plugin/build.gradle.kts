@@ -43,8 +43,8 @@ hubdle {
 
             main {
                 dependencies {
+                    api(projects.gradleVersion)
                     api(projects.semverProjectGradlePlugin)
-                    api(libs.javiersc.semver.semverCore)
                     implementation(libs.eclipse.jgit.eclipseJgit)
                 }
             }

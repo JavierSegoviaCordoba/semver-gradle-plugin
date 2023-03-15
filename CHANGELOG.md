@@ -4,7 +4,11 @@
 
 ### Added
 
+- follow Gradle version ordering
+
 ### Changed
+
+- `Version` to `GradleVersion`
 
 ### Deprecated
 

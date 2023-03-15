@@ -1,6 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin.valuesources
 
-import com.javiersc.semver.Version
+import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.project.gradle.plugin.internal.checkCleanProperty
 import com.javiersc.semver.project.gradle.plugin.internal.checkVersionIsHigherOrSame
@@ -34,9 +34,10 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
                     maxCount = parameters.commitsMaxCount,
                 )
 
-            val lastSemver: Version = cache().lastVersionInCurrentBranch(projectTagPrefix.get())
+            val lastSemver: GradleVersion =
+                cache().lastVersionInCurrentBranch(projectTagPrefix.get())
             val lastVersionInCurrentBranch =
-                cache().versionsInCurrentBranch(projectTagPrefix.get()).map(Version::toString)
+                cache().versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
 
             val lastVersionCommitInCurrentBranch =
                 cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash

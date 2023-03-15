@@ -1,5 +1,5 @@
 package com.javiersc.semver.project.gradle.plugin.internal
 
-import com.javiersc.semver.Version
+import com.javiersc.gradle.version.GradleVersion
 
-internal val InitialVersion: Version = Version("0.1.0")
+internal val InitialVersion: GradleVersion = GradleVersion("0.1.0")

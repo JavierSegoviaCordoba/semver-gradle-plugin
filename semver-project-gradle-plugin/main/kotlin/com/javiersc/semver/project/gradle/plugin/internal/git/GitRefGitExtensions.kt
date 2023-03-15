@@ -1,6 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin.internal.git
 
-import com.javiersc.semver.Version
+import com.javiersc.gradle.version.GradleVersion
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.ObjectId
@@ -144,17 +144,19 @@ internal fun Git.isThereVersionTag(tagPrefix: String): Boolean =
 
 internal fun Git.versionTagsInCurrentCommit(hash: String, tagPrefix: String): List<GitRef.Tag> =
     tagsInCurrentCommit(hash).filter { tag ->
-        tag.name.startsWith(tagPrefix) && Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
+        tag.name.startsWith(tagPrefix) &&
+            GradleVersion.safe(tag.name.removePrefix(tagPrefix)).isSuccess
     }
 
 internal fun Git.versionTagsInCurrentBranch(tagPrefix: String): List<GitRef.Tag> =
     tagsInCurrentBranch.filter { tag ->
-        tag.name.startsWith(tagPrefix) && Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
+        tag.name.startsWith(tagPrefix) &&
+            GradleVersion.safe(tag.name.removePrefix(tagPrefix)).isSuccess
     }
 
 internal fun Git.versionTagsSortedBySemver(tagPrefix: String): List<GitRef.Tag> =
     versionTagsInCurrentBranch(tagPrefix).sortedBy { tag ->
-        Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
+        GradleVersion.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
     }
 
 internal fun Git.versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(

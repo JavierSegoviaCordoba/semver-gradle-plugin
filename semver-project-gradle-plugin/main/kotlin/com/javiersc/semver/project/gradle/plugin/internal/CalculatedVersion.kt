@@ -1,7 +1,7 @@
 package com.javiersc.semver.project.gradle.plugin.internal
 
-import com.javiersc.semver.Version
-import com.javiersc.semver.Version.Increase
+import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.gradle.version.GradleVersion.Increase
 import com.javiersc.semver.project.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
 
 @Suppress("ComplexMethod")
@@ -36,7 +36,7 @@ internal fun calculatedVersion(
         }
 
     val lastSemverInCurrentBranch =
-        Version(
+        GradleVersion(
             major = lastSemverMajorInCurrentBranch,
             minor = lastSemverMinorInCurrentBranch,
             patch = lastSemverPatchInCurrentBranch,

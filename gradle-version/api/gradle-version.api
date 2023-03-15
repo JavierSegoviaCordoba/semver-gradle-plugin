@@ -1,0 +1,90 @@
+public final class com/javiersc/gradle/version/GradleVersion : java/lang/Comparable {
+	public static final field Companion Lcom/javiersc/gradle/version/GradleVersion$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun compareTo (Lcom/javiersc/gradle/version/GradleVersion;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public final fun copy (IIILjava/lang/String;Ljava/lang/Integer;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun copy$default (Lcom/javiersc/gradle/version/GradleVersion;IIILjava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMajor ()I
+	public final fun getMinor ()I
+	public final fun getPatch ()I
+	public final fun getStage ()Lcom/javiersc/gradle/version/GradleVersion$Stage;
+	public fun hashCode ()I
+	public final fun inc (Lcom/javiersc/gradle/version/GradleVersion$Increase;Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun inc$default (Lcom/javiersc/gradle/version/GradleVersion;Lcom/javiersc/gradle/version/GradleVersion$Increase;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/gradle/version/GradleVersion$Companion {
+	public final fun getRegex ()Lkotlin/text/Regex;
+	public final fun getScopeRegex ()Lkotlin/text/Regex;
+	public final fun invoke (IIILjava/lang/String;Ljava/lang/Integer;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun invoke (Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun invoke (Ljava/lang/String;Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun safe-IoAF18A (Ljava/lang/String;)Ljava/lang/Object;
+	public final fun safe-gIAlu-s (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+	public final fun safe-yxL6bBk (IIILjava/lang/String;Ljava/lang/Integer;)Ljava/lang/Object;
+}
+
+public abstract interface class com/javiersc/gradle/version/GradleVersion$Increase {
+}
+
+public final class com/javiersc/gradle/version/GradleVersion$Increase$Major : com/javiersc/gradle/version/GradleVersion$Increase {
+	public static final field INSTANCE Lcom/javiersc/gradle/version/GradleVersion$Increase$Major;
+}
+
+public final class com/javiersc/gradle/version/GradleVersion$Increase$Minor : com/javiersc/gradle/version/GradleVersion$Increase {
+	public static final field INSTANCE Lcom/javiersc/gradle/version/GradleVersion$Increase$Minor;
+}
+
+public final class com/javiersc/gradle/version/GradleVersion$Increase$Patch : com/javiersc/gradle/version/GradleVersion$Increase {
+	public static final field INSTANCE Lcom/javiersc/gradle/version/GradleVersion$Increase$Patch;
+}
+
+public final class com/javiersc/gradle/version/GradleVersion$Stage : java/lang/Comparable {
+	public static final field Companion Lcom/javiersc/gradle/version/GradleVersion$Stage$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun compareTo (Lcom/javiersc/gradle/version/GradleVersion$Stage;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getNum ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/gradle/version/GradleVersion$Stage$Companion {
+	public final fun getStageRegex ()Lkotlin/text/Regex;
+	public final fun invoke (Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion$Stage;
+	public final fun invoke (Ljava/lang/String;Ljava/lang/Integer;)Lcom/javiersc/gradle/version/GradleVersion$Stage;
+}
+
+public final class com/javiersc/gradle/version/GradleVersionException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getMessage ()Ljava/lang/String;
+}
+
+public final class com/javiersc/gradle/version/IsExtensionsKt {
+	public static final fun isAlpha (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isAlpha (Ljava/lang/String;)Z
+	public static final fun isBeta (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isBeta (Ljava/lang/String;)Z
+	public static final fun isDev (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isDev (Ljava/lang/String;)Z
+	public static final fun isNotAlpha (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isNotAlpha (Ljava/lang/String;)Z
+	public static final fun isNotBeta (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isNotBeta (Ljava/lang/String;)Z
+	public static final fun isNotDev (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isNotDev (Ljava/lang/String;)Z
+	public static final fun isNotRC (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isNotRC (Ljava/lang/String;)Z
+	public static final fun isNotSnapshot (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isNotSnapshot (Ljava/lang/String;)Z
+	public static final fun isRC (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isRC (Ljava/lang/String;)Z
+	public static final fun isSnapshot (Lcom/javiersc/gradle/version/GradleVersion;)Z
+	public static final fun isSnapshot (Ljava/lang/String;)Z
+}
+

@@ -2,8 +2,8 @@ package com.javiersc.semver.project.gradle.plugin.internal
 
 import com.javiersc.gradle.logging.extensions.quietColored
 import com.javiersc.gradle.logging.extensions.warnColored
+import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.kotlin.stdlib.AnsiColor
-import com.javiersc.semver.Version
 import com.javiersc.semver.project.gradle.plugin.SemverProjectPlugin
 import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
@@ -13,7 +13,7 @@ internal fun semverWarningMessage(message: Any) = defaultLogger.warnColored { "$
 internal fun semverMessage(message: Any, color: AnsiColor = AnsiColor.Foreground.Purple) =
     defaultLogger.quietColored(color) { "$message" }
 
-internal fun warningLastVersionIsNotHigherVersion(last: Version?, higher: Version?) {
+internal fun warningLastVersionIsNotHigherVersion(last: GradleVersion?, higher: GradleVersion?) {
     val message =
         """|There is an old tag with a higher version than the last tag version:
            |  - Old tag version -> $last

@@ -1,6 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin.internal.git
 
-import com.javiersc.semver.Version
+import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.InitialVersion
 import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
 import com.javiersc.semver.project.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
@@ -140,23 +140,23 @@ private constructor(
     internal fun versionTagsInCurrentCommit(hash: String, tagPrefix: String): List<GitRef.Tag> =
         tagsInCurrentCommit(hash).filter { tag ->
             tag.name.startsWith(tagPrefix) &&
-                Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
+                GradleVersion.safe(tag.name.removePrefix(tagPrefix)).isSuccess
         }
 
     internal fun versionTagsInCurrentBranch(tagPrefix: String): List<GitRef.Tag> =
         tagsInCurrentBranch.filter { tag ->
             tag.name.startsWith(tagPrefix) &&
-                Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
+                GradleVersion.safe(tag.name.removePrefix(tagPrefix)).isSuccess
         }
 
-    internal fun versionsInCurrentBranch(tagPrefix: String): List<Version> =
+    internal fun versionsInCurrentBranch(tagPrefix: String): List<GradleVersion> =
         versionTagsInCurrentBranch(tagPrefix).mapNotNull { tag ->
-            Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
+            GradleVersion.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
         }
 
     internal fun versionTagsSortedBySemver(tagPrefix: String): List<GitRef.Tag> =
         versionTagsInCurrentBranch(tagPrefix).sortedBy { tag ->
-            Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
+            GradleVersion.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
         }
 
     internal fun versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(
@@ -177,12 +177,13 @@ private constructor(
     internal fun lastVersionInCurrentBranch(
         tagPrefix: String,
         isWarningLastVersionIsNotHigherVersion: (Boolean) -> Unit = {},
-    ): Version =
+    ): GradleVersion =
         versionTagsInCurrentCommit(headCommit.commit.hash, tagPrefix).lastResultVersion(tagPrefix)
             ?: lastVersionTagInCurrentBranch(tagPrefix)?.name?.removePrefix(tagPrefix).run {
                 if (this != null) {
-                    val lastVersion: Version? = Version.safe(this).getOrNull()
-                    val higherVersion: Version? = versionsInCurrentBranch(tagPrefix).firstOrNull()
+                    val lastVersion: GradleVersion? = GradleVersion.safe(this).getOrNull()
+                    val higherVersion: GradleVersion? =
+                        versionsInCurrentBranch(tagPrefix).firstOrNull()
 
                     if (
                         lastVersion != null && higherVersion != null && higherVersion > lastVersion
@@ -199,12 +200,12 @@ private constructor(
     internal fun shouldRefresh(): Boolean =
         git.repository.directory.walkTopDown().toList() != gitFiles
 
-    private fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): Version? =
+    private fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): GradleVersion? =
         asSequence()
             .filter { tag -> tag.name.startsWith(tagPrefix) }
             .map { tag -> tag.name.substringAfter(tagPrefix) }
-            .map(Version.Companion::safe)
-            .mapNotNull(Result<Version>::getOrNull)
+            .map(GradleVersion.Companion::safe)
+            .mapNotNull(Result<GradleVersion>::getOrNull)
             .toList()
             .run { maxOrNull() }
 

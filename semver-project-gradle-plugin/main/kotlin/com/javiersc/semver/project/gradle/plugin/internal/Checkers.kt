@@ -1,6 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin.internal
 
-import com.javiersc.semver.Version
+import com.javiersc.gradle.version.GradleVersion
 import org.gradle.api.Project
 
 internal fun Project.checkScopeCorrectness() {
@@ -12,9 +12,9 @@ internal fun Project.checkScopeCorrectness() {
 
 internal fun checkVersionIsHigherOrSame(
     version: String,
-    lastVersionInCurrentBranch: Version,
+    lastVersionInCurrentBranch: GradleVersion,
 ) {
-    Version.safe(version).getOrNull()?.let { calculatedVersion ->
+    GradleVersion.safe(version).getOrNull()?.let { calculatedVersion ->
         check(calculatedVersion >= lastVersionInCurrentBranch) {
             "Next version should be higher or the same as the current one"
         }

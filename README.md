@@ -61,10 +61,11 @@ They can be set via CLI, for example:
 
 Default values:
 
-|                   | stage  | scope  | tagPrefix   |
-|-------------------|--------|--------|-------------|
-| **default value** | `auto` | `auto` | ` ` (empty) |
-| **Optional**      | Yes*   | Yes*   | Yes*        |
+|           | **default value** | **Optional** |
+|-----------|-------------------|--------------|
+| stage     | `auto`            | Yes*         |
+| scope     | `auto`            | Yes*         |
+| tagPrefix | `auto`            | Yes*         |
 
 > Depends on the use case*
 
@@ -223,6 +224,21 @@ semver.tagPrefix=v
 ./gradlew "-Psemver.stage=final" # v1.0.1
 ./gradlew "-Psemver.stage=auto" # v1.0.1
 ```
+
+The stage order is based on the Gradle official rules, some samples are:
+
+- If both are non-numeric, the parts are compared alphabetically, in a case-sensitive manner:
+  `1.0.0-ALPHA.1` < `1.0.0-BETA.1` < `1.0.0-alpha.1` < `1.0.0-beta.1`.
+- `dev` is considered lower than any non-numeric
+  part: `1.0.0-dev.1` < `1.0.0-ALPHA.1` < `1.0.0-alpha.1` < `1.0.0-rc.1`.
+- The strings `rc`, `snapshot`, `final`, `ga`, `release` and `sp` are considered higher than any
+  other string part (sorted in this order): `1.0.0-zeta.1` < `1.0.0-rc.1` < `1.0.0-snapshot` <
+  `1.0.0-ga.1` < `1.0.0-release.1` < `1.0.0-sp.1` < `1.0.0`.
+- These particular values are NOT case-sensitive, as opposed to regular string parts and do not
+  depend on the separator used around them: `1.0.0-RC.1` == `1.0.0-rc.1`.
+
+Gradle's docs can be
+found [here](https://docs.gradle.org/current/userguide/single_versions.html#version_ordering)
 
 ### Scopes
 

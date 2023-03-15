@@ -1,9 +1,9 @@
-# Module semver-project-gradle-plugin
+# Module semver-settings-gradle-plugin
 
 ### Apply the plugin
 
 ```kotlin
-// build.gradle.kts
+// settings.gradle.kts
 plugins {
     id("com.javiersc.semver") version "$version"
 }

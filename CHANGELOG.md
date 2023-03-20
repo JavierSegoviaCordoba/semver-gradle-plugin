@@ -4,11 +4,7 @@
 
 ### Added
 
-- follow Gradle version ordering
-
 ### Changed
-
-- `Version` to `GradleVersion`
 
 ### Deprecated
 
@@ -17,6 +13,16 @@
 ### Fixed
 
 ### Updated
+
+## [0.5.0-alpha.2] - 2023-03-20
+
+### Added
+
+- follow Gradle version ordering
+
+### Changed
+
+- `Version` to `GradleVersion`
 
 ## [0.5.0-alpha.1] - 2023-03-12
 
@@ -283,7 +289,9 @@
 
 - No changes
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.1...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.2...HEAD
+
+[0.5.0-alpha.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.1...0.5.0-alpha.2
 
 [0.5.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.4.0-alpha.1...0.5.0-alpha.1
 

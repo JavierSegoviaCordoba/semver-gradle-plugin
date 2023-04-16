@@ -12,6 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.myapp"
+        namespace = "com.example.myapp"
         minSdk = 21
         versionCode = "$version".first().toInt()
         versionName = "$version"

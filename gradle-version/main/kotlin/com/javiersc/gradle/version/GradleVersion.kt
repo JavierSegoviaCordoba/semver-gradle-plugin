@@ -297,7 +297,9 @@ private constructor(
 
     public sealed interface Increase {
         public object Major : Increase
+
         public object Minor : Increase
+
         public object Patch : Increase
     }
 }

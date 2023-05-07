@@ -111,6 +111,8 @@ internal class MassiveTagsInSameCommitTest : GradleTestKitTest() {
     }
 
     private val tagPrefixV = "-Psemver.tagPrefix=v"
+
     private fun stage(stage: String) = "-Psemver.stage=$stage"
+
     private fun scope(scope: String) = "-Psemver.scope=$scope"
 }

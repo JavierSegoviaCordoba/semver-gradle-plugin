@@ -1,6 +1,7 @@
 hubdle {
     config {
         analysis()
+        coverage()
         documentation {
             api()
         }
@@ -45,25 +46,25 @@ hubdle {
                 dependencies {
                     api(projects.gradleVersion)
                     api(projects.semverProjectGradlePlugin)
-                    implementation(libs.eclipse.jgit.eclipseJgit)
+                    implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testIntegration {
                 dependencies {
-                    implementation(libs.eclipse.jgit.eclipseJgit)
+                    implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFunctional {
                 dependencies {
-                    implementation(libs.eclipse.jgit.eclipseJgit)
+                    implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFixtures {
                 dependencies {
-                    implementation(libs.eclipse.jgit.eclipseJgit)
+                    implementation(hubdle.eclipse.jgit)
                 }
             }
         }

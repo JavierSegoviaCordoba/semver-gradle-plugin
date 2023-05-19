@@ -1,6 +1,7 @@
 hubdle {
     config {
         analysis()
+        coverage()
         documentation {
             api()
         }

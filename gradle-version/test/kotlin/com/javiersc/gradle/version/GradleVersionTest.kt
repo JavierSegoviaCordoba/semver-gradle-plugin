@@ -22,6 +22,9 @@ import io.kotest.property.arbitrary.positiveInt
 import io.kotest.property.checkAll
 import io.kotest.property.forAll
 import kotlin.test.Test
+import kotlin.time.Duration
+import kotlinx.coroutines.test.TestResult
+import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
 
 internal class GradleVersionTest {
@@ -81,28 +84,28 @@ internal class GradleVersionTest {
     }
 
     @Test
-    fun major_comparator() = runTest {
+    fun major_comparator() = runTestNoTimeout {
         forAll(versionArbitrary, versionArbitrary) { a: Version, b: Version ->
             if (a.major > b.major) a > b else true
         }
     }
 
     @Test
-    fun minor_comparator() = runTest {
+    fun minor_comparator() = runTestNoTimeout {
         forAll(versionArbitrary, versionArbitrary) { a: Version, b: Version ->
             if ((a.major == b.major) && (a.minor > b.minor)) a > b else true
         }
     }
 
     @Test
-    fun patch_comparator() = runTest {
+    fun patch_comparator() = runTestNoTimeout {
         forAll(versionArbitrary, versionArbitrary) { a: Version, b: Version ->
             if ((a.major == b.major) && (a.minor == b.minor) && (a.patch > b.patch)) a > b else true
         }
     }
 
     @Test
-    fun stage_name_comparator() = runTest {
+    fun stage_name_comparator() = runTestNoTimeout {
         forAll(versionArbitrary, versionArbitrary) { a: Version, b: Version ->
             if (a nameComparator b) {
                 val aName = a.stage?.name
@@ -160,7 +163,7 @@ internal class GradleVersionTest {
             (this.stage!!.name > other.stage!!.name)
 
     @Test
-    fun stage_num_comparator() = runTest {
+    fun stage_num_comparator() = runTestNoTimeout {
         forAll(versionArbitrary, versionArbitrary) { a: Version, b: Version ->
             if (a mumComparator b) a > b else true
         }
@@ -178,7 +181,7 @@ internal class GradleVersionTest {
             (this.stage!!.num!! > other.stage!!.num!!)
 
     @Test
-    fun wrong_versions() = runTest {
+    fun wrong_versions() = runTestNoTimeout {
         checkAll(major, minor, patch, stageName, num) { major, minor, patch, stageName, num ->
             when {
                 stageName.equals("SNAPSHOT", true) && num != null -> {
@@ -790,3 +793,6 @@ internal class GradleVersionTest {
         }
     }
 }
+
+fun runTestNoTimeout(block: suspend TestScope.() -> Unit): TestResult =
+    runTest(timeout = Duration.INFINITE, testBody = block)

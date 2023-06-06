@@ -7,7 +7,9 @@ import io.kotest.matchers.comparables.shouldBeGreaterThan
 import io.kotest.matchers.comparables.shouldBeLessThan
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldEndWith
 import io.kotest.matchers.string.shouldNotBeEmpty
+import io.kotest.matchers.string.shouldStartWith
 import java.time.Instant
 import kotlin.test.Test
 import kotlin.time.Duration.Companion.seconds
@@ -57,6 +59,9 @@ class SemverIntegrationTest : GradleProjectTest() {
             }
 
             tasks.names.contains("printSemver")
+            (version as LazyVersion).map { version -> "$version-test" }
+            version.toString().shouldStartWith("1.0.0").shouldEndWith("-test")
+            afterEvaluate { it.version.toString().shouldStartWith("1.0.0").shouldEndWith("-test") }
         }
     }
 }

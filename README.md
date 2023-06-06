@@ -383,3 +383,16 @@ semver: 1.0.1
 ./gradlew "-Psemver.checkClean=false"
 semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 ```
+
+### Utilities
+
+The `project.version` is set as `LazyVersion`, it is possible so after casting it to `LazyVersion`,
+it is possible to access to the `map` function which allows modifying the version. This can be
+useful
+to add a suffix to the version, for example, it is a common practice in Kotlin Compiler plugins to
+attach the compatible Kotlin version, for example `1.0.0-1.8.21` or `1.0.0-alpha.2-1.8.21`.
+
+```kotlin
+val kotlin: String = getKotlinVersion()
+(version as LazyVersion).map { semver -> "$semver-$kotlin" }
+```

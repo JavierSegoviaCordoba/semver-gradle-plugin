@@ -4,6 +4,8 @@
 
 ### Added
 
+- `map` function to `LazyVersion`
+
 ### Changed
 
 ### Deprecated

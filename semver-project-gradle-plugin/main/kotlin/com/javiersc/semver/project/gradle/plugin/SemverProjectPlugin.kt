@@ -47,6 +47,6 @@ public class SemverProjectPlugin : Plugin<Project> {
 
         // It is possible third party plugin breaks lazy configuration by calling `project.version`
         // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
-        afterEvaluate { version = LazyVersion(VersionValueSource.register(this)) }
+        afterEvaluate { it.version = LazyVersion(VersionValueSource.register(this)) }
     }
 }

@@ -19,6 +19,7 @@ public final class com/javiersc/semver/project/gradle/plugin/Commit {
 
 public final class com/javiersc/semver/project/gradle/plugin/LazyVersion {
 	public fun <init> (Lorg/gradle/api/provider/Provider;)V
+	public final fun map (Lkotlin/jvm/functions/Function1;)V
 	public fun toString ()Ljava/lang/String;
 }
 

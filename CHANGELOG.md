@@ -4,8 +4,6 @@
 
 ### Added
 
-- `map` function to `LazyVersion`
-
 ### Changed
 
 ### Deprecated
@@ -13,6 +11,14 @@
 ### Removed
 
 ### Fixed
+
+### Updated
+
+## [0.5.0-rc.1] - 2023-06-06
+
+### Added
+
+- `map` function to `LazyVersion`
 
 ### Updated
 
@@ -294,7 +300,9 @@
 
 - No changes
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.2...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.1...HEAD
+
+[0.5.0-rc.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.2...0.5.0-rc.1
 
 [0.5.0-alpha.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.1...0.5.0-alpha.2
 

@@ -4,18 +4,26 @@
 
 ### Added
 
-- `mapVersion` to `semver` extension
-- `version` to `semver` extension
-
 ### Changed
 
 ### Deprecated
 
 ### Removed
 
-- `LazyVersion`
-
 ### Fixed
+
+### Updated
+
+## [0.5.0-rc.2] - 2023-08-03
+
+### Added
+
+- `mapVersion` to `semver` extension
+- `version` to `semver` extension
+
+### Removed
+
+- `LazyVersion`
 
 ### Updated
 
@@ -308,7 +316,9 @@
 
 - No changes
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.1...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.2...HEAD
+
+[0.5.0-rc.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.1...0.5.0-rc.2
 
 [0.5.0-rc.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.2...0.5.0-rc.1
 

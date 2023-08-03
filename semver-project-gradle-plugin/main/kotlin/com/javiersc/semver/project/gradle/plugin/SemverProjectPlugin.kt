@@ -1,5 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin
 
+import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.checkScopeCorrectness
 import com.javiersc.semver.project.gradle.plugin.internal.git.hasGit
 import com.javiersc.semver.project.gradle.plugin.services.GitBuildService
@@ -28,7 +29,7 @@ public class SemverProjectPlugin : Plugin<Project> {
         if (semverExtension.isEnabled.get() && hasGit) {
             val gitTagBuildService = GitBuildService.register(this)
             checkScopeCorrectness()
-            configureLazyVersion()
+            configureVersion()
             configureBuildServicesAndTasks(gitTagBuildService)
         }
     }
@@ -42,11 +43,20 @@ public class SemverProjectPlugin : Plugin<Project> {
         WriteSemverTask.register(this)
     }
 
-    private fun Project.configureLazyVersion() {
-        version = LazyVersion(VersionValueSource.register(this))
+    private fun Project.configureVersion() {
+        val gradleVersionProvider = VersionValueSource.register(this).map(GradleVersion::invoke)
+        semverExtension.calculatedVersion.set(gradleVersionProvider)
+        version = VersionProperty(semverExtension.version)
+        semverExtension.onMapVersion { version = VersionProperty(semverExtension.version) }
 
         // It is possible third party plugin breaks lazy configuration by calling `project.version`
         // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
-        afterEvaluate { it.version = LazyVersion(VersionValueSource.register(this)) }
+        afterEvaluate { proj ->
+            val gradleVersionProviderProj =
+                VersionValueSource.register(proj).map(GradleVersion::invoke)
+            proj.semverExtension.calculatedVersion.set(gradleVersionProviderProj)
+            proj.version = VersionProperty(proj.semverExtension.version)
+            semverExtension.onMapVersion { version = VersionProperty(semverExtension.version) }
+        }
     }
 }

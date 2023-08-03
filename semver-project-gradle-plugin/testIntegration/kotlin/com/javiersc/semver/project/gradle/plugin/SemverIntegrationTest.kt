@@ -42,6 +42,7 @@ class SemverIntegrationTest : GradleProjectTest() {
             pluginManager.apply(SemverProjectPlugin::class)
             extensions.findByName("semver").shouldNotBeNull()
             val semver = extensions.findByType<SemverExtension>().shouldNotBeNull()
+            semver.mapVersion { version -> version.copy(metadata = "testM3t4d4Ta").toString() }
 
             val semverCommits: List<Commit> = semver.commits.get()
             semverCommits.shouldHaveSize(expectedCommits.size)
@@ -59,9 +60,13 @@ class SemverIntegrationTest : GradleProjectTest() {
             }
 
             tasks.names.contains("printSemver")
-            (version as LazyVersion).map { version -> "$version-test" }
-            version.toString().shouldStartWith("1.0.0").shouldEndWith("-test")
-            afterEvaluate { it.version.toString().shouldStartWith("1.0.0").shouldEndWith("-test") }
+            semver.version.get().shouldStartWith("1.0.0").shouldEndWith("+testM3t4d4Ta")
+            version.toString().shouldStartWith("1.0.0").shouldEndWith("+testM3t4d4Ta")
+            afterEvaluate { proj ->
+                val projSemver = extensions.findByType<SemverExtension>().shouldNotBeNull()
+                projSemver.version.get().shouldStartWith("1.0.0").shouldEndWith("+testM3t4d4Ta")
+                "${proj.version}".shouldStartWith("1.0.0").shouldEndWith("-testM3t4d4Ta")
+            }
         }
     }
 }

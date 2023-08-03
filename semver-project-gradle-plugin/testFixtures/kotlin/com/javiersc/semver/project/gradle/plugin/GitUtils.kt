@@ -1,5 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin
 
+import com.javiersc.semver.project.gradle.plugin.internal.AdditionalVersionData
 import com.javiersc.semver.project.gradle.plugin.internal.calculateAdditionalVersionData
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.project.gradle.plugin.internal.git.commitsInCurrentBranch
@@ -9,10 +10,10 @@ import com.javiersc.semver.project.gradle.plugin.internal.git.lastVersionCommitI
 import com.javiersc.semver.project.gradle.plugin.internal.git.versionTagsInCurrentBranch
 import org.eclipse.jgit.api.Git
 
-fun Git.calculateAdditionalVersionData(
+internal fun Git.calculateAdditionalVersionData(
     tagPrefix: String,
     checkIsClean: Boolean = true,
-): String =
+): AdditionalVersionData? =
     calculateAdditionalVersionData(
         clean = status().call().isClean,
         checkClean = checkIsClean,

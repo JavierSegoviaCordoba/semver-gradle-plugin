@@ -1,30 +1,64 @@
 public final class com/javiersc/gradle/version/GradleVersion : java/lang/Comparable {
 	public static final field Companion Lcom/javiersc/gradle/version/GradleVersion$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun compareTo (Lcom/javiersc/gradle/version/GradleVersion;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
-	public final fun copy (IIILjava/lang/String;Ljava/lang/Integer;)Lcom/javiersc/gradle/version/GradleVersion;
-	public static synthetic fun copy$default (Lcom/javiersc/gradle/version/GradleVersion;IIILjava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun copy (IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun copy$default (Lcom/javiersc/gradle/version/GradleVersion;IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommits ()Ljava/lang/Integer;
+	public final fun getHash ()Ljava/lang/String;
 	public final fun getMajor ()I
+	public final fun getMetadata ()Ljava/lang/String;
 	public final fun getMinor ()I
 	public final fun getPatch ()I
 	public final fun getStage ()Lcom/javiersc/gradle/version/GradleVersion$Stage;
 	public fun hashCode ()I
 	public final fun inc (Lcom/javiersc/gradle/version/GradleVersion$Increase;Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion;
 	public static synthetic fun inc$default (Lcom/javiersc/gradle/version/GradleVersion;Lcom/javiersc/gradle/version/GradleVersion$Increase;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun isInsignificant ()Z
+	public final fun isInvalid ()Z
+	public final fun isSignificant ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/javiersc/gradle/version/GradleVersion$CheckMode : java/lang/Enum {
+	public static final field Insignificant Lcom/javiersc/gradle/version/GradleVersion$CheckMode;
+	public static final field None Lcom/javiersc/gradle/version/GradleVersion$CheckMode;
+	public static final field Significant Lcom/javiersc/gradle/version/GradleVersion$CheckMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion$CheckMode;
+	public static fun values ()[Lcom/javiersc/gradle/version/GradleVersion$CheckMode;
+}
+
 public final class com/javiersc/gradle/version/GradleVersion$Companion {
-	public final fun getRegex ()Lkotlin/text/Regex;
+	public final fun getCommitsHashRegex ()Lkotlin/text/Regex;
+	public final fun getDirtyRegex ()Lkotlin/text/Regex;
+	public final fun getHashRegex ()Lkotlin/text/Regex;
+	public final fun getInsignificantRegex ()Lkotlin/text/Regex;
+	public final fun getMetadataRegex ()Lkotlin/text/Regex;
+	public final fun getNumRegex ()Lkotlin/text/Regex;
+	public final fun getOrNull (IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun getOrNull$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
 	public final fun getScopeRegex ()Lkotlin/text/Regex;
-	public final fun invoke (IIILjava/lang/String;Ljava/lang/Integer;)Lcom/javiersc/gradle/version/GradleVersion;
-	public final fun invoke (Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion;
-	public final fun invoke (Ljava/lang/String;Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion;
-	public final fun safe-IoAF18A (Ljava/lang/String;)Ljava/lang/Object;
-	public final fun safe-gIAlu-s (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-	public final fun safe-yxL6bBk (IIILjava/lang/String;Ljava/lang/Integer;)Ljava/lang/Object;
+	public final fun getSignificantRegex ()Lkotlin/text/Regex;
+	public final fun getSnapshotRegex ()Lkotlin/text/Regex;
+	public final fun getStageNoSnapshotRegex ()Lkotlin/text/Regex;
+	public final fun getStageRegex ()Lkotlin/text/Regex;
+	public final fun invoke (IIILjava/lang/String;Ljava/lang/Integer;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun invoke (IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun invoke (Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun invoke (Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun invoke$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;IIILjava/lang/String;Ljava/lang/Integer;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun invoke$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun invoke$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun invoke$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun safe-0E7RQCE (Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Ljava/lang/Object;
+	public static synthetic fun safe-0E7RQCE$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun safe-gIAlu-s (Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Ljava/lang/Object;
+	public static synthetic fun safe-gIAlu-s$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun safe-tZkwj4A (IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Ljava/lang/Object;
+	public static synthetic fun safe-tZkwj4A$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public abstract interface class com/javiersc/gradle/version/GradleVersion$Increase {
@@ -55,7 +89,6 @@ public final class com/javiersc/gradle/version/GradleVersion$Stage : java/lang/C
 }
 
 public final class com/javiersc/gradle/version/GradleVersion$Stage$Companion {
-	public final fun getStageRegex ()Lkotlin/text/Regex;
 	public final fun invoke (Ljava/lang/String;)Lcom/javiersc/gradle/version/GradleVersion$Stage;
 	public final fun invoke (Ljava/lang/String;Ljava/lang/Integer;)Lcom/javiersc/gradle/version/GradleVersion$Stage;
 }

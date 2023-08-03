@@ -42,6 +42,9 @@ internal fun calculatedVersion(
             patch = lastSemverPatchInCurrentBranch,
             stageName = lastSemverStageInCurrentBranchSanitized,
             stageNum = lastSemverNumInCurrentBranch,
+            commits = null,
+            hash = null,
+            metadata = null,
         )
 
     val previousStage: String? = lastSemverInCurrentBranch.stage?.name
@@ -63,7 +66,7 @@ internal fun calculatedVersion(
     val calculatedVersion: String =
         when {
             isNoStagedNoScopedNoCreatingSemverTag || isDirty -> {
-                val additionalVersionData: String =
+                val additionalVersionData: AdditionalVersionData? =
                     calculateAdditionalVersionData(
                         clean = clean,
                         checkClean = checkClean,
@@ -73,7 +76,12 @@ internal fun calculatedVersion(
                         headCommit = headCommit,
                         lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
                     )
-                "$lastSemverInCurrentBranch$additionalVersionData"
+                val commits: Int? = additionalVersionData?.commits
+                val hash: String? = additionalVersionData?.hash
+                val metadata: String? = additionalVersionData?.metadata
+                lastSemverInCurrentBranch
+                    .copy(commits = commits, hash = hash, metadata = metadata)
+                    .toString()
             }
             stagePropertySanitized.equals(Stage.Final(), ignoreCase = true) -> {
                 when (scopeProperty) {
@@ -123,7 +131,7 @@ internal fun calculateAdditionalVersionData(
     isThereVersionTags: Boolean,
     headCommit: String,
     lastVersionCommitInCurrentBranch: String?,
-): String {
+): AdditionalVersionData? {
     val isClean: Boolean = clean || !checkClean
     val isDirty: Boolean = !isClean
 
@@ -134,19 +142,49 @@ internal fun calculateAdditionalVersionData(
             commitsInCurrentBranch,
         )
 
-    val additionalData: String =
+    val additionalData: AdditionalVersionData? =
         commitsBetweenCurrentAndLastTagCommit.run {
-            val hashLength = DEFAULT_SHORT_HASH_LENGTH
+            val commitsNumber: Int = size
+            val hashLength: Int = DEFAULT_SHORT_HASH_LENGTH
             when {
-                !isThereVersionTags && isDirty -> ".$size+${headCommit.take(hashLength)}+DIRTY"
-                !isThereVersionTags -> ".$size+${headCommit.take(hashLength)}"
-                isNotEmpty() && isClean -> ".$size+${first().take(hashLength)}"
-                isEmpty() && isClean -> ""
-                else -> ".$size+DIRTY"
+                !isThereVersionTags && isDirty -> {
+                    AdditionalVersionData(commitsNumber, headCommit.take(hashLength), "DIRTY")
+                }
+                !isThereVersionTags -> {
+                    AdditionalVersionData(commitsNumber, headCommit.take(hashLength), null)
+                }
+                isNotEmpty() && isClean -> {
+                    AdditionalVersionData(commitsNumber, first().take(hashLength), null)
+                }
+                isEmpty() && isClean -> {
+                    null
+                }
+                else -> {
+                    AdditionalVersionData(commitsNumber, null, "DIRTY")
+                }
             }
         }
 
     return additionalData
+}
+
+internal data class AdditionalVersionData(
+    val commits: Int,
+    val hash: String?,
+    val metadata: String?,
+) {
+    fun asString(): String = buildString {
+        append(".")
+        append(commits)
+        if (hash != null) {
+            append("+")
+            append(hash)
+        }
+        if (metadata != null) {
+            append("+")
+            append(metadata)
+        }
+    }
 }
 
 internal const val DEFAULT_SHORT_HASH_LENGTH = 7

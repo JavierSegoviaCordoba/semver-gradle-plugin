@@ -1,8 +1,10 @@
 package com.javiersc.semver.project.gradle.plugin
 
+import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import javax.inject.Inject
+import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.model.ObjectFactory
@@ -36,6 +38,25 @@ constructor(
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 
     public val tagPrefix: Property<String> = objects.property<String>().convention(DefaultTagPrefix)
+
+    internal abstract val calculatedVersion: Property<GradleVersion>
+
+    public val version: Property<String> =
+        objects
+            .property<String>()
+            .convention(providers.provider { "${calculatedVersion.orNull ?: "unspecified"}" })
+
+    private var onMapVersion: Action<Unit>? = null
+
+    public fun mapVersion(transform: (GradleVersion) -> String) {
+        val mappedVersion: Provider<String> = calculatedVersion.map(transform)
+        version.set(mappedVersion)
+        onMapVersion?.execute(Unit)
+    }
+
+    internal fun onMapVersion(action: Action<Unit>) {
+        onMapVersion = action
+    }
 
     public companion object {
 

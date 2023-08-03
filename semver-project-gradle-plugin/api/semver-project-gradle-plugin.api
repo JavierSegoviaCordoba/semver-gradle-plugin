@@ -17,12 +17,6 @@ public final class com/javiersc/semver/project/gradle/plugin/Commit {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/javiersc/semver/project/gradle/plugin/LazyVersion {
-	public fun <init> (Lorg/gradle/api/provider/Provider;)V
-	public final fun map (Lkotlin/jvm/functions/Function1;)V
-	public fun toString ()Ljava/lang/String;
-}
-
 public abstract class com/javiersc/semver/project/gradle/plugin/SemverExtension {
 	public static final field Companion Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$Companion;
 	public static final field ExtensionName Ljava/lang/String;
@@ -31,7 +25,9 @@ public abstract class com/javiersc/semver/project/gradle/plugin/SemverExtension 
 	public final fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
 	public abstract fun getGitDir ()Lorg/gradle/api/file/RegularFileProperty;
 	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public final fun getVersion ()Lorg/gradle/api/provider/Property;
 	public final fun isEnabled ()Lorg/gradle/api/provider/Property;
+	public final fun mapVersion (Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$Companion {
@@ -54,6 +50,25 @@ public final class com/javiersc/semver/project/gradle/plugin/Tag {
 	public final fun getRefName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/project/gradle/plugin/VersionProperty : org/gradle/api/provider/Provider {
+	public fun <init> (Lorg/gradle/api/provider/Provider;)V
+	public fun flatMap (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
+	public fun forUseAtConfigurationTime ()Lorg/gradle/api/provider/Provider;
+	public synthetic fun get ()Ljava/lang/Object;
+	public fun get ()Ljava/lang/String;
+	public synthetic fun getOrElse (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun getOrElse (Ljava/lang/String;)Ljava/lang/String;
+	public synthetic fun getOrNull ()Ljava/lang/Object;
+	public fun getOrNull ()Ljava/lang/String;
+	public fun isPresent ()Z
+	public fun map (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
+	public synthetic fun orElse (Ljava/lang/Object;)Lorg/gradle/api/provider/Provider;
+	public fun orElse (Ljava/lang/String;)Lorg/gradle/api/provider/Provider;
+	public fun orElse (Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
+	public fun toString ()Ljava/lang/String;
+	public fun zip (Lorg/gradle/api/provider/Provider;Ljava/util/function/BiFunction;)Lorg/gradle/api/provider/Provider;
 }
 
 public final class com/javiersc/semver/project/gradle/plugin/extensions/IsVersionExtensionsKt {

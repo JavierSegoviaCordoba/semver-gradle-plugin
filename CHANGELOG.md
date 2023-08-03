@@ -4,11 +4,16 @@
 
 ### Added
 
+- `mapVersion` to `semver` extension
+- `version` to `semver` extension
+
 ### Changed
 
 ### Deprecated
 
 ### Removed
+
+- `LazyVersion`
 
 ### Fixed
 

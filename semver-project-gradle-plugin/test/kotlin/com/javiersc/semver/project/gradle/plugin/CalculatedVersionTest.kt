@@ -1,45 +1,79 @@
 package com.javiersc.semver.project.gradle.plugin
 
+import com.javiersc.semver.project.gradle.plugin.internal.AdditionalVersionData
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.project.gradle.plugin.internal.git.lastCommitInCurrentBranch
+import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.string.shouldBeEmpty
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 
+@Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
 internal class CalculatedVersionTest {
 
     @Test
     fun `calculate additional version data`() {
         initialCommitAnd {
             git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+                .shouldBe(
+                    AdditionalVersionData(
+                        commits = 0,
+                        hash = git.lastCommitInCurrentBranch!!.hash.take(7),
+                        metadata = null,
+                    )
+                )
 
             resolve("2 commit.txt").createNewFile()
 
             git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}+DIRTY")
+                .shouldBe(
+                    AdditionalVersionData(
+                        commits = 0,
+                        hash = git.lastCommitInCurrentBranch!!.hash.take(7),
+                        metadata = "DIRTY",
+                    )
+                )
 
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
             git.tag().setName("v1.0.0").call()
 
-            git.calculateAdditionalVersionData("v").shouldBeEmpty()
+            git.calculateAdditionalVersionData("v").shouldBeNull()
 
             resolve("3 commit.txt").createNewFile()
 
-            git.calculateAdditionalVersionData(tagPrefix = "v").shouldBe(".0+DIRTY")
+            git.calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(
+                    AdditionalVersionData(
+                        commits = 0,
+                        hash = null,
+                        metadata = "DIRTY",
+                    )
+                )
 
             git.add().addFilepattern(".").call()
 
-            git.calculateAdditionalVersionData(tagPrefix = "v").shouldBe(".0+DIRTY")
+            git.calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(
+                    AdditionalVersionData(
+                        commits = 0,
+                        hash = null,
+                        metadata = "DIRTY",
+                    )
+                )
 
             git.commit().setMessage("3 commit").call()
 
             git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(".1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+                .shouldBe(
+                    AdditionalVersionData(
+                        commits = 1,
+                        hash = git.lastCommitInCurrentBranch!!.hash.take(7),
+                        metadata = null,
+                    )
+                )
         }
     }
 

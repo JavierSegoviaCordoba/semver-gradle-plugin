@@ -52,7 +52,7 @@ internal class VersionBuildDirTest : GradleTestKitTest() {
             projectDir.resolve("new-2.txt").createNewFile()
             projectDir.resolve("expect-version.txt").apply {
                 createNewFile()
-                val additionalData = parentFile.git.calculateAdditionalVersionData(tagPrefix = "v")
+                val additionalData = ".2+DIRTY"
                 writeText(
                     """
                         |1.0.0$additionalData

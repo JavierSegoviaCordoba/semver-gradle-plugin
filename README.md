@@ -88,12 +88,13 @@ tasks.register("printLastCommitHash") {
 
 - Default values:
 
-|                     | **default value**         |
-|---------------------|---------------------------|
-| **isEnabled**       | `true`                    |
-| **tagPrefix**       | ` `, empty string         |
-| **commitsMaxCount** | `-1`                      |
-| **gitDir**          | `rootDir.resolve(".git")` |
+|                     | **default value**                                             |
+|---------------------|---------------------------------------------------------------|
+| **isEnabled**       | `true`                                                        |
+| **tagPrefix**       | ` `, empty string                                             |
+| **commitsMaxCount** | `-1`                                                          |
+| **gitDir**          | `rootDir.resolve(".git")`                                     |
+| **version**         | calculated version based on the last git tag and other inputs |
 
 `tagPrefix` is used to asociate a project version with a tag prefix, and it allows having different
 versions in multi-project builds.
@@ -149,6 +150,32 @@ Or in the CLI:
 ./gradlew "-Psemver.commitsMaxCount=100"
 ```
 
+##### Map the version
+
+The `semver` extension has a `mapVersion` function which allows to map the version easily:
+
+```kotlin
+// if last tag is v3.0.1, and the Kotlin version is 1.9.0,
+// the version will be `v3.0.1+1.9.0`
+semver {
+    tagPrefix.set("v")
+    mapVersion { gradleVersion: GradleVersion ->
+        val kotlinVersion: String = getKotlinPluginVersion()
+        "${gradleVersion.copy(metadata = kotlinVersion)}"
+    }
+}
+```
+
+##### Override the version
+
+If it possible to force an override of the version:
+
+```kotlin
+semver {
+    version.set("1.0.0")
+}
+```
+
 ##### Additional notes
 
 ###### Empty tag prefix for all projects
@@ -164,6 +191,12 @@ Or in the CLI:
 
 ### Version types
 
+The whole format can be:
+
+```text
+<major>.<minor>.<patch>[-<stage>.<num>][.<commits number>+<hash>][+<metadata>]
+```
+
 #### Final
 
 - Format: `<major>.<minor>.<patch>`
@@ -171,14 +204,14 @@ Or in the CLI:
 
 #### Significant
 
-- Format: `<major>.<minor>.<patch>-<stage>.<num>`
+- Format: `<major>.<minor>.<patch>[-<stage>.<num>]`
 - Example: `1.0.0-alpha.1`
 
 #### Insignificant
 
 - Format:
-    - Clean repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<hash>`
-    - Dirty repository: `<major>.<minor>.<patch>-<stage>.<num>.<commits>+<DIRTY>`
+    - Clean repository: `<major>.<minor>.<patch>[-<stage>.<num>][.<commits number>+<hash>]`
+    - Dirty repository: `<major>.<minor>.<patch>[-<stage>.<num>][.<commits number>+<DIRTY>]`
 
 - Examples:
     - `1.0.0.4+26f0484`
@@ -382,17 +415,4 @@ semver: 1.0.1
 ```shell
 ./gradlew "-Psemver.checkClean=false"
 semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
-```
-
-### Utilities
-
-The `project.version` is set as `LazyVersion`, it is possible so after casting it to `LazyVersion`,
-it is possible to access to the `map` function which allows modifying the version. This can be
-useful
-to add a suffix to the version, for example, it is a common practice in Kotlin Compiler plugins to
-attach the compatible Kotlin version, for example `1.0.0-1.8.21` or `1.0.0-alpha.2-1.8.21`.
-
-```kotlin
-val kotlin: String = getKotlinVersion()
-(version as LazyVersion).map { semver -> "$semver-$kotlin" }
 ```

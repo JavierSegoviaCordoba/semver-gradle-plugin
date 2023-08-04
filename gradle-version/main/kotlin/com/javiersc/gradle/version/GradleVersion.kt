@@ -5,10 +5,9 @@ import com.javiersc.gradle.version.GradleVersion.CheckMode.Significant
 import com.javiersc.gradle.version.GradleVersion.SpecialStage.Companion.dev
 import com.javiersc.kotlin.stdlib.isNotNullNorBlank
 import com.javiersc.kotlin.stdlib.remove
-import com.javiersc.kotlin.stdlib.removeIf
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
-import kotlin.text.RegexOption
+import kotlin.text.RegexOption.IGNORE_CASE
 
 public class GradleVersion
 private constructor(
@@ -21,34 +20,34 @@ private constructor(
         if (checkMode == Insignificant) checkInsignificantVersion(value)
     }
 
-    public val major: Int = preStage.split(".").first().toInt()
+    public val major: Int = scope.split(".").first().toInt()
 
-    public val minor: Int = preStage.split(".")[1].toInt()
+    public val minor: Int = scope.split(".")[1].toInt()
 
-    public val patch: Int = preStage.split(".").getOrNull(2)?.toInt() ?: 0
+    public val patch: Int = scope.split(".").getOrNull(2)?.toInt() ?: 0
 
-    public val stage: Stage? = stageAndNum?.let { Stage(it) }
+    public val stage: Stage? = hyphenStageRegex.find(value)?.value?.remove("-")?.let(Stage::invoke)
 
-    public val commits: Int? =
-        value.remove(preStage, stageAndNum ?: "").remove(".").substringAfter("+").toIntOrNull()
+    public val commits: Int? = run {
+        val commitsAndHashOrDirty: String? =
+            dotCommitsHashRegex.find(value)?.value ?: dotCommitsPlusMetadataRegex.find(value)?.value
+        commitsAndHashOrDirty?.drop(1)?.takeWhile(Char::isDigit)?.toIntOrNull()
+    }
 
-    public val hash: String? =
-        value
-            .remove(preStage, stageAndNum ?: "")
-            .remove(".")
-            .substringAfter("+")
-            .remove(commits?.toString() ?: "")
-            .takeIf { commits != null }
+    public val hash: String? = dotCommitsHashRegex.find(value)?.value?.substringAfter("+")
 
     public val metadata: String? = run {
-        val commonMetadata: String? =
-            value.remove(preStage, stageAndNum ?: "").takeIf {
-                it.length > 1 && it.firstOrNull()?.isLetter() == true
-            }
-        val metadata: String? =
-            if (commits != null) commonMetadata?.substringAfter(".$commits")
-            else commonMetadata?.takeIf(String::isNotBlank)
-        metadata?.removeIf("+") { it.startsWith("+") }
+        val valuesToBeRemoved: List<String> = buildList {
+            scopeRegex.find(value)?.value?.let(::add)
+            hyphenStageRegex.find(value)?.value?.let(::add)
+            dotCommitsHashRegex.find(value)?.value?.let(::add)
+        }
+        var sanitizedValue: String = value
+        for (valueToBeRemoved: String in valuesToBeRemoved) {
+            sanitizedValue = sanitizedValue.remove(valueToBeRemoved)
+        }
+
+        metadataRegexWithPlus.find(sanitizedValue)?.value?.substringAfter("+")
     }
 
     public val isSignificant: Boolean = significantRegex.matches(value)
@@ -276,30 +275,40 @@ private constructor(
         public val scopeRegex: Regex = Regex("""($numRegex\.$numRegex\.$numRegex)""")
 
         public val stageNoSnapshotRegex: Regex = Regex("""((?!snapshot)[a-zA-Z]+)(\.\d+)""")
+
         public val snapshotRegex: Regex = Regex("""(snapshot(?!.))""")
 
         public val stageRegex: Regex =
-            Regex("""($stageNoSnapshotRegex|$snapshotRegex)""", RegexOption.IGNORE_CASE)
+            Regex("""($stageNoSnapshotRegex|$snapshotRegex)""", IGNORE_CASE)
+
+        public val hyphenStageRegex: Regex = Regex("""(-$stageRegex)""", IGNORE_CASE)
 
         public val hashRegex: Regex = Regex("""([A-Za-z0-9]{7})""")
 
-        public val dirtyRegex: Regex = Regex("""(\.$numRegex)\+(DIRTY)""")
+        public val commitsHashRegex: Regex = Regex("""($numRegex)\+($hashRegex)""")
 
-        public val commitsHashRegex: Regex = Regex("""(\.$numRegex)\+($hashRegex)""")
+        public val dotCommitsHashRegex: Regex = Regex("""(\.$commitsHashRegex)""")
 
-        public val metadataRegex: Regex = Regex("""(\+([A-Za-z0-9\.]+))""")
+        public val metadataRegex: Regex = Regex("""([A-Za-z0-9.]+)""")
+
+        public val commitsPlusMetadataRegex: Regex = Regex("""(($numRegex)\+($metadataRegex))""")
+
+        public val dotCommitsPlusMetadataRegex: Regex =
+            Regex("""(\.($numRegex)\+($metadataRegex))""")
+
+        public val metadataRegexWithPlus: Regex = Regex("""(\+$metadataRegex)""")
 
         public val significantRegex: Regex =
             Regex(
-                pattern = """($scopeRegex)(-$stageRegex)?($metadataRegex)?""",
-                option = RegexOption.IGNORE_CASE,
+                pattern = """($scopeRegex)($hyphenStageRegex)?($metadataRegexWithPlus)?""",
+                option = IGNORE_CASE,
             )
 
         public val insignificantRegex: Regex =
             Regex(
                 pattern =
-                    """($scopeRegex)(-$stageRegex)?($commitsHashRegex)?($dirtyRegex)?($metadataRegex)?""",
-                option = RegexOption.IGNORE_CASE,
+                    """($scopeRegex)($hyphenStageRegex)?($dotCommitsHashRegex)?($dotCommitsPlusMetadataRegex)?($metadataRegexWithPlus)?""",
+                option = IGNORE_CASE,
             )
 
         public operator fun invoke(
@@ -397,11 +406,8 @@ private constructor(
                 .getOrNull()
     }
 
-    private val preStage: String
-        get() = value.split("-").first().substringBefore("+")
-
-    private val stageAndNum: String?
-        get() = value.split("-").getOrNull(1)
+    private val scope: String
+        get() = scopeRegex.find(value)?.value ?: gradleVersionError("Incorrect version: $value")
 
     public class Stage private constructor(private val value: String) : Comparable<Stage> {
 
@@ -547,7 +553,7 @@ private fun String.red() = "$RED$this$RESET"
 
 private fun checkSignificantVersion(version: String) {
     checkVersion(version.matches(GradleVersion.significantRegex)) {
-        """|The version is not semantic, rules:
+        """|The version is not semantic and significant, rules:
            |  - `major`, `minor` and `patch` are required, separated by `.`
            |  - `stage` and `num` are required if one of them is present, except for snapshots
            |    - `stage` follows `-`
@@ -578,7 +584,7 @@ private fun checkSignificantVersion(version: String) {
 
 private fun checkInsignificantVersion(version: String) {
     checkVersion(version.matches(GradleVersion.insignificantRegex)) {
-        """|The version is not semantic, rules:
+        """|The version is not semantic and insignificant, rules:
            |  - `major`, `minor` and `patch` are required, separated by `.`
            |  - `stage` and `num` are required if one of them is present, except for snapshots
            |    - `stage` follows `-`
@@ -618,7 +624,9 @@ private fun checkInsignificantVersion(version: String) {
 private fun checkStage(stage: String) {
     checkVersion(stage.matches(GradleVersion.stageRegex)) {
         """|`stage` provided has an incorrect format
-           | 
+           |
+           |Current stage: $stage
+           |
            |Samples of stages:
            |alpha.1
            |beta.23

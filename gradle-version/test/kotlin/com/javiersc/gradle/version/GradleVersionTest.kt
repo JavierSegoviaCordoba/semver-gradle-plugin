@@ -48,19 +48,63 @@ internal class GradleVersionTest {
             Arb.constant(null),
         )
 
+    private val commits =
+        Arb.choice(
+            Arb.positiveInt(11),
+            Arb.constant(null),
+        )
+
+    private val hash =
+        Arb.choice(
+            Arb.constant("h123456"),
+            Arb.constant("H123456"),
+            Arb.constant("h4Ash34"),
+            Arb.constant("4Hash3h"),
+            Arb.constant("0h2az2U"),
+            Arb.constant("102aY20"),
+            Arb.constant(null)
+        )
+
+    private val metadata =
+        Arb.choice(
+            Arb.constant("DIRTY"),
+            Arb.constant("M3T4D4T4"),
+            Arb.constant("3T4D4T4"),
+            Arb.constant("3T4D4T"),
+            Arb.constant("M3T4D4T"),
+            Arb.constant("m3T4d4t"),
+            Arb.constant("4444"),
+            Arb.constant("777777777"),
+            Arb.constant("AAAA"),
+            Arb.constant("BBBBBBBBB"),
+            Arb.constant(null)
+        )
+
     private val versionArbitrary: Arb<Version> = arbitrary {
-        val major = major.bind()
-        val minor = minor.bind()
-        val patch = patch.bind()
-        val stageName = stageName.bind()
-        val num = num.bind()
+        val major: Int = major.bind()
+        val minor: Int = minor.bind()
+        val patch: Int = patch.bind()
+        val scope = "$major.$minor.$patch"
+        val stageName: String? = stageName.bind()
+        val num: Int? = num.bind()
         val stage: String =
             when {
                 stageName.equals("SNAPSHOT", ignoreCase = true) -> "-$stageName"
                 stageName == null || num == null -> ""
                 else -> "-$stageName.$num"
             }
-        Version("$major.$minor.$patch$stage")
+        val commits: Int? = commits.bind()
+        val hash: String? = hash.bind()
+        val metadata: String? = metadata.bind()
+        val commitsAndOrHashAndOrMetadata: String =
+            when {
+                stageName.equals("SNAPSHOT", ignoreCase = true) -> ""
+                commits != null && metadata != null -> ".$commits+$metadata"
+                commits != null && hash != null -> ".$commits+$hash"
+                metadata != null -> "+$metadata"
+                else -> ""
+            }
+        Version("$scope$stage$commitsAndOrHashAndOrMetadata")
     }
 
     private val versionArbitrarySameMajorMinorPatch: Arb<Version> = arbitrary {
@@ -373,57 +417,46 @@ internal class GradleVersionTest {
 
     @Test
     fun public_properties_and_constructors_with_correct_versions() {
-        with(Version("1.2.0")) {
-            major shouldBe 1
-            minor shouldBe 2
-            patch shouldBe 0
-            stage.shouldBeNull()
-        }
-
         with(Version("1.2.3")) {
             major shouldBe 1
             minor shouldBe 2
             patch shouldBe 3
             stage.shouldBeNull()
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
         }
 
-        with(Version("1.2.3", "")) {
-            major shouldBe 1
-            minor shouldBe 2
-            patch shouldBe 3
+        with(Version("0.1.0.44+H4SH123")) {
+            major shouldBe 0
+            minor shouldBe 1
+            patch shouldBe 0
             stage.shouldBeNull()
+            commits shouldBe 44
+            hash shouldBe "H4SH123"
+            metadata.shouldBeNull()
         }
 
-        with(Version("1.2.3-alpha.3")) {
-            major shouldBe 1
-            minor shouldBe 2
-            patch shouldBe 3
-            stage?.name shouldBe "alpha"
-            stage?.num shouldBe 3
+        with(Version("0.1.0-rc.1.44+H4SH123")) {
+            major shouldBe 0
+            minor shouldBe 1
+            patch shouldBe 0
+            stage?.name shouldBe "rc"
+            stage?.num shouldBe 1
+            commits shouldBe 44
+            hash shouldBe "H4SH123"
+            metadata.shouldBeNull()
         }
 
-        with(Version("1.2.3-dev.3")) {
-            major shouldBe 1
-            minor shouldBe 2
-            patch shouldBe 3
-            stage?.name shouldBe "dev"
-            stage?.num shouldBe 3
-        }
-
-        with(Version("1.2.3", "alpha.3")) {
-            major shouldBe 1
-            minor shouldBe 2
-            patch shouldBe 3
-            stage?.name shouldBe "alpha"
-            stage?.num shouldBe 3
-        }
-
-        with(Version("1.2.3", "dev.3")) {
-            major shouldBe 1
-            minor shouldBe 2
-            patch shouldBe 3
-            stage?.name shouldBe "dev"
-            stage?.num shouldBe 3
+        with(Version("0.1.0-rc.1.44+DIRTY")) {
+            major shouldBe 0
+            minor shouldBe 1
+            patch shouldBe 0
+            stage?.name shouldBe "rc"
+            stage?.num shouldBe 1
+            commits shouldBe 44
+            hash.shouldBeNull()
+            metadata shouldBe "DIRTY"
         }
 
         with(Version("1.2.3", "SNAPSHOT")) {
@@ -432,6 +465,74 @@ internal class GradleVersionTest {
             patch shouldBe 3
             stage?.name shouldBe "SNAPSHOT"
             stage?.num.shouldBeNull()
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
+        }
+
+        with(Version("1.2.3", "")) {
+            major shouldBe 1
+            minor shouldBe 2
+            patch shouldBe 3
+            stage.shouldBeNull()
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
+        }
+
+        with(Version("1.2.3-alpha.3")) {
+            major shouldBe 1
+            minor shouldBe 2
+            patch shouldBe 3
+            stage?.name shouldBe "alpha"
+            stage?.num shouldBe 3
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
+        }
+
+        with(Version("1.2.3-dev.3")) {
+            major shouldBe 1
+            minor shouldBe 2
+            patch shouldBe 3
+            stage?.name shouldBe "dev"
+            stage?.num shouldBe 3
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
+        }
+
+        with(Version("1.2.3", "alpha.3")) {
+            major shouldBe 1
+            minor shouldBe 2
+            patch shouldBe 3
+            stage?.name shouldBe "alpha"
+            stage?.num shouldBe 3
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
+        }
+
+        with(Version("1.2.3", "dev.3")) {
+            major shouldBe 1
+            minor shouldBe 2
+            patch shouldBe 3
+            stage?.name shouldBe "dev"
+            stage?.num shouldBe 3
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
+        }
+
+        with(Version("1.2.3", "SNAPSHOT")) {
+            major shouldBe 1
+            minor shouldBe 2
+            patch shouldBe 3
+            stage?.name shouldBe "SNAPSHOT"
+            stage?.num.shouldBeNull()
+            commits.shouldBeNull()
+            hash.shouldBeNull()
+            metadata.shouldBeNull()
         }
     }
 

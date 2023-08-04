@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- multiple regexes invalidating valid versions 
+
 ### Updated
 
 ## [0.5.0-rc.2] - 2023-08-03

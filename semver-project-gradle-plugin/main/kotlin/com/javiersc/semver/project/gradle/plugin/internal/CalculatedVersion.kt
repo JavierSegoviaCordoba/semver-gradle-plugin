@@ -25,12 +25,12 @@ internal fun calculatedVersion(
     val isClean: Boolean = clean || !checkClean
     val isDirty: Boolean = !isClean
 
-    val stagePropertySanitized =
+    val stagePropertySanitized: String? =
         stageProperty?.let { name ->
             if (name.equals("SNAPSHOT", ignoreCase = true)) "SNAPSHOT" else name
         }
 
-    val lastSemverStageInCurrentBranchSanitized =
+    val lastSemverStageInCurrentBranchSanitized: String? =
         lastSemverStageInCurrentBranch?.let { name ->
             if (name.equals("SNAPSHOT", ignoreCase = true)) "SNAPSHOT" else name
         }

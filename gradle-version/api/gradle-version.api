@@ -33,10 +33,14 @@ public final class com/javiersc/gradle/version/GradleVersion$CheckMode : java/la
 
 public final class com/javiersc/gradle/version/GradleVersion$Companion {
 	public final fun getCommitsHashRegex ()Lkotlin/text/Regex;
-	public final fun getDirtyRegex ()Lkotlin/text/Regex;
+	public final fun getCommitsPlusMetadataRegex ()Lkotlin/text/Regex;
+	public final fun getDotCommitsHashRegex ()Lkotlin/text/Regex;
+	public final fun getDotCommitsPlusMetadataRegex ()Lkotlin/text/Regex;
 	public final fun getHashRegex ()Lkotlin/text/Regex;
+	public final fun getHyphenStageRegex ()Lkotlin/text/Regex;
 	public final fun getInsignificantRegex ()Lkotlin/text/Regex;
 	public final fun getMetadataRegex ()Lkotlin/text/Regex;
+	public final fun getMetadataRegexWithPlus ()Lkotlin/text/Regex;
 	public final fun getNumRegex ()Lkotlin/text/Regex;
 	public final fun getOrNull (IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;)Lcom/javiersc/gradle/version/GradleVersion;
 	public static synthetic fun getOrNull$default (Lcom/javiersc/gradle/version/GradleVersion$Companion;IIILjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;

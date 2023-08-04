@@ -12,6 +12,12 @@
 
 ### Fixed
 
+### Updated
+
+## [0.5.0-rc.4] - 2023-08-04
+
+### Fixed
+
 - `metadata` doesn't allow `.`, `-`, or `_` characters 
 
 ### Updated
@@ -326,7 +332,9 @@
 
 - No changes
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.3...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.4...HEAD
+
+[0.5.0-rc.4]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.3...0.5.0-rc.4
 
 [0.5.0-rc.3]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.2...0.5.0-rc.3
 

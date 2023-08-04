@@ -12,9 +12,13 @@
 
 ### Fixed
 
-- multiple regexes invalidating valid versions 
-
 ### Updated
+
+## [0.5.0-rc.3] - 2023-08-04
+
+### Fixed
+
+- multiple regexes invalidating valid versions
 
 ## [0.5.0-rc.2] - 2023-08-03
 
@@ -318,7 +322,9 @@
 
 - No changes
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.2...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.3...HEAD
+
+[0.5.0-rc.3]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.2...0.5.0-rc.3
 
 [0.5.0-rc.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.1...0.5.0-rc.2
 

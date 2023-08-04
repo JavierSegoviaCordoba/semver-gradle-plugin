@@ -14,6 +14,8 @@
 
 ### Updated
 
+- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.6`
+
 ## [0.5.0-rc.3] - 2023-08-04
 
 ### Fixed

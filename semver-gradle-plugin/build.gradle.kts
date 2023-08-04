@@ -33,7 +33,7 @@ hubdle {
                             }
                         }
 
-                        pluginUnderTestDependencies(
+                        pluginUnderTestExternalDependencies(
                             hubdle.android.toolsBuild.gradle,
                             hubdle.jetbrains.kotlin.kotlinGradlePlugin,
                         )

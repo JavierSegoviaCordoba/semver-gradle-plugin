@@ -459,6 +459,17 @@ internal class GradleVersionTest {
             metadata shouldBe "DIRTY"
         }
 
+        with(Version("0.5.0-beta.6.1+1.9.20-dev-5788")) {
+            major shouldBe 0
+            minor shouldBe 5
+            patch shouldBe 0
+            stage?.name shouldBe "beta"
+            stage?.num shouldBe 6
+            commits shouldBe 1
+            hash.shouldBeNull()
+            metadata shouldBe "1.9.20-dev-5788"
+        }
+
         with(Version("1.2.3", "SNAPSHOT")) {
             major shouldBe 1
             minor shouldBe 2
@@ -585,6 +596,7 @@ internal class GradleVersionTest {
         shouldThrow<GradleVersionException> { Version(1, 2, 3, "alpha3232", 1) }
         shouldThrow<GradleVersionException> { Version(1, 2, 3, "232alpha", 1) }
         shouldThrow<GradleVersionException> { Version("1.0").copy(stageName = "alpha") }
+        // TODO: shouldThrow<GradleVersionException> { Version("0.5.0-beta.6.1+.1.9.20-dev-5788") }
     }
 
     @Test

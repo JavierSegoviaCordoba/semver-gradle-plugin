@@ -289,7 +289,7 @@ private constructor(
 
         public val dotCommitsHashRegex: Regex = Regex("""(\.$commitsHashRegex)""")
 
-        public val metadataRegex: Regex = Regex("""([A-Za-z0-9.]+)""")
+        public val metadataRegex: Regex = Regex("""([A-Za-z0-9.\-_]+)""")
 
         public val commitsPlusMetadataRegex: Regex = Regex("""(($numRegex)\+($metadataRegex))""")
 

@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- `metadata` doesn't allow `.`, `-`, or `_` characters 
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.6`

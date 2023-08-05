@@ -12,9 +12,13 @@
 
 ### Fixed
 
-- the stage `SNAPSHOT` is not appended at the end of the version in all cases
-
 ### Updated
+
+## [0.5.0-rc.5] - 2023-08-05
+
+### Fixed
+
+- the stage `SNAPSHOT` is not appended at the end of the version in all cases
 
 ## [0.5.0-rc.4] - 2023-08-04
 
@@ -96,7 +100,9 @@
 - `gradle -> 8.0.2`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.4...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.5...HEAD
+
+[0.5.0-rc.5]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.4...0.5.0-rc.5
 
 [0.5.0-rc.4]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.3...0.5.0-rc.4
 
@@ -108,4 +114,4 @@
 
 [0.5.0-alpha.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-alpha.1...0.5.0-alpha.2
 
-[0.5.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.4.0-alpha.1...0.5.0-alpha.1
+[0.5.0-alpha.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/commits/0.5.0-alpha.1

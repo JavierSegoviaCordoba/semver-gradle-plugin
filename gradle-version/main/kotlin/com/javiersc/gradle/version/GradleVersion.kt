@@ -662,9 +662,8 @@ private fun buildVersion(
     append(minor)
     append(".")
     append(patch)
-    if (stageName.isNotNullNorBlank()) {
-        append("-")
-        append(GradleVersion.Stage(stageName, stageNum).toString())
+    if (!stageName.equals("SNAPSHOT", ignoreCase = true)) {
+        appendStage(stageName, stageNum)
     }
     if (commits != null) {
         append(".")
@@ -677,6 +676,16 @@ private fun buildVersion(
     if (metadata != null) {
         append("+")
         append(metadata)
+    }
+    if (stageName.equals("SNAPSHOT", ignoreCase = true)) {
+        appendStage(stageName, stageNum)
+    }
+}
+
+private fun StringBuilder.appendStage(stageName: String?, stageNum: Int?) {
+    if (stageName.isNotNullNorBlank()) {
+        append("-")
+        append(GradleVersion.Stage(stageName, stageNum).toString())
     }
 }
 

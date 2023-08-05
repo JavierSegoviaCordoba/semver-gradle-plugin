@@ -104,7 +104,11 @@ internal class GradleVersionTest {
                 metadata != null -> "+$metadata"
                 else -> ""
             }
-        Version("$scope$stage$commitsAndOrHashAndOrMetadata")
+        if (!stage.contains("SNAPSHOT", ignoreCase = true)) {
+            Version("$scope$stage$commitsAndOrHashAndOrMetadata")
+        } else {
+            Version("$scope$commitsAndOrHashAndOrMetadata$stage")
+        }
     }
 
     private val versionArbitrarySameMajorMinorPatch: Arb<Version> = arbitrary {
@@ -741,6 +745,22 @@ internal class GradleVersionTest {
         Version("1.0.0") shouldBeGreaterThan Version("1.0.0-sp.1")
 
         Version("1.0.0-RC.1") shouldBe Version("1.0.0-rc.1")
+    }
+
+    @Test
+    fun edge_cases() {
+        Version("1.0.0.0+M3t4D4ta-SNAPSHOT")
+        Version("1.0.0.21+M3t4D4ta-SNAPSHOT")
+        Version("1.0.0.0+1.9.2-dev-5787-SNAPSHOT")
+        Version("1.0.0.12+1.9.2-dev-5787-SNAPSHOT")
+        Version("1.0.0+1.9.2-dev-5787-SNAPSHOT")
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT-11") }
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT-jjj11") }
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT-jaaj") }
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT-jjj") }
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT+jjj") }
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT+1.9.2") }
+        shouldThrow<GradleVersionException> { Version("1.0.0-SNAPSHOT+1.9.2-dev-5677") }
     }
 
     @Test

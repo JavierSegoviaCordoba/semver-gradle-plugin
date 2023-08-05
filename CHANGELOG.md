@@ -12,13 +12,15 @@
 
 ### Fixed
 
+- the stage `SNAPSHOT` is not appended at the end of the version in all cases
+
 ### Updated
 
 ## [0.5.0-rc.4] - 2023-08-04
 
 ### Fixed
 
-- `metadata` doesn't allow `.`, `-`, or `_` characters 
+- `metadata` doesn't allow `.`, `-`, or `_` characters
 
 ### Updated
 

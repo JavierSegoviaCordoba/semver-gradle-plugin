@@ -7,6 +7,7 @@ hubdle {
         }
         explicitApi()
         languageSettings {
+            experimentalContracts()
             experimentalCoroutinesApi()
         }
         publishing()

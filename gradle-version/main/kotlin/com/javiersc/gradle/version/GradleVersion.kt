@@ -5,28 +5,82 @@ import com.javiersc.gradle.version.GradleVersion.CheckMode.Significant
 import com.javiersc.gradle.version.GradleVersion.SpecialStage.Companion.dev
 import com.javiersc.kotlin.stdlib.isNotNullNorBlank
 import com.javiersc.kotlin.stdlib.remove
+import com.javiersc.kotlin.stdlib.second
+import com.javiersc.kotlin.stdlib.thirdOrNull
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 import kotlin.text.RegexOption.IGNORE_CASE
 
-public class GradleVersion
-private constructor(
+public class GradleVersion(
     private val value: String,
     checkMode: CheckMode = Insignificant,
 ) : Comparable<GradleVersion> {
+
+    public constructor(
+        scope: String,
+        stage: String? = null,
+        checkMode: CheckMode = Insignificant,
+    ) : this(if (stage.isNullOrBlank()) scope else "$scope-$stage", checkMode)
+
+    public constructor(
+        scope: Scope,
+        stage: Stage? = null,
+        checkMode: CheckMode = Insignificant,
+    ) : this(if (stage == null) "$scope" else "$scope-$stage", checkMode)
+
+    public constructor(
+        major: Int,
+        minor: Int,
+        patch: Int,
+        stageName: String? = null,
+        stageNum: Int? = null,
+        commits: Int? = null,
+        hash: String? = null,
+        metadata: String? = null,
+        checkMode: CheckMode = Insignificant,
+    ) : this(
+        buildVersion(major, minor, patch, stageName, stageNum, commits, hash, metadata),
+        checkMode,
+    )
+
+    public constructor(
+        scope: Scope,
+        stage: Stage?,
+        commits: Int? = null,
+        hash: String? = null,
+        metadata: String? = null,
+        checkMode: CheckMode = Insignificant,
+    ) : this(
+        scope.major,
+        scope.minor,
+        scope.patch,
+        stage?.name,
+        stage?.num,
+        commits,
+        hash,
+        metadata,
+        checkMode,
+    )
 
     init {
         if (checkMode == Significant) checkSignificantVersion(value)
         if (checkMode == Insignificant) checkInsignificantVersion(value)
     }
 
-    public val major: Int = scope.split(".").first().toInt()
+    private val scope: Scope
+        get() = Scope(checkScope(scopeRegex.find(value)?.value))
 
-    public val minor: Int = scope.split(".")[1].toInt()
+    public val major: Int = scope.major
 
-    public val patch: Int = scope.split(".").getOrNull(2)?.toInt() ?: 0
+    public val minor: Int = scope.minor
 
-    public val stage: Stage? = hyphenStageRegex.find(value)?.value?.remove("-")?.let(Stage::invoke)
+    public val patch: Int = scope.patch
+
+    public val stage: Stage? = hyphenStageRegex.find(value)?.value?.remove("-")?.let(::Stage)
+
+    public val stageName: String? = stage?.name
+
+    public val stageNum: Int? = stage?.num
 
     public val commits: Int? = run {
         val commitsAndHashOrDirty: String? =
@@ -56,15 +110,12 @@ private constructor(
 
     public val isInvalid: Boolean = !isSignificant && !isInsignificant
 
+    public val isDirty: Boolean = value.contains("dirty", ignoreCase = true)
+
     @Suppress("ComplexMethod")
     override fun compareTo(other: GradleVersion): Int =
         when {
-            major > other.major -> 1
-            major < other.major -> -1
-            minor > other.minor -> 1
-            minor < other.minor -> -1
-            patch > other.patch -> 1
-            patch < other.patch -> -1
+            scope.compareTo(other.scope) != 0 -> scope.compareTo(other.scope)
             stage == null && other.stage != null -> 1
             stage != null && other.stage == null -> -1
             stage != null && other.stage != null -> stage.compareTo(other.stage)
@@ -83,19 +134,16 @@ private constructor(
         val nextVersion: GradleVersion =
             when {
                 number == null && stageName.isBlank() && !stage?.name.isNullOrBlank() -> {
-                    invoke(
-                        major = major,
-                        minor = minor,
-                        patch = patch,
-                        stageName = null,
-                        stageNum = null,
+                    GradleVersion(
+                        scope = scope,
+                        stage = null,
                         commits = commits,
                         hash = hash,
                         metadata = metadata
                     )
                 }
                 number == null && stageName.isBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor,
                         patch = patch.inc(),
@@ -107,7 +155,7 @@ private constructor(
                     )
                 }
                 number == null && stageName.isNotBlank() && stage?.name.isNullOrBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor,
                         patch = patch.inc(),
@@ -119,7 +167,7 @@ private constructor(
                     )
                 }
                 number == null && stageName.isNotBlank() && stageName == stage?.name -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor,
                         patch = patch,
@@ -131,19 +179,16 @@ private constructor(
                     )
                 }
                 number == null && stageName.isNotBlank() && stageName != stage?.name -> {
-                    invoke(
-                        major = major,
-                        minor = minor,
-                        patch = patch,
-                        stageName = stageName,
-                        stageNum = incNum,
+                    GradleVersion(
+                        scope = scope,
+                        stage = Stage(stageName, incNum),
                         commits = commits,
                         hash = hash,
                         metadata = metadata
                     )
                 }
                 number is Increase.Major && stageName.isBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major.inc(),
                         minor = 0,
                         patch = 0,
@@ -155,7 +200,7 @@ private constructor(
                     )
                 }
                 number is Increase.Minor && stageName.isBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor.inc(),
                         patch = 0,
@@ -167,7 +212,7 @@ private constructor(
                     )
                 }
                 number is Increase.Patch && stageName.isBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor,
                         patch = patch.inc(),
@@ -179,7 +224,7 @@ private constructor(
                     )
                 }
                 number is Increase.Major && stageName.isNotBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major.inc(),
                         minor = 0,
                         patch = 0,
@@ -191,7 +236,7 @@ private constructor(
                     )
                 }
                 number is Increase.Minor && stageName.isNotBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor.inc(),
                         patch = 0,
@@ -203,7 +248,7 @@ private constructor(
                     )
                 }
                 number is Increase.Patch && stageName.isNotBlank() -> {
-                    invoke(
+                    GradleVersion(
                         major = major,
                         minor = minor,
                         patch = patch.inc(),
@@ -243,6 +288,26 @@ private constructor(
             patch = patch,
             stageName = stageName,
             stageNum = if (stageName.equals("SNAPSHOT", ignoreCase = true)) null else stageNum,
+            commits = commits,
+            hash = hash,
+            metadata = metadata,
+            checkMode = checkMode,
+        )
+
+    public fun copy(
+        scope: Scope = this.scope,
+        stage: Stage? = this.stage,
+        commits: Int? = this.commits,
+        hash: String? = this.hash,
+        metadata: String? = this.metadata,
+        checkMode: CheckMode = Insignificant,
+    ): GradleVersion =
+        GradleVersion(
+            major = scope.major,
+            minor = scope.minor,
+            patch = scope.patch,
+            stageName = stage?.name,
+            stageNum = if (stage?.name.equals("SNAPSHOT", ignoreCase = true)) null else stage?.num,
             commits = commits,
             hash = hash,
             metadata = metadata,
@@ -311,23 +376,10 @@ private constructor(
                 option = IGNORE_CASE,
             )
 
-        public operator fun invoke(
-            value: String,
-            checkMode: CheckMode = Insignificant,
-        ): GradleVersion = GradleVersion(value, checkMode)
-
         public fun safe(
             value: String,
             checkMode: CheckMode = Insignificant,
         ): Result<GradleVersion> = runCatching { GradleVersion(value, checkMode) }
-
-        public operator fun invoke(
-            version: String,
-            stage: String?,
-            checkMode: CheckMode = Insignificant,
-        ): GradleVersion =
-            if (stage.isNullOrBlank()) GradleVersion(version, checkMode)
-            else GradleVersion("$version-$stage", checkMode)
 
         public fun safe(
             version: String,
@@ -337,35 +389,6 @@ private constructor(
             if (stage.isNullOrBlank()) GradleVersion(version, checkMode)
             else GradleVersion("$version-$stage", checkMode)
         }
-
-        public operator fun invoke(
-            major: Int,
-            minor: Int,
-            patch: Int,
-            stageName: String?,
-            stageNum: Int?,
-            checkMode: CheckMode = Insignificant,
-        ): GradleVersion =
-            GradleVersion(
-                buildVersion(major, minor, patch, stageName, stageNum, null, null, null),
-                checkMode,
-            )
-
-        public operator fun invoke(
-            major: Int,
-            minor: Int,
-            patch: Int,
-            stageName: String?,
-            stageNum: Int?,
-            commits: Int?,
-            hash: String?,
-            metadata: String?,
-            checkMode: CheckMode = Insignificant,
-        ): GradleVersion =
-            GradleVersion(
-                buildVersion(major, minor, patch, stageName, stageNum, commits, hash, metadata),
-                checkMode,
-            )
 
         public fun safe(
             major: Int,
@@ -406,10 +429,52 @@ private constructor(
                 .getOrNull()
     }
 
-    private val scope: String
-        get() = scopeRegex.find(value)?.value ?: gradleVersionError("Incorrect version: $value")
+    public class Scope(private val value: String) : Comparable<Scope> {
 
-    public class Stage private constructor(private val value: String) : Comparable<Stage> {
+        public constructor(major: Int, minor: Int, patch: Int) : this("$major.$minor.$patch")
+
+        init {
+            checkScope(value)
+        }
+
+        private val splitValue: List<String> = value.split(".")
+
+        public val major: Int = splitValue.first().toInt()
+
+        public val minor: Int = splitValue.second().toInt()
+
+        public val patch: Int = splitValue.thirdOrNull()?.toInt() ?: 0
+
+        @Suppress("ComplexMethod")
+        override fun compareTo(other: Scope): Int {
+            return when {
+                major > other.major -> 1
+                major < other.major -> -1
+                minor > other.minor -> 1
+                minor < other.minor -> -1
+                patch > other.patch -> 1
+                patch < other.patch -> -1
+                else -> 0
+            }
+        }
+
+        override fun equals(other: Any?): Boolean {
+            val otherScope: Scope? = other as? Scope
+            return when {
+                otherScope == null -> false
+                compareTo(otherScope) == 0 -> true
+                else -> false
+            }
+        }
+
+        override fun toString(): String = value
+
+        override fun hashCode(): Int = value.hashCode()
+    }
+
+    public class Stage(private val value: String) : Comparable<Stage> {
+
+        public constructor(name: String, num: Int?) : this(if (num != null) "$name.$num" else name)
 
         init {
             checkStage(value)
@@ -472,13 +537,6 @@ private constructor(
         override fun toString(): String = value
 
         override fun hashCode(): Int = value.hashCode()
-
-        public companion object {
-            public operator fun invoke(stage: String): Stage = Stage(stage)
-
-            public operator fun invoke(name: String, num: Int?): Stage =
-                if (num != null) Stage("$name.$num") else Stage(name)
-        }
     }
 
     internal class SpecialStage
@@ -567,7 +625,7 @@ private fun checkSignificantVersion(version: String) {
            |
            |Current version: $version
            |
-           |Samples of semantic versions:
+           |Samples of semantic version:
            |`1.0.0` // scope
            |`1.0-alpha.1` // scope + stage
            |`1.0.0-SNAPSHOT` // scope + stage
@@ -598,7 +656,7 @@ private fun checkInsignificantVersion(version: String) {
            |
            |Current version: $version
            |
-           |Samples of semantic versions:
+           |Samples of semantic version:
            |`1.0.0` // scope
            |`1.0-alpha.1` // scope + stage
            |`1.0.0-SNAPSHOT` // scope + stage
@@ -621,13 +679,31 @@ private fun checkInsignificantVersion(version: String) {
     }
 }
 
+private fun checkScope(scope: String?): String {
+    contract { returns() implies (scope != null) }
+    checkVersion(scope != null && scope.matches(GradleVersion.scopeRegex)) {
+        """|`scope` provided has an incorrect format
+           |
+           |Current stage: $scope
+           |
+           |Samples of scope:
+           |1.0.0
+           |12.23.34
+           |12.0.44
+        """
+            .trimMargin()
+            .red()
+    }
+    return scope
+}
+
 private fun checkStage(stage: String) {
     checkVersion(stage.matches(GradleVersion.stageRegex)) {
         """|`stage` provided has an incorrect format
            |
            |Current stage: $stage
            |
-           |Samples of stages:
+           |Samples of stage:
            |alpha.1
            |beta.23
            |SNAPSHOT

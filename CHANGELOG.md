@@ -4,6 +4,10 @@
 
 ### Added
 
+- `scope` to `GradleVersion`
+- use secondary constructor in `GradleVersion` instead of `invoke`
+- `isDirty` to `GradleVersion`
+
 ### Changed
 
 ### Deprecated

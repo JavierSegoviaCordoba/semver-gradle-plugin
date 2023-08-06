@@ -6,6 +6,7 @@ import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.project.gradle.plugin.internal.git.lastCommitInCurrentBranch
 import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
@@ -24,6 +25,9 @@ internal class CalculatedVersionTest {
                         metadata = null,
                     )
                 )
+                .shouldNotBeNull()
+                .asString()
+                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
 
             resolve("2 commit.txt").createNewFile()
 
@@ -35,6 +39,9 @@ internal class CalculatedVersionTest {
                         metadata = "DIRTY",
                     )
                 )
+                .shouldNotBeNull()
+                .asString()
+                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}+DIRTY")
 
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
@@ -52,6 +59,9 @@ internal class CalculatedVersionTest {
                         metadata = "DIRTY",
                     )
                 )
+                .shouldNotBeNull()
+                .asString()
+                .shouldBe(".0+DIRTY")
 
             git.add().addFilepattern(".").call()
 
@@ -63,6 +73,9 @@ internal class CalculatedVersionTest {
                         metadata = "DIRTY",
                     )
                 )
+                .shouldNotBeNull()
+                .asString()
+                .shouldBe(".0+DIRTY")
 
             git.commit().setMessage("3 commit").call()
 
@@ -74,6 +87,9 @@ internal class CalculatedVersionTest {
                         metadata = null,
                     )
                 )
+                .shouldNotBeNull()
+                .asString()
+                .shouldBe(".1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
         }
     }
 

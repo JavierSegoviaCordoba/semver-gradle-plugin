@@ -44,7 +44,7 @@ public class SemverProjectPlugin : Plugin<Project> {
     }
 
     private fun Project.configureVersion() {
-        val gradleVersionProvider = VersionValueSource.register(this).map(GradleVersion::invoke)
+        val gradleVersionProvider = VersionValueSource.register(this).map(::GradleVersion)
         semverExtension.calculatedVersion.set(gradleVersionProvider)
         version = VersionProperty(semverExtension.version)
         semverExtension.onMapVersion { version = VersionProperty(semverExtension.version) }
@@ -52,8 +52,7 @@ public class SemverProjectPlugin : Plugin<Project> {
         // It is possible third party plugin breaks lazy configuration by calling `project.version`
         // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
         afterEvaluate { proj ->
-            val gradleVersionProviderProj =
-                VersionValueSource.register(proj).map(GradleVersion::invoke)
+            val gradleVersionProviderProj = VersionValueSource.register(proj).map(::GradleVersion)
             proj.semverExtension.calculatedVersion.set(gradleVersionProviderProj)
             proj.version = VersionProperty(proj.semverExtension.version)
             semverExtension.onMapVersion { version = VersionProperty(semverExtension.version) }

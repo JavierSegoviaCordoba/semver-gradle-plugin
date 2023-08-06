@@ -4,7 +4,13 @@
 
 ### Added
 
+- `scope` to `GradleVersion`
+- `isDirty` to `GradleVersion`
+- `mapVersion` which expose `GitData` to `semver` extension
+
 ### Changed
+ 
+- use secondary constructor in `GradleVersion` instead of `invoke`
 
 ### Deprecated
 

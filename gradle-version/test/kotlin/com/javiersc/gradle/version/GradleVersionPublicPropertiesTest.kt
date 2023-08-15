@@ -73,7 +73,7 @@ internal class GradleVersionPublicPropertiesTest {
             metadata.shouldBeNull()
         }
 
-        with(GradleVersion("1.2.3", "")) {
+        with(GradleVersion("1.2.3", "final")) {
             major.shouldBe(1)
             minor.shouldBe(2)
             patch.shouldBe(3)

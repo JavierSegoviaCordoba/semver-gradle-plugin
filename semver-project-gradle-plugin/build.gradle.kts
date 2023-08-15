@@ -2,7 +2,7 @@ hubdle {
     config {
         analysis()
         coverage()
-        documentation {
+        documentation { //
             api()
         }
         explicitApi()
@@ -11,6 +11,7 @@ hubdle {
     kotlin {
         jvm {
             features {
+                coroutines()
                 gradle {
                     plugin {
                         gradlePlugin {
@@ -41,6 +42,9 @@ hubdle {
                         )
                     }
                 }
+                serialization { //
+                    csv()
+                }
             }
 
             main {
@@ -49,21 +53,25 @@ hubdle {
                     implementation(hubdle.eclipse.jgit)
                 }
             }
-
+            test {
+                dependencies { //
+                    implementation(hubdle.kotest.kotestProperty)
+                }
+            }
             testIntegration {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFunctional {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFixtures {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.eclipse.jgit)
                 }
             }

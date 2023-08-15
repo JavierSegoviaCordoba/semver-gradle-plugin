@@ -30,6 +30,10 @@ internal val Project.checkCleanProperty: Provider<Boolean>
             getSemverProperty(SemverProperty.CheckClean).orNull?.toBoolean() ?: true
         }
 
+internal val Project.forceProperty: Provider<Boolean>
+    get() =
+        providers.provider { getSemverProperty(SemverProperty.Force).orNull?.toBoolean() ?: true }
+
 internal val Project.commitsMaxCount: Provider<Int>
     get() = getSemverProperty(SemverProperty.CommitsMaxCount).map(String::toInt)
 
@@ -41,6 +45,7 @@ internal enum class SemverProperty(val key: String) {
     Remote("semver.remote"),
     CheckClean("semver.checkClean"),
     CommitsMaxCount("semver.commitsMaxCount"),
+    Force("semver.force"),
 }
 
 internal enum class Stage(private val value: String) {

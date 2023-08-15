@@ -1,188 +1,295 @@
 package com.javiersc.semver.project.gradle.plugin
 
+import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.AdditionalVersionData
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
-import com.javiersc.semver.project.gradle.plugin.internal.git.lastCommitInCurrentBranch
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import java.io.File
 import kotlin.test.Test
-import org.eclipse.jgit.api.Git
 
-@Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
 internal class CalculatedVersionTest {
 
     @Test
-    fun `calculate additional version data`() {
+    fun `given a repository without tags, when different tags are created, then additional data is calculated`() {
         initialCommitAnd {
-            git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(
-                    AdditionalVersionData(
-                        commits = 0,
-                        hash = git.lastCommitInCurrentBranch!!.hash.take(7),
-                        metadata = null,
-                    )
-                )
+            calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(AdditionalVersionData(commits = 0, hash = hash7, metadata = null))
                 .shouldNotBeNull()
                 .asString()
-                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+                .shouldBe(".0+$hash7")
 
-            resolve("2 commit.txt").createNewFile()
+            createNewFile("2 commit.txt")
 
-            git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(
-                    AdditionalVersionData(
-                        commits = 0,
-                        hash = git.lastCommitInCurrentBranch!!.hash.take(7),
-                        metadata = "DIRTY",
-                    )
-                )
+            calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(AdditionalVersionData(commits = 0, hash = hash7, metadata = "DIRTY"))
                 .shouldNotBeNull()
                 .asString()
-                .shouldBe(".0+${git.lastCommitInCurrentBranch!!.hash.take(7)}+DIRTY")
+                .shouldBe(".0+$hash7+DIRTY")
 
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("2 commit").call()
-            git.tag().setName("v1.0.0").call()
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v1.0.0")
 
-            git.calculateAdditionalVersionData("v").shouldBeNull()
+            calculateAdditionalVersionData("v").shouldBeNull()
 
-            resolve("3 commit.txt").createNewFile()
+            createNewFile("3 commit.txt")
 
-            git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(
-                    AdditionalVersionData(
-                        commits = 0,
-                        hash = null,
-                        metadata = "DIRTY",
-                    )
-                )
+            calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(AdditionalVersionData(commits = 0, hash = null, metadata = "DIRTY"))
                 .shouldNotBeNull()
                 .asString()
                 .shouldBe(".0+DIRTY")
 
-            git.add().addFilepattern(".").call()
+            addAllCall()
 
-            git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(
-                    AdditionalVersionData(
-                        commits = 0,
-                        hash = null,
-                        metadata = "DIRTY",
-                    )
-                )
+            calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(AdditionalVersionData(commits = 0, hash = null, metadata = "DIRTY"))
                 .shouldNotBeNull()
                 .asString()
                 .shouldBe(".0+DIRTY")
 
-            git.commit().setMessage("3 commit").call()
+            commitCall("3 commit")
 
-            git.calculateAdditionalVersionData(tagPrefix = "v")
-                .shouldBe(
-                    AdditionalVersionData(
-                        commits = 1,
-                        hash = git.lastCommitInCurrentBranch!!.hash.take(7),
-                        metadata = null,
-                    )
-                )
+            calculateAdditionalVersionData(tagPrefix = "v")
+                .shouldBe(AdditionalVersionData(commits = 1, hash = hash7, metadata = null))
                 .shouldNotBeNull()
                 .asString()
-                .shouldBe(".1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+                .shouldBe(".1+$hash7")
         }
     }
 
     @Test
-    fun `calculated version`() {
+    fun `given a repository without tags, when scope and stage are auto, then version is calculated`() {
         initialCommitAnd {
-            val git: Git = git
-            fun cache() = GitCache(gitDir = git.repository.directory)
+            calculatedVersion().shouldBe("v0.1.0.0+$hash7")
 
-            cache()
-                .calculatedVersion()
-                .shouldBe("v0.1.0.0+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+            calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
 
-            cache().calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
+            calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = false)
+                .shouldBe("v0.1.0")
+        }
+    }
 
-            cache()
-                .calculatedVersion(stage = "auto", scope = "auto", isCreatingTag = false)
+    @Test
+    fun `given a repository without tags, when scope is auto and stage is final, then version is calculated`() {
+        initialCommitAnd {
+            calculatedVersion().shouldBe("v0.1.0.0+$hash7")
+            calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
+            calculatedVersion(scope = "auto", stage = "final", isCreatingTag = false)
+                .shouldBe("v0.1.0")
+        }
+    }
+
+    @Test
+    fun `given a repository without tags, when different tags, scopes and stages are provided, then version is calculated`() {
+        initialCommitAnd {
+            calculatedVersion().shouldBe("v0.1.0.0+$hash7")
+
+            calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
+
+            shouldThrowVersionException {
+                calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = false)
+                    .shouldBe("v0.1.0")
+            }
+
+            calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = true)
                 .shouldBe("v0.1.0")
 
-            cache()
-                .calculatedVersion(stage = "auto", scope = "auto", isCreatingTag = true)
+            calculatedVersion(scope = "auto", stage = "final", isCreatingTag = true)
                 .shouldBe("v0.1.0")
 
-            resolve("2 commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("2 commit").call()
-            git.tag().setName("v1.0.0").call()
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v1.0.0")
 
-            cache().calculatedVersion().shouldBe("v1.0.0")
+            calculatedVersion().shouldBe("v1.0.0")
 
-            cache().calculatedVersion(isCreatingTag = true).shouldBe("v1.0.1")
+            calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = true)
+                .shouldBe("v1.0.1")
 
-            cache().calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
+            calculatedVersion(scope = "auto", stage = "auto").shouldBe("v1.0.1")
 
-            resolve("3 commit.txt").createNewFile()
-            cache().calculatedVersion().shouldBe("v1.0.0.0+DIRTY")
+            createNewFile("3 commit.txt")
+            calculatedVersion().shouldBe("v1.0.0.0+DIRTY")
 
-            cache().calculatedVersion(checkClean = false).shouldBe("v1.0.0")
+            calculatedVersion(checkClean = false).shouldBe("v1.0.0")
 
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("3 commit").call()
+            addAllCall()
+            commitCall("3 commit")
 
-            cache()
-                .calculatedVersion()
-                .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+            calculatedVersion().shouldBe("v1.0.0.1+$hash7")
 
-            cache().calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
+            calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
 
-            cache().calculatedVersion(stage = "auto", scope = "auto").shouldBe("v1.0.1")
+            calculatedVersion(scope = "auto", stage = "auto").shouldBe("v1.0.1")
 
-            resolve("4 commit.txt").createNewFile()
-            cache()
-                .calculatedVersion(checkClean = false)
-                .shouldBe("v1.0.0.1+${git.lastCommitInCurrentBranch!!.hash.take(7)}")
+            calculatedVersion(checkClean = false).shouldBe("v1.0.0.1+$hash7")
 
-            cache()
-                .calculatedVersion(stage = "snapshot", checkClean = false)
+            calculatedVersion(scope = "auto", stage = "snapshot", checkClean = false)
                 .shouldBe("v1.0.1-SNAPSHOT")
-            cache()
-                .calculatedVersion(stage = "alpha", checkClean = false)
+            calculatedVersion(scope = "auto", stage = "alpha", checkClean = false)
                 .shouldBe("v1.0.1-alpha.1")
-            cache()
-                .calculatedVersion(stage = "snapshot", scope = "major", checkClean = false)
+            calculatedVersion(scope = "major", stage = "snapshot", checkClean = false)
                 .shouldBe("v2.0.0-SNAPSHOT")
+
+            tagCall("v4.5.3")
+            calculatedVersion().shouldBe("v4.5.3")
+        }
+    }
+
+    @Test
+    fun `given scope=null stage=final, when current version is v0_9_0, the version is calculated`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v0.9.0")
+
+            calculatedVersion(tagPrefix = "v", scope = null, stage = "final").shouldBe("v0.9.1")
+        }
+    }
+
+    @Test
+    fun `given scope=auto stage=final, when current version is v0_9_0, the version is calculated`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v0.9.0")
+
+            calculatedVersion(tagPrefix = "v", scope = "auto", stage = "final").shouldBe("v0.9.1")
+        }
+    }
+
+    @Test
+    fun `given scope=auto stage=auto, when current version is v0_9_0, the version is calculated`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v0.9.0")
+
+            calculatedVersion(tagPrefix = "v", scope = "auto", stage = "auto").shouldBe("v0.9.1")
+        }
+    }
+
+    @Test
+    fun `given scope=patch stage=final, when current version is v0_9_0, the version is calculated`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v0.9.0")
+
+            calculatedVersion(tagPrefix = "v", scope = "patch", stage = "final").shouldBe("v0.9.1")
+        }
+    }
+
+    @Test
+    fun `given scope=patch stage=auto, when current version is v0_9_0, the version is calculated`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v0.9.0")
+
+            calculatedVersion(tagPrefix = "v", scope = "patch", stage = "auto").shouldBe("v0.9.1")
+        }
+    }
+
+    @Test
+    fun `given scope=null stage=null, when current version is v0_9_0, the version is calculated`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v0.9.0")
+
+            calculatedVersion(tagPrefix = "v", scope = null, stage = null).shouldBe("v0.9.0")
+        }
+    }
+
+    @Test
+    fun `given scope=auto stage=beta, when current version is 1_0_0-alpha_1, then fails`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v1.0.0-alpha.1")
+
+            shouldThrowVersionException {
+                calculatedVersion(tagPrefix = "v", scope = "auto", stage = "beta")
+            }
         }
     }
 }
 
-internal fun GitCache.calculatedVersion(
+@Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
+internal fun File.calculateAdditionalVersionData(
+    tagPrefix: String,
+    checkIsClean: Boolean = true
+): AdditionalVersionData? =
+    git.calculateAdditionalVersionData(
+        tagPrefix = tagPrefix,
+        checkIsClean = checkIsClean,
+    )
+
+@Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
+internal fun File.lastVersionInCurrentBranch(
+    tagPrefix: String,
+    isWarningLastVersionIsNotHigherVersion: (Boolean) -> Unit = {},
+): GradleVersion =
+    gitCache.lastVersionInCurrentBranch(
+        tagPrefix = tagPrefix,
+        isWarningLastVersionIsNotHigherVersion = isWarningLastVersionIsNotHigherVersion,
+    )
+
+@Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
+internal fun File.calculatedVersion(
     tagPrefix: String = "v",
-    stage: String? = null,
     scope: String? = null,
+    stage: String? = null,
     isCreatingTag: Boolean = false,
     checkClean: Boolean = true,
+    force: Boolean = false,
+): String =
+    gitCache.calculatedVersion(
+        tagPrefix = tagPrefix,
+        scope = scope,
+        stage = stage,
+        isCreatingTag = isCreatingTag,
+        checkClean = checkClean,
+        force = force,
+    )
+
+internal fun GitCache.calculatedVersion(
+    tagPrefix: String = "v",
+    scope: String? = null,
+    stage: String? = null,
+    isCreatingTag: Boolean = false,
+    checkClean: Boolean = true,
+    force: Boolean = false,
 ): String {
-    val lastSemver = lastVersionInCurrentBranch(tagPrefix = tagPrefix)
-    return tagPrefix +
+    val lastSemver: GradleVersion = lastVersionInCurrentBranch(tagPrefix = tagPrefix)
+    val calculatedVersion: String =
         calculatedVersion(
+            lastSemver = lastSemver,
             stageProperty = stage,
             scopeProperty = scope,
             isCreatingSemverTag = isCreatingTag,
-            lastSemverMajorInCurrentBranch = lastSemver.major,
-            lastSemverMinorInCurrentBranch = lastSemver.minor,
-            lastSemverPatchInCurrentBranch = lastSemver.patch,
-            lastSemverStageInCurrentBranch = lastSemver.stage?.name,
-            lastSemverNumInCurrentBranch = lastSemver.stage?.num,
-            versionTagsInCurrentBranch =
-                versionTagsInCurrentBranch(tagPrefix).map(GitRef.Tag::name),
+            versionTagsInBranch = versionTagsInCurrentBranch(tagPrefix).map(GitRef.Tag::name),
             clean = isClean,
+            force = force,
             checkClean = checkClean,
             lastCommitInCurrentBranch = lastCommitInCurrentBranch?.hash,
             commitsInCurrentBranch = commitsInCurrentBranch.map(GitRef.Commit::hash),
             headCommit = headCommit.commit.hash,
             lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch(tagPrefix)?.hash,
         )
+    return "$tagPrefix$calculatedVersion"
 }

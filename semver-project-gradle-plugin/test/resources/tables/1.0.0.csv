@@ -1,0 +1,13 @@
+lastVersion,clean,scope,stage,isCreatingTag,checkClean,force,lastCommitInCurrentBranch,commitsInCurrentBranch,head,lastVersionCommitInCurrentBranch,expectedVersion
+1.0.0,true,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,1.0.0.1+h4sh123
+1.0.0,true,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,1.0.0.1+h4sh123
+1.0.0,true,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.0.2+h4sh123
+1.0.0,true,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.0.2+h4sh123
+1.0.0,true,null,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,fail
+1.0.0,true,null,auto,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.1
+1.0.0,true,auto,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.1
+1.0.0,true,patch,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.1
+1.0.0,true,minor,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.1.0
+1.0.0,true,major,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,2.0.0
+1.0.0,false,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,1.0.0.1+DIRTY
+1.0.0,false,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.0.2+DIRTY

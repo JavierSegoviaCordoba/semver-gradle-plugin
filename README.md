@@ -245,7 +245,7 @@ semver.tagPrefix=v
 ./gradlew "-Psemver.stage=alpha" # v1.0.0-alpha.2
 ./gradlew "-Psemver.stage=beta" # v1.0.0-beta.1
 ./gradlew "-Psemver.stage=rc" # v1.0.0-rc.1
-./gradlew "-Psemver.stage=snapshot" # v1.0.1-SNAPSHOT (uses the next patch version)
+./gradlew "-Psemver.stage=snapshot" # v1.0.0-SNAPSHOT
 ./gradlew "-Psemver.stage=final" # v1.0.0
 ./gradlew "-Psemver.stage=auto" # v1.0.0-alpha.2
 
@@ -253,7 +253,7 @@ semver.tagPrefix=v
 ./gradlew "-Psemver.stage=alpha" # v1.0.1-alpha.1
 ./gradlew "-Psemver.stage=beta" # v1.0.1-beta.1
 ./gradlew "-Psemver.stage=rc" # v1.0.1-rc.1
-./gradlew "-Psemver.stage=snapshot" # v1.0.1-SNAPSHOT (still uses the same patch version)
+./gradlew "-Psemver.stage=snapshot" # v1.0.1-SNAPSHOT
 ./gradlew "-Psemver.stage=final" # v1.0.1
 ./gradlew "-Psemver.stage=auto" # v1.0.1
 ```

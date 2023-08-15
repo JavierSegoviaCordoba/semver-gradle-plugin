@@ -1,0 +1,9 @@
+lastVersion,clean,scope,stage,isCreatingTag,checkClean,force,lastCommitInCurrentBranch,commitsInCurrentBranch,head,lastVersionCommitInCurrentBranch,expectedVersion
+1.0.0-beta.1,true,patch,alpha,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,fail
+1.0.0-beta.1,true,minor,alpha,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,fail
+1.0.0-beta.1,true,major,alpha,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,fail
+1.0.0-beta.1,true,patch,alpha,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.1-alpha.1
+1.0.0-beta.1,true,minor,alpha,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.1.0-alpha.1
+1.0.0-beta.1,true,major,alpha,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,2.0.0-alpha.1
+1.0.0-beta.1,false,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,1.0.0-beta.1.1+DIRTY
+1.0.0-beta.1,false,null,null,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh125,1.0.0-beta.1.2+DIRTY

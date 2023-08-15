@@ -185,9 +185,10 @@ private constructor(
                     val higherVersion: GradleVersion? =
                         versionsInCurrentBranch(tagPrefix).firstOrNull()
 
-                    if (
+                    val isLastTagLowerThanTheHigherVersionInBranch: Boolean =
                         lastVersion != null && higherVersion != null && higherVersion > lastVersion
-                    ) {
+
+                    if (isLastTagLowerThanTheHigherVersionInBranch) {
                         isWarningLastVersionIsNotHigherVersion(true)
                         warningLastVersionIsNotHigherVersion(lastVersion, higherVersion)
                     }

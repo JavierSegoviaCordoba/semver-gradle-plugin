@@ -1,20 +1,33 @@
 package com.javiersc.gradle.version
 
+import com.javiersc.gradle.version.GradleVersion.Scope
+import com.javiersc.gradle.version.GradleVersion.Stage
 import io.kotest.assertions.throwables.shouldThrow
 import kotlin.test.Test
 
 internal class GradleVersionWrongVersionsTest {
 
     @Test
-    fun incorrect_versions() {
+    fun incorrect_versions_exceptions() {
+        shouldThrow<GradleVersionException> {
+            GradleVersion(scope = Scope("1.0.0"), stage = Stage("SNAPSHOT.1"))
+        }
+        shouldThrow<GradleVersionException> {
+            GradleVersion(scope = Scope("1.0.0"), stage = Stage("snapshot.1"))
+        }
+        shouldThrow<GradleVersionException> { GradleVersion("1.2.3", "") }
+        shouldThrow<GradleVersionException> { GradleVersion(1, 0, 0, "snapshot", 1) }
+        shouldThrow<GradleVersionException> { GradleVersion(scope = "1.0.0", stage = "snapshot.1") }
+        shouldThrow<GradleVersionException> { GradleVersion(scope = "1.0.0", stage = "SNAPSHOT.1") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0") }
         shouldThrow<GradleVersionException> { GradleVersion("3.53") }
         shouldThrow<GradleVersionException> { GradleVersion("222.22") }
         shouldThrow<GradleVersionException> { GradleVersion("4223.4343") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0-snapshot.1") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0-SNAPSHOT.1") }
+        shouldThrow<GradleVersionException> { GradleVersion("1.0.0-snapshot.1") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0.0-SNAPSHOT.1") }
-        shouldThrow<GradleVersionException> { GradleVersion("1.0.0-SNAPSHOT.1") }
+        shouldThrow<GradleVersionException> { GradleVersion("1.0/0-SNAPSHOT.1") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0", "SNAPSHOT.1") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0.0", "SNAPSHOT.1") }
         shouldThrow<GradleVersionException> { GradleVersion("1.0.0", "snapshot.1") }

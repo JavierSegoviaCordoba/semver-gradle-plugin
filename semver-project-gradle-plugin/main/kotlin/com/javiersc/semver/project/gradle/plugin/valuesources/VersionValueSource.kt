@@ -5,6 +5,7 @@ import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.project.gradle.plugin.internal.checkCleanProperty
 import com.javiersc.semver.project.gradle.plugin.internal.checkVersionIsHigherOrSame
 import com.javiersc.semver.project.gradle.plugin.internal.commitsMaxCount
+import com.javiersc.semver.project.gradle.plugin.internal.forceProperty
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
@@ -28,7 +29,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         with(parameters) {
             val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
 
-            fun cache() =
+            fun cache(): GitCache =
                 GitCache(
                     gitDir = parameters.gitDir.get(),
                     maxCount = parameters.commitsMaxCount,
@@ -36,25 +37,23 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
 
             val lastSemver: GradleVersion =
                 cache().lastVersionInCurrentBranch(projectTagPrefix.get())
-            val lastVersionInCurrentBranch =
+
+            val lastVersionInCurrentBranch: List<String> =
                 cache().versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
 
-            val lastVersionCommitInCurrentBranch =
+            val lastVersionCommitInCurrentBranch: String? =
                 cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
 
             val version: String =
                 calculatedVersion(
+                    lastSemver = lastSemver,
                     stageProperty = stageProperty.orNull.takeIf { isSamePrefix },
                     scopeProperty = scopeProperty.orNull.takeIf { isSamePrefix },
                     isCreatingSemverTag = creatingSemverTag.get().takeIf { isSamePrefix } ?: false,
-                    lastSemverMajorInCurrentBranch = lastSemver.major,
-                    lastSemverMinorInCurrentBranch = lastSemver.minor,
-                    lastSemverPatchInCurrentBranch = lastSemver.patch,
-                    lastSemverStageInCurrentBranch = lastSemver.stage?.name,
-                    lastSemverNumInCurrentBranch = lastSemver.stage?.num,
-                    versionTagsInCurrentBranch = lastVersionInCurrentBranch,
+                    versionTagsInBranch = lastVersionInCurrentBranch,
                     clean = cache().isClean,
                     checkClean = checkClean.get(),
+                    force = force.get(),
                     lastCommitInCurrentBranch = cache().lastCommitInCurrentBranch?.hash,
                     commitsInCurrentBranch =
                         cache().commitsInCurrentBranch.map(GitRef.Commit::hash),
@@ -76,6 +75,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         val scopeProperty: Property<String?>
         val creatingSemverTag: Property<Boolean>
         val checkClean: Property<Boolean>
+        val force: Property<Boolean>
     }
 
     companion object {
@@ -93,6 +93,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
                 valueSourceSpec.parameters.scopeProperty.set(project.scopeProperty.orNull)
                 valueSourceSpec.parameters.creatingSemverTag.set(project.isCreatingSemverTag)
                 valueSourceSpec.parameters.checkClean.set(project.checkCleanProperty.get())
+                valueSourceSpec.parameters.force.set(project.forceProperty.get())
             }
     }
 }

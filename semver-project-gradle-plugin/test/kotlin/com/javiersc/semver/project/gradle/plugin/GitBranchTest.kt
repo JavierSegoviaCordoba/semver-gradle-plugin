@@ -11,9 +11,9 @@ internal class GitBranchTest {
     @Test
     internal fun `current branch`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
 
             git.headRef.name.shouldBe(git.currentBranch.refName)
 

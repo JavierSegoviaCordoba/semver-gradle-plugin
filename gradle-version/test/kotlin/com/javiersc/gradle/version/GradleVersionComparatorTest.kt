@@ -105,5 +105,7 @@ internal class GradleVersionComparatorTest {
         GradleVersion("5.9.10-SNAPSHOT").shouldBeGreaterThan(GradleVersion("5.9.10-zasca.5"))
         GradleVersion("10.4.2-snapshot").shouldBeGreaterThan(GradleVersion("10.4.2-zasca.5"))
         GradleVersion("1.0.0").shouldBeGreaterThan(GradleVersion("1.0.0-rc.1"))
+        GradleVersion("7.3.9-zasca.9+3T4D4T4")
+            .shouldBeGreaterThan(GradleVersion("7.3.9-dev.1.6+3T4D4T4"))
     }
 }

@@ -142,10 +142,15 @@ internal class GradleVersionPropertyTest {
             if (a nameComparator b) {
                 val aName = a.stage?.name
                 val bName = b.stage?.name
+                val aIsDev = aName?.lowercase() == GradleVersion.SpecialStage.dev
+                val bIsDev = bName?.lowercase() == GradleVersion.SpecialStage.dev
                 val aIsSpecial = aName?.lowercase() in GradleVersion.SpecialStage.specials
                 val bIsSpecial = bName?.lowercase() in GradleVersion.SpecialStage.specials
                 val areBothSpecial = aIsSpecial && bIsSpecial
                 when {
+                    !aIsDev && bIsDev -> a > b
+                    aIsDev && !bIsDev -> a < b
+                    aIsDev && bIsDev -> a == b
                     aName == null && bName == null -> true
                     aName != null && bName == null -> a < b
                     aName == null && bName != null -> a > b
@@ -154,12 +159,8 @@ internal class GradleVersionPropertyTest {
                     areBothSpecial && aName!!.lowercase() == bName!!.lowercase() -> a == b
                     areBothSpecial && aName!!.lowercase() > bName!!.lowercase() -> a > b
                     areBothSpecial && aName!!.lowercase() < bName!!.lowercase() -> a < b
-                    aName!!.lowercase() != GradleVersion.SpecialStage.dev &&
-                        bName!!.lowercase() == GradleVersion.SpecialStage.dev -> a > b
-                    aName.lowercase() == GradleVersion.SpecialStage.dev &&
-                        bName!!.lowercase() != GradleVersion.SpecialStage.dev -> a < b
                     aName == bName -> a == b
-                    aName > bName!! -> a > b
+                    aName!! > bName!! -> a > b
                     else -> b > a
                 }
             } else true
@@ -170,20 +171,21 @@ internal class GradleVersionPropertyTest {
             b: GradleVersion ->
             val aName = a.stage?.name
             val bName = b.stage?.name
+            val aIsDev = aName?.lowercase() == GradleVersion.SpecialStage.dev
+            val bIsDev = bName?.lowercase() == GradleVersion.SpecialStage.dev
             val aIsSpecial = aName?.lowercase() in GradleVersion.SpecialStage.specials
             val bIsSpecial = bName?.lowercase() in GradleVersion.SpecialStage.specials
             when {
+                !aIsDev && bIsDev -> a > b
+                aIsDev && !bIsDev -> a < b
+                aIsDev && bIsDev -> a == b
                 aName == null && bName == null -> true
                 aName != null && bName == null -> a < b
                 aName == null && bName != null -> a > b
                 aIsSpecial && bIsSpecial && aName?.lowercase() == bName?.lowercase() -> a == b
                 aIsSpecial && !bIsSpecial -> a > b
                 !aIsSpecial && bIsSpecial -> a < b
-                aName!!.lowercase() != GradleVersion.SpecialStage.dev &&
-                    bName!!.lowercase() == GradleVersion.SpecialStage.dev -> a > b
-                aName.lowercase() == GradleVersion.SpecialStage.dev &&
-                    bName!!.lowercase() != GradleVersion.SpecialStage.dev -> a < b
-                aName.lowercase() == bName!!.lowercase() -> a == b
+                aName!!.lowercase() == bName!!.lowercase() -> a == b
                 aName.lowercase() > bName.lowercase() -> a > b
                 else -> a < b
             }
@@ -219,29 +221,24 @@ internal class GradleVersionPropertyTest {
     @Test
     fun wrong_versions() = runTestNoTimeout {
         checkAll(major, minor, patch, stageName, num) { major, minor, patch, stageName, num ->
+            val isFinal: Boolean = stageName?.isFinal == true
+            val isNotFinal: Boolean = stageName?.isNotFinal == true
+            val isSnapshot: Boolean = stageName?.isSnapshot == true
+            val isNotSnapshot: Boolean = stageName?.isNotSnapshot == true
             when {
-                stageName.equals("SNAPSHOT", true) && num != null -> {
+                isFinal || isSnapshot && num != null -> {
                     shouldThrow<GradleVersionException> {
                         GradleVersion(major, minor, patch, stageName, num)
                     }
                 }
-                stageName.equals("snapshot", true) && num != null -> {
+                isNotFinal && isNotSnapshot && num == null -> {
                     shouldThrow<GradleVersionException> {
                         GradleVersion(major, minor, patch, stageName, num)
                     }
                 }
-                stageName.equals("SNAPSHOT", true) && num == null -> {
+                else -> {
                     GradleVersion(major, minor, patch, stageName, num)
                 }
-                stageName.equals("snapshot", true) && num == null -> {
-                    GradleVersion(major, minor, patch, stageName, num)
-                }
-                stageName != null && num == null -> {
-                    shouldThrow<GradleVersionException> {
-                        GradleVersion(major, minor, patch, stageName, num)
-                    }
-                }
-                else -> GradleVersion(major, minor, patch, stageName, num)
             }
         }
     }

@@ -23,9 +23,9 @@ internal class GitCommitTest {
     @Test
     fun `head commit`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
 
             git.headRevCommit.shortMessage.shouldBe("Second commit")
             git.headCommit.commit.message.shouldBe("Second commit")
@@ -36,9 +36,9 @@ internal class GitCommitTest {
     @Test
     fun `last commit in current branch`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
 
             git.lastCommitInCurrentBranch?.message.shouldBe("Second commit")
         }
@@ -47,9 +47,9 @@ internal class GitCommitTest {
     @Test
     fun `commits in current branch`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
 
             val messages: List<String> = listOf("Second commit", "Initial commit")
 
@@ -64,9 +64,9 @@ internal class GitCommitTest {
     @Test
     fun `commit hash`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
 
             git.commitHash(git.headRef).shouldBe(git.lastCommitInCurrentBranch?.hash)
             git.commitHash(git.headRevCommit.toObjectId())
@@ -80,9 +80,9 @@ internal class GitCommitTest {
             fun initialCommit() = git.commitsInCurrentBranch.last()
             fun lastCommit() = git.commitsInCurrentBranch.first()
 
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
 
             val messages2: List<String> = listOf("Second commit")
 
@@ -95,9 +95,9 @@ internal class GitCommitTest {
                 }
                 .shouldBe(messages2)
 
-            resolve("Third commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Third commit").call()
+            createNewFile("Third commit.txt")
+            addAllCall()
+            commitCall("Third commit")
 
             val messages3: List<String> = listOf("Third commit") + messages2
 
@@ -115,9 +115,9 @@ internal class GitCommitTest {
     @Test
     fun `commits in current branch full message`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit\n\nSecond commit full message").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit\n\nSecond commit full message")
 
             val messages: List<String> =
                 listOf("Second commit\n\nSecond commit full message", "Initial commit")
@@ -129,14 +129,14 @@ internal class GitCommitTest {
     @Test
     fun `last version commit in current branch`() {
         initialCommitAnd {
-            resolve("Second commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Second commit").call()
-            git.tag().setName("v1.0.0").call()
+            createNewFile("Second commit.txt")
+            addAllCall()
+            commitCall("Second commit")
+            tagCall("v1.0.0")
 
-            resolve("Third commit.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Third commit").call()
+            createNewFile("Third commit.txt")
+            addAllCall()
+            commitCall("Third commit")
 
             git.lastVersionCommitInCurrentBranch(tagPrefix = "v")!!
                 .message

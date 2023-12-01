@@ -195,7 +195,7 @@ private constructor(
                     lastVersion
                 } else null
             }
-                ?: InitialVersion
+            ?: InitialVersion
 
     internal fun shouldRefresh(): Boolean =
         git.repository.directory.walkTopDown().toList() != gitFiles

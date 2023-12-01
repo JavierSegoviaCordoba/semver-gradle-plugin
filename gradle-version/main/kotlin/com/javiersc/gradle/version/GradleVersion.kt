@@ -215,8 +215,7 @@ private constructor(
                     )
                 }
                 else -> null
-            }
-                ?: gradleVersionError("There were an error configuring the version")
+            } ?: gradleVersionError("There were an error configuring the version")
 
         if (nextVersion < this) {
             gradleVersionError(

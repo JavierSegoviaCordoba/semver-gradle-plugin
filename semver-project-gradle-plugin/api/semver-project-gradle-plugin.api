@@ -54,6 +54,7 @@ public final class com/javiersc/semver/project/gradle/plugin/Tag {
 
 public final class com/javiersc/semver/project/gradle/plugin/VersionProperty : org/gradle/api/provider/Provider {
 	public fun <init> (Lorg/gradle/api/provider/Provider;)V
+	public fun filter (Lorg/gradle/api/specs/Spec;)Lorg/gradle/api/provider/Provider;
 	public fun flatMap (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
 	public fun forUseAtConfigurationTime ()Lorg/gradle/api/provider/Provider;
 	public synthetic fun get ()Ljava/lang/Object;

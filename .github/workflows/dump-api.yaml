@@ -1,0 +1,11 @@
+name: dump-api
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dump-api:
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/dump-api.yaml@main
+    with:
+      restore-kotlin-native-cache: false
+    secrets: inherit

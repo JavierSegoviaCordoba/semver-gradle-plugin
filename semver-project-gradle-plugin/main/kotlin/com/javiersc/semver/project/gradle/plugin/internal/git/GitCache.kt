@@ -1,6 +1,8 @@
 package com.javiersc.semver.project.gradle.plugin.internal.git
 
 import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.semver.project.gradle.plugin.Commit
+import com.javiersc.semver.project.gradle.plugin.SemverExtension
 import com.javiersc.semver.project.gradle.plugin.internal.InitialVersion
 import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
 import com.javiersc.semver.project.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
@@ -10,34 +12,22 @@ import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.ObjectId
 import org.eclipse.jgit.lib.Ref
+import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
-import org.gradle.api.provider.Provider
 
-private val checkedNotNullCache: GitCache
-    get() =
-        checkNotNull(gitCache) {
-            "`GitCache` must not be null at this point, report this as a bug, please"
-        }
-
-private var gitCache: GitCache? = null
-
-internal class GitCache
-private constructor(
-    private val gitDir: File,
-    maxCount: Provider<Int>? = null,
-) {
+internal class GitCache private constructor(private val gitDir: File, maxCount: Int?) {
 
     internal val git: Git by lazy {
-        Git(FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()).also {
+        val repository: Repository =
+            FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()
+        Git(repository).also {
             if (it.hasNotCommits()) {
                 semverWarningMessage("semver plugin can't work if there are no commits")
             }
         }
     }
-
-    internal val gitFiles: List<File> = git.repository.directory.walkTopDown().toList()
 
     internal val isClean: Boolean
         get() = git.status().call().isClean
@@ -57,7 +47,7 @@ private constructor(
     }
 
     internal val commitsInCurrentBranchRevCommit: List<RevCommit> by lazy {
-        git.log().setMaxCount(maxCount?.get() ?: -1).call().toList()
+        git.log().setMaxCount(maxCount ?: -1).call().toList()
     }
     internal val tagsInRepoRef: List<Ref> by lazy { git.tagList().call() }
 
@@ -65,8 +55,7 @@ private constructor(
         commitsInCurrentBranchRevCommit.map(RevCommit::getName)
     }
 
-    internal val commitsInTheCurrentBranchPublicApi:
-        List<com.javiersc.semver.project.gradle.plugin.Commit> by lazy {
+    internal val commitsInTheCurrentBranchPublicApi: List<Commit> by lazy {
         commitsInCurrentBranchRevCommit.map { revCommit ->
             val hash: String = revCommit.toObjectId().name
             val tags: List<com.javiersc.semver.project.gradle.plugin.Tag> =
@@ -78,7 +67,7 @@ private constructor(
                             refName = ref.name,
                         )
                     }
-            com.javiersc.semver.project.gradle.plugin.Commit(
+            Commit(
                 message = revCommit.shortMessage,
                 fullMessage = revCommit.fullMessage,
                 hash = hash,
@@ -198,9 +187,6 @@ private constructor(
             }
             ?: InitialVersion
 
-    internal fun shouldRefresh(): Boolean =
-        git.repository.directory.walkTopDown().toList() != gitFiles
-
     private fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): GradleVersion? =
         asSequence()
             .filter { tag -> tag.name.startsWith(tagPrefix) }
@@ -210,15 +196,22 @@ private constructor(
             .toList()
             .run { maxOrNull() }
 
-    companion object {
+    internal companion object {
 
-        internal operator fun invoke(gitDir: File, maxCount: Provider<Int>? = null): GitCache {
-            // val cache: GitCache? = gitCache
-            // TODO: improve in-memory cache as `cache.shouldRefresh()` is flaky
-            // if (cache == null || cache.shouldRefresh() || true) {
-            gitCache = GitCache(gitDir, maxCount)
-            // }
-            return checkedNotNullCache
-        }
+        private var _gitDir: File? = null
+        private var _maxCount: Int? = null
+        private var _gitCache: GitCache? = null
+
+        operator fun invoke(gitDir: File, maxCount: Int?): GitCache =
+            if (gitDir != _gitDir || maxCount != _maxCount || _gitCache == null) {
+                _gitDir = gitDir
+                _maxCount = maxCount
+                GitCache(gitDir, maxCount).also { _gitCache = it }
+            } else {
+                _gitCache!!
+            }
     }
 }
+
+internal val SemverExtension.gitCache: GitCache
+    get() = GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount.orNull)

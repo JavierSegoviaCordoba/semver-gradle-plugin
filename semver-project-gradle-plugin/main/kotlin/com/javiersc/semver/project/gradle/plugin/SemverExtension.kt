@@ -2,8 +2,8 @@ package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.currentBranch
+import com.javiersc.semver.project.gradle.plugin.internal.git.gitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.headCommit
 import com.javiersc.semver.project.gradle.plugin.internal.git.lastVersionTagInCurrentBranch
 import javax.inject.Inject
@@ -31,13 +31,7 @@ constructor(
     public abstract val gitDir: RegularFileProperty
 
     public val commits: Provider<List<Commit>> =
-        providers.provider {
-            GitCache(
-                    gitDir = gitDir.get().asFile,
-                    maxCount = commitsMaxCount,
-                )
-                .commitsInTheCurrentBranchPublicApi
-        }
+        providers.provider { gitCache.commitsInTheCurrentBranchPublicApi }
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 
@@ -59,10 +53,11 @@ constructor(
     }
 
     public fun mapVersion(transform: (version: GradleVersion, git: GitData) -> String) {
-        val cache = GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount)
-        val gitData = cache.git.buildGitData(tagPrefix)
         val mappedVersion: Provider<String> =
-            calculatedVersion.map { version -> transform(version, gitData) }
+            calculatedVersion.map { version ->
+                val gitData: GitData = gitCache.git.buildGitData(tagPrefix)
+                transform(version, gitData)
+            }
         version.set(mappedVersion)
         onMapVersion?.execute(Unit)
     }

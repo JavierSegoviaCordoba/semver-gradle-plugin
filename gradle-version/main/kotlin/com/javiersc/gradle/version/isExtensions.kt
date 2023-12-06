@@ -40,8 +40,8 @@ public val String.isNotDev: Boolean
 
 public val GradleVersion.isFinal: Boolean
     get() =
-        (stage?.name?.equals(SpecialStage.final, ignoreCase = true)
-            ?: false || stage?.name.isNullOrBlank())
+        (stage?.name?.equals(SpecialStage.final, ignoreCase = true) ?: false ||
+            stage?.name.isNullOrBlank())
 
 public val String.isFinal: Boolean
     get() = contains(SpecialStage.final, ignoreCase = true) || isBlank()

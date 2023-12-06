@@ -29,20 +29,15 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         with(parameters) {
             val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
 
-            fun cache(): GitCache =
-                GitCache(
-                    gitDir = parameters.gitDir.get(),
-                    maxCount = parameters.commitsMaxCount,
-                )
+            val cache = GitCache(parameters.gitDir.get(), parameters.commitsMaxCount.orNull)
 
-            val lastSemver: GradleVersion =
-                cache().lastVersionInCurrentBranch(projectTagPrefix.get())
+            val lastSemver: GradleVersion = cache.lastVersionInCurrentBranch(projectTagPrefix.get())
 
             val lastVersionInCurrentBranch: List<String> =
-                cache().versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
+                cache.versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
 
             val lastVersionCommitInCurrentBranch: String? =
-                cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
+                cache.lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
 
             val version: String =
                 calculatedVersion(
@@ -51,13 +46,12 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
                     scopeProperty = scopeProperty.orNull.takeIf { isSamePrefix },
                     isCreatingSemverTag = creatingSemverTag.get().takeIf { isSamePrefix } ?: false,
                     versionTagsInBranch = lastVersionInCurrentBranch,
-                    clean = cache().isClean,
+                    clean = cache.isClean,
                     checkClean = checkClean.get(),
                     force = force.get(),
-                    lastCommitInCurrentBranch = cache().lastCommitInCurrentBranch?.hash,
-                    commitsInCurrentBranch =
-                        cache().commitsInCurrentBranch.map(GitRef.Commit::hash),
-                    headCommit = cache().headCommit.commit.hash,
+                    lastCommitInCurrentBranch = cache.lastCommitInCurrentBranch?.hash,
+                    commitsInCurrentBranch = cache.commitsInCurrentBranch.map(GitRef.Commit::hash),
+                    headCommit = cache.headCommit.commit.hash,
                     lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
                 )
 

@@ -28,14 +28,7 @@ constructor(
     private val createdTagPrefixes: MutableSet<String> = mutableSetOf()
 
     private val git: Git
-        get() =
-            parameters.run {
-                GitCache(
-                        gitDir = gitDir.get().asFile,
-                        maxCount = commitsMaxCount,
-                    )
-                    .git
-            }
+        get() = parameters.run { GitCache(gitDir.asFile.get(), commitsMaxCount.orNull).git }
 
     internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
         if (tagPrefixProperty !in createdTagPrefixes && projectTagPrefix == tagPrefixProperty) {

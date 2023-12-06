@@ -126,4 +126,4 @@ fun File.addAllCall() {
 fun File.createNewFile(file: String) = resolve(file).createNewFile()
 
 internal val File.gitCache: GitCache
-    get() = GitCache(gitDir = git.repository.directory)
+    get() = GitCache(gitDir = git.repository.directory, maxCount = null)

@@ -4,6 +4,8 @@
 
 ### Added
 
+- `mapVersion` which expose `GitData` to `semver` extension
+
 ### Changed
 
 ### Deprecated

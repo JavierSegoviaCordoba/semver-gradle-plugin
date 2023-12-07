@@ -17,7 +17,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 
-internal class GitCache private constructor(private val gitDir: File, maxCount: Int?) {
+internal class GitCache private constructor(private val gitDir: File, private val maxCount: Int?) {
 
     internal val git: Git by lazy {
         val repository: Repository =
@@ -32,66 +32,64 @@ internal class GitCache private constructor(private val gitDir: File, maxCount: 
     internal val isClean: Boolean
         get() = git.status().call().isClean
 
-    internal val headRevCommit: RevCommit by lazy {
-        RevWalk(git.repository).parseCommit(git.repository.resolve(Constants.HEAD))
-    }
+    internal val headRevCommit: RevCommit
+        get() = RevWalk(git.repository).parseCommit(git.repository.resolve(Constants.HEAD))
 
-    internal val headCommit: GitRef.Head by lazy {
-        GitRef.Head(
-            GitRef.Commit(
-                message = headRevCommit.shortMessage,
-                fullMessage = headRevCommit.fullMessage,
-                hash = headRevCommit.toObjectId().name,
-            )
-        )
-    }
-
-    internal val commitsInCurrentBranchRevCommit: List<RevCommit> by lazy {
-        git.log().setMaxCount(maxCount ?: -1).call().toList()
-    }
-    internal val tagsInRepoRef: List<Ref> by lazy { git.tagList().call() }
-
-    internal val commitsInCurrentBranchHash: List<String> by lazy {
-        commitsInCurrentBranchRevCommit.map(RevCommit::getName)
-    }
-
-    internal val commitsInTheCurrentBranchPublicApi: List<Commit> by lazy {
-        commitsInCurrentBranchRevCommit.map { revCommit ->
-            val hash: String = revCommit.toObjectId().name
-            val tags: List<com.javiersc.semver.project.gradle.plugin.Tag> =
-                tagsInCurrentBranchRef
-                    .filter { ref -> commitHash(ref) == hash }
-                    .map { ref ->
-                        com.javiersc.semver.project.gradle.plugin.Tag(
-                            name = ref.tagName,
-                            refName = ref.name,
-                        )
-                    }
-            Commit(
-                message = revCommit.shortMessage,
-                fullMessage = revCommit.fullMessage,
-                hash = hash,
-                timestampEpochSecond = revCommit.authorIdent.whenAsInstant.epochSecond,
-                tags = tags,
-            )
-        }
-    }
-
-    internal val commitsInCurrentBranch: List<GitRef.Commit> by lazy {
-        commitsInCurrentBranchRevCommit.map { revCommit ->
-            revCommit.run {
+    internal val headCommit: GitRef.Head
+        get() =
+            GitRef.Head(
                 GitRef.Commit(
-                    message = shortMessage,
-                    fullMessage = fullMessage,
-                    hash = toObjectId().name,
+                    message = headRevCommit.shortMessage,
+                    fullMessage = headRevCommit.fullMessage,
+                    hash = headRevCommit.toObjectId().name,
+                )
+            )
+
+    internal val commitsInCurrentBranchRevCommit: List<RevCommit>
+        get() = git.log().setMaxCount(maxCount ?: -1).call().toList()
+
+    internal val tagsInRepoRef: List<Ref>
+        get() = git.tagList().call()
+
+    internal val commitsInCurrentBranchHash: List<String>
+        get() = commitsInCurrentBranchRevCommit.map(RevCommit::getName)
+
+    internal val commitsInTheCurrentBranchPublicApi: List<Commit>
+        get() =
+            commitsInCurrentBranchRevCommit.map { revCommit ->
+                val hash: String = revCommit.toObjectId().name
+                val tags: List<com.javiersc.semver.project.gradle.plugin.Tag> =
+                    tagsInCurrentBranchRef
+                        .filter { ref -> commitHash(ref) == hash }
+                        .map { ref ->
+                            com.javiersc.semver.project.gradle.plugin.Tag(
+                                name = ref.tagName,
+                                refName = ref.name,
+                            )
+                        }
+                Commit(
+                    message = revCommit.shortMessage,
+                    fullMessage = revCommit.fullMessage,
+                    hash = hash,
+                    timestampEpochSecond = revCommit.authorIdent.whenAsInstant.epochSecond,
+                    tags = tags,
                 )
             }
-        }
-    }
 
-    internal val lastCommitInCurrentBranch: GitRef.Commit? by lazy {
-        commitsInCurrentBranch.firstOrNull()
-    }
+    internal val commitsInCurrentBranch: List<GitRef.Commit>
+        get() =
+            commitsInCurrentBranchRevCommit.map { revCommit ->
+                revCommit.run {
+                    GitRef.Commit(
+                        message = shortMessage,
+                        fullMessage = fullMessage,
+                        hash = toObjectId().name,
+                    )
+                }
+            }
+
+    internal val lastCommitInCurrentBranch: GitRef.Commit?
+        get() = commitsInCurrentBranch.firstOrNull()
 
     internal fun commitHash(ref: Ref): String = commitHash(ref.objectId)
 

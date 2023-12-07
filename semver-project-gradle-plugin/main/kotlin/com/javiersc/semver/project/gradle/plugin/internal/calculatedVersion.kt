@@ -75,10 +75,44 @@ internal fun calculatedVersion(
             !scopeProperty.isAuto &&
             !force
 
-    val isProvidingLowerStage: Boolean = !isProvidingHigherStage && !hasSameStage
+    val currentStageIsFinalWithProvidedScopeAndHasCommits: Boolean =
+        currentStage.isFinal &&
+            scopeProperty.isNotNullNorBlank() &&
+            commitsInCurrentBranch.isNotEmpty()
+
+    val isProvidingLowerStage: Boolean =
+        !isProvidingHigherStage &&
+            !hasSameStage &&
+            !currentStageIsFinalWithProvidedScopeAndHasCommits
+
+    val reportBrokenCompilation: () -> Nothing = {
+        error(
+            """ |This `stage` plus `scope` combination is broken, please report it:
+                |  - stageProperty: $stageProperty
+                |  - scopeProperty: $scopeProperty
+                |  - isCreatingSemverTag: $isCreatingSemverTag
+                |  - lastSemverMajorInCurrentBranch: ${lastSemver.major}
+                |  - lastSemverMinorInCurrentBranch: ${lastSemver.minor}
+                |  - lastSemverPatchInCurrentBranch: ${lastSemver.patch}
+                |  - lastSemverStageInCurrentBranch: ${lastSemver.stageName}
+                |  - lastSemverNumInCurrentBranch: ${lastSemver.stageNum}
+                |  - versionTagsInBranch: $versionTagsInBranch
+                |  - clean: $clean
+                |  - checkClean: $checkClean
+                |  - lastCommitInCurrentBranch: $lastCommitInCurrentBranch
+                |  - commitsInCurrentBranch: $commitsInCurrentBranch
+                |  - headCommit: $headCommit
+                |  - lastVersionCommitInCurrentBranch: $lastVersionCommitInCurrentBranch
+            """
+                .trimMargin(),
+        )
+    }
 
     val calculatedVersion: String =
         when {
+            isCreatingSemverTag && isDirty -> {
+                gradleVersionError { "A semver tag can't be created if the repo is not clean" }
+            }
             isNoStagedNoScopedNoCreatingSemverTag || isDirty -> {
                 val additionalVersionData: AdditionalVersionData? =
                     calculateAdditionalVersionData(
@@ -125,7 +159,15 @@ internal fun calculatedVersion(
                     hasSameStage -> {
                         "${lastSemverInBranch.inc(null, incStage)}"
                     }
-                    else -> TODO() // "${lastSemverInBranch.inc(Patch, incStage)}"
+                    force -> {
+                        "${lastSemverInBranch.inc(null, incStage)}"
+                    }
+                    currentStageIsFinalWithProvidedScopeAndHasCommits -> {
+                        "${lastSemverInBranch.inc(null, incStage)}"
+                    }
+                    else -> {
+                        reportBrokenCompilation() // "${lastSemverInBranch.inc(Patch, incStage)}"
+                    }
                 }
             }
             isCreatingSemverTag && versionTagsInBranch.isEmpty() -> {
@@ -143,26 +185,7 @@ internal fun calculatedVersion(
             }
         }.also {
             if (it.contains("auto", true)) {
-                error(
-                    """ |This `stage` plus `scope` combination is broken, please report it:
-                        |  - stageProperty: $stageProperty
-                        |  - scopeProperty: $scopeProperty
-                        |  - isCreatingSemverTag: $isCreatingSemverTag
-                        |  - lastSemverMajorInCurrentBranch: ${lastSemver.major}
-                        |  - lastSemverMinorInCurrentBranch: ${lastSemver.minor}
-                        |  - lastSemverPatchInCurrentBranch: ${lastSemver.patch}
-                        |  - lastSemverStageInCurrentBranch: ${lastSemver.stageName}
-                        |  - lastSemverNumInCurrentBranch: ${lastSemver.stageNum}
-                        |  - versionTagsInBranch: $versionTagsInBranch
-                        |  - clean: $clean
-                        |  - checkClean: $checkClean
-                        |  - lastCommitInCurrentBranch: $lastCommitInCurrentBranch
-                        |  - commitsInCurrentBranch: $commitsInCurrentBranch
-                        |  - headCommit: $headCommit
-                        |  - lastVersionCommitInCurrentBranch: $lastVersionCommitInCurrentBranch
-                    """
-                        .trimMargin()
-                )
+                reportBrokenCompilation()
             }
         }
 
@@ -218,12 +241,12 @@ private fun throwFinalVersionWithAutoStageAndNullScopeException(
     lastVersion: GradleVersion
 ): Nothing {
     val message: String =
-        """ | The stage `auto` of `final` can't be applied if the last version is a `final` version and the scope is `null`.
+        """ | The stage `auto` or `final` can't be applied if the last version is a `final` version and the scope is `null`.
             | Pass a valid scope or use `-P semver.force=true` to force the version.
             |   - Last version: $lastVersion
         """
             .trimMargin()
-    throw GradleVersionException(message)
+    gradleVersionError { message }
 }
 
 private fun throwHigherStageException(
@@ -240,7 +263,7 @@ private fun throwHigherStageException(
             |   
         """
             .trimMargin()
-    throw GradleVersionException(message)
+    gradleVersionError { message }
 }
 
 private fun String.isIsHigherStageThan(currentStage: GradleVersion.Stage): Boolean =
@@ -268,6 +291,9 @@ internal data class AdditionalVersionData(
         }
     }
 }
+
+private fun gradleVersionError(message: () -> String): Nothing =
+    throw GradleVersionException(message())
 
 private val String?.isMajor: Boolean
     get() = equals(Scope.Major(), true)

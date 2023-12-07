@@ -91,13 +91,12 @@ internal class CalculatedVersionTest {
 
             calculatedVersion(isCreatingTag = true).shouldBe("v0.1.0")
 
-            shouldThrowVersionException {
-                calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = false)
-                    .shouldBe("v0.1.0")
-            }
+            calculatedVersion(scope = "auto", stage = "auto").shouldBe("v0.1.0")
 
             calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = true)
                 .shouldBe("v0.1.0")
+
+            calculatedVersion(scope = "auto", stage = "final").shouldBe("v0.1.0")
 
             calculatedVersion(scope = "auto", stage = "final", isCreatingTag = true)
                 .shouldBe("v0.1.0")
@@ -109,10 +108,10 @@ internal class CalculatedVersionTest {
 
             calculatedVersion().shouldBe("v1.0.0")
 
+            calculatedVersion(scope = "auto", stage = "auto").shouldBe("v1.0.1")
+
             calculatedVersion(scope = "auto", stage = "auto", isCreatingTag = true)
                 .shouldBe("v1.0.1")
-
-            calculatedVersion(scope = "auto", stage = "auto").shouldBe("v1.0.1")
 
             createNewFile("3 commit.txt")
             calculatedVersion().shouldBe("v1.0.0.0+DIRTY")
@@ -124,33 +123,61 @@ internal class CalculatedVersionTest {
 
             calculatedVersion().shouldBe("v1.0.0.1+$hash7")
 
+            createNewFile("4 commit.txt")
+
             calculatedVersion(scope = "auto", checkClean = false).shouldBe("v1.0.1")
 
-            calculatedVersion(scope = "auto", stage = "auto").shouldBe("v1.0.1")
+            calculatedVersion(scope = "auto", stage = "auto", checkClean = false).shouldBe("v1.0.1")
 
             calculatedVersion(checkClean = false).shouldBe("v1.0.0.1+$hash7")
 
             calculatedVersion(scope = "auto", stage = "snapshot", checkClean = false)
+
+            calculatedVersion(scope = "patch", stage = "snapshot", checkClean = false)
                 .shouldBe("v1.0.1-SNAPSHOT")
+
             calculatedVersion(scope = "auto", stage = "alpha", checkClean = false)
+
+            calculatedVersion(scope = "patch", stage = "alpha", checkClean = false)
                 .shouldBe("v1.0.1-alpha.1")
+
             calculatedVersion(scope = "major", stage = "snapshot", checkClean = false)
                 .shouldBe("v2.0.0-SNAPSHOT")
 
+            calculatedVersion(scope = "auto", stage = "beta", checkClean = false)
+
+            shouldThrowVersionException {
+                calculatedVersion(scope = "auto", stage = "snapshot", isCreatingTag = true)
+            }
+
+            calculatedVersion(
+                    scope = "auto",
+                    stage = "snapshot",
+                    isCreatingTag = true,
+                    checkClean = false
+                )
+                .shouldBe("v1.0.1-SNAPSHOT")
+
+            addAllCall()
+            commitCall("4 commit")
             tagCall("v4.5.3")
             calculatedVersion().shouldBe("v4.5.3")
         }
     }
 
     @Test
-    fun `given scope=null stage=final, when current version is v0_9_0, the version is calculated`() {
+    fun `given scope=null stage=final force=true, when current version is v0_9_0, the version is calculated`() {
         initialCommitAnd {
             createNewFile("2 commit.txt")
             addAllCall()
             commitCall("2 commit")
             tagCall("v0.9.0")
 
-            calculatedVersion(tagPrefix = "v", scope = null, stage = "final").shouldBe("v0.9.1")
+            shouldThrowVersionException {
+                calculatedVersion(tagPrefix = "v", scope = null, stage = "final")
+            }
+            calculatedVersion(tagPrefix = "v", scope = null, stage = "final", force = true)
+                .shouldBe("v0.9.1")
         }
     }
 
@@ -215,16 +242,42 @@ internal class CalculatedVersionTest {
     }
 
     @Test
-    fun `given scope=auto stage=beta, when current version is 1_0_0-alpha_1, then fails`() {
+    fun `given scope=auto stage=beta, when current version is v1_0_0-alpha_1, then it is v1_0_0-beta_1`() {
         initialCommitAnd {
             createNewFile("2 commit.txt")
             addAllCall()
             commitCall("2 commit")
             tagCall("v1.0.0-alpha.1")
 
+            calculatedVersion(tagPrefix = "v", scope = "auto", stage = "beta")
+                .shouldBe("v1.0.0-beta.1")
+        }
+    }
+
+    @Test
+    fun `given scope=auto stage=alpha, when current version is v1_0_0-beta_1, then it fails`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v1.0.0-beta.1")
+
             shouldThrowVersionException {
-                calculatedVersion(tagPrefix = "v", scope = "auto", stage = "beta")
+                calculatedVersion(tagPrefix = "v", scope = "auto", stage = "alpha")
             }
+        }
+    }
+
+    @Test
+    fun `given scope=auto stage=alpha force=true, when current version is v1_0_0-beta_1, then it v1_0_1-alpha_1`() {
+        initialCommitAnd {
+            createNewFile("2 commit.txt")
+            addAllCall()
+            commitCall("2 commit")
+            tagCall("v1.0.0-beta.1")
+
+            calculatedVersion(tagPrefix = "v", scope = "auto", stage = "alpha", force = true)
+                .shouldBe("v1.0.1-alpha.1")
         }
     }
 }

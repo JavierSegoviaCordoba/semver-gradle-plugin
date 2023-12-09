@@ -1,121 +1,109 @@
 package com.javiersc.semver.project.gradle.plugin
 
-import app.softwork.serialization.csv.CSVFormat
 import com.javiersc.gradle.version.GradleVersion
-import com.javiersc.kotlin.stdlib.resource
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import io.kotest.matchers.shouldBe
-import io.kotest.property.Exhaustive
-import io.kotest.property.checkAll
-import io.kotest.property.exhaustive.exhaustive
-import kotlin.test.Test
-import kotlin.time.Duration
-import kotlinx.coroutines.test.TestResult
-import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
+import org.junit.jupiter.api.extension.ParameterContext
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.aggregator.AggregateWith
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor
+import org.junit.jupiter.params.aggregator.ArgumentsAggregator
+import org.junit.jupiter.params.provider.CsvFileSource
 
-class VersionTableTest {
+internal class VersionTableTest {
 
-    @Test
-    fun sample() {
-        val index = 0
-        val tables: List<VersionTable> = versionTablesForFile(fileName = "1.0.0")
-        val table: VersionTable = tables[index]
-        checkTable(index, table)
-    }
-
-    @Test fun `1,0,0`() = propertyTest("1.0.0")
-
-    @Test fun `1,0,0-alpha,1`() = propertyTest("1.0.0-alpha.1")
-
-    @Test fun `1,0,0-beta,1`() = propertyTest("1.0.0-beta.1")
-}
-
-private fun propertyTest(fileName: String): Unit = runTestNoTimeout {
-    val indexToVersionTable: List<Pair<Int, VersionTable>> =
-        versionTablesForFile(fileName = fileName)
-            .mapIndexed { index, versionTable -> (index) to versionTable }
-            .sortedBy(Pair<Int, VersionTable>::first)
-    val exhaustive: Exhaustive<Pair<Int, VersionTable>> = exhaustive(indexToVersionTable)
-    exhaustive.checkAll { (index: Int, table: VersionTable) -> checkTable(index, table) }
-}
-
-private fun checkTable(index: Int, table: VersionTable) {
-    val humanIndex: Int = index + 1
-    val tableLineNumber: Int = index + 5
-    val expectedVersion: String = table.expectedVersion
-    fun calculatedVersion(): String = table.asCalculatedVersion()
-    if (expectedVersion == "fail") {
-        shouldThrowVersionException { calculatedVersion() }
-    } else {
-        val calculatedVersion: String = calculatedVersion()
-        (index + 1).shouldBe(humanIndex)
-        (index + 5).shouldBe(tableLineNumber)
-        calculatedVersion.shouldBe(expectedVersion)
-    }
-}
-
-private fun VersionTable.asCalculatedVersion(): String =
-    calculatedVersion(
-        lastSemver = GradleVersion(lastVersion),
-        stageProperty = stageOrNull,
-        scopeProperty = scopeOrNull,
-        isCreatingSemverTag = isCreatingTag,
-        versionTagsInBranch = listOf(lastVersion),
-        clean = clean,
-        checkClean = checkClean,
-        force = force,
-        lastCommitInCurrentBranch = lastCommitInCurrentBranchOrNull,
-        commitsInCurrentBranch = commitsInCurrentBranchAsList,
-        headCommit = head,
-        lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranchOrNull,
+    @ParameterizedTest
+    @CsvFileSource(
+        resources =
+            [
+                "/tables/1.0.0.csv",
+                "/tables/1.0.0-alpha.1.csv",
+                "/tables/1.0.0-beta.1.csv",
+            ],
+        numLinesToSkip = 1,
     )
+    fun test(@AggregateWith(VersionTable.Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
 
-@OptIn(ExperimentalSerializationApi::class)
-private fun versionTablesForFile(fileName: String): List<VersionTable> =
-    resource("tables/$fileName.csv")
-        .readText()
-        .lines()
-        .filter(String::isNotBlank)
-        .joinToString("\n")
-        .run { CSVFormat.decodeFromString(this) }
+    internal data class VersionTable(
+        val lastVersion: String,
+        val clean: Boolean,
+        private val scope: String,
+        private val stage: String,
+        val isCreatingTag: Boolean,
+        val checkClean: Boolean,
+        val force: Boolean,
+        private val lastCommitInCurrentBranch: String,
+        private val commitsInCurrentBranch: String,
+        val head: String,
+        private val lastVersionCommitInCurrentBranch: String,
+        val expectedVersion: String,
+    ) {
 
-@Serializable
-private data class VersionTable(
-    val lastVersion: String,
-    val clean: Boolean,
-    private val scope: String,
-    private val stage: String,
-    val isCreatingTag: Boolean,
-    val checkClean: Boolean,
-    val force: Boolean,
-    private val lastCommitInCurrentBranch: String,
-    private val commitsInCurrentBranch: String,
-    val head: String,
-    private val lastVersionCommitInCurrentBranch: String,
-    val expectedVersion: String,
-) {
+        private val scopeOrNull: String?
+            get() = scope.takeIfNotNull()
 
-    val scopeOrNull: String?
-        get() = scope.takeIfNotNull()
+        private val stageOrNull: String?
+            get() = stage.takeIfNotNull()
 
-    val stageOrNull: String?
-        get() = stage.takeIfNotNull()
+        private val lastCommitInCurrentBranchOrNull: String?
+            get() = lastCommitInCurrentBranch.takeIfNotNull()
 
-    val lastCommitInCurrentBranchOrNull: String?
-        get() = lastCommitInCurrentBranch.takeIfNotNull()
+        private val commitsInCurrentBranchAsList: List<String>
+            get() = commitsInCurrentBranch.split("-").map { it.filterNot(Char::isWhitespace) }
 
-    val commitsInCurrentBranchAsList: List<String>
-        get() = commitsInCurrentBranch.split("-").map { it.filterNot(Char::isWhitespace) }
+        private val lastVersionCommitInCurrentBranchOrNull: String?
+            get() = lastVersionCommitInCurrentBranch.takeIfNotNull()
 
-    val lastVersionCommitInCurrentBranchOrNull: String?
-        get() = lastVersionCommitInCurrentBranch.takeIfNotNull()
+        internal fun checkTable() {
+            fun calculatedVersion(): String = asCalculatedVersion()
+            if (expectedVersion == "fail") {
+                shouldThrowVersionException { calculatedVersion() }
+            } else {
+                val calculatedVersion: String = calculatedVersion()
+                calculatedVersion.shouldBe(expectedVersion)
+            }
+        }
 
-    private fun String.takeIfNotNull(): String? = takeIf { it != "null" && it.isNotBlank() }
+        private fun String.takeIfNotNull(): String? = takeIf { it != "null" && it.isNotBlank() }
+
+        private fun asCalculatedVersion(): String =
+            calculatedVersion(
+                lastSemver = GradleVersion(lastVersion),
+                stageProperty = stageOrNull,
+                scopeProperty = scopeOrNull,
+                isCreatingSemverTag = isCreatingTag,
+                versionTagsInBranch = listOf(lastVersion),
+                clean = clean,
+                checkClean = checkClean,
+                force = force,
+                lastCommitInCurrentBranch = lastCommitInCurrentBranchOrNull,
+                commitsInCurrentBranch = commitsInCurrentBranchAsList,
+                headCommit = head,
+                lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranchOrNull,
+            )
+
+        companion object : ArgumentsAggregator {
+
+            override fun aggregateArguments(
+                accessor: ArgumentsAccessor,
+                context: ParameterContext,
+            ): VersionTable =
+                VersionTable(
+                    lastVersion = accessor.getString(0),
+                    clean = accessor.getBoolean(1),
+                    scope = accessor.getString(2),
+                    stage = accessor.getString(3),
+                    isCreatingTag = accessor.getBoolean(4),
+                    checkClean = accessor.getBoolean(5),
+                    force = accessor.getBoolean(6),
+                    lastCommitInCurrentBranch = accessor.getString(7),
+                    commitsInCurrentBranch = accessor.getString(8),
+                    head = accessor.getString(9),
+                    lastVersionCommitInCurrentBranch = accessor.getString(10),
+                    expectedVersion = accessor.getString(11),
+                )
+        }
+    }
 }
-
-private fun runTestNoTimeout(block: suspend TestScope.() -> Unit): TestResult =
-    runTest(timeout = Duration.INFINITE, testBody = block)

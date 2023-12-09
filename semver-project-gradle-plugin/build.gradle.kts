@@ -42,9 +42,6 @@ hubdle {
                         )
                     }
                 }
-                serialization { //
-                    csv()
-                }
             }
 
             main {

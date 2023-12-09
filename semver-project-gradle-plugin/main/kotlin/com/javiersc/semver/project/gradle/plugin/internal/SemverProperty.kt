@@ -10,10 +10,7 @@ internal val Project.projectTagPrefixProperty: Provider<String>
     get() = getSemverProperty(SemverProperty.ProjectTagPrefix)
 
 internal val Project.tagPrefixProperty: Provider<String>
-    get() =
-        providers.provider {
-            getSemverProperty(SemverProperty.TagPrefix).orNull ?: DefaultTagPrefix
-        }
+    get() = getSemverProperty(SemverProperty.TagPrefix).orElse(DefaultTagPrefix)
 
 internal val Project.stageProperty: Provider<String>
     get() = getSemverProperty(SemverProperty.Stage)
@@ -25,14 +22,10 @@ internal val Project.remoteProperty: Provider<String>
     get() = getSemverProperty(SemverProperty.Remote)
 
 internal val Project.checkCleanProperty: Provider<Boolean>
-    get() =
-        providers.provider {
-            getSemverProperty(SemverProperty.CheckClean).orNull?.toBoolean() ?: true
-        }
+    get() = getSemverProperty(SemverProperty.CheckClean).map(String::toBoolean).orElse(true)
 
 internal val Project.forceProperty: Provider<Boolean>
-    get() =
-        providers.provider { getSemverProperty(SemverProperty.Force).orNull?.toBoolean() ?: true }
+    get() = getSemverProperty(SemverProperty.Force).map(String::toBoolean).orElse(false)
 
 internal val Project.commitsMaxCount: Provider<Int>
     get() = getSemverProperty(SemverProperty.CommitsMaxCount).map(String::toInt)
@@ -73,9 +66,7 @@ private fun Project.getSemverProperty(semverProperty: SemverProperty): Provider<
         projectDir.resolve("gradle.properties").exists() -> {
             provider {
                 Properties()
-                    .apply {
-                        projectDir.resolve("gradle.properties").inputStream().use { load(it) }
-                    }
+                    .apply { projectDir.resolve("gradle.properties").inputStream().use(::load) }
                     .getProperty(semverProperty.key)
             }
         }

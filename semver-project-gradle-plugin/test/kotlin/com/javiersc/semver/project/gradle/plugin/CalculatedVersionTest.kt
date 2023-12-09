@@ -280,6 +280,26 @@ internal class CalculatedVersionTest {
                 .shouldBe("v1.0.1-alpha.1")
         }
     }
+
+    @Test
+    fun `given scope=auto stage=alpha, when current version is v1_0_0-rc_11, then it fails`() {
+        initialCommitAnd {
+            tagCall("v1.0.0-rc.11")
+
+            shouldThrowVersionException {
+                calculatedVersion(tagPrefix = "v", scope = "auto", stage = "alpha")
+            }
+
+            shouldThrowVersionException {
+                calculatedVersion(
+                    tagPrefix = "v",
+                    scope = "auto",
+                    stage = "alpha",
+                    isCreatingTag = true,
+                )
+            }
+        }
+    }
 }
 
 @Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")

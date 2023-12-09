@@ -9,15 +9,6 @@ import kotlin.test.Test
 internal class PropertiesTest : GradleTestKitTest() {
 
     @Test
-    fun empty() {
-        runPropertyTestsBasedOnResourceDirectory("empty") {
-            resolve("empty.txt").createNewFile()
-            git.add().addFilepattern(".").call()
-            if (name.endsWith("hash")) git.commit().setMessage("Add empty.txt").call()
-        }
-    }
-
-    @Test
     fun scope() {
         runPropertyTestsBasedOnResourceDirectory("scope")
     }

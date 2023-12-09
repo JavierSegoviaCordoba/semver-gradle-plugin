@@ -193,8 +193,8 @@ internal fun calculatedVersion(
 }
 
 internal fun calculateAdditionalVersionData(
-    clean: Boolean = true,
-    checkClean: Boolean = true,
+    clean: Boolean,
+    checkClean: Boolean,
     lastCommitInCurrentBranch: String?,
     commitsInCurrentBranch: List<String>,
     isThereVersionTags: Boolean,
@@ -213,7 +213,8 @@ internal fun calculateAdditionalVersionData(
 
     val additionalData: AdditionalVersionData? =
         commitsBetweenCurrentAndLastTagCommit.run {
-            val commitsNumber: Int = size
+            val commitsNumber: Int =
+                count().takeIf { isThereVersionTags } ?: commitsInCurrentBranch.count()
             val hashLength: Int = DEFAULT_SHORT_HASH_LENGTH
             when {
                 !isThereVersionTags && isDirty -> {

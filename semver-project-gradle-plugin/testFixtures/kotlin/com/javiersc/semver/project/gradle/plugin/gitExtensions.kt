@@ -100,7 +100,7 @@ fun initialCommitAnd(and: File.() -> Unit) {
 
 internal fun Git.calculateAdditionalVersionData(
     tagPrefix: String,
-    checkIsClean: Boolean = true,
+    checkIsClean: Boolean,
 ): AdditionalVersionData? =
     calculateAdditionalVersionData(
         clean = status().call().isClean,

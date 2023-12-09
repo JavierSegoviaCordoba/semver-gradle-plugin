@@ -1,8 +1,11 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.semver.project.gradle.plugin.VersionTableTest.VersionTable.Companion
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.TestInfo
 import org.junit.jupiter.api.extension.ParameterContext
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.aggregator.AggregateWith
@@ -12,17 +15,58 @@ import org.junit.jupiter.params.provider.CsvFileSource
 
 internal class VersionTableTest {
 
+    private lateinit var info: TestInfo
+
+    private val testIndex: Int
+        get() = info.displayName.substringAfter("[").substringBefore("]").toInt()
+
+    @BeforeEach
+    fun setup(info: TestInfo) {
+        this.info = info
+    }
+
     @ParameterizedTest
     @CsvFileSource(
-        resources =
-            [
-                "/tables/1.0.0.csv",
-                "/tables/1.0.0-alpha.1.csv",
-                "/tables/1.0.0-beta.1.csv",
-            ],
+        resources = ["/tables/clean=true/scope=auto stage=auto.csv"],
         numLinesToSkip = 1,
     )
-    fun test(@AggregateWith(VersionTable.Companion::class) table: VersionTable) {
+    fun `clean=true scope=auto stage=auto`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=null stage=null.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=null stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=null.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=minor stage=null.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=minor stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=major stage=null.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=major stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
         table.checkTable()
     }
 

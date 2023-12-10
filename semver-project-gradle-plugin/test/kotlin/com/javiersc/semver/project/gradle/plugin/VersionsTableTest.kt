@@ -17,6 +17,7 @@ internal class VersionTableTest {
 
     private lateinit var info: TestInfo
 
+    @Suppress("unused")
     private val testIndex: Int
         get() = info.displayName.substringAfter("[").substringBefore("]").toInt()
 
@@ -36,19 +37,10 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
-        resources = ["/tables/clean=true/scope=null stage=null.csv"],
+        resources = ["/tables/clean=true/scope=major stage=null.csv"],
         numLinesToSkip = 1,
     )
-    fun `clean=true scope=null stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
-        table.checkTable()
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(
-        resources = ["/tables/clean=true/scope=patch stage=null.csv"],
-        numLinesToSkip = 1,
-    )
-    fun `clean=true scope=patch stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+    fun `clean=true scope=major stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
         table.checkTable()
     }
 
@@ -63,10 +55,28 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
-        resources = ["/tables/clean=true/scope=major stage=null.csv"],
+        resources = ["/tables/clean=true/scope=null stage=alpha.csv"],
         numLinesToSkip = 1,
     )
-    fun `clean=true scope=major stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+    fun `clean=true scope=null stage=alpha`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=null stage=null.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=null stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=null.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
         table.checkTable()
     }
 

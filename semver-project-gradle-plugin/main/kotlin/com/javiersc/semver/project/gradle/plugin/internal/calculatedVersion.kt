@@ -25,6 +25,11 @@ internal fun calculatedVersion(
     headCommit: String,
     lastVersionCommitInCurrentBranch: String?,
 ): String {
+    if (lastSemver.isSnapshot) {
+        gradleVersionError {
+            "A version tag with the stage `SNAPSHOT` must not exist, last semver: $lastSemver"
+        }
+    }
     val isClean: Boolean = clean || !checkClean
     val isDirty: Boolean = !isClean
 
@@ -59,6 +64,9 @@ internal fun calculatedVersion(
 
     val isNoStagedNoScopedNoCreatingSemverTag: Boolean =
         providedStageName.isNullOrBlank() && scopeProperty.isNullOrBlank() && !isCreatingSemverTag
+
+    val isNoStagedNoScopedCreatingSemverTag: Boolean =
+        providedStageName.isNullOrBlank() && scopeProperty.isNullOrBlank() && isCreatingSemverTag
 
     val isFinalStageWithoutAutoScope: Boolean =
         hasSameStage && currentStageName.isFinal && !scopeProperty.isAuto
@@ -112,6 +120,11 @@ internal fun calculatedVersion(
         when {
             isCreatingSemverTag && isDirty -> {
                 gradleVersionError { "A semver tag can't be created if the repo is not clean" }
+            }
+            isNoStagedNoScopedCreatingSemverTag -> {
+                gradleVersionError {
+                    "A semver tag can't be created if neither stage nor scope is provided"
+                }
             }
             isNoStagedNoScopedNoCreatingSemverTag || isDirty -> {
                 val additionalVersionData: AdditionalVersionData? =

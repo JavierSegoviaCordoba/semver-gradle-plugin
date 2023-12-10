@@ -182,8 +182,8 @@ public class GradleVersion(
 
         val nextStage: Stage? =
             when {
-                hasSameStage && increaseScope != null -> Stage(name = stageName, num = 1)
                 hasSameStage && stageNameIsFinalOrSnapshot -> Stage(name = stageName, num = null)
+                hasSameStage && increaseScope != null -> Stage(name = stageName, num = 1)
                 hasSameStage -> stage?.inc()
                 else -> Stage(name = stageName, num = if (stageNameIsFinalOrSnapshot) null else 1)
             }

@@ -16,7 +16,7 @@
 
 ### Updated
 
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.14`
+- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.15`
 - `gradle -> 8.5`
 
 ## [0.5.0-rc.5] - 2023-08-05

@@ -4,13 +4,21 @@
 
 ### Added
 
-- `mapVersion` which expose `GitData` to `semver` extension
-
 ### Changed
 
 ### Deprecated
 
 ### Removed
+
+### Fixed
+
+### Updated
+
+## [0.5.0-rc.6] - 2023-12-14
+
+### Added
+
+- `mapVersion` which expose `GitData` to `semver` extension
 
 ### Fixed
 
@@ -107,7 +115,9 @@
 - `gradle -> 8.0.2`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.5...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.6...HEAD
+
+[0.5.0-rc.6]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.5...0.5.0-rc.6
 
 [0.5.0-rc.5]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.4...0.5.0-rc.5
 

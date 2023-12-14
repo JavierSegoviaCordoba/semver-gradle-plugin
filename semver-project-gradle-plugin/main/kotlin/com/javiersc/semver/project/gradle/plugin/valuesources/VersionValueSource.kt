@@ -100,5 +100,5 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
 private val Project.isCreatingSemverTag: Boolean
     get() =
         gradle.startParameter.taskNames.any { taskName: String ->
-            taskName == CreateSemverTagTask.TaskName || taskName == PushSemverTagTask.TaskName
+            taskName == CreateSemverTagTask.NAME || taskName == PushSemverTagTask.NAME
         }

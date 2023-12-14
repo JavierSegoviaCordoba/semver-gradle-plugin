@@ -1,12 +1,9 @@
 package com.javiersc.semver.project.gradle.plugin.tasks
 
-import com.javiersc.gradle.tasks.extensions.maybeRegisterLazily
-import com.javiersc.gradle.tasks.extensions.namedLazily
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import javax.inject.Inject
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
-import org.gradle.api.Task
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.model.ObjectFactory
@@ -65,27 +62,25 @@ constructor(
     }
 
     public companion object {
-        public const val TaskName: String = "writeSemver"
+
+        public const val NAME: String = "writeSemver"
 
         internal fun register(project: Project): TaskProvider<WriteSemverTask> {
             val writeSemverTask: TaskProvider<WriteSemverTask> =
-                project.tasks.register<WriteSemverTask>(TaskName)
+                project.tasks.register<WriteSemverTask>(NAME)
 
             writeSemverTask.configure { task ->
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
             }
 
-            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.TaskName) { task ->
+            project.tasks.named(ASSEMBLE_TASK_NAME).configure { task ->
                 task.dependsOn(writeSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) { task ->
+            project.tasks.named(BUILD_TASK_NAME).configure { task ->
                 task.dependsOn(writeSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { task ->
-                task.dependsOn(writeSemverTask)
-            }
-            project.tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { task ->
+            project.tasks.named(CHECK_TASK_NAME).configure { task ->
                 task.dependsOn(writeSemverTask)
             }
             project.tasks.withType<Jar>().configureEach { task -> task.dependsOn(writeSemverTask) }

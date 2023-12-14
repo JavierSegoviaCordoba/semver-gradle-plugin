@@ -14,6 +14,8 @@
 
 ### Fixed
 
+- GitHub output and environment variables in the `printSemver` task
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.15`

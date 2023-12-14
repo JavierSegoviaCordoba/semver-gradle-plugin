@@ -37,10 +37,10 @@ public class SemverProjectPlugin : Plugin<Project> {
     private fun Project.configureBuildServicesAndTasks(
         gitTagBuildService: Provider<GitBuildService>
     ) {
-        CreateSemverTagTask.register(this, gitTagBuildService)
-        PushSemverTagTask.register(this, gitTagBuildService)
         PrintSemverTask.register(this)
         WriteSemverTask.register(this)
+        CreateSemverTagTask.register(this, gitTagBuildService)
+        PushSemverTagTask.register(this, gitTagBuildService)
     }
 
     private fun Project.configureVersion() {

@@ -5,10 +5,12 @@ import com.javiersc.semver.project.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.project.gradle.plugin.services.GitBuildService
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
+import org.gradle.api.Task
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.TaskProvider
 import org.gradle.kotlin.dsl.register
 
 public abstract class CreateSemverTagTask : DefaultTask() {
@@ -33,15 +35,20 @@ public abstract class CreateSemverTagTask : DefaultTask() {
     }
 
     public companion object {
-        public const val TaskName: String = "createSemverTag"
+
+        public const val NAME: String = "createSemverTag"
 
         internal fun register(project: Project, gitTagBuildService: Provider<GitBuildService>) {
-            project.tasks.register<CreateSemverTagTask>(TaskName).configure { task ->
+            val printSemverTask: TaskProvider<Task> = project.tasks.named(PrintSemverTask.NAME)
+            val writeSemverTask: TaskProvider<Task> = project.tasks.named(WriteSemverTask.NAME)
+            project.tasks.register<CreateSemverTagTask>(NAME).configure { task ->
                 task.tagPrefixProperty.set(project.tagPrefixProperty)
                 task.projectTagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
                 task.gitTagBuildService.set(gitTagBuildService)
                 task.usesService(gitTagBuildService)
+                task.dependsOn(printSemverTask)
+                task.dependsOn(writeSemverTask)
             }
         }
     }

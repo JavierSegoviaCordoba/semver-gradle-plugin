@@ -1,8 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin.tasks
 
 import com.javiersc.gradle.project.extensions.isRootProject
-import com.javiersc.gradle.tasks.extensions.maybeRegisterLazily
-import com.javiersc.gradle.tasks.extensions.namedLazily
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.semverMessage
 import java.io.File
@@ -133,21 +131,14 @@ constructor(
 
     private fun executeGitHubOutput(key: String, value: String) {
         val snakeCaseKey = key.toSnakeCase()
-        semverMessage("\nSetting $value with the `$snakeCaseKey` as step output...")
-        File(System.getenv("GITHUB_OUTPUT")).putEnvironmentVariable(snakeCaseKey, value)
+        semverMessage("\nSetting `$snakeCaseKey` to `$value` as step output...")
+        File(System.getenv("GITHUB_OUTPUT")).appendText("\n$snakeCaseKey=$value")
     }
 
     private fun executeGitHubEnvironmentVariable(key: String, value: String) {
         val snakeCaseKey = key.toSnakeCase()
-        semverMessage("\nSetting $value with the key `$snakeCaseKey` as environment variable...")
-        File(System.getenv("GITHUB_ENV")).putEnvironmentVariable(snakeCaseKey, value)
-    }
-
-    private fun File.putEnvironmentVariable(key: String, value: String) {
-        val lines = readLines().toMutableList()
-        val keyIndex = lines.indexOfFirst { line -> line.substringBefore('=') == key }
-        if (keyIndex != -1) lines[keyIndex] = value else lines.add("$key=$value")
-        writeText(lines.joinToString("\n"))
+        semverMessage("\nSetting `$snakeCaseKey` to `$value` as environment variable...")
+        File(System.getenv("GITHUB_ENV")).appendText("\n$snakeCaseKey=$value")
     }
 
     private fun String.toSnakeCase(): String =
@@ -157,33 +148,31 @@ constructor(
             .replace("-", "_")
 
     public companion object {
-        public const val TaskName: String = "printSemver"
+
+        public const val NAME: String = "printSemver"
 
         internal fun register(project: Project): TaskProvider<PrintSemverTask> {
             val prepareKotlinIdeaImportTask: Task =
                 project.tasks.maybeCreate("prepareKotlinIdeaImport")
 
             val printSemverTask: TaskProvider<PrintSemverTask> =
-                project.tasks.register(TaskName, project.isRootProject, project.name)
+                project.tasks.register(NAME, project.isRootProject, project.name)
 
             prepareKotlinIdeaImportTask.dependsOn(printSemverTask)
 
             printSemverTask.configure { task ->
-                task.dependsOn(WriteSemverTask.TaskName)
+                task.dependsOn(WriteSemverTask.NAME)
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
             }
 
-            project.tasks.namedLazily<CreateSemverTagTask>(CreateSemverTagTask.TaskName) { task ->
-                task.finalizedBy(printSemverTask)
-            }
-            project.tasks.maybeRegisterLazily<Task>(ASSEMBLE_TASK_NAME) { task ->
+            project.tasks.named(ASSEMBLE_TASK_NAME).configure { task ->
                 task.dependsOn(printSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(BUILD_TASK_NAME) { task ->
+            project.tasks.named(BUILD_TASK_NAME).configure { task ->
                 task.dependsOn(printSemverTask)
             }
-            project.tasks.maybeRegisterLazily<Task>(CHECK_TASK_NAME) { task ->
+            project.tasks.named(CHECK_TASK_NAME).configure { task ->
                 task.dependsOn(printSemverTask)
             }
             project.tasks.withType<Jar>().configureEach { task -> task.dependsOn(printSemverTask) }

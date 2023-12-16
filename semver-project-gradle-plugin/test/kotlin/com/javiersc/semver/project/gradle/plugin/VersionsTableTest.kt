@@ -73,6 +73,15 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
+        resources = ["/tables/clean=true/scope=null stage=dev.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=null stage=dev`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
         resources = ["/tables/clean=true/scope=null stage=null.csv"],
         numLinesToSkip = 1,
     )

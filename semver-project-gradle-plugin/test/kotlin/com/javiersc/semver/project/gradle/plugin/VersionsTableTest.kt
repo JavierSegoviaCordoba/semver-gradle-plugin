@@ -82,10 +82,48 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
+        resources = ["/tables/clean=true/scope=null stage=final.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=null stage=final`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
         resources = ["/tables/clean=true/scope=null stage=null.csv"],
         numLinesToSkip = 1,
     )
     fun `clean=true scope=null stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=null stage=rc.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=null stage=rc`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=null stage=snapshot.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=null stage=snapshot`(
+        @AggregateWith(Companion::class) table: VersionTable
+    ) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=alpha.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=alpha`(@AggregateWith(Companion::class) table: VersionTable) {
         table.checkTable()
     }
 

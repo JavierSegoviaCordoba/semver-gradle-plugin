@@ -137,6 +137,9 @@ internal fun calculatedVersion(
                     .copy(commits = commits, hash = hash, metadata = metadata)
                     .toString()
             }
+            !currentStage.isFinal && !scopeProperty.isAuto && stageProperty.isAuto -> {
+                throwHigherStageException(lastSemverInBranch, scopeProperty, stageProperty)
+            }
             hasSameStage && isNotAutoBlankScope && !hasSameFinalStageWithoutAutoScope && !force -> {
                 throwHigherStageException(lastSemverInBranch, scopeProperty, stageProperty)
             }

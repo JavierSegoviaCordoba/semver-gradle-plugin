@@ -28,6 +28,15 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
+        resources = ["/tables/clean=true/scope= stage=.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope= stage=`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
         resources = ["/tables/clean=true/scope=auto stage=auto.csv"],
         numLinesToSkip = 1,
     )
@@ -55,10 +64,48 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
+        resources = ["/tables/clean=true/scope=minor stage=auto.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=minor stage=auto`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=minor stage=beta.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=minor stage=beta`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
         resources = ["/tables/clean=true/scope=minor stage=null.csv"],
         numLinesToSkip = 1,
     )
     fun `clean=true scope=minor stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=minor stage=rc.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=minor stage=rc`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=minor stage=snapshot.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=minor stage=snapshot`(
+        @AggregateWith(Companion::class) table: VersionTable
+    ) {
         table.checkTable()
     }
 
@@ -133,6 +180,15 @@ internal class VersionTableTest {
         numLinesToSkip = 1,
     )
     fun `clean=true scope=patch stage=alpha`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=auto.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=auto`(@AggregateWith(Companion::class) table: VersionTable) {
         table.checkTable()
     }
 

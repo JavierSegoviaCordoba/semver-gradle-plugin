@@ -8,7 +8,6 @@ import com.javiersc.gradle.version.GradleVersionException
 import com.javiersc.gradle.version.isFinal
 import com.javiersc.gradle.version.isSnapshot
 import com.javiersc.kotlin.stdlib.isNotNullNorBlank
-import com.javiersc.semver.project.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
 
 @Suppress("ComplexMethod")
 internal fun calculatedVersion(
@@ -30,6 +29,7 @@ internal fun calculatedVersion(
             "A version tag with the stage `SNAPSHOT` must not exist, last semver: $lastSemver"
         }
     }
+
     val isClean: Boolean = clean || !checkClean
     val isDirty: Boolean = !isClean
 
@@ -62,31 +62,24 @@ internal fun calculatedVersion(
 
     val hasSameStage: Boolean = currentStageName == incStage
 
-    val isNoStagedNoScopedNoCreatingSemverTag: Boolean =
-        providedStageName.isNullOrBlank() && scopeProperty.isNullOrBlank() && !isCreatingSemverTag
+    val hasSameFinalStage: Boolean = currentStageName == incStage && currentStageName.isFinal
 
-    val isNoStagedNoScopedCreatingSemverTag: Boolean =
-        providedStageName.isNullOrBlank() && scopeProperty.isNullOrBlank() && isCreatingSemverTag
+    val isNotAutoBlankScope: Boolean = !scopeProperty.isAuto && scopeProperty.isNotNullNorBlank()
 
-    val isFinalStageWithoutAutoScope: Boolean =
-        hasSameStage && currentStageName.isFinal && !scopeProperty.isAuto
+    val isBlankScope: Boolean = scopeProperty.isNullOrBlank()
 
-    val isSameStageWithAutoOrNullScope: Boolean =
-        hasSameStage && scopeProperty.isNotNullNorBlank() && !scopeProperty.isAuto
+    val isBlankStageAndScope: Boolean = providedStageName.isNullOrBlank() && isBlankScope
+
+    val hasSameFinalStageWithoutAutoScope: Boolean = hasSameFinalStage && !scopeProperty.isAuto
 
     val isProvidingHigherStage: Boolean =
         providedStageName?.isIsHigherStageThan(currentStage) ?: false
 
     val isProvidingHigherStageWithoutAutoScope: Boolean =
-        isProvidingHigherStage &&
-            scopeProperty.isNotNullNorBlank() &&
-            !scopeProperty.isAuto &&
-            !force
+        isProvidingHigherStage && isNotAutoBlankScope && !force
 
     val currentStageIsFinalWithProvidedScopeAndHasCommits: Boolean =
-        currentStage.isFinal &&
-            scopeProperty.isNotNullNorBlank() &&
-            commitsInCurrentBranch.isNotEmpty()
+        currentStage.isFinal && !isBlankScope && commitsInCurrentBranch.isNotEmpty()
 
     val isProvidingLowerStage: Boolean =
         !isProvidingHigherStage &&
@@ -121,12 +114,12 @@ internal fun calculatedVersion(
             isCreatingSemverTag && isDirty -> {
                 gradleVersionError { "A semver tag can't be created if the repo is not clean" }
             }
-            isNoStagedNoScopedCreatingSemverTag -> {
+            isBlankStageAndScope && isCreatingSemverTag -> {
                 gradleVersionError {
                     "A semver tag can't be created if neither stage nor scope is provided"
                 }
             }
-            isNoStagedNoScopedNoCreatingSemverTag || isDirty -> {
+            isBlankStageAndScope || isDirty -> {
                 val additionalVersionData: AdditionalVersionData? =
                     calculateAdditionalVersionData(
                         clean = clean,
@@ -144,7 +137,10 @@ internal fun calculatedVersion(
                     .copy(commits = commits, hash = hash, metadata = metadata)
                     .toString()
             }
-            isSameStageWithAutoOrNullScope && !isFinalStageWithoutAutoScope && !force -> {
+            hasSameStage && isNotAutoBlankScope && !hasSameFinalStageWithoutAutoScope && !force -> {
+                throwHigherStageException(lastSemverInBranch, scopeProperty, stageProperty)
+            }
+            hasSameFinalStage && isBlankScope && !force -> {
                 throwHigherStageException(lastSemverInBranch, scopeProperty, stageProperty)
             }
             isProvidingHigherStageWithoutAutoScope && !force -> {
@@ -205,52 +201,6 @@ internal fun calculatedVersion(
     return calculatedVersion
 }
 
-internal fun calculateAdditionalVersionData(
-    clean: Boolean,
-    checkClean: Boolean,
-    lastCommitInCurrentBranch: String?,
-    commitsInCurrentBranch: List<String>,
-    isThereVersionTags: Boolean,
-    headCommit: String,
-    lastVersionCommitInCurrentBranch: String?,
-): AdditionalVersionData? {
-    val isClean: Boolean = clean || !checkClean
-    val isDirty: Boolean = !isClean
-
-    val commitsBetweenCurrentAndLastTagCommit: List<String> =
-        commitsBetweenTwoCommitsIncludingLastExcludingFirst(
-            lastCommitInCurrentBranch,
-            lastVersionCommitInCurrentBranch,
-            commitsInCurrentBranch,
-        )
-
-    val additionalData: AdditionalVersionData? =
-        commitsBetweenCurrentAndLastTagCommit.run {
-            val commitsNumber: Int =
-                count().takeIf { isThereVersionTags } ?: commitsInCurrentBranch.count()
-            val hashLength: Int = DEFAULT_SHORT_HASH_LENGTH
-            when {
-                !isThereVersionTags && isDirty -> {
-                    AdditionalVersionData(commitsNumber, headCommit.take(hashLength), "DIRTY")
-                }
-                !isThereVersionTags -> {
-                    AdditionalVersionData(commitsNumber, headCommit.take(hashLength), null)
-                }
-                isNotEmpty() && isClean -> {
-                    AdditionalVersionData(commitsNumber, first().take(hashLength), null)
-                }
-                isEmpty() && isClean -> {
-                    null
-                }
-                else -> {
-                    AdditionalVersionData(commitsNumber, null, "DIRTY")
-                }
-            }
-        }
-
-    return additionalData
-}
-
 private fun throwFinalVersionWithAutoStageAndNullScopeException(
     lastVersion: GradleVersion
 ): Nothing {
@@ -287,25 +237,6 @@ private fun String.isIsHigherStageThan(currentStage: GradleVersion.Stage): Boole
         else -> GradleVersion.Stage(this, currentStage.num ?: 1) > currentStage
     }
 
-internal data class AdditionalVersionData(
-    val commits: Int,
-    val hash: String?,
-    val metadata: String?,
-) {
-    fun asString(): String = buildString {
-        append(".")
-        append(commits)
-        if (hash != null) {
-            append("+")
-            append(hash)
-        }
-        if (metadata != null) {
-            append("+")
-            append(metadata)
-        }
-    }
-}
-
 private fun gradleVersionError(message: () -> String): Nothing =
     throw GradleVersionException(message())
 
@@ -320,5 +251,3 @@ private val String?.isPatch: Boolean
 
 private val String?.isAuto: Boolean
     get() = equals(Stage.Auto(), true)
-
-internal const val DEFAULT_SHORT_HASH_LENGTH = 7

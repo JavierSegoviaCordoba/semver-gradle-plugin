@@ -46,6 +46,15 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
+        resources = ["/tables/clean=true/scope=minor stage=alpha.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=minor stage=alpha`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
         resources = ["/tables/clean=true/scope=minor stage=null.csv"],
         numLinesToSkip = 1,
     )
@@ -129,10 +138,57 @@ internal class VersionTableTest {
 
     @ParameterizedTest
     @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=beta.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=beta`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=dev.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=dev`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=final.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=final`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
         resources = ["/tables/clean=true/scope=patch stage=null.csv"],
         numLinesToSkip = 1,
     )
     fun `clean=true scope=patch stage=null`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=rc.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=rc`(@AggregateWith(Companion::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(
+        resources = ["/tables/clean=true/scope=patch stage=snapshot.csv"],
+        numLinesToSkip = 1,
+    )
+    fun `clean=true scope=patch stage=snapshot`(
+        @AggregateWith(Companion::class) table: VersionTable
+    ) {
         table.checkTable()
     }
 

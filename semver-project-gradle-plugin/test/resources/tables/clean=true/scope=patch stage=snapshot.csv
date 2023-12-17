@@ -62,3 +62,11 @@ lastVersion,clean,scope,stage,isCreatingTag,checkClean,force,lastCommitInCurrent
 3.5.7-SNAPSHOT,true,patch,snapshot,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
 3.5.7-SNAPSHOT,true,patch,snapshot,false,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
 3.5.7-SNAPSHOT,true,patch,snapshot,false,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,patch,snapshot,true,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-SNAPSHOT
+3.5.7-zasca.24,true,patch,snapshot,true,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,patch,snapshot,true,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,patch,snapshot,true,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-SNAPSHOT
+3.5.7-zasca.24,true,patch,snapshot,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-SNAPSHOT
+3.5.7-zasca.24,true,patch,snapshot,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,patch,snapshot,false,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-SNAPSHOT
+3.5.7-zasca.24,true,patch,snapshot,false,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail

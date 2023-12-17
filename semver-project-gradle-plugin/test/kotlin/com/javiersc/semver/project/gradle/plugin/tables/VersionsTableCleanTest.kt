@@ -78,6 +78,12 @@ internal class VersionTableCleanTest {
     }
 
     @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope=major stage=final.csv"], numLinesToSkip = 1)
+    fun `scope=major stage=final`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
     @Csv(resources = ["/tables/clean=true/scope=major stage=rc.csv"], numLinesToSkip = 1)
     fun `scope=major stage=rc`(@AggregateWith(Aggregator::class) table: VersionTable) {
         table.checkTable()
@@ -116,6 +122,12 @@ internal class VersionTableCleanTest {
     @ParameterizedTest
     @Csv(resources = ["/tables/clean=true/scope=minor stage=beta.csv"], numLinesToSkip = 1)
     fun `scope=minor stage=beta`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope=minor stage=final.csv"], numLinesToSkip = 1)
+    fun `scope=minor stage=final`(@AggregateWith(Aggregator::class) table: VersionTable) {
         table.checkTable()
     }
 

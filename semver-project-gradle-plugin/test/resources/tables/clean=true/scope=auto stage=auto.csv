@@ -62,3 +62,11 @@ lastVersion,clean,scope,stage,isCreatingTag,checkClean,force,lastCommitInCurrent
 3.5.7-SNAPSHOT,true,auto,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
 3.5.7-SNAPSHOT,true,auto,auto,false,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
 3.5.7-SNAPSHOT,true,auto,auto,false,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,auto,auto,true,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,true,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,true,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,true,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,false,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25
+3.5.7-zasca.24,true,auto,auto,false,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.7-zasca.25

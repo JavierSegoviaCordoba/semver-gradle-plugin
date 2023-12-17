@@ -62,3 +62,11 @@ lastVersion,clean,scope,stage,isCreatingTag,checkClean,force,lastCommitInCurrent
 3.5.7-SNAPSHOT,true,"",beta,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
 3.5.7-SNAPSHOT,true,"",beta,false,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
 3.5.7-SNAPSHOT,true,"",beta,false,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,"",beta,true,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-beta.1
+3.5.7-zasca.24,true,"",beta,true,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,"",beta,true,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,"",beta,true,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-beta.1
+3.5.7-zasca.24,true,"",beta,false,true,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-beta.1
+3.5.7-zasca.24,true,"",beta,false,true,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail
+3.5.7-zasca.24,true,"",beta,false,false,true,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,3.5.8-beta.1
+3.5.7-zasca.24,true,"",beta,false,false,false,h4sh123,h4sh123-h4sh124-h4sh125,h4sh123,h4sh124,fail

@@ -54,6 +54,36 @@ internal class VersionTableCleanTest {
     }
 
     @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope= stage=dev.csv"], numLinesToSkip = 1)
+    fun `scope= stage=dev`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope= stage=final.csv"], numLinesToSkip = 1)
+    fun `scope= stage=final`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope= stage=rc.csv"], numLinesToSkip = 1)
+    fun `scope= stage=rc`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope= stage=snapshot.csv"], numLinesToSkip = 1)
+    fun `scope= stage=snapshot`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope= stage=zasca.csv"], numLinesToSkip = 1)
+    fun `scope= stage=zasca`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
     @Csv(resources = ["/tables/clean=true/scope=auto stage=auto.csv"], numLinesToSkip = 1)
     fun `scope=auto stage=auto`(@AggregateWith(Aggregator::class) table: VersionTable) {
         table.checkTable()
@@ -62,6 +92,12 @@ internal class VersionTableCleanTest {
     @ParameterizedTest
     @Csv(resources = ["/tables/clean=true/scope=major stage=alpha.csv"], numLinesToSkip = 1)
     fun `scope=major stage=alpha`(@AggregateWith(Aggregator::class) table: VersionTable) {
+        table.checkTable()
+    }
+
+    @ParameterizedTest
+    @Csv(resources = ["/tables/clean=true/scope=major stage=auto.csv"], numLinesToSkip = 1)
+    fun `scope=major stage=auto`(@AggregateWith(Aggregator::class) table: VersionTable) {
         table.checkTable()
     }
 

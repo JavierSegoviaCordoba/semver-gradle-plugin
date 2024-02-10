@@ -19,7 +19,7 @@ hubdle {
             }
             test {
                 dependencies {
-                    implementation(hubdle.kotest.kotestProperty)
+                    implementation(hubdle.kotest.property)
                 }
             }
         }

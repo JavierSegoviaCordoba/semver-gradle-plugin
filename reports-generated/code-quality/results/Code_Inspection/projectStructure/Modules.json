@@ -1,0 +1,3478 @@
+{
+  "modules": [
+    {
+      "name": "semver-gradle-plugin-project",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-gradle-plugin",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.test",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-gradle-plugin/test",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-gradle-plugin/main",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-gradle-plugin/main/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.test",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/test",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/test/kotlin",
+              "type": "TestSource",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-project-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testFixtures",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testFixtures/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.7.20",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.7.20",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.7.20",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testFunctional",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testFunctional/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            },
+            {
+              "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testFunctional/resources",
+              "type": "Resource",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-project-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/main",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/main/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testIntegration",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testIntegration",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-project-gradle-plugin/testIntegration/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-project-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.test",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/test",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-settings-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/testFixtures",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.7.20",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.7.20",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.7.20",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFunctional",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/testFunctional",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/testFunctional/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            },
+            {
+              "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/testFunctional/resources",
+              "type": "Resource",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-settings-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/main",
+          "sourceFolders": [
+            {
+              "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/main/kotlin",
+              "type": "Source",
+              "packagePrefix": ""
+            }
+          ]
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        }
+      ]
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testIntegration",
+      "contentEntries": [
+        {
+          "path": "file://$PROJECT_DIR$/semver-settings-gradle-plugin/testIntegration",
+          "sourceFolders": []
+        }
+      ],
+      "orderEntries": [
+        {
+          "name": "17",
+          "type": "SDK"
+        },
+        {
+          "name": "<Module source>",
+          "type": "Own sources"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-api-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-ant-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-astbuilder-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-console-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-datetime-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-dateutil-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-groovydoc-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-json-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-nio-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-sql-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-templates-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-test-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/groovy-xml-3.0.13.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/javaparser-core-3.17.0.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-common-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-reflect-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk7-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/kotlin-stdlib-jdk8-1.8.10.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-installation-beacon-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-kotlin-dsl-extensions-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/wrapper/dists/gradle-8.0.2-bin/25jlreiuz6u3xu2phlpa2vv4m/gradle-8.0.2/lib/gradle-kotlin-dsl-tooling-models-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "/data/cache/gradle/caches/8.0.2/generated-gradle-jars/gradle-test-kit-8.0.2.jar",
+          "type": "Library"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+          "type": "Module"
+        },
+        {
+          "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+          "type": "Module"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.slf4j:slf4j-api:1.7.30",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains:annotations:13.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.opentest4j:opentest4j:1.2.0",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "/data/project/semver-settings-gradle-plugin/build/pluginUnderTestMetadata",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+          "type": "Library"
+        },
+        {
+          "name": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+          "type": "Library"
+        }
+      ]
+    }
+  ]
+}

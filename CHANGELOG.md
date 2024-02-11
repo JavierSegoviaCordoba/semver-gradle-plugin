@@ -20,16 +20,7 @@
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.6.2`
 - `gradle -> 8.6`
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.15`
-- `gradle -> 8.5`
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.6`
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-beta.4`
-- `gradle -> 8.2.1`
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-alpha.26`
-- `gradle -> 8.1.1`
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.5.0-alpha.6`
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
-- `gradle -> 8.0.2`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
 ### Added

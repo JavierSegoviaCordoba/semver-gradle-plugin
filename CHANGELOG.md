@@ -8,20 +8,15 @@
 
 ### Deprecated
 
-### Removed
-
 ### Fixed
 
+### Removed
+
 ### Updated
+
+- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.6.3`
 
 ## [0.5.0] - 2024-02-10
-
-### Updated
-
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.6.2`
-- `gradle -> 8.6`
-- `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
-- `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
 ### Added
 
@@ -37,6 +32,12 @@
 - `commitsMaxCount: Provider<Int>` to `SemverExtension`
 - `semver.commitsMaxCount` property
 
+### Changed
+
+- `Version` to `GradleVersion`
+- plugin id from `com.javiersc.semver.gradle.plugin` to `com.javiersc.semver`
+- `com.javiersc.semver:semver-core` dependency from `implementation` to `api`
+
 ### Fixed
 
 - GitHub output and environment variables in the `printSemver` task
@@ -49,11 +50,12 @@
 
 - `LazyVersion`
 
-### Changed
+### Updated
 
-- `Version` to `GradleVersion`
-- plugin id from `com.javiersc.semver.gradle.plugin` to `com.javiersc.semver`
-- `com.javiersc.semver:semver-core` dependency from `implementation` to `api`
+- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.6.2`
+- `gradle -> 8.6`
+- `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
+- `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
 [Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0...HEAD
 

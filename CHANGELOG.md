@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- `is*` extensions
+
 ### Removed
 
 ### Updated

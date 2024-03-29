@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SemVerMessagesKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.javiersc.semver.project.gradle.plugin.internal</a>
+</div>
+
+<h1>Coverage Summary for Class: SemVerMessagesKt (com.javiersc.semver.project.gradle.plugin.internal)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">SemVerMessagesKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (3/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.8%
+  </span>
+  <span class="absValue">
+    (9/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69.2%
+  </span>
+  <span class="absValue">
+    (45/65)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SemVerMessagesKt$semverMessage$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">SemVerMessagesKt$semverWarningMessage$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (4/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (3/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.9%
+  </span>
+  <span class="absValue">
+    (10/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    67.6%
+  </span>
+  <span class="absValue">
+    (48/71)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.javiersc.semver.project.gradle.plugin.internal
+&nbsp;
+&nbsp;import com.javiersc.gradle.logging.extensions.quietColored
+&nbsp;import com.javiersc.gradle.logging.extensions.warnColored
+&nbsp;import com.javiersc.kotlin.stdlib.AnsiColor
+&nbsp;import com.javiersc.semver.Version
+&nbsp;import com.javiersc.semver.project.gradle.plugin.SemverProjectPlugin
+&nbsp;import org.gradle.api.logging.Logger
+&nbsp;import org.gradle.api.logging.Logging
+&nbsp;
+<b class="nc">&nbsp;internal fun semverWarningMessage(message: Any) = defaultLogger.warnColored { &quot;$message&quot; }</b>
+&nbsp;
+<b class="nc">&nbsp;internal fun semverMessage(message: Any, color: AnsiColor = AnsiColor.Foreground.Purple) =</b>
+<b class="fc">&nbsp;    defaultLogger.quietColored(color) { &quot;$message&quot; }</b>
+&nbsp;
+&nbsp;internal fun warningLastVersionIsNotHigherVersion(last: Version?, higher: Version?) {
+<b class="fc">&nbsp;    val message =</b>
+<b class="fc">&nbsp;        &quot;&quot;&quot;|There is an old tag with a higher version than the last tag version:</b>
+<b class="fc">&nbsp;           |  - Old tag version -&gt; $last</b>
+<b class="fc">&nbsp;           |  - Last tag version -&gt; $higher</b>
+&nbsp;        &quot;&quot;&quot;
+<b class="fc">&nbsp;            .trimMargin()</b>
+&nbsp;
+<b class="pc">&nbsp;    if (last != null &amp;&amp; higher != null &amp;&amp; last &lt; higher) {</b>
+<b class="fc">&nbsp;        semverMessage(message = message, color = AnsiColor.Foreground.Yellow)</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+<b class="fc">&nbsp;private val defaultLogger: Logger = Logging.getLogger(SemverProjectPlugin::class.java)</b>
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-11 14:08</div>
+</div>
+</body>
+</html>

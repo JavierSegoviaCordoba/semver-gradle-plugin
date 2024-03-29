@@ -1,0 +1,14 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:gradle-version
+com.javiersc.gradle.version
+module:semver-gradle-plugin
+com.javiersc.semver.gradle.plugin
+module:semver-project-gradle-plugin
+com.javiersc.semver.project.gradle.plugin
+com.javiersc.semver.project.gradle.plugin.extensions
+com.javiersc.semver.project.gradle.plugin.services
+com.javiersc.semver.project.gradle.plugin.tasks
+module:semver-settings-gradle-plugin
+com.javiersc.semver.settings.gradle.plugin

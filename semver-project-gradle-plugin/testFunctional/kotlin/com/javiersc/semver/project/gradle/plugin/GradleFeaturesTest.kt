@@ -37,7 +37,11 @@ class GradleFeaturesTest : GradleTestKitTest() {
     @Test
     fun `configuration cache clean v1_0_0`() {
         gradleTestKitTest("gradle-features/configuration cache clean v1_0_0") {
-            beforeTest()
+            beforeTest() // initial commit
+            testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
+            projectDir.resolve("one.txt").createNewFile()
+            git.add().addFilepattern(".").call()
+            git.commit().setMessage("One").call() // change hash
             testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
         }
     }

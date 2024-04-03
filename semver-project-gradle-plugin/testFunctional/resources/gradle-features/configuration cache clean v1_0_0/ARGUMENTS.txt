@@ -1,1 +1,1 @@
-printSemver
+assemble

@@ -420,7 +420,7 @@ semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 ## License
 
 ```
-Copyright 2022 Javier Segovia Córdoba
+Copyright 2024 Javier Segovia Córdoba
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

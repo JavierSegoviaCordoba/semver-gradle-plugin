@@ -92,9 +92,10 @@ internal fun File.createGitIgnore() {
         createNewFile()
         writeText(
             """
-                |.idea/
-                |build/
                 |.gradle/
+                |.idea/
+                |.kotlin/
+                |build/
                 |local.properties
                 |environment/
                 |

@@ -22,8 +22,7 @@ internal class CalculatedVersionTest {
                         commits = 0,
                         hash = git.lastCommitInCurrentBranch!!.hash.take(7),
                         metadata = null,
-                    )
-                )
+                    ))
 
             resolve("2 commit.txt").createNewFile()
 
@@ -33,8 +32,7 @@ internal class CalculatedVersionTest {
                         commits = 0,
                         hash = git.lastCommitInCurrentBranch!!.hash.take(7),
                         metadata = "DIRTY",
-                    )
-                )
+                    ))
 
             git.add().addFilepattern(".").call()
             git.commit().setMessage("2 commit").call()
@@ -50,8 +48,7 @@ internal class CalculatedVersionTest {
                         commits = 0,
                         hash = null,
                         metadata = "DIRTY",
-                    )
-                )
+                    ))
 
             git.add().addFilepattern(".").call()
 
@@ -61,8 +58,7 @@ internal class CalculatedVersionTest {
                         commits = 0,
                         hash = null,
                         metadata = "DIRTY",
-                    )
-                )
+                    ))
 
             git.commit().setMessage("3 commit").call()
 
@@ -72,8 +68,7 @@ internal class CalculatedVersionTest {
                         commits = 1,
                         hash = git.lastCommitInCurrentBranch!!.hash.take(7),
                         metadata = null,
-                    )
-                )
+                    ))
         }
     }
 

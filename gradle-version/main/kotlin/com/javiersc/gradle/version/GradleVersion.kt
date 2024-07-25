@@ -91,8 +91,7 @@ private constructor(
                         stageNum = null,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number == null && stageName.isBlank() -> {
                     invoke(
@@ -103,8 +102,7 @@ private constructor(
                         stageNum = null,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number == null && stageName.isNotBlank() && stage?.name.isNullOrBlank() -> {
                     invoke(
@@ -115,8 +113,7 @@ private constructor(
                         stageNum = incNum,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number == null && stageName.isNotBlank() && stageName == stage?.name -> {
                     invoke(
@@ -127,8 +124,7 @@ private constructor(
                         stageNum = stage.num?.inc(),
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number == null && stageName.isNotBlank() && stageName != stage?.name -> {
                     invoke(
@@ -139,8 +135,7 @@ private constructor(
                         stageNum = incNum,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number is Increase.Major && stageName.isBlank() -> {
                     invoke(
@@ -151,8 +146,7 @@ private constructor(
                         stageNum = null,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number is Increase.Minor && stageName.isBlank() -> {
                     invoke(
@@ -163,8 +157,7 @@ private constructor(
                         stageNum = null,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number is Increase.Patch && stageName.isBlank() -> {
                     invoke(
@@ -175,8 +168,7 @@ private constructor(
                         stageNum = null,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number is Increase.Major && stageName.isNotBlank() -> {
                     invoke(
@@ -187,8 +179,7 @@ private constructor(
                         stageNum = incNum,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number is Increase.Minor && stageName.isNotBlank() -> {
                     invoke(
@@ -199,8 +190,7 @@ private constructor(
                         stageNum = incNum,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 number is Increase.Patch && stageName.isNotBlank() -> {
                     invoke(
@@ -211,16 +201,14 @@ private constructor(
                         stageNum = incNum,
                         commits = commits,
                         hash = hash,
-                        metadata = metadata
-                    )
+                        metadata = metadata)
                 }
                 else -> null
             } ?: gradleVersionError("There were an error configuring the version")
 
         if (nextVersion < this) {
             gradleVersionError(
-                "Next version ($nextVersion) should be higher than the current one ($this)"
-            )
+                "Next version ($nextVersion) should be higher than the current one ($this)")
         }
         return nextVersion
     }
@@ -378,16 +366,7 @@ private constructor(
             checkMode: CheckMode = Insignificant,
         ): Result<GradleVersion> = runCatching {
             GradleVersion(
-                major,
-                minor,
-                patch,
-                stageName,
-                stageNum,
-                commits,
-                hash,
-                metadata,
-                checkMode
-            )
+                major, minor, patch, stageName, stageNum, commits, hash, metadata, checkMode)
         }
 
         public fun getOrNull(

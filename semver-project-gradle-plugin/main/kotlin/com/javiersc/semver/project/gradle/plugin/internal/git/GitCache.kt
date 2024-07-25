@@ -52,8 +52,7 @@ private constructor(
                 message = headRevCommit.shortMessage,
                 fullMessage = headRevCommit.fullMessage,
                 hash = headRevCommit.toObjectId().name,
-            )
-        )
+            ))
     }
 
     internal val commitsInCurrentBranchRevCommit: List<RevCommit> by lazy {
@@ -130,8 +129,7 @@ private constructor(
                             message = commit.shortMessage,
                             fullMessage = commit.fullMessage,
                             hash = commit.toObjectId().name,
-                        )
-                )
+                        ))
             }
 
     internal fun tagsInCurrentCommit(hash: String): List<GitRef.Tag> =
@@ -185,9 +183,9 @@ private constructor(
                     val higherVersion: GradleVersion? =
                         versionsInCurrentBranch(tagPrefix).firstOrNull()
 
-                    if (
-                        lastVersion != null && higherVersion != null && higherVersion > lastVersion
-                    ) {
+                    if (lastVersion != null &&
+                        higherVersion != null &&
+                        higherVersion > lastVersion) {
                         isWarningLastVersionIsNotHigherVersion(true)
                         warningLastVersionIsNotHigherVersion(lastVersion, higherVersion)
                     }

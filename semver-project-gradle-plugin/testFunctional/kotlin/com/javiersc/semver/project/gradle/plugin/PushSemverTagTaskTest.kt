@@ -29,8 +29,7 @@ class PushSemverTagTaskTest : GradleTestKitTest() {
                         .setGitDir(remoteBuildGitDir)
                         .readEnvironment()
                         .findGitDir()
-                        .build()
-                )
+                        .build())
 
             git.repository.directory.copyRecursively(remoteBuildGitDir)
 

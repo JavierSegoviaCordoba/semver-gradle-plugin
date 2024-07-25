@@ -18,8 +18,7 @@ internal val GradleRunner.git: Git
                 .setGitDir(File("$projectDir/.git"))
                 .readEnvironment()
                 .findGitDir()
-                .build()
-        )
+                .build())
 
 val File.git: Git
     get() =
@@ -28,8 +27,7 @@ val File.git: Git
                 .setGitDir(resolve(".git"))
                 .readEnvironment()
                 .findGitDir()
-                .build()
-        )
+                .build())
 
 internal fun getResource(resource: String): File =
     File(Thread.currentThread().contextClassLoader?.getResource(resource)?.toURI()!!)
@@ -65,15 +63,13 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
             fullMessage = "Add new2",
             hash = "f099fed42808c387d38f8e34934d4ef2d6f3c2c5",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags = emptyList()
-        ),
+            tags = emptyList()),
         Commit(
             message = "Add new",
             fullMessage = "Add new",
             hash = "0d9be4d12a836435c91fc38e0d64bcd3c14c89c8",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags = emptyList()
-        ),
+            tags = emptyList()),
         Commit(
             message = "Initial commit",
             fullMessage = "Initial commit",
@@ -82,9 +78,7 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
             tags =
                 listOf(
                     Tag(name = "1.0.0", refName = "refs/tags/1.0.0"),
-                )
-        )
-    )
+                )))
 }
 
 internal fun File.createGitIgnore() {
@@ -100,8 +94,7 @@ internal fun File.createGitIgnore() {
                 |environment/
                 |
             """
-                .trimMargin()
-        )
+                .trimMargin())
     }
 }
 

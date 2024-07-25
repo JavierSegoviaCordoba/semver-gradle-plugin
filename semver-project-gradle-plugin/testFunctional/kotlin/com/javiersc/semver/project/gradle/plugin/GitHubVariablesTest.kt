@@ -33,8 +33,7 @@ class GitHubVariablesTest : GradleTestKitTest() {
             mapOf(
                 "GITHUB_ENV" to githubEnvFile.path,
                 "GITHUB_OUTPUT" to githubOutputFile.path,
-            )
-        )
+            ))
     }
 
     @Test

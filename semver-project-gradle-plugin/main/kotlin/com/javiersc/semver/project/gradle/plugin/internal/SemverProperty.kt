@@ -33,6 +33,12 @@ internal val Project.checkCleanProperty: Provider<Boolean>
 internal val Project.commitsMaxCount: Provider<Int>
     get() = getSemverProperty(SemverProperty.CommitsMaxCount).map(String::toInt)
 
+internal val Project.logOnlyOnRootProject: Provider<Boolean>
+    get() =
+        providers.provider {
+            getSemverProperty(SemverProperty.LogOnlyOnRootProject).orNull?.toBoolean() ?: false
+        }
+
 internal enum class SemverProperty(val key: String) {
     ProjectTagPrefix("semver.project.tagPrefix"),
     TagPrefix("semver.tagPrefix"),
@@ -41,6 +47,7 @@ internal enum class SemverProperty(val key: String) {
     Remote("semver.remote"),
     CheckClean("semver.checkClean"),
     CommitsMaxCount("semver.commitsMaxCount"),
+    LogOnlyOnRootProject("semver.logOnlyOnRootProject"),
 }
 
 internal enum class Stage(private val value: String) {

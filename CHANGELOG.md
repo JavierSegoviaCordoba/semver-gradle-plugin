@@ -4,6 +4,8 @@
 
 ### Added
 
+- Log the version only on the root project via `semver.logOnlyOnRootProject` property
+
 ### Changed
 
 ### Deprecated

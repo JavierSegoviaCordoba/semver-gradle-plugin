@@ -15,7 +15,7 @@ import io.kotest.matchers.string.shouldContain
 import java.io.File
 import java.util.Locale
 
-internal fun File.assertVersionFromExpectVersionFiles() {
+fun File.assertVersionFromExpectVersionFiles() {
     walkTopDown()
         .filter { it.name == "expect-version.txt" }
         .map { it.parentFile }
@@ -24,7 +24,7 @@ internal fun File.assertVersionFromExpectVersionFiles() {
         .forEach(::assertVersionFromExpectVersionFile)
 }
 
-internal fun assertVersionFromExpectVersionFile(file: File) {
+fun assertVersionFromExpectVersionFile(file: File) {
     val expectedVersionFile = file.resolve("expect-version.txt")
     val lines: List<String> = expectedVersionFile.readLines()
     val (version: String, tagPrefixVersion: String) = lines
@@ -45,10 +45,10 @@ internal fun assertVersionFromExpectVersionFile(file: File) {
     file.assertVersion(tagPrefix, sanitizeVersion, insignificant)
 }
 
-internal fun File.assertVersion(
+fun File.assertVersion(
     prefix: String,
     version: String,
-    insignificant: Insignificant? = null
+    insignificant: Insignificant? = null,
 ) {
     val buildVersionFile = resolve("build/semver/version.txt")
     val buildVersion = buildVersionFile.readLines().first()
@@ -102,7 +102,7 @@ private fun printExpectedAndActualVersions(
     println("----------------------------------------".ansiColor(Purple))
 }
 
-internal enum class Insignificant {
+enum class Insignificant {
     Hash,
     Dirty;
 

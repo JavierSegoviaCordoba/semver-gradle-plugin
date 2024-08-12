@@ -1,6 +1,7 @@
 package com.javiersc.semver.project.gradle.plugin.tasks
 
 import com.javiersc.gradle.project.extensions.isRootProject
+import com.javiersc.semver.project.gradle.plugin.internal.logOnlyOnRootProject
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.semverMessage
 import java.io.File
@@ -10,6 +11,7 @@ import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskProvider
@@ -86,12 +88,15 @@ constructor(
             "Set the version as `semver-subproject-name` output of the GitHub Actions `semver` step ID")
     public val githubOutput: Property<Boolean> = objects.property<Boolean>().convention(false)
 
+    @get:Input public abstract val shouldLogMessage: Property<Boolean>
+
     @get:Input public abstract val tagPrefix: Property<String>
 
     @get:Input public abstract val version: Property<String>
 
     @TaskAction
     public fun run() {
+        val shouldLogMessage: Boolean = shouldLogMessage.get()
         val semver: String = version.get()
         val prefix: String = tagPrefix.get()
         val semverWithPrefix = "$prefix$semver"
@@ -99,7 +104,7 @@ constructor(
         val name: String =
             if (projectName.isBlank() || projectName == ":") "the root project" else projectName
 
-        semverMessage("semver for $name: $semverWithPrefix")
+        if (shouldLogMessage) semverMessage("semver for $name: $semverWithPrefix")
 
         val onlyRoot: Boolean = githubOnlyRoot.orNull ?: false
         val allProjects: Boolean = !onlyRoot
@@ -146,6 +151,7 @@ constructor(
         public const val NAME: String = "printSemver"
 
         internal fun register(project: Project): TaskProvider<PrintSemverTask> {
+            val isRootProject: Boolean = project.isRootProject
             val prepareKotlinIdeaImportTask: Task =
                 project.tasks.maybeCreate("prepareKotlinIdeaImport")
 
@@ -156,6 +162,13 @@ constructor(
 
             printSemverTask.configure { task ->
                 task.dependsOn(WriteSemverTask.NAME)
+
+                val shouldLogMessage: Provider<Boolean> =
+                    project.logOnlyOnRootProject.map { logOnlyOnRoot ->
+                        (logOnlyOnRoot && isRootProject) || !logOnlyOnRoot
+                    }
+                task.shouldLogMessage.set(shouldLogMessage)
+
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
             }

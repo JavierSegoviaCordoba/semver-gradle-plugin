@@ -9,9 +9,9 @@ import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.gradle.testkit.runner.GradleRunner
 
-internal val sandboxPath: Path = Paths.get("build/sandbox").apply { toFile().mkdirs() }
+val sandboxPath: Path = Paths.get("build/sandbox").apply { toFile().mkdirs() }
 
-internal val GradleRunner.git: Git
+val GradleRunner.git: Git
     get() =
         Git(
             FileRepositoryBuilder()
@@ -29,14 +29,14 @@ val File.git: Git
                 .findGitDir()
                 .build())
 
-internal fun getResource(resource: String): File =
+fun getResource(resource: String): File =
     File(Thread.currentThread().contextClassLoader?.getResource(resource)?.toURI()!!)
 
-internal fun createSandboxFile(prefix: String): File =
+fun createSandboxFile(prefix: String): File =
     Files.createTempDirectory(sandboxPath, "$prefix - ").toFile()
 
 // `this` is `projectDir`
-internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
+fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
     doBefore: Git.() -> Unit = {},
     doAfter: Git.() -> Unit = {},
 ): List<Commit> {
@@ -81,7 +81,7 @@ internal fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
                 )))
 }
 
-internal fun File.createGitIgnore() {
+fun File.createGitIgnore() {
     resolve(".gitignore").apply {
         createNewFile()
         writeText(

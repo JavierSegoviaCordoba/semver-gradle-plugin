@@ -58,14 +58,18 @@ They can be set via CLI, for example:
 - `semver.tagPrefix` is used to know which version is going to be changed based on the tag prefix,
   for example `v`. If the projects have different tag prefix, it is necessary to disambiguate which
   version is going to be bumped.
+- `semver.logOnlyOnRootProject` is used to log the version in the CLI only on the root project, by
+  default it is `false`. It can be useful to avoid the version log in multi-project builds. It can
+  be added to the root `gradle.properties` file to avoid passing it constantly via CLI.
 
 Default values:
 
-|           | **default value** | **Optional** |
-|-----------|-------------------|--------------|
-| stage     | `auto`            | Yes*         |
-| scope     | `auto`            | Yes*         |
-| tagPrefix | `auto`            | Yes*         |
+|                      | **default value** | **Optional** |
+|----------------------|-------------------|--------------|
+| stage                | `auto`            | Yes*         |
+| scope                | `auto`            | Yes*         |
+| tagPrefix            | `auto`            | Yes*         |
+| logOnlyOnRootProject | `false`           | Yes*         |
 
 > Depends on the use case*
 

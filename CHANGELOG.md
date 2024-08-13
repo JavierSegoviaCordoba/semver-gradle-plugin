@@ -4,8 +4,6 @@
 
 ### Added
 
-- Log the version only on the root project via `semver.logOnlyOnRootProject` property
-
 ### Changed
 
 ### Deprecated
@@ -13,6 +11,14 @@
 ### Fixed
 
 ### Removed
+
+### Updated
+
+## [0.6.0] - 2024-08-13
+
+### Added
+
+- Log the version only on the root project via `semver.logOnlyOnRootProject` property
 
 ### Updated
 
@@ -71,8 +77,10 @@
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.1...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.0...HEAD
+
+[0.6.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.1...0.6.0
 
 [0.5.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0...0.5.1
 
-[0.5.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.0-rc.6...0.5.0
+[0.5.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/commits/0.5.0

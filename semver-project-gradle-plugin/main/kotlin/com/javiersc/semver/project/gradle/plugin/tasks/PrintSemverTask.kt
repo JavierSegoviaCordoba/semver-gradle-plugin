@@ -4,7 +4,6 @@ import com.javiersc.gradle.project.extensions.isRootProject
 import com.javiersc.semver.project.gradle.plugin.internal.logOnlyOnRootProject
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.semverMessage
-import com.javiersc.semver.project.gradle.plugin.valuesources.VersionValueSource
 import java.io.File
 import javax.inject.Inject
 import org.gradle.api.DefaultTask
@@ -95,12 +94,8 @@ constructor(
 
     @get:Input public abstract val version: Property<String>
 
-    @get:Input internal abstract val versions: Property<VersionValueSource.Versions>
-
     @TaskAction
     public fun run() {
-        versions.orNull?.checkVersionIsHigherOrSame()
-
         val shouldLogMessage: Boolean = shouldLogMessage.get()
         val semver: String = version.get()
         val prefix: String = tagPrefix.get()
@@ -155,10 +150,7 @@ constructor(
 
         public const val NAME: String = "printSemver"
 
-        internal fun register(
-            project: Project,
-            versions: Provider<VersionValueSource.Versions>
-        ): TaskProvider<PrintSemverTask> {
+        internal fun register(project: Project): TaskProvider<PrintSemverTask> {
             val isRootProject: Boolean = project.isRootProject
             val prepareKotlinIdeaImportTask: Task =
                 project.tasks.maybeCreate("prepareKotlinIdeaImport")
@@ -179,7 +171,6 @@ constructor(
 
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
-                task.versions.set(versions)
             }
 
             project.tasks.named(ASSEMBLE_TASK_NAME).configure { task ->

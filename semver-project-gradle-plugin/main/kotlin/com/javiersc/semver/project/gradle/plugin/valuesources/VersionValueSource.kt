@@ -3,6 +3,7 @@ package com.javiersc.semver.project.gradle.plugin.valuesources
 import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.project.gradle.plugin.internal.checkCleanProperty
+import com.javiersc.semver.project.gradle.plugin.internal.checkVersionIsHigherOrSame
 import com.javiersc.semver.project.gradle.plugin.internal.commitsMaxCount
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
@@ -13,9 +14,7 @@ import com.javiersc.semver.project.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.project.gradle.plugin.semverExtension
 import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
-import com.javiersc.semver.project.gradle.plugin.valuesources.VersionValueSource.Versions
 import java.io.File
-import java.io.Serializable
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
@@ -23,9 +22,9 @@ import org.gradle.api.provider.ValueSource
 import org.gradle.api.provider.ValueSourceParameters
 import org.gradle.kotlin.dsl.of
 
-internal abstract class VersionValueSource : ValueSource<Versions, VersionValueSource.Params> {
+internal abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {
 
-    override fun obtain(): Versions =
+    override fun obtain(): String =
         with(parameters) {
             val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
 
@@ -37,10 +36,10 @@ internal abstract class VersionValueSource : ValueSource<Versions, VersionValueS
 
             val lastSemver: GradleVersion =
                 cache().lastVersionInCurrentBranch(projectTagPrefix.get())
-            val lastVersionInCurrentBranch: List<String> =
+            val lastVersionInCurrentBranch =
                 cache().versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
 
-            val lastVersionCommitInCurrentBranch: String? =
+            val lastVersionCommitInCurrentBranch =
                 cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
 
             val version: String =
@@ -63,22 +62,10 @@ internal abstract class VersionValueSource : ValueSource<Versions, VersionValueS
                     lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
                 )
 
-            Versions(version = version, lastSemver = lastSemver)
-        }
+            checkVersionIsHigherOrSame(version, lastSemver)
 
-    internal data class Versions(
-        val version: String,
-        val lastSemver: GradleVersion,
-    ) : Serializable {
-
-        fun checkVersionIsHigherOrSame() {
-            GradleVersion.safe(version).getOrNull()?.let { version ->
-                check(version >= lastSemver) {
-                    "Next version should be higher or the same as the current one"
-                }
-            }
+            version
         }
-    }
 
     internal interface Params : ValueSourceParameters {
         val gitDir: Property<File>
@@ -93,7 +80,7 @@ internal abstract class VersionValueSource : ValueSource<Versions, VersionValueS
 
     companion object {
 
-        fun register(project: Project): Provider<Versions> =
+        fun register(project: Project): Provider<String> =
             project.providers.of(VersionValueSource::class) { valueSourceSpec ->
                 val gitDir = project.provider { project.semverExtension.gitDir.get().asFile }
                 valueSourceSpec.parameters.gitDir.set(gitDir)

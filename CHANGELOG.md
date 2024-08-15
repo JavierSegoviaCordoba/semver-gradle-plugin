@@ -10,6 +10,14 @@
 
 ### Fixed
 
+### Removed
+
+### Updated
+
+## [0.6.2] - 2024-08-15
+
+### Fixed
+
 - mapping version happening too late
 
 ### Removed
@@ -93,7 +101,9 @@
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.1...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.2...HEAD
+
+[0.6.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.1...0.6.2
 
 [0.6.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.0...0.6.1
 

@@ -47,7 +47,7 @@ constructor(
 
     @TaskAction
     public fun run() {
-        versions.orNull?.checkVersionIsHigherOrSame()
+        versions.orNull?.checkVersionIsHigherOrSame(version.orNull)
 
         val semver: String = version.get()
         val prefix: String = tagPrefix.get()

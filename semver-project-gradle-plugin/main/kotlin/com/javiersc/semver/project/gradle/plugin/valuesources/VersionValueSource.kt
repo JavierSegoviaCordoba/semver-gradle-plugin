@@ -71,10 +71,11 @@ internal abstract class VersionValueSource : ValueSource<Versions, VersionValueS
         val lastSemver: GradleVersion,
     ) : Serializable {
 
-        fun checkVersionIsHigherOrSame() {
-            GradleVersion.safe(version).getOrNull()?.let { version ->
+        fun checkVersionIsHigherOrSame(otherVersion: String? = null) {
+            GradleVersion.safe(otherVersion ?: version).getOrNull()?.let { version ->
                 check(version >= lastSemver) {
-                    "Next version should be higher or the same as the current one"
+                    "The next version($version) must be higher or the same as the current " +
+                        "one($lastSemver)"
                 }
             }
         }

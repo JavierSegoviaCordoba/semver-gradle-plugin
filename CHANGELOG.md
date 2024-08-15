@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- crash using old calculated version
+
 ### Removed
 
 ### Updated

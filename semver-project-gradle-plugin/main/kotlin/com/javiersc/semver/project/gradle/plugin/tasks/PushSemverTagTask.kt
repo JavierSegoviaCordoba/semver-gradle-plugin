@@ -31,7 +31,7 @@ public abstract class PushSemverTagTask : DefaultTask() {
 
     @TaskAction
     public fun run() {
-        versions.orNull?.checkVersionIsHigherOrSame()
+        versions.orNull?.checkVersionIsHigherOrSame(version.orNull)
 
         gitTagBuildService
             .get()

@@ -10,9 +10,15 @@
 
 ### Fixed
 
-- crash due metadata by checking versions in configuration phase instead of execution phase 
-
 ### Removed
+
+### Updated
+
+## [0.6.1] - 2024-08-15
+
+### Fixed
+
+- crash due metadata by checking versions in configuration phase instead of execution phase 
 
 ### Updated
 
@@ -81,7 +87,9 @@
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.0...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.1...HEAD
+
+[0.6.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.0...0.6.1
 
 [0.6.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.5.1...0.6.0
 

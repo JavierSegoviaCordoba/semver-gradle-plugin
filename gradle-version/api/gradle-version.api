@@ -1,4 +1,4 @@
-public final class com/javiersc/gradle/version/GradleVersion : java/lang/Comparable {
+public final class com/javiersc/gradle/version/GradleVersion : java/io/Serializable, java/lang/Comparable {
 	public static final field Companion Lcom/javiersc/gradle/version/GradleVersion$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Lcom/javiersc/gradle/version/GradleVersion$CheckMode;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun compareTo (Lcom/javiersc/gradle/version/GradleVersion;)I
@@ -80,7 +80,7 @@ public final class com/javiersc/gradle/version/GradleVersion$Increase$Patch : co
 	public static final field INSTANCE Lcom/javiersc/gradle/version/GradleVersion$Increase$Patch;
 }
 
-public final class com/javiersc/gradle/version/GradleVersion$Stage : java/lang/Comparable {
+public final class com/javiersc/gradle/version/GradleVersion$Stage : java/io/Serializable, java/lang/Comparable {
 	public static final field Companion Lcom/javiersc/gradle/version/GradleVersion$Stage$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun compareTo (Lcom/javiersc/gradle/version/GradleVersion$Stage;)I

@@ -45,6 +45,8 @@ constructor(
 
     internal abstract val calculatedVersion: Property<GradleVersion>
 
+    internal abstract val lastSemver: Property<GradleVersion>
+
     public val version: Property<String> =
         objects
             .property<String>()

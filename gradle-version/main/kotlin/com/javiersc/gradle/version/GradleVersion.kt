@@ -5,6 +5,7 @@ import com.javiersc.gradle.version.GradleVersion.CheckMode.Significant
 import com.javiersc.gradle.version.GradleVersion.SpecialStage.Companion.dev
 import com.javiersc.kotlin.stdlib.isNotNullNorBlank
 import com.javiersc.kotlin.stdlib.remove
+import java.io.Serializable
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 import kotlin.text.RegexOption.IGNORE_CASE
@@ -13,7 +14,7 @@ public class GradleVersion
 private constructor(
     private val value: String,
     checkMode: CheckMode = Insignificant,
-) : Comparable<GradleVersion> {
+) : Comparable<GradleVersion>, Serializable {
 
     init {
         if (checkMode == Significant) checkSignificantVersion(value)
@@ -387,7 +388,10 @@ private constructor(
     private val scope: String
         get() = scopeRegex.find(value)?.value ?: gradleVersionError("Incorrect version: $value")
 
-    public class Stage private constructor(private val value: String) : Comparable<Stage> {
+    public class Stage
+    private constructor(
+        private val value: String,
+    ) : Comparable<Stage>, Serializable {
 
         init {
             checkStage(value)
@@ -462,7 +466,7 @@ private constructor(
     internal class SpecialStage
     private constructor(
         private val stage: Stage,
-    ) : Comparable<SpecialStage> {
+    ) : Comparable<SpecialStage>, Serializable {
 
         override fun compareTo(other: SpecialStage): Int {
             val name = stage.name.lowercase()

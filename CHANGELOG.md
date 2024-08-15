@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- crash due metadata by checking versions in configuration phase instead of execution phase 
+
 ### Removed
 
 ### Updated

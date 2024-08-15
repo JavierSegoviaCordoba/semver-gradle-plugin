@@ -31,4 +31,16 @@ internal class VersionMappingTest : GradleTestKitTest() {
             projectDir.assertVersionFromExpectVersionFiles()
         }
     }
+
+    @Test
+    fun `v0_2_0+2_0_0`() {
+        gradleTestKitTest("version-mapping/v0_2_0+2_0_0") {
+            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+            git.tag().setObjectId(git.headRevCommitInBranch).setName("v0.2.0").call()
+
+            withArgumentsFromTXT()
+            build()
+            projectDir.assertVersionFromExpectVersionFiles()
+        }
+    }
 }

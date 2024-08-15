@@ -1,6 +1,7 @@
 package com.javiersc.semver.project.gradle.plugin.tasks
 
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
+import com.javiersc.semver.project.gradle.plugin.valuesources.VersionValueSource
 import javax.inject.Inject
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
@@ -8,6 +9,7 @@ import org.gradle.api.file.ProjectLayout
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
@@ -37,12 +39,16 @@ constructor(
 
     @get:Input public abstract val version: Property<String>
 
+    @get:Input internal abstract val versions: Property<VersionValueSource.Versions>
+
     @OutputFile
     public val semverFile: RegularFileProperty =
         objects.fileProperty().convention(layout.buildDirectory.file("semver/version.txt"))
 
     @TaskAction
     public fun run() {
+        versions.orNull?.checkVersionIsHigherOrSame()
+
         val semver: String = version.get()
         val prefix: String = tagPrefix.get()
         val semverWithPrefix = "$prefix$semver"
@@ -64,13 +70,17 @@ constructor(
 
         public const val NAME: String = "writeSemver"
 
-        internal fun register(project: Project): TaskProvider<WriteSemverTask> {
+        internal fun register(
+            project: Project,
+            versions: Provider<VersionValueSource.Versions>
+        ): TaskProvider<WriteSemverTask> {
             val writeSemverTask: TaskProvider<WriteSemverTask> =
                 project.tasks.register<WriteSemverTask>(NAME)
 
             writeSemverTask.configure { task ->
                 task.tagPrefix.set(project.projectTagPrefix)
                 task.version.set(project.version.toString())
+                task.versions.set(versions)
             }
 
             project.tasks.named(ASSEMBLE_TASK_NAME).configure { task ->

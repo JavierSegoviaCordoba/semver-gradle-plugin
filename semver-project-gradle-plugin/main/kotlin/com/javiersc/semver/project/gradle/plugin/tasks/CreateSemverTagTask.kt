@@ -33,7 +33,7 @@ public abstract class CreateSemverTagTask : DefaultTask() {
 
     @TaskAction
     public fun run() {
-        versions.orNull?.checkVersionIsHigherOrSame(version.orNull)
+        versions.orNull?.checkVersionIsHigherOrSame()
 
         gitTagBuildService
             .get()

@@ -33,10 +33,10 @@ internal class VersionMappingTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `v0_2_0+2_0_10`() {
-        gradleTestKitTest("version-mapping/v0_2_0+2_0_10") {
+    fun `v0_2_0+2_0_0`() {
+        gradleTestKitTest("version-mapping/v0_2_0+2_0_0") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
-            git.tag().setObjectId(git.headRevCommitInBranch).setName("v0.2.0+2.0.10").call()
+            git.tag().setObjectId(git.headRevCommitInBranch).setName("v0.2.0").call()
 
             withArgumentsFromTXT()
             build()

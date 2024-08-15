@@ -1,7 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin.tasks
 
 import com.javiersc.gradle.project.extensions.isRootProject
-import com.javiersc.kotlin.stdlib.or
 import com.javiersc.semver.project.gradle.plugin.internal.logOnlyOnRootProject
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.semverMessage
@@ -100,7 +99,7 @@ constructor(
 
     @TaskAction
     public fun run() {
-        versions.orNull?.checkVersionIsHigherOrSame(version.orNull)
+        versions.orNull?.checkVersionIsHigherOrSame()
 
         val shouldLogMessage: Boolean = shouldLogMessage.get()
         val semver: String = version.get()

@@ -16,7 +16,8 @@ internal fun checkVersionIsHigherOrSame(
 ) {
     GradleVersion.safe(version).getOrNull()?.let { calculatedVersion ->
         check(calculatedVersion >= lastVersionInCurrentBranch) {
-            "Next version should be higher or the same as the current one"
+            "The next version($calculatedVersion) should be higher or the same as the current " +
+                "one($lastVersionInCurrentBranch)"
         }
     }
 }

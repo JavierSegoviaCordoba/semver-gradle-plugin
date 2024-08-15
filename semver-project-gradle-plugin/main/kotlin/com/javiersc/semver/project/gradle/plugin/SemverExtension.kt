@@ -1,14 +1,12 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.semver.project.gradle.plugin.SemverExtension.VersionAndGitMapper
+import com.javiersc.semver.project.gradle.plugin.SemverExtension.VersionMapper
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
-import com.javiersc.semver.project.gradle.plugin.internal.git.currentBranch
-import com.javiersc.semver.project.gradle.plugin.internal.git.headCommit
-import com.javiersc.semver.project.gradle.plugin.internal.git.lastVersionTagInCurrentBranch
+import java.io.Serializable
 import javax.inject.Inject
-import org.eclipse.jgit.api.Git
-import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.model.ObjectFactory
@@ -43,32 +41,32 @@ constructor(
 
     public val tagPrefix: Property<String> = objects.property<String>().convention(DefaultTagPrefix)
 
-    internal abstract val calculatedVersion: Property<GradleVersion>
-
-    public val version: Property<String> =
+    internal val versionMapper: Property<VersionMapper> =
         objects
-            .property<String>()
-            .convention(providers.provider { "${calculatedVersion.orNull ?: "unspecified"}" })
+            .property<VersionMapper>()
+            .convention(VersionMapper { version -> version.toString() })
 
-    private var onMapVersion: Action<Unit>? = null
+    internal val versionAndGitMapper: Property<VersionAndGitMapper> =
+        objects
+            .property<VersionAndGitMapper>()
+            .convention(VersionAndGitMapper { version, _ -> version.toString() })
 
-    public fun mapVersion(transform: (GradleVersion) -> String) {
-        val mappedVersion: Provider<String> = calculatedVersion.map(transform)
-        version.set(mappedVersion)
-        onMapVersion?.execute(Unit)
+    public fun mapVersion(transform: VersionMapper) {
+        versionMapper.set(transform)
     }
 
-    public fun mapVersion(transform: (version: GradleVersion, git: GitData) -> String) {
-        val cache = GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount)
-        val gitData = cache.git.buildGitData(tagPrefix)
-        val mappedVersion: Provider<String> =
-            calculatedVersion.map { version -> transform(version, gitData) }
-        version.set(mappedVersion)
-        onMapVersion?.execute(Unit)
+    public fun mapVersion(transform: VersionAndGitMapper) {
+        versionAndGitMapper.set(transform)
     }
 
-    internal fun onMapVersion(action: Action<Unit>) {
-        onMapVersion = action
+    public fun interface VersionMapper : Serializable {
+
+        public fun map(version: GradleVersion): String
+    }
+
+    public fun interface VersionAndGitMapper : Serializable {
+
+        public fun map(version: GradleVersion, gitData: GitData): String
     }
 
     /**
@@ -120,53 +118,3 @@ constructor(
 
 internal val Project.semverExtension: SemverExtension
     get() = extensions.getByType()
-
-private fun Git.buildGitData(tagPrefix: Property<String>): SemverExtension.GitData {
-    return SemverExtension.GitData(
-        tag =
-            lastVersionTagInCurrentBranch(tagPrefix.get())?.let { tag ->
-                SemverExtension.GitData.Tag(
-                    name = tag.name,
-                    refName = tag.refName,
-                    commit =
-                        SemverExtension.GitData.Commit(
-                            message = tag.commit.message,
-                            fullMessage = tag.commit.fullMessage,
-                            hash = tag.commit.hash,
-                        ),
-                )
-            },
-        commit =
-            SemverExtension.GitData.Commit(
-                message = headCommit.commit.message,
-                fullMessage = headCommit.commit.fullMessage,
-                hash = headCommit.commit.hash,
-            ),
-        branch =
-            SemverExtension.GitData.Branch(
-                name = currentBranch.name,
-                refName = currentBranch.refName,
-                commits =
-                    currentBranch.commits.map { commit ->
-                        SemverExtension.GitData.Commit(
-                            message = commit.message,
-                            fullMessage = commit.fullMessage,
-                            hash = commit.hash,
-                        )
-                    },
-                tags =
-                    currentBranch.tags.map { tag ->
-                        SemverExtension.GitData.Tag(
-                            name = tag.name,
-                            refName = tag.refName,
-                            commit =
-                                SemverExtension.GitData.Commit(
-                                    message = tag.commit.message,
-                                    fullMessage = tag.commit.fullMessage,
-                                    hash = tag.commit.hash,
-                                ),
-                        )
-                    },
-            ),
-    )
-}

@@ -25,10 +25,9 @@ public abstract class com/javiersc/semver/project/gradle/plugin/SemverExtension 
 	public final fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
 	public abstract fun getGitDir ()Lorg/gradle/api/file/RegularFileProperty;
 	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
-	public final fun getVersion ()Lorg/gradle/api/provider/Property;
 	public final fun isEnabled ()Lorg/gradle/api/provider/Property;
-	public final fun mapVersion (Lkotlin/jvm/functions/Function1;)V
-	public final fun mapVersion (Lkotlin/jvm/functions/Function2;)V
+	public final fun mapVersion (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$VersionAndGitMapper;)V
+	public final fun mapVersion (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$VersionMapper;)V
 }
 
 public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$Companion {
@@ -94,6 +93,14 @@ public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$Git
 	public final fun getRefName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/javiersc/semver/project/gradle/plugin/SemverExtension$VersionAndGitMapper : java/io/Serializable {
+	public abstract fun map (Lcom/javiersc/gradle/version/GradleVersion;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData;)Ljava/lang/String;
+}
+
+public abstract interface class com/javiersc/semver/project/gradle/plugin/SemverExtension$VersionMapper : java/io/Serializable {
+	public abstract fun map (Lcom/javiersc/gradle/version/GradleVersion;)Ljava/lang/String;
 }
 
 public final class com/javiersc/semver/project/gradle/plugin/SemverProjectPlugin : org/gradle/api/Plugin {

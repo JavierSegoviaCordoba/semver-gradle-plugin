@@ -10,7 +10,11 @@
 
 ### Fixed
 
+- mapping version happening too late
+
 ### Removed
+
+- previous fixes for calculated and metadata versions
 
 ### Updated
 

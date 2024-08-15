@@ -2,16 +2,6 @@ package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.project.test.extensions.GradleProjectTest
 import com.javiersc.gradle.version.GradleVersion
-import com.javiersc.gradle.version.isAlpha
-import com.javiersc.gradle.version.isBeta
-import com.javiersc.gradle.version.isDev
-import com.javiersc.gradle.version.isNotAlpha
-import com.javiersc.gradle.version.isNotBeta
-import com.javiersc.gradle.version.isNotDev
-import com.javiersc.gradle.version.isNotRC
-import com.javiersc.gradle.version.isNotSnapshot
-import com.javiersc.gradle.version.isRC
-import com.javiersc.gradle.version.isSnapshot
 import com.javiersc.semver.project.gradle.plugin.extensions.isAlpha
 import com.javiersc.semver.project.gradle.plugin.extensions.isBeta
 import com.javiersc.semver.project.gradle.plugin.extensions.isDev
@@ -84,11 +74,9 @@ class SemverIntegrationTest : GradleProjectTest() {
             }
 
             tasks.names.contains("printSemver")
-            semver.version.get().shouldStartWith("1.0.0").shouldEndWith("+testM3t4d4Ta")
             version.toString().shouldStartWith("1.0.0").shouldEndWith("+testM3t4d4Ta")
             afterEvaluate { proj ->
-                val projSemver = extensions.findByType<SemverExtension>().shouldNotBeNull()
-                projSemver.version.get().shouldStartWith("1.0.0").shouldEndWith("+testM3t4d4Ta")
+                extensions.findByType<SemverExtension>().shouldNotBeNull()
                 "${proj.version}".shouldStartWith("1.0.0").shouldEndWith("-testM3t4d4Ta")
             }
         }

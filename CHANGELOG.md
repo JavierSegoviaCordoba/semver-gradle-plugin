@@ -12,6 +12,12 @@
 
 ### Removed
 
+### Updated
+
+## [0.7.0] - 2024-08-16
+
+### Removed
+
 - `GitData` from `mapVersion` function due performance issues
 - unnecessary mapping when registering the `VersionValueSource`
 
@@ -106,7 +112,9 @@
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.2...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.7.0...HEAD
+
+[0.7.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.2...0.7.0
 
 [0.6.2]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.6.1...0.6.2
 

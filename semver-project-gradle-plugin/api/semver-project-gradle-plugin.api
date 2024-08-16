@@ -26,77 +26,10 @@ public abstract class com/javiersc/semver/project/gradle/plugin/SemverExtension 
 	public abstract fun getGitDir ()Lorg/gradle/api/file/RegularFileProperty;
 	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 	public final fun isEnabled ()Lorg/gradle/api/provider/Property;
-	public final fun mapVersion (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$VersionAndGitMapper;)V
 	public final fun mapVersion (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$VersionMapper;)V
 }
 
 public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$Companion {
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$GitData {
-	public fun <init> (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;)V
-	public final fun component1 ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;
-	public final fun component2 ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;
-	public final fun component3 ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;
-	public final fun copy (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData;
-	public static synthetic fun copy$default (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;ILjava/lang/Object;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getBranch ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;
-	public final fun getCommit ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;
-	public final fun getTag ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;
-	public static synthetic fun copy$default (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Branch;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCommits ()Ljava/util/List;
-	public final fun getName ()Ljava/lang/String;
-	public final fun getRefName ()Ljava/lang/String;
-	public final fun getTags ()Ljava/util/List;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;
-	public static synthetic fun copy$default (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getFullMessage ()Ljava/lang/String;
-	public final fun getHash ()Ljava/lang/String;
-	public final fun getMessage ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;
-	public static synthetic fun copy$default (Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;ILjava/lang/Object;)Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Tag;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCommit ()Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData$Commit;
-	public final fun getName ()Ljava/lang/String;
-	public final fun getRefName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public abstract interface class com/javiersc/semver/project/gradle/plugin/SemverExtension$VersionAndGitMapper : java/io/Serializable {
-	public abstract fun map (Lcom/javiersc/gradle/version/GradleVersion;Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$GitData;)Ljava/lang/String;
 }
 
 public abstract interface class com/javiersc/semver/project/gradle/plugin/SemverExtension$VersionMapper : java/io/Serializable {

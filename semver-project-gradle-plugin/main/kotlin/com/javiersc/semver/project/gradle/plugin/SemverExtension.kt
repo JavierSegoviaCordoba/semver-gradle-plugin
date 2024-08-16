@@ -1,7 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
-import com.javiersc.semver.project.gradle.plugin.SemverExtension.VersionAndGitMapper
 import com.javiersc.semver.project.gradle.plugin.SemverExtension.VersionMapper
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
@@ -46,62 +45,13 @@ constructor(
             .property<VersionMapper>()
             .convention(VersionMapper { version -> version.toString() })
 
-    internal val versionAndGitMapper: Property<VersionAndGitMapper> =
-        objects
-            .property<VersionAndGitMapper>()
-            .convention(VersionAndGitMapper { version, _ -> version.toString() })
-
     public fun mapVersion(transform: VersionMapper) {
         versionMapper.set(transform)
-    }
-
-    public fun mapVersion(transform: VersionAndGitMapper) {
-        versionAndGitMapper.set(transform)
     }
 
     public fun interface VersionMapper : Serializable {
 
         public fun map(version: GradleVersion): String
-    }
-
-    public fun interface VersionAndGitMapper : Serializable {
-
-        public fun map(version: GradleVersion, gitData: GitData): String
-    }
-
-    /**
-     * @property commit The commit information.
-     * @property tag The tag information, if available.
-     * @property branch The branch information.
-     */
-    public data class GitData(val commit: Commit, val tag: Tag?, val branch: Branch) {
-
-        /**
-         * @property message The commit message.
-         * @property fullMessage The full commit message, including any additional details.
-         * @property hash The unique hash that identifies the commit.
-         */
-        public data class Commit(val message: String, val fullMessage: String, val hash: String)
-
-        /**
-         * @property name The name of the tag.
-         * @property refName The reference name of the tag.
-         * @property commit The commit associated with the tag.
-         */
-        public data class Tag(val name: String, val refName: String, val commit: Commit)
-
-        /**
-         * @property name The name of the branch. Example: `main`.
-         * @property refName The reference name of the branch. Example: `refs/heads/main`.
-         * @property commits The list of commits in the branch.
-         * @property tags The list of tags in the branch.
-         */
-        public data class Branch(
-            val name: String,
-            val refName: String,
-            val commits: List<Commit>,
-            val tags: List<Tag>,
-        )
     }
 
     public companion object {

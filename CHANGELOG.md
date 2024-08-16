@@ -12,6 +12,7 @@
 
 ### Removed
 
+- `GitData` from `mapVersion` function due performance issues
 - unnecessary mapping when registering the `VersionValueSource`
 
 ### Updated

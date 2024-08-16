@@ -12,6 +12,8 @@
 
 ### Removed
 
+- unnecessary mapping when registering the `VersionValueSource`
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.7.5`

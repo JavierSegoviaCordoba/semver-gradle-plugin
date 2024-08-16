@@ -1,6 +1,5 @@
 package com.javiersc.semver.project.gradle.plugin
 
-import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.internal.checkScopeCorrectness
 import com.javiersc.semver.project.gradle.plugin.internal.git.hasGit
 import com.javiersc.semver.project.gradle.plugin.services.GitBuildService
@@ -44,16 +43,14 @@ public class SemverProjectPlugin : Plugin<Project> {
     }
 
     private fun Project.configureVersion() {
-        val gradleVersionProvider: Provider<GradleVersion> =
-            VersionValueSource.register(this).map(GradleVersion::invoke)
-        version = VersionProperty(gradleVersionProvider.map(GradleVersion::toString))
+        val gradleVersionProvider: Provider<String> = VersionValueSource.register(this)
+        version = VersionProperty(gradleVersionProvider)
 
         // It is possible third party plugin breaks lazy configuration by calling `project.version`
         // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
         afterEvaluate { proj ->
-            val gradleVersionProviderProj: Provider<GradleVersion> =
-                VersionValueSource.register(proj).map(GradleVersion::invoke)
-            proj.version = VersionProperty(gradleVersionProviderProj.map(GradleVersion::toString))
+            val gradleVersionProviderProj: Provider<String> = VersionValueSource.register(proj)
+            proj.version = VersionProperty(gradleVersionProviderProj)
         }
     }
 }

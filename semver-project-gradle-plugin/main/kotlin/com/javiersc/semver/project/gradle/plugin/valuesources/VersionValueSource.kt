@@ -100,20 +100,24 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
 
         fun register(project: Project): Provider<String> =
             project.providers.of(VersionValueSource::class) { valueSourceSpec ->
-                val gitDir = project.provider { project.semverExtension.gitDir.get().asFile }
-                valueSourceSpec.parameters.versionMapper.set(project.semverExtension.versionMapper)
-                valueSourceSpec.parameters.versionAndGitMapper.set(
-                    project.semverExtension.versionAndGitMapper)
-                valueSourceSpec.parameters.gitDir.set(gitDir)
+                val parameters: Params = valueSourceSpec.parameters
+                val semverExtension: SemverExtension = project.semverExtension
+
+                val gitDir: Provider<File> =
+                    project.provider { semverExtension.gitDir.get().asFile }
+
+                parameters.versionMapper.set(semverExtension.versionMapper)
+                parameters.versionAndGitMapper.set(semverExtension.versionAndGitMapper)
+                parameters.gitDir.set(gitDir)
                 val commitsMaxCount: Int =
-                    project.commitsMaxCount.orNull ?: project.semverExtension.commitsMaxCount.get()
-                valueSourceSpec.parameters.commitsMaxCount.set(commitsMaxCount)
-                valueSourceSpec.parameters.projectTagPrefix.set(project.projectTagPrefix.get())
-                valueSourceSpec.parameters.tagPrefixProperty.set(project.tagPrefixProperty.get())
-                valueSourceSpec.parameters.stageProperty.set(project.stageProperty.orNull)
-                valueSourceSpec.parameters.scopeProperty.set(project.scopeProperty.orNull)
-                valueSourceSpec.parameters.creatingSemverTag.set(project.isCreatingSemverTag)
-                valueSourceSpec.parameters.checkClean.set(project.checkCleanProperty.get())
+                    project.commitsMaxCount.orNull ?: semverExtension.commitsMaxCount.get()
+                parameters.commitsMaxCount.set(commitsMaxCount)
+                parameters.projectTagPrefix.set(project.projectTagPrefix.get())
+                parameters.tagPrefixProperty.set(project.tagPrefixProperty.get())
+                parameters.stageProperty.set(project.stageProperty.orNull)
+                parameters.scopeProperty.set(project.scopeProperty.orNull)
+                parameters.creatingSemverTag.set(project.isCreatingSemverTag)
+                parameters.checkClean.set(project.checkCleanProperty.get())
             }
     }
 }

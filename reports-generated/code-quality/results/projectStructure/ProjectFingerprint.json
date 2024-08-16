@@ -1,0 +1,11 @@
+{
+  "languages": [
+    "Plain text",
+    "Properties",
+    "JSON",
+    ".gitignore (GitIgnore)",
+    "EditorConfig",
+    "Kotlin",
+    "XML"
+  ]
+}

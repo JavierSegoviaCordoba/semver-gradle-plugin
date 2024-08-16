@@ -1,0 +1,68 @@
+{
+  "modules": [
+    {
+      "name": "semver-gradle-plugin-project",
+      "languageLevel": 17
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin",
+      "languageLevel": 17
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin",
+      "languageLevel": 17
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin",
+      "languageLevel": 17
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.test",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-gradle-plugin.main",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.test",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFixtures",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-project-gradle-plugin.testIntegration",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.test",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFixtures",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFunctional",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.main",
+      "languageLevel": 8
+    },
+    {
+      "name": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testIntegration",
+      "languageLevel": 8
+    }
+  ]
+}

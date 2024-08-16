@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+    </style>
+    <meta charset="utf-8">
+    <title>detekt report</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            font-weight: 600;
+            width: fit-content;
+            background: -webkit-linear-gradient(left, rgba(105, 33, 224, 1), rgba(247, 44, 67, 1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            font-weight: 400;
+            background: rgb(105, 33, 224);
+            background: linear-gradient(90deg, rgba(105, 33, 224, 0.8) 0%, rgba(158, 41, 156, 0.8) 50%, rgba(247, 44, 67, 0.8) 100%);
+            padding: 0.2em;
+            color: #ffffff;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, rgba(105, 33, 224, 0.4) 0%, rgba(158, 41, 156, 0.4) 50%, rgba(247, 44, 67, 0.4) 100%);
+            padding: 0.5em;
+            border-radius: 4px;
+        }
+
+        .rule-container {
+            background: linear-gradient(90deg, rgba(105, 33, 224, 0.2) 0%, rgba(158, 41, 156, 0.2) 100%);
+            border-radius: 4px;
+            padding-left: 1em;
+            padding-bottom: 0.3em;
+            padding-top: 0.3em;
+            padding-right: 1em;
+            line-height: 1.5em;
+            margin-bottom: 8px;
+            margin-top: 8px;
+        }
+
+        .rule {
+            font-family: Arial, sans-serif;
+            padding: 0.3em;
+            font-weight: 600;
+            border-radius: 3px;
+        }
+
+        .description {
+            font-family: Arial, sans-serif;
+            color: #000000;
+            padding: 0.3em;
+        }
+
+        .location {
+            font-family: Jetbrains Mono, monospace;
+            font-weight: 500;
+            color: #000000;
+            display: block;
+        }
+
+        .message {
+            font-family: Arial, sans-serif;
+            font-size: 0.8em;
+            color: #444444;
+            display: block;
+            margin-top: 1pt;
+        }
+
+        code {
+            font-family: JetBrains Mono, monospace;
+            font-weight: 400;
+        }
+
+        pre {
+            font-family: JetBrains Mono, monospace;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+            overflow: auto;
+        }
+
+        .lineno {
+            margin-right: 24px;
+            color: #9771c3;
+            background-color: rgba(230, 211, 243, 0.51);
+        }
+
+        .error {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AwCFR4T/3uLMgAAADxJREFUCNdNyLERQEAABMCjL4lQwIzcjErpguAL+C9AvgKJDbeD/PRpLdm35Hm+MU+cB+tCKaJW4L4YBy+CAiLJrFs9mgAAAABJRU5ErkJggg==) bottom repeat-x;
+        }
+
+        .exception {
+            color: #b60808;
+            display: inline-block;
+            background-color: #ecdada;
+            border-color: #b60808;
+            border-radius: 10px;
+            border: solid 2px;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="225" height="53" viewBox="0 0 225 53" fill="none"
+     style="padding-top: 8px">
+    <path d="M88.8883 42.2665V7.99487H81.6954V20.389C79.9918 18.3703 77.6257 16.6332 73.7926 16.6332C67.7828 16.6332 62.2461 21.2341 62.2461 29.6377V29.7316C62.2461 38.1352 67.8774 42.736 73.7926 42.736C77.5311 42.736 79.9445 40.9989 81.6954 38.6516V42.2665H88.8883ZM81.79 29.7316C81.79 33.9099 78.998 36.6798 75.6382 36.6798C72.2783 36.6798 69.439 33.9099 69.439 29.7316V29.6377C69.439 25.4124 72.2783 22.6894 75.6382 22.6894C78.998 22.6894 81.79 25.4593 81.79 29.6377V29.7316Z"
+          fill="#222222"/>
+    <path d="M120.325 30.3888V30.2949C120.325 23.1589 116.444 16.6332 107.974 16.6332C100.591 16.6332 95.4334 22.5486 95.4334 29.7316V29.8254C95.4334 37.5248 101.065 42.8299 108.683 42.8299C113.274 42.8299 116.681 41.0459 119.047 38.1352L114.93 34.5202C112.942 36.3511 111.192 37.1023 108.778 37.1023C105.56 37.1023 103.289 35.4122 102.579 32.1728H120.23C120.277 31.5156 120.325 31.093 120.325 30.3888ZM113.321 27.7128H102.484C103.052 24.4734 104.992 22.3608 107.974 22.3608C111.002 22.3608 112.895 24.5204 113.321 27.7128Z"
+          fill="#222222"/>
+    <path d="M141.278 41.2337V35.5061C140.237 36.0695 139.054 36.3981 137.729 36.3981C136.12 36.3981 135.41 35.6 135.41 33.9568V23.2059H141.373V17.1027H135.41V10.6709H128.217V17.1027H125.189V23.2059H128.217V35.1305C128.217 40.952 131.199 42.6891 135.599 42.6891C138.013 42.6891 139.764 42.1257 141.278 41.2337Z"
+          fill="#222222"/>
+    <path d="M172.008 30.3888V30.2949C172.008 23.1589 168.128 16.6332 159.657 16.6332C152.275 16.6332 147.117 22.5486 147.117 29.7316V29.8254C147.117 37.5248 152.748 42.8299 160.367 42.8299C164.958 42.8299 168.365 41.0459 170.731 38.1352L166.614 34.5202C164.626 36.3511 162.875 37.1023 160.462 37.1023C157.244 37.1023 154.973 35.4122 154.263 32.1728H171.914C171.961 31.5156 172.008 31.093 172.008 30.3888ZM165.005 27.7128H154.168C154.736 24.4734 156.676 22.3608 159.657 22.3608C162.686 22.3608 164.579 24.5204 165.005 27.7128Z"
+          fill="#222222"/>
+    <path d="M203.278 42.2665L193.293 27.0086L202.947 17.1027H194.334L185.911 26.2574V7.99487H178.718V42.2665H185.911V34.6141L188.419 31.985L195.044 42.2665H203.278Z"
+          fill="#222222"/>
+    <path d="M224.905 41.2337V35.5061C223.864 36.0695 222.681 36.3981 221.356 36.3981C219.747 36.3981 219.037 35.6 219.037 33.9568V23.2059H225V17.1027H219.037V10.6709H211.844V17.1027H208.816V23.2059H211.844V35.1305C211.844 40.952 214.826 42.6891 219.227 42.6891C221.64 42.6891 223.391 42.1257 224.905 41.2337Z"
+          fill="#222222"/>
+    <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M2.18611 0C0.978755 0 0 0.978755 0 2.18611V40.771C0 41.9783 0.978755 42.9571 2.18611 42.9571H24.2534C25.6525 42.9571 26.6258 41.5473 26.3774 40.1705C26.2109 39.2481 26.124 38.2981 26.124 37.3279C26.124 28.5443 33.2445 21.4239 42.028 21.4239C42.8689 21.4239 43.6945 21.4892 44.5001 21.6149C45.8578 21.8268 47.22 20.8585 47.22 19.4844V2.18611C47.22 0.978755 46.2412 0 45.0339 0H2.18611Z"
+          fill="url(#paint0_linear)"/>
+    <path d="M55.3358 48.6166L54.7673 48.0481L53.2421 46.5229L52.9516 46.2324C52.2427 45.5234 52.1855 44.4067 52.673 43.5306C53.6299 41.8109 54.1762 39.833 54.1762 37.7293C54.1762 32.9104 51.3147 28.7499 47.2029 26.8501C46.5196 26.5344 45.8024 26.2808 45.0573 26.0974C44.3636 25.9268 43.6467 25.8164 42.9118 25.7727C42.6749 25.7587 42.4369 25.7495 42.1966 25.7495C38.5166 25.7495 35.2203 27.4188 33.0211 30.0381C31.9784 31.2802 31.1838 32.7357 30.7114 34.3293C30.3916 35.4079 30.217 36.5481 30.217 37.7291C30.217 38.0293 30.2319 38.3259 30.2537 38.6205C30.3082 39.3559 30.4265 40.0733 30.6082 40.766C30.8038 41.5117 31.0689 42.2296 31.3974 42.9116C33.3332 46.9295 37.4465 49.7089 42.1967 49.7089C43.957 49.7089 45.6291 49.3259 47.1357 48.6403C47.9841 48.2543 49.0046 48.3536 49.6636 49.0127L50.0894 49.4385L51.6301 50.9794L52.3016 51.6509C52.7205 52.0699 53.2697 52.2794 53.8186 52.2794C54.3677 52.2794 54.9169 52.0699 55.3357 51.6509C56.1738 50.8129 56.1738 49.4544 55.3358 48.6166ZM42.1967 45.418C39.9525 45.418 37.93 44.451 36.5232 42.9122C35.9485 42.2836 35.4772 41.5594 35.135 40.7667C34.845 40.0954 34.6493 39.3746 34.5617 38.6211C34.5277 38.3283 34.5084 38.0314 34.5084 37.7297C34.5084 33.4903 37.9574 30.0413 42.1968 30.0413C42.4379 30.0413 42.6762 30.0539 42.912 30.0756C43.6638 30.1455 44.3837 30.3242 45.0576 30.5956C45.8458 30.9127 46.5689 31.3564 47.2031 31.902C48.8434 33.3131 49.8852 35.4015 49.8852 37.7297C49.885 41.9688 46.4361 45.418 42.1967 45.418Z"
+          fill="url(#paint1_linear)"/>
+    <path d="M9.9936 25.6979C9.34217 25.6979 8.84618 25.4958 8.50566 25.0914C8.16514 24.6709 7.99487 24.1695 7.99487 23.5873V23.4903C7.99487 22.908 8.16514 22.4147 8.50566 22.0104C8.84618 21.5899 9.34217 21.3796 9.9936 21.3796C10.645 21.3796 11.141 21.5899 11.4815 22.0104C11.8221 22.4147 11.9923 22.908 11.9923 23.4903V23.5873C11.9923 24.1695 11.8221 24.6709 11.4815 25.0914C11.141 25.4958 10.645 25.6979 9.9936 25.6979ZM8.17254 10.8158V7.99487H11.8147V10.8158L10.6598 19.1612H9.32736L8.17254 10.8158Z"
+          fill="white"/>
+    <path d="M20.2729 25.6979C19.6215 25.6979 19.1255 25.4958 18.785 25.0914C18.4444 24.6709 18.2742 24.1695 18.2742 23.5873V23.4903C18.2742 22.908 18.4444 22.4147 18.785 22.0104C19.1255 21.5899 19.6215 21.3796 20.2729 21.3796C20.9243 21.3796 21.4203 21.5899 21.7608 22.0104C22.1014 22.4147 22.2716 22.908 22.2716 23.4903V23.5873C22.2716 24.1695 22.1014 24.6709 21.7608 25.0914C21.4203 25.4958 20.9243 25.6979 20.2729 25.6979ZM18.4518 10.8158V7.99487H22.094V10.8158L20.9391 19.1612H19.6067L18.4518 10.8158Z"
+          fill="white"/>
+    <defs>
+        <linearGradient id="paint0_linear" x1="5.222e-07" y1="41.3361" x2="51.982" y2="33.29"
+                        gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7942EE"/>
+            <stop offset="1" stop-color="#FF4651"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear" x1="53.0121" y1="51.5465" x2="60.9801" y2="30.2423"
+                        gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7942EE"/>
+            <stop offset="1" stop-color="#FF4651"/>
+        </linearGradient>
+    </defs>
+</svg>
+
+<h2>Metrics</h2>
+
+<div>
+  <ul>
+    <li>221 number of properties</li>
+    <li>170 number of functions</li>
+    <li>56 number of classes</li>
+    <li>11 number of packages</li>
+    <li>47 number of kt files</li>
+  </ul>
+</div>
+
+
+<h2>Complexity Report</h2>
+
+<div>
+  <ul>
+    <li>4,755 lines of code (loc)</li>
+    <li>3,967 source lines of code (sloc)</li>
+    <li>3,043 logical lines of code (lloc)</li>
+    <li>37 comment lines of code (cloc)</li>
+    <li>315 cyclomatic complexity (mcc)</li>
+    <li>100 cognitive complexity</li>
+    <li>71 number of total code smells</li>
+    <li>0% comment source ratio</li>
+    <li>103 mcc per 1,000 lloc</li>
+    <li>23 code smells per 1,000 lloc</li>
+  </ul>
+</div>
+
+
+<h2>Findings</h2>
+<div>Total: 71
+  <h3>complexity: 15</h3>
+  <details id="LargeClass" open="open">
+    <summary class="rule-container"><span class="rule">LargeClass: 1 </span><span class="description">One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#largeclass">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt:27:16</span><span class="message">Class GitTagTest is too large. Consider splitting it into smaller pieces.</span>
+        <pre><code><span class="lineno">  24 </span>import kotlin.test.Test
+<span class="lineno">  25 </span>import org.eclipse.jgit.lib.Ref
+<span class="lineno">  26 </span>
+<span class="lineno">  27 </span>internal class <span class="error">GitTagTest</span> {
+<span class="lineno">  28 </span>
+<span class="lineno">  29 </span>    @Test
+<span class="lineno">  30 </span>    fun `tags in repo`() {
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="LongMethod" open="open">
+    <summary class="rule-container"><span class="rule">LongMethod: 8 </span><span class="description">One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#longmethod">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/CalculatedVersion.kt:8:14</span><span class="message">The function calculatedVersion is too long (85). The maximum length is 60.</span>
+        <pre><code><span class="lineno">   5 </span>import com.javiersc.semver.project.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
+<span class="lineno">   6 </span>
+<span class="lineno">   7 </span>@Suppress(&quot;ComplexMethod&quot;)
+<span class="lineno">   8 </span>internal fun <span class="error">calculatedVersion</span>(
+<span class="lineno">   9 </span>    stageProperty: String?,
+<span class="lineno">  10 </span>    scopeProperty: String?,
+<span class="lineno">  11 </span>    isCreatingSemverTag: Boolean,
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt:492:9</span><span class="message">The function version tags in current branch is too long (85). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 489 </span>    }
+<span class="lineno"> 490 </span>
+<span class="lineno"> 491 </span>    @Test
+<span class="lineno"> 492 </span>    fun <span class="error">`version tags in current branch`</span>() {
+<span class="lineno"> 493 </span>        initialCommitAnd {
+<span class="lineno"> 494 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 495 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt:587:9</span><span class="message">The function version tags sorted by semver is too long (85). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 584 </span>    }
+<span class="lineno"> 585 </span>
+<span class="lineno"> 586 </span>    @Test
+<span class="lineno"> 587 </span>    fun <span class="error">`version tags sorted by semver`</span>() {
+<span class="lineno"> 588 </span>        initialCommitAnd {
+<span class="lineno"> 589 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 590 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt:685:9</span><span class="message">The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 682 </span>    }
+<span class="lineno"> 683 </span>
+<span class="lineno"> 684 </span>    @Test
+<span class="lineno"> 685 </span>    fun <span class="error">`version tags sorted by timeline or semver 1`</span>() {
+<span class="lineno"> 686 </span>        initialCommitAnd {
+<span class="lineno"> 687 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 688 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt:787:9</span><span class="message">The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 784 </span>    }
+<span class="lineno"> 785 </span>
+<span class="lineno"> 786 </span>    @Test
+<span class="lineno"> 787 </span>    fun <span class="error">`version tags sorted by timeline or semver 2`</span>() {
+<span class="lineno"> 788 </span>        initialCommitAnd {
+<span class="lineno"> 789 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 790 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt:976:9</span><span class="message">The function last version tag in current branch is too long (71). The maximum length is 60.</span>
+        <pre><code><span class="lineno"> 973 </span>    }
+<span class="lineno"> 974 </span>
+<span class="lineno"> 975 </span>    @Test
+<span class="lineno"> 976 </span>    fun <span class="error">`last version tag in current branch`</span>() {
+<span class="lineno"> 977 </span>        initialCommitAnd {
+<span class="lineno"> 978 </span>            git.tag().setName(&quot;hello&quot;).call()
+<span class="lineno"> 979 </span>            git.tag().setName(&quot;vhello&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/MassiveTagsInSameCommitTest.kt:11:9</span><span class="message">The function massive tags in same commit is too long (67). The maximum length is 60.</span>
+        <pre><code><span class="lineno">   8 </span>
+<span class="lineno">   9 </span>    @Test
+<span class="lineno">  10 </span>    @Suppress(&quot;ComplexMethod&quot;)
+<span class="lineno">  11 </span>    fun <span class="error">`massive tags in same commit`</span>() {
+<span class="lineno">  12 </span>        gradleTestKitTest(&quot;examples/one-project&quot;) {
+<span class="lineno">  13 </span>            Git.init().setDirectory(projectDir).call()
+<span class="lineno">  14 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/TagsOrderTest.kt:11:9</span><span class="message">The function random is too long (63). The maximum length is 60.</span>
+        <pre><code><span class="lineno">   8 </span>internal class TagsOrderTest : GradleTestKitTest() {
+<span class="lineno">   9 </span>
+<span class="lineno">  10 </span>    @Test
+<span class="lineno">  11 </span>    fun <span class="error">random</span>() {
+<span class="lineno">  12 </span>        gradleTestKitTest(&quot;tags-order/random&quot;) {
+<span class="lineno">  13 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  14 </span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="LongParameterList" open="open">
+    <summary class="rule-container"><span class="rule">LongParameterList: 2 </span><span class="description">The more parameters a function has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer functions with short parameter lists.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#longparameterlist">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/CalculatedVersion.kt:8:31</span><span class="message">The function calculatedVersion(stageProperty: String?, scopeProperty: String?, isCreatingSemverTag: Boolean, lastSemverMajorInCurrentBranch: Int, lastSemverMinorInCurrentBranch: Int, lastSemverPatchInCurrentBranch: Int, lastSemverStageInCurrentBranch: String?, lastSemverNumInCurrentBranch: Int?, versionTagsInCurrentBranch: List&lt;String&gt;, clean: Boolean, checkClean: Boolean, lastCommitInCurrentBranch: String?, commitsInCurrentBranch: List&lt;String&gt;, headCommit: String, lastVersionCommitInCurrentBranch: String?) has too many parameters. The current threshold is set to 6.</span>
+        <pre><code><span class="lineno">   5 </span>import com.javiersc.semver.project.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
+<span class="lineno">   6 </span>
+<span class="lineno">   7 </span>@Suppress(&quot;ComplexMethod&quot;)
+<span class="lineno">   8 </span>internal fun calculatedVersion<span class="error">(</span>
+<span class="lineno">   9 </span><span class="error">    stageProperty: String?,</span>
+<span class="lineno">  10 </span><span class="error">    scopeProperty: String?,</span>
+<span class="lineno">  11 </span><span class="error">    isCreatingSemverTag: Boolean,</span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/CalculatedVersion.kt:118:44</span><span class="message">The function calculateAdditionalVersionData(clean: Boolean, checkClean: Boolean, lastCommitInCurrentBranch: String?, commitsInCurrentBranch: List&lt;String&gt;, isThereVersionTags: Boolean, headCommit: String, lastVersionCommitInCurrentBranch: String?) has too many parameters. The current threshold is set to 6.</span>
+        <pre><code><span class="lineno"> 115 </span>    return calculatedVersion
+<span class="lineno"> 116 </span>}
+<span class="lineno"> 117 </span>
+<span class="lineno"> 118 </span>internal fun calculateAdditionalVersionData<span class="error">(</span>
+<span class="lineno"> 119 </span><span class="error">    clean: Boolean = true,</span>
+<span class="lineno"> 120 </span><span class="error">    checkClean: Boolean = true,</span>
+<span class="lineno"> 121 </span><span class="error">    lastCommitInCurrentBranch: String?,</span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="TooManyFunctions" open="open">
+    <summary class="rule-container"><span class="rule">TooManyFunctions: 4 </span><span class="description">Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage too many things at once. Extract functionality which clearly belongs together.</span></summary>
+<a href="https://detekt.dev/docs/rules/complexity#toomanyfunctions">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt:26:16</span><span class="message">Class 'GitCache' with '13' functions detected. Defined threshold inside classes is set to '11'</span>
+        <pre><code><span class="lineno">  23 </span>
+<span class="lineno">  24 </span>private var gitCache: GitCache? = null
+<span class="lineno">  25 </span>
+<span class="lineno">  26 </span>internal class <span class="error">GitCache</span>
+<span class="lineno">  27 </span>private constructor(
+<span class="lineno">  28 </span>    private val gitDir: File,
+<span class="lineno">  29 </span>    maxCount: Provider&lt;Int&gt;? = null,
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitRefGitExtensions.kt:1:1</span><span class="message">File '/home/runner/work/semver-gradle-plugin/semver-gradle-plugin/semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitRefGitExtensions.kt' with '11' functions detected. Defined threshold inside files is set to '11'</span>
+        <pre><code><span class="lineno">   1 </span><span class="error">package com.javiersc.semver.project.gradle.plugin.internal.git</span>
+<span class="lineno">   2 </span>
+<span class="lineno">   3 </span>import com.javiersc.semver.Version
+<span class="lineno">   4 </span>import org.eclipse.jgit.api.Git
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:26:16</span><span class="message">Class 'MultiProjectExampleTest' with '16' functions detected. Defined threshold inside classes is set to '11'</span>
+        <pre><code><span class="lineno">  23 </span> * - `library-nine` uses no prefix
+<span class="lineno">  24 </span> * - `library-ten` uses no prefix
+<span class="lineno">  25 </span> */
+<span class="lineno">  26 </span>internal class <span class="error">MultiProjectExampleTest</span> : GradleTestKitTest() {
+<span class="lineno">  27 </span>
+<span class="lineno">  28 </span>    @Test
+<span class="lineno">  29 </span>    fun `multi project`() {
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:12:16</span><span class="message">Class 'OneProjectExampleTest' with '13' functions detected. Defined threshold inside classes is set to '11'</span>
+        <pre><code><span class="lineno">   9 </span>import org.eclipse.jgit.api.Git
+<span class="lineno">  10 </span>import org.gradle.testkit.runner.GradleRunner
+<span class="lineno">  11 </span>
+<span class="lineno">  12 </span>internal class <span class="error">OneProjectExampleTest</span> : GradleTestKitTest() {
+<span class="lineno">  13 </span>
+<span class="lineno">  14 </span>    @Test
+<span class="lineno">  15 </span>    fun `one project`() {
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>exceptions: 1</h3>
+  <details id="SwallowedException" open="open">
+    <summary class="rule-container"><span class="rule">SwallowedException: 1 </span><span class="description">The caught exception is swallowed. The original exception could be lost.</span></summary>
+<a href="https://detekt.dev/docs/rules/exceptions#swallowedexception">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/services/GitBuildService.kt:111:14</span><span class="message">The caught exception is swallowed. The original exception could be lost.</span>
+        <pre><code><span class="lineno"> 108 </span>internal fun Git.hasCommits(): Boolean =
+<span class="lineno"> 109 </span>    try {
+<span class="lineno"> 110 </span>        commitsInCurrentBranchRevCommit.isNotEmpty()
+<span class="lineno"> 111 </span>    } catch (<span class="error">exception: NoHeadException</span>) {
+<span class="lineno"> 112 </span>        false
+<span class="lineno"> 113 </span>    }
+<span class="lineno"> 114 </span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>naming: 50</h3>
+  <details id="FunctionNaming" open="open">
+    <summary class="rule-container"><span class="rule">FunctionNaming: 47 </span><span class="description">Function names should follow the naming convention set in the configuration.</span></summary>
+<a href="https://detekt.dev/docs/rules/naming#functionnaming">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GitHubVariablesTest.kt:41:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  38 </span>    }
+<span class="lineno">  39 </span>
+<span class="lineno">  40 </span>    @Test
+<span class="lineno">  41 </span>    fun <span class="error">`setting GITHUB_ENV`</span>() {
+<span class="lineno">  42 </span>        gradleTestKitTest(&quot;github-variables&quot;) {
+<span class="lineno">  43 </span>            setEnvironmentVariables()
+<span class="lineno">  44 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GitHubVariablesTest.kt:106:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 103 </span>    }
+<span class="lineno"> 104 </span>
+<span class="lineno"> 105 </span>    @Test
+<span class="lineno"> 106 </span>    fun <span class="error">`setting GITHUB_OUTPUT`</span>() {
+<span class="lineno"> 107 </span>        gradleTestKitTest(&quot;github-variables&quot;) {
+<span class="lineno"> 108 </span>            setEnvironmentVariables()
+<span class="lineno"> 109 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:14:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  11 </span>class GradleFeaturesTest : GradleTestKitTest() {
+<span class="lineno">  12 </span>
+<span class="lineno">  13 </span>    @Test
+<span class="lineno">  14 </span>    fun <span class="error">`android configuration cache clean v1_0_0`</span>() {
+<span class="lineno">  15 </span>        gradleTestKitTest(&quot;gradle-features/android configuration cache clean v1_0_0&quot;) {
+<span class="lineno">  16 </span>            beforeTest()
+<span class="lineno">  17 </span>            testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:22:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  19 </span>    }
+<span class="lineno">  20 </span>
+<span class="lineno">  21 </span>    @Test
+<span class="lineno">  22 </span>    fun <span class="error">`android build cache clean v1_0_0`</span>() {
+<span class="lineno">  23 </span>        gradleTestKitTest(&quot;gradle-features/android build cache clean v1_0_0&quot;) {
+<span class="lineno">  24 </span>            beforeTest()
+<span class="lineno">  25 </span>            testBuildCache()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:30:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  27 </span>    }
+<span class="lineno">  28 </span>
+<span class="lineno">  29 </span>    @Test
+<span class="lineno">  30 </span>    fun <span class="error">`build cache clean v1_0_0`</span>() {
+<span class="lineno">  31 </span>        gradleTestKitTest(&quot;gradle-features/build cache clean v1_0_0&quot;) {
+<span class="lineno">  32 </span>            beforeTest()
+<span class="lineno">  33 </span>            testBuildCache()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:38:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  35 </span>    }
+<span class="lineno">  36 </span>
+<span class="lineno">  37 </span>    @Test
+<span class="lineno">  38 </span>    fun <span class="error">`configuration cache clean v1_0_0`</span>() {
+<span class="lineno">  39 </span>        gradleTestKitTest(&quot;gradle-features/configuration cache clean v1_0_0&quot;) {
+<span class="lineno">  40 </span>            beforeTest()
+<span class="lineno">  41 </span>            testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:46:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  43 </span>    }
+<span class="lineno">  44 </span>
+<span class="lineno">  45 </span>    @Test
+<span class="lineno">  46 </span>    fun <span class="error">`project isolation clean v1_0_0`</span>() {
+<span class="lineno">  47 </span>        gradleTestKitTest(&quot;gradle-features/project isolation clean v1_0_0&quot;) { beforeTest() }
+<span class="lineno">  48 </span>    }
+<span class="lineno">  49 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/MassiveTagsInSameCommitTest.kt:11:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">   8 </span>
+<span class="lineno">   9 </span>    @Test
+<span class="lineno">  10 </span>    @Suppress(&quot;ComplexMethod&quot;)
+<span class="lineno">  11 </span>    fun <span class="error">`massive tags in same commit`</span>() {
+<span class="lineno">  12 </span>        gradleTestKitTest(&quot;examples/one-project&quot;) {
+<span class="lineno">  13 </span>            Git.init().setDirectory(projectDir).call()
+<span class="lineno">  14 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/PropertiesTest.kt:31:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  28 </span>    }
+<span class="lineno">  29 </span>
+<span class="lineno">  30 </span>    @Test
+<span class="lineno">  31 </span>    fun <span class="error">`stage and scope`</span>() {
+<span class="lineno">  32 </span>        runPropertyTestsBasedOnResourceDirectory(&quot;stage+scope&quot;)
+<span class="lineno">  33 </span>    }
+<span class="lineno">  34 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/PushSemverTagTaskTest.kt:18:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  15 </span>class PushSemverTagTaskTest : GradleTestKitTest() {
+<span class="lineno">  16 </span>
+<span class="lineno">  17 </span>    @Test
+<span class="lineno">  18 </span>    fun <span class="error">`push tag`</span>() {
+<span class="lineno">  19 </span>        gradleTestKitTest(&quot;push-tag&quot;) {
+<span class="lineno">  20 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  21 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt:12:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">   9 </span>internal class VersionBuildDirTest : GradleTestKitTest() {
+<span class="lineno">  10 </span>
+<span class="lineno">  11 </span>    @Test
+<span class="lineno">  12 </span>    fun <span class="error">`clean v1_0_0`</span>() {
+<span class="lineno">  13 </span>        gradleTestKitTest(&quot;version-build-dir/clean v1_0_0&quot;) {
+<span class="lineno">  14 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  15 </span>            git.tag().setObjectId(git.headRevCommitInBranch).setName(&quot;v1.0.0&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt:24:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  21 </span>    }
+<span class="lineno">  22 </span>
+<span class="lineno">  23 </span>    @Test
+<span class="lineno">  24 </span>    fun <span class="error">`clean v1_0_0 configuration phase`</span>() {
+<span class="lineno">  25 </span>        gradleTestKitTest(&quot;version-build-dir/clean v1_0_0 configuration phase&quot;) {
+<span class="lineno">  26 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  27 </span>            git.tag().setObjectId(git.headRevCommitInBranch).setName(&quot;v1.0.0&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt:38:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  35 </span>    }
+<span class="lineno">  36 </span>
+<span class="lineno">  37 </span>    @Test
+<span class="lineno">  38 </span>    fun <span class="error">`clean without tag in current commit - hash`</span>() {
+<span class="lineno">  39 </span>        gradleTestKitTest(&quot;version-build-dir/clean-with-no-tag-current-commit (hash)&quot;) {
+<span class="lineno">  40 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  41 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt:49:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  46 </span>    }
+<span class="lineno">  47 </span>
+<span class="lineno">  48 </span>    @Test
+<span class="lineno">  49 </span>    fun <span class="error">`no clean without tag in current commit - dirty`</span>() {
+<span class="lineno">  50 </span>        gradleTestKitTest(&quot;version-build-dir/no-clean-with-no-tag-current-commit (dirty)&quot;) {
+<span class="lineno">  51 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  52 </span>            projectDir.resolve(&quot;new-2.txt&quot;).createNewFile()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt:73:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  70 </span>    }
+<span class="lineno">  71 </span>
+<span class="lineno">  72 </span>    @Test
+<span class="lineno">  73 </span>    fun <span class="error">`no clean createSemverTag should fail`</span>() {
+<span class="lineno">  74 </span>        gradleTestKitTest(&quot;version-build-dir/no-clean-with-no-tag-current-commit (dirty)&quot;) {
+<span class="lineno">  75 </span>            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+<span class="lineno">  76 </span>            projectDir.resolve(&quot;new-2.txt&quot;).createNewFile()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:29:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  26 </span>internal class MultiProjectExampleTest : GradleTestKitTest() {
+<span class="lineno">  27 </span>
+<span class="lineno">  28 </span>    @Test
+<span class="lineno">  29 </span>    fun <span class="error">`multi project`</span>() {
+<span class="lineno">  30 </span>        gradleTestKitTest(&quot;examples/multi-project&quot;) {
+<span class="lineno">  31 </span>            `0_ Initial repo state`()
+<span class="lineno">  32 </span>            `1_ Run gradlew assemble`()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:49:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  46 </span>        }
+<span class="lineno">  47 </span>    }
+<span class="lineno">  48 </span>
+<span class="lineno">  49 </span>    private fun GradleRunner.<span class="error">`0_ Initial repo state`</span>() {
+<span class="lineno">  50 </span>        Git.init().setDirectory(projectDir).call()
+<span class="lineno">  51 </span>        projectDir.createGitIgnore()
+<span class="lineno">  52 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:68:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  65 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno">  66 </span>    }
+<span class="lineno">  67 </span>
+<span class="lineno">  68 </span>    private fun GradleRunner.<span class="error">`1_ Run gradlew assemble`</span>() {
+<span class="lineno">  69 </span>        gradlew(&quot;assemble&quot;)
+<span class="lineno">  70 </span>
+<span class="lineno">  71 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;1.0.0&quot;, Insignificant.Dirty)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:83:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  80 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Dirty)
+<span class="lineno">  81 </span>    }
+<span class="lineno">  82 </span>
+<span class="lineno">  83 </span>    private fun GradleRunner.<span class="error">`2_ Create a new file in library-one-a and run gradlew assemble`</span>() {
+<span class="lineno">  84 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new2.txt&quot;).createNewFile()
+<span class="lineno">  85 </span>
+<span class="lineno">  86 </span>        gradlew(&quot;assemble&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:101:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  98 </span>    }
+<span class="lineno">  99 </span>
+<span class="lineno"> 100 </span>    private fun GradleRunner
+<span class="lineno"> 101 </span>        .<span class="error">`3_ Add the new file to git and commit it, then run gradlew createSemverTag with tagPrefix=a`</span>() {
+<span class="lineno"> 102 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 103 </span>        git.commit().setMessage(&quot;Add new2 to library-one-a&quot;).call()
+<span class="lineno"> 104 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:119:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 116 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 117 </span>    }
+<span class="lineno"> 118 </span>
+<span class="lineno"> 119 </span>    private fun GradleRunner.<span class="error">`4_ Run gradlew assemble`</span>() {
+<span class="lineno"> 120 </span>        gradlew(&quot;assemble&quot;)
+<span class="lineno"> 121 </span>
+<span class="lineno"> 122 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;1.0.1&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:135:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 132 </span>    }
+<span class="lineno"> 133 </span>
+<span class="lineno"> 134 </span>    private fun GradleRunner
+<span class="lineno"> 135 </span>        .<span class="error">`5_ Create, add and commit a new file in library-one-a, then run gradlew assemble`</span>() {
+<span class="lineno"> 136 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new5.txt&quot;).createNewFile()
+<span class="lineno"> 137 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 138 </span>        git.commit().setMessage(&quot;Add new5 to library-one-a&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:154:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 151 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 152 </span>    }
+<span class="lineno"> 153 </span>
+<span class="lineno"> 154 </span>    private fun GradleRunner.<span class="error">`6_ Run gradlew createSemverTag tagPrefix=a`</span>() {
+<span class="lineno"> 155 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.tagPrefix=a&quot;)
+<span class="lineno"> 156 </span>
+<span class="lineno"> 157 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;1.0.2&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:170:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 167 </span>    }
+<span class="lineno"> 168 </span>
+<span class="lineno"> 169 </span>    private fun GradleRunner
+<span class="lineno"> 170 </span>        .<span class="error">`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`</span>() {
+<span class="lineno"> 171 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new7.txt&quot;).createNewFile()
+<span class="lineno"> 172 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 173 </span>        git.commit().setMessage(&quot;Add new7 to library-one-a&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:189:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 186 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 187 </span>    }
+<span class="lineno"> 188 </span>
+<span class="lineno"> 189 </span>    private fun GradleRunner.<span class="error">`8_ Run gradlew createSemverTag stage=beta tagPrefix=a`</span>() {
+<span class="lineno"> 190 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.stage=beta&quot;, &quot;-Psemver.tagPrefix=a&quot;)
+<span class="lineno"> 191 </span>
+<span class="lineno"> 192 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;1.0.3-beta.1&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:205:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 202 </span>    }
+<span class="lineno"> 203 </span>
+<span class="lineno"> 204 </span>    private fun GradleRunner
+<span class="lineno"> 205 </span>        .<span class="error">`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`</span>() {
+<span class="lineno"> 206 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new9.txt&quot;).createNewFile()
+<span class="lineno"> 207 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 208 </span>        git.commit().setMessage(&quot;Add new9 to library-one-a&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:225:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 222 </span>    }
+<span class="lineno"> 223 </span>
+<span class="lineno"> 224 </span>    private fun GradleRunner
+<span class="lineno"> 225 </span>        .<span class="error">`10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`</span>() {
+<span class="lineno"> 226 </span>        gradlew(
+<span class="lineno"> 227 </span>            &quot;createSemverTag&quot;,
+<span class="lineno"> 228 </span>            &quot;-Psemver.stage=final&quot;,
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:245:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 242 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 243 </span>    }
+<span class="lineno"> 244 </span>
+<span class="lineno"> 245 </span>    private fun GradleRunner.<span class="error">`11_ Run gradlew printSemver stage=snapshot tagPrefix=a`</span>() {
+<span class="lineno"> 246 </span>        gradlew(&quot;printSemver&quot;, &quot;-Psemver.stage=snapshot&quot;, &quot;-Psemver.tagPrefix=a&quot;)
+<span class="lineno"> 247 </span>
+<span class="lineno"> 248 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;2.0.1-SNAPSHOT&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:260:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 257 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 258 </span>    }
+<span class="lineno"> 259 </span>
+<span class="lineno"> 260 </span>    private fun GradleRunner.<span class="error">`12_ Run gradlew createSemverTag scope=minor tagPrefix=b`</span>() {
+<span class="lineno"> 261 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.scope=minor&quot;, &quot;-Psemver.tagPrefix=b&quot;)
+<span class="lineno"> 262 </span>
+<span class="lineno"> 263 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;2.0.0&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:275:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 272 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 273 </span>    }
+<span class="lineno"> 274 </span>
+<span class="lineno"> 275 </span>    private fun GradleRunner.<span class="error">`13_ Run gradlew createSemverTag stage=rc tagPrefix=c`</span>() {
+<span class="lineno"> 276 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.stage=rc&quot;, &quot;-Psemver.tagPrefix=c&quot;)
+<span class="lineno"> 277 </span>
+<span class="lineno"> 278 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;2.0.0&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:290:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 287 </span>        projectDirByName(&quot;library-ten&quot;).assertVersion(&quot;&quot;, &quot;1.0.0&quot;, Insignificant.Hash)
+<span class="lineno"> 288 </span>    }
+<span class="lineno"> 289 </span>
+<span class="lineno"> 290 </span>    private fun GradleRunner.<span class="error">`14_ Run gradlew createSemverTag stage=dev`</span>() {
+<span class="lineno"> 291 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.stage=dev&quot;)
+<span class="lineno"> 292 </span>
+<span class="lineno"> 293 </span>        projectDirByName(&quot;library-one-a&quot;).assertVersion(&quot;a&quot;, &quot;2.0.0&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:15:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  12 </span>internal class OneProjectExampleTest : GradleTestKitTest() {
+<span class="lineno">  13 </span>
+<span class="lineno">  14 </span>    @Test
+<span class="lineno">  15 </span>    fun <span class="error">`one project`</span>() {
+<span class="lineno">  16 </span>        gradleTestKitTest(&quot;examples/one-project&quot;) {
+<span class="lineno">  17 </span>            `0_ Initial repo state`()
+<span class="lineno">  18 </span>            `1_ Run gradlew assemble`()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:32:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  29 </span>        }
+<span class="lineno">  30 </span>    }
+<span class="lineno">  31 </span>
+<span class="lineno">  32 </span>    private fun GradleRunner.<span class="error">`0_ Initial repo state`</span>() {
+<span class="lineno">  33 </span>        Git.init().setDirectory(projectDir).call()
+<span class="lineno">  34 </span>        projectDir.createGitIgnore()
+<span class="lineno">  35 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:48:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  45 </span>        git.commit().setMessage(&quot;Add plugin&quot;).call()
+<span class="lineno">  46 </span>    }
+<span class="lineno">  47 </span>
+<span class="lineno">  48 </span>    private fun GradleRunner.<span class="error">`1_ Run gradlew assemble`</span>() {
+<span class="lineno">  49 </span>        gradlew(&quot;assemble&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+<span class="lineno">  50 </span>
+<span class="lineno">  51 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.0&quot;, Insignificant.Hash)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:54:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  51 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.0&quot;, Insignificant.Hash)
+<span class="lineno">  52 </span>    }
+<span class="lineno">  53 </span>
+<span class="lineno">  54 </span>    private fun GradleRunner.<span class="error">`2_ Create a new file and run gradlew assemble`</span>() {
+<span class="lineno">  55 </span>        projectDir.resolve(&quot;new2.txt&quot;).createNewFile()
+<span class="lineno">  56 </span>
+<span class="lineno">  57 </span>        gradlew(&quot;assemble&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:63:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  60 </span>    }
+<span class="lineno">  61 </span>
+<span class="lineno">  62 </span>    private fun GradleRunner
+<span class="lineno">  63 </span>        .<span class="error">`3_ Add the new file to git, commit it, and run gradlew createSemverTag`</span>() {
+<span class="lineno">  64 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno">  65 </span>        git.commit().setMessage(&quot;Add new2&quot;).call()
+<span class="lineno">  66 </span>
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:72:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  69 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.0&quot;)
+<span class="lineno">  70 </span>    }
+<span class="lineno">  71 </span>
+<span class="lineno">  72 </span>    private fun GradleRunner.<span class="error">`4_ Run gradlew assemble`</span>() {
+<span class="lineno">  73 </span>        gradlew(&quot;assemble&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+<span class="lineno">  74 </span>
+<span class="lineno">  75 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.0&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:78:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  75 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.0&quot;)
+<span class="lineno">  76 </span>    }
+<span class="lineno">  77 </span>
+<span class="lineno">  78 </span>    private fun GradleRunner.<span class="error">`5_ Create and add new file and run`</span>() {
+<span class="lineno">  79 </span>        projectDir.resolve(&quot;new5.txt&quot;).createNewFile()
+<span class="lineno">  80 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno">  81 </span>        git.commit().setMessage(&quot;Add new5&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:87:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  84 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.0&quot;, Insignificant.Hash)
+<span class="lineno">  85 </span>    }
+<span class="lineno">  86 </span>
+<span class="lineno">  87 </span>    private fun GradleRunner.<span class="error">`6_ Run gradlew createSemverTag`</span>() {
+<span class="lineno">  88 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+<span class="lineno">  89 </span>
+<span class="lineno">  90 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.1&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:94:10</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  91 </span>    }
+<span class="lineno">  92 </span>
+<span class="lineno">  93 </span>    private fun GradleRunner
+<span class="lineno">  94 </span>        .<span class="error">`7_ Create and add to git a new file, then run gradlew createSemverTag stage=alpha`</span>() {
+<span class="lineno">  95 </span>        projectDir.resolve(&quot;new7.txt&quot;).createNewFile()
+<span class="lineno">  96 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno">  97 </span>        git.commit().setMessage(&quot;Add new7&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:103:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 100 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.2-alpha.1&quot;)
+<span class="lineno"> 101 </span>    }
+<span class="lineno"> 102 </span>
+<span class="lineno"> 103 </span>    private fun GradleRunner.<span class="error">`8_ Run gradlew createSemverTag stage=beta`</span>() {
+<span class="lineno"> 104 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.stage=beta&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+<span class="lineno"> 105 </span>
+<span class="lineno"> 106 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.2-beta.1&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:109:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 106 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.2-beta.1&quot;)
+<span class="lineno"> 107 </span>    }
+<span class="lineno"> 108 </span>
+<span class="lineno"> 109 </span>    private fun GradleRunner.<span class="error">`9_ Run gradlew createSemverTag stage=final`</span>() {
+<span class="lineno"> 110 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.stage=final&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+<span class="lineno"> 111 </span>
+<span class="lineno"> 112 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.2&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:115:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 112 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.1.2&quot;)
+<span class="lineno"> 113 </span>    }
+<span class="lineno"> 114 </span>
+<span class="lineno"> 115 </span>    private fun GradleRunner.<span class="error">`10_ Run gradlew createSemverTag stage=final scope=major`</span>() {
+<span class="lineno"> 116 </span>        gradlew(
+<span class="lineno"> 117 </span>            &quot;createSemverTag&quot;,
+<span class="lineno"> 118 </span>            &quot;-Psemver.stage=final&quot;,
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt:126:30</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno"> 123 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;1.0.0&quot;)
+<span class="lineno"> 124 </span>    }
+<span class="lineno"> 125 </span>
+<span class="lineno"> 126 </span>    private fun GradleRunner.<span class="error">`11_ Run gradlew createSemverTag stage=snapshot`</span>() {
+<span class="lineno"> 127 </span>        gradlew(&quot;createSemverTag&quot;, &quot;-Psemver.stage=snapshot&quot;, &quot;-Psemver.tagPrefix=v&quot;)
+<span class="lineno"> 128 </span>
+<span class="lineno"> 129 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;1.0.1-SNAPSHOT&quot;)
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testIntegration/kotlin/com/javiersc/semver/project/gradle/plugin/SemverIntegrationTest.kt:20:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  17 </span>class SemverIntegrationTest : GradleProjectTest() {
+<span class="lineno">  18 </span>
+<span class="lineno">  19 </span>    @Test
+<span class="lineno">  20 </span>    fun <span class="error">`given a project which has no git when it builds then it only register semver extension`</span>() {
+<span class="lineno">  21 </span>        gradleProjectTest {
+<span class="lineno">  22 </span>            pluginManager.apply(SemverProjectPlugin::class)
+<span class="lineno">  23 </span>            extensions.findByName(&quot;semver&quot;).shouldNotBeNull()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testIntegration/kotlin/com/javiersc/semver/project/gradle/plugin/SemverIntegrationTest.kt:30:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">  27 </span>    }
+<span class="lineno">  28 </span>
+<span class="lineno">  29 </span>    @Test
+<span class="lineno">  30 </span>    fun <span class="error">`given a project which has commits when it builds then it register semver extension`</span>() {
+<span class="lineno">  31 </span>        val beforeCommitTimestamp: Instant = Instant.now()
+<span class="lineno">  32 </span>        gradleProjectTest {
+<span class="lineno">  33 </span>            projectDir.resolve(&quot;last-tag.txt&quot;).apply {
+</code></pre>
+      </li>
+      <li><span class="location">semver-settings-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/settings/gradle/plugin/MultiProjectTest.kt:11:9</span><span class="message">Function names should match the pattern: [a-z][a-zA-Z0-9]*</span>
+        <pre><code><span class="lineno">   8 </span>internal class MultiProjectTest : GradleTestKitTest() {
+<span class="lineno">   9 </span>
+<span class="lineno">  10 </span>    @Test
+<span class="lineno">  11 </span>    fun <span class="error">`multi project test`</span>() {
+<span class="lineno">  12 </span>        gradleTestKitTest(&quot;multi-project&quot;) {
+<span class="lineno">  13 </span>            val git = Git.init().setDirectory(projectDir).call()
+<span class="lineno">  14 </span>            git.add().addFilepattern(&quot;.&quot;).call()
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="TopLevelPropertyNaming" open="open">
+    <summary class="rule-container"><span class="rule">TopLevelPropertyNaming: 1 </span><span class="description">Top level property names should follow the naming convention set in the projects configuration.</span></summary>
+<a href="https://detekt.dev/docs/rules/naming#toplevelpropertynaming">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/SemverProperty.kt:7:20</span><span class="message">Top level constant names should match the pattern: [A-Z][_A-Z0-9]*</span>
+        <pre><code><span class="lineno">   4 </span>import org.gradle.api.Project
+<span class="lineno">   5 </span>import org.gradle.api.provider.Provider
+<span class="lineno">   6 </span>
+<span class="lineno">   7 </span>internal const val <span class="error">DefaultTagPrefix</span> = &quot;&quot;
+<span class="lineno">   8 </span>
+<span class="lineno">   9 </span>internal val Project.projectTagPrefixProperty: Provider&lt;String&gt;
+<span class="lineno">  10 </span>    get() = getSemverProperty(SemverProperty.ProjectTagPrefix)
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="VariableNaming" open="open">
+    <summary class="rule-container"><span class="rule">VariableNaming: 2 </span><span class="description">Variable names should follow the naming convention set in the projects configuration.</span></summary>
+<a href="https://detekt.dev/docs/rules/naming#variablenaming">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:84:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
+        <pre><code><span class="lineno">  81 </span>        build()
+<span class="lineno">  82 </span>        projectDir.assertVersion(&quot;v&quot;, &quot;0.9.0&quot;, Hash)
+<span class="lineno">  83 </span>
+<span class="lineno">  84 </span>        val <span class="error">LAST_0_9_0_HASH_1</span> = projectDir.resolve(&quot;build/semver/version.txt&quot;).readLines()[1]
+<span class="lineno">  85 </span>        projectDir
+<span class="lineno">  86 </span>            .resolve(&quot;expect-version.txt&quot;)
+<span class="lineno">  87 </span>            .writeText(
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt:100:13</span><span class="message">Variable names should match the pattern: [a-z][A-Za-z0-9]*</span>
+        <pre><code><span class="lineno">  97 </span>        git.commit().setMessage(&quot;Change expect-version again&quot;).call()
+<span class="lineno">  98 </span>
+<span class="lineno">  99 </span>        build()
+<span class="lineno"> 100 </span>        val <span class="error">LAST_0_9_0_HASH_2</span> = projectDir.resolve(&quot;build/semver/version.txt&quot;).readLines()[1]
+<span class="lineno"> 101 </span>
+<span class="lineno"> 102 </span>        LAST_0_9_0_HASH_1.shouldNotBe(LAST_0_9_0_HASH_2)
+<span class="lineno"> 103 </span>
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <h3>style: 5</h3>
+  <details id="ForbiddenComment" open="open">
+    <summary class="rule-container"><span class="rule">ForbiddenComment: 1 </span><span class="description">Flags a forbidden comment.</span></summary>
+<a href="https://detekt.dev/docs/rules/style#forbiddencomment">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt:215:13</span><span class="message">This comment contains 'TODO:' that has been defined as forbidden in detekt.</span>
+        <pre><code><span class="lineno"> 212 </span>
+<span class="lineno"> 213 </span>        internal operator fun invoke(gitDir: File, maxCount: Provider&lt;Int&gt;? = null): GitCache {
+<span class="lineno"> 214 </span>            // val cache: GitCache? = gitCache
+<span class="lineno"> 215 </span>            <span class="error">// TODO: improve in-memory cache as `cache.shouldRefresh()` is flaky</span>
+<span class="lineno"> 216 </span>            // if (cache == null || cache.shouldRefresh() || true) {
+<span class="lineno"> 217 </span>            gitCache = GitCache(gitDir, maxCount)
+<span class="lineno"> 218 </span>            // }
+</code></pre>
+      </li>
+    </ul>
+  </details>
+  <details id="MaxLineLength" open="open">
+    <summary class="rule-container"><span class="rule">MaxLineLength: 4 </span><span class="description">Line detected, which is longer than the defined maximum line length in the code style.</span></summary>
+<a href="https://detekt.dev/docs/rules/style#maxlinelength">Documentation</a>
+    <ul>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:38:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno">  35 </span>            `4_ Run gradlew assemble`()
+<span class="lineno">  36 </span>            `5_ Create, add and commit a new file in library-one-a, then run gradlew assemble`()
+<span class="lineno">  37 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
+<span class="lineno">  38 </span>            <span class="error">`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()</span>
+<span class="lineno">  39 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+<span class="lineno">  40 </span>            `9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()
+<span class="lineno">  41 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:40:13</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno">  37 </span>            `6_ Run gradlew createSemverTag tagPrefix=a`()
+<span class="lineno">  38 </span>            `7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`()
+<span class="lineno">  39 </span>            `8_ Run gradlew createSemverTag stage=beta tagPrefix=a`()
+<span class="lineno">  40 </span>            <span class="error">`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`()</span>
+<span class="lineno">  41 </span>            `10_ Run gradlew createSemverTag stage=final scope=major tagPrefix=a`()
+<span class="lineno">  42 </span>            `11_ Run gradlew printSemver stage=snapshot tagPrefix=a`()
+<span class="lineno">  43 </span>            `12_ Run gradlew createSemverTag scope=minor tagPrefix=b`()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:170:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno"> 167 </span>    }
+<span class="lineno"> 168 </span>
+<span class="lineno"> 169 </span>    private fun GradleRunner
+<span class="lineno"> 170 </span>        <span class="error">.</span>`7_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=alpha tagPrefix=a`() {
+<span class="lineno"> 171 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new7.txt&quot;).createNewFile()
+<span class="lineno"> 172 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 173 </span>        git.commit().setMessage(&quot;Add new7 to library-one-a&quot;).call()
+</code></pre>
+      </li>
+      <li><span class="location">semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt:205:9</span><span class="message">Line detected, which is longer than the defined maximum line length in the code style.</span>
+        <pre><code><span class="lineno"> 202 </span>    }
+<span class="lineno"> 203 </span>
+<span class="lineno"> 204 </span>    private fun GradleRunner
+<span class="lineno"> 205 </span>        <span class="error">.</span>`9_ Create, add to git and commit a new file in library-one-a, then run gradlew createSemverTag stage=final tagPrefix=a`() {
+<span class="lineno"> 206 </span>        projectDirByName(&quot;library-one-a&quot;).resolve(&quot;new9.txt&quot;).createNewFile()
+<span class="lineno"> 207 </span>        git.add().addFilepattern(&quot;.&quot;).call()
+<span class="lineno"> 208 </span>        git.commit().setMessage(&quot;Add new9 to library-one-a&quot;).call()
+</code></pre>
+      </li>
+    </ul>
+  </details>
+</div>
+
+
+generated with <a href="https://detekt.dev/">detekt version 1.22.0</a> on 2023-03-11 14:03:51 UTC.
+
+</body>
+</html>

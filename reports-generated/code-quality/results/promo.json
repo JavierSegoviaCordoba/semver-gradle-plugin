@@ -1,0 +1,757 @@
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`stage and scope`' may contain only letters and digits",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/PropertiesTest.kt",
+      "language": "kotlin",
+      "line": 31,
+      "offset": 9,
+      "length": 17,
+      "code": {
+        "startLine": 29,
+        "length": 17,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `stage and scope`() {\n        runPropertyTestsBasedOnResourceDirectory(\"stage+scope\")\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "f782e6ee45aa92325959a273e7137f0770714d71b25fe640b34cc0d55f79dba6"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`multi project test`' may contain only letters and digits",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-settings-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/settings/gradle/plugin/MultiProjectTest.kt",
+      "language": "kotlin",
+      "line": 11,
+      "offset": 9,
+      "length": 20,
+      "code": {
+        "startLine": 9,
+        "length": 20,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `multi project test`() {\n        gradleTestKitTest(\"multi-project\") {\n            val git = Git.init().setDirectory(projectDir).call()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-settings-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "e3eb2818732639eaa013f00b4eef3ed618da8fb378eaed618f7fb64ef3771ce5"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`configuration cache clean v1_0_0`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt",
+      "language": "kotlin",
+      "line": 38,
+      "offset": 9,
+      "length": 34,
+      "code": {
+        "startLine": 36,
+        "length": 34,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `configuration cache clean v1_0_0`() {\n        gradleTestKitTest(\"gradle-features/configuration cache clean v1_0_0\") {\n            beforeTest()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "6c000e38bd388f78b56867dca3f98690f824fd10356bc7abc18c181f845c8c13"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`android build cache clean v1_0_0`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt",
+      "language": "kotlin",
+      "line": 22,
+      "offset": 9,
+      "length": 34,
+      "code": {
+        "startLine": 20,
+        "length": 34,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `android build cache clean v1_0_0`() {\n        gradleTestKitTest(\"gradle-features/android build cache clean v1_0_0\") {\n            beforeTest()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "8327ae2db52cde46095b2f4b2cc804ffa414b0f4f412633a979e1f78bdc56527"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`project isolation clean v1_0_0`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt",
+      "language": "kotlin",
+      "line": 46,
+      "offset": 9,
+      "length": 32,
+      "code": {
+        "startLine": 44,
+        "length": 32,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `project isolation clean v1_0_0`() {\n        gradleTestKitTest(\"gradle-features/project isolation clean v1_0_0\") { beforeTest() }\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "df6ec63578875d75856cd4210f672adfa08bc609596fab2f14eadefbded72b85"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`build cache clean v1_0_0`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt",
+      "language": "kotlin",
+      "line": 30,
+      "offset": 9,
+      "length": 26,
+      "code": {
+        "startLine": 28,
+        "length": 26,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `build cache clean v1_0_0`() {\n        gradleTestKitTest(\"gradle-features/build cache clean v1_0_0\") {\n            beforeTest()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "82568917e459a44f20e0f387b5f9fe1581dbbb2719b9f2b71f66613660aa1b81"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`android configuration cache clean v1_0_0`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt",
+      "language": "kotlin",
+      "line": 14,
+      "offset": 9,
+      "length": 42,
+      "code": {
+        "startLine": 12,
+        "length": 42,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `android configuration cache clean v1_0_0`() {\n        gradleTestKitTest(\"gradle-features/android configuration cache clean v1_0_0\") {\n            beforeTest()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "0e2be8cf3e97477aa05ebfa6a780bb372e89b512a6769b4fb12f1d0dc4cbaeac"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`no clean createSemverTag should fail`' may contain only letters and digits",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt",
+      "language": "kotlin",
+      "line": 73,
+      "offset": 9,
+      "length": 38,
+      "code": {
+        "startLine": 71,
+        "length": 38,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `no clean createSemverTag should fail`() {\n        gradleTestKitTest(\"version-build-dir/no-clean-with-no-tag-current-commit (dirty)\") {\n            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "a41a8aa745c5d175c97ac48939aaa36d3be4e4aa5aa5c5ada921e5a189047cdc"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`clean v1_0_0`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt",
+      "language": "kotlin",
+      "line": 12,
+      "offset": 9,
+      "length": 14,
+      "code": {
+        "startLine": 10,
+        "length": 14,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `clean v1_0_0`() {\n        gradleTestKitTest(\"version-build-dir/clean v1_0_0\") {\n            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "d9d1ef87dd02ac6c5d73f53110161872083be73b4eba7a6b3db0cfca07be63bf"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`no clean without tag in current commit - dirty`' may contain only letters and digits",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt",
+      "language": "kotlin",
+      "line": 49,
+      "offset": 9,
+      "length": 48,
+      "code": {
+        "startLine": 47,
+        "length": 48,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `no clean without tag in current commit - dirty`() {\n        gradleTestKitTest(\"version-build-dir/no-clean-with-no-tag-current-commit (dirty)\") {\n            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "79de7de4bb0981922e90ee7874dda38269dad956a0d1224815fae88f1b3334fa"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`clean without tag in current commit - hash`' may contain only letters and digits",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt",
+      "language": "kotlin",
+      "line": 38,
+      "offset": 9,
+      "length": 44,
+      "code": {
+        "startLine": 36,
+        "length": 44,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `clean without tag in current commit - hash`() {\n        gradleTestKitTest(\"version-build-dir/clean-with-no-tag-current-commit (hash)\") {\n            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "1909860cd0e4d050df0797549a601473034f27adc244d83c7e525ab1a7921b38"
+},{
+  "tool": "Code Inspection",
+  "category": "Naming conventions",
+  "type": "Function naming convention",
+  "severity": "Moderate",
+  "comment": "Function name '`clean v1_0_0 configuration phase`' should not contain underscores",
+  "detailsInfo": "Reports function names that do not follow the recommended naming conventions.\n\n**Example:**\n\n\n      fun Foo() {}\n\nTo fix the problem change the name of the function to match the recommended naming conventions.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt",
+      "language": "kotlin",
+      "line": 24,
+      "offset": 9,
+      "length": 34,
+      "code": {
+        "startLine": 22,
+        "length": 34,
+        "offset": 19,
+        "surroundingCode": "\n    @Test\n    fun `clean v1_0_0 configuration phase`() {\n        gradleTestKitTest(\"version-build-dir/clean v1_0_0 configuration phase\") {\n            projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.testFunctional",
+    "inspectionName": "FunctionName"
+  },
+  "hash": "d5a1ef3c0728f50113647a9c6d4c9b78bdfb3cee87812d138562b869ef597974"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'commitsInCurrentBranchRevCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 59,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 57,
+        "length": 8,
+        "offset": 11,
+        "surroundingCode": "    }\n\n    internal val commitsInCurrentBranchRevCommit: List<RevCommit> by lazy {\n        git.log().setMaxCount(maxCount?.get() ?: -1).call().toList()\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "2f27d2e7bebcd8f5cc69f90f0fdbfe22af393d951753f9f26a38abe436fd7790"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'tagsInRepoRef' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 62,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 60,
+        "length": 8,
+        "offset": 79,
+        "surroundingCode": "        git.log().setMaxCount(maxCount?.get() ?: -1).call().toList()\n    }\n    internal val tagsInRepoRef: List<Ref> by lazy { git.tagList().call() }\n\n    internal val commitsInCurrentBranchHash: List<String> by lazy {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "0a82bf4f0ba0a2ece7081305605071db33d5df1f75599962778ae1f23056a0e9"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'lastVersionTagInCurrentBranch' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 173,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 171,
+        "length": 8,
+        "offset": 11,
+        "surroundingCode": "    }\n\n    internal fun lastVersionTagInCurrentBranch(tagPrefix: String): GitRef.Tag? =\n        versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(tagPrefix).lastOrNull()\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "e5d6e45ddadeda88e6565d7e248cd92acbc3cf6834a99076730ae15537ac67cd"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'versionTagsSortedBySemver' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 157,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 155,
+        "length": 8,
+        "offset": 15,
+        "surroundingCode": "        }\n\n    internal fun versionTagsSortedBySemver(tagPrefix: String): List<GitRef.Tag> =\n        versionTagsInCurrentBranch(tagPrefix).sortedBy { tag ->\n            Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "da0c2a24ad6ef36ea84eb0b69c90e4c00b1029bedae89b2150053b87002c824f"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'versionTagsInCurrentBranchSortedByTimelineOrSemverOrder' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 162,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 160,
+        "length": 8,
+        "offset": 15,
+        "surroundingCode": "        }\n\n    internal fun versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(\n        tagPrefix: String\n    ): List<GitRef.Tag> {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "41956dc9f8619b0c5878589a69932efc86c69cffcc7512b4a10c93fffa6b5fda"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'tagsInCurrentCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 137,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 135,
+        "length": 8,
+        "offset": 19,
+        "surroundingCode": "            }\n\n    internal fun tagsInCurrentCommit(hash: String): List<GitRef.Tag> =\n        tagsInCurrentBranch.filter { it.commit.hash == hash }\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "002e1b494705c1bccf90132a9bbba16edf369fa8f6082b000f00b0eaf350da69"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'tagName' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 115,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 113,
+        "length": 8,
+        "offset": 62,
+        "surroundingCode": "        lastVersionTagInCurrentBranch(tagPrefix)?.commit\n\n    internal val Ref.tagName: String\n        get() = name.substringAfter(\"refs/tags/\")\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "38bfc258ff0da49a105dd62c842a4b716ff9fe1c2cb2ae3e51d691091457afec"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'commitHash' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 107,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 105,
+        "length": 8,
+        "offset": 11,
+        "surroundingCode": "    }\n\n    internal fun commitHash(ref: Ref): String = commitHash(ref.objectId)\n\n    internal fun commitHash(objectId: ObjectId): String ="
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "af463b24da18b1515df7fea9e254fc809397792bd23ec600c51187bf81078249"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'commitsInCurrentBranchHash' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 64,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 62,
+        "length": 8,
+        "offset": 80,
+        "surroundingCode": "    internal val tagsInRepoRef: List<Ref> by lazy { git.tagList().call() }\n\n    internal val commitsInCurrentBranchHash: List<String> by lazy {\n        commitsInCurrentBranchRevCommit.map(RevCommit::getName)\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "5166832e29f6e2273217d6acbb0a422050875cace9d13713687707f44a3b80a1"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'gitFiles' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 40,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 38,
+        "length": 8,
+        "offset": 11,
+        "surroundingCode": "    }\n\n    internal val gitFiles: List<File> = git.repository.directory.walkTopDown().toList()\n\n    internal val isClean: Boolean"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "28fbc04f7cecea83d302ce752951e8e9d5a2e7e328cff48fc69459e7fc2ef976"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'tagsInCurrentBranch' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 121,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 119,
+        "length": 8,
+        "offset": 99,
+        "surroundingCode": "        get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }\n\n    internal val tagsInCurrentBranch: List<GitRef.Tag>\n        get() =\n            tagsInCurrentBranchRef.map { ref ->"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "6ba52159f77535079b3802fecaa02e09ea059c11a069344cb591d469b04ba6db"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'tagsInCurrentBranchRef' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 118,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 116,
+        "length": 8,
+        "offset": 55,
+        "surroundingCode": "        get() = name.substringAfter(\"refs/tags/\")\n\n    internal val tagsInCurrentBranchRef: List<Ref>\n        get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "d1d4d777d429900cced7975b8a6c28d6748cf57da42690af9dd410e292e07ac1"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'commitHash' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 109,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 107,
+        "length": 8,
+        "offset": 78,
+        "surroundingCode": "    internal fun commitHash(ref: Ref): String = commitHash(ref.objectId)\n\n    internal fun commitHash(objectId: ObjectId): String =\n        git.repository.parseCommit(objectId).toObjectId().name\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "14647184a4fc51f6ad4d773ed436829107de2c453abac739c8ac99da23527170"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Function 'versionTagsInCurrentCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 140,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 138,
+        "length": 8,
+        "offset": 67,
+        "surroundingCode": "        tagsInCurrentBranch.filter { it.commit.hash == hash }\n\n    internal fun versionTagsInCurrentCommit(hash: String, tagPrefix: String): List<GitRef.Tag> =\n        tagsInCurrentCommit(hash).filter { tag ->\n            tag.name.startsWith(tagPrefix) &&"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "a9e4e31e452c8f20a9e04609dfa8fc405d5d50941279ac1dde48804ef1f07e9b"
+},{
+  "tool": "Code Inspection",
+  "category": "Style issues",
+  "type": "Class member can have 'private' visibility",
+  "severity": "Moderate",
+  "comment": "Property 'headRevCommit' could be private",
+  "detailsInfo": "Reports declarations that can be made `private` to follow the encapsulation principle.\n\n**Example:**\n\n\n    class Service(val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n\nAfter the quick-fix is applied (considering there are no usages of `url` outside of `Service` class):\n\n\n    class Service(private val url: String) {\n        fun connect(): URLConnection = URL(url).openConnection()\n    }\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt",
+      "language": "kotlin",
+      "line": 45,
+      "offset": 5,
+      "length": 8,
+      "code": {
+        "startLine": 43,
+        "length": 8,
+        "offset": 49,
+        "surroundingCode": "        get() = git.status().call().isClean\n\n    internal val headRevCommit: RevCommit by lazy {\n        RevWalk(git.repository).parseCommit(git.repository.resolve(Constants.HEAD))\n    }"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "semver-gradle-plugin-project.semver-project-gradle-plugin.main",
+    "inspectionName": "MemberVisibilityCanBePrivate"
+  },
+  "hash": "ba98339f74b645af424460e717a2372ed1a7708e0489aaf80495c86487787541"
+}]}

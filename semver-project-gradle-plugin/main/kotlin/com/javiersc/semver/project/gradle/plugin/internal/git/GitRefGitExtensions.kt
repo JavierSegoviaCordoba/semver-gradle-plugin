@@ -101,7 +101,7 @@ internal val Git.tagsInRepo: List<GitRef.Tag>
         }
 
 internal val Git.tagsInRepoRef: List<Ref>
-    get() = Git(repository).tagList().call()
+    get() = tagList().call()
 
 internal val Git.tagsInRepoHash: List<String>
     get() = tagsInRepoRef.map(::commitHash)
@@ -121,7 +121,8 @@ internal val Git.tagsInCurrentBranch: List<GitRef.Tag>
                         message = commit.shortMessage,
                         fullMessage = commit.fullMessage,
                         hash = commit.toObjectId().name,
-                    ))
+                    ),
+            )
         }
 
 internal val Git.tagsInCurrentBranchRef: List<Ref>

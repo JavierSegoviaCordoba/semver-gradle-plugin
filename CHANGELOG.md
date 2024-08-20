@@ -12,6 +12,8 @@
 
 ### Removed
 
+- unnecessary call to `Git` in `GitCache`
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.7.6`

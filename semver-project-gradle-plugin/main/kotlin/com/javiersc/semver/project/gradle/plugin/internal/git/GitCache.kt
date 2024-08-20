@@ -1,6 +1,8 @@
 package com.javiersc.semver.project.gradle.plugin.internal.git
 
 import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.semver.project.gradle.plugin.Commit
+import com.javiersc.semver.project.gradle.plugin.Tag
 import com.javiersc.semver.project.gradle.plugin.internal.InitialVersion
 import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
 import com.javiersc.semver.project.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
@@ -37,7 +39,7 @@ private constructor(
         }
     }
 
-    internal val gitFiles: List<File> = git.repository.directory.walkTopDown().toList()
+    // internal val gitFiles: List<File> = git.repository.directory.walkTopDown().toList()
 
     internal val isClean: Boolean
         get() = git.status().call().isClean
@@ -52,7 +54,8 @@ private constructor(
                 message = headRevCommit.shortMessage,
                 fullMessage = headRevCommit.fullMessage,
                 hash = headRevCommit.toObjectId().name,
-            ))
+            ),
+        )
     }
 
     internal val commitsInCurrentBranchRevCommit: List<RevCommit> by lazy {
@@ -64,20 +67,19 @@ private constructor(
         commitsInCurrentBranchRevCommit.map(RevCommit::getName)
     }
 
-    internal val commitsInTheCurrentBranchPublicApi:
-        List<com.javiersc.semver.project.gradle.plugin.Commit> by lazy {
+    internal val commitsInTheCurrentBranchPublicApi: List<Commit> by lazy {
         commitsInCurrentBranchRevCommit.map { revCommit ->
             val hash: String = revCommit.toObjectId().name
-            val tags: List<com.javiersc.semver.project.gradle.plugin.Tag> =
+            val tags: List<Tag> =
                 tagsInCurrentBranchRef
                     .filter { ref -> commitHash(ref) == hash }
                     .map { ref ->
-                        com.javiersc.semver.project.gradle.plugin.Tag(
+                        Tag(
                             name = ref.tagName,
                             refName = ref.name,
                         )
                     }
-            com.javiersc.semver.project.gradle.plugin.Commit(
+            Commit(
                 message = revCommit.shortMessage,
                 fullMessage = revCommit.fullMessage,
                 hash = hash,
@@ -120,7 +122,7 @@ private constructor(
     internal val tagsInCurrentBranch: List<GitRef.Tag>
         get() =
             tagsInCurrentBranchRef.map { ref ->
-                val commit = git.repository.parseCommit(ref.objectId)
+                val commit: RevCommit = git.repository.parseCommit(ref.objectId)
                 GitRef.Tag(
                     name = ref.tagName,
                     refName = ref.name,
@@ -195,8 +197,8 @@ private constructor(
             }
             ?: InitialVersion
 
-    internal fun shouldRefresh(): Boolean =
-        git.repository.directory.walkTopDown().toList() != gitFiles
+    // internal fun shouldRefresh(): Boolean =
+    //     git.repository.directory.walkTopDown().toList() != gitFiles
 
     private fun List<GitRef.Tag>.lastResultVersion(tagPrefix: String): GradleVersion? =
         asSequence()

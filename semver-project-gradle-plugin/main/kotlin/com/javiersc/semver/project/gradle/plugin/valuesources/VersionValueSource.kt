@@ -16,8 +16,8 @@ import com.javiersc.semver.project.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.project.gradle.plugin.semverExtension
 import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
-import java.io.File
 import org.gradle.api.Project
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.provider.ValueSource
@@ -35,11 +35,11 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
                 if (cache == null) {
                     cache =
                         GitCache(
-                            gitDir = parameters.gitDir.get(),
+                            gitDir = parameters.gitDir.get().asFile,
                             maxCount = parameters.commitsMaxCount,
                         )
                 }
-                return cache!!
+                return cache
             }
 
             val lastSemver: GradleVersion =
@@ -83,7 +83,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
 
     internal interface Params : ValueSourceParameters {
         val versionMapper: Property<SemverExtension.VersionMapper>
-        val gitDir: Property<File>
+        val gitDir: RegularFileProperty
         val commitsMaxCount: Property<Int>
         val tagPrefixProperty: Property<String>
         val projectTagPrefix: Property<String>
@@ -100,11 +100,8 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
                 val parameters: Params = valueSourceSpec.parameters
                 val semverExtension: SemverExtension = project.semverExtension
 
-                val gitDir: Provider<File> =
-                    project.provider { semverExtension.gitDir.get().asFile }
-
                 parameters.versionMapper.set(semverExtension.versionMapper)
-                parameters.gitDir.set(gitDir)
+                parameters.gitDir.set(semverExtension.gitDir)
                 val commitsMaxCount: Int =
                     project.commitsMaxCount.orNull ?: semverExtension.commitsMaxCount.get()
                 parameters.commitsMaxCount.set(commitsMaxCount)

@@ -227,7 +227,8 @@ internal class MultiProjectExampleTest : GradleTestKitTest() {
             "createSemverTag",
             "-Psemver.stage=final",
             "-Psemver.scope=major",
-            "-Psemver.tagPrefix=a")
+            "-Psemver.tagPrefix=a",
+        )
 
         projectDirByName("library-one-a").assertVersion("a", "2.0.0")
         projectDirByName("library-two-b").assertVersion("b", "1.0.0", Insignificant.Hash)

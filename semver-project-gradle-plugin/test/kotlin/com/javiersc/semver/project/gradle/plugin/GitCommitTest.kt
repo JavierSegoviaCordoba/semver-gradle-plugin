@@ -56,7 +56,8 @@ internal class GitCommitTest {
             git.commitsInCurrentBranchRevCommit.map(RevCommit::getShortMessage).shouldBe(messages)
             git.commitsInCurrentBranch.map(GitRef.Commit::message).shouldBe(messages)
             git.commitsInCurrentBranchHash.shouldBe(
-                git.commitsInCurrentBranch.map(GitRef.Commit::hash))
+                git.commitsInCurrentBranch.map(GitRef.Commit::hash)
+            )
         }
     }
 

@@ -42,42 +42,47 @@ constructor(
     @Input
     @Option(
         option = "githubOnlyRoot",
-        description = "Set any GitHub option to work only on the root project `printSemver` task")
+        description = "Set any GitHub option to work only on the root project `printSemver` task",
+    )
     public val githubOnlyRoot: Property<Boolean> = objects.property<Boolean>().convention(false)
 
     @Input
     @Option(
         option = "githubEnvTag",
         description =
-            "Set the version as `semver-tag-subproject-name` environment variable of the GitHub Actions")
+            "Set the version as `semver-tag-subproject-name` environment variable of the GitHub Actions",
+    )
     public val githubEnvTag: Property<Boolean> = objects.property<Boolean>().convention(false)
 
     @Input
     @Option(
         option = "githubEnvVersion",
         description =
-            "Set the version as `semver-version-subproject-name` environment variable of the GitHub Actions")
+            "Set the version as `semver-version-subproject-name` environment variable of the GitHub Actions",
+    )
     public val githubEnvVersion: Property<Boolean> = objects.property<Boolean>().convention(false)
 
     @Input
     @Option(
         option = "githubEnv",
         description =
-            "Set the version as `semver-subproject-name` environment variable of the GitHub Actions")
+            "Set the version as `semver-subproject-name` environment variable of the GitHub Actions",
+    )
     public val githubEnv: Property<Boolean> = objects.property<Boolean>().convention(false)
 
     @Input
     @Option(
         option = "githubOutputTag",
-        description =
-            "Set the version as `semver-tag-subproject-name` output of the GitHub Actions")
+        description = "Set the version as `semver-tag-subproject-name` output of the GitHub Actions",
+    )
     public val githubOutputTag: Property<Boolean> = objects.property<Boolean>().convention(false)
 
     @Input
     @Option(
         option = "githubOutputVersion",
         description =
-            "Set the version as `semver-version-subproject-name` output of the GitHub Actions")
+            "Set the version as `semver-version-subproject-name` output of the GitHub Actions",
+    )
     public val githubOutputVersion: Property<Boolean> =
         objects.property<Boolean>().convention(false)
 
@@ -85,7 +90,8 @@ constructor(
     @Option(
         option = "githubOutput",
         description =
-            "Set the version as `semver-subproject-name` output of the GitHub Actions `semver` step ID")
+            "Set the version as `semver-subproject-name` output of the GitHub Actions `semver` step ID",
+    )
     public val githubOutput: Property<Boolean> = objects.property<Boolean>().convention(false)
 
     @get:Input public abstract val shouldLogMessage: Property<Boolean>

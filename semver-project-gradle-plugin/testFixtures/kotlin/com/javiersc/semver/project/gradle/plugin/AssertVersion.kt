@@ -45,11 +45,7 @@ fun assertVersionFromExpectVersionFile(file: File) {
     file.assertVersion(tagPrefix, sanitizeVersion, insignificant)
 }
 
-fun File.assertVersion(
-    prefix: String,
-    version: String,
-    insignificant: Insignificant? = null,
-) {
+fun File.assertVersion(prefix: String, version: String, insignificant: Insignificant? = null) {
     val buildVersionFile = resolve("build/semver/version.txt")
     val buildVersion = buildVersionFile.readLines().first()
     val buildTagVersion = buildVersionFile.readLines()[1]
@@ -76,7 +72,8 @@ fun File.assertVersion(
                        |$prefix$version
                        |
                     """
-                        .trimMargin())
+                        .trimMargin()
+                )
         }
     }
 }
@@ -86,7 +83,7 @@ private fun printExpectedAndActualVersions(
     version: String,
     insignificant: Insignificant?,
     buildTagVersion: String,
-    prefix: String
+    prefix: String,
 ) {
     val insignificantText = if (insignificant != null) "+$insignificant" else ""
     val actualVersion = "ACTUAL: $buildVersion".ansiColor(Yellow)

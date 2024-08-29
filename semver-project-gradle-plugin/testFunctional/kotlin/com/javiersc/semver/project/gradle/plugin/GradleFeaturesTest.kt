@@ -74,7 +74,7 @@ class GradleFeaturesTest : GradleTestKitTest() {
                     |v0.9.0+DIRTY
                     |
                 """
-                    .trimMargin(),
+                    .trimMargin()
             )
         projectDir.assertVersion("v", "0.9.0", Dirty)
 
@@ -94,7 +94,7 @@ class GradleFeaturesTest : GradleTestKitTest() {
                     |v0.9.1
                     |
                 """
-                    .trimMargin(),
+                    .trimMargin()
             )
 
         git.add().addFilepattern(".").call()

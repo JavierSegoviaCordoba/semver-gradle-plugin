@@ -18,7 +18,8 @@ val GradleRunner.git: Git
                 .setGitDir(File("$projectDir/.git"))
                 .readEnvironment()
                 .findGitDir()
-                .build())
+                .build()
+        )
 
 val File.git: Git
     get() =
@@ -27,7 +28,8 @@ val File.git: Git
                 .setGitDir(resolve(".git"))
                 .readEnvironment()
                 .findGitDir()
-                .build())
+                .build()
+        )
 
 fun getResource(resource: String): File =
     File(Thread.currentThread().contextClassLoader?.getResource(resource)?.toURI()!!)
@@ -63,22 +65,23 @@ fun File.generateInitialCommitAddVersionTagAndAddNewCommit(
             fullMessage = "Add new2",
             hash = "f099fed42808c387d38f8e34934d4ef2d6f3c2c5",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags = emptyList()),
+            tags = emptyList(),
+        ),
         Commit(
             message = "Add new",
             fullMessage = "Add new",
             hash = "0d9be4d12a836435c91fc38e0d64bcd3c14c89c8",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags = emptyList()),
+            tags = emptyList(),
+        ),
         Commit(
             message = "Initial commit",
             fullMessage = "Initial commit",
             hash = "e2592aafc259bd797e32f1ea4fe60cc7c0698f70",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags =
-                listOf(
-                    Tag(name = "1.0.0", refName = "refs/tags/1.0.0"),
-                )))
+            tags = listOf(Tag(name = "1.0.0", refName = "refs/tags/1.0.0")),
+        ),
+    )
 }
 
 // `this` is `projectDir`
@@ -104,22 +107,23 @@ fun File.generateInitialCommitAddVersionTag(
             fullMessage = "Add new2",
             hash = "f099fed42808c387d38f8e34934d4ef2d6f3c2c5",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags = emptyList()),
+            tags = emptyList(),
+        ),
         Commit(
             message = "Add new",
             fullMessage = "Add new",
             hash = "0d9be4d12a836435c91fc38e0d64bcd3c14c89c8",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags = emptyList()),
+            tags = emptyList(),
+        ),
         Commit(
             message = "Initial commit",
             fullMessage = "Initial commit",
             hash = "e2592aafc259bd797e32f1ea4fe60cc7c0698f70",
             timestampEpochSecond = Instant.now().epochSecond,
-            tags =
-                listOf(
-                    Tag(name = "1.0.0", refName = "refs/tags/1.0.0"),
-                )))
+            tags = listOf(Tag(name = "1.0.0", refName = "refs/tags/1.0.0")),
+        ),
+    )
 }
 
 fun File.createGitIgnore() {
@@ -135,7 +139,8 @@ fun File.createGitIgnore() {
                 |environment/
                 |
             """
-                .trimMargin())
+                .trimMargin()
+        )
     }
 }
 

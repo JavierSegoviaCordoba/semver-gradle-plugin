@@ -117,7 +117,8 @@ internal class OneProjectExampleTest : GradleTestKitTest() {
             "createSemverTag",
             "-Psemver.stage=final",
             "-Psemver.scope=major",
-            "-Psemver.tagPrefix=v")
+            "-Psemver.tagPrefix=v",
+        )
 
         projectDir.assertVersion("v", "1.0.0")
     }

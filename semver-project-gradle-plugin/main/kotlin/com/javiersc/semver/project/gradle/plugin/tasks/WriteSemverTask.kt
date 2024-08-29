@@ -24,10 +24,7 @@ import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
 @CacheableTask
 public abstract class WriteSemverTask
 @Inject
-constructor(
-    objects: ObjectFactory,
-    layout: ProjectLayout,
-) : DefaultTask() {
+constructor(objects: ObjectFactory, layout: ProjectLayout) : DefaultTask() {
 
     init {
         group = "semver"
@@ -56,7 +53,8 @@ constructor(
                     |$semverWithPrefix
                     |
                 """
-                    .trimMargin())
+                    .trimMargin()
+            )
         }
     }
 

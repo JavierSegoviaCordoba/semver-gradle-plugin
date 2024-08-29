@@ -26,7 +26,8 @@ internal val Git.headCommit: GitRef.Head
                 message = headRevCommit.shortMessage,
                 fullMessage = headRevCommit.fullMessage,
                 hash = headRevCommit.toObjectId().name,
-            ))
+            )
+        )
 
 internal val Git.headRevCommit: RevCommit
     get() = RevWalk(repository).parseCommit(repository.resolve(Constants.HEAD))
@@ -97,7 +98,8 @@ internal val Git.tagsInRepo: List<GitRef.Tag>
                         message = commit.shortMessage,
                         fullMessage = commit.fullMessage,
                         hash = commit.toObjectId().name,
-                    ))
+                    ),
+            )
         }
 
 internal val Git.tagsInRepoRef: List<Ref>

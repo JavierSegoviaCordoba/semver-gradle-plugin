@@ -18,10 +18,7 @@ import org.gradle.kotlin.dsl.property
 
 public abstract class SemverExtension
 @Inject
-constructor(
-    objects: ObjectFactory,
-    providers: ProviderFactory,
-) {
+constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
     public val isEnabled: Property<Boolean> = objects.property<Boolean>().convention(true)
 
@@ -29,10 +26,7 @@ constructor(
 
     public val commits: Provider<List<Commit>> =
         providers.provider {
-            GitCache(
-                    gitDir = gitDir.get().asFile,
-                    maxCount = commitsMaxCount,
-                )
+            GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount)
                 .commitsInTheCurrentBranchPublicApi
         }
 

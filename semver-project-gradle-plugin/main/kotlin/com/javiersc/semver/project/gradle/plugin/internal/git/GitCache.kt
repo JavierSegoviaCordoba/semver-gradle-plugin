@@ -26,10 +26,7 @@ private val checkedNotNullCache: GitCache
 private var gitCache: GitCache? = null
 
 internal class GitCache
-private constructor(
-    private val gitDir: File,
-    maxCount: Provider<Int>? = null,
-) {
+private constructor(private val gitDir: File, maxCount: Provider<Int>? = null) {
 
     internal val git: Git by lazy {
         Git(FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()).also {
@@ -54,7 +51,7 @@ private constructor(
                 message = headRevCommit.shortMessage,
                 fullMessage = headRevCommit.fullMessage,
                 hash = headRevCommit.toObjectId().name,
-            ),
+            )
         )
     }
 
@@ -73,12 +70,7 @@ private constructor(
             val tags: List<Tag> =
                 tagsInCurrentBranchRef
                     .filter { ref -> commitHash(ref) == hash }
-                    .map { ref ->
-                        Tag(
-                            name = ref.tagName,
-                            refName = ref.name,
-                        )
-                    }
+                    .map { ref -> Tag(name = ref.tagName, refName = ref.name) }
             Commit(
                 message = revCommit.shortMessage,
                 fullMessage = revCommit.fullMessage,
@@ -131,7 +123,8 @@ private constructor(
                             message = commit.shortMessage,
                             fullMessage = commit.fullMessage,
                             hash = commit.toObjectId().name,
-                        ))
+                        ),
+                )
             }
 
     internal fun tagsInCurrentCommit(hash: String): List<GitRef.Tag> =
@@ -185,9 +178,9 @@ private constructor(
                     val higherVersion: GradleVersion? =
                         versionsInCurrentBranch(tagPrefix).firstOrNull()
 
-                    if (lastVersion != null &&
-                        higherVersion != null &&
-                        higherVersion > lastVersion) {
+                    if (
+                        lastVersion != null && higherVersion != null && higherVersion > lastVersion
+                    ) {
                         isWarningLastVersionIsNotHigherVersion(true)
                         warningLastVersionIsNotHigherVersion(lastVersion, higherVersion)
                     }

@@ -59,7 +59,8 @@ internal class VersionBuildDirTest : GradleTestKitTest() {
                         |v1.0.0$additionalData
                         |
                     """
-                        .trimMargin())
+                        .trimMargin()
+                )
             }
 
             withArgumentsFromTXT()

@@ -30,10 +30,8 @@ class GitHubVariablesTest : GradleTestKitTest() {
 
     private fun GradleRunner.setEnvironmentVariables() {
         withEnvironment(
-            mapOf(
-                "GITHUB_ENV" to githubEnvFile.path,
-                "GITHUB_OUTPUT" to githubOutputFile.path,
-            ))
+            mapOf("GITHUB_ENV" to githubEnvFile.path, "GITHUB_OUTPUT" to githubOutputFile.path)
+        )
     }
 
     @Test

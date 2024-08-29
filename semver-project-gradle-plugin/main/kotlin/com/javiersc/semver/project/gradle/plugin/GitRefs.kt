@@ -27,9 +27,6 @@ public data class Commit(
  * @param name The name of the tag, example: `v1.0.0`
  * @param refName The name of the ref, example: `refs/tags/v1.0.0`
  */
-public data class Tag(
-    val name: String,
-    val refName: String,
-) {
+public data class Tag(val name: String, val refName: String) {
     override fun toString(): String = name
 }

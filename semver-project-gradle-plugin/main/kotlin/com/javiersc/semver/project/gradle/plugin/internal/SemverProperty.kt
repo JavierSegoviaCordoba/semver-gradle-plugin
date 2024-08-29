@@ -52,8 +52,7 @@ internal enum class SemverProperty(val key: String) {
 
 internal enum class Stage(private val value: String) {
     Auto("auto"),
-    Final("final"),
-    ;
+    Final("final");
 
     operator fun invoke(): String = value
 }

@@ -21,20 +21,15 @@ import org.gradle.process.ExecOperations
 
 public abstract class GitBuildService
 @Inject
-constructor(
-    private val execOperations: ExecOperations,
-) : BuildService<GitBuildService.Params>, AutoCloseable {
+constructor(private val execOperations: ExecOperations) :
+    BuildService<GitBuildService.Params>, AutoCloseable {
 
     private val createdTagPrefixes: MutableSet<String> = mutableSetOf()
 
     private val git: Git
         get() =
             parameters.run {
-                GitCache(
-                        gitDir = gitDir.get().asFile,
-                        maxCount = commitsMaxCount,
-                    )
-                    .git
+                GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount).git
             }
 
     internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
@@ -91,16 +86,17 @@ constructor(
 
         internal fun register(project: Project): Provider<GitBuildService> =
             project.gradle.sharedServices.registerIfAbsent(
-                "gitTagBuildService", GitBuildService::class) { buildService ->
-                    val commitsMaxCount: Int =
-                        project.commitsMaxCount.orNull
-                            ?: project.semverExtension.commitsMaxCount.get()
-                    buildService.parameters.gitDir.set(project.semverExtension.gitDir)
-                    buildService.parameters.commitsMaxCount.set(commitsMaxCount)
-                    buildService.parameters.remoteProperty.set(project.remoteProperty)
+                "gitTagBuildService",
+                GitBuildService::class,
+            ) { buildService ->
+                val commitsMaxCount: Int =
+                    project.commitsMaxCount.orNull ?: project.semverExtension.commitsMaxCount.get()
+                buildService.parameters.gitDir.set(project.semverExtension.gitDir)
+                buildService.parameters.commitsMaxCount.set(commitsMaxCount)
+                buildService.parameters.remoteProperty.set(project.remoteProperty)
 
-                    buildService.maxParallelUsages.set(1)
-                }
+                buildService.maxParallelUsages.set(1)
+            }
     }
 }
 

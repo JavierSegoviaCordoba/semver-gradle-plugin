@@ -40,18 +40,11 @@ internal class GradleVersionTest {
             Arb.constant("rc"),
             Arb.constant("SNAPSHOT"),
             Arb.constant("zasca"),
-            Arb.constant(null))
-    private val num =
-        Arb.choice(
-            Arb.positiveInt(11),
             Arb.constant(null),
         )
+    private val num = Arb.choice(Arb.positiveInt(11), Arb.constant(null))
 
-    private val commits =
-        Arb.choice(
-            Arb.positiveInt(11),
-            Arb.constant(null),
-        )
+    private val commits = Arb.choice(Arb.positiveInt(11), Arb.constant(null))
 
     private val hash =
         Arb.choice(
@@ -61,7 +54,8 @@ internal class GradleVersionTest {
             Arb.constant("4Hash3h"),
             Arb.constant("0h2az2U"),
             Arb.constant("102aY20"),
-            Arb.constant(null))
+            Arb.constant(null),
+        )
 
     private val metadata =
         Arb.choice(
@@ -75,7 +69,8 @@ internal class GradleVersionTest {
             Arb.constant("777777777"),
             Arb.constant("AAAA"),
             Arb.constant("BBBBBBBBB"),
-            Arb.constant(null))
+            Arb.constant(null),
+        )
 
     private val versionArbitrary: Arb<Version> = arbitrary {
         val major: Int = major.bind()

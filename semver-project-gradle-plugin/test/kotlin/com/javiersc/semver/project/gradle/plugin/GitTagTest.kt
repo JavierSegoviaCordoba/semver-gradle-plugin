@@ -117,11 +117,8 @@ internal class GitTagTest {
             git.tag().setName("vhello").call()
             git.tag().setName("v100").call()
             git.tagsInRepoName.shouldBe(
-                listOf(
-                    "refs/tags/hello",
-                    "refs/tags/v100",
-                    "refs/tags/vhello",
-                ))
+                listOf("refs/tags/hello", "refs/tags/v100", "refs/tags/vhello")
+            )
 
             resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
@@ -129,12 +126,8 @@ internal class GitTagTest {
 
             git.tag().setName("v3.0.0").call()
             git.tagsInRepoName.shouldBe(
-                listOf(
-                    "refs/tags/hello",
-                    "refs/tags/v100",
-                    "refs/tags/v3.0.0",
-                    "refs/tags/vhello",
-                ))
+                listOf("refs/tags/hello", "refs/tags/v100", "refs/tags/v3.0.0", "refs/tags/vhello")
+            )
 
             git.tag().setName("v1.0.0").call()
             git.tagsInRepoName.shouldBe(
@@ -144,7 +137,8 @@ internal class GitTagTest {
                     "refs/tags/v100",
                     "refs/tags/v3.0.0",
                     "refs/tags/vhello",
-                ))
+                )
+            )
 
             git.tag().setName("v2.0.0").call()
             git.tag().setName("v200").call()
@@ -159,7 +153,8 @@ internal class GitTagTest {
                     "refs/tags/v200",
                     "refs/tags/v3.0.0",
                     "refs/tags/vhello",
-                ))
+                )
+            )
         }
     }
 
@@ -171,12 +166,7 @@ internal class GitTagTest {
             git.tag().setName("v100").call()
             git.tagsInCurrentBranch
                 .map(GitRef.Tag::name)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v100",
-                        "vhello",
-                    ))
+                .shouldBe(listOf("hello", "v100", "vhello"))
 
             resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
@@ -185,25 +175,12 @@ internal class GitTagTest {
             git.tag().setName("v3.0.0").call()
             git.tagsInCurrentBranch
                 .map(GitRef.Tag::name)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v100",
-                        "v3.0.0",
-                        "vhello",
-                    ))
+                .shouldBe(listOf("hello", "v100", "v3.0.0", "vhello"))
 
             git.tag().setName("v1.0.0").call()
             git.tagsInCurrentBranch
                 .map(GitRef.Tag::name)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v1.0.0",
-                        "v100",
-                        "v3.0.0",
-                        "vhello",
-                    ))
+                .shouldBe(listOf("hello", "v1.0.0", "v100", "v3.0.0", "vhello"))
 
             git.tag().setName("v2.0.0").call()
             git.tag().setName("v200").call()
@@ -220,7 +197,8 @@ internal class GitTagTest {
                         "v200",
                         "v3.0.0",
                         "vhello",
-                    ))
+                    )
+                )
         }
     }
 
@@ -230,14 +208,7 @@ internal class GitTagTest {
             git.tag().setName("hello").call()
             git.tag().setName("vhello").call()
             git.tag().setName("v100").call()
-            git.tagsInCurrentBranchRef
-                .map(Ref::tagName)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v100",
-                        "vhello",
-                    ))
+            git.tagsInCurrentBranchRef.map(Ref::tagName).shouldBe(listOf("hello", "v100", "vhello"))
 
             resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
@@ -246,25 +217,12 @@ internal class GitTagTest {
             git.tag().setName("v3.0.0").call()
             git.tagsInCurrentBranchRef
                 .map(Ref::tagName)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v100",
-                        "v3.0.0",
-                        "vhello",
-                    ))
+                .shouldBe(listOf("hello", "v100", "v3.0.0", "vhello"))
 
             git.tag().setName("v1.0.0").call()
             git.tagsInCurrentBranchRef
                 .map(Ref::tagName)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v1.0.0",
-                        "v100",
-                        "v3.0.0",
-                        "vhello",
-                    ))
+                .shouldBe(listOf("hello", "v1.0.0", "v100", "v3.0.0", "vhello"))
 
             git.tag().setName("v2.0.0").call()
             git.tag().setName("v200").call()
@@ -281,7 +239,8 @@ internal class GitTagTest {
                         "v200",
                         "v3.0.0",
                         "vhello",
-                    ))
+                    )
+                )
         }
     }
 
@@ -322,11 +281,8 @@ internal class GitTagTest {
             git.tag().setName("vhello").call()
             git.tag().setName("v100").call()
             git.tagsInCurrentBranchName.shouldBe(
-                listOf(
-                    "refs/tags/hello",
-                    "refs/tags/v100",
-                    "refs/tags/vhello",
-                ))
+                listOf("refs/tags/hello", "refs/tags/v100", "refs/tags/vhello")
+            )
 
             resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
@@ -334,12 +290,8 @@ internal class GitTagTest {
 
             git.tag().setName("v3.0.0").call()
             git.tagsInCurrentBranchName.shouldBe(
-                listOf(
-                    "refs/tags/hello",
-                    "refs/tags/v100",
-                    "refs/tags/v3.0.0",
-                    "refs/tags/vhello",
-                ))
+                listOf("refs/tags/hello", "refs/tags/v100", "refs/tags/v3.0.0", "refs/tags/vhello")
+            )
 
             git.tag().setName("v1.0.0").call()
             git.tagsInCurrentBranchName.shouldBe(
@@ -349,7 +301,8 @@ internal class GitTagTest {
                     "refs/tags/v100",
                     "refs/tags/v3.0.0",
                     "refs/tags/vhello",
-                ))
+                )
+            )
 
             git.tag().setName("v2.0.0").call()
             git.tag().setName("v200").call()
@@ -364,7 +317,8 @@ internal class GitTagTest {
                     "refs/tags/v200",
                     "refs/tags/v3.0.0",
                     "refs/tags/vhello",
-                ))
+                )
+            )
         }
     }
 
@@ -376,12 +330,7 @@ internal class GitTagTest {
             git.tag().setName("v100").call()
             git.tagsInCurrentCommit(git.headCommit.commit.hash)
                 .map(GitRef.Tag::name)
-                .shouldBe(
-                    listOf(
-                        "hello",
-                        "v100",
-                        "vhello",
-                    ))
+                .shouldBe(listOf("hello", "v100", "vhello"))
 
             resolve("Second commit.txt").createNewFile()
             git.add().addFilepattern(".").call()
@@ -390,23 +339,14 @@ internal class GitTagTest {
             git.tag().setName("v1.0.0").call()
             git.tagsInCurrentCommit(git.headCommit.commit.hash)
                 .map(GitRef.Tag::name)
-                .shouldBe(
-                    listOf(
-                        "v1.0.0",
-                    ))
+                .shouldBe(listOf("v1.0.0"))
 
             git.tag().setName("v2.0.0").call()
             git.tag().setName("v200").call()
             git.tag().setName("v20.20").call()
             git.tagsInCurrentCommit(git.headCommit.commit.hash)
                 .map(GitRef.Tag::name)
-                .shouldBe(
-                    listOf(
-                        "v1.0.0",
-                        "v2.0.0",
-                        "v20.20",
-                        "v200",
-                    ))
+                .shouldBe(listOf("v1.0.0", "v2.0.0", "v20.20", "v200"))
         }
     }
 
@@ -512,7 +452,8 @@ internal class GitTagTest {
                         "v1.0.0-alpha.22",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
 
             git.tag().setName("v1.0.0-rc.22").call()
             git.tag().setName("v1.0.0-rc.11").call()
@@ -536,7 +477,8 @@ internal class GitTagTest {
                         "v1.0.0-rc.22",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
 
             git.tag().setName("v200").call()
             git.tag().setName("v20.20").call()
@@ -557,7 +499,8 @@ internal class GitTagTest {
                         "v1.0.0-rc.22",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
         }
     }
 
@@ -605,7 +548,8 @@ internal class GitTagTest {
                         "v1.0.0",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
 
             git.tag().setName("v1.0.0-rc.22").call()
             git.tag().setName("v1.0.0-rc.11").call()
@@ -630,7 +574,8 @@ internal class GitTagTest {
                         "v1.0.0",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
 
             git.tag().setName("v200").call()
             git.tag().setName("v20.20").call()
@@ -652,7 +597,8 @@ internal class GitTagTest {
                         "v1.0.0",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
         }
     }
 
@@ -704,7 +650,8 @@ internal class GitTagTest {
                         "v1.0.0",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
 
             git.tag().setName("v1.0.0-rc.22").call()
             git.tag().setName("v1.0.0-rc.11").call()
@@ -729,7 +676,8 @@ internal class GitTagTest {
                         "v1.0.0",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
 
             git.tag().setName("v200").call()
             git.tag().setName("v20.20").call()
@@ -751,7 +699,8 @@ internal class GitTagTest {
                         "v1.0.0",
                         "v2.0.0",
                         "v3.0.0",
-                    ))
+                    )
+                )
         }
     }
 

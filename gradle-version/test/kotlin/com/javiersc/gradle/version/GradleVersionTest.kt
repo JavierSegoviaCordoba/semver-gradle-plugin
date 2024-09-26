@@ -200,7 +200,7 @@ internal class GradleVersionTest {
             (this.patch == other.patch) &&
             (this.stage?.name != null) &&
             (other.stage?.name != null) &&
-            (this.stage!!.name > other.stage!!.name)
+            (this.stage.name > other.stage.name)
 
     @Test
     fun stage_num_comparator() = runTestNoTimeout {
@@ -215,10 +215,10 @@ internal class GradleVersionTest {
             (this.patch == other.patch) &&
             (this.stage?.name != null) &&
             (other.stage?.name != null) &&
-            (this.stage!!.name == other.stage!!.name) &&
-            (this.stage?.num != null) &&
-            (other.stage?.num != null) &&
-            (this.stage!!.num!! > other.stage!!.num!!)
+            (this.stage.name == other.stage.name) &&
+            (this.stage.num != null) &&
+            (other.stage.num != null) &&
+            (this.stage.num > other.stage.num)
 
     @Test
     fun wrong_versions() = runTestNoTimeout {
@@ -229,22 +229,27 @@ internal class GradleVersionTest {
                         Version(major, minor, patch, stageName, num)
                     }
                 }
+
                 stageName.equals("snapshot", true) && num != null -> {
                     shouldThrow<GradleVersionException> {
                         Version(major, minor, patch, stageName, num)
                     }
                 }
+
                 stageName.equals("SNAPSHOT", true) && num == null -> {
                     Version(major, minor, patch, stageName, num)
                 }
+
                 stageName.equals("snapshot", true) && num == null -> {
                     Version(major, minor, patch, stageName, num)
                 }
+
                 stageName != null && num == null -> {
                     shouldThrow<GradleVersionException> {
                         Version(major, minor, patch, stageName, num)
                     }
                 }
+
                 else -> Version(major, minor, patch, stageName, num)
             }
         }
@@ -400,6 +405,13 @@ internal class GradleVersionTest {
         Version("5.9.10-SNAPSHOT") shouldBeGreaterThan Version("5.9.10-zasca.5")
         Version("10.4.2-snapshot") shouldBeGreaterThan Version("10.4.2-zasca.5")
         Version("1.0.0") shouldBeGreaterThan Version("1.0.0-rc.1")
+        Version("0.4.3.1+1cbf00b+2.0.20") shouldBeGreaterThan Version("0.4.3+2.0.20")
+        Version("0.4.3.13+1cbf00b+2.0.20") shouldBeGreaterThan Version("0.4.3+2.0.20")
+        Version("10.40.30.13+1cbf00b+2.0.20") shouldBeGreaterThan Version("10.40.30+2.0.20")
+        Version("0.4.3-rc.1.1+1cbf00b+2.0.20") shouldBeGreaterThan Version("0.4.3-rc.1+2.0.20")
+        Version("0.4.13-rc.1.13+1cbf00b+2.0.20") shouldBeGreaterThan Version("0.4.13-rc.1+2.0.20")
+        Version("10.40.30-rc.1.13+1cbf00b+2.0.20") shouldBeGreaterThan
+            Version("10.40.30-rc.1+2.0.20")
     }
 
     @Test

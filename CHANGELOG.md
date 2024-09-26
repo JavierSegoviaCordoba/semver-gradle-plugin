@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- commit number not being null
+
 ### Removed
 
 - unnecessary call to `Git` in `GitCache`

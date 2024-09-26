@@ -32,6 +32,7 @@ public final class com/javiersc/gradle/version/GradleVersion$CheckMode : java/la
 }
 
 public final class com/javiersc/gradle/version/GradleVersion$Companion {
+	public final fun getCommitNumberRegex ()Lkotlin/text/Regex;
 	public final fun getCommitsHashRegex ()Lkotlin/text/Regex;
 	public final fun getCommitsPlusMetadataRegex ()Lkotlin/text/Regex;
 	public final fun getDotCommitsHashRegex ()Lkotlin/text/Regex;

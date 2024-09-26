@@ -27,9 +27,8 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
     public val stage: Stage? = hyphenStageRegex.find(value)?.value?.remove("-")?.let(Stage::invoke)
 
     public val commits: Int? = run {
-        val commitsAndHashOrDirty: String? =
-            dotCommitsHashRegex.find(value)?.value ?: dotCommitsPlusMetadataRegex.find(value)?.value
-        commitsAndHashOrDirty?.drop(1)?.takeWhile(Char::isDigit)?.toIntOrNull()
+        val commitsNumber: String? = commitNumberRegex.find(value)?.groupValues?.get(1)
+        commitsNumber?.toInt()
     }
 
     public val hash: String? = dotCommitsHashRegex.find(value)?.value?.substringAfter("+")
@@ -65,7 +64,15 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
             patch < other.patch -> -1
             stage == null && other.stage != null -> 1
             stage != null && other.stage == null -> -1
-            stage != null && other.stage != null -> stage.compareTo(other.stage)
+            stage != null && other.stage != null -> {
+                val stageComparison: Int = stage.compareTo(other.stage)
+                if (stageComparison == 0) this.compareAfterStage(other) else stageComparison
+            }
+            else -> this.compareAfterStage(other)
+        }
+
+    private fun GradleVersion.compareAfterStage(other: GradleVersion): Int =
+        when {
             commits != null && other.commits == null -> 1
             commits == null && other.commits != null -> -1
             commits != null && other.commits != null -> commits.compareTo(other.commits)
@@ -92,6 +99,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number == null && stageName.isBlank() -> {
                     invoke(
                         major = major,
@@ -104,6 +112,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number == null && stageName.isNotBlank() && stage?.name.isNullOrBlank() -> {
                     invoke(
                         major = major,
@@ -116,6 +125,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number == null && stageName.isNotBlank() && stageName == stage?.name -> {
                     invoke(
                         major = major,
@@ -128,6 +138,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number == null && stageName.isNotBlank() && stageName != stage?.name -> {
                     invoke(
                         major = major,
@@ -140,6 +151,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number is Increase.Major && stageName.isBlank() -> {
                     invoke(
                         major = major.inc(),
@@ -152,6 +164,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number is Increase.Minor && stageName.isBlank() -> {
                     invoke(
                         major = major,
@@ -164,6 +177,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number is Increase.Patch && stageName.isBlank() -> {
                     invoke(
                         major = major,
@@ -176,6 +190,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number is Increase.Major && stageName.isNotBlank() -> {
                     invoke(
                         major = major.inc(),
@@ -188,6 +203,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number is Increase.Minor && stageName.isNotBlank() -> {
                     invoke(
                         major = major,
@@ -200,6 +216,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 number is Increase.Patch && stageName.isNotBlank() -> {
                     invoke(
                         major = major,
@@ -212,6 +229,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                         metadata = metadata,
                     )
                 }
+
                 else -> null
             } ?: gradleVersionError("There were an error configuring the version")
 
@@ -281,6 +299,8 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
         public val hyphenStageRegex: Regex = Regex("""(-$stageRegex)""", IGNORE_CASE)
 
         public val hashRegex: Regex = Regex("""([A-Za-z0-9]{7})""")
+
+        public val commitNumberRegex: Regex = Regex("""^\d+\.\d+\.\d+(?:-\w+\.\d+)?\.(\d+)\+""")
 
         public val commitsHashRegex: Regex = Regex("""($numRegex)\+($hashRegex)""")
 
@@ -421,7 +441,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
             val special = SpecialStage(this)
             val otherSpecial = SpecialStage(other)
 
-            val specialComparison =
+            val specialComparison: Int? =
                 when {
                     special != null && otherSpecial == null -> 1
                     special == null && otherSpecial != null -> -1
@@ -429,7 +449,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                     else -> null
                 }
 
-            val devComparison =
+            val devComparison: Int? =
                 when {
                     name.lowercase() == dev && other.name.lowercase() == dev -> {
                         when {
@@ -439,6 +459,7 @@ private constructor(private val value: String, checkMode: CheckMode = Insignific
                             else -> gradleVersionError("`dev` version stage must contain a `num`")
                         }
                     }
+
                     name.lowercase() != dev && other.name.lowercase() == dev -> 1
                     name.lowercase() == dev && other.name.lowercase() != dev -> -1
                     else -> null

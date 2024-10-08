@@ -3,11 +3,9 @@
 package com.javiersc.semver.settings.gradle.plugin
 
 import com.javiersc.semver.project.gradle.plugin.SemverExtension
-import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.initialization.Settings
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.getByType
 
 public class SemverSettingsPlugin : Plugin<Settings> {
 
@@ -26,8 +24,4 @@ public class SemverSettingsPlugin : Plugin<Settings> {
             }
         }
     }
-}
-
-public fun Settings.semver(action: Action<SemverSettingsExtension>) {
-    action.execute(extensions.getByType())
 }

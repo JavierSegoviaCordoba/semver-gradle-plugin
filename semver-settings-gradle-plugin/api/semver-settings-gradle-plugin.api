@@ -23,7 +23,3 @@ public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPlug
 	public final synthetic fun execute (Ljava/lang/Object;)V
 }
 
-public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPluginKt {
-	public static final fun semver (Lorg/gradle/api/initialization/Settings;Lorg/gradle/api/Action;)V
-}
-

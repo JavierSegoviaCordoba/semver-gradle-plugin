@@ -413,6 +413,39 @@ semver: 1.0.1
 semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 ```
 
+### FAQ
+
+#### `mapVersion` function workaround on Groovy
+
+Due to calling `mapVersion` in Groovy, it is possible to get the error:
+
+- https://github.com/gradle/gradle/issues/30830
+
+```
+Could not serialize value of type $Proxy96
+```
+
+Being `96` a random number.
+
+The *workaround* is:
+
+```groovy
+class SemverWorkaround {
+    static mapper = new VersionMapper() {
+        @Override
+        String map(GradleVersion gradleVersion) {
+            "2.0.0"
+        }
+    }
+}
+
+semver {
+    mapVersion SemverWorkaround.mapper
+}
+```
+
+It works on settings and project script files.
+
 ## License
 
 ```

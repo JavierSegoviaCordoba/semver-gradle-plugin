@@ -172,11 +172,9 @@ semver {
 
 ##### Override the version
 
-If it possible to force an override of the version:
-
 ```kotlin
 semver {
-    version.set("1.0.0")
+    mapVersion { "1.0.0" }
 }
 ```
 

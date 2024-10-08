@@ -3,5 +3,5 @@ plugins {
 }
 
 semver {
-    tagPrefix.set("o")
+    tagPrefix.set("w")
 }

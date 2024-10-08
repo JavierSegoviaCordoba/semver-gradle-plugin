@@ -1,31 +1,22 @@
-package com.javiersc.semver.project.gradle.plugin
+@file:Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
 
+package com.javiersc.semver.settings.gradle.plugin
+
+import com.javiersc.semver.project.gradle.plugin.VersionMapper
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import javax.inject.Inject
-import org.gradle.api.Project
 import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.initialization.Settings
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
-import org.gradle.api.provider.Provider
-import org.gradle.api.provider.ProviderFactory
 import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.property
 
-public abstract class SemverExtension
-@Inject
-constructor(objects: ObjectFactory, providers: ProviderFactory) {
+public abstract class SemverSettingsExtension @Inject constructor(objects: ObjectFactory) {
 
     public val isEnabled: Property<Boolean> = objects.property<Boolean>().convention(true)
 
     public abstract val gitDir: RegularFileProperty
-
-    public val commits: Provider<List<Commit>> =
-        providers.provider {
-            GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount)
-                .commitsInTheCurrentBranchPublicApi
-        }
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 
@@ -44,13 +35,11 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
         public const val ExtensionName: String = "semver"
 
-        internal fun register(project: Project) {
-            project.extensions.create<SemverExtension>(ExtensionName)
-            val gitDir = project.provider { project.rootDir.resolve(".git") }
-            project.semverExtension.gitDir.fileProvider(gitDir)
+        internal fun register(settings: Settings): SemverSettingsExtension {
+            val semver = settings.extensions.create<SemverSettingsExtension>(ExtensionName)
+            val gitDir = settings.providers.provider { settings.rootDir.resolve(".git") }
+            semver.gitDir.fileProvider(gitDir)
+            return semver
         }
     }
 }
-
-internal val Project.semverExtension: SemverExtension
-    get() = extensions.getByType()

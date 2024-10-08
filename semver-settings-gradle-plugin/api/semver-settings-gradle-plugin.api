@@ -1,6 +1,29 @@
+public abstract class com/javiersc/semver/settings/gradle/plugin/SemverSettingsExtension {
+	public static final field Companion Lcom/javiersc/semver/settings/gradle/plugin/SemverSettingsExtension$Companion;
+	public static final field ExtensionName Ljava/lang/String;
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;)V
+	public final fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
+	public abstract fun getGitDir ()Lorg/gradle/api/file/RegularFileProperty;
+	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public final fun isEnabled ()Lorg/gradle/api/provider/Property;
+	public final fun mapVersion (Lcom/javiersc/semver/project/gradle/plugin/VersionMapper;)V
+}
+
+public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsExtension$Companion {
+}
+
 public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPlugin : org/gradle/api/Plugin {
 	public fun <init> ()V
 	public synthetic fun apply (Ljava/lang/Object;)V
 	public fun apply (Lorg/gradle/api/initialization/Settings;)V
+}
+
+public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPlugin$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final synthetic fun execute (Ljava/lang/Object;)V
+}
+
+public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPluginKt {
+	public static final fun semver (Lorg/gradle/api/initialization/Settings;Lorg/gradle/api/Action;)V
 }
 

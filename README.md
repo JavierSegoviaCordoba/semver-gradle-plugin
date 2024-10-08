@@ -82,23 +82,17 @@ semver {
     commitsMaxCount.set(-1)
     gitDir.set(rootDir.resolve(".git"))
 }
-
-tasks.register("printLastCommitHash") {
-    doLast {
-        println(semver.commits.get().last().hash)
-    }
-}
 ```
 
 - Default values:
 
-|                     | **default value**                                             |
-|---------------------|---------------------------------------------------------------|
-| **isEnabled**       | `true`                                                        |
-| **tagPrefix**       | ` `, empty string                                             |
-| **commitsMaxCount** | `-1`                                                          |
-| **gitDir**          | `rootDir.resolve(".git")`                                     |
-| **version**         | calculated version based on the last git tag and other inputs |
+|                         | **default value**         |
+|-------------------------|---------------------------|
+| **isEnabled**           | `true`                    |
+| **tagPrefix**           | ` `, empty string         |
+| **commitsMaxCount**     | `-1`                      |
+| **gitDir**              | `rootDir.resolve(".git")` |
+| **mapVersion** function | _calculated version_      |
 
 `tagPrefix` is used to asociate a project version with a tag prefix, and it allows having different
 versions in multi-project builds.

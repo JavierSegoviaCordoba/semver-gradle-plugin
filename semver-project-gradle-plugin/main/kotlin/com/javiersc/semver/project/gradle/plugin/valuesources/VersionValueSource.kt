@@ -2,13 +2,13 @@ package com.javiersc.semver.project.gradle.plugin.valuesources
 
 import com.javiersc.gradle.version.GradleVersion
 import com.javiersc.semver.project.gradle.plugin.SemverExtension
+import com.javiersc.semver.project.gradle.plugin.VersionMapper
 import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
 import com.javiersc.semver.project.gradle.plugin.internal.checkCleanProperty
 import com.javiersc.semver.project.gradle.plugin.internal.checkVersionIsHigherOrSame
 import com.javiersc.semver.project.gradle.plugin.internal.commitsMaxCount
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
-import com.javiersc.semver.project.gradle.plugin.internal.git.headCommit
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.scopeProperty
 import com.javiersc.semver.project.gradle.plugin.internal.stageProperty
@@ -82,7 +82,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         }
 
     internal interface Params : ValueSourceParameters {
-        val versionMapper: Property<SemverExtension.VersionMapper>
+        val versionMapper: Property<VersionMapper>
         val gitDir: RegularFileProperty
         val commitsMaxCount: Property<Int>
         val tagPrefixProperty: Property<String>

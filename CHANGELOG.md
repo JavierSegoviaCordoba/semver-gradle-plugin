@@ -12,6 +12,9 @@
 
 ### Removed
 
+- plugin id `com.javiersc.semver.project`
+- plugin id `com.javiersc.semver.settings`
+
 ### Updated
 
 - `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.7.12`

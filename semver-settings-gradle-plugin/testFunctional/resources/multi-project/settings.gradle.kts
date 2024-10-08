@@ -1,7 +1,7 @@
 rootProject.name = "multi-project"
 
 plugins {
-    id("com.javiersc.semver.settings")
+    id("com.javiersc.semver")
 }
 
 include(

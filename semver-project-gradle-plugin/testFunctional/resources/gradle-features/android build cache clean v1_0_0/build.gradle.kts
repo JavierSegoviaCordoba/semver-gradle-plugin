@@ -1,5 +1,5 @@
 plugins {
-    id("com.javiersc.semver.project")
+    id("com.javiersc.semver")
     id("com.android.application")
 }
 

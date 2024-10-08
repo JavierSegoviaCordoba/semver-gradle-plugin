@@ -1,3 +1,3 @@
 plugins {
-    id("com.javiersc.semver.project")
+    id("com.javiersc.semver")
 }

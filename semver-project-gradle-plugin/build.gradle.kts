@@ -2,7 +2,7 @@ hubdle {
     config {
         analysis()
         coverage()
-        documentation {
+        documentation { //
             api()
         }
         explicitApi()
@@ -13,31 +13,12 @@ hubdle {
             features {
                 gradle {
                     plugin {
-                        gradlePlugin {
-                            plugins {
-                                create("SemverProjectPlugin") {
-                                    id = "com.javiersc.semver.project"
-                                    displayName = "Semver Project plugin"
-                                    description =
-                                        "Manage project versions automatically with git tags"
-                                    implementationClass =
-                                        "com.javiersc.semver.project.gradle.plugin.SemverProjectPlugin"
-                                    tags.set(
-                                        listOf(
-                                            "semver",
-                                            "semantic versioning",
-                                            "semantic version",
-                                            "git tags",
-                                            "git version",
-                                        )
-                                    )
-                                }
-                            }
-                        }
-
                         pluginUnderTestDependencies(
                             hubdle.android.tools.build.gradle,
                             hubdle.jetbrains.kotlin.gradle.plugin,
+                            projects.semverGradlePlugin,
+                            projects.semverProjectGradlePlugin,
+                            projects.semverSettingsGradlePlugin,
                         )
                     }
                 }
@@ -51,19 +32,19 @@ hubdle {
             }
 
             testIntegration {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFunctional {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFixtures {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.eclipse.jgit)
                 }
             }

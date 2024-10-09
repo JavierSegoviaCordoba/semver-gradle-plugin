@@ -12,6 +12,12 @@
 
 ### Removed
 
+### Updated
+
+## [0.8.0] - 2024-10-09
+
+### Removed
+
 - plugin id `com.javiersc.semver.project`
 - plugin id `com.javiersc.semver.settings`
 
@@ -132,7 +138,9 @@
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.7.1...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.8.0...HEAD
+
+[0.8.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.7.1...0.8.0
 
 [0.7.1]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.7.0...0.7.1
 

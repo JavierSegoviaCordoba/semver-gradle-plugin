@@ -6,7 +6,11 @@ hubdle {
             api()
         }
         explicitApi()
-        publishing()
+        publishing {
+            gradlePortal { //
+                isEnabled = false
+            }
+        }
     }
     kotlin {
         jvm {

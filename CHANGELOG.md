@@ -14,7 +14,7 @@
 
 ### Updated
 
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.7.14`
+- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.7.15`
 
 ## [0.8.0] - 2024-10-09
 

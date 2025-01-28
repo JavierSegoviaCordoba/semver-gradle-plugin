@@ -85,22 +85,22 @@ internal fun calculatedVersion(
             }
             stagePropertySanitized.equals(Stage.Final(), ignoreCase = true) -> {
                 when (scopeProperty) {
-                    Scope.Major() -> "${lastSemverInCurrentBranch.inc(Increase.Major, "")}"
-                    Scope.Minor() -> "${lastSemverInCurrentBranch.inc(Increase.Minor, "")}"
-                    Scope.Patch() -> "${lastSemverInCurrentBranch.inc(Increase.Patch, "")}"
+                    "${Scope.Major}" -> "${lastSemverInCurrentBranch.inc(Increase.Major, "")}"
+                    "${Scope.Minor}" -> "${lastSemverInCurrentBranch.inc(Increase.Minor, "")}"
+                    "${Scope.Patch}" -> "${lastSemverInCurrentBranch.inc(Increase.Patch, "")}"
                     else -> "${lastSemverInCurrentBranch.inc(stageName = "")}"
                 }
             }
-            scopeProperty == Scope.Major() -> {
+            scopeProperty == "${Scope.Major}" -> {
                 "${lastSemverInCurrentBranch.inc(Increase.Major, incStage)}"
             }
-            scopeProperty == Scope.Minor() -> {
+            scopeProperty == "${Scope.Minor}" -> {
                 "${lastSemverInCurrentBranch.inc(Increase.Minor, incStage)}"
             }
-            scopeProperty == Scope.Patch() -> {
+            scopeProperty == "${Scope.Patch}" -> {
                 "${lastSemverInCurrentBranch.inc(Increase.Patch, incStage)}"
             }
-            scopeProperty == Scope.Auto() -> {
+            scopeProperty == "${Scope.Auto}" -> {
                 when {
                     versionTagsInCurrentBranch.isEmpty() -> "$lastSemverInCurrentBranch"
                     incStage.isEmpty() ->

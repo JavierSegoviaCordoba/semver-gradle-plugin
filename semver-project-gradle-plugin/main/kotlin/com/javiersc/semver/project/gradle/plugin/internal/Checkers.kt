@@ -5,8 +5,8 @@ import org.gradle.api.Project
 
 internal fun Project.checkScopeCorrectness() {
     val scope = scopeProperty.orNull
-    check(scope in Scope.values().map(Scope::invoke) || scope.isNullOrBlank()) {
-        "`scope` value must be one of ${Scope.values().map(Scope::invoke)} or empty"
+    check(scope in Scope.entries.map(Scope::toString) || scope.isNullOrBlank()) {
+        "`scope` value must be one of ${Scope.entries.map(Scope::toString)} or empty"
     }
 }
 

@@ -63,7 +63,7 @@ internal enum class Scope(private val value: String) {
     Minor("minor"),
     Patch("patch");
 
-    operator fun invoke(): String = value
+    override fun toString(): String = value
 }
 
 private fun Project.getSemverProperty(semverProperty: SemverProperty): Provider<String> =

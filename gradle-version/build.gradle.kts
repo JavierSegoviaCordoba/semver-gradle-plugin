@@ -15,6 +15,7 @@ hubdle {
         jvm {
             features {
                 coroutines()
+                kotest()
             }
             test {
                 dependencies {

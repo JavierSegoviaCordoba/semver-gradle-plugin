@@ -26,6 +26,7 @@ hubdle {
                         )
                     }
                 }
+                kotest()
             }
 
             main {

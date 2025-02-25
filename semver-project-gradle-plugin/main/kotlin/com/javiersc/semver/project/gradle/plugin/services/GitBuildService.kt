@@ -5,7 +5,9 @@ import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.commitsInCurrentBranchRevCommit
 import com.javiersc.semver.project.gradle.plugin.internal.remoteProperty
 import com.javiersc.semver.project.gradle.plugin.internal.semverMessage
+import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
 import com.javiersc.semver.project.gradle.plugin.semverExtension
+import java.io.File
 import javax.inject.Inject
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.errors.NoHeadException
@@ -26,13 +28,19 @@ constructor(private val execOperations: ExecOperations) :
 
     private val createdTagPrefixes: MutableSet<String> = mutableSetOf()
 
-    private val git: Git
+    private val git: Git?
         get() =
             parameters.run {
-                GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount).git
+                val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
+                if (gitDir == null) {
+                    semverWarningMessage("There is no git directory")
+                    return null
+                }
+                GitCache(gitDir = gitDir, maxCount = commitsMaxCount).git
             }
 
     internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+        val git: Git = git ?: return
         if (tagPrefixProperty !in createdTagPrefixes && projectTagPrefix == tagPrefixProperty) {
             createdTagPrefixes.add(tagPrefixProperty)
 
@@ -47,6 +55,7 @@ constructor(private val execOperations: ExecOperations) :
     }
 
     internal fun pushTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
+        val git: Git = git ?: return
         if (tagPrefixProperty !in createdTagPrefixes && projectTagPrefix == tagPrefixProperty) {
             createTag(tagPrefixProperty, projectTagPrefix, version)
 
@@ -103,7 +112,7 @@ constructor(private val execOperations: ExecOperations) :
 internal fun Git.hasCommits(): Boolean =
     try {
         commitsInCurrentBranchRevCommit.isNotEmpty()
-    } catch (exception: NoHeadException) {
+    } catch (_: NoHeadException) {
         false
     }
 

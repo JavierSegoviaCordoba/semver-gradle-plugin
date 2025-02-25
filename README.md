@@ -415,6 +415,35 @@ semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 
 ### FAQ
 
+#### Included builds support
+
+The plugin supports included builds, but it is necessary to specify the `.git` directory as there is
+no reliable way to get the `.git` directory from the main build in the included build.
+
+There are two ways to specify the `.git` directory
+
+- On all projects `build.gradle.kts`
+- In the `settings.gradle.kts`
+
+Example for the next project structure:
+
+```markdown
+root/
+├── settings.gradle.kts
+└── build-logic/
+    └── settings.gradle.kts
+```
+
+Specify the `.git` directory in the `build-logic/settings.gradle.kts` file:
+
+```kotlin
+semver {
+    gitDir.set(rootDir.parentFile.resolve(".git"))
+}
+```
+
+---
+
 #### `mapVersion` function workaround on Groovy
 
 Due to calling `mapVersion` in Groovy, it is possible to get the error:
@@ -445,6 +474,8 @@ semver {
 ```
 
 It works on settings and project script files.
+
+---
 
 ## License
 

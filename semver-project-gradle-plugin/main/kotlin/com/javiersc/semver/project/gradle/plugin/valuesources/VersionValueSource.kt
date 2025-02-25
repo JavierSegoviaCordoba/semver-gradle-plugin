@@ -11,11 +11,13 @@ import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
 import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.scopeProperty
+import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
 import com.javiersc.semver.project.gradle.plugin.internal.stageProperty
 import com.javiersc.semver.project.gradle.plugin.internal.tagPrefixProperty
 import com.javiersc.semver.project.gradle.plugin.semverExtension
 import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
+import java.io.File
 import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
@@ -30,14 +32,16 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         with(parameters) {
             val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
 
+            val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
+            if (gitDir == null) {
+                semverWarningMessage("There is no git directory")
+                return "[undefined]"
+            }
+
             var cache: GitCache? = null
             fun cache(): GitCache {
                 if (cache == null) {
-                    cache =
-                        GitCache(
-                            gitDir = parameters.gitDir.get().asFile,
-                            maxCount = parameters.commitsMaxCount,
-                        )
+                    cache = GitCache(gitDir = gitDir, maxCount = parameters.commitsMaxCount)
                 }
                 return cache
             }

@@ -2,6 +2,8 @@ package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
+import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
+import java.io.File
 import javax.inject.Inject
 import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
@@ -23,8 +25,12 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
     public val commits: Provider<List<Commit>> =
         providers.provider {
-            GitCache(gitDir = gitDir.get().asFile, maxCount = commitsMaxCount)
-                .commitsInTheCurrentBranchPublicApi
+            val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
+            if (gitDir == null) {
+                semverWarningMessage("There is no git directory")
+                return@provider emptyList()
+            }
+            GitCache(gitDir = gitDir, maxCount = commitsMaxCount).commitsInTheCurrentBranchPublicApi
         }
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
@@ -46,7 +52,7 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
         internal fun register(project: Project) {
             project.extensions.create<SemverExtension>(ExtensionName)
-            val gitDir = project.provider { project.rootDir.resolve(".git") }
+            val gitDir: Provider<File?> = project.provider { project.rootDir.resolve(".git") }
             project.semverExtension.gitDir.fileProvider(gitDir)
         }
     }

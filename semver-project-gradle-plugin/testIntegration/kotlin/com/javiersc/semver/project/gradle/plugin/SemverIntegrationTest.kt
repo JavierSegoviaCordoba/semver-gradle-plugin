@@ -15,7 +15,6 @@ import com.javiersc.semver.project.gradle.plugin.extensions.isSnapshot
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.collections.shouldHaveSize
-import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.comparables.shouldBeGreaterThan
 import io.kotest.matchers.comparables.shouldBeLessThan
 import io.kotest.matchers.nulls.shouldNotBeNull
@@ -31,16 +30,6 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.findByType
 
 class SemverIntegrationTest : GradleProjectTest() {
-
-    @Test
-    fun `given a project which has no git when it builds then it only register semver extension`() {
-        gradleProjectTest {
-            pluginManager.apply(SemverProjectPlugin::class)
-            extensions.findByName("semver").shouldNotBeNull()
-            extensions.findByType<SemverExtension>().shouldNotBeNull()
-            tasks.names.shouldNotContain("printSemver")
-        }
-    }
 
     @Test
     fun `given a project which has commits when it builds then it register semver extension`() {

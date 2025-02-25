@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- included build support
+
 ### Removed
 
 ### Updated

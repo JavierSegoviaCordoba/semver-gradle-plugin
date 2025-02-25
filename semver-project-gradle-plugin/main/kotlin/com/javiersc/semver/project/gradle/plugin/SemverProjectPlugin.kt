@@ -1,7 +1,6 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.semver.project.gradle.plugin.internal.checkScopeCorrectness
-import com.javiersc.semver.project.gradle.plugin.internal.git.hasGit
 import com.javiersc.semver.project.gradle.plugin.services.GitBuildService
 import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.project.gradle.plugin.tasks.PrintSemverTask
@@ -25,8 +24,8 @@ public class SemverProjectPlugin : Plugin<Project> {
 
         SemverExtension.register(this)
 
-        if (semverExtension.isEnabled.get() && hasGit) {
-            val gitTagBuildService = GitBuildService.register(this)
+        if (semverExtension.isEnabled.get()) {
+            val gitTagBuildService: Provider<GitBuildService> = GitBuildService.register(this)
             checkScopeCorrectness()
             configureVersion()
             configureBuildServicesAndTasks(gitTagBuildService)

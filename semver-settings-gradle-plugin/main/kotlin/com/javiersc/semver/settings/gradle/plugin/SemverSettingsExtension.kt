@@ -4,11 +4,13 @@ package com.javiersc.semver.settings.gradle.plugin
 
 import com.javiersc.semver.project.gradle.plugin.VersionMapper
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
+import java.io.File
 import javax.inject.Inject
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.initialization.Settings
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
+import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.property
 
@@ -36,8 +38,9 @@ public abstract class SemverSettingsExtension @Inject constructor(objects: Objec
         public const val ExtensionName: String = "semver"
 
         internal fun register(settings: Settings): SemverSettingsExtension {
-            val semver = settings.extensions.create<SemverSettingsExtension>(ExtensionName)
-            val gitDir = settings.providers.provider { settings.rootDir.resolve(".git") }
+            val semver: SemverSettingsExtension = settings.extensions.create(ExtensionName)
+            val gitDir: Provider<File?> =
+                settings.providers.provider { settings.rootDir.resolve(".git") }
             semver.gitDir.fileProvider(gitDir)
             return semver
         }

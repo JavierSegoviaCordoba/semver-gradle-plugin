@@ -17,7 +17,7 @@ import com.javiersc.semver.project.gradle.plugin.semverExtension
 import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
 import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
 import org.gradle.api.Project
-import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.provider.ValueSource
@@ -83,7 +83,7 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
 
     internal interface Params : ValueSourceParameters {
         val versionMapper: Property<VersionMapper>
-        val gitDir: RegularFileProperty
+        val gitDir: DirectoryProperty
         val commitsMaxCount: Property<Int>
         val tagPrefixProperty: Property<String>
         val projectTagPrefix: Property<String>

@@ -6,6 +6,8 @@
 
 ### Changed
 
+- `gitDir` type from `RegularFileProperty` to `DirectoryProperty`
+
 ### Deprecated
 
 ### Fixed

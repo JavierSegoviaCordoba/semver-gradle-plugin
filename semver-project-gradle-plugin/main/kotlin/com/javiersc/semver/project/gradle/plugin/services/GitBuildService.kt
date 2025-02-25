@@ -11,7 +11,7 @@ import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.errors.NoHeadException
 import org.eclipse.jgit.transport.RemoteConfig
 import org.gradle.api.Project
-import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.services.BuildService
@@ -73,7 +73,7 @@ constructor(private val execOperations: ExecOperations) :
     }
 
     internal interface Params : BuildServiceParameters {
-        val gitDir: RegularFileProperty
+        val gitDir: DirectoryProperty
         val commitsMaxCount: Property<Int>
         val remoteProperty: Property<String>
     }

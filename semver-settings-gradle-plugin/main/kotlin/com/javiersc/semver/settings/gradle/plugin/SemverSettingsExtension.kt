@@ -5,7 +5,7 @@ package com.javiersc.semver.settings.gradle.plugin
 import com.javiersc.semver.project.gradle.plugin.VersionMapper
 import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
 import javax.inject.Inject
-import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.initialization.Settings
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
@@ -16,7 +16,7 @@ public abstract class SemverSettingsExtension @Inject constructor(objects: Objec
 
     public val isEnabled: Property<Boolean> = objects.property<Boolean>().convention(true)
 
-    public abstract val gitDir: RegularFileProperty
+    public abstract val gitDir: DirectoryProperty
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 

@@ -4,7 +4,7 @@ import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
 import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
 import javax.inject.Inject
 import org.gradle.api.Project
-import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
@@ -19,7 +19,7 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
     public val isEnabled: Property<Boolean> = objects.property<Boolean>().convention(true)
 
-    public abstract val gitDir: RegularFileProperty
+    public abstract val gitDir: DirectoryProperty
 
     public val commits: Provider<List<Commit>> =
         providers.provider {

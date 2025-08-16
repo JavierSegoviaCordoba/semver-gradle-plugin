@@ -91,8 +91,8 @@ internal abstract class VersionValueSource : ValueSource<String, VersionValueSou
         val commitsMaxCount: Property<Int>
         val tagPrefixProperty: Property<String>
         val projectTagPrefix: Property<String>
-        val stageProperty: Property<String?>
-        val scopeProperty: Property<String?>
+        val stageProperty: Property<String>
+        val scopeProperty: Property<String>
         val creatingSemverTag: Property<Boolean>
         val checkClean: Property<Boolean>
     }

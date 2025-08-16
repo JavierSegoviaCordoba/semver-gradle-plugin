@@ -52,7 +52,7 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
         internal fun register(project: Project) {
             project.extensions.create<SemverExtension>(ExtensionName)
-            val gitDir: Provider<File?> = project.provider { project.rootDir.resolve(".git") }
+            val gitDir: Provider<File> = project.provider { project.rootDir.resolve(".git") }
             project.semverExtension.gitDir.fileProvider(gitDir)
         }
     }

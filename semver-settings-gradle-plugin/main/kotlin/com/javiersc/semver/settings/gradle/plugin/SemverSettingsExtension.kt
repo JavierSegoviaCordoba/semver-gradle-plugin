@@ -39,7 +39,7 @@ public abstract class SemverSettingsExtension @Inject constructor(objects: Objec
 
         internal fun register(settings: Settings): SemverSettingsExtension {
             val semver: SemverSettingsExtension = settings.extensions.create(ExtensionName)
-            val gitDir: Provider<File?> =
+            val gitDir: Provider<File> =
                 settings.providers.provider { settings.rootDir.resolve(".git") }
             semver.gitDir.fileProvider(gitDir)
             return semver

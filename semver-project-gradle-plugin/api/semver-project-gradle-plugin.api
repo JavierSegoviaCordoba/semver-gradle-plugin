@@ -59,7 +59,6 @@ public final class com/javiersc/semver/project/gradle/plugin/VersionProperty : o
 	public fun <init> (Lorg/gradle/api/provider/Provider;)V
 	public fun filter (Lorg/gradle/api/specs/Spec;)Lorg/gradle/api/provider/Provider;
 	public fun flatMap (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
-	public fun forUseAtConfigurationTime ()Lorg/gradle/api/provider/Provider;
 	public synthetic fun get ()Ljava/lang/Object;
 	public fun get ()Ljava/lang/String;
 	public synthetic fun getOrElse (Ljava/lang/Object;)Ljava/lang/Object;

@@ -2,11 +2,11 @@ hubdle {
     config {
         analysis()
         coverage()
-        documentation {
+        documentation { //
             api()
         }
         explicitApi()
-        languageSettings {
+        languageSettings { //
             experimentalCoroutinesApi()
         }
         publishing()
@@ -18,7 +18,7 @@ hubdle {
                 kotest()
             }
             test {
-                dependencies {
+                dependencies { //
                     implementation(hubdle.kotest.property)
                 }
             }

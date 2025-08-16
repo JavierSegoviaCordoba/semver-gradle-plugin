@@ -14,18 +14,7 @@ hubdle {
     }
     kotlin {
         jvm {
-            features {
-                gradle {
-                    plugin {
-                        pluginUnderTestDependencies(
-                            hubdle.android.tools.build.gradle,
-                            hubdle.jetbrains.kotlin.gradle.plugin,
-                            projects.semverGradlePlugin,
-                            projects.semverProjectGradlePlugin,
-                            projects.semverSettingsGradlePlugin,
-                        )
-                    }
-                }
+            features { //
                 kotest()
             }
 
@@ -54,6 +43,18 @@ hubdle {
                     implementation(hubdle.eclipse.jgit)
                 }
             }
+        }
+    }
+
+    gradle {
+        plugin {
+            pluginUnderTestDependencies(
+                hubdle.android.tools.build.gradle,
+                hubdle.jetbrains.kotlin.gradle.plugin,
+                projects.semverGradlePlugin,
+                projects.semverProjectGradlePlugin,
+                projects.semverSettingsGradlePlugin,
+            )
         }
     }
 }

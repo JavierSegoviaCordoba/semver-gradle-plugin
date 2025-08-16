@@ -18,8 +18,3 @@ public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPlug
 	public fun apply (Lorg/gradle/api/initialization/Settings;)V
 }
 
-public final class com/javiersc/semver/settings/gradle/plugin/SemverSettingsPlugin$inlined$sam$i$org_gradle_api_Action$0 : org/gradle/api/Action {
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
-	public final synthetic fun execute (Ljava/lang/Object;)V
-}
-

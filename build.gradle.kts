@@ -1,4 +1,4 @@
-plugins {
+plugins { //
     alias(libs.plugins.javiersc.hubdle)
 }
 
@@ -10,11 +10,10 @@ hubdle {
         documentation {
             api()
             changelog()
-            readme {
+            readme { //
                 badges()
             }
             site()
         }
-        nexus()
     }
 }

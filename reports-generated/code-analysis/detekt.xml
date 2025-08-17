@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="4.3">
+<file name="semver-project-gradle-plugin/test/kotlin/com/javiersc/semver/project/gradle/plugin/GitTagTest.kt">
+	<error line="492" column="9" severity="warning" message="The function version tags in current branch is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="976" column="9" severity="warning" message="The function last version tag in current branch is too long (71). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="587" column="9" severity="warning" message="The function version tags sorted by semver is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="685" column="9" severity="warning" message="The function version tags sorted by timeline or semver 1 is too long (89). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="787" column="9" severity="warning" message="The function version tags sorted by timeline or semver 2 is too long (169). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="27" column="16" severity="warning" message="Class GitTagTest is too large. Consider splitting it into smaller pieces." source="detekt.LargeClass" />
+</file>
+<file name="semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitCache.kt">
+	<error line="26" column="16" severity="warning" message="Class &apos;GitCache&apos; with &apos;13&apos; functions detected. Defined threshold inside classes is set to &apos;11&apos;" source="detekt.TooManyFunctions" />
+	<error line="215" column="13" severity="warning" message="This comment contains &apos;TODO:&apos; that has been defined as forbidden in detekt." source="detekt.ForbiddenComment" />
+</file>
+<file name="semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitRefGitExtensions.kt">
+	<error line="1" column="1" severity="warning" message="File &apos;/home/runner/work/semver-gradle-plugin/semver-gradle-plugin/semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/git/GitRefGitExtensions.kt&apos; with &apos;11&apos; functions detected. Defined threshold inside files is set to &apos;11&apos;" source="detekt.TooManyFunctions" />
+</file>
+<file name="semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/CalculatedVersion.kt">
+	<error line="8" column="31" severity="warning" message="The function calculatedVersion(stageProperty: String?, scopeProperty: String?, isCreatingSemverTag: Boolean, lastSemverMajorInCurrentBranch: Int, lastSemverMinorInCurrentBranch: Int, lastSemverPatchInCurrentBranch: Int, lastSemverStageInCurrentBranch: String?, lastSemverNumInCurrentBranch: Int?, versionTagsInCurrentBranch: List&lt;String&gt;, clean: Boolean, checkClean: Boolean, lastCommitInCurrentBranch: String?, commitsInCurrentBranch: List&lt;String&gt;, headCommit: String, lastVersionCommitInCurrentBranch: String?) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
+	<error line="118" column="44" severity="warning" message="The function calculateAdditionalVersionData(clean: Boolean, checkClean: Boolean, lastCommitInCurrentBranch: String?, commitsInCurrentBranch: List&lt;String&gt;, isThereVersionTags: Boolean, headCommit: String, lastVersionCommitInCurrentBranch: String?) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
+	<error line="8" column="14" severity="warning" message="The function calculatedVersion is too long (85). The maximum length is 60." source="detekt.LongMethod" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/MassiveTagsInSameCommitTest.kt">
+	<error line="11" column="9" severity="warning" message="The function massive tags in same commit is too long (67). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="11" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/OneProjectExampleTest.kt">
+	<error line="12" column="16" severity="warning" message="Class &apos;OneProjectExampleTest&apos; with &apos;13&apos; functions detected. Defined threshold inside classes is set to &apos;11&apos;" source="detekt.TooManyFunctions" />
+	<error line="15" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="32" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="48" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="54" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="63" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="72" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="78" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="87" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="94" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="103" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="109" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="115" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="126" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/examples/MultiProjectExampleTest.kt">
+	<error line="26" column="16" severity="warning" message="Class &apos;MultiProjectExampleTest&apos; with &apos;16&apos; functions detected. Defined threshold inside classes is set to &apos;11&apos;" source="detekt.TooManyFunctions" />
+	<error line="29" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="49" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="68" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="83" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="101" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="119" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="135" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="154" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="170" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="189" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="205" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="225" column="10" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="245" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="260" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="275" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="290" column="30" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="38" column="13" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="40" column="13" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="170" column="9" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="205" column="9" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/TagsOrderTest.kt">
+	<error line="11" column="9" severity="warning" message="The function random is too long (63). The maximum length is 60." source="detekt.LongMethod" />
+</file>
+<file name="semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/services/GitBuildService.kt">
+	<error line="111" column="14" severity="warning" message="The caught exception is swallowed. The original exception could be lost." source="detekt.SwallowedException" />
+</file>
+<file name="semver-project-gradle-plugin/main/kotlin/com/javiersc/semver/project/gradle/plugin/internal/SemverProperty.kt">
+	<error line="7" column="20" severity="warning" message="Top level constant names should match the pattern: [A-Z][_A-Z0-9]*" source="detekt.TopLevelPropertyNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GitHubVariablesTest.kt">
+	<error line="41" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="106" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/VersionBuildDirTest.kt">
+	<error line="12" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="24" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="38" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="49" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="73" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/PushSemverTagTaskTest.kt">
+	<error line="18" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/PropertiesTest.kt">
+	<error line="31" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/project/gradle/plugin/GradleFeaturesTest.kt">
+	<error line="14" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="22" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="30" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="38" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="46" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="84" column="13" severity="warning" message="Variable names should match the pattern: [a-z][A-Za-z0-9]*" source="detekt.VariableNaming" />
+	<error line="100" column="13" severity="warning" message="Variable names should match the pattern: [a-z][A-Za-z0-9]*" source="detekt.VariableNaming" />
+</file>
+<file name="semver-project-gradle-plugin/testIntegration/kotlin/com/javiersc/semver/project/gradle/plugin/SemverIntegrationTest.kt">
+	<error line="20" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="30" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+<file name="semver-settings-gradle-plugin/testFunctional/kotlin/com/javiersc/semver/settings/gradle/plugin/MultiProjectTest.kt">
+	<error line="11" column="9" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+</file>
+</checkstyle>

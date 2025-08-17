@@ -1,0 +1,19 @@
+{
+  "total": 20,
+  "tools inspection": {
+    "Code Inspection": 20
+  },
+  "linter": "QDJVMC",
+  "attributes": {
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "https://github.com/JavierSegoviaCordoba/semver-gradle-plugin.git",
+        "revisionId": "d4e66d8d570a2333ba9bad0a2f09cb9f218c7063",
+        "branch": "main"
+      }
+    },
+    "deviceId": "200820300000000-3932-f0c5-1d0e-714296d476a3",
+    "jobUrl": "https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/actions/runs/4393523897",
+    "repoUrl": "https://github.com/JavierSegoviaCordoba/semver-gradle-plugin.git"
+  }
+}

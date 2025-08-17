@@ -1,0 +1,320 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > VersionValueSource</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.javiersc.semver.project.gradle.plugin.valuesources</a>
+</div>
+
+<h1>Coverage Summary for Class: VersionValueSource (com.javiersc.semver.project.gradle.plugin.valuesources)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">VersionValueSource</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/214)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">VersionValueSource$Companion</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">VersionValueSource$Companion$register$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    99%
+  </span>
+  <span class="absValue">
+    (100/101)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">VersionValueSource$Params</td>
+    <td class="coverageStat"/>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (2/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.6%
+  </span>
+  <span class="absValue">
+    (1/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    28.6%
+  </span>
+  <span class="absValue">
+    (12/42)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36%
+  </span>
+  <span class="absValue">
+    (121/336)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.javiersc.semver.project.gradle.plugin.valuesources
+&nbsp;
+&nbsp;import com.javiersc.semver.Version
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.checkCleanProperty
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.checkVersionIsHigherOrSame
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.commitsMaxCount
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.projectTagPrefix
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.scopeProperty
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.stageProperty
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.tagPrefixProperty
+&nbsp;import com.javiersc.semver.project.gradle.plugin.semverExtension
+&nbsp;import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
+&nbsp;import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
+&nbsp;import java.io.File
+&nbsp;import org.gradle.api.Project
+&nbsp;import org.gradle.api.provider.Property
+&nbsp;import org.gradle.api.provider.Provider
+&nbsp;import org.gradle.api.provider.ValueSource
+&nbsp;import org.gradle.api.provider.ValueSourceParameters
+&nbsp;import org.gradle.kotlin.dsl.of
+&nbsp;
+<b class="nc">&nbsp;internal abstract class VersionValueSource : ValueSource&lt;String, VersionValueSource.Params&gt; {</b>
+&nbsp;
+&nbsp;    override fun obtain(): String =
+<b class="nc">&nbsp;        with(parameters) {</b>
+<b class="nc">&nbsp;            val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()</b>
+&nbsp;
+&nbsp;            fun cache() =
+<b class="nc">&nbsp;                GitCache(</b>
+<b class="nc">&nbsp;                    gitDir = parameters.gitDir.get(),</b>
+<b class="nc">&nbsp;                    maxCount = parameters.commitsMaxCount,</b>
+&nbsp;                )
+&nbsp;
+<b class="nc">&nbsp;            val lastSemver: Version = cache().lastVersionInCurrentBranch(projectTagPrefix.get())</b>
+<b class="nc">&nbsp;            val lastVersionInCurrentBranch =</b>
+<b class="nc">&nbsp;                cache().versionsInCurrentBranch(projectTagPrefix.get()).map(Version::toString)</b>
+&nbsp;
+<b class="nc">&nbsp;            val lastVersionCommitInCurrentBranch =</b>
+<b class="nc">&nbsp;                cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash</b>
+&nbsp;
+<b class="nc">&nbsp;            val version: String =</b>
+<b class="nc">&nbsp;                calculatedVersion(</b>
+<b class="nc">&nbsp;                    stageProperty = stageProperty.orNull.takeIf { isSamePrefix },</b>
+<b class="nc">&nbsp;                    scopeProperty = scopeProperty.orNull.takeIf { isSamePrefix },</b>
+<b class="nc">&nbsp;                    isCreatingSemverTag = creatingSemverTag.get().takeIf { isSamePrefix } ?: false,</b>
+<b class="nc">&nbsp;                    lastSemverMajorInCurrentBranch = lastSemver.major,</b>
+<b class="nc">&nbsp;                    lastSemverMinorInCurrentBranch = lastSemver.minor,</b>
+<b class="nc">&nbsp;                    lastSemverPatchInCurrentBranch = lastSemver.patch,</b>
+<b class="nc">&nbsp;                    lastSemverStageInCurrentBranch = lastSemver.stage?.name,</b>
+<b class="nc">&nbsp;                    lastSemverNumInCurrentBranch = lastSemver.stage?.num,</b>
+<b class="nc">&nbsp;                    versionTagsInCurrentBranch = lastVersionInCurrentBranch,</b>
+<b class="nc">&nbsp;                    clean = cache().isClean,</b>
+<b class="nc">&nbsp;                    checkClean = checkClean.get(),</b>
+<b class="nc">&nbsp;                    lastCommitInCurrentBranch = cache().lastCommitInCurrentBranch?.hash,</b>
+&nbsp;                    commitsInCurrentBranch =
+<b class="nc">&nbsp;                        cache().commitsInCurrentBranch.map(GitRef.Commit::hash),</b>
+<b class="nc">&nbsp;                    headCommit = cache().headCommit.commit.hash,</b>
+<b class="nc">&nbsp;                    lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,</b>
+&nbsp;                )
+&nbsp;
+<b class="nc">&nbsp;            checkVersionIsHigherOrSame(version, lastSemver)</b>
+&nbsp;
+<b class="nc">&nbsp;            version</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    internal interface Params : ValueSourceParameters {
+&nbsp;        val gitDir: Property&lt;File&gt;
+&nbsp;        val commitsMaxCount: Property&lt;Int&gt;
+&nbsp;        val tagPrefixProperty: Property&lt;String&gt;
+&nbsp;        val projectTagPrefix: Property&lt;String&gt;
+&nbsp;        val stageProperty: Property&lt;String?&gt;
+&nbsp;        val scopeProperty: Property&lt;String?&gt;
+&nbsp;        val creatingSemverTag: Property&lt;Boolean&gt;
+&nbsp;        val checkClean: Property&lt;Boolean&gt;
+&nbsp;    }
+&nbsp;
+&nbsp;    companion object {
+&nbsp;
+&nbsp;        fun register(project: Project): Provider&lt;String&gt; =
+<b class="fc">&nbsp;            project.providers.of(VersionValueSource::class) { valueSourceSpec -&gt;</b>
+<b class="fc">&nbsp;                val gitDir = project.provider { project.semverExtension.gitDir.get().asFile }</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.gitDir.set(gitDir)</b>
+<b class="fc">&nbsp;                val commitsMaxCount: Int =</b>
+<b class="pc">&nbsp;                    project.commitsMaxCount.orNull ?: project.semverExtension.commitsMaxCount.get()</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.commitsMaxCount.set(commitsMaxCount)</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.projectTagPrefix.set(project.projectTagPrefix.get())</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.tagPrefixProperty.set(project.tagPrefixProperty.get())</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.stageProperty.set(project.stageProperty.orNull)</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.scopeProperty.set(project.scopeProperty.orNull)</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.creatingSemverTag.set(project.isCreatingSemverTag)</b>
+<b class="fc">&nbsp;                valueSourceSpec.parameters.checkClean.set(project.checkCleanProperty.get())</b>
+&nbsp;            }
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;private val Project.isCreatingSemverTag: Boolean
+&nbsp;    get() =
+&nbsp;        gradle.startParameter.taskNames.any { taskName: String -&gt;
+&nbsp;            taskName == CreateSemverTagTask.TaskName || taskName == PushSemverTagTask.TaskName
+&nbsp;        }
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-11 14:08</div>
+</div>
+</body>
+</html>

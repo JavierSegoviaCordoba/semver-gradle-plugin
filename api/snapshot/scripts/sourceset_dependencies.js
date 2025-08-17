@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":semver-gradle-plugin:dokkaHtmlPartial/main":[],":gradle-version:dokkaHtmlPartial/main":[],":semver-project-gradle-plugin:dokkaHtmlPartial/main":[],":semver-settings-gradle-plugin:dokkaHtmlPartial/main":[]}'

@@ -1,0 +1,279 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CalculatedVersionKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.javiersc.semver.project.gradle.plugin.internal</a>
+</div>
+
+<h1>Coverage Summary for Class: CalculatedVersionKt (com.javiersc.semver.project.gradle.plugin.internal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">CalculatedVersionKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73.3%
+  </span>
+  <span class="absValue">
+    (66/90)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (72/84)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78.2%
+  </span>
+  <span class="absValue">
+    (344/440)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.javiersc.semver.project.gradle.plugin.internal
+&nbsp;
+&nbsp;import com.javiersc.semver.Version
+&nbsp;import com.javiersc.semver.Version.Increase
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.git.commitsBetweenTwoCommitsIncludingLastExcludingFirst
+&nbsp;
+&nbsp;@Suppress(&quot;ComplexMethod&quot;)
+&nbsp;internal fun calculatedVersion(
+&nbsp;    stageProperty: String?,
+&nbsp;    scopeProperty: String?,
+&nbsp;    isCreatingSemverTag: Boolean,
+&nbsp;    lastSemverMajorInCurrentBranch: Int,
+&nbsp;    lastSemverMinorInCurrentBranch: Int,
+&nbsp;    lastSemverPatchInCurrentBranch: Int,
+&nbsp;    lastSemverStageInCurrentBranch: String?,
+&nbsp;    lastSemverNumInCurrentBranch: Int?,
+&nbsp;    versionTagsInCurrentBranch: List&lt;String&gt;,
+&nbsp;    clean: Boolean,
+&nbsp;    checkClean: Boolean,
+&nbsp;    lastCommitInCurrentBranch: String?,
+&nbsp;    commitsInCurrentBranch: List&lt;String&gt;,
+&nbsp;    headCommit: String,
+&nbsp;    lastVersionCommitInCurrentBranch: String?,
+&nbsp;): String {
+<b class="fc">&nbsp;    val isClean: Boolean = clean || !checkClean</b>
+<b class="fc">&nbsp;    val isDirty: Boolean = !isClean</b>
+&nbsp;
+<b class="fc">&nbsp;    val stagePropertySanitized =</b>
+<b class="fc">&nbsp;        stageProperty?.let { name -&gt;</b>
+<b class="fc">&nbsp;            if (name.equals(&quot;SNAPSHOT&quot;, ignoreCase = true)) &quot;SNAPSHOT&quot; else name</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;    val lastSemverStageInCurrentBranchSanitized =</b>
+<b class="pc">&nbsp;        lastSemverStageInCurrentBranch?.let { name -&gt;</b>
+<b class="nc">&nbsp;            if (name.equals(&quot;SNAPSHOT&quot;, ignoreCase = true)) &quot;SNAPSHOT&quot; else name</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;    val lastSemverInCurrentBranch =</b>
+<b class="fc">&nbsp;        Version(</b>
+<b class="fc">&nbsp;            major = lastSemverMajorInCurrentBranch,</b>
+<b class="fc">&nbsp;            minor = lastSemverMinorInCurrentBranch,</b>
+<b class="fc">&nbsp;            patch = lastSemverPatchInCurrentBranch,</b>
+<b class="fc">&nbsp;            stageName = lastSemverStageInCurrentBranchSanitized,</b>
+<b class="fc">&nbsp;            stageNum = lastSemverNumInCurrentBranch,</b>
+&nbsp;        )
+&nbsp;
+<b class="pc">&nbsp;    val previousStage: String? = lastSemverInCurrentBranch.stage?.name</b>
+&nbsp;
+<b class="fc">&nbsp;    val incStage: String =</b>
+<b class="pc">&nbsp;        (stagePropertySanitized ?: previousStage ?: &quot;&quot;).run {</b>
+<b class="fc">&nbsp;            when {</b>
+<b class="pc">&nbsp;                equals(Stage.Auto(), true) &amp;&amp; !previousStage.isNullOrBlank() -&gt; previousStage</b>
+<b class="fc">&nbsp;                equals(Stage.Auto(), true) -&gt; &quot;&quot;</b>
+<b class="fc">&nbsp;                else -&gt; this</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;    val isNoStagedNoScopedNoCreatingSemverTag: Boolean =</b>
+<b class="pc">&nbsp;        stagePropertySanitized.isNullOrBlank() &amp;&amp;</b>
+<b class="pc">&nbsp;            scopeProperty.isNullOrBlank() &amp;&amp;</b>
+<b class="fc">&nbsp;            !isCreatingSemverTag</b>
+&nbsp;
+<b class="fc">&nbsp;    val calculatedVersion: String =</b>
+<b class="fc">&nbsp;        when {</b>
+<b class="pc">&nbsp;            isNoStagedNoScopedNoCreatingSemverTag || isDirty -&gt; {</b>
+<b class="fc">&nbsp;                val additionalVersionData: String =</b>
+<b class="fc">&nbsp;                    calculateAdditionalVersionData(</b>
+<b class="fc">&nbsp;                        clean = clean,</b>
+<b class="fc">&nbsp;                        checkClean = checkClean,</b>
+<b class="fc">&nbsp;                        lastCommitInCurrentBranch = lastCommitInCurrentBranch,</b>
+<b class="fc">&nbsp;                        commitsInCurrentBranch = commitsInCurrentBranch,</b>
+<b class="fc">&nbsp;                        isThereVersionTags = versionTagsInCurrentBranch.isNotEmpty(),</b>
+<b class="fc">&nbsp;                        headCommit = headCommit,</b>
+<b class="fc">&nbsp;                        lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,</b>
+&nbsp;                    )
+<b class="fc">&nbsp;                &quot;$lastSemverInCurrentBranch$additionalVersionData&quot;</b>
+&nbsp;            }
+<b class="pc">&nbsp;            stagePropertySanitized.equals(Stage.Final(), ignoreCase = true) -&gt; {</b>
+<b class="nc">&nbsp;                when (scopeProperty) {</b>
+<b class="nc">&nbsp;                    Scope.Major() -&gt; &quot;${lastSemverInCurrentBranch.inc(Increase.Major, &quot;&quot;)}&quot;</b>
+<b class="nc">&nbsp;                    Scope.Minor() -&gt; &quot;${lastSemverInCurrentBranch.inc(Increase.Minor, &quot;&quot;)}&quot;</b>
+<b class="nc">&nbsp;                    Scope.Patch() -&gt; &quot;${lastSemverInCurrentBranch.inc(Increase.Patch, &quot;&quot;)}&quot;</b>
+<b class="nc">&nbsp;                    else -&gt; &quot;${lastSemverInCurrentBranch.inc(stageName = &quot;&quot;)}&quot;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            scopeProperty == Scope.Major() -&gt; {</b>
+<b class="fc">&nbsp;                &quot;${lastSemverInCurrentBranch.inc(Increase.Major, incStage)}&quot;</b>
+&nbsp;            }
+<b class="pc">&nbsp;            scopeProperty == Scope.Minor() -&gt; {</b>
+<b class="nc">&nbsp;                &quot;${lastSemverInCurrentBranch.inc(Increase.Minor, incStage)}&quot;</b>
+&nbsp;            }
+<b class="pc">&nbsp;            scopeProperty == Scope.Patch() -&gt; {</b>
+<b class="nc">&nbsp;                &quot;${lastSemverInCurrentBranch.inc(Increase.Patch, incStage)}&quot;</b>
+&nbsp;            }
+<b class="fc">&nbsp;            scopeProperty == Scope.Auto() -&gt; {</b>
+<b class="fc">&nbsp;                when {</b>
+<b class="fc">&nbsp;                    versionTagsInCurrentBranch.isEmpty() -&gt; &quot;$lastSemverInCurrentBranch&quot;</b>
+<b class="pc">&nbsp;                    incStage.isEmpty() -&gt;</b>
+<b class="fc">&nbsp;                        &quot;${lastSemverInCurrentBranch.inc(Increase.Patch, incStage)}&quot;</b>
+<b class="nc">&nbsp;                    else -&gt; &quot;${lastSemverInCurrentBranch.inc(stageName = incStage)}&quot;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            isCreatingSemverTag &amp;&amp; versionTagsInCurrentBranch.isEmpty() -&gt; {</b>
+<b class="fc">&nbsp;                &quot;$lastSemverInCurrentBranch&quot;</b>
+&nbsp;            }
+&nbsp;            else -&gt; {
+<b class="fc">&nbsp;                &quot;${lastSemverInCurrentBranch.inc(stageName = incStage)}&quot;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }.also {</b>
+<b class="pc">&nbsp;            if (it.contains(&quot;final&quot;, true) || it.contains(&quot;auto&quot;, true)) {</b>
+<b class="nc">&nbsp;                error(&quot;`stage` plus `scope` combination is broken, please report it&quot;)</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;    return calculatedVersion</b>
+&nbsp;}
+&nbsp;
+&nbsp;internal fun calculateAdditionalVersionData(
+<b class="nc">&nbsp;    clean: Boolean = true,</b>
+<b class="nc">&nbsp;    checkClean: Boolean = true,</b>
+&nbsp;    lastCommitInCurrentBranch: String?,
+&nbsp;    commitsInCurrentBranch: List&lt;String&gt;,
+&nbsp;    isThereVersionTags: Boolean,
+&nbsp;    headCommit: String,
+&nbsp;    lastVersionCommitInCurrentBranch: String?,
+&nbsp;): String {
+<b class="fc">&nbsp;    val isClean: Boolean = clean || !checkClean</b>
+<b class="fc">&nbsp;    val isDirty: Boolean = !isClean</b>
+&nbsp;
+<b class="fc">&nbsp;    val commitsBetweenCurrentAndLastTagCommit: List&lt;String&gt; =</b>
+<b class="fc">&nbsp;        commitsBetweenTwoCommitsIncludingLastExcludingFirst(</b>
+<b class="fc">&nbsp;            lastCommitInCurrentBranch,</b>
+<b class="fc">&nbsp;            lastVersionCommitInCurrentBranch,</b>
+<b class="fc">&nbsp;            commitsInCurrentBranch,</b>
+&nbsp;        )
+&nbsp;
+<b class="fc">&nbsp;    val additionalData: String =</b>
+<b class="fc">&nbsp;        commitsBetweenCurrentAndLastTagCommit.run {</b>
+<b class="fc">&nbsp;            val hashLength = DEFAULT_SHORT_HASH_LENGTH</b>
+<b class="fc">&nbsp;            when {</b>
+<b class="fc">&nbsp;                !isThereVersionTags &amp;&amp; isDirty -&gt; &quot;.$size+${headCommit.take(hashLength)}+DIRTY&quot;</b>
+<b class="fc">&nbsp;                !isThereVersionTags -&gt; &quot;.$size+${headCommit.take(hashLength)}&quot;</b>
+<b class="fc">&nbsp;                isNotEmpty() &amp;&amp; isClean -&gt; &quot;.$size+${first().take(hashLength)}&quot;</b>
+<b class="fc">&nbsp;                isEmpty() &amp;&amp; isClean -&gt; &quot;&quot;</b>
+<b class="fc">&nbsp;                else -&gt; &quot;.$size+DIRTY&quot;</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;    return additionalData</b>
+&nbsp;}
+&nbsp;
+&nbsp;internal const val DEFAULT_SHORT_HASH_LENGTH = 7
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-11 14:08</div>
+</div>
+</body>
+</html>

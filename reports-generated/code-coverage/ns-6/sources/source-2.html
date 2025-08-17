@@ -1,0 +1,349 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GitCacheKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.javiersc.semver.project.gradle.plugin.internal.git</a>
+</div>
+
+<h1>Coverage Summary for Class: GitCacheKt (com.javiersc.semver.project.gradle.plugin.internal.git)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">GitCacheKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    71.4%
+  </span>
+  <span class="absValue">
+    (10/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.javiersc.semver.project.gradle.plugin.internal.git
+&nbsp;
+&nbsp;import com.javiersc.semver.Version
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.InitialVersion
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.warningLastVersionIsNotHigherVersion
+&nbsp;import com.javiersc.semver.project.gradle.plugin.services.hasNotCommits
+&nbsp;import java.io.File
+&nbsp;import org.eclipse.jgit.api.Git
+&nbsp;import org.eclipse.jgit.lib.Constants
+&nbsp;import org.eclipse.jgit.lib.ObjectId
+&nbsp;import org.eclipse.jgit.lib.Ref
+&nbsp;import org.eclipse.jgit.revwalk.RevCommit
+&nbsp;import org.eclipse.jgit.revwalk.RevWalk
+&nbsp;import org.eclipse.jgit.storage.file.FileRepositoryBuilder
+&nbsp;import org.gradle.api.provider.Provider
+&nbsp;
+&nbsp;private val checkedNotNullCache: GitCache
+&nbsp;    get() =
+<b class="pc">&nbsp;        checkNotNull(gitCache) {</b>
+<b class="nc">&nbsp;            &quot;`GitCache` must not be null at this point, report this as a bug, please&quot;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;private var gitCache: GitCache? = null
+&nbsp;
+&nbsp;internal class GitCache
+&nbsp;private constructor(
+&nbsp;    private val gitDir: File,
+&nbsp;    maxCount: Provider&lt;Int&gt;? = null,
+&nbsp;) {
+&nbsp;
+&nbsp;    internal val git: Git by lazy {
+&nbsp;        Git(FileRepositoryBuilder().setGitDir(gitDir).readEnvironment().findGitDir().build()).also {
+&nbsp;            if (it.hasNotCommits()) {
+&nbsp;                semverWarningMessage(&quot;semver plugin can&#39;t work if there are no commits&quot;)
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    internal val gitFiles: List&lt;File&gt; = git.repository.directory.walkTopDown().toList()
+&nbsp;
+&nbsp;    internal val isClean: Boolean
+&nbsp;        get() = git.status().call().isClean
+&nbsp;
+&nbsp;    internal val headRevCommit: RevCommit by lazy {
+&nbsp;        RevWalk(git.repository).parseCommit(git.repository.resolve(Constants.HEAD))
+&nbsp;    }
+&nbsp;
+&nbsp;    internal val headCommit: GitRef.Head by lazy {
+&nbsp;        GitRef.Head(
+&nbsp;            GitRef.Commit(
+&nbsp;                message = headRevCommit.shortMessage,
+&nbsp;                fullMessage = headRevCommit.fullMessage,
+&nbsp;                hash = headRevCommit.toObjectId().name,
+&nbsp;            )
+&nbsp;        )
+&nbsp;    }
+&nbsp;
+&nbsp;    internal val commitsInCurrentBranchRevCommit: List&lt;RevCommit&gt; by lazy {
+&nbsp;        git.log().setMaxCount(maxCount?.get() ?: -1).call().toList()
+&nbsp;    }
+&nbsp;    internal val tagsInRepoRef: List&lt;Ref&gt; by lazy { git.tagList().call() }
+&nbsp;
+&nbsp;    internal val commitsInCurrentBranchHash: List&lt;String&gt; by lazy {
+&nbsp;        commitsInCurrentBranchRevCommit.map(RevCommit::getName)
+&nbsp;    }
+&nbsp;
+&nbsp;    internal val commitsInTheCurrentBranchPublicApi:
+&nbsp;        List&lt;com.javiersc.semver.project.gradle.plugin.Commit&gt; by lazy {
+&nbsp;        commitsInCurrentBranchRevCommit.map { revCommit -&gt;
+&nbsp;            val hash: String = revCommit.toObjectId().name
+&nbsp;            val tags: List&lt;com.javiersc.semver.project.gradle.plugin.Tag&gt; =
+&nbsp;                tagsInCurrentBranchRef
+&nbsp;                    .filter { ref -&gt; commitHash(ref) == hash }
+&nbsp;                    .map { ref -&gt;
+&nbsp;                        com.javiersc.semver.project.gradle.plugin.Tag(
+&nbsp;                            name = ref.tagName,
+&nbsp;                            refName = ref.name,
+&nbsp;                        )
+&nbsp;                    }
+&nbsp;            com.javiersc.semver.project.gradle.plugin.Commit(
+&nbsp;                message = revCommit.shortMessage,
+&nbsp;                fullMessage = revCommit.fullMessage,
+&nbsp;                hash = hash,
+&nbsp;                timestampEpochSecond = revCommit.authorIdent.whenAsInstant.epochSecond,
+&nbsp;                tags = tags,
+&nbsp;            )
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    internal val commitsInCurrentBranch: List&lt;GitRef.Commit&gt; by lazy {
+&nbsp;        commitsInCurrentBranchRevCommit.map { revCommit -&gt;
+&nbsp;            revCommit.run {
+&nbsp;                GitRef.Commit(
+&nbsp;                    message = shortMessage,
+&nbsp;                    fullMessage = fullMessage,
+&nbsp;                    hash = toObjectId().name,
+&nbsp;                )
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    internal val lastCommitInCurrentBranch: GitRef.Commit? by lazy {
+&nbsp;        commitsInCurrentBranch.firstOrNull()
+&nbsp;    }
+&nbsp;
+&nbsp;    internal fun commitHash(ref: Ref): String = commitHash(ref.objectId)
+&nbsp;
+&nbsp;    internal fun commitHash(objectId: ObjectId): String =
+&nbsp;        git.repository.parseCommit(objectId).toObjectId().name
+&nbsp;
+&nbsp;    internal fun lastVersionCommitInCurrentBranch(tagPrefix: String): GitRef.Commit? =
+&nbsp;        lastVersionTagInCurrentBranch(tagPrefix)?.commit
+&nbsp;
+&nbsp;    internal val Ref.tagName: String
+&nbsp;        get() = name.substringAfter(&quot;refs/tags/&quot;)
+&nbsp;
+&nbsp;    internal val tagsInCurrentBranchRef: List&lt;Ref&gt;
+&nbsp;        get() = tagsInRepoRef.filter { ref -&gt; commitHash(ref) in commitsInCurrentBranchHash }
+&nbsp;
+&nbsp;    internal val tagsInCurrentBranch: List&lt;GitRef.Tag&gt;
+&nbsp;        get() =
+&nbsp;            tagsInCurrentBranchRef.map { ref -&gt;
+&nbsp;                val commit = git.repository.parseCommit(ref.objectId)
+&nbsp;                GitRef.Tag(
+&nbsp;                    name = ref.tagName,
+&nbsp;                    refName = ref.name,
+&nbsp;                    commit =
+&nbsp;                        GitRef.Commit(
+&nbsp;                            message = commit.shortMessage,
+&nbsp;                            fullMessage = commit.fullMessage,
+&nbsp;                            hash = commit.toObjectId().name,
+&nbsp;                        )
+&nbsp;                )
+&nbsp;            }
+&nbsp;
+&nbsp;    internal fun tagsInCurrentCommit(hash: String): List&lt;GitRef.Tag&gt; =
+&nbsp;        tagsInCurrentBranch.filter { it.commit.hash == hash }
+&nbsp;
+&nbsp;    internal fun versionTagsInCurrentCommit(hash: String, tagPrefix: String): List&lt;GitRef.Tag&gt; =
+&nbsp;        tagsInCurrentCommit(hash).filter { tag -&gt;
+&nbsp;            tag.name.startsWith(tagPrefix) &amp;&amp;
+&nbsp;                Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
+&nbsp;        }
+&nbsp;
+&nbsp;    internal fun versionTagsInCurrentBranch(tagPrefix: String): List&lt;GitRef.Tag&gt; =
+&nbsp;        tagsInCurrentBranch.filter { tag -&gt;
+&nbsp;            tag.name.startsWith(tagPrefix) &amp;&amp;
+&nbsp;                Version.safe(tag.name.removePrefix(tagPrefix)).isSuccess
+&nbsp;        }
+&nbsp;
+&nbsp;    internal fun versionsInCurrentBranch(tagPrefix: String): List&lt;Version&gt; =
+&nbsp;        versionTagsInCurrentBranch(tagPrefix).mapNotNull { tag -&gt;
+&nbsp;            Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
+&nbsp;        }
+&nbsp;
+&nbsp;    internal fun versionTagsSortedBySemver(tagPrefix: String): List&lt;GitRef.Tag&gt; =
+&nbsp;        versionTagsInCurrentBranch(tagPrefix).sortedBy { tag -&gt;
+&nbsp;            Version.safe(tag.name.removePrefix(tagPrefix)).getOrNull()
+&nbsp;        }
+&nbsp;
+&nbsp;    internal fun versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(
+&nbsp;        tagPrefix: String
+&nbsp;    ): List&lt;GitRef.Tag&gt; {
+&nbsp;        val commitsByHash: Map&lt;String, Int&gt; =
+&nbsp;            commitsInCurrentBranchHash.withIndex().associate { it.value to it.index }
+&nbsp;
+&nbsp;        return versionTagsSortedBySemver(tagPrefix).sortedByDescending { tag -&gt;
+&nbsp;            commitsByHash[tag.commit.hash]
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    internal fun lastVersionTagInCurrentBranch(tagPrefix: String): GitRef.Tag? =
+&nbsp;        versionTagsInCurrentBranchSortedByTimelineOrSemverOrder(tagPrefix).lastOrNull()
+&nbsp;
+&nbsp;    // versions
+&nbsp;    internal fun lastVersionInCurrentBranch(
+&nbsp;        tagPrefix: String,
+&nbsp;        isWarningLastVersionIsNotHigherVersion: (Boolean) -&gt; Unit = {},
+&nbsp;    ): Version =
+&nbsp;        versionTagsInCurrentCommit(headCommit.commit.hash, tagPrefix).lastResultVersion(tagPrefix)
+&nbsp;            ?: lastVersionTagInCurrentBranch(tagPrefix)?.name?.removePrefix(tagPrefix).run {
+&nbsp;                if (this != null) {
+&nbsp;                    val lastVersion: Version? = Version.safe(this).getOrNull()
+&nbsp;                    val higherVersion: Version? = versionsInCurrentBranch(tagPrefix).firstOrNull()
+&nbsp;
+&nbsp;                    if (
+&nbsp;                        lastVersion != null &amp;&amp; higherVersion != null &amp;&amp; higherVersion &gt; lastVersion
+&nbsp;                    ) {
+&nbsp;                        isWarningLastVersionIsNotHigherVersion(true)
+&nbsp;                        warningLastVersionIsNotHigherVersion(lastVersion, higherVersion)
+&nbsp;                    }
+&nbsp;
+&nbsp;                    lastVersion
+&nbsp;                } else null
+&nbsp;            }
+&nbsp;                ?: InitialVersion
+&nbsp;
+&nbsp;    internal fun shouldRefresh(): Boolean =
+&nbsp;        git.repository.directory.walkTopDown().toList() != gitFiles
+&nbsp;
+&nbsp;    private fun List&lt;GitRef.Tag&gt;.lastResultVersion(tagPrefix: String): Version? =
+&nbsp;        asSequence()
+&nbsp;            .filter { tag -&gt; tag.name.startsWith(tagPrefix) }
+&nbsp;            .map { tag -&gt; tag.name.substringAfter(tagPrefix) }
+&nbsp;            .map(Version.Companion::safe)
+&nbsp;            .mapNotNull(Result&lt;Version&gt;::getOrNull)
+&nbsp;            .toList()
+&nbsp;            .run { maxOrNull() }
+&nbsp;
+&nbsp;    companion object {
+&nbsp;
+&nbsp;        internal operator fun invoke(gitDir: File, maxCount: Provider&lt;Int&gt;? = null): GitCache {
+&nbsp;            // val cache: GitCache? = gitCache
+&nbsp;            // TODO: improve in-memory cache as `cache.shouldRefresh()` is flaky
+&nbsp;            // if (cache == null || cache.shouldRefresh() || true) {
+&nbsp;            gitCache = GitCache(gitDir, maxCount)
+&nbsp;            // }
+&nbsp;            return checkedNotNullCache
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-11 14:08</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SemverProjectPlugin</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.javiersc.semver.project.gradle.plugin</a>
+</div>
+
+<h1>Coverage Summary for Class: SemverProjectPlugin (com.javiersc.semver.project.gradle.plugin)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">SemverProjectPlugin</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (80/80)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SemverProjectPlugin$configureLazyVersion$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.8%
+  </span>
+  <span class="absValue">
+    (15/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (80/90)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.javiersc.semver.project.gradle.plugin
+&nbsp;
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.checkScopeCorrectness
+&nbsp;import com.javiersc.semver.project.gradle.plugin.internal.git.hasGit
+&nbsp;import com.javiersc.semver.project.gradle.plugin.services.GitBuildService
+&nbsp;import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
+&nbsp;import com.javiersc.semver.project.gradle.plugin.tasks.PrintSemverTask
+&nbsp;import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
+&nbsp;import com.javiersc.semver.project.gradle.plugin.tasks.WriteSemverTask
+&nbsp;import com.javiersc.semver.project.gradle.plugin.valuesources.VersionValueSource
+&nbsp;import org.gradle.api.Plugin
+&nbsp;import org.gradle.api.Project
+&nbsp;import org.gradle.api.plugins.BasePlugin
+&nbsp;import org.gradle.api.provider.Provider
+&nbsp;import org.gradle.kotlin.dsl.apply
+&nbsp;
+<b class="fc">&nbsp;public class SemverProjectPlugin : Plugin&lt;Project&gt; {</b>
+&nbsp;
+&nbsp;    override fun apply(target: Project) {
+<b class="fc">&nbsp;        target.config()</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private fun Project.config() {
+<b class="fc">&nbsp;        pluginManager.apply(BasePlugin::class)</b>
+&nbsp;
+<b class="fc">&nbsp;        SemverExtension.register(this)</b>
+&nbsp;
+<b class="pc">&nbsp;        if (semverExtension.isEnabled.get() &amp;&amp; hasGit) {</b>
+<b class="fc">&nbsp;            val gitTagBuildService = GitBuildService.register(this)</b>
+<b class="fc">&nbsp;            checkScopeCorrectness()</b>
+<b class="fc">&nbsp;            configureLazyVersion()</b>
+<b class="fc">&nbsp;            configureBuildServicesAndTasks(gitTagBuildService)</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private fun Project.configureBuildServicesAndTasks(
+&nbsp;        gitTagBuildService: Provider&lt;GitBuildService&gt;
+&nbsp;    ) {
+<b class="fc">&nbsp;        CreateSemverTagTask.register(this, gitTagBuildService)</b>
+<b class="fc">&nbsp;        PushSemverTagTask.register(this, gitTagBuildService)</b>
+<b class="fc">&nbsp;        PrintSemverTask.register(this)</b>
+<b class="fc">&nbsp;        WriteSemverTask.register(this)</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private fun Project.configureLazyVersion() {
+<b class="fc">&nbsp;        version = LazyVersion(VersionValueSource.register(this))</b>
+&nbsp;
+&nbsp;        // It is possible third party plugin breaks lazy configuration by calling `project.version`
+&nbsp;        // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
+<b class="pc">&nbsp;        afterEvaluate { version = LazyVersion(VersionValueSource.register(this)) }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-11 14:08</div>
+</div>
+</body>
+</html>

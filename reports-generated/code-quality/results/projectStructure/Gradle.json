@@ -1,0 +1,365 @@
+{
+  "gradleJvm": "#JAVA_HOME",
+  "libraries": [
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-test-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-test-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-stdlib-jdk8",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+      "gradleName": "org.eclipse.jgit:org.eclipse.jgit:6.5.0.202303070854-r",
+      "unresolved": false,
+      "groupId": "org.eclipse.jgit",
+      "artifactId": "org.eclipse.jgit",
+      "version": "6.5.0.202303070854-r"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-test-junit5:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-test-junit5",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-test:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-test",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-test-annotations-common:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-test-annotations-common",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+      "gradleName": "com.javiersc.semver:semver-core-jvm:0.1.0-beta.13",
+      "unresolved": false,
+      "groupId": "com.javiersc.semver",
+      "artifactId": "semver-core-jvm",
+      "version": "0.1.0-beta.13"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-delegated-properties-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-delegated-properties-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-logging-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-logging-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-miscellanea-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-miscellanea-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-plugin-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-plugin-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-project-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-project-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-properties-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-properties-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-tasks-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-tasks-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-version-catalog-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-version-catalog-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-project-test-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-project-test-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-testkit-test-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-testkit-test-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+      "gradleName": "com.javiersc.gradle:gradle-common-test-extensions:1.0.0-alpha.30",
+      "unresolved": false,
+      "groupId": "com.javiersc.gradle",
+      "artifactId": "gradle-common-test-extensions",
+      "version": "1.0.0-alpha.30"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+      "gradleName": "com.javiersc.kotlin:kotlin-stdlib-jvm:0.1.0-alpha.12",
+      "unresolved": false,
+      "groupId": "com.javiersc.kotlin",
+      "artifactId": "kotlin-stdlib-jvm",
+      "version": "0.1.0-alpha.12"
+    },
+    {
+      "ideaName": "Gradle: com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+      "gradleName": "com.javiersc.kotlin:kotlin-test-junit5-jvm:0.1.0-alpha.12",
+      "unresolved": false,
+      "groupId": "com.javiersc.kotlin",
+      "artifactId": "kotlin-test-junit5-jvm",
+      "version": "0.1.0-alpha.12"
+    },
+    {
+      "ideaName": "Gradle: io.kotest:kotest-assertions-core-jvm:5.5.4",
+      "gradleName": "io.kotest:kotest-assertions-core-jvm:5.5.4",
+      "unresolved": false,
+      "groupId": "io.kotest",
+      "artifactId": "kotest-assertions-core-jvm",
+      "version": "5.5.4"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-stdlib-jdk7",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-stdlib",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: com.googlecode.javaewah:JavaEWAH:1.1.13",
+      "gradleName": "com.googlecode.javaewah:JavaEWAH:1.1.13",
+      "unresolved": false,
+      "groupId": "com.googlecode.javaewah",
+      "artifactId": "JavaEWAH",
+      "version": "1.1.13"
+    },
+    {
+      "ideaName": "Gradle: org.slf4j:slf4j-api:1.7.30",
+      "gradleName": "org.slf4j:slf4j-api:1.7.30",
+      "unresolved": false,
+      "groupId": "org.slf4j",
+      "artifactId": "slf4j-api",
+      "version": "1.7.30"
+    },
+    {
+      "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-api:5.9.2",
+      "gradleName": "org.junit.jupiter:junit-jupiter-api:5.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.jupiter",
+      "artifactId": "junit-jupiter-api",
+      "version": "5.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+      "gradleName": "org.jetbrains.kotlin:kotlin-stdlib-common:1.8.10",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-stdlib-common",
+      "version": "1.8.10"
+    },
+    {
+      "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-params:5.9.2",
+      "gradleName": "org.junit.jupiter:junit-jupiter-params:5.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.jupiter",
+      "artifactId": "junit-jupiter-params",
+      "version": "5.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains:annotations:13.0",
+      "gradleName": "org.jetbrains:annotations:13.0",
+      "unresolved": false,
+      "groupId": "org.jetbrains",
+      "artifactId": "annotations",
+      "version": "13.0"
+    },
+    {
+      "ideaName": "Gradle: org.junit.platform:junit-platform-commons:1.9.2",
+      "gradleName": "org.junit.platform:junit-platform-commons:1.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.platform",
+      "artifactId": "junit-platform-commons",
+      "version": "1.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.apiguardian:apiguardian-api:1.1.2",
+      "gradleName": "org.apiguardian:apiguardian-api:1.1.2",
+      "unresolved": false,
+      "groupId": "org.apiguardian",
+      "artifactId": "apiguardian-api",
+      "version": "1.1.2"
+    },
+    {
+      "ideaName": "Gradle: org.opentest4j:opentest4j:1.2.0",
+      "gradleName": "org.opentest4j:opentest4j:1.2.0",
+      "unresolved": false,
+      "groupId": "org.opentest4j",
+      "artifactId": "opentest4j",
+      "version": "1.2.0"
+    },
+    {
+      "ideaName": "Gradle: io.kotest:kotest-assertions-shared-jvm:5.5.4",
+      "gradleName": "io.kotest:kotest-assertions-shared-jvm:5.5.4",
+      "unresolved": false,
+      "groupId": "io.kotest",
+      "artifactId": "kotest-assertions-shared-jvm",
+      "version": "5.5.4"
+    },
+    {
+      "ideaName": "Gradle: io.kotest:kotest-assertions-api-jvm:5.5.4",
+      "gradleName": "io.kotest:kotest-assertions-api-jvm:5.5.4",
+      "unresolved": false,
+      "groupId": "io.kotest",
+      "artifactId": "kotest-assertions-api-jvm",
+      "version": "5.5.4"
+    },
+    {
+      "ideaName": "Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.2",
+      "gradleName": "org.junit.jupiter:junit-jupiter-engine:5.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.jupiter",
+      "artifactId": "junit-jupiter-engine",
+      "version": "5.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlinx",
+      "artifactId": "kotlinx-coroutines-jdk8",
+      "version": "1.6.4"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+      "gradleName": "org.jetbrains.kotlin:kotlin-reflect:1.6.21",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-reflect",
+      "version": "1.6.21"
+    },
+    {
+      "ideaName": "Gradle: org.junit.platform:junit-platform-engine:1.9.2",
+      "gradleName": "org.junit.platform:junit-platform-engine:1.9.2",
+      "unresolved": false,
+      "groupId": "org.junit.platform",
+      "artifactId": "junit-platform-engine",
+      "version": "1.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+      "gradleName": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlinx",
+      "artifactId": "kotlinx-coroutines-core-jvm",
+      "version": "1.6.4"
+    },
+    {
+      "ideaName": "Gradle: io.kotest:kotest-common-jvm:5.5.4",
+      "gradleName": "io.kotest:kotest-common-jvm:5.5.4",
+      "unresolved": false,
+      "groupId": "io.kotest",
+      "artifactId": "kotest-common-jvm",
+      "version": "5.5.4"
+    },
+    {
+      "ideaName": "Gradle: io.github.java-diff-utils:java-diff-utils:4.12",
+      "gradleName": "io.github.java-diff-utils:java-diff-utils:4.12",
+      "unresolved": false,
+      "groupId": "io.github.java-diff-utils",
+      "artifactId": "java-diff-utils",
+      "version": "4.12"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.7.20",
+      "gradleName": "org.jetbrains.kotlin:kotlin-test-junit5:1.7.20",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-test-junit5",
+      "version": "1.7.20"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test:1.7.20",
+      "gradleName": "org.jetbrains.kotlin:kotlin-test:1.7.20",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-test",
+      "version": "1.7.20"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains.kotlin:kotlin-test-annotations-common:1.7.20",
+      "gradleName": "org.jetbrains.kotlin:kotlin-test-annotations-common:1.7.20",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-test-annotations-common",
+      "version": "1.7.20"
+    }
+  ]
+}

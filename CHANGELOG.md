@@ -6,15 +6,23 @@
 
 ### Changed
 
-- `gitDir` type from `RegularFileProperty` to `DirectoryProperty`
-
 ### Deprecated
 
 ### Fixed
 
-- included build support
-
 ### Removed
+
+### Updated
+
+## [0.9.0] - 2025-08-17
+
+### Changed
+
+- `gitDir` type from `RegularFileProperty` to `DirectoryProperty`
+
+### Fixed
+
+- included build support
 
 ### Updated
 
@@ -145,7 +153,9 @@
 - `org.eclipse.jgit:org.eclipse.jgit -> 6.5.0.202303070854-r`
 - `com.javiersc.semver:semver-core -> 0.1.0-beta.13`
 
-[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.8.0...HEAD
+[Unreleased]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.9.0...HEAD
+
+[0.9.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.8.0...0.9.0
 
 [0.8.0]: https://github.com/JavierSegoviaCordoba/semver-gradle-plugin/compare/0.7.1...0.8.0
 

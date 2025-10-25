@@ -70,10 +70,9 @@ class GradleFeaturesTest : GradleTestKitTest() {
             .resolve("expect-version.txt")
             .writeText(
                 """
-                    |0.9.0+DIRTY
-                    |v0.9.0+DIRTY
-                    |
-                """
+                |0.9.0+DIRTY
+                |v0.9.0+DIRTY
+                |"""
                     .trimMargin()
             )
         projectDir.assertVersion("v", "0.9.0", Dirty)
@@ -90,10 +89,9 @@ class GradleFeaturesTest : GradleTestKitTest() {
             .resolve("expect-version.txt")
             .writeText(
                 """
-                    |0.9.1
-                    |v0.9.1
-                    |
-                """
+                |0.9.1
+                |v0.9.1
+                |"""
                     .trimMargin()
             )
 

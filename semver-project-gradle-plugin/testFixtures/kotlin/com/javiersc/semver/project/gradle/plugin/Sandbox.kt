@@ -131,14 +131,13 @@ fun File.createGitIgnore() {
         createNewFile()
         writeText(
             """
-                |.gradle/
-                |.idea/
-                |.kotlin/
-                |build/
-                |local.properties
-                |environment/
-                |
-            """
+            |.gradle/
+            |.idea/
+            |.kotlin/
+            |build/
+            |local.properties
+            |environment/
+            |"""
                 .trimMargin()
         )
     }

@@ -15,6 +15,7 @@ hubdle {
         jvm {
             features {
                 coroutines()
+                jvmVersion(JavaVersion.VERSION_11)
                 kotest()
             }
             test {

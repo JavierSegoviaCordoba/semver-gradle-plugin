@@ -6,6 +6,8 @@
 
 ### Changed
 
+- Minimum required Java version to 17
+
 ### Deprecated
 
 ### Fixed
@@ -14,7 +16,7 @@
 
 ### Updated
 
-- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.15.0`
+- `com.javiersc.hubdle:com.javiersc.hubdle.gradle.plugin -> 0.16.0`
 
 ## [0.9.0] - 2025-08-17
 

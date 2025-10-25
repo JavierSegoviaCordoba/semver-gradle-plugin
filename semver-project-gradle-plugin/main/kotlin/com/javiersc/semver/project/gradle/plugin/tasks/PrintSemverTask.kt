@@ -73,7 +73,8 @@ constructor(
     @Input
     @Option(
         option = "githubOutputTag",
-        description = "Set the version as `semver-tag-subproject-name` output of the GitHub Actions",
+        description =
+            "Set the version as `semver-tag-subproject-name` output of the GitHub Actions",
     )
     public val githubOutputTag: Property<Boolean> = objects.property<Boolean>().convention(false)
 

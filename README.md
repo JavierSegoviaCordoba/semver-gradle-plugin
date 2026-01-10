@@ -110,6 +110,23 @@ associated tags to each one which can be useful in some use cases.
 
 #### `semver.tagPrefix` project property via CLI or `gradle.properties` file
 
+Tag prefix need to be configured. This can be done via the DSL
+```Gradle Kotlin DSL
+semver {
+    tagPrefix = "v"
+}
+```
+
+Or via this property if other part of the build query the version earlier.
+```properties
+semver.project.tagPrefix=v
+```
+
+> [!CAUTION]
+> Do not confuse with `semver.tagPrefix` which is used to indicate which tag is getting bumped.
+
+In order to activate the version bumping, it is necessary to select the tag via it's prefix:
+
 ```shell
 "-Psemver.tagPrefix=v"
 ```
@@ -118,8 +135,8 @@ associated tags to each one which can be useful in some use cases.
 semver.tagPrefix=v
 ```
 
-If it is necessary to bump the project version, for example to `v3.0.2` from `v3.0.1`, but at same
-time there are more project with different prefixes, the plugin needs to know which tag prefix is
+If they are project with different prefixes and it is necessary to bump the project version, 
+for example to `v3.0.2` from `v3.0.1`, the plugin needs to know which tag prefix is
 going to be bumped, so `semver.tagPrefix` property is the solution to that problem.
 
 To get it working:
@@ -128,8 +145,9 @@ To get it working:
 ./gradlew "-Psemver.scope=patch" "-Psemver.tagPrefix=v"
 ```
 
-It is possible to set the project tag prefix via Gradle property if some third-party plugin requires
-the version in configuration phase. This property is:
+While project version tag is usually configured via the DSL, sometime other third-party 
+plugins may require the version in configuration phase. In that case it is possible 
+to set the project tag prefix via Gradle property:
 
 ```properties
 semver.project.tagPrefix=v

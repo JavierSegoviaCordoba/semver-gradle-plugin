@@ -135,7 +135,7 @@ In order to activate the version bumping, it is necessary to select the tag via 
 semver.tagPrefix=v
 ```
 
-If they are project with different prefixes and it is necessary to bump the project version, 
+If they are projects with different prefixes and it is necessary to bump a project version, 
 for example to `v3.0.2` from `v3.0.1`, the plugin needs to know which tag prefix is
 going to be bumped, so `semver.tagPrefix` property is the solution to that problem.
 

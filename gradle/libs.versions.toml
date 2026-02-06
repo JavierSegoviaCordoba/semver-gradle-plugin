@@ -1,5 +1,5 @@
 [versions]
-hubdle = "0.18.0"
+hubdle = "0.18.1"
 
 [plugins]
 javiersc-hubdle = { id = "com.javiersc.hubdle", version.ref = "hubdle" }

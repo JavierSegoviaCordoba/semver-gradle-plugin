@@ -5,7 +5,7 @@ on:
 
 jobs:
   dump-api:
-    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/dump-api.yaml@main
+    uses: JavierSegoviaCordoba/reusable-workflows/.github/workflows/dump-api.yaml@34fd38844e1c27ceddc6f62d257f50a690843c22 # main
     with:
       restore-kotlin-native-cache: false
     secrets: inherit

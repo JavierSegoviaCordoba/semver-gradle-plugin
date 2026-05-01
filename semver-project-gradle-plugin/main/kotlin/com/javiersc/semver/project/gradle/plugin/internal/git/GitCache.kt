@@ -112,23 +112,23 @@ private constructor(private val gitDir: File, maxCount: Provider<Int>? = null) {
         get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }
 
     internal val tagsInCurrentBranch: List<GitRef.Tag>
-        get() =
-            tagsInCurrentBranchRef.map { ref ->
-                val commit: RevCommit = git.repository.parseCommit(ref.objectId)
-                GitRef.Tag(
-                    name = ref.tagName,
-                    refName = ref.name,
-                    commit =
-                        GitRef.Commit(
-                            message = commit.shortMessage,
-                            fullMessage = commit.fullMessage,
-                            hash = commit.toObjectId().name,
-                        ),
-                )
-            }
+        get() = tagsInCurrentBranchRef.map { ref ->
+            val commit: RevCommit = git.repository.parseCommit(ref.objectId)
+            GitRef.Tag(
+                name = ref.tagName,
+                refName = ref.name,
+                commit =
+                    GitRef.Commit(
+                        message = commit.shortMessage,
+                        fullMessage = commit.fullMessage,
+                        hash = commit.toObjectId().name,
+                    ),
+            )
+        }
 
-    internal fun tagsInCurrentCommit(hash: String): List<GitRef.Tag> =
-        tagsInCurrentBranch.filter { it.commit.hash == hash }
+    internal fun tagsInCurrentCommit(hash: String): List<GitRef.Tag> = tagsInCurrentBranch.filter {
+        it.commit.hash == hash
+    }
 
     internal fun versionTagsInCurrentCommit(hash: String, tagPrefix: String): List<GitRef.Tag> =
         tagsInCurrentCommit(hash).filter { tag ->

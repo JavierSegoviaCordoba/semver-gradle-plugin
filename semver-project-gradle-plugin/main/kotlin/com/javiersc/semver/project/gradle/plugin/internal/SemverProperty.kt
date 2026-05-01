@@ -10,10 +10,9 @@ internal val Project.projectTagPrefixProperty: Provider<String>
     get() = getSemverProperty(SemverProperty.ProjectTagPrefix)
 
 internal val Project.tagPrefixProperty: Provider<String>
-    get() =
-        providers.provider {
-            getSemverProperty(SemverProperty.TagPrefix).orNull ?: DefaultTagPrefix
-        }
+    get() = providers.provider {
+        getSemverProperty(SemverProperty.TagPrefix).orNull ?: DefaultTagPrefix
+    }
 
 internal val Project.stageProperty: Provider<String>
     get() = getSemverProperty(SemverProperty.Stage)
@@ -25,19 +24,17 @@ internal val Project.remoteProperty: Provider<String>
     get() = getSemverProperty(SemverProperty.Remote)
 
 internal val Project.checkCleanProperty: Provider<Boolean>
-    get() =
-        providers.provider {
-            getSemverProperty(SemverProperty.CheckClean).orNull?.toBoolean() ?: true
-        }
+    get() = providers.provider {
+        getSemverProperty(SemverProperty.CheckClean).orNull?.toBoolean() ?: true
+    }
 
 internal val Project.commitsMaxCount: Provider<Int>
     get() = getSemverProperty(SemverProperty.CommitsMaxCount).map(String::toInt)
 
 internal val Project.logOnlyOnRootProject: Provider<Boolean>
-    get() =
-        providers.provider {
-            getSemverProperty(SemverProperty.LogOnlyOnRootProject).orNull?.toBoolean() ?: false
-        }
+    get() = providers.provider {
+        getSemverProperty(SemverProperty.LogOnlyOnRootProject).orNull?.toBoolean() ?: false
+    }
 
 internal enum class SemverProperty(val key: String) {
     ProjectTagPrefix("semver.project.tagPrefix"),

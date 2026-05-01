@@ -23,15 +23,14 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
 
     public abstract val gitDir: DirectoryProperty
 
-    public val commits: Provider<List<Commit>> =
-        providers.provider {
-            val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
-            if (gitDir == null) {
-                semverWarningMessage("There is no git directory")
-                return@provider emptyList()
-            }
-            GitCache(gitDir = gitDir, maxCount = commitsMaxCount).commitsInTheCurrentBranchPublicApi
+    public val commits: Provider<List<Commit>> = providers.provider {
+        val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
+        if (gitDir == null) {
+            semverWarningMessage("There is no git directory")
+            return@provider emptyList()
         }
+        GitCache(gitDir = gitDir, maxCount = commitsMaxCount).commitsInTheCurrentBranchPublicApi
+    }
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 

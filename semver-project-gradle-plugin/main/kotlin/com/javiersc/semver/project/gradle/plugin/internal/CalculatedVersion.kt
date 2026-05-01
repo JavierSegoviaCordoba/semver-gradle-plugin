@@ -25,10 +25,9 @@ internal fun calculatedVersion(
     val isClean: Boolean = clean || !checkClean
     val isDirty: Boolean = !isClean
 
-    val stagePropertySanitized: String? =
-        stageProperty?.let { name ->
-            if (name.equals("SNAPSHOT", ignoreCase = true)) "SNAPSHOT" else name
-        }
+    val stagePropertySanitized: String? = stageProperty?.let { name ->
+        if (name.equals("SNAPSHOT", ignoreCase = true)) "SNAPSHOT" else name
+    }
 
     val lastSemverStageInCurrentBranchSanitized: String? =
         lastSemverStageInCurrentBranch?.let { name ->
@@ -142,28 +141,27 @@ internal fun calculateAdditionalVersionData(
             commitsInCurrentBranch,
         )
 
-    val additionalData: AdditionalVersionData? =
-        commitsBetweenCurrentAndLastTagCommit.run {
-            val commitsNumber: Int = size
-            val hashLength: Int = DEFAULT_SHORT_HASH_LENGTH
-            when {
-                !isThereVersionTags && isDirty -> {
-                    AdditionalVersionData(commitsNumber, headCommit.take(hashLength), "DIRTY")
-                }
-                !isThereVersionTags -> {
-                    AdditionalVersionData(commitsNumber, headCommit.take(hashLength), null)
-                }
-                isNotEmpty() && isClean -> {
-                    AdditionalVersionData(commitsNumber, first().take(hashLength), null)
-                }
-                isEmpty() && isClean -> {
-                    null
-                }
-                else -> {
-                    AdditionalVersionData(commitsNumber, null, "DIRTY")
-                }
+    val additionalData: AdditionalVersionData? = commitsBetweenCurrentAndLastTagCommit.run {
+        val commitsNumber: Int = size
+        val hashLength: Int = DEFAULT_SHORT_HASH_LENGTH
+        when {
+            !isThereVersionTags && isDirty -> {
+                AdditionalVersionData(commitsNumber, headCommit.take(hashLength), "DIRTY")
+            }
+            !isThereVersionTags -> {
+                AdditionalVersionData(commitsNumber, headCommit.take(hashLength), null)
+            }
+            isNotEmpty() && isClean -> {
+                AdditionalVersionData(commitsNumber, first().take(hashLength), null)
+            }
+            isEmpty() && isClean -> {
+                null
+            }
+            else -> {
+                AdditionalVersionData(commitsNumber, null, "DIRTY")
             }
         }
+    }
 
     return additionalData
 }

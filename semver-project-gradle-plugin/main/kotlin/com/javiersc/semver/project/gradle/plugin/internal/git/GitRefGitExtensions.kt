@@ -13,10 +13,9 @@ internal val Git.headRef: Ref
 
 // branches
 internal val Git.currentBranch: GitRef.Branch
-    get() =
-        repository.run {
-            GitRef.Branch(branch, fullBranch, commitsInCurrentBranch, tagsInCurrentBranch)
-        }
+    get() = repository.run {
+        GitRef.Branch(branch, fullBranch, commitsInCurrentBranch, tagsInCurrentBranch)
+    }
 
 // commits
 internal val Git.headCommit: GitRef.Head
@@ -42,16 +41,15 @@ internal val Git.commitsInCurrentBranchRevCommit: List<RevCommit>
     get() = log().call().toList()
 
 internal val Git.commitsInCurrentBranch: List<GitRef.Commit>
-    get() =
-        commitsInCurrentBranchRevCommit.map { revCommit ->
-            revCommit.run {
-                GitRef.Commit(
-                    message = shortMessage,
-                    fullMessage = fullMessage,
-                    hash = toObjectId().name,
-                )
-            }
+    get() = commitsInCurrentBranchRevCommit.map { revCommit ->
+        revCommit.run {
+            GitRef.Commit(
+                message = shortMessage,
+                fullMessage = fullMessage,
+                hash = toObjectId().name,
+            )
         }
+    }
 
 internal val Git.commitsInCurrentBranchHash: List<String>
     get() = commitsInCurrentBranchRevCommit.map(RevCommit::getName)
@@ -87,20 +85,19 @@ internal val Ref.tagName: String
     get() = name.substringAfter("refs/tags/")
 
 internal val Git.tagsInRepo: List<GitRef.Tag>
-    get() =
-        tagsInRepoRef.map { ref ->
-            val commit = repository.parseCommit(ref.objectId)
-            GitRef.Tag(
-                name = ref.tagName,
-                refName = ref.name,
-                commit =
-                    GitRef.Commit(
-                        message = commit.shortMessage,
-                        fullMessage = commit.fullMessage,
-                        hash = commit.toObjectId().name,
-                    ),
-            )
-        }
+    get() = tagsInRepoRef.map { ref ->
+        val commit = repository.parseCommit(ref.objectId)
+        GitRef.Tag(
+            name = ref.tagName,
+            refName = ref.name,
+            commit =
+                GitRef.Commit(
+                    message = commit.shortMessage,
+                    fullMessage = commit.fullMessage,
+                    hash = commit.toObjectId().name,
+                ),
+        )
+    }
 
 internal val Git.tagsInRepoRef: List<Ref>
     get() = tagList().call()
@@ -112,20 +109,19 @@ internal val Git.tagsInRepoName: List<String>
     get() = tagsInRepoRef.map(Ref::getName)
 
 internal val Git.tagsInCurrentBranch: List<GitRef.Tag>
-    get() =
-        tagsInCurrentBranchRef.map { ref ->
-            val commit = repository.parseCommit(ref.objectId)
-            GitRef.Tag(
-                name = ref.tagName,
-                refName = ref.name,
-                commit =
-                    GitRef.Commit(
-                        message = commit.shortMessage,
-                        fullMessage = commit.fullMessage,
-                        hash = commit.toObjectId().name,
-                    ),
-            )
-        }
+    get() = tagsInCurrentBranchRef.map { ref ->
+        val commit = repository.parseCommit(ref.objectId)
+        GitRef.Tag(
+            name = ref.tagName,
+            refName = ref.name,
+            commit =
+                GitRef.Commit(
+                    message = commit.shortMessage,
+                    fullMessage = commit.fullMessage,
+                    hash = commit.toObjectId().name,
+                ),
+        )
+    }
 
 internal val Git.tagsInCurrentBranchRef: List<Ref>
     get() = tagsInRepoRef.filter { ref -> commitHash(ref) in commitsInCurrentBranchHash }
@@ -136,8 +132,9 @@ internal val Git.tagsInCurrentBranchHash: List<String>
 internal val Git.tagsInCurrentBranchName: List<String>
     get() = tagsInCurrentBranchRef.map(Ref::getName)
 
-internal fun Git.tagsInCurrentCommit(hash: String): List<GitRef.Tag> =
-    tagsInCurrentBranch.filter { it.commit.hash == hash }
+internal fun Git.tagsInCurrentCommit(hash: String): List<GitRef.Tag> = tagsInCurrentBranch.filter {
+    it.commit.hash == hash
+}
 
 internal fun Git.isThereVersionTag(tagPrefix: String): Boolean =
     versionTagsInCurrentBranch(tagPrefix).isNotEmpty()

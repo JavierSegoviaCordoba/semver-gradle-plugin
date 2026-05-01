@@ -29,15 +29,14 @@ constructor(private val execOperations: ExecOperations) :
     private val createdTagPrefixes: MutableSet<String> = mutableSetOf()
 
     private val git: Git?
-        get() =
-            parameters.run {
-                val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
-                if (gitDir == null) {
-                    semverWarningMessage("There is no git directory")
-                    return null
-                }
-                GitCache(gitDir = gitDir, maxCount = commitsMaxCount).git
+        get() = parameters.run {
+            val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
+            if (gitDir == null) {
+                semverWarningMessage("There is no git directory")
+                return null
             }
+            GitCache(gitDir = gitDir, maxCount = commitsMaxCount).git
+        }
 
     internal fun createTag(tagPrefixProperty: String, projectTagPrefix: String, version: String) {
         val git: Git = git ?: return

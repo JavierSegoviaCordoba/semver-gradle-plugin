@@ -1,0 +1,33 @@
+public abstract class com/javiersc/semver/declarative/gradle/plugin/SemverApplyAction : org/gradle/features/binding/ProjectTypeApplyAction {
+	public static final field Companion Lcom/javiersc/semver/declarative/gradle/plugin/SemverApplyAction$Companion;
+	public static final field NAME Ljava/lang/String;
+	public fun <init> ()V
+	public fun apply (Lorg/gradle/features/binding/ProjectFeatureApplicationContext;Lcom/javiersc/semver/declarative/gradle/plugin/SemverDefinition;Lorg/gradle/features/binding/BuildModel$None;)V
+	public synthetic fun apply (Lorg/gradle/features/binding/ProjectFeatureApplicationContext;Lorg/gradle/features/binding/Definition;Lorg/gradle/features/binding/BuildModel;)V
+	public abstract fun getPluginManager ()Lorg/gradle/api/plugins/PluginManager;
+	public abstract fun getProject ()Lorg/gradle/api/Project;
+}
+
+public final class com/javiersc/semver/declarative/gradle/plugin/SemverApplyAction$Companion {
+}
+
+public class com/javiersc/semver/declarative/gradle/plugin/SemverDeclarativePlugin : org/gradle/api/Plugin {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/initialization/Settings;)V
+}
+
+public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverDefinition : org/gradle/features/binding/Definition {
+	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
+	public abstract fun getEnabled ()Lorg/gradle/api/provider/Property;
+	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
+	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+}
+
+public class com/javiersc/semver/declarative/gradle/plugin/SemverProjectType : org/gradle/api/Plugin, org/gradle/features/binding/ProjectTypeBinding {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+	public fun bind (Lorg/gradle/features/binding/ProjectTypeBindingBuilder;)V
+}
+

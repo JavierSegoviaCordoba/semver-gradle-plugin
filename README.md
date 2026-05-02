@@ -431,6 +431,45 @@ semver: 1.0.1
 semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 ```
 
+### Gradle Declarative
+
+There is support for the experimental Gradle Declarative.
+
+Apply the plugin in the `settings.gradle.dcl` file.
+
+```kotlin
+// settings.gradle.dcl
+plugins {
+    id("com.javiersc.semver.declarative").version("$version")
+}
+
+defaults {
+    semver {
+        tagPrefix = "v"
+    }
+}
+```
+
+Call `semver` on the project.
+
+> It is possible to override any defaults. If that is not the case, it must be called but empty.
+
+#### Using defaults
+
+```kotlin
+// build.gradle.dcl
+semver { }
+```
+
+#### Override defaults
+
+```kotlin
+// build.gradle.dcl
+semver {
+    tagPrefix = "z"
+}
+```
+
 ### FAQ
 
 #### Included builds support

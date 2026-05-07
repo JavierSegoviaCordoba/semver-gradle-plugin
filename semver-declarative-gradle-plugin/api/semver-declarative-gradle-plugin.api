@@ -21,7 +21,20 @@ public abstract interface class com/javiersc/semver/declarative/gradle/plugin/Se
 	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
 	public abstract fun getEnabled ()Lorg/gradle/api/provider/Property;
 	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
+	public abstract fun getMapVersion ()Lcom/javiersc/semver/declarative/gradle/plugin/SemverMapVersionDefinition;
+	public abstract fun getOverrideVersion ()Lorg/gradle/api/provider/Property;
 	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+}
+
+public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverMapVersionDefinition {
+	public abstract fun getCommits ()Lorg/gradle/api/provider/Property;
+	public abstract fun getHash ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMajor ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMetadata ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMinor ()Lorg/gradle/api/provider/Property;
+	public abstract fun getPatch ()Lorg/gradle/api/provider/Property;
+	public abstract fun getStageName ()Lorg/gradle/api/provider/Property;
+	public abstract fun getStageNum ()Lorg/gradle/api/provider/Property;
 }
 
 public class com/javiersc/semver/declarative/gradle/plugin/SemverProjectType : org/gradle/api/Plugin, org/gradle/features/binding/ProjectTypeBinding {

@@ -1,7 +1,5 @@
 package com.javiersc.gradle.version
 
-import com.javiersc.gradle.version.GradleVersion.SpecialStage
-
 public val GradleVersion.isAlpha: Boolean
     get() = stage?.name?.lowercase() == "alpha"
 
@@ -27,10 +25,10 @@ public val String.isNotBeta: Boolean
     get() = !isBeta
 
 public val GradleVersion.isDev: Boolean
-    get() = stage?.name?.lowercase() == SpecialStage.dev
+    get() = stage?.name?.lowercase() == SpecialStage.DEV
 
 public val String.isDev: Boolean
-    get() = lowercase().substringBeforeLast(".").endsWith(SpecialStage.dev)
+    get() = lowercase().substringBeforeLast(".").endsWith(SpecialStage.DEV)
 
 public val GradleVersion.isNotDev: Boolean
     get() = !isDev
@@ -39,10 +37,10 @@ public val String.isNotDev: Boolean
     get() = !isDev
 
 public val GradleVersion.isRC: Boolean
-    get() = stage?.name?.lowercase() == SpecialStage.rc
+    get() = stage?.name?.lowercase() == SpecialStage.RC
 
 public val String.isRC: Boolean
-    get() = lowercase().substringBeforeLast(".").endsWith(SpecialStage.rc)
+    get() = lowercase().substringBeforeLast(".").endsWith(SpecialStage.RC)
 
 public val GradleVersion.isNotRC: Boolean
     get() = !isRC
@@ -51,10 +49,10 @@ public val String.isNotRC: Boolean
     get() = !isRC
 
 public val GradleVersion.isSnapshot: Boolean
-    get() = stage?.name?.lowercase() == SpecialStage.snapshot
+    get() = stage?.name?.lowercase() == SpecialStage.SNAPSHOT
 
 public val String.isSnapshot: Boolean
-    get() = lowercase().endsWith(SpecialStage.snapshot)
+    get() = lowercase().endsWith(SpecialStage.SNAPSHOT)
 
 public val GradleVersion.isNotSnapshot: Boolean
     get() = !isSnapshot

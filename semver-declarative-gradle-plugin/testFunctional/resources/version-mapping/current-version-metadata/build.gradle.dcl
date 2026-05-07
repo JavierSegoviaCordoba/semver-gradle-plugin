@@ -1,6 +1,5 @@
 semver {
     tagPrefix = "v"
-    mapVersion {
-        metadata = "1.9.0"
-    }
+    mappedVersion = currentVersion
+        .metadata("1.9.0")
 }

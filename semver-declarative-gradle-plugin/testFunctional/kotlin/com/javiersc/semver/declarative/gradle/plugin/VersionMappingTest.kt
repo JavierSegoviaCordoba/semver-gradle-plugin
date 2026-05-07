@@ -57,7 +57,7 @@ internal class VersionMappingTest : GradleTestKitTest() {
     fun `GIVEN version-override WHEN run assemble THEN override version`() {
         gradleTestKitTest("version-mapping/version-override") {
             initializeRepo()
-            gradlew("assemble", "-Psemver.tagPrefix=v")
+            gradlew("assemble", "--stacktrace", "-Psemver.tagPrefix=v")
             projectDir.assertVersion("v", "6.8.9")
         }
     }

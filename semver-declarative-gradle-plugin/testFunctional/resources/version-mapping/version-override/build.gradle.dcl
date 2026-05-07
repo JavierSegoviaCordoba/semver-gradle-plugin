@@ -1,4 +1,4 @@
 semver {
     tagPrefix = "v"
-    overrideVersion = "6.8.9"
+    mapVersion("6.8.9")
 }

@@ -46,16 +46,23 @@ public abstract class SemverApplyAction :
                 this.commitsMaxCount.set(commitsMaxCount)
                 this.tagPrefix.set(tagPrefix)
                 val overrideVersion: String? = definition.overrideVersion.orNull
-                val versionMapping: SemverMapVersionDefinition = definition.mapVersion
-                val hasMapping = hasAnyMapping(versionMapping)
-                if (overrideVersion != null || hasMapping) {
-                    this.mapVersion(createVersionMapper(overrideVersion, versionMapping))
+                val semverMapCurrentVersionDefinition: SemverCurrentVersionDefinition? =
+                    definition.mapVersion.takeIf { hasAnyMapping(it) }
+                        ?: definition.currentVersion.takeIf { hasAnyMapping(it) }
+                if (overrideVersion != null || semverMapCurrentVersionDefinition != null) {
+                    this.mapVersion(
+                        transform =
+                            createVersionMapper(
+                                overrideVersion = definition.overrideVersion.orNull,
+                                mapCurrentVersion = semverMapCurrentVersionDefinition,
+                            )
+                    )
                 }
             }
         }
     }
 
-    private fun hasAnyMapping(mapping: SemverMapVersionDefinition): Boolean =
+    private fun hasAnyMapping(mapping: SemverCurrentVersionDefinition): Boolean =
         mapping.major.isPresent ||
             mapping.minor.isPresent ||
             mapping.patch.isPresent ||
@@ -67,59 +74,32 @@ public abstract class SemverApplyAction :
 
     private fun createVersionMapper(
         overrideVersion: String?,
-        mapping: SemverMapVersionDefinition,
+        mapCurrentVersion: SemverCurrentVersionDefinition?,
     ): VersionMapper {
-        val major: Int? = mapping.major.orNull
-        val minor: Int? = mapping.minor.orNull
-        val patch: Int? = mapping.patch.orNull
-        val stageName: String? = mapping.stageName.orNull
-        val stageNum: Int? = mapping.stageNum.orNull
-        val commits: Int? = mapping.commits.orNull
-        val hash: String? = mapping.hash.orNull
-        val metadata: String? = mapping.metadata.orNull
+        val major: Int? = mapCurrentVersion?.major?.orNull
+        val minor: Int? = mapCurrentVersion?.minor?.orNull
+        val patch: Int? = mapCurrentVersion?.patch?.orNull
+        val stageName: String? = mapCurrentVersion?.stageName?.orNull
+        val stageNum: Int? = mapCurrentVersion?.stageNum?.orNull
+        val commits: Int? = mapCurrentVersion?.commits?.orNull
+        val hash: String? = mapCurrentVersion?.hash?.orNull
+        val metadata: String? = mapCurrentVersion?.metadata?.orNull
 
-        return FullVersionMapper(
-            overrideVersion,
-            major,
-            minor,
-            patch,
-            stageName,
-            stageNum,
-            commits,
-            hash,
-            metadata,
-        )
-    }
-
-    private class FullVersionMapper(
-        private val versionOverride: String?,
-        private val major: Int?,
-        private val minor: Int?,
-        private val patch: Int?,
-        private val stageName: String?,
-        private val stageNum: Int?,
-        private val commits: Int?,
-        private val hash: String?,
-        private val metadata: String?,
-    ) : VersionMapper {
-        override fun map(version: GradleVersion): String {
-            val baseVersion: GradleVersion =
-                if (versionOverride != null) {
-                    GradleVersion(versionOverride)
-                } else {
-                    version
-                }
-
-            return baseVersion
+        return VersionMapper { version ->
+            val overrideGradleVersion: GradleVersion? =
+                overrideVersion?.let(GradleVersion::safe)?.getOrNull()
+            val gradleVersion: GradleVersion =
+                overrideGradleVersion.takeIf { it != null } ?: version
+            gradleVersion
                 .copy(
-                    major = major ?: baseVersion.major,
-                    minor = minor ?: baseVersion.minor,
-                    patch = patch ?: baseVersion.patch,
-                    stageName = stageName ?: baseVersion.stage?.name,
-                    stageNum = stageNum ?: baseVersion.stage?.num,
-                    commits = commits ?: baseVersion.commits,
-                    hash = hash ?: baseVersion.hash,
-                    metadata = metadata ?: baseVersion.metadata,
+                    major = major ?: gradleVersion.major,
+                    minor = minor ?: gradleVersion.minor,
+                    patch = patch ?: gradleVersion.patch,
+                    stageName = stageName ?: gradleVersion.stage?.name,
+                    stageNum = stageNum ?: gradleVersion.stage?.num,
+                    commits = commits ?: gradleVersion.commits,
+                    hash = hash ?: gradleVersion.hash,
+                    metadata = metadata ?: gradleVersion.metadata,
                 )
                 .toString()
         }

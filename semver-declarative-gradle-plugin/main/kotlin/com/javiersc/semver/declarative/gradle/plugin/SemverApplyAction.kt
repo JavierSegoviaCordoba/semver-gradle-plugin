@@ -46,9 +46,8 @@ public abstract class SemverApplyAction :
                 this.commitsMaxCount.set(commitsMaxCount)
                 this.tagPrefix.set(tagPrefix)
                 val overrideVersion: String? = definition.overrideVersion.orNull
-                val semverMapCurrentVersionDefinition: SemverCurrentVersionDefinition? =
+                val semverMapCurrentVersionDefinition: SemverVersionDefinition? =
                     definition.mapVersion.takeIf { hasAnyMapping(it) }
-                        ?: definition.currentVersion.takeIf { hasAnyMapping(it) }
                 if (overrideVersion != null || semverMapCurrentVersionDefinition != null) {
                     this.mapVersion(
                         transform =
@@ -62,7 +61,7 @@ public abstract class SemverApplyAction :
         }
     }
 
-    private fun hasAnyMapping(mapping: SemverCurrentVersionDefinition): Boolean =
+    private fun hasAnyMapping(mapping: SemverVersionDefinition): Boolean =
         mapping.major.isPresent ||
             mapping.minor.isPresent ||
             mapping.patch.isPresent ||
@@ -74,7 +73,7 @@ public abstract class SemverApplyAction :
 
     private fun createVersionMapper(
         overrideVersion: String?,
-        mapCurrentVersion: SemverCurrentVersionDefinition?,
+        mapCurrentVersion: SemverVersionDefinition?,
     ): VersionMapper {
         val major: Int? = mapCurrentVersion?.major?.orNull
         val minor: Int? = mapCurrentVersion?.minor?.orNull

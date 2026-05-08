@@ -11,39 +11,6 @@ public abstract class com/javiersc/semver/declarative/gradle/plugin/SemverApplyA
 public final class com/javiersc/semver/declarative/gradle/plugin/SemverApplyAction$Companion {
 }
 
-public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition : com/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition {
-	public fun commits (I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun hash (Ljava/lang/String;)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun major (I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun metadata (Ljava/lang/String;)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun minor (I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun patch (I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun stageName (Ljava/lang/String;)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public fun stageNum (I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-}
-
-public final class com/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition$DefaultImpls {
-	public static fun commits (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun hash (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;Ljava/lang/String;)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun major (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun metadata (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;Ljava/lang/String;)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun minor (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun patch (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun stageName (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;Ljava/lang/String;)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-	public static fun stageNum (Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;I)Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition;
-}
-
-public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition {
-	public abstract fun getCommits ()Lorg/gradle/api/provider/Property;
-	public abstract fun getHash ()Lorg/gradle/api/provider/Property;
-	public abstract fun getMajor ()Lorg/gradle/api/provider/Property;
-	public abstract fun getMetadata ()Lorg/gradle/api/provider/Property;
-	public abstract fun getMinor ()Lorg/gradle/api/provider/Property;
-	public abstract fun getPatch ()Lorg/gradle/api/provider/Property;
-	public abstract fun getStageName ()Lorg/gradle/api/provider/Property;
-	public abstract fun getStageNum ()Lorg/gradle/api/provider/Property;
-}
-
 public class com/javiersc/semver/declarative/gradle/plugin/SemverDeclarativePlugin : org/gradle/api/Plugin {
 	public fun <init> ()V
 	public synthetic fun apply (Ljava/lang/Object;)V
@@ -52,11 +19,9 @@ public class com/javiersc/semver/declarative/gradle/plugin/SemverDeclarativePlug
 
 public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverDefinition : org/gradle/features/binding/Definition {
 	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
-	public abstract fun getCurrentVersion ()Lcom/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionBuilderDefinition;
 	public abstract fun getEnabled ()Lorg/gradle/api/provider/Property;
 	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
-	public abstract fun getMapVersion ()Lcom/javiersc/semver/declarative/gradle/plugin/SemverMapCurrentVersionDefinition;
-	public abstract fun getMappedVersion ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMapVersion ()Lcom/javiersc/semver/declarative/gradle/plugin/SemverMapVersionDefinition;
 	public abstract fun getOverrideVersion ()Lorg/gradle/api/provider/Property;
 	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
 	public fun mapVersion (Ljava/lang/String;)V
@@ -66,7 +31,7 @@ public final class com/javiersc/semver/declarative/gradle/plugin/SemverDefinitio
 	public static fun mapVersion (Lcom/javiersc/semver/declarative/gradle/plugin/SemverDefinition;Ljava/lang/String;)V
 }
 
-public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverMapCurrentVersionDefinition : com/javiersc/semver/declarative/gradle/plugin/SemverCurrentVersionDefinition {
+public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverMapVersionDefinition : com/javiersc/semver/declarative/gradle/plugin/SemverVersionDefinition {
 }
 
 public class com/javiersc/semver/declarative/gradle/plugin/SemverProjectType : org/gradle/api/Plugin, org/gradle/features/binding/ProjectTypeBinding {
@@ -74,5 +39,16 @@ public class com/javiersc/semver/declarative/gradle/plugin/SemverProjectType : o
 	public synthetic fun apply (Ljava/lang/Object;)V
 	public fun apply (Lorg/gradle/api/Project;)V
 	public fun bind (Lorg/gradle/features/binding/ProjectTypeBindingBuilder;)V
+}
+
+public abstract interface class com/javiersc/semver/declarative/gradle/plugin/SemverVersionDefinition {
+	public abstract fun getCommits ()Lorg/gradle/api/provider/Property;
+	public abstract fun getHash ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMajor ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMetadata ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMinor ()Lorg/gradle/api/provider/Property;
+	public abstract fun getPatch ()Lorg/gradle/api/provider/Property;
+	public abstract fun getStageName ()Lorg/gradle/api/provider/Property;
+	public abstract fun getStageNum ()Lorg/gradle/api/provider/Property;
 }
 

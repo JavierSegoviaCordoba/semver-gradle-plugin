@@ -4,7 +4,7 @@ package com.javiersc.semver.declarative.gradle.plugin
 
 import org.gradle.api.provider.Property
 
-public interface SemverCurrentVersionDefinition {
+public interface SemverVersionDefinition {
 
     public val major: Property<Int>
     public val minor: Property<Int>

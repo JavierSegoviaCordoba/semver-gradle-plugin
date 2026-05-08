@@ -5,26 +5,11 @@ import com.javiersc.semver.project.gradle.plugin.Insignificant
 import com.javiersc.semver.project.gradle.plugin.assertVersion
 import com.javiersc.semver.project.gradle.plugin.createGitIgnore
 import com.javiersc.semver.project.gradle.plugin.git
-import io.kotest.matchers.string.shouldContain
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 import org.gradle.testkit.runner.GradleRunner
 
 internal class VersionMappingTest : GradleTestKitTest() {
-
-    @Test
-    fun `GIVEN current-version-metadata WHEN run assemble THEN map version metadata`() {
-        gradleTestKitTest("version-mapping/current-version-metadata") {
-            initializeRepo()
-            gradlew("assemble", "-Psemver.tagPrefix=v")
-            projectDir.assertVersion("v", "0.1.0", Insignificant.Hash)
-            projectDir
-                .resolve("build/semver/version.txt")
-                .readLines()
-                .first()
-                .shouldContain("+1.9.0")
-        }
-    }
 
     @Test
     fun `GIVEN major-minor-patch WHEN run assemble THEN map version major minor patch`() {

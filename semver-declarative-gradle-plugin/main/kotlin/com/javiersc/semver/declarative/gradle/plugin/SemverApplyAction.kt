@@ -3,7 +3,9 @@
 package com.javiersc.semver.declarative.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
+import com.javiersc.semver.shared.SemverConfig
 import com.javiersc.semver.shared.VersionMapper
+import com.javiersc.semver.shared.configureSemver
 import javax.inject.Inject
 import org.gradle.api.Project
 import org.gradle.api.file.Directory
@@ -33,6 +35,21 @@ public abstract class SemverApplyAction :
             val commitsMaxCount: Provider<Int> =
                 definition.commitsMaxCount.orElse(DefaultCommitsMaxCount)
             val tagPrefix: Provider<String> = definition.tagPrefix.orElse(DefaultTagPrefix)
+            val versionMapper: Provider<VersionMapper> =
+                project.providers.provider {
+                    configureVersionMapper(definition)
+                        ?: VersionMapper { version -> version.toString() }
+                }
+
+            project.configureSemver(
+                SemverConfig(
+                    enabled = enabled,
+                    gitDir = gitDir,
+                    commitsMaxCount = commitsMaxCount,
+                    tagPrefix = tagPrefix,
+                    versionMapper = versionMapper,
+                )
+            )
         }
     }
 

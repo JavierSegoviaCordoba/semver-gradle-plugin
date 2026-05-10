@@ -17,8 +17,31 @@ public final class com/javiersc/semver/shared/Commit {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class com/javiersc/semver/shared/ConfigureSemverKt {
+	public static final fun configureSemver (Lorg/gradle/api/Project;Lcom/javiersc/semver/shared/SemverConfig;)V
+}
+
 public final class com/javiersc/semver/shared/SemverCommitsKt {
 	public static final fun semverCommits (Ljava/io/File;Lorg/gradle/api/provider/Provider;)Ljava/util/List;
+}
+
+public final class com/javiersc/semver/shared/SemverConfig {
+	public fun <init> (Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)V
+	public final fun component1 ()Lorg/gradle/api/provider/Provider;
+	public final fun component2 ()Lorg/gradle/api/provider/Provider;
+	public final fun component3 ()Lorg/gradle/api/provider/Provider;
+	public final fun component4 ()Lorg/gradle/api/provider/Provider;
+	public final fun component5 ()Lorg/gradle/api/provider/Provider;
+	public final fun copy (Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)Lcom/javiersc/semver/shared/SemverConfig;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/SemverConfig;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;ILjava/lang/Object;)Lcom/javiersc/semver/shared/SemverConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommitsMaxCount ()Lorg/gradle/api/provider/Provider;
+	public final fun getEnabled ()Lorg/gradle/api/provider/Provider;
+	public final fun getGitDir ()Lorg/gradle/api/provider/Provider;
+	public final fun getTagPrefix ()Lorg/gradle/api/provider/Provider;
+	public final fun getVersionMapper ()Lorg/gradle/api/provider/Provider;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/javiersc/semver/shared/Tag {

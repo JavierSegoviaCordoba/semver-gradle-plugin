@@ -45,50 +45,52 @@ public abstract class SemverApplyAction :
                 this.gitDir.set(gitDir)
                 this.commitsMaxCount.set(commitsMaxCount)
                 this.tagPrefix.set(tagPrefix)
-                val overrideVersion: String? = definition.overrideVersion.orNull
-                val semverMapCurrentVersionDefinition: SemverVersionDefinition? =
-                    definition.mapVersion.takeIf { hasAnyMapping(it) }
-                if (overrideVersion != null || semverMapCurrentVersionDefinition != null) {
-                    this.mapVersion(
-                        transform =
-                            createVersionMapper(
-                                overrideVersion = definition.overrideVersion.orNull,
-                                mapCurrentVersion = semverMapCurrentVersionDefinition,
-                            )
-                    )
-                }
+
+                error(definition.mapVersions.first().metadata.value.get())
             }
         }
     }
 
-    private fun hasAnyMapping(mapping: SemverVersionDefinition): Boolean =
-        mapping.major.isPresent ||
-            mapping.minor.isPresent ||
-            mapping.patch.isPresent ||
-            mapping.stageName.isPresent ||
-            mapping.stageNum.isPresent ||
-            mapping.commits.isPresent ||
-            mapping.hash.isPresent ||
-            mapping.metadata.isPresent
+    private fun SemverExtension.configureVersionMapper(definition: SemverDefinition) {
+        val overrideVersion: String? = definition.overrideVersion.orNull
+        val semverMapVersion: SemverVersionDefinition? =
+            definition.mapVersion.takeIf(::hasAnyMapping)
+        if (overrideVersion != null || semverMapVersion != null) {
+            this@configureVersionMapper.mapVersion(
+                VersionMapper(overrideVersion = overrideVersion, definition = semverMapVersion)
+            )
+        }
+    }
 
-    private fun createVersionMapper(
+    private fun hasAnyMapping(mapping: SemverVersionDefinition): Boolean =
+        mapping.major.value.isPresent ||
+            mapping.minor.value.isPresent ||
+            mapping.patch.value.isPresent ||
+            mapping.stage.name.value.isPresent ||
+            mapping.stage.number.value.isPresent ||
+            mapping.commits.value.isPresent ||
+            mapping.hash.value.isPresent ||
+            mapping.metadata.value.isPresent
+
+    private fun VersionMapper(
         overrideVersion: String?,
-        mapCurrentVersion: SemverVersionDefinition?,
+        definition: SemverVersionDefinition?,
     ): VersionMapper {
-        val major: Int? = mapCurrentVersion?.major?.orNull
-        val minor: Int? = mapCurrentVersion?.minor?.orNull
-        val patch: Int? = mapCurrentVersion?.patch?.orNull
-        val stageName: String? = mapCurrentVersion?.stageName?.orNull
-        val stageNum: Int? = mapCurrentVersion?.stageNum?.orNull
-        val commits: Int? = mapCurrentVersion?.commits?.orNull
-        val hash: String? = mapCurrentVersion?.hash?.orNull
-        val metadata: String? = mapCurrentVersion?.metadata?.orNull
+        val major: Int? by lazy { definition?.major?.value?.orNull }
+        val minor: Int? by lazy { definition?.minor?.value?.orNull }
+        val patch: Int? by lazy { definition?.patch?.value?.orNull }
+        val stageName: String? by lazy { definition?.stage?.name?.value?.orNull }
+        val stageNum: Int? by lazy { definition?.stage?.number?.value?.orNull }
+        val commits: Int? by lazy { definition?.commits?.value?.orNull }
+        val hash: String? by lazy { definition?.hash?.value?.orNull }
+        val metadata: String? by lazy { definition?.metadata?.value?.orNull }
 
         return VersionMapper { version ->
             val overrideGradleVersion: GradleVersion? =
                 overrideVersion?.let(GradleVersion::safe)?.getOrNull()
             val gradleVersion: GradleVersion =
                 overrideGradleVersion.takeIf { it != null } ?: version
+
             gradleVersion
                 .copy(
                     major = major ?: gradleVersion.major,

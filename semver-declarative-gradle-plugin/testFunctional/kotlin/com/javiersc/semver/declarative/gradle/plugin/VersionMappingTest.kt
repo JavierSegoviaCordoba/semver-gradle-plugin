@@ -12,6 +12,17 @@ import org.gradle.testkit.runner.GradleRunner
 internal class VersionMappingTest : GradleTestKitTest() {
 
     @Test
+    fun `GIVEN kotlin-metadata WHEN run assemble THEN map version metadata to include kotlin`() {
+        gradleTestKitTest("version-mapping/kotlin-metadata") {
+            initializeRepo()
+            gradlew("assemble", "-Psemver.tagPrefix=v", "-PkotlinVersion=2.4.20", "--stacktrace")
+                .output
+                .also { error(it) }
+            projectDir.assertVersion("v", "2.4.5", Insignificant.Hash)
+        }
+    }
+
+    @Test
     fun `GIVEN major-minor-patch WHEN run assemble THEN map version major minor patch`() {
         gradleTestKitTest("version-mapping/major-minor-patch") {
             initializeRepo()

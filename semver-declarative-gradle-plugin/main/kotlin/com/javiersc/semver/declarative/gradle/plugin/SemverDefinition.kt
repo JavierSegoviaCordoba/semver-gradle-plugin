@@ -2,6 +2,7 @@
 
 package com.javiersc.semver.declarative.gradle.plugin
 
+import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Nested
@@ -19,10 +20,12 @@ public interface SemverDefinition : Definition<BuildModel.None> {
 
     @get:HiddenInDefinition public val overrideVersion: Property<String>
 
-    @get:Nested public val mapVersion: SemverMapVersionDefinition
-
     @Adding
     public fun mapVersion(version: String) {
         overrideVersion.set(version)
     }
+
+    @get:Nested public val mapVersion: SemverMapVersionDefinition
+
+    public val mapVersions: NamedDomainObjectContainer<SemverMapVersionsDefinition>
 }

@@ -1,0 +1,321 @@
+public final class com/javiersc/semver/shared/Commit {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()J
+	public final fun component5 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;)Lcom/javiersc/semver/shared/Commit;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/Commit;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;ILjava/lang/Object;)Lcom/javiersc/semver/shared/Commit;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFullMessage ()Ljava/lang/String;
+	public final fun getHash ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getTags ()Ljava/util/List;
+	public final fun getTimestampEpochSecond ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/SemverCommitsKt {
+	public static final fun semverCommits (Ljava/io/File;Lorg/gradle/api/provider/Provider;)Ljava/util/List;
+}
+
+public final class com/javiersc/semver/shared/Tag {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/javiersc/semver/shared/Tag;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/Tag;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/semver/shared/Tag;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRefName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/javiersc/semver/shared/VersionMapper : java/io/Serializable {
+	public abstract fun map (Lcom/javiersc/gradle/version/GradleVersion;)Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/VersionProperty : org/gradle/api/provider/Provider {
+	public fun <init> (Lorg/gradle/api/provider/Provider;)V
+	public fun filter (Lorg/gradle/api/specs/Spec;)Lorg/gradle/api/provider/Provider;
+	public fun flatMap (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
+	public synthetic fun get ()Ljava/lang/Object;
+	public fun get ()Ljava/lang/String;
+	public synthetic fun getOrElse (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun getOrElse (Ljava/lang/String;)Ljava/lang/String;
+	public synthetic fun getOrNull ()Ljava/lang/Object;
+	public fun getOrNull ()Ljava/lang/String;
+	public fun isPresent ()Z
+	public fun map (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
+	public synthetic fun orElse (Ljava/lang/Object;)Lorg/gradle/api/provider/Provider;
+	public fun orElse (Ljava/lang/String;)Lorg/gradle/api/provider/Provider;
+	public fun orElse (Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
+	public fun toString ()Ljava/lang/String;
+	public fun zip (Lorg/gradle/api/provider/Provider;Ljava/util/function/BiFunction;)Lorg/gradle/api/provider/Provider;
+}
+
+public final class com/javiersc/semver/shared/extensions/IsVersionExtensionsKt {
+	public static final fun isAlpha (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isBeta (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isDev (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotAlpha (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotBeta (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotDev (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotRC (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isNotSnapshot (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isRC (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+	public static final fun isSnapshot (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
+}
+
+public final class com/javiersc/semver/shared/internal/AdditionalVersionData {
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;)V
+	public final fun asString ()Ljava/lang/String;
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/AdditionalVersionData;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/internal/AdditionalVersionData;ILjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/AdditionalVersionData;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommits ()I
+	public final fun getHash ()Ljava/lang/String;
+	public final fun getMetadata ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/internal/CalculatedVersionKt {
+	public static final fun calculateAdditionalVersionData (ZZLjava/lang/String;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/AdditionalVersionData;
+	public static synthetic fun calculateAdditionalVersionData$default (ZZLjava/lang/String;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/AdditionalVersionData;
+	public static final fun calculatedVersion (Ljava/lang/String;Ljava/lang/String;ZIIILjava/lang/String;Ljava/lang/Integer;Ljava/util/List;ZZLjava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/internal/CheckersKt {
+	public static final fun checkScopeCorrectness (Lorg/gradle/api/Project;)V
+}
+
+public final class com/javiersc/semver/shared/internal/GetProjectTagPrefixKt {
+	public static final fun projectTagPrefix (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitCache {
+	public static final field Companion Lcom/javiersc/semver/shared/internal/git/GitCache$Companion;
+	public synthetic fun <init> (Ljava/io/File;Lorg/gradle/api/provider/Provider;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun commitHash (Lorg/eclipse/jgit/lib/ObjectId;)Ljava/lang/String;
+	public final fun commitHash (Lorg/eclipse/jgit/lib/Ref;)Ljava/lang/String;
+	public final fun getCommitsInCurrentBranch ()Ljava/util/List;
+	public final fun getCommitsInCurrentBranchHash ()Ljava/util/List;
+	public final fun getCommitsInCurrentBranchRevCommit ()Ljava/util/List;
+	public final fun getCommitsInTheCurrentBranchPublicApi ()Ljava/util/List;
+	public final fun getGit ()Lorg/eclipse/jgit/api/Git;
+	public final fun getHeadCommit ()Lcom/javiersc/semver/shared/internal/git/GitRef$Head;
+	public final fun getHeadRevCommit ()Lorg/eclipse/jgit/revwalk/RevCommit;
+	public final fun getLastCommitInCurrentBranch ()Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public final fun getTagName (Lorg/eclipse/jgit/lib/Ref;)Ljava/lang/String;
+	public final fun getTagsInCurrentBranch ()Ljava/util/List;
+	public final fun getTagsInCurrentBranchRef ()Ljava/util/List;
+	public final fun getTagsInRepoRef ()Ljava/util/List;
+	public final fun isClean ()Z
+	public final fun lastVersionCommitInCurrentBranch (Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public final fun lastVersionInCurrentBranch (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/javiersc/gradle/version/GradleVersion;
+	public static synthetic fun lastVersionInCurrentBranch$default (Lcom/javiersc/semver/shared/internal/git/GitCache;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/javiersc/gradle/version/GradleVersion;
+	public final fun lastVersionTagInCurrentBranch (Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/git/GitRef$Tag;
+	public final fun tagsInCurrentCommit (Ljava/lang/String;)Ljava/util/List;
+	public final fun versionTagsInCurrentBranch (Ljava/lang/String;)Ljava/util/List;
+	public final fun versionTagsInCurrentBranchSortedByTimelineOrSemverOrder (Ljava/lang/String;)Ljava/util/List;
+	public final fun versionTagsInCurrentCommit (Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+	public final fun versionTagsSortedBySemver (Ljava/lang/String;)Ljava/util/List;
+	public final fun versionsInCurrentBranch (Ljava/lang/String;)Ljava/util/List;
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitCache$Companion {
+	public final fun invoke (Ljava/io/File;Lorg/gradle/api/provider/Provider;)Lcom/javiersc/semver/shared/internal/git/GitCache;
+	public static synthetic fun invoke$default (Lcom/javiersc/semver/shared/internal/git/GitCache$Companion;Ljava/io/File;Lorg/gradle/api/provider/Provider;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/git/GitCache;
+}
+
+public abstract class com/javiersc/semver/shared/internal/git/GitRef {
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitRef$Branch : com/javiersc/semver/shared/internal/git/GitRef {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lcom/javiersc/semver/shared/internal/git/GitRef$Branch;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/internal/git/GitRef$Branch;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/git/GitRef$Branch;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommits ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRefName ()Ljava/lang/String;
+	public final fun getTags ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitRef$Commit : com/javiersc/semver/shared/internal/git/GitRef {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFullMessage ()Ljava/lang/String;
+	public final fun getHash ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitRef$Head : com/javiersc/semver/shared/internal/git/GitRef {
+	public fun <init> (Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;)V
+	public final fun component1 ()Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public final fun copy (Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;)Lcom/javiersc/semver/shared/internal/git/GitRef$Head;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/internal/git/GitRef$Head;Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/git/GitRef$Head;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommit ()Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitRef$Tag : com/javiersc/semver/shared/internal/git/GitRef {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;)Lcom/javiersc/semver/shared/internal/git/GitRef$Tag;
+	public static synthetic fun copy$default (Lcom/javiersc/semver/shared/internal/git/GitRef$Tag;Ljava/lang/String;Ljava/lang/String;Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;ILjava/lang/Object;)Lcom/javiersc/semver/shared/internal/git/GitRef$Tag;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCommit ()Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRefName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/internal/git/GitRefGitExtensionsKt {
+	public static final fun commitHash (Lorg/eclipse/jgit/api/Git;Lorg/eclipse/jgit/lib/ObjectId;)Ljava/lang/String;
+	public static final fun commitHash (Lorg/eclipse/jgit/api/Git;Lorg/eclipse/jgit/lib/Ref;)Ljava/lang/String;
+	public static final fun commitsBetweenTwoCommitsIncludingLastExcludingFirst (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+	public static final fun getCommitsInCurrentBranch (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getCommitsInCurrentBranchFullMessage (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getCommitsInCurrentBranchHash (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getCommitsInCurrentBranchRevCommit (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getCurrentBranch (Lorg/eclipse/jgit/api/Git;)Lcom/javiersc/semver/shared/internal/git/GitRef$Branch;
+	public static final fun getHeadCommit (Lorg/eclipse/jgit/api/Git;)Lcom/javiersc/semver/shared/internal/git/GitRef$Head;
+	public static final fun getHeadRef (Lorg/eclipse/jgit/api/Git;)Lorg/eclipse/jgit/lib/Ref;
+	public static final fun getHeadRevCommit (Lorg/eclipse/jgit/api/Git;)Lorg/eclipse/jgit/revwalk/RevCommit;
+	public static final fun getHeadRevCommitInBranch (Lorg/eclipse/jgit/api/Git;)Lorg/eclipse/jgit/revwalk/RevCommit;
+	public static final fun getLastCommitInCurrentBranch (Lorg/eclipse/jgit/api/Git;)Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public static final fun getTagName (Lorg/eclipse/jgit/lib/Ref;)Ljava/lang/String;
+	public static final fun getTagsInCurrentBranch (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInCurrentBranchHash (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInCurrentBranchName (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInCurrentBranchRef (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInRepo (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInRepoHash (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInRepoName (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun getTagsInRepoRef (Lorg/eclipse/jgit/api/Git;)Ljava/util/List;
+	public static final fun isThereVersionTag (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Z
+	public static final fun lastVersionCommitInCurrentBranch (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/git/GitRef$Commit;
+	public static final fun lastVersionTagInCurrentBranch (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Lcom/javiersc/semver/shared/internal/git/GitRef$Tag;
+	public static final fun tagsInCurrentCommit (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Ljava/util/List;
+	public static final fun versionTagsInCurrentBranch (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Ljava/util/List;
+	public static final fun versionTagsInCurrentBranchSortedByTimelineOrSemverOrder (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Ljava/util/List;
+	public static final fun versionTagsInCurrentCommit (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+	public static final fun versionTagsSortedBySemver (Lorg/eclipse/jgit/api/Git;Ljava/lang/String;)Ljava/util/List;
+}
+
+public abstract class com/javiersc/semver/shared/services/GitBuildService : java/lang/AutoCloseable, org/gradle/api/services/BuildService {
+	public static final field Companion Lcom/javiersc/semver/shared/services/GitBuildService$Companion;
+	public fun <init> (Lorg/gradle/process/ExecOperations;)V
+	public fun close ()V
+}
+
+public final class com/javiersc/semver/shared/services/GitBuildService$Companion {
+	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
+}
+
+public abstract class com/javiersc/semver/shared/tasks/CreateSemverTagTask : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/shared/tasks/CreateSemverTagTask$Companion;
+	public static final field NAME Ljava/lang/String;
+	public fun <init> ()V
+	public final fun run ()V
+}
+
+public final class com/javiersc/semver/shared/tasks/CreateSemverTagTask$Companion {
+	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)V
+}
+
+public abstract class com/javiersc/semver/shared/tasks/PrintSemverTask : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/shared/tasks/PrintSemverTask$Companion;
+	public static final field NAME Ljava/lang/String;
+	public fun <init> (ZLjava/lang/String;Lorg/gradle/api/model/ObjectFactory;)V
+	public final fun getGithubEnv ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubEnvTag ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubEnvVersion ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOnlyRoot ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOutput ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOutputTag ()Lorg/gradle/api/provider/Property;
+	public final fun getGithubOutputVersion ()Lorg/gradle/api/provider/Property;
+	public abstract fun getShouldLogMessage ()Lorg/gradle/api/provider/Property;
+	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
+	public final fun run ()V
+}
+
+public final class com/javiersc/semver/shared/tasks/PrintSemverTask$Companion {
+	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/tasks/TaskProvider;
+}
+
+public abstract class com/javiersc/semver/shared/tasks/PushSemverTagTask : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/shared/tasks/PushSemverTagTask$Companion;
+	public static final field NAME Ljava/lang/String;
+	public fun <init> ()V
+	public final fun run ()V
+}
+
+public final class com/javiersc/semver/shared/tasks/PushSemverTagTask$Companion {
+	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)V
+}
+
+public abstract class com/javiersc/semver/shared/tasks/WriteSemverTask : org/gradle/api/DefaultTask {
+	public static final field Companion Lcom/javiersc/semver/shared/tasks/WriteSemverTask$Companion;
+	public static final field NAME Ljava/lang/String;
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/api/file/ProjectLayout;)V
+	public final fun getSemverFile ()Lorg/gradle/api/file/RegularFileProperty;
+	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
+	public final fun run ()V
+}
+
+public final class com/javiersc/semver/shared/tasks/WriteSemverTask$Companion {
+	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/tasks/TaskProvider;
+}
+
+public abstract class com/javiersc/semver/shared/valuesources/VersionValueSource : org/gradle/api/provider/ValueSource {
+	public static final field Companion Lcom/javiersc/semver/shared/valuesources/VersionValueSource$Companion;
+	public fun <init> ()V
+	public synthetic fun obtain ()Ljava/lang/Object;
+	public fun obtain ()Ljava/lang/String;
+}
+
+public final class com/javiersc/semver/shared/valuesources/VersionValueSource$Companion {
+	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
+}
+
+public abstract interface class com/javiersc/semver/shared/valuesources/VersionValueSource$Params : org/gradle/api/provider/ValueSourceParameters {
+	public abstract fun getCheckClean ()Lorg/gradle/api/provider/Property;
+	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
+	public abstract fun getCreatingSemverTag ()Lorg/gradle/api/provider/Property;
+	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
+	public abstract fun getProjectTagPrefix ()Lorg/gradle/api/provider/Property;
+	public abstract fun getScopeProperty ()Lorg/gradle/api/provider/Property;
+	public abstract fun getStageProperty ()Lorg/gradle/api/provider/Property;
+	public abstract fun getTagPrefixProperty ()Lorg/gradle/api/provider/Property;
+	public abstract fun getVersionMapper ()Lorg/gradle/api/provider/Property;
+}
+

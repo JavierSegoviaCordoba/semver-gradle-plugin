@@ -19,27 +19,31 @@ hubdle {
                 kotest()
             }
 
-            main {
-                dependencies {
-                    api(projects.gradleVersion)
-                    implementation(hubdle.eclipse.jgit)
+            main { dependencies { api(projects.semverShared) } }
+
+            test {
+                dependencies { //
+                    implementation(testFixtures(projects.semverShared))
                 }
             }
 
             testIntegration {
-                dependencies { //
+                dependencies {
+                    implementation(testFixtures(projects.semverShared))
                     implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFunctional {
-                dependencies { //
+                dependencies {
+                    implementation(testFixtures(projects.semverShared))
                     implementation(hubdle.eclipse.jgit)
                 }
             }
 
             testFixtures {
                 dependencies { //
+                    implementation(testFixtures(projects.semverShared))
                     implementation(hubdle.eclipse.jgit)
                 }
             }

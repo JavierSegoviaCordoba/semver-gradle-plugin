@@ -3,9 +3,7 @@
 package com.javiersc.semver.declarative.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
-import com.javiersc.semver.project.gradle.plugin.SemverExtension
-import com.javiersc.semver.project.gradle.plugin.SemverProjectPlugin
-import com.javiersc.semver.project.gradle.plugin.VersionMapper
+import com.javiersc.semver.shared.VersionMapper
 import javax.inject.Inject
 import org.gradle.api.Project
 import org.gradle.api.file.Directory
@@ -14,8 +12,6 @@ import org.gradle.api.provider.Provider
 import org.gradle.features.binding.BuildModel
 import org.gradle.features.binding.ProjectFeatureApplicationContext
 import org.gradle.features.binding.ProjectTypeApplyAction
-import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.configure
 
 public abstract class SemverApplyAction :
     ProjectTypeApplyAction<SemverDefinition, BuildModel.None> {
@@ -37,29 +33,17 @@ public abstract class SemverApplyAction :
             val commitsMaxCount: Provider<Int> =
                 definition.commitsMaxCount.orElse(DefaultCommitsMaxCount)
             val tagPrefix: Provider<String> = definition.tagPrefix.orElse(DefaultTagPrefix)
-
-            pluginManager.apply(SemverProjectPlugin::class)
-
-            project.configure<SemverExtension> {
-                this.isEnabled.set(enabled)
-                this.gitDir.set(gitDir)
-                this.commitsMaxCount.set(commitsMaxCount)
-                this.tagPrefix.set(tagPrefix)
-
-                error(definition.mapVersions.first().metadata.value.get())
-            }
         }
     }
 
-    private fun SemverExtension.configureVersionMapper(definition: SemverDefinition) {
+    private fun configureVersionMapper(definition: SemverDefinition): VersionMapper? {
         val overrideVersion: String? = definition.overrideVersion.orNull
         val semverMapVersion: SemverVersionDefinition? =
             definition.mapVersion.takeIf(::hasAnyMapping)
-        if (overrideVersion != null || semverMapVersion != null) {
-            this@configureVersionMapper.mapVersion(
-                VersionMapper(overrideVersion = overrideVersion, definition = semverMapVersion)
-            )
-        }
+
+        if (overrideVersion == null && semverMapVersion == null) return null
+
+        return VersionMapper(overrideVersion = overrideVersion, definition = semverMapVersion)
     }
 
     private fun hasAnyMapping(mapping: SemverVersionDefinition): Boolean =

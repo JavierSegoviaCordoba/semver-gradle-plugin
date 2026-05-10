@@ -1,7 +1,9 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.version.GradleVersion
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
+import com.javiersc.semver.shared.git
+import com.javiersc.semver.shared.initialCommitAnd
+import com.javiersc.semver.shared.internal.git.GitCache
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test

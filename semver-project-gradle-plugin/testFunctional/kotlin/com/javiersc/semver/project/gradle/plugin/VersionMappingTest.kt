@@ -1,7 +1,11 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
-import com.javiersc.semver.project.gradle.plugin.internal.git.headRevCommitInBranch
+import com.javiersc.semver.shared.assertVersionFromExpectVersionFiles
+import com.javiersc.semver.shared.generateInitialCommitAddVersionTag
+import com.javiersc.semver.shared.generateInitialCommitAddVersionTagAndAddNewCommit
+import com.javiersc.semver.shared.git
+import com.javiersc.semver.shared.internal.git.headRevCommitInBranch
 import kotlin.test.Test
 
 internal class VersionMappingTest : GradleTestKitTest() {

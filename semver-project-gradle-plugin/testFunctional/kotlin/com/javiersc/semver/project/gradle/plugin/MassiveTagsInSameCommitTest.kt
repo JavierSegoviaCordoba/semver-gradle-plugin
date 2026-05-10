@@ -1,6 +1,9 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
+import com.javiersc.semver.shared.assertVersion
+import com.javiersc.semver.shared.createGitIgnore
+import com.javiersc.semver.shared.git
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 

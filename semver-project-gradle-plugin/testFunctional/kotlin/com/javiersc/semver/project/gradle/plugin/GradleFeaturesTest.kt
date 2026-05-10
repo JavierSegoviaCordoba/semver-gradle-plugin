@@ -1,8 +1,11 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
-import com.javiersc.semver.project.gradle.plugin.Insignificant.Dirty
-import com.javiersc.semver.project.gradle.plugin.Insignificant.Hash
+import com.javiersc.semver.shared.Insignificant.Dirty
+import com.javiersc.semver.shared.Insignificant.Hash
+import com.javiersc.semver.shared.assertVersion
+import com.javiersc.semver.shared.generateInitialCommitAddVersionTagAndAddNewCommit
+import com.javiersc.semver.shared.git
 import io.kotest.matchers.shouldNotBe
 import kotlin.test.Test
 import org.gradle.testkit.runner.GradleRunner

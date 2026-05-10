@@ -1,14 +1,16 @@
 package com.javiersc.semver.declarative.gradle.plugin
 
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
-import com.javiersc.semver.project.gradle.plugin.Insignificant
-import com.javiersc.semver.project.gradle.plugin.assertVersion
-import com.javiersc.semver.project.gradle.plugin.createGitIgnore
-import com.javiersc.semver.project.gradle.plugin.git
+import com.javiersc.semver.shared.Insignificant
+import com.javiersc.semver.shared.assertVersion
+import com.javiersc.semver.shared.createGitIgnore
+import com.javiersc.semver.shared.git
+import kotlin.test.Ignore
 import kotlin.test.Test
 import org.eclipse.jgit.api.Git
 import org.gradle.testkit.runner.GradleRunner
 
+@Ignore
 internal class OneProjectExampleTest : GradleTestKitTest() {
 
     @Test

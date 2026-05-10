@@ -1,12 +1,13 @@
 package com.javiersc.semver.project.gradle.plugin
 
-import com.javiersc.semver.project.gradle.plugin.internal.checkScopeCorrectness
-import com.javiersc.semver.project.gradle.plugin.services.GitBuildService
-import com.javiersc.semver.project.gradle.plugin.tasks.CreateSemverTagTask
-import com.javiersc.semver.project.gradle.plugin.tasks.PrintSemverTask
-import com.javiersc.semver.project.gradle.plugin.tasks.PushSemverTagTask
-import com.javiersc.semver.project.gradle.plugin.tasks.WriteSemverTask
-import com.javiersc.semver.project.gradle.plugin.valuesources.VersionValueSource
+import com.javiersc.semver.shared.VersionProperty
+import com.javiersc.semver.shared.internal.checkScopeCorrectness
+import com.javiersc.semver.shared.services.GitBuildService
+import com.javiersc.semver.shared.tasks.CreateSemverTagTask
+import com.javiersc.semver.shared.tasks.PrintSemverTask
+import com.javiersc.semver.shared.tasks.PushSemverTagTask
+import com.javiersc.semver.shared.tasks.WriteSemverTask
+import com.javiersc.semver.shared.valuesources.VersionValueSource
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.BasePlugin
@@ -25,30 +26,47 @@ public class SemverProjectPlugin : Plugin<Project> {
         SemverExtension.register(this)
 
         if (semverExtension.isEnabled.get()) {
-            val gitTagBuildService: Provider<GitBuildService> = GitBuildService.register(this)
+            val extension: SemverExtension = semverExtension
+            val gitTagBuildService: Provider<GitBuildService> =
+                GitBuildService.register(this, extension.gitDir, extension.commitsMaxCount)
             checkScopeCorrectness()
-            configureVersion()
-            configureBuildServicesAndTasks(gitTagBuildService)
+            configureVersion(extension)
+            configureBuildServicesAndTasks(extension, gitTagBuildService)
         }
     }
 
     private fun Project.configureBuildServicesAndTasks(
-        gitTagBuildService: Provider<GitBuildService>
+        extension: SemverExtension,
+        gitTagBuildService: Provider<GitBuildService>,
     ) {
-        PrintSemverTask.register(this)
-        WriteSemverTask.register(this)
-        CreateSemverTagTask.register(this, gitTagBuildService)
-        PushSemverTagTask.register(this, gitTagBuildService)
+        PrintSemverTask.register(this, extension.tagPrefix)
+        WriteSemverTask.register(this, extension.tagPrefix)
+        CreateSemverTagTask.register(this, extension.tagPrefix, gitTagBuildService)
+        PushSemverTagTask.register(this, extension.tagPrefix, gitTagBuildService)
     }
 
-    private fun Project.configureVersion() {
-        val gradleVersionProvider: Provider<String> = VersionValueSource.register(this)
+    private fun Project.configureVersion(extension: SemverExtension) {
+        val gradleVersionProvider: Provider<String> =
+            VersionValueSource.register(
+                project = this,
+                versionMapper = extension.versionMapper,
+                gitDir = extension.gitDir,
+                commitsMaxCount = extension.commitsMaxCount,
+                tagPrefix = extension.tagPrefix,
+            )
         version = VersionProperty(gradleVersionProvider)
 
         // It is possible third party plugin breaks lazy configuration by calling `project.version`
         // too early, applying the calculated version in `afterEvaluate` fix it sometimes.
         afterEvaluate { proj ->
-            val gradleVersionProviderProj: Provider<String> = VersionValueSource.register(proj)
+            val gradleVersionProviderProj: Provider<String> =
+                VersionValueSource.register(
+                    project = proj,
+                    versionMapper = extension.versionMapper,
+                    gitDir = extension.gitDir,
+                    commitsMaxCount = extension.commitsMaxCount,
+                    tagPrefix = extension.tagPrefix,
+                )
             proj.version = VersionProperty(gradleVersionProviderProj)
         }
     }

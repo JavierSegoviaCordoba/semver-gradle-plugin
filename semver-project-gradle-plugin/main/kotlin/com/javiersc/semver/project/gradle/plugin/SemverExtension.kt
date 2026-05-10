@@ -1,8 +1,8 @@
 package com.javiersc.semver.project.gradle.plugin
 
-import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
-import com.javiersc.semver.project.gradle.plugin.internal.semverWarningMessage
+import com.javiersc.semver.shared.Commit
+import com.javiersc.semver.shared.VersionMapper
+import com.javiersc.semver.shared.semverCommits
 import java.io.File
 import javax.inject.Inject
 import org.gradle.api.Project
@@ -24,19 +24,14 @@ constructor(objects: ObjectFactory, providers: ProviderFactory) {
     public abstract val gitDir: DirectoryProperty
 
     public val commits: Provider<List<Commit>> = providers.provider {
-        val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
-        if (gitDir == null) {
-            semverWarningMessage("There is no git directory")
-            return@provider emptyList()
-        }
-        GitCache(gitDir = gitDir, maxCount = commitsMaxCount).commitsInTheCurrentBranchPublicApi
+        semverCommits(gitDir = gitDir.orNull?.asFile, commitsMaxCount = commitsMaxCount)
     }
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 
-    public val tagPrefix: Property<String> = objects.property<String>().convention(DefaultTagPrefix)
+    public val tagPrefix: Property<String> = objects.property<String>().convention("")
 
-    internal val versionMapper: Property<VersionMapper> =
+    public val versionMapper: Property<VersionMapper> =
         objects
             .property<VersionMapper>()
             .convention(VersionMapper { version -> version.toString() })

@@ -21,8 +21,8 @@ hubdle {
 
             main {
                 dependencies {
-                    implementation(projects.semverProjectGradlePlugin)
-                    implementation(projects.semverSettingsGradlePlugin)
+                    implementation(projects.gradleVersion)
+                    implementation(projects.semverShared)
                     compileOnly(gradleKotlinDsl())
                 }
             }
@@ -36,7 +36,7 @@ hubdle {
             testFunctional {
                 dependencies { //
                     implementation(hubdle.eclipse.jgit)
-                    implementation(testFixtures(projects.semverProjectGradlePlugin))
+                    implementation(testFixtures(projects.semverShared))
                 }
             }
 

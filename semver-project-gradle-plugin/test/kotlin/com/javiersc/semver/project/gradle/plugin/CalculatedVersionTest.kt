@@ -1,10 +1,13 @@
 package com.javiersc.semver.project.gradle.plugin
 
-import com.javiersc.semver.project.gradle.plugin.internal.AdditionalVersionData
-import com.javiersc.semver.project.gradle.plugin.internal.calculatedVersion
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitCache
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
-import com.javiersc.semver.project.gradle.plugin.internal.git.lastCommitInCurrentBranch
+import com.javiersc.semver.shared.calculateAdditionalVersionData
+import com.javiersc.semver.shared.git
+import com.javiersc.semver.shared.initialCommitAnd
+import com.javiersc.semver.shared.internal.AdditionalVersionData
+import com.javiersc.semver.shared.internal.calculatedVersion
+import com.javiersc.semver.shared.internal.git.GitCache
+import com.javiersc.semver.shared.internal.git.GitRef
+import com.javiersc.semver.shared.internal.git.lastCommitInCurrentBranch
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test

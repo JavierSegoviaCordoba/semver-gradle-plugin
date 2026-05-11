@@ -1,0 +1,27 @@
+public abstract class com/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixtureApplyAction : org/gradle/features/binding/ProjectTypeApplyAction {
+	public static final field Companion Lcom/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixtureApplyAction$Companion;
+	public static final field NAME Ljava/lang/String;
+	public fun <init> ()V
+	public fun apply (Lorg/gradle/features/binding/ProjectFeatureApplicationContext;Lcom/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixtureDefinition;Lorg/gradle/features/binding/BuildModel$None;)V
+	public synthetic fun apply (Lorg/gradle/features/binding/ProjectFeatureApplicationContext;Lorg/gradle/features/binding/Definition;Lorg/gradle/features/binding/BuildModel;)V
+}
+
+public final class com/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixtureApplyAction$Companion {
+}
+
+public abstract interface class com/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixtureDefinition : org/gradle/features/binding/Definition {
+}
+
+public class com/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixturePlugin : org/gradle/api/Plugin {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/initialization/Settings;)V
+}
+
+public class com/javiersc/semver/ecosystem/fixture/gradle/plugin/SemverEcosystemFixtureProjectType : org/gradle/api/Plugin, org/gradle/features/binding/ProjectTypeBinding {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+	public fun bind (Lorg/gradle/features/binding/ProjectTypeBindingBuilder;)V
+}
+

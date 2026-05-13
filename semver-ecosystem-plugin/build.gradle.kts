@@ -23,15 +23,10 @@ hubdle {
             }
 
             main {
-                dependencies {
-                    implementation(projects.semverEcosystemFixturePlugin)
-                    implementation(projects.semverEcosystemPluginApi)
-                }
-            }
-
-            testFunctional {
                 dependencies { //
-                    implementation(testFixtures(projects.semverShared))
+                    implementation(projects.semverEcosystemFixturePlugin)
+                    implementation(projects.semverEcosystemIntegrations.semverEcosystemFixtureIntegration)
+                    implementation(projects.semverEcosystemPluginApi)
                 }
             }
         }
@@ -39,10 +34,16 @@ hubdle {
 
     gradle {
         plugin {
-            pluginUnderTestDependencies(
-                projects.semverEcosystemFixturePlugin,
-                projects.semverEcosystemPlugin,
-            )
+            gradlePlugin {
+                plugins {
+                    create("SemverEcosystemPlugin") {
+                        id = "com.javiersc.semver.ecosystem"
+                        displayName = "Semver Ecosystem"
+                        description = "Ecosystem plugin for Semver"
+                        implementationClass = "com.javiersc.semver.ecosystem.plugin.SemverEcosystemPlugin"
+                    }
+                }
+            }
         }
     }
 }

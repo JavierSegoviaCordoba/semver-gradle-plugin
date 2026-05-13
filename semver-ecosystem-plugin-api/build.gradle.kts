@@ -23,15 +23,7 @@ hubdle {
             }
 
             main {
-                dependencies {
-                    implementation(projects.semverEcosystemFixturePlugin)
-                    implementation(projects.semverEcosystemPluginApi)
-                }
-            }
-
-            testFunctional {
                 dependencies { //
-                    implementation(testFixtures(projects.semverShared))
                 }
             }
         }
@@ -39,10 +31,6 @@ hubdle {
 
     gradle {
         plugin {
-            pluginUnderTestDependencies(
-                projects.semverEcosystemFixturePlugin,
-                projects.semverEcosystemPlugin,
-            )
         }
     }
 }

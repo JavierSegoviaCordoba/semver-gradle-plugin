@@ -2,20 +2,23 @@
 
 package com.javiersc.semver.ecosystem.fixture.integration.gradle.plugin
 
+import com.javiersc.semver.ecosystem.fixture.gradle.plugin.SemverEcosystemFixtureDefinition
+import com.javiersc.semver.ecosystem.plugin.api.SemverDefinition
+import org.gradle.api.logging.Logging
 import org.gradle.features.binding.BuildModel
 import org.gradle.features.binding.ProjectFeatureApplicationContext
-import org.gradle.features.binding.ProjectTypeApplyAction
+import org.gradle.features.binding.ProjectFeatureApplyAction
 
 public abstract class SemverEcosystemFixtureIntegrationApplyAction :
-    ProjectTypeApplyAction<SemverEcosystemFixtureIntegrationDefinition, BuildModel.None> {
+    ProjectFeatureApplyAction<SemverDefinition, BuildModel.None, SemverEcosystemFixtureDefinition> {
 
     override fun apply(
         context: ProjectFeatureApplicationContext,
-        definition: SemverEcosystemFixtureIntegrationDefinition,
+        definition: SemverDefinition,
         buildModel: BuildModel.None,
-    ): Unit = Unit
-
-    public companion object {
-        public const val NAME: String = "semverEcosystemFixture"
+        parentDefinition: SemverEcosystemFixtureDefinition,
+    ) {
+        Logging.getLogger(SemverEcosystemFixtureIntegrationApplyAction::class.java)
+            .lifecycle("SemverEcosystemFixtureIntegration applied")
     }
 }

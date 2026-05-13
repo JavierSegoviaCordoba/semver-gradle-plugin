@@ -64,7 +64,7 @@ hubdle {
             pluginUnderTestDependencies(
                 hubdle.android.tools.build.gradle,
                 hubdle.jetbrains.kotlin.gradle.plugin,
-                projects.semverEcosystemFixtureGradlePlugin,
+                projects.semverEcosystemFixturePlugin,
                 projects.semverGradlePlugin,
                 projects.semverProjectGradlePlugin,
                 projects.semverSettingsGradlePlugin,

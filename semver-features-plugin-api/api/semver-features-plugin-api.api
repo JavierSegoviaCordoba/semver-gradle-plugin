@@ -1,0 +1,4 @@
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverDefinition : org/gradle/features/binding/Definition {
+	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+}
+

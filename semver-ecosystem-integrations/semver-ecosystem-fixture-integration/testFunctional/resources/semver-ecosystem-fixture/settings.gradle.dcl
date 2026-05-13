@@ -1,5 +1,5 @@
 plugins {
-    id("com.javiersc.semver.ecosystem")
+    id("com.javiersc.semver.features")
     id("semver.ecosystem.fixture")
 }
 

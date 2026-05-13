@@ -23,7 +23,9 @@ hubdle {
             }
 
             main {
-                dependencies { //
+                dependencies {
+                    api(projects.gradleVersion)
+                    api(projects.semverShared)
                 }
             }
         }

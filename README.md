@@ -433,40 +433,37 @@ semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 
 ### Gradle Declarative
 
-There is support for the experimental Gradle Declarative.
-
-Apply the plugin in the `settings.gradle.dcl` file.
+There is support for the experimental Gradle Declarative through ecosystem plugin features.
+`semver` is not a top-level DCL project type; it must be nested inside an ecosystem plugin that
+registers the feature.
 
 ```kotlin
 // settings.gradle.dcl
 plugins {
-    id("com.javiersc.semver.declarative").version("$version")
+    id("com.javiersc.semver.features").version("$version")
+    id("semver.ecosystem.fixture")
 }
+```
 
-defaults {
+Call `semver` inside the ecosystem plugin block.
+
+#### Basic usage
+
+```kotlin
+// build.gradle.dcl
+semverEcosystemFixture {
+    semver { }
+}
+```
+
+#### Configure Semver
+
+```kotlin
+// build.gradle.dcl
+semverEcosystemFixture {
     semver {
-        tagPrefix = "v"
+        tagPrefix = "z"
     }
-}
-```
-
-Call `semver` on the project.
-
-> It is possible to override any defaults. If that is not the case, it must be called but empty.
-
-#### Using defaults
-
-```kotlin
-// build.gradle.dcl
-semver { }
-```
-
-#### Override defaults
-
-```kotlin
-// build.gradle.dcl
-semver {
-    tagPrefix = "z"
 }
 ```
 

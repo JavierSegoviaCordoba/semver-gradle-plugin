@@ -17,10 +17,13 @@ public class SemverProjectFeaturePlugin : Plugin<Project> {
 
         override fun bind(builder: ProjectFeatureBindingBuilder) {
 
-            builder.bindProjectFeature(
-                "semver",
-                SemverEcosystemFixtureIntegrationApplyAction::class,
-            )
+            builder
+                .bindProjectFeature(
+                    "semver",
+                    SemverEcosystemFixtureIntegrationApplyAction::class,
+                )
+                .withUnsafeDefinition()
+                .withUnsafeApplyAction()
         }
     }
 

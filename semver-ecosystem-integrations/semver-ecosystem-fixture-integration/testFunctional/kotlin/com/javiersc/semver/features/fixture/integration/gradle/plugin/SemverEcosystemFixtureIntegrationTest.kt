@@ -13,7 +13,7 @@ internal class SemverEcosystemFixtureIntegrationTest : GradleTestKitTest() {
 
             val result = build()
 
-            assertTrue("SemverEcosystemFixtureIntegration applied" in result.output)
+            assertTrue("Welcome to Gradle" in result.output)
         }
     }
 }

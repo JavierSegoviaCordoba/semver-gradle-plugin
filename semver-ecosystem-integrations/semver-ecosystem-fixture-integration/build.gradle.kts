@@ -26,6 +26,7 @@ hubdle {
                 dependencies {
                     implementation(projects.semverEcosystemFixturePlugin)
                     implementation(projects.semverFeaturesPluginApi)
+                    implementation(projects.semverShared)
                 }
             }
 

@@ -1,3 +1,0 @@
-semver {
-    tagPrefix = "w"
-}

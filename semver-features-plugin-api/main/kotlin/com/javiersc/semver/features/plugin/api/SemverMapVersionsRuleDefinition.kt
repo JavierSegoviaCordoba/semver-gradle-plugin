@@ -19,12 +19,18 @@ public interface SemverMapVersionsRuleDefinition : Named {
     @get:Nested public val any: SemverMapVersionsMatches
     @get:Nested public val none: SemverMapVersionsMatches
 
+    @Suppress("TooManyFunctions")
     public interface SemverMapVersionsMatches {
 
         @get:Nested @get:HiddenInDefinition public val conditions: Conditions
         @get:HiddenInDefinition public val contains: MapProperty<String, Boolean>
         @get:HiddenInDefinition public val endsWith: MapProperty<String, Boolean>
         @get:HiddenInDefinition public val environmentVariables: MapProperty<String, Boolean>
+        @get:HiddenInDefinition public val mappedContains: MapProperty<String, Boolean>
+        @get:HiddenInDefinition public val mappedEndsWith: MapProperty<String, Boolean>
+        @get:HiddenInDefinition public val mappedMetadata: MapProperty<String, Boolean>
+        @get:HiddenInDefinition public val mappedPatterns: MapProperty<String, Boolean>
+        @get:HiddenInDefinition public val mappedStartsWith: MapProperty<String, Boolean>
         @get:HiddenInDefinition public val patterns: MapProperty<String, Boolean>
         @get:HiddenInDefinition public val gradleProperties: MapProperty<String, Boolean>
         @get:HiddenInDefinition public val startsWith: MapProperty<String, Boolean>
@@ -50,8 +56,29 @@ public interface SemverMapVersionsRuleDefinition : Named {
         }
 
         @Adding
+        public fun mappedCommits(value: Int) {
+            conditions.mappedCommits.set(value)
+        }
+
+        @Adding
         public fun mappedCommitsIsPresent(enabled: Boolean = true) {
             conditions.mappedCommitsIsPresent.set(enabled)
+        }
+
+        @Adding
+        public fun mappedContains(element: String, ignoreCase: Boolean = false) {
+            mappedContains.put(element, ignoreCase)
+        }
+
+        @Adding
+        public fun mappedEndsWith(element: String, ignoreCase: Boolean = false) {
+            mappedEndsWith.put(element, ignoreCase)
+        }
+
+        @Adding
+        public fun mappedHash(value: String, ignoreCase: Boolean = false) {
+            conditions.mappedHash.set(value)
+            conditions.mappedHashIgnoreCase.set(ignoreCase)
         }
 
         @Adding
@@ -60,8 +87,18 @@ public interface SemverMapVersionsRuleDefinition : Named {
         }
 
         @Adding
+        public fun mappedMajor(value: Int) {
+            conditions.mappedMajor.set(value)
+        }
+
+        @Adding
         public fun mappedMajorIsPresent(enabled: Boolean = true) {
             conditions.mappedMajorIsPresent.set(enabled)
+        }
+
+        @Adding
+        public fun mappedMetadata(value: String, ignoreCase: Boolean = false) {
+            mappedMetadata.put(value, ignoreCase)
         }
 
         @Adding
@@ -70,13 +107,34 @@ public interface SemverMapVersionsRuleDefinition : Named {
         }
 
         @Adding
+        public fun mappedMinor(value: Int) {
+            conditions.mappedMinor.set(value)
+        }
+
+        @Adding
         public fun mappedMinorIsPresent(enabled: Boolean = true) {
             conditions.mappedMinorIsPresent.set(enabled)
         }
 
         @Adding
+        public fun mappedPatch(value: Int) {
+            conditions.mappedPatch.set(value)
+        }
+
+        @Adding
         public fun mappedPatchIsPresent(enabled: Boolean = true) {
             conditions.mappedPatchIsPresent.set(enabled)
+        }
+
+        @Adding
+        public fun mappedPattern(pattern: String, ignoreCase: Boolean = false) {
+            mappedPatterns.put(pattern, ignoreCase)
+        }
+
+        @Adding
+        public fun mappedStageName(value: String, ignoreCase: Boolean = false) {
+            conditions.mappedStageName.set(value)
+            conditions.mappedStageNameIgnoreCase.set(ignoreCase)
         }
 
         @Adding
@@ -90,8 +148,18 @@ public interface SemverMapVersionsRuleDefinition : Named {
         }
 
         @Adding
+        public fun mappedStageNumber(value: Int) {
+            conditions.mappedStageNumber.set(value)
+        }
+
+        @Adding
         public fun mappedStageNumberIsPresent(enabled: Boolean = true) {
             conditions.mappedStageNumberIsPresent.set(enabled)
+        }
+
+        @Adding
+        public fun mappedStartsWith(element: String, ignoreCase: Boolean = false) {
+            mappedStartsWith.put(element, ignoreCase)
         }
 
         @Adding
@@ -115,14 +183,23 @@ public interface SemverMapVersionsRuleDefinition : Named {
         }
 
         public interface Conditions {
+            public val mappedCommits: Property<Int>
             public val mappedCommitsIsPresent: Property<Boolean>
+            public val mappedHash: Property<String>
+            public val mappedHashIgnoreCase: Property<Boolean>
             public val mappedHashIsPresent: Property<Boolean>
+            public val mappedMajor: Property<Int>
             public val mappedMajorIsPresent: Property<Boolean>
             public val mappedMetadataIsPresent: Property<Boolean>
+            public val mappedMinor: Property<Int>
             public val mappedMinorIsPresent: Property<Boolean>
+            public val mappedPatch: Property<Int>
             public val mappedPatchIsPresent: Property<Boolean>
             public val mappedStageIsPresent: Property<Boolean>
+            public val mappedStageName: Property<String>
+            public val mappedStageNameIgnoreCase: Property<Boolean>
             public val mappedStageNameIsPresent: Property<Boolean>
+            public val mappedStageNumber: Property<Int>
             public val mappedStageNumberIsPresent: Property<Boolean>
             public val metadataIsPresent: Property<Boolean>
             public val requestedTagPrefix: Property<Boolean>

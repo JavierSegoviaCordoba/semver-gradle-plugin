@@ -104,6 +104,8 @@ internal class VersionMappingTest : GradleTestKitTest() {
                 RuleMappingCase("mapped metadata is present"),
                 RuleMappingCase("mapped metadata is absent"),
                 RuleMappingCase("mapped fields are present"),
+                RuleMappingCase("mapped values"),
+                RuleMappingCase("mapped kotlin dev metadata"),
                 RuleMappingCase("property is present"),
                 RuleMappingCase("property is absent"),
                 RuleMappingCase(

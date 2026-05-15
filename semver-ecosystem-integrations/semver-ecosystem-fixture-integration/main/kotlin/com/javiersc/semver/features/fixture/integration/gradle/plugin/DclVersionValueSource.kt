@@ -143,52 +143,84 @@ internal data class VersionRule(
     ): Boolean {
         val configuredGroups: List<Boolean> =
             listOf(all.isConfigured, any.isConfigured, none.isConfigured)
-        if (configuredGroups.none { configured: Boolean -> configured }) return false
 
-        return (all.isConfigured &&
-            all.matchesAll(version, mapping, environmentVariables, gradleProperties)) ||
-            (any.isConfigured &&
-                any.matchesAny(version, mapping, environmentVariables, gradleProperties)) ||
-            (none.isConfigured &&
-                none.matchesNone(version, mapping, environmentVariables, gradleProperties))
+        val allMatches: Boolean =
+            all.matchesAll(version, mapping, environmentVariables, gradleProperties)
+        val anyMatches: Boolean =
+            any.matchesAny(version, mapping, environmentVariables, gradleProperties)
+        val noneMatches: Boolean =
+            none.matchesNone(version, mapping, environmentVariables, gradleProperties)
+
+        val allOrAnyOrNone: Boolean =
+            (all.isConfigured && allMatches) ||
+                (any.isConfigured && anyMatches) ||
+                (none.isConfigured && noneMatches)
+
+        return !configuredGroups.none { configured: Boolean -> configured } && allOrAnyOrNone
     }
 }
 
 internal data class VersionMatches(
+    val mappedCommits: Int?,
     val mappedCommitsIsPresent: Boolean?,
+    val mappedHash: String?,
+    val mappedHashIgnoreCase: Boolean?,
     val mappedHashIsPresent: Boolean?,
+    val mappedMajor: Int?,
     val mappedMajorIsPresent: Boolean?,
+    val mappedMetadata: Map<String, Boolean>,
     val mappedMetadataIsPresent: Boolean?,
+    val mappedMinor: Int?,
     val mappedMinorIsPresent: Boolean?,
+    val mappedPatch: Int?,
     val mappedPatchIsPresent: Boolean?,
     val mappedStageIsPresent: Boolean?,
+    val mappedStageName: String?,
+    val mappedStageNameIgnoreCase: Boolean?,
     val mappedStageNameIsPresent: Boolean?,
+    val mappedStageNumber: Int?,
     val mappedStageNumberIsPresent: Boolean?,
     val metadataIsPresent: Boolean?,
     val requestedTagPrefix: Boolean?,
     val contains: Map<String, Boolean>,
     val endsWith: Map<String, Boolean>,
     val environmentVariables: Map<String, Boolean>,
+    val mappedContains: Map<String, Boolean>,
+    val mappedEndsWith: Map<String, Boolean>,
+    val mappedPatterns: Map<String, Boolean>,
+    val mappedStartsWith: Map<String, Boolean>,
     val patterns: Map<String, Boolean>,
     val gradleProperties: Map<String, Boolean>,
     val startsWith: Map<String, Boolean>,
 ) : Serializable {
 
     val isConfigured: Boolean =
-        mappedCommitsIsPresent != null ||
+        mappedCommits != null ||
+            mappedCommitsIsPresent != null ||
+            mappedHash != null ||
             mappedHashIsPresent != null ||
+            mappedMajor != null ||
             mappedMajorIsPresent != null ||
+            mappedMetadata.isNotEmpty() ||
             mappedMetadataIsPresent != null ||
+            mappedMinor != null ||
             mappedMinorIsPresent != null ||
+            mappedPatch != null ||
             mappedPatchIsPresent != null ||
             mappedStageIsPresent != null ||
+            mappedStageName != null ||
             mappedStageNameIsPresent != null ||
+            mappedStageNumber != null ||
             mappedStageNumberIsPresent != null ||
             metadataIsPresent != null ||
             requestedTagPrefix != null ||
             contains.isNotEmpty() ||
             endsWith.isNotEmpty() ||
             environmentVariables.isNotEmpty() ||
+            mappedContains.isNotEmpty() ||
+            mappedEndsWith.isNotEmpty() ||
+            mappedPatterns.isNotEmpty() ||
+            mappedStartsWith.isNotEmpty() ||
             patterns.isNotEmpty() ||
             gradleProperties.isNotEmpty() ||
             startsWith.isNotEmpty()
@@ -196,36 +228,37 @@ internal data class VersionMatches(
     fun matchesAll(
         version: GradleVersion,
         mapping: VersionMapping,
-        environmentVariableValues: Map<String, String>,
-        gradlePropertyValues: Map<String, String>,
+        environmentVariables: Map<String, String>,
+        gradleProperties: Map<String, String>,
     ): Boolean =
-        matchResults(version, mapping, environmentVariableValues, gradlePropertyValues).all {
-            result: Boolean ->
+        matchResults(version, mapping, environmentVariables, gradleProperties).all { result: Boolean
+            ->
             result
         }
 
     fun matchesAny(
         version: GradleVersion,
         mapping: VersionMapping,
-        environmentVariableValues: Map<String, String>,
-        gradlePropertyValues: Map<String, String>,
+        environmentVariables: Map<String, String>,
+        gradleProperties: Map<String, String>,
     ): Boolean =
-        matchResults(version, mapping, environmentVariableValues, gradlePropertyValues).any {
-            result: Boolean ->
+        matchResults(version, mapping, environmentVariables, gradleProperties).any { result: Boolean
+            ->
             result
         }
 
     fun matchesNone(
         version: GradleVersion,
         mapping: VersionMapping,
-        environmentVariableValues: Map<String, String>,
-        gradlePropertyValues: Map<String, String>,
+        environmentVariables: Map<String, String>,
+        gradleProperties: Map<String, String>,
     ): Boolean =
-        matchResults(version, mapping, environmentVariableValues, gradlePropertyValues).none {
+        matchResults(version, mapping, environmentVariables, gradleProperties).none {
             result: Boolean ->
             result
         }
 
+    @Suppress("CyclomaticComplexMethod", "LongMethod")
     private fun matchResults(
         version: GradleVersion,
         mapping: VersionMapping,
@@ -233,33 +266,61 @@ internal data class VersionMatches(
         gradlePropertyValues: Map<String, String>,
     ): List<Boolean> {
         val value: String = version.toString()
+        val mappedVersion: GradleVersion = mapping.map(version)
+        val mappedValue: String = mappedVersion.toString()
         return buildList {
+            mappedCommits?.let { expected: Int -> add(mappedVersion.commits == expected) }
             mappedCommitsIsPresent?.let { expected: Boolean ->
-                add((mapping.commits != null) == expected)
+                add((mappedVersion.commits != null) == expected)
+            }
+            mappedHash?.let { expected: String ->
+                add(mappedVersion.hash?.equals(expected, mappedHashIgnoreCase ?: false) == true)
             }
             mappedHashIsPresent?.let { expected: Boolean ->
-                add((mapping.hash != null) == expected)
+                add((mappedVersion.hash != null) == expected)
             }
-            mappedMajorIsPresent?.let { expected: Boolean ->
-                add((mapping.major != null) == expected)
+            mappedMajor?.let { expected: Int -> add(mappedVersion.major == expected) }
+            mappedMajorIsPresent?.let { expected: Boolean -> add(true == expected) }
+            mappedMetadata.forEach { (expected: String, ignoreCase: Boolean) ->
+                add(mappedVersion.metadata?.equals(expected, ignoreCase) == true)
             }
             mappedMetadataIsPresent?.let { expected: Boolean ->
-                add((mapping.metadata != null) == expected)
+                add((mappedVersion.metadata != null) == expected)
             }
-            mappedMinorIsPresent?.let { expected: Boolean ->
-                add((mapping.minor != null) == expected)
-            }
-            mappedPatchIsPresent?.let { expected: Boolean ->
-                add((mapping.patch != null) == expected)
-            }
+            mappedMinor?.let { expected: Int -> add(mappedVersion.minor == expected) }
+            mappedMinorIsPresent?.let { expected: Boolean -> add(true == expected) }
+            mappedPatch?.let { expected: Int -> add(mappedVersion.patch == expected) }
+            mappedPatchIsPresent?.let { expected: Boolean -> add(true == expected) }
             mappedStageIsPresent?.let { expected: Boolean ->
-                add(((mapping.stageName != null) || (mapping.stageNum != null)) == expected)
+                add((mappedVersion.stage != null) == expected)
+            }
+            mappedStageName?.let { expected: String ->
+                add(
+                    mappedVersion.stage
+                        ?.name
+                        ?.equals(expected, mappedStageNameIgnoreCase ?: false) == true
+                )
             }
             mappedStageNameIsPresent?.let { expected: Boolean ->
-                add((mapping.stageName != null) == expected)
+                add((mappedVersion.stage?.name != null) == expected)
             }
+            mappedStageNumber?.let { expected: Int -> add(mappedVersion.stage?.num == expected) }
             mappedStageNumberIsPresent?.let { expected: Boolean ->
-                add((mapping.stageNum != null) == expected)
+                add((mappedVersion.stage?.num != null) == expected)
+            }
+            mappedContains.forEach { (element: String, ignoreCase: Boolean) ->
+                add(mappedValue.contains(element, ignoreCase))
+            }
+            mappedEndsWith.forEach { (element: String, ignoreCase: Boolean) ->
+                add(mappedValue.endsWith(element, ignoreCase))
+            }
+            mappedPatterns.forEach { (pattern: String, ignoreCase: Boolean) ->
+                val options: Set<RegexOption> =
+                    if (ignoreCase) setOf(RegexOption.IGNORE_CASE) else emptySet()
+                add(Regex(pattern, options).containsMatchIn(mappedValue))
+            }
+            mappedStartsWith.forEach { (element: String, ignoreCase: Boolean) ->
+                add(mappedValue.startsWith(element, ignoreCase))
             }
             metadataIsPresent?.let { expected: Boolean ->
                 add((version.metadata != null) == expected)
@@ -353,7 +414,7 @@ private fun SemverDefinition.toRuleMappings(): List<RuleMapping> =
 
 private fun List<RuleMapping>.sortedByPriority(): List<RuleMapping> =
     sortedWith(
-        compareByDescending<RuleMapping> { rule: RuleMapping -> rule.priority ?: Int.MIN_VALUE }
+        compareByDescending { rule: RuleMapping -> rule.priority ?: Int.MIN_VALUE }
             .thenBy { rule: RuleMapping -> rule.declarationIndex }
     )
 
@@ -379,20 +440,34 @@ private fun SemverMapVersionsRuleDefinition.toVersionRule(): VersionRule =
 private fun SemverMapVersionsRuleDefinition.SemverMapVersionsMatches.toVersionMatches():
     VersionMatches =
     VersionMatches(
+        mappedCommits = conditions.mappedCommits.orNull,
         mappedCommitsIsPresent = conditions.mappedCommitsIsPresent.orNull,
+        mappedHash = conditions.mappedHash.orNull,
+        mappedHashIgnoreCase = conditions.mappedHashIgnoreCase.orNull,
         mappedHashIsPresent = conditions.mappedHashIsPresent.orNull,
+        mappedMajor = conditions.mappedMajor.orNull,
         mappedMajorIsPresent = conditions.mappedMajorIsPresent.orNull,
+        mappedMetadata = mappedMetadata.getOrElse(emptyMap()),
         mappedMetadataIsPresent = conditions.mappedMetadataIsPresent.orNull,
+        mappedMinor = conditions.mappedMinor.orNull,
         mappedMinorIsPresent = conditions.mappedMinorIsPresent.orNull,
+        mappedPatch = conditions.mappedPatch.orNull,
         mappedPatchIsPresent = conditions.mappedPatchIsPresent.orNull,
         mappedStageIsPresent = conditions.mappedStageIsPresent.orNull,
+        mappedStageName = conditions.mappedStageName.orNull,
+        mappedStageNameIgnoreCase = conditions.mappedStageNameIgnoreCase.orNull,
         mappedStageNameIsPresent = conditions.mappedStageNameIsPresent.orNull,
+        mappedStageNumber = conditions.mappedStageNumber.orNull,
         mappedStageNumberIsPresent = conditions.mappedStageNumberIsPresent.orNull,
         metadataIsPresent = conditions.metadataIsPresent.orNull,
         requestedTagPrefix = conditions.requestedTagPrefix.orNull,
         contains = contains.getOrElse(emptyMap()),
         endsWith = endsWith.getOrElse(emptyMap()),
         environmentVariables = environmentVariables.getOrElse(emptyMap()),
+        mappedContains = mappedContains.getOrElse(emptyMap()),
+        mappedEndsWith = mappedEndsWith.getOrElse(emptyMap()),
+        mappedPatterns = mappedPatterns.getOrElse(emptyMap()),
+        mappedStartsWith = mappedStartsWith.getOrElse(emptyMap()),
         patterns = patterns.getOrElse(emptyMap()),
         gradleProperties = gradleProperties.getOrElse(emptyMap()),
         startsWith = startsWith.getOrElse(emptyMap()),

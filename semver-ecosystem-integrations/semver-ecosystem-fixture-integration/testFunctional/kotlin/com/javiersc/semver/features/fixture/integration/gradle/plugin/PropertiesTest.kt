@@ -80,17 +80,22 @@ internal class PropertiesTest : GradleTestKitTest() {
                 .mapNotNull { if (it.name == "settings.gradle.dcl") it.parentFile else null }
                 .map { it.relativeTo(getResource("properties").parentFile).path }
 
-        projects.forEach {
-            println("\nTesting: $it".ansiColor(AnsiColor.Foreground.Purple))
-            gradleTestKitTest(it) {
+        projects.forEach { project ->
+            gradleTestKitTest(project) {
                 projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
                 beforeTest(projectDir)
                 withArgumentsFromTXT()
-                if (projectDir.name.contains("buildAndFail")) {
-                    buildAndFail()
-                } else {
-                    build()
-                    projectDir.assertVersionFromExpectVersionFiles()
+                val result = runCatching {
+                    if (projectDir.name.contains("buildAndFail")) {
+                        buildAndFail()
+                    } else {
+                        build()
+                        projectDir.assertVersionFromExpectVersionFiles()
+                    }
+                }
+                result.onFailure { failure ->
+                    println("\nTesting: $project".ansiColor(AnsiColor.Foreground.Purple))
+                    throw failure
                 }
             }
         }

@@ -7,6 +7,8 @@ import com.javiersc.semver.shared.generateInitialCommitAddVersionTagAndAddNewCom
 import com.javiersc.semver.shared.git
 import com.javiersc.semver.shared.internal.git.headRevCommitInBranch
 import kotlin.test.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 
 internal class VersionMappingTest : GradleTestKitTest() {
 
@@ -64,5 +66,59 @@ internal class VersionMappingTest : GradleTestKitTest() {
             build()
             projectDir.assertVersionFromExpectVersionFiles()
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("ruleMappingCases")
+    fun `rules mapping conditions`(case: RuleMappingCase) {
+        gradleTestKitTest("version-mapping/rules/${case.path}") {
+            withEnvironment(case.environment)
+            if (case.addNewCommit) {
+                projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
+            } else {
+                projectDir.generateInitialCommitAddVersionTag()
+            }
+
+            withArgumentsFromTXT()
+            build()
+            projectDir.assertVersionFromExpectVersionFiles()
+        }
+    }
+
+    private companion object {
+
+        @JvmStatic
+        fun ruleMappingCases(): List<RuleMappingCase> =
+            listOf(
+                RuleMappingCase("all conditions"),
+                RuleMappingCase("any conditions"),
+                RuleMappingCase("none conditions"),
+                RuleMappingCase("metadata is absent"),
+                RuleMappingCase("requested tag prefix"),
+                RuleMappingCase("contains"),
+                RuleMappingCase("ends with"),
+                RuleMappingCase("pattern"),
+                RuleMappingCase("starts with"),
+                RuleMappingCase("ignore case"),
+                RuleMappingCase("combined conditions"),
+                RuleMappingCase("mapped metadata is present"),
+                RuleMappingCase("mapped metadata is absent"),
+                RuleMappingCase("mapped fields are present"),
+                RuleMappingCase("property is present"),
+                RuleMappingCase("property is absent"),
+                RuleMappingCase(
+                    path = "environment variable is present",
+                    environment = mapOf("SEMVER_TEST_MAPPED_ENV" to "true"),
+                ),
+                RuleMappingCase("environment variable is absent"),
+            )
+    }
+
+    data class RuleMappingCase(
+        val path: String,
+        val addNewCommit: Boolean = false,
+        val environment: Map<String, String> = emptyMap(),
+    ) {
+        override fun toString(): String = path
     }
 }

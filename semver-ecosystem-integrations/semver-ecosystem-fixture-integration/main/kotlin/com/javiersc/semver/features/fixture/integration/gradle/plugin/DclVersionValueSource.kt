@@ -37,6 +37,8 @@ internal abstract class DclVersionValueSource : ValueSource<String, DclVersionVa
         val mappingCommits: MapProperty<String, Int>
         val mappingHash: MapProperty<String, String>
         val mappingMetadata: MapProperty<String, String>
+        val conditionEnvironmentVariables: MapProperty<String, String>
+        val conditionGradleProperties: MapProperty<String, String>
     }
 
     internal companion object {
@@ -59,6 +61,7 @@ internal abstract class DclVersionValueSource : ValueSource<String, DclVersionVa
                 )
                 parameters.overrideVersion.set(definition.overrideVersion)
                 parameters.putMapping(DefaultMappingKey, definition.mapVersion)
+                parameters.putConditionProviders(project, definition)
                 parameters.ruleMappings.set(project.provider { definition.toRuleMappings() })
             }
     }
@@ -70,6 +73,8 @@ private data class DclVersionMapping(
     val overrideVersion: String?,
     val defaultMapping: VersionMapping,
     val ruleMappings: List<RuleMapping>,
+    val conditionEnvironmentVariables: Map<String, String>,
+    val conditionGradleProperties: Map<String, String>,
 )
 
 private data class DclVersionMapper(private val mapping: DclVersionMapping) {
@@ -77,7 +82,14 @@ private data class DclVersionMapper(private val mapping: DclVersionMapping) {
     fun map(version: GradleVersion): String {
         val mappedByRule: String? =
             mapping.ruleMappings
-                .firstOrNull { rule: RuleMapping -> rule.rule.matches(version) }
+                .firstOrNull { rule: RuleMapping ->
+                    rule.rule.matches(
+                        version = version,
+                        mapping = rule.mapping,
+                        environmentVariables = mapping.conditionEnvironmentVariables,
+                        gradleProperties = mapping.conditionGradleProperties,
+                    )
+                }
                 ?.let { rule: RuleMapping -> rule.mapping.map(version).toString() }
 
         return mappedByRule
@@ -91,12 +103,7 @@ internal data class RuleMapping(
     val priority: Int?,
     val mapping: VersionMapping,
     val rule: VersionRule,
-) : Serializable {
-
-    private companion object {
-        private const val serialVersionUID: Long = 0L
-    }
-}
+) : Serializable
 
 internal data class VersionMapping(
     val major: Int?,
@@ -120,10 +127,6 @@ internal data class VersionMapping(
             hash = hash ?: version.hash,
             metadata = metadata ?: version.metadata,
         )
-
-    private companion object {
-        private const val serialVersionUID: Long = 0L
-    }
 }
 
 internal data class VersionRule(
@@ -132,50 +135,132 @@ internal data class VersionRule(
     val none: VersionMatches,
 ) : Serializable {
 
-    fun matches(version: GradleVersion): Boolean {
+    fun matches(
+        version: GradleVersion,
+        mapping: VersionMapping,
+        environmentVariables: Map<String, String>,
+        gradleProperties: Map<String, String>,
+    ): Boolean {
         val configuredGroups: List<Boolean> =
             listOf(all.isConfigured, any.isConfigured, none.isConfigured)
         if (configuredGroups.none { configured: Boolean -> configured }) return false
 
-        return (all.isConfigured && all.matchesAll(version)) ||
-            (any.isConfigured && any.matchesAny(version)) ||
-            (none.isConfigured && none.matchesNone(version))
-    }
-
-    private companion object {
-        private const val serialVersionUID: Long = 0L
+        return (all.isConfigured &&
+            all.matchesAll(version, mapping, environmentVariables, gradleProperties)) ||
+            (any.isConfigured &&
+                any.matchesAny(version, mapping, environmentVariables, gradleProperties)) ||
+            (none.isConfigured &&
+                none.matchesNone(version, mapping, environmentVariables, gradleProperties))
     }
 }
 
 internal data class VersionMatches(
+    val mappedCommitsIsPresent: Boolean?,
+    val mappedHashIsPresent: Boolean?,
+    val mappedMajorIsPresent: Boolean?,
+    val mappedMetadataIsPresent: Boolean?,
+    val mappedMinorIsPresent: Boolean?,
+    val mappedPatchIsPresent: Boolean?,
+    val mappedStageIsPresent: Boolean?,
+    val mappedStageNameIsPresent: Boolean?,
+    val mappedStageNumberIsPresent: Boolean?,
     val metadataIsPresent: Boolean?,
     val requestedTagPrefix: Boolean?,
     val contains: Map<String, Boolean>,
     val endsWith: Map<String, Boolean>,
+    val environmentVariables: Map<String, Boolean>,
     val patterns: Map<String, Boolean>,
+    val gradleProperties: Map<String, Boolean>,
     val startsWith: Map<String, Boolean>,
 ) : Serializable {
 
     val isConfigured: Boolean =
-        metadataIsPresent != null ||
+        mappedCommitsIsPresent != null ||
+            mappedHashIsPresent != null ||
+            mappedMajorIsPresent != null ||
+            mappedMetadataIsPresent != null ||
+            mappedMinorIsPresent != null ||
+            mappedPatchIsPresent != null ||
+            mappedStageIsPresent != null ||
+            mappedStageNameIsPresent != null ||
+            mappedStageNumberIsPresent != null ||
+            metadataIsPresent != null ||
             requestedTagPrefix != null ||
             contains.isNotEmpty() ||
             endsWith.isNotEmpty() ||
+            environmentVariables.isNotEmpty() ||
             patterns.isNotEmpty() ||
+            gradleProperties.isNotEmpty() ||
             startsWith.isNotEmpty()
 
-    fun matchesAll(version: GradleVersion): Boolean =
-        matchResults(version).all { result: Boolean -> result }
+    fun matchesAll(
+        version: GradleVersion,
+        mapping: VersionMapping,
+        environmentVariableValues: Map<String, String>,
+        gradlePropertyValues: Map<String, String>,
+    ): Boolean =
+        matchResults(version, mapping, environmentVariableValues, gradlePropertyValues).all {
+            result: Boolean ->
+            result
+        }
 
-    fun matchesAny(version: GradleVersion): Boolean =
-        matchResults(version).any { result: Boolean -> result }
+    fun matchesAny(
+        version: GradleVersion,
+        mapping: VersionMapping,
+        environmentVariableValues: Map<String, String>,
+        gradlePropertyValues: Map<String, String>,
+    ): Boolean =
+        matchResults(version, mapping, environmentVariableValues, gradlePropertyValues).any {
+            result: Boolean ->
+            result
+        }
 
-    fun matchesNone(version: GradleVersion): Boolean =
-        matchResults(version).none { result: Boolean -> result }
+    fun matchesNone(
+        version: GradleVersion,
+        mapping: VersionMapping,
+        environmentVariableValues: Map<String, String>,
+        gradlePropertyValues: Map<String, String>,
+    ): Boolean =
+        matchResults(version, mapping, environmentVariableValues, gradlePropertyValues).none {
+            result: Boolean ->
+            result
+        }
 
-    private fun matchResults(version: GradleVersion): List<Boolean> {
+    private fun matchResults(
+        version: GradleVersion,
+        mapping: VersionMapping,
+        environmentVariableValues: Map<String, String>,
+        gradlePropertyValues: Map<String, String>,
+    ): List<Boolean> {
         val value: String = version.toString()
         return buildList {
+            mappedCommitsIsPresent?.let { expected: Boolean ->
+                add((mapping.commits != null) == expected)
+            }
+            mappedHashIsPresent?.let { expected: Boolean ->
+                add((mapping.hash != null) == expected)
+            }
+            mappedMajorIsPresent?.let { expected: Boolean ->
+                add((mapping.major != null) == expected)
+            }
+            mappedMetadataIsPresent?.let { expected: Boolean ->
+                add((mapping.metadata != null) == expected)
+            }
+            mappedMinorIsPresent?.let { expected: Boolean ->
+                add((mapping.minor != null) == expected)
+            }
+            mappedPatchIsPresent?.let { expected: Boolean ->
+                add((mapping.patch != null) == expected)
+            }
+            mappedStageIsPresent?.let { expected: Boolean ->
+                add(((mapping.stageName != null) || (mapping.stageNum != null)) == expected)
+            }
+            mappedStageNameIsPresent?.let { expected: Boolean ->
+                add((mapping.stageName != null) == expected)
+            }
+            mappedStageNumberIsPresent?.let { expected: Boolean ->
+                add((mapping.stageNum != null) == expected)
+            }
             metadataIsPresent?.let { expected: Boolean ->
                 add((version.metadata != null) == expected)
             }
@@ -186,19 +271,21 @@ internal data class VersionMatches(
             endsWith.forEach { (element: String, ignoreCase: Boolean) ->
                 add(value.endsWith(element, ignoreCase))
             }
+            environmentVariables.forEach { (name: String, expected: Boolean) ->
+                add(environmentVariableValues.containsKey(name) == expected)
+            }
             patterns.forEach { (pattern: String, ignoreCase: Boolean) ->
                 val options: Set<RegexOption> =
                     if (ignoreCase) setOf(RegexOption.IGNORE_CASE) else emptySet()
                 add(Regex(pattern, options).containsMatchIn(value))
             }
+            gradleProperties.forEach { (name: String, expected: Boolean) ->
+                add(gradlePropertyValues.containsKey(name) == expected)
+            }
             startsWith.forEach { (element: String, ignoreCase: Boolean) ->
                 add(value.startsWith(element, ignoreCase))
             }
         }
-    }
-
-    private companion object {
-        private const val serialVersionUID: Long = 0L
     }
 }
 
@@ -207,6 +294,8 @@ private fun DclVersionValueSource.Params.toDclVersionMapping(): DclVersionMappin
         overrideVersion = overrideVersion.orNull,
         defaultMapping = toVersionMapping(DefaultMappingKey),
         ruleMappings = ruleMappings.getOrElse(emptyList()).sortedByPriority(),
+        conditionEnvironmentVariables = conditionEnvironmentVariables.getOrElse(emptyMap()),
+        conditionGradleProperties = conditionGradleProperties.getOrElse(emptyMap()),
     )
 }
 
@@ -234,6 +323,18 @@ private fun DclVersionValueSource.Params.putMapping(
     mappingCommits.put(mappingKey, mapping.commits.value)
     mappingHash.put(mappingKey, mapping.hash.value)
     mappingMetadata.put(mappingKey, mapping.metadata.value)
+}
+
+private fun DclVersionValueSource.Params.putConditionProviders(
+    project: Project,
+    definition: SemverDefinition,
+) {
+    definition.conditionEnvironmentVariableNames().forEach { name: String ->
+        conditionEnvironmentVariables.put(name, project.providers.environmentVariable(name))
+    }
+    definition.conditionGradlePropertyNames().forEach { name: String ->
+        conditionGradleProperties.put(name, project.providers.gradleProperty(name))
+    }
 }
 
 private fun SemverDefinition.toRuleMappings(): List<RuleMapping> =
@@ -278,10 +379,47 @@ private fun SemverMapVersionsRuleDefinition.toVersionRule(): VersionRule =
 private fun SemverMapVersionsRuleDefinition.SemverMapVersionsMatches.toVersionMatches():
     VersionMatches =
     VersionMatches(
+        mappedCommitsIsPresent = conditions.mappedCommitsIsPresent.orNull,
+        mappedHashIsPresent = conditions.mappedHashIsPresent.orNull,
+        mappedMajorIsPresent = conditions.mappedMajorIsPresent.orNull,
+        mappedMetadataIsPresent = conditions.mappedMetadataIsPresent.orNull,
+        mappedMinorIsPresent = conditions.mappedMinorIsPresent.orNull,
+        mappedPatchIsPresent = conditions.mappedPatchIsPresent.orNull,
+        mappedStageIsPresent = conditions.mappedStageIsPresent.orNull,
+        mappedStageNameIsPresent = conditions.mappedStageNameIsPresent.orNull,
+        mappedStageNumberIsPresent = conditions.mappedStageNumberIsPresent.orNull,
         metadataIsPresent = conditions.metadataIsPresent.orNull,
         requestedTagPrefix = conditions.requestedTagPrefix.orNull,
         contains = contains.getOrElse(emptyMap()),
         endsWith = endsWith.getOrElse(emptyMap()),
+        environmentVariables = environmentVariables.getOrElse(emptyMap()),
         patterns = patterns.getOrElse(emptyMap()),
+        gradleProperties = gradleProperties.getOrElse(emptyMap()),
         startsWith = startsWith.getOrElse(emptyMap()),
     )
+
+private fun SemverDefinition.conditionEnvironmentVariableNames(): Set<String> =
+    mapVersions.flatMapTo(mutableSetOf()) { mapping: SemverMapVersionsDefinition ->
+        mapping.rules.flatMapTo(mutableSetOf()) { rule: SemverMapVersionsRuleDefinition ->
+            rule.conditionEnvironmentVariableNames()
+        }
+    }
+
+private fun SemverDefinition.conditionGradlePropertyNames(): Set<String> =
+    mapVersions.flatMapTo(mutableSetOf()) { mapping: SemverMapVersionsDefinition ->
+        mapping.rules.flatMapTo(mutableSetOf()) { rule: SemverMapVersionsRuleDefinition ->
+            rule.conditionGradlePropertyNames()
+        }
+    }
+
+private fun SemverMapVersionsRuleDefinition.conditionEnvironmentVariableNames(): Set<String> =
+    setOf(all, any, none).flatMapTo(mutableSetOf()) {
+        matches: SemverMapVersionsRuleDefinition.SemverMapVersionsMatches ->
+        matches.environmentVariables.getOrElse(emptyMap()).keys
+    }
+
+private fun SemverMapVersionsRuleDefinition.conditionGradlePropertyNames(): Set<String> =
+    setOf(all, any, none).flatMapTo(mutableSetOf()) {
+        matches: SemverMapVersionsRuleDefinition.SemverMapVersionsMatches ->
+        matches.gradleProperties.getOrElse(emptyMap()).keys
+    }

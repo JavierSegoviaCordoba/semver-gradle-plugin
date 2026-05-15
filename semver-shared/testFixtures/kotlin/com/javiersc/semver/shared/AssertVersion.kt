@@ -13,6 +13,7 @@ import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import java.io.File
+import java.io.Serializable
 import java.util.Locale
 
 fun File.assertVersionFromExpectVersionFiles() {
@@ -49,32 +50,43 @@ fun File.assertVersion(prefix: String, version: String, insignificant: Insignifi
     val buildVersionFile = resolve("build/semver/version.txt")
     val buildVersion = buildVersionFile.readLines().first()
     val buildTagVersion = buildVersionFile.readLines()[1]
-    printExpectedAndActualVersions(buildVersion, version, insignificant, buildTagVersion, prefix)
-    when (insignificant) {
-        Insignificant.Hash -> {
-            buildVersion.startsWith(version).shouldBeTrue()
-            buildTagVersion.startsWith("$prefix$version").shouldBeTrue()
-            buildVersion.shouldContain("+")
-            shouldThrow<GradleVersionException> { GradleVersion(buildVersion, Significant) }
-        }
-        Insignificant.Dirty -> {
-            buildVersion.startsWith(version).shouldBeTrue()
-            buildTagVersion.startsWith("$prefix$version").shouldBeTrue()
-            buildVersion.shouldContain("+").shouldContain("DIRTY")
-            shouldThrow<GradleVersionException> { GradleVersion(buildVersion, Significant) }
-        }
-        else -> {
-            buildVersionFile
-                .readText()
-                .shouldBe(
-                    """
+    val result: Result<Serializable> = runCatching {
+        when (insignificant) {
+            Insignificant.Hash -> {
+                buildVersion.startsWith(version).shouldBeTrue()
+                buildTagVersion.startsWith("$prefix$version").shouldBeTrue()
+                buildVersion.shouldContain("+")
+                shouldThrow<GradleVersionException> { GradleVersion(buildVersion, Significant) }
+            }
+            Insignificant.Dirty -> {
+                buildVersion.startsWith(version).shouldBeTrue()
+                buildTagVersion.startsWith("$prefix$version").shouldBeTrue()
+                buildVersion.shouldContain("+").shouldContain("DIRTY")
+                shouldThrow<GradleVersionException> { GradleVersion(buildVersion, Significant) }
+            }
+            else -> {
+                buildVersionFile
+                    .readText()
+                    .shouldBe(
+                        """
                        |$version
                        |$prefix$version
                        |
                     """
-                        .trimMargin()
-                )
+                            .trimMargin()
+                    )
+            }
         }
+    }
+    result.onFailure {
+        printExpectedAndActualVersions(
+            buildVersion = buildVersion,
+            version = version,
+            insignificant = insignificant,
+            buildTagVersion = buildTagVersion,
+            prefix = prefix,
+        )
+        throw it
     }
 }
 

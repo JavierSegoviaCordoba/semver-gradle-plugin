@@ -12,3 +12,4 @@ coverage-error.log
 local.properties
 .output.txt
 
+**/.DS_Store

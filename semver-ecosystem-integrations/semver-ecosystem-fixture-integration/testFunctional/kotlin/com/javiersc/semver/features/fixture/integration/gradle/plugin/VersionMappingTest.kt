@@ -45,6 +45,17 @@ internal class VersionMappingTest : GradleTestKitTest() {
     }
 
     @Test
+    fun `gradle property mapping`() {
+        gradleTestKitTest("version-mapping/gradle property mapping") {
+            projectDir.generateInitialCommitAddVersionTag()
+
+            withArgumentsFromTXT()
+            build()
+            projectDir.assertVersionFromExpectVersionFiles()
+        }
+    }
+
+    @Test
     fun `rules priority and override`() {
         gradleTestKitTest("version-mapping/rules priority and override") {
             projectDir.generateInitialCommitAddVersionTag()

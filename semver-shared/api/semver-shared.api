@@ -19,6 +19,8 @@ public final class com/javiersc/semver/shared/Commit {
 
 public final class com/javiersc/semver/shared/ConfigureSemverKt {
 	public static final fun configureSemver (Lorg/gradle/api/Project;Lcom/javiersc/semver/shared/SemverConfig;)V
+	public static final fun configureSemver (Lorg/gradle/api/Project;Lcom/javiersc/semver/shared/SemverConfig;Lkotlin/jvm/functions/Function2;)V
+	public static final fun configureSemver (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class com/javiersc/semver/shared/SemverCommitsKt {
@@ -319,6 +321,17 @@ public final class com/javiersc/semver/shared/tasks/WriteSemverTask$Companion {
 	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/tasks/TaskProvider;
 }
 
+public abstract interface class com/javiersc/semver/shared/valuesources/SemverVersionValueSourceParams : org/gradle/api/provider/ValueSourceParameters {
+	public abstract fun getCheckClean ()Lorg/gradle/api/provider/Property;
+	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
+	public abstract fun getCreatingSemverTag ()Lorg/gradle/api/provider/Property;
+	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
+	public abstract fun getProjectTagPrefix ()Lorg/gradle/api/provider/Property;
+	public abstract fun getScopeProperty ()Lorg/gradle/api/provider/Property;
+	public abstract fun getStageProperty ()Lorg/gradle/api/provider/Property;
+	public abstract fun getTagPrefixProperty ()Lorg/gradle/api/provider/Property;
+}
+
 public abstract class com/javiersc/semver/shared/valuesources/VersionValueSource : org/gradle/api/provider/ValueSource {
 	public static final field Companion Lcom/javiersc/semver/shared/valuesources/VersionValueSource$Companion;
 	public fun <init> ()V
@@ -330,15 +343,12 @@ public final class com/javiersc/semver/shared/valuesources/VersionValueSource$Co
 	public final fun register (Lorg/gradle/api/Project;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
 }
 
-public abstract interface class com/javiersc/semver/shared/valuesources/VersionValueSource$Params : org/gradle/api/provider/ValueSourceParameters {
-	public abstract fun getCheckClean ()Lorg/gradle/api/provider/Property;
-	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
-	public abstract fun getCreatingSemverTag ()Lorg/gradle/api/provider/Property;
-	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
-	public abstract fun getProjectTagPrefix ()Lorg/gradle/api/provider/Property;
-	public abstract fun getScopeProperty ()Lorg/gradle/api/provider/Property;
-	public abstract fun getStageProperty ()Lorg/gradle/api/provider/Property;
-	public abstract fun getTagPrefixProperty ()Lorg/gradle/api/provider/Property;
+public abstract interface class com/javiersc/semver/shared/valuesources/VersionValueSource$Params : com/javiersc/semver/shared/valuesources/SemverVersionValueSourceParams {
 	public abstract fun getVersionMapper ()Lorg/gradle/api/provider/Property;
+}
+
+public final class com/javiersc/semver/shared/valuesources/VersionValueSourceKt {
+	public static final fun configureSemverVersionValueSourceParams (Lorg/gradle/api/Project;Lcom/javiersc/semver/shared/valuesources/SemverVersionValueSourceParams;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;Lorg/gradle/api/provider/Provider;)V
+	public static final fun obtainSemverVersion (Lcom/javiersc/semver/shared/valuesources/SemverVersionValueSourceParams;Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
 }
 

@@ -4,8 +4,6 @@ package com.javiersc.semver.features.fixture.integration.gradle.plugin
 
 import com.javiersc.semver.ecosystem.fixture.gradle.plugin.SemverEcosystemFixtureDefinition
 import com.javiersc.semver.features.plugin.api.SemverDefinition
-import com.javiersc.semver.features.plugin.api.toVersionMapper
-import com.javiersc.semver.shared.SemverConfig
 import com.javiersc.semver.shared.configureSemver
 import javax.inject.Inject
 import org.gradle.api.Project
@@ -30,16 +28,25 @@ public abstract class SemverEcosystemFixtureIntegrationApplyAction :
 
         if (enabled.get()) {
             val defaultGitDir: Directory = project.layout.settingsDirectory.dir(".git")
+            val gitDir: Provider<out Directory> = definition.gitDir.orElse(defaultGitDir)
+            val commitsMaxCount: Provider<Int> =
+                definition.commitsMaxCount.orElse(DefaultCommitsMaxCount)
+            val tagPrefix: Provider<String> = definition.tagPrefix.orElse(DefaultTagPrefix)
 
             project.configureSemver(
-                SemverConfig(
-                    enabled = enabled,
-                    gitDir = definition.gitDir.orElse(defaultGitDir),
-                    commitsMaxCount = definition.commitsMaxCount.orElse(DefaultCommitsMaxCount),
-                    tagPrefix = definition.tagPrefix.orElse(DefaultTagPrefix),
-                    versionMapper = project.providers.provider { definition.toVersionMapper() },
+                enabled = enabled,
+                gitDir = gitDir,
+                commitsMaxCount = commitsMaxCount,
+                tagPrefix = tagPrefix,
+            ) { configuredProject: Project ->
+                DclVersionValueSource.register(
+                    project = configuredProject,
+                    gitDir = gitDir,
+                    commitsMaxCount = commitsMaxCount,
+                    tagPrefix = tagPrefix,
+                    definition = definition,
                 )
-            )
+            }
         }
     }
 

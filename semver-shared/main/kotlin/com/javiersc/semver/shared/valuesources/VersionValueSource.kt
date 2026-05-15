@@ -27,73 +27,12 @@ import org.gradle.kotlin.dsl.of
 
 public abstract class VersionValueSource : ValueSource<String, VersionValueSource.Params> {
 
-    override fun obtain(): String =
-        with(parameters) {
-            val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
+    override fun obtain(): String = parameters.obtainSemverVersion { version: GradleVersion ->
+        parameters.versionMapper.get().map(version)
+    }
 
-            val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
-            if (gitDir == null) {
-                semverWarningMessage("There is no git directory")
-                return "[undefined]"
-            }
-
-            var cache: GitCache? = null
-            fun cache(): GitCache {
-                if (cache == null) {
-                    cache = GitCache(gitDir = gitDir, maxCount = parameters.commitsMaxCount)
-                }
-                return cache
-            }
-
-            val lastSemver: GradleVersion =
-                cache().lastVersionInCurrentBranch(projectTagPrefix.get())
-            val lastVersionInCurrentBranch: List<String> =
-                cache().versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
-
-            val lastVersionCommitInCurrentBranch: String? =
-                cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
-
-            val version: String =
-                calculatedVersion(
-                    stageProperty = stageProperty.orNull.takeIf { isSamePrefix },
-                    scopeProperty = scopeProperty.orNull.takeIf { isSamePrefix },
-                    isCreatingSemverTag = creatingSemverTag.get().takeIf { isSamePrefix } ?: false,
-                    lastSemverMajorInCurrentBranch = lastSemver.major,
-                    lastSemverMinorInCurrentBranch = lastSemver.minor,
-                    lastSemverPatchInCurrentBranch = lastSemver.patch,
-                    lastSemverStageInCurrentBranch = lastSemver.stage?.name,
-                    lastSemverNumInCurrentBranch = lastSemver.stage?.num,
-                    versionTagsInCurrentBranch = lastVersionInCurrentBranch,
-                    clean = cache().isClean,
-                    checkClean = checkClean.get(),
-                    lastCommitInCurrentBranch = cache().lastCommitInCurrentBranch?.hash,
-                    commitsInCurrentBranch =
-                        cache().commitsInCurrentBranch.map(GitRef.Commit::hash),
-                    headCommit = cache().headCommit.commit.hash,
-                    lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
-                )
-
-            val gradleVersion = GradleVersion(version)
-            val mappedVersion: String = versionMapper.get().map(gradleVersion)
-
-            checkVersionIsHigherOrSame(
-                version = mappedVersion,
-                lastVersionInCurrentBranch = lastSemver,
-            )
-
-            mappedVersion
-        }
-
-    public interface Params : ValueSourceParameters {
+    public interface Params : SemverVersionValueSourceParams {
         public val versionMapper: Property<VersionMapper>
-        public val gitDir: DirectoryProperty
-        public val commitsMaxCount: Property<Int>
-        public val tagPrefixProperty: Property<String>
-        public val projectTagPrefix: Property<String>
-        public val stageProperty: Property<String>
-        public val scopeProperty: Property<String>
-        public val creatingSemverTag: Property<Boolean>
-        public val checkClean: Property<Boolean>
     }
 
     public companion object {
@@ -109,17 +48,98 @@ public abstract class VersionValueSource : ValueSource<String, VersionValueSourc
                 val parameters: Params = valueSourceSpec.parameters
 
                 parameters.versionMapper.set(versionMapper)
-                parameters.gitDir.set(gitDir)
-                val maxCount: Provider<Int> = project.commitsMaxCount.orElse(commitsMaxCount)
-                parameters.commitsMaxCount.set(maxCount)
-                parameters.projectTagPrefix.set(project.projectTagPrefix(tagPrefix).get())
-                parameters.tagPrefixProperty.set(project.tagPrefixProperty.get())
-                parameters.stageProperty.set(project.stageProperty.orNull)
-                parameters.scopeProperty.set(project.scopeProperty.orNull)
-                parameters.creatingSemverTag.set(project.isCreatingSemverTag)
-                parameters.checkClean.set(project.checkCleanProperty.get())
+                project.configureSemverVersionValueSourceParams(
+                    parameters = parameters,
+                    gitDir = gitDir,
+                    commitsMaxCount = commitsMaxCount,
+                    tagPrefix = tagPrefix,
+                )
             }
     }
+}
+
+public interface SemverVersionValueSourceParams : ValueSourceParameters {
+    public val gitDir: DirectoryProperty
+    public val commitsMaxCount: Property<Int>
+    public val tagPrefixProperty: Property<String>
+    public val projectTagPrefix: Property<String>
+    public val stageProperty: Property<String>
+    public val scopeProperty: Property<String>
+    public val creatingSemverTag: Property<Boolean>
+    public val checkClean: Property<Boolean>
+}
+
+public fun SemverVersionValueSourceParams.obtainSemverVersion(
+    mapVersion: (GradleVersion) -> String
+): String {
+    val isSamePrefix: Boolean = tagPrefixProperty.get() == projectTagPrefix.get()
+
+    val gitDir: File? = gitDir.orNull?.asFile?.takeIf { it.exists() }
+    if (gitDir == null) {
+        semverWarningMessage("There is no git directory")
+        return "[undefined]"
+    }
+
+    var cache: GitCache? = null
+    fun cache(): GitCache {
+        if (cache == null) {
+            cache = GitCache(gitDir = gitDir, maxCount = commitsMaxCount)
+        }
+        return cache
+    }
+
+    val lastSemver: GradleVersion = cache().lastVersionInCurrentBranch(projectTagPrefix.get())
+    val lastVersionInCurrentBranch: List<String> =
+        cache().versionsInCurrentBranch(projectTagPrefix.get()).map(GradleVersion::toString)
+
+    val lastVersionCommitInCurrentBranch: String? =
+        cache().lastVersionCommitInCurrentBranch(projectTagPrefix.get())?.hash
+
+    val version: String =
+        calculatedVersion(
+            stageProperty = stageProperty.orNull.takeIf { isSamePrefix },
+            scopeProperty = scopeProperty.orNull.takeIf { isSamePrefix },
+            isCreatingSemverTag = creatingSemverTag.get().takeIf { isSamePrefix } ?: false,
+            lastSemverMajorInCurrentBranch = lastSemver.major,
+            lastSemverMinorInCurrentBranch = lastSemver.minor,
+            lastSemverPatchInCurrentBranch = lastSemver.patch,
+            lastSemverStageInCurrentBranch = lastSemver.stage?.name,
+            lastSemverNumInCurrentBranch = lastSemver.stage?.num,
+            versionTagsInCurrentBranch = lastVersionInCurrentBranch,
+            clean = cache().isClean,
+            checkClean = checkClean.get(),
+            lastCommitInCurrentBranch = cache().lastCommitInCurrentBranch?.hash,
+            commitsInCurrentBranch = cache().commitsInCurrentBranch.map(GitRef.Commit::hash),
+            headCommit = cache().headCommit.commit.hash,
+            lastVersionCommitInCurrentBranch = lastVersionCommitInCurrentBranch,
+        )
+
+    val gradleVersion = GradleVersion(version)
+    val mappedVersion: String = mapVersion(gradleVersion)
+
+    checkVersionIsHigherOrSame(
+        version = mappedVersion,
+        lastVersionInCurrentBranch = lastSemver,
+    )
+
+    return mappedVersion
+}
+
+public fun Project.configureSemverVersionValueSourceParams(
+    parameters: SemverVersionValueSourceParams,
+    gitDir: Provider<out Directory>,
+    commitsMaxCount: Provider<Int>,
+    tagPrefix: Provider<String>,
+) {
+    parameters.gitDir.set(gitDir)
+    val maxCount: Provider<Int> = project.commitsMaxCount.orElse(commitsMaxCount)
+    parameters.commitsMaxCount.set(maxCount)
+    parameters.projectTagPrefix.set(project.projectTagPrefix(tagPrefix).get())
+    parameters.tagPrefixProperty.set(project.tagPrefixProperty.get())
+    parameters.stageProperty.set(project.stageProperty.orNull)
+    parameters.scopeProperty.set(project.scopeProperty.orNull)
+    parameters.creatingSemverTag.set(project.isCreatingSemverTag)
+    parameters.checkClean.set(project.checkCleanProperty.get())
 }
 
 private val Project.isCreatingSemverTag: Boolean

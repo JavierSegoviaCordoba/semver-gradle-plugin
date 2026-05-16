@@ -11,7 +11,7 @@ internal class MassiveTagsInSameCommitTest : GradleTestKitTest() {
 
     @Test
     @Suppress("ComplexMethod")
-    fun `massive tags in same commit`() {
+    fun `massive-tags-in-same-commit`() {
         gradleTestKitTest("examples/one-project") {
             Git.init().setDirectory(projectDir).call()
 

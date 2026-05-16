@@ -26,7 +26,7 @@ import org.gradle.testkit.runner.GradleRunner
 internal class MultiProjectExampleTest : GradleTestKitTest() {
 
     @Test
-    fun `multi project`() {
+    fun `multi-project`() {
         gradleTestKitTest("examples/multi-project") {
             `0_ Initial repo state`()
             `1_ Run gradlew assemble`()

@@ -17,8 +17,8 @@ class GradleFeaturesTest : GradleTestKitTest() {
     @Test
     // TODO: Migrate this fixture once Gradle Declarative supports the Android plugin in DCL.
     @Ignore
-    fun `android configuration cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/android configuration cache clean v1_0_0") {
+    fun `android-configuration-cache-clean-v1_0_0`() {
+        gradleTestKitTest("gradle-features/android-configuration-cache-clean-v1_0_0") {
             beforeTest()
             testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
         }
@@ -27,8 +27,8 @@ class GradleFeaturesTest : GradleTestKitTest() {
     @Test
     // TODO: Migrate this fixture once Gradle Declarative supports the Android plugin in DCL.
     @Ignore
-    fun `android build cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/android build cache clean v1_0_0") {
+    fun `android-build-cache-clean-v1_0_0`() {
+        gradleTestKitTest("gradle-features/android-build-cache-clean-v1_0_0") {
             beforeTest()
             testBuildCache()
         }
@@ -37,8 +37,8 @@ class GradleFeaturesTest : GradleTestKitTest() {
     @Test
     // TODO: Migrate this fixture once Gradle Declarative supports the Kotlin JVM plugin in DCL.
     @Ignore
-    fun `build cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/build cache clean v1_0_0") {
+    fun `build-cache-clean-v1_0_0`() {
+        gradleTestKitTest("gradle-features/build-cache-clean-v1_0_0") {
             beforeTest()
             testBuildCache()
         }
@@ -47,8 +47,8 @@ class GradleFeaturesTest : GradleTestKitTest() {
     @Test
     // TODO: Migrate this fixture once Gradle Declarative supports the Kotlin JVM plugin in DCL.
     @Ignore
-    fun `configuration cache clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/configuration cache clean v1_0_0") {
+    fun `configuration-cache-clean-v1_0_0`() {
+        gradleTestKitTest("gradle-features/configuration-cache-clean-v1_0_0") {
             beforeTest() // initial commit
             testConfigurationCache(expectTaskOutcome = TaskOutcome.SUCCESS)
             projectDir.resolve("one.txt").createNewFile()
@@ -59,8 +59,8 @@ class GradleFeaturesTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `project isolation clean v1_0_0`() {
-        gradleTestKitTest("gradle-features/project isolation clean v1_0_0") { beforeTest() }
+    fun `project-isolation-clean-v1_0_0`() {
+        gradleTestKitTest("gradle-features/project-isolation-clean-v1_0_0") { beforeTest() }
     }
 
     private fun GradleRunner.beforeTest() {

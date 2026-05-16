@@ -14,7 +14,7 @@ internal class VersionMappingTest : GradleTestKitTest() {
 
     @ParameterizedTest
     @CsvFileSource(resources = ["/tables/version-mapping.csv"], numLinesToSkip = 1)
-    fun `version mapping`(
+    fun `version-mapping`(
         @AggregateWith(VersionMappingCase.Aggregator::class) case: VersionMappingCase
     ) {
         gradleTestKitTest("tables/generated-dcl-project") {
@@ -58,8 +58,8 @@ internal class VersionMappingTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `rules priority and override`() {
-        gradleTestKitTest("version-mapping/rules priority and override") {
+    fun `rules-priority-and-override`() {
+        gradleTestKitTest("version-mapping/rules-priority-and-override") {
             projectDir.generateInitialCommitAddVersionTag()
 
             withArgumentsFromTXT()
@@ -69,8 +69,8 @@ internal class VersionMappingTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `metadata is absent`() {
-        gradleTestKitTest("version-mapping/rules/metadata is absent") {
+    fun `metadata-is-absent`() {
+        gradleTestKitTest("version-mapping/rules/metadata-is-absent") {
             projectDir.generateInitialCommitAddVersionTag()
 
             withArgumentsFromTXT()
@@ -80,8 +80,8 @@ internal class VersionMappingTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `requested tag prefix absent`() {
-        gradleTestKitTest("version-mapping/rules/requested tag prefix absent") {
+    fun `requested-tag-prefix-absent`() {
+        gradleTestKitTest("version-mapping/rules/requested-tag-prefix-absent") {
             projectDir.generateInitialCommitAddVersionTag()
 
             withArgumentsFromTXT()
@@ -91,8 +91,8 @@ internal class VersionMappingTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `mapped kotlin dev metadata`() {
-        gradleTestKitTest("version-mapping/rules/mapped kotlin dev metadata") {
+    fun `mapped-kotlin-dev-metadata`() {
+        gradleTestKitTest("version-mapping/rules/mapped-kotlin-dev-metadata") {
             projectDir.generateInitialCommitAddVersionTag()
 
             withArgumentsFromTXT()

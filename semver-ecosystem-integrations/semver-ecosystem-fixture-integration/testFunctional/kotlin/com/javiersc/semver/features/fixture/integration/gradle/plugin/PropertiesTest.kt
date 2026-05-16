@@ -54,7 +54,7 @@ internal class PropertiesTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `log on all projects`() {
+    fun `log-on-all-projects`() {
         gradleTestKitTest("properties/log-on-all-projects") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
             gradlew("printSemver", "-Psemver.logOnlyOnRootProject=false")
@@ -71,7 +71,7 @@ internal class PropertiesTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `log only on root project`() {
+    fun `log-only-on-root-project`() {
         gradleTestKitTest("properties/log-only-on-root-project") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
             gradlew("printSemver", "-Psemver.logOnlyOnRootProject=true")

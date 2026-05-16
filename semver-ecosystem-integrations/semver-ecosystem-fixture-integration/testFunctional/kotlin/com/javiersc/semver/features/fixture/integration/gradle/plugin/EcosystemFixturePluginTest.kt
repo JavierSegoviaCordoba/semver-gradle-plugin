@@ -7,7 +7,7 @@ import kotlin.test.assertTrue
 internal class EcosystemFixturePluginTest : GradleTestKitTest() {
 
     @Test
-    fun `ecosystem fixture project type can be used from DCL`() {
+    fun `ecosystem-fixture-project-type-can-be-used-from-DCL`() {
         gradleTestKitTest("fixture-plugin") {
             withArguments("help", "--stacktrace")
 

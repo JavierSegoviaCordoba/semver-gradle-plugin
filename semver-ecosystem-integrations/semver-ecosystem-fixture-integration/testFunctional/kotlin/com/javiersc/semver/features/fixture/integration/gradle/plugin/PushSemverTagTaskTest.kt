@@ -17,7 +17,7 @@ import org.eclipse.jgit.transport.URIish
 class PushSemverTagTaskTest : GradleTestKitTest() {
 
     @Test
-    fun `push tag`() {
+    fun `push-tag`() {
         gradleTestKitTest("push-tag") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
 

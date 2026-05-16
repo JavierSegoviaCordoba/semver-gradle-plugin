@@ -12,7 +12,7 @@ import org.gradle.testkit.runner.GradleRunner
 internal class OneProjectExampleTest : GradleTestKitTest() {
 
     @Test
-    fun `one project`() {
+    fun `one-project`() {
         gradleTestKitTest("examples/one-project") {
             `0_ Initial repo state`()
             `1_ Run gradlew assemble`()

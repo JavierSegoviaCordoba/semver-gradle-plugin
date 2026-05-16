@@ -13,8 +13,8 @@ import kotlin.test.Test
 internal class VersionBuildDirTest : GradleTestKitTest() {
 
     @Test
-    fun `clean v1_0_0`() {
-        gradleTestKitTest("version-build-dir/clean v1_0_0") {
+    fun `clean-v1_0_0`() {
+        gradleTestKitTest("version-build-dir/clean-v1_0_0") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
             git.tag().setObjectId(git.headRevCommitInBranch).setName("v1.0.0").call()
 
@@ -25,8 +25,8 @@ internal class VersionBuildDirTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `clean without tag in current commit - hash`() {
-        gradleTestKitTest("version-build-dir/clean-with-no-tag-current-commit (hash)") {
+    fun `clean-without-tag-in-current-commit---hash`() {
+        gradleTestKitTest("version-build-dir/clean-with-no-tag-current-commit-(hash)") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
 
             withArgumentsFromTXT()
@@ -36,8 +36,8 @@ internal class VersionBuildDirTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `no clean without tag in current commit - dirty`() {
-        gradleTestKitTest("version-build-dir/no-clean-with-no-tag-current-commit (dirty)") {
+    fun `no-clean-without-tag-in-current-commit---dirty`() {
+        gradleTestKitTest("version-build-dir/no-clean-with-no-tag-current-commit-(dirty)") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
             projectDir.resolve("new-2.txt").createNewFile()
             projectDir.resolve("expect-version.txt").apply {
@@ -60,8 +60,8 @@ internal class VersionBuildDirTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `no clean createSemverTag should fail`() {
-        gradleTestKitTest("version-build-dir/no-clean-with-no-tag-current-commit (dirty)") {
+    fun `no-clean-createSemverTag-should-fail`() {
+        gradleTestKitTest("version-build-dir/no-clean-with-no-tag-current-commit-(dirty)") {
             projectDir.generateInitialCommitAddVersionTagAndAddNewCommit()
             projectDir.resolve("new-2.txt").createNewFile()
 

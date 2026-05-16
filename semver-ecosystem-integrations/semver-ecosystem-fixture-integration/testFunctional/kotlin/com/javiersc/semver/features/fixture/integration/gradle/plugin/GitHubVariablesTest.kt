@@ -36,7 +36,7 @@ class GitHubVariablesTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `setting GITHUB_ENV`() {
+    fun `setting-GITHUB_ENV`() {
         gradleTestKitTest("github-variables") {
             setEnvironmentVariables()
 
@@ -101,7 +101,7 @@ class GitHubVariablesTest : GradleTestKitTest() {
     }
 
     @Test
-    fun `setting GITHUB_OUTPUT`() {
+    fun `setting-GITHUB_OUTPUT`() {
         gradleTestKitTest("github-variables") {
             setEnvironmentVariables()
 

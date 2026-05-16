@@ -1,1 +1,0 @@
-createSemverTag -Psemver.stage=rc -Psemver.scope=auto -Psemver.tagPrefix=v

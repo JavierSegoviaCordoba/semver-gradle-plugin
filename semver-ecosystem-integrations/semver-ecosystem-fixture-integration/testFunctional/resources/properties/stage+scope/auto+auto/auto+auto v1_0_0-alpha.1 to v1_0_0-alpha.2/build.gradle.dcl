@@ -1,6 +1,0 @@
-semverEcosystemFixture {
-    semver {
-    tagPrefix = "v"
-}
-
-}

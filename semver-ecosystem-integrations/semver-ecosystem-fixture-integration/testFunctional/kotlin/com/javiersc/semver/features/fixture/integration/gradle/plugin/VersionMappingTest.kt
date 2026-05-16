@@ -95,6 +95,7 @@ internal class VersionMappingTest : GradleTestKitTest() {
                 RuleMappingCase("none conditions"),
                 RuleMappingCase("metadata is absent"),
                 RuleMappingCase("requested tag prefix"),
+                RuleMappingCase("requested tag prefix absent"),
                 RuleMappingCase("contains"),
                 RuleMappingCase("ends with"),
                 RuleMappingCase("pattern"),

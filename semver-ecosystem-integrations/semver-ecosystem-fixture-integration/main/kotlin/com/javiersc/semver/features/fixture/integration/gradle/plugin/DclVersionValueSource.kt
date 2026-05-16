@@ -68,6 +68,7 @@ internal abstract class DclVersionValueSource : ValueSource<String, DclVersionVa
 }
 
 private const val DefaultMappingKey: String = "<default>"
+private const val TagPrefixPropertyKey: String = "semver.tagPrefix"
 
 private data class DclVersionMapping(
     val overrideVersion: String?,
@@ -325,7 +326,9 @@ internal data class VersionMatches(
             metadataIsPresent?.let { expected: Boolean ->
                 add((version.metadata != null) == expected)
             }
-            requestedTagPrefix?.let { expected: Boolean -> add(expected) }
+            requestedTagPrefix?.let { expected: Boolean ->
+                add(gradlePropertyValues.containsKey(TagPrefixPropertyKey) == expected)
+            }
             contains.forEach { (element: String, ignoreCase: Boolean) ->
                 add(value.contains(element, ignoreCase))
             }
@@ -497,4 +500,14 @@ private fun SemverMapVersionsRuleDefinition.conditionGradlePropertyNames(): Set<
     setOf(all, any, none).flatMapTo(mutableSetOf()) {
         matches: SemverMapVersionsRuleDefinition.SemverMapVersionsMatches ->
         matches.gradleProperties.getOrElse(emptyMap()).keys
-    }
+    } + requestedTagPrefixPropertyName()
+
+private fun SemverMapVersionsRuleDefinition.requestedTagPrefixPropertyName(): Set<String> =
+    setOf(all, any, none)
+        .map { matches: SemverMapVersionsRuleDefinition.SemverMapVersionsMatches ->
+            matches.conditions.requestedTagPrefix.orNull
+        }
+        .any { requestedTagPrefix: Boolean? -> requestedTagPrefix != null }
+        .let { hasRequestedTagPrefixCondition: Boolean ->
+            if (hasRequestedTagPrefixCondition) setOf(TagPrefixPropertyKey) else emptySet()
+        }

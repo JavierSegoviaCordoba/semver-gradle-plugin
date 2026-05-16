@@ -208,7 +208,7 @@ public abstract interface class com/javiersc/semver/features/plugin/api/SemverVe
 	public fun patch (I)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits$DefaultImpls {
@@ -224,35 +224,35 @@ public final class com/javiersc/semver/features/plugin/api/SemverVersionDefiniti
 	public static fun patch (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;I)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash$DefaultImpls {
 	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash;Ljava/lang/String;)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major$DefaultImpls {
 	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major;Ljava/lang/String;)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata$DefaultImpls {
 	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata;Ljava/lang/String;)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor$DefaultImpls {
 	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor;Ljava/lang/String;)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch$DefaultImpls {
@@ -262,11 +262,23 @@ public final class com/javiersc/semver/features/plugin/api/SemverVersionDefiniti
 public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
 	public abstract fun getProviders ()Lorg/gradle/api/provider/ProviderFactory;
 	public abstract fun getValue ()Lorg/gradle/api/provider/Property;
+	public abstract fun gradleProperty (Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
 	public fun gradleProperty (Ljava/lang/String;)V
 }
 
-public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$DefaultImpls {
-	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner;Ljava/lang/String;)V
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+	public fun gradleProperty (Ljava/lang/String;)V
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner;Ljava/lang/String;)V
 }
 
 public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage {
@@ -281,14 +293,14 @@ public final class com/javiersc/semver/features/plugin/api/SemverVersionDefiniti
 	public static fun number (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage;I)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name$DefaultImpls {
 	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name;Ljava/lang/String;)V
 }
 
-public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
 }
 
 public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number$DefaultImpls {

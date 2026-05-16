@@ -5,7 +5,6 @@ package com.javiersc.semver.features.plugin.api
 import java.io.Serializable
 import javax.inject.Inject
 import org.gradle.api.provider.Property
-import org.gradle.api.provider.Provider
 import org.gradle.api.provider.ProviderFactory
 import org.gradle.api.tasks.Nested
 import org.gradle.declarative.dsl.model.annotations.Adding
@@ -33,11 +32,11 @@ public interface SemverVersionDefinition : Serializable {
 
     @Adding public fun metadata(value: String): Unit = metadata.value.set(value)
 
-    public interface Major : Provisioner<Int>
+    public interface Major : Provisioner.IntProvisioner
 
-    public interface Minor : Provisioner<Int>
+    public interface Minor : Provisioner.IntProvisioner
 
-    public interface Patch : Provisioner<Int>
+    public interface Patch : Provisioner.IntProvisioner
 
     public interface Stage {
         @get:Nested public val name: Name
@@ -47,16 +46,16 @@ public interface SemverVersionDefinition : Serializable {
 
         @Adding public fun number(value: Int): Unit = number.value.set(value)
 
-        public interface Name : Provisioner<String>
+        public interface Name : Provisioner.StringProvisioner
 
-        public interface Number : Provisioner<Int>
+        public interface Number : Provisioner.IntProvisioner
     }
 
-    public interface Commits : Provisioner<Int>
+    public interface Commits : Provisioner.IntProvisioner
 
-    public interface Hash : Provisioner<String>
+    public interface Hash : Provisioner.StringProvisioner
 
-    public interface Metadata : Provisioner<String>
+    public interface Metadata : Provisioner.StringProvisioner
 
     public interface Provisioner<T : Any> {
 
@@ -64,21 +63,21 @@ public interface SemverVersionDefinition : Serializable {
 
         public val value: Property<T>
 
-        @Adding
-        public fun gradleProperty(name: String) {
-            val prop: Provider<String> = providers.gradleProperty(name)
+        @Adding public fun gradleProperty(name: String)
 
-            (value as? Property<Boolean>)?.set(prop.map(String::toBoolean))
-            (value as? Property<Double>)?.set(prop.map(String::toDouble))
-            (value as? Property<Int>)?.set(prop.map(String::toInt))
-            (value as? Property<Long>)?.set(prop.map(String::toLong))
-            (value as? Property<String>)?.set(prop)
+        public interface IntProvisioner : Provisioner<Int> {
 
-            if (!value.isPresent) {
-                val supportedProperties: String =
-                    listOf(Boolean::class, Double::class, Int::class, Long::class, String::class)
-                        .joinToString()
-                error("Only $supportedProperties are supported as Gradle properties.")
+            @Adding
+            override fun gradleProperty(name: String) {
+                value.set(providers.gradleProperty(name).map(String::toInt))
+            }
+        }
+
+        public interface StringProvisioner : Provisioner<String> {
+
+            @Adding
+            override fun gradleProperty(name: String) {
+                value.set(providers.gradleProperty(name))
             }
         }
     }

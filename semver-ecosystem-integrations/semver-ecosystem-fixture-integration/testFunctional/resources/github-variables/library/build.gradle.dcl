@@ -1,6 +1,5 @@
 semverEcosystemFixture {
     semver {
-    tagPrefix = "w"
-}
-
+        tagPrefix = "w"
+    }
 }

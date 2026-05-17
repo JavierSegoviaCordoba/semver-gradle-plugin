@@ -1,1 +1,2 @@
-semverEcosystemFixture { }
+semverEcosystemFixture {
+}

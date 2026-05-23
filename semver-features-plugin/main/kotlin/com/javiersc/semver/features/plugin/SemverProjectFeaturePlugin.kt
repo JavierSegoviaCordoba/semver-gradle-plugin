@@ -3,6 +3,7 @@
 package com.javiersc.semver.features.plugin
 
 import com.javiersc.semver.features.fixture.integration.gradle.plugin.SemverEcosystemFixtureIntegrationApplyAction
+import com.javiersc.semver.features.hubdle.integration.gradle.plugin.SemverEcosystemHubdleIntegrationApplyAction
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.features.annotations.BindsProjectFeature
@@ -21,6 +22,14 @@ public class SemverProjectFeaturePlugin : Plugin<Project> {
                 .bindProjectFeature(
                     "semver",
                     SemverEcosystemFixtureIntegrationApplyAction::class,
+                )
+                .withUnsafeDefinition()
+                .withUnsafeApplyAction()
+
+            builder
+                .bindProjectFeature(
+                    "semver",
+                    SemverEcosystemHubdleIntegrationApplyAction::class,
                 )
                 .withUnsafeDefinition()
                 .withUnsafeApplyAction()

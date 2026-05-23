@@ -8,6 +8,10 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
+        maven(url = "https://central.sonatype.com/repository/maven-snapshots/") {
+            mavenContent { snapshotsOnly() }
+            content { includeGroupByRegex("com\\.javiersc\\.hubdle.*") }
+        }
         google()
     }
 
@@ -18,4 +22,13 @@ pluginManagement {
 
 plugins {
     id("com.javiersc.hubdle")
+}
+
+dependencyResolutionManagement {
+    repositories {
+        maven(url = "https://central.sonatype.com/repository/maven-snapshots/") {
+            mavenContent { snapshotsOnly() }
+            content { includeGroupByRegex("com\\.javiersc\\.hubdle.*") }
+        }
+    }
 }

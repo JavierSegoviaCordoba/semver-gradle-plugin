@@ -1,4 +1,5 @@
 import com.javiersc.gradle.extensions.version.catalogs.artifact
+import com.javiersc.gradle.properties.extensions.getBooleanProperty
 
 hubdle {
     config {
@@ -10,7 +11,7 @@ hubdle {
         explicitApi()
         publishing {
             maven { //
-                isEnabled = false
+                isEnabled.set(provider { project.version.toString().endsWith("-SNAPSHOT") })
             }
             gradlePortal { //
                 isEnabled = false

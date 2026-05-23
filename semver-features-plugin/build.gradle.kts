@@ -10,7 +10,7 @@ hubdle {
         explicitApi()
         publishing {
             maven { //
-                isEnabled = false
+                isEnabled.set(provider { project.version.toString().endsWith("-SNAPSHOT") })
             }
             gradlePortal { //
                 isEnabled = false

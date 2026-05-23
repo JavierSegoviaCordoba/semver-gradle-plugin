@@ -27,8 +27,6 @@ hubdle {
             main {
                 dependencies { //
                     implementation(libs.plugins.javiersc.hubdle.ecosystem.artifact)
-                    implementation(projects.semverEcosystemFixturePlugin)
-                    implementation(projects.semverEcosystemIntegrations.semverEcosystemFixtureIntegration)
                     implementation(projects.semverEcosystemIntegrations.semverEcosystemHubdleIntegration)
                     implementation(projects.semverFeaturesPluginApi)
                 }

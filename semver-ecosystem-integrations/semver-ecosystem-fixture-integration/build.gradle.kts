@@ -40,6 +40,17 @@ hubdle {
 
     gradle {
         plugin {
+            gradlePlugin {
+                plugins {
+                    create("SemverEcosystemFixtureIntegrationPlugin") {
+                        id = "semver.ecosystem.fixture.integration"
+                        displayName = "Semver Ecosystem Fixture Integration"
+                        description = "Fixture integration for Semver Declarative functional tests"
+                        implementationClass =
+                            "com.javiersc.semver.features.fixture.integration.gradle.plugin.SemverEcosystemFixtureIntegrationPlugin"
+                    }
+                }
+            }
             pluginUnderTestDependencies(
                 projects.semverEcosystemFixturePlugin,
                 projects.semverFeaturesPlugin,

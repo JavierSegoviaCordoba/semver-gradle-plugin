@@ -1,8 +1,10 @@
 package com.javiersc.semver.project.gradle.plugin
 
-import com.javiersc.semver.project.gradle.plugin.internal.git.GitRef
-import com.javiersc.semver.project.gradle.plugin.internal.git.currentBranch
-import com.javiersc.semver.project.gradle.plugin.internal.git.headRef
+import com.javiersc.semver.shared.git
+import com.javiersc.semver.shared.initialCommitAnd
+import com.javiersc.semver.shared.internal.git.GitRef
+import com.javiersc.semver.shared.internal.git.currentBranch
+import com.javiersc.semver.shared.internal.git.headRef
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

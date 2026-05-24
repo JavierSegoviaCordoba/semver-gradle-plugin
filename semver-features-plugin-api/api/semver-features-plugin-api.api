@@ -1,0 +1,309 @@
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverDefinition : org/gradle/features/binding/Definition {
+	public abstract fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
+	public abstract fun getEnabled ()Lorg/gradle/api/provider/Property;
+	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
+	public abstract fun getMapVersion ()Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;
+	public abstract fun getMapVersions ()Lorg/gradle/api/NamedDomainObjectContainer;
+	public abstract fun getOverrideVersion ()Lorg/gradle/api/provider/Property;
+	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public fun mapVersion (Ljava/lang/String;)V
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverDefinition$DefaultImpls {
+	public static fun mapVersion (Lcom/javiersc/semver/features/plugin/api/SemverDefinition;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverMapVersionDefinition : com/javiersc/semver/features/plugin/api/SemverVersionDefinition {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverMapVersionDefinition$DefaultImpls {
+	public static fun commits (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;I)V
+	public static fun hash (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;Ljava/lang/String;)V
+	public static fun major (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;I)V
+	public static fun metadata (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;Ljava/lang/String;)V
+	public static fun minor (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;I)V
+	public static fun patch (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionDefinition;I)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition : com/javiersc/semver/features/plugin/api/SemverMapVersionDefinition, org/gradle/api/Named {
+	public abstract fun getRules ()Lorg/gradle/api/NamedDomainObjectContainer;
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition$DefaultImpls {
+	public static fun commits (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition;I)V
+	public static fun hash (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition;Ljava/lang/String;)V
+	public static fun major (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition;I)V
+	public static fun metadata (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition;Ljava/lang/String;)V
+	public static fun minor (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition;I)V
+	public static fun patch (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsDefinition;I)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition : org/gradle/api/Named {
+	public abstract fun getAll ()Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;
+	public abstract fun getAny ()Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;
+	public abstract fun getNone ()Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;
+	public abstract fun getPriority ()Lorg/gradle/api/provider/Property;
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches {
+	public fun contains (Ljava/lang/String;Z)V
+	public static synthetic fun contains$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun endsWith (Ljava/lang/String;Z)V
+	public static synthetic fun endsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun environmentVariableIsPresent (Ljava/lang/String;Z)V
+	public static synthetic fun environmentVariableIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public abstract fun getConditions ()Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches$Conditions;
+	public abstract fun getContains ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getEndsWith ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getEnvironmentVariables ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getGradleProperties ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getMappedContains ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getMappedEndsWith ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getMappedMetadata ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getMappedPatterns ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getMappedStartsWith ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getPatterns ()Lorg/gradle/api/provider/MapProperty;
+	public abstract fun getStartsWith ()Lorg/gradle/api/provider/MapProperty;
+	public fun gradlePropertyIsPresent (Ljava/lang/String;Z)V
+	public static synthetic fun gradlePropertyIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedCommits (I)V
+	public fun mappedCommitsIsPresent (Z)V
+	public static synthetic fun mappedCommitsIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedContains (Ljava/lang/String;Z)V
+	public static synthetic fun mappedContains$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedEndsWith (Ljava/lang/String;Z)V
+	public static synthetic fun mappedEndsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedHash (Ljava/lang/String;Z)V
+	public static synthetic fun mappedHash$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedHashIsPresent (Z)V
+	public static synthetic fun mappedHashIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedMajor (I)V
+	public fun mappedMajorIsPresent (Z)V
+	public static synthetic fun mappedMajorIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedMetadata (Ljava/lang/String;Z)V
+	public static synthetic fun mappedMetadata$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedMetadataIsPresent (Z)V
+	public static synthetic fun mappedMetadataIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedMinor (I)V
+	public fun mappedMinorIsPresent (Z)V
+	public static synthetic fun mappedMinorIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedPatch (I)V
+	public fun mappedPatchIsPresent (Z)V
+	public static synthetic fun mappedPatchIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedPattern (Ljava/lang/String;Z)V
+	public static synthetic fun mappedPattern$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedStageIsPresent (Z)V
+	public static synthetic fun mappedStageIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedStageName (Ljava/lang/String;Z)V
+	public static synthetic fun mappedStageName$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun mappedStageNameIsPresent (Z)V
+	public static synthetic fun mappedStageNameIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedStageNumber (I)V
+	public fun mappedStageNumberIsPresent (Z)V
+	public static synthetic fun mappedStageNumberIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun mappedStartsWith (Ljava/lang/String;Z)V
+	public static synthetic fun mappedStartsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun metadataIsPresent (Z)V
+	public static synthetic fun metadataIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun pattern (Ljava/lang/String;Z)V
+	public static synthetic fun pattern$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public fun requestedTagPrefix (Z)V
+	public static synthetic fun requestedTagPrefix$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public fun startsWith (Ljava/lang/String;Z)V
+	public static synthetic fun startsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches$Conditions {
+	public abstract fun getMappedCommits ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedCommitsIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedHash ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedHashIgnoreCase ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedHashIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedMajor ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedMajorIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedMetadataIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedMinor ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedMinorIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedPatch ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedPatchIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedStageIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedStageName ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedStageNameIgnoreCase ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedStageNameIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedStageNumber ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMappedStageNumberIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getMetadataIsPresent ()Lorg/gradle/api/provider/Property;
+	public abstract fun getRequestedTagPrefix ()Lorg/gradle/api/provider/Property;
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches$DefaultImpls {
+	public static fun contains (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun contains$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun endsWith (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun endsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun environmentVariableIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun environmentVariableIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun gradlePropertyIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun gradlePropertyIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedCommits (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;I)V
+	public static fun mappedCommitsIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedCommitsIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedContains (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedContains$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedEndsWith (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedEndsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedHash (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedHash$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedHashIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedHashIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedMajor (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;I)V
+	public static fun mappedMajorIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedMajorIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedMetadata (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedMetadata$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedMetadataIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedMetadataIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedMinor (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;I)V
+	public static fun mappedMinorIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedMinorIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedPatch (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;I)V
+	public static fun mappedPatchIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedPatchIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedPattern (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedPattern$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedStageIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedStageIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedStageName (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedStageName$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun mappedStageNameIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedStageNameIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedStageNumber (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;I)V
+	public static fun mappedStageNumberIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun mappedStageNumberIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun mappedStartsWith (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun mappedStartsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun metadataIsPresent (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun metadataIsPresent$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun pattern (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun pattern$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+	public static fun requestedTagPrefix (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Z)V
+	public static synthetic fun requestedTagPrefix$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;ZILjava/lang/Object;)V
+	public static fun startsWith (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;Z)V
+	public static synthetic fun startsWith$default (Lcom/javiersc/semver/features/plugin/api/SemverMapVersionsRuleDefinition$SemverMapVersionsMatches;Ljava/lang/String;ZILjava/lang/Object;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition : java/io/Serializable {
+	public fun commits (I)V
+	public abstract fun getCommits ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits;
+	public abstract fun getHash ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash;
+	public abstract fun getMajor ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major;
+	public abstract fun getMetadata ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata;
+	public abstract fun getMinor ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor;
+	public abstract fun getPatch ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch;
+	public abstract fun getStage ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage;
+	public fun hash (Ljava/lang/String;)V
+	public fun major (I)V
+	public fun metadata (Ljava/lang/String;)V
+	public fun minor (I)V
+	public fun patch (I)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Commits;Ljava/lang/String;)V
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$DefaultImpls {
+	public static fun commits (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;I)V
+	public static fun hash (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;Ljava/lang/String;)V
+	public static fun major (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;I)V
+	public static fun metadata (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;Ljava/lang/String;)V
+	public static fun minor (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;I)V
+	public static fun patch (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition;I)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Hash;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Major;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Metadata;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Minor;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Patch;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+	public abstract fun getProviders ()Lorg/gradle/api/provider/ProviderFactory;
+	public abstract fun getValue ()Lorg/gradle/api/provider/Property;
+	public abstract fun gradleProperty (Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+	public fun gradleProperty (Ljava/lang/String;)V
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner {
+	public fun gradleProperty (Ljava/lang/String;)V
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage {
+	public abstract fun getName ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name;
+	public abstract fun getNumber ()Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number;
+	public fun name (Ljava/lang/String;)V
+	public fun number (I)V
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$DefaultImpls {
+	public static fun name (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage;Ljava/lang/String;)V
+	public static fun number (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage;I)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$StringProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Name;Ljava/lang/String;)V
+}
+
+public abstract interface class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number : com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Provisioner$IntProvisioner {
+}
+
+public final class com/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number$DefaultImpls {
+	public static fun gradleProperty (Lcom/javiersc/semver/features/plugin/api/SemverVersionDefinition$Stage$Number;Ljava/lang/String;)V
+}
+

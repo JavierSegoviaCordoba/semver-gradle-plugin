@@ -4,8 +4,8 @@ import com.javiersc.gradle.version.GradleVersion as Version
 import com.javiersc.gradle.version.GradleVersion.Increase.Major
 import com.javiersc.gradle.version.GradleVersion.Increase.Minor
 import com.javiersc.gradle.version.GradleVersion.Increase.Patch
-import com.javiersc.gradle.version.GradleVersion.SpecialStage.Companion.dev
-import com.javiersc.gradle.version.GradleVersion.SpecialStage.Companion.specials
+import com.javiersc.gradle.version.SpecialStage.DEV
+import com.javiersc.gradle.version.SpecialStage.specials
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
@@ -159,11 +159,11 @@ internal class GradleVersionTest {
                     aName == null && bName != null -> a > b
                     aIsSpecial && !bIsSpecial -> a > b
                     !aIsSpecial && bIsSpecial -> a < b
-                    areBothSpecial && aName!!.lowercase() == bName!!.lowercase() -> a == b
+                    areBothSpecial && aName!!.equals(bName!!, ignoreCase = true) -> a == b
                     areBothSpecial && aName!!.lowercase() > bName!!.lowercase() -> a > b
                     areBothSpecial && aName!!.lowercase() < bName!!.lowercase() -> a < b
-                    aName!!.lowercase() != dev && bName!!.lowercase() == dev -> a > b
-                    aName.lowercase() == dev && bName!!.lowercase() != dev -> a < b
+                    aName!!.lowercase() != DEV && bName!!.lowercase() == DEV -> a > b
+                    aName.lowercase() == DEV && bName!!.lowercase() != DEV -> a < b
                     aName == bName -> a == b
                     aName > bName!! -> a > b
                     else -> b > a
@@ -182,25 +182,28 @@ internal class GradleVersionTest {
                 aName == null && bName == null -> true
                 aName != null && bName == null -> a < b
                 aName == null && bName != null -> a > b
-                aIsSpecial && bIsSpecial && aName?.lowercase() == bName?.lowercase() -> a == b
+                aIsSpecial && bIsSpecial && aName.equals(bName, ignoreCase = true) -> a == b
                 aIsSpecial && !bIsSpecial -> a > b
                 !aIsSpecial && bIsSpecial -> a < b
-                aName!!.lowercase() != dev && bName!!.lowercase() == dev -> a > b
-                aName.lowercase() == dev && bName!!.lowercase() != dev -> a < b
-                aName.lowercase() == bName!!.lowercase() -> a == b
+                aName!!.lowercase() != DEV && bName!!.lowercase() == DEV -> a > b
+                aName.lowercase() == DEV && bName!!.lowercase() != DEV -> a < b
+                aName.equals(bName!!, ignoreCase = true) -> a == b
                 aName.lowercase() > bName.lowercase() -> a > b
                 else -> a < b
             }
         }
     }
 
-    private infix fun Version.nameComparator(other: Version): Boolean =
-        (this.major == other.major) &&
+    private infix fun Version.nameComparator(other: Version): Boolean {
+        val stage: Version.Stage? = this.stage
+        val otherStage: Version.Stage? = other.stage
+        return (this.major == other.major) &&
             (this.minor == other.minor) &&
             (this.patch == other.patch) &&
-            (this.stage?.name != null) &&
-            (other.stage?.name != null) &&
-            (this.stage.name > other.stage.name)
+            (stage?.name != null) &&
+            (otherStage?.name != null) &&
+            (stage.name > otherStage.name)
+    }
 
     @Test
     fun stage_num_comparator() = runTestNoTimeout {
@@ -209,16 +212,21 @@ internal class GradleVersionTest {
         }
     }
 
-    private infix fun Version.mumComparator(other: Version): Boolean =
-        (this.major == other.major) &&
+    private infix fun Version.mumComparator(other: Version): Boolean {
+        val stage: Version.Stage? = this.stage
+        val stageNum: Int? = stage?.num
+        val otherStage: Version.Stage? = other.stage
+        val otherStageNum: Int? = otherStage?.num
+        return (this.major == other.major) &&
             (this.minor == other.minor) &&
             (this.patch == other.patch) &&
-            (this.stage?.name != null) &&
-            (other.stage?.name != null) &&
-            (this.stage.name == other.stage.name) &&
-            (this.stage.num != null) &&
-            (other.stage.num != null) &&
-            (this.stage.num > other.stage.num)
+            (stage?.name != null) &&
+            (otherStage?.name != null) &&
+            (stage.name == otherStage.name) &&
+            (stageNum != null) &&
+            (otherStageNum != null) &&
+            (stageNum > otherStageNum)
+    }
 
     @Test
     fun wrong_versions() = runTestNoTimeout {

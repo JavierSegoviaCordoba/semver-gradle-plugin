@@ -2,8 +2,7 @@
 
 package com.javiersc.semver.settings.gradle.plugin
 
-import com.javiersc.semver.project.gradle.plugin.VersionMapper
-import com.javiersc.semver.project.gradle.plugin.internal.DefaultTagPrefix
+import com.javiersc.semver.shared.VersionMapper
 import java.io.File
 import javax.inject.Inject
 import org.gradle.api.file.DirectoryProperty
@@ -22,7 +21,7 @@ public abstract class SemverSettingsExtension @Inject constructor(objects: Objec
 
     public val commitsMaxCount: Property<Int> = objects.property<Int>().convention(-1)
 
-    public val tagPrefix: Property<String> = objects.property<String>().convention(DefaultTagPrefix)
+    public val tagPrefix: Property<String> = objects.property<String>().convention("")
 
     internal val versionMapper: Property<VersionMapper> =
         objects

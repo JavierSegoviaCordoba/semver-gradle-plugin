@@ -1,7 +1,9 @@
 package com.javiersc.semver.project.gradle.plugin
 
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
-import com.javiersc.semver.project.gradle.plugin.internal.git.tagName
+import com.javiersc.semver.shared.generateInitialCommitAddVersionTagAndAddNewCommit
+import com.javiersc.semver.shared.git
+import com.javiersc.semver.shared.internal.git.tagName
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeEmpty

@@ -4,6 +4,8 @@
 
 ### Added
 
+- Gradle Declarative support
+
 ### Changed
 
 - Minimum required Java version to 17

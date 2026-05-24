@@ -1,0 +1,13 @@
+public abstract class com/javiersc/semver/features/hubdle/integration/gradle/plugin/SemverEcosystemHubdleIntegrationApplyAction : org/gradle/features/binding/ProjectFeatureApplyAction {
+	public static final field Companion Lcom/javiersc/semver/features/hubdle/integration/gradle/plugin/SemverEcosystemHubdleIntegrationApplyAction$Companion;
+	public static final field DefaultCommitsMaxCount I
+	public static final field DefaultTagPrefix Ljava/lang/String;
+	public fun <init> ()V
+	public fun apply (Lorg/gradle/features/binding/ProjectFeatureApplicationContext;Lcom/javiersc/semver/features/plugin/api/SemverDefinition;Lorg/gradle/features/binding/BuildModel$None;Lhubdle/ecosystem/feature/versioning/HubdleVersioningDefinition;)V
+	public synthetic fun apply (Lorg/gradle/features/binding/ProjectFeatureApplicationContext;Lorg/gradle/features/binding/Definition;Lorg/gradle/features/binding/BuildModel;Ljava/lang/Object;)V
+	public abstract fun getProject ()Lorg/gradle/api/Project;
+}
+
+public final class com/javiersc/semver/features/hubdle/integration/gradle/plugin/SemverEcosystemHubdleIntegrationApplyAction$Companion {
+}
+

@@ -1,22 +1,3 @@
-public final class com/javiersc/semver/project/gradle/plugin/Commit {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()J
-	public final fun component5 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;)Lcom/javiersc/semver/project/gradle/plugin/Commit;
-	public static synthetic fun copy$default (Lcom/javiersc/semver/project/gradle/plugin/Commit;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;ILjava/lang/Object;)Lcom/javiersc/semver/project/gradle/plugin/Commit;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getFullMessage ()Ljava/lang/String;
-	public final fun getHash ()Ljava/lang/String;
-	public final fun getMessage ()Ljava/lang/String;
-	public final fun getTags ()Ljava/util/List;
-	public final fun getTimestampEpochSecond ()J
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
 public abstract class com/javiersc/semver/project/gradle/plugin/SemverExtension {
 	public static final field Companion Lcom/javiersc/semver/project/gradle/plugin/SemverExtension$Companion;
 	public static final field ExtensionName Ljava/lang/String;
@@ -25,8 +6,9 @@ public abstract class com/javiersc/semver/project/gradle/plugin/SemverExtension 
 	public final fun getCommitsMaxCount ()Lorg/gradle/api/provider/Property;
 	public abstract fun getGitDir ()Lorg/gradle/api/file/DirectoryProperty;
 	public final fun getTagPrefix ()Lorg/gradle/api/provider/Property;
+	public final fun getVersionMapper ()Lorg/gradle/api/provider/Property;
 	public final fun isEnabled ()Lorg/gradle/api/provider/Property;
-	public final fun mapVersion (Lcom/javiersc/semver/project/gradle/plugin/VersionMapper;)V
+	public final fun mapVersion (Lcom/javiersc/semver/shared/VersionMapper;)V
 }
 
 public final class com/javiersc/semver/project/gradle/plugin/SemverExtension$Companion {
@@ -36,112 +18,5 @@ public final class com/javiersc/semver/project/gradle/plugin/SemverProjectPlugin
 	public fun <init> ()V
 	public synthetic fun apply (Ljava/lang/Object;)V
 	public fun apply (Lorg/gradle/api/Project;)V
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/Tag {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/javiersc/semver/project/gradle/plugin/Tag;
-	public static synthetic fun copy$default (Lcom/javiersc/semver/project/gradle/plugin/Tag;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/javiersc/semver/project/gradle/plugin/Tag;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getName ()Ljava/lang/String;
-	public final fun getRefName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public abstract interface class com/javiersc/semver/project/gradle/plugin/VersionMapper : java/io/Serializable {
-	public abstract fun map (Lcom/javiersc/gradle/version/GradleVersion;)Ljava/lang/String;
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/VersionProperty : org/gradle/api/provider/Provider {
-	public fun <init> (Lorg/gradle/api/provider/Provider;)V
-	public fun filter (Lorg/gradle/api/specs/Spec;)Lorg/gradle/api/provider/Provider;
-	public fun flatMap (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
-	public synthetic fun get ()Ljava/lang/Object;
-	public fun get ()Ljava/lang/String;
-	public synthetic fun getOrElse (Ljava/lang/Object;)Ljava/lang/Object;
-	public fun getOrElse (Ljava/lang/String;)Ljava/lang/String;
-	public synthetic fun getOrNull ()Ljava/lang/Object;
-	public fun getOrNull ()Ljava/lang/String;
-	public fun isPresent ()Z
-	public fun map (Lorg/gradle/api/Transformer;)Lorg/gradle/api/provider/Provider;
-	public synthetic fun orElse (Ljava/lang/Object;)Lorg/gradle/api/provider/Provider;
-	public fun orElse (Ljava/lang/String;)Lorg/gradle/api/provider/Provider;
-	public fun orElse (Lorg/gradle/api/provider/Provider;)Lorg/gradle/api/provider/Provider;
-	public fun toString ()Ljava/lang/String;
-	public fun zip (Lorg/gradle/api/provider/Provider;Ljava/util/function/BiFunction;)Lorg/gradle/api/provider/Provider;
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/extensions/IsVersionExtensionsKt {
-	public static final fun isAlpha (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isBeta (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isDev (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isNotAlpha (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isNotBeta (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isNotDev (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isNotRC (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isNotSnapshot (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isRC (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-	public static final fun isSnapshot (Lorg/gradle/api/Project;)Lorg/gradle/api/provider/Provider;
-}
-
-public abstract class com/javiersc/semver/project/gradle/plugin/services/GitBuildService : java/lang/AutoCloseable, org/gradle/api/services/BuildService {
-	public fun <init> (Lorg/gradle/process/ExecOperations;)V
-	public fun close ()V
-}
-
-public abstract class com/javiersc/semver/project/gradle/plugin/tasks/CreateSemverTagTask : org/gradle/api/DefaultTask {
-	public static final field Companion Lcom/javiersc/semver/project/gradle/plugin/tasks/CreateSemverTagTask$Companion;
-	public static final field NAME Ljava/lang/String;
-	public fun <init> ()V
-	public final fun run ()V
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/tasks/CreateSemverTagTask$Companion {
-}
-
-public abstract class com/javiersc/semver/project/gradle/plugin/tasks/PrintSemverTask : org/gradle/api/DefaultTask {
-	public static final field Companion Lcom/javiersc/semver/project/gradle/plugin/tasks/PrintSemverTask$Companion;
-	public static final field NAME Ljava/lang/String;
-	public fun <init> (ZLjava/lang/String;Lorg/gradle/api/model/ObjectFactory;)V
-	public final fun getGithubEnv ()Lorg/gradle/api/provider/Property;
-	public final fun getGithubEnvTag ()Lorg/gradle/api/provider/Property;
-	public final fun getGithubEnvVersion ()Lorg/gradle/api/provider/Property;
-	public final fun getGithubOnlyRoot ()Lorg/gradle/api/provider/Property;
-	public final fun getGithubOutput ()Lorg/gradle/api/provider/Property;
-	public final fun getGithubOutputTag ()Lorg/gradle/api/provider/Property;
-	public final fun getGithubOutputVersion ()Lorg/gradle/api/provider/Property;
-	public abstract fun getShouldLogMessage ()Lorg/gradle/api/provider/Property;
-	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
-	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
-	public final fun run ()V
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/tasks/PrintSemverTask$Companion {
-}
-
-public abstract class com/javiersc/semver/project/gradle/plugin/tasks/PushSemverTagTask : org/gradle/api/DefaultTask {
-	public static final field Companion Lcom/javiersc/semver/project/gradle/plugin/tasks/PushSemverTagTask$Companion;
-	public static final field NAME Ljava/lang/String;
-	public fun <init> ()V
-	public final fun run ()V
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/tasks/PushSemverTagTask$Companion {
-}
-
-public abstract class com/javiersc/semver/project/gradle/plugin/tasks/WriteSemverTask : org/gradle/api/DefaultTask {
-	public static final field Companion Lcom/javiersc/semver/project/gradle/plugin/tasks/WriteSemverTask$Companion;
-	public static final field NAME Ljava/lang/String;
-	public fun <init> (Lorg/gradle/api/model/ObjectFactory;Lorg/gradle/api/file/ProjectLayout;)V
-	public final fun getSemverFile ()Lorg/gradle/api/file/RegularFileProperty;
-	public abstract fun getTagPrefix ()Lorg/gradle/api/provider/Property;
-	public abstract fun getVersion ()Lorg/gradle/api/provider/Property;
-	public final fun run ()V
-}
-
-public final class com/javiersc/semver/project/gradle/plugin/tasks/WriteSemverTask$Companion {
 }
 

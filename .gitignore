@@ -6,6 +6,10 @@
 
 build
 **/build/**/*
+**/build/sandbox/*
 
 coverage-error.log
 local.properties
+.output.txt
+
+**/.DS_Store

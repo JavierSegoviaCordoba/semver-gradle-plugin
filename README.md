@@ -431,6 +431,42 @@ semver: 1.0.1
 semver: 1.0.0.23+1a2cd5b2 # 1a2cd5b2 is the last commit hash
 ```
 
+### Gradle Declarative
+
+There is support for the experimental Gradle Declarative through ecosystem plugin features.
+`semver` is not a top-level DCL project type; it must be nested inside an ecosystem plugin that
+registers the feature.
+
+```kotlin
+// settings.gradle.dcl
+plugins {
+    id("com.javiersc.semver.features").version("$version")
+    id("semver.ecosystem.fixture")
+}
+```
+
+Call `semver` inside the ecosystem plugin block.
+
+#### Basic usage
+
+```kotlin
+// build.gradle.dcl
+semverEcosystemFixture {
+    semver { }
+}
+```
+
+#### Configure Semver
+
+```kotlin
+// build.gradle.dcl
+semverEcosystemFixture {
+    semver {
+        tagPrefix = "z"
+    }
+}
+```
+
 ### FAQ
 
 #### Included builds support

@@ -1,5 +1,11 @@
 [versions]
 hubdle = "0.18.2"
+javiersc-hubdle-ecosystem = "0.2.0-SNAPSHOT"
 
 [plugins]
+javiersc-hubdle-ecosystem = { id = "com.javiersc.hubdle.ecosystem", version.ref = "javiersc-hubdle-ecosystem" }
 javiersc-hubdle = { id = "com.javiersc.hubdle", version.ref = "hubdle" }
+
+[libraries]
+javiersc-hubdle-ecosystem-api = { module = "com.javiersc.hubdle:hubdle-ecosystem-api", version.ref = "javiersc-hubdle-ecosystem" }
+javiersc-hubdle-ecosystem-feature-versioning = { module = "com.javiersc.hubdle:hubdle-ecosystem-feature-versioning", version.ref = "javiersc-hubdle-ecosystem" }

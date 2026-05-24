@@ -3,6 +3,10 @@ package com.javiersc.semver.project.gradle.plugin
 import com.javiersc.gradle.testkit.test.extensions.GradleTestKitTest
 import com.javiersc.kotlin.stdlib.AnsiColor
 import com.javiersc.kotlin.stdlib.ansiColor
+import com.javiersc.semver.shared.assertVersionFromExpectVersionFiles
+import com.javiersc.semver.shared.generateInitialCommitAddVersionTagAndAddNewCommit
+import com.javiersc.semver.shared.getResource
+import com.javiersc.semver.shared.git
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldNotContain
 import java.io.File

@@ -27,7 +27,8 @@ hubdle {
 
             main {
                 dependencies {
-                    implementation(libs.plugins.javiersc.hubdle.ecosystem.artifact)
+                    implementation(libs.javiersc.hubdle.ecosystem.feature.versioning)
+                    implementation(libs.javiersc.hubdle.ecosystem.api)
                     implementation(projects.semverFeaturesPluginApi)
                     implementation(projects.semverShared)
                 }

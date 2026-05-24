@@ -1,5 +1,3 @@
-import com.javiersc.gradle.extensions.version.catalogs.artifact
-
 hubdle {
     config {
         analysis()
@@ -26,7 +24,6 @@ hubdle {
 
             main {
                 dependencies { //
-                    implementation(libs.plugins.javiersc.hubdle.ecosystem.artifact)
                     implementation(projects.semverEcosystemIntegrations.semverEcosystemHubdleIntegration)
                     implementation(projects.semverFeaturesPluginApi)
                 }

@@ -147,11 +147,12 @@ constructor(
         File(System.getenv("GITHUB_ENV")).appendText("\n$snakeCaseKey=$value")
     }
 
-    private fun String.toSnakeCase(): String =
-        map { char -> if (char.isUpperCase()) "_$char" else char.uppercaseChar() }
-            .joinToString("")
-            .replace(".", "_")
-            .replace("-", "_")
+    private fun String.toSnakeCase(): String = map { char ->
+        if (char.isUpperCase()) "_$char" else char.uppercaseChar()
+    }
+        .joinToString("")
+        .replace(".", "_")
+        .replace("-", "_")
 
     public companion object {
 
